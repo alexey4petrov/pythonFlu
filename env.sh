@@ -40,9 +40,9 @@ source /opt/OpenFOAM/r${which_open_foam}/debug/bashrc
 
 
 #--------------------------------------------------------------------------------------
-source /opt/pyfoam/r7.3/testing/bashrc 
+#source /opt/pyfoam/r7.4/testing/bashrc 
 
-source /opt/pyfoam/r7.3/OpenFOAM-${which_open_foam}/bashrc 
+source /opt/pyfoam/r7.4/OpenFOAM-${which_open_foam}/bashrc 
 
 
 #--------------------------------------------------------------------------------------

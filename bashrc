@@ -20,7 +20,7 @@
 
 
 #--------------------------------------------------------------------------------------
-export PYFOAM_ROOT_DIR="/opt/pyfoam/r7.3/OpenFOAM-${which_open_foam}"
+export PYFOAM_ROOT_DIR="/opt/pyfoam/r7.4/OpenFOAM-${which_open_foam}"
 
 export PATH=${PYFOAM_ROOT_DIR}:${PATH}
 export PYTHONPATH=${PYFOAM_ROOT_DIR}:${PYTHONPATH}
