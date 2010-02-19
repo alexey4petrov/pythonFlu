@@ -1,0 +1,121 @@
+****
+NEWS
+****
+
+Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+See See https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/pyfoam
+
+---------------------------------------------------------------------------
+
+New Features and Important Changes, r5.0 vs r4.0
+
+Author(s) :  Alexey PETROV
+
+2009-08-17
+
+1. Porting to the OpenFOAM-1.6
+-------------------------------
+This version of OpenFOAM swigging can produce Python wrapping for every 
+official OpenFOAM version since 1.4.1. The most important thing that this 
+wrapping support the same Python API for every OpenFOAM version. So, 
+the Python user code need not to be modified to follow the pure C++ OpenFOAM
+modifications.
+
+2. Reducing / precising binary dependecies
+-------------------------------
+Since this version, every sub package can introduce its own third-party 
+dependecies. As an example it is possible to check the following packages:
+  - src (which used customized version of "include.makefile" -
+  "src.include.makefile")
+
+  - Foam/application/utilities/postProcessing/graphics (which is responsible
+  for foam2vtk wrapping; introduces VTK dependencies)
+
+  - /Foam/applications/utilities/mesh/conversion/ (which is responsible for
+  unv2foam wrapping; introduces VTK dependencies) 
+
+As an implicit result, "Foam.OpenFOAM" Python module now dependes only from
+corresponding C++ OpenFOAM library, as well as "Foam.finiteVolume" Python
+module dependes from C++ finiteVolume one and so on.
+
+2. Wrapping of the new third-party package - unv2foam
+-------------------------------
+The "unv2foam" - package is based on the existing since OpenFOAM-1.5 -
+"ideasUnvToFoam" command line utility. Been repackaged it provide the ability
+to create corresponding Foam::fvMesh in memory.
+
+The packaging for the Python related utilities was adjustied with
+corresponding OpenFOAM/application/utilities.
+
+
+---------------------------------------------------------------------------
+
+New Features and Important Changes, r4.0 vs r2.0
+
+Author(s) :  Alexey PETROV
+
+2009-08-17
+
+1. Providing OpenFOAM related packaging
+-------------------------------
+This version generates its SWIG libraries into the same OpenFOAM does. For
+example, it provides "OpenFOAM" and "fintiteVolume" Python libraries which
+include all related functionality. These libraries can be accessed through the
+special Python module - "Foam", which simulates the C++ "Foam" namespace. The
+same things are done for "fvc" and "fvm" namespaces, which are represented by
+different libraries. So, user can explicitly control what functionality he is
+going to use, minimize dependencies and clarify its Python code.
+
+
+2. Wrapping of the third-party packages (foam2vtk)
+-------------------------------
+Since this version, pyFoam will include wrapping of C++ functionality which
+as extends the existing OpenFOAM API as introduce a completely new
+functionality.
+
+"foam2vtk" Python package will provide the ability to map the foam field data
+to the native VTK data structures in memory (which can be easily displayed after). It is
+based on the existing OpenFOAM's vtkFoam package.
+
+3. Moving complex test cases to special package - IFoam
+-------------------------------
+IFoam - is defined as a separate software package which will be responsible
+for "hybrid scripting"; it will provide a design solution for intergration of
+different application and technologies (like SALOME, OpenFOAM and Star-CDF++)
+for defintion of an integrated user environment for calculation and solver developing.
+
+
+---------------------------------------------------------------------------
+Author(s) :  Alexey PETROV
+
+2009-04-15
+
+1. Introduction
+---------------
+This document briefly explains some of the most important changes made
+since the release of pyfoam-r1.0. The goal is to provide information for
+people who want to upgrade an older pyfoam interface to the new version.
+
+2. 'Hybrid scripting' capabilities
+-------------------------------
+The contains examples how to orginze interaction with SALOME from within 
+Python code.
+
+3. Post-processing capabilities
+-------------------------------
+The contains example how to publish intetmediate solver results to 
+SALOME VISU module.

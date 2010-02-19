@@ -1,0 +1,50 @@
+#--------------------------------------------------------------------------------------
+README
+#--------------------------------------------------------------------------------------
+
+Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+See https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/pyfoam
+
+#--------------------------------------------------------------------------------------
+Introduction
+#--------------------------------------------------------------------------------------
+
+This is a Python OpenFOAM binding that allows interactivelly use OpenFOAM 
+(Open Source CFD Toolbox, see http://sourceforge.net/projects/foam/ )
+API into Python (see http://www.python.org/ ). 
+The initial goals of development of OpenFOAM binding was to provide more
+convinient way to extend / customize OpenFOAM functionality and perform all
+calculation in memory (not through files).
+
+#--------------------------------------------------------------------------------------
+Installation
+#--------------------------------------------------------------------------------------
+
+See the INSTALL file for more information about building of pyFoam binding.
+
+#--------------------------------------------------------------------------------------
+Usage
+#--------------------------------------------------------------------------------------
+
+There are two ways to use pyFoam
+  - Use predefined set of solvers in the same way as referenced OpenFOAM ones
+    ( ${PYFOAM_ROOT_DIR}/Foam/applications/solvers/incompressible/icoFoam.py, for example )
+  - Write your own solver ( or modify existing one ) through usage of corresponding 
+    Python OpenFOAM API
+    (see, ${PYFOAM_ROOT_DIR}/Foam/applications/solvers/incompressible/icoFoam.py, for example ) 
+
+#--------------------------------------------------------------------------------------

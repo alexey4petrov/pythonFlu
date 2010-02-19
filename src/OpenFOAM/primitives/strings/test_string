@@ -1,0 +1,9 @@
+#! /usr/bin/env python
+
+from string import *
+
+aStr = string( "test" )
+
+print aStr, len( aStr ), aStr[ 0 ]
+
+print "OK"

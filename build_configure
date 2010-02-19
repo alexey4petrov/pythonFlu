@@ -1,0 +1,83 @@
+#!/bin/sh
+## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
+## 
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+## 
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+## 
+## See https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/pyfoam
+##
+## Author : Alexey PETROV
+##
+
+
+#--------------------------------------------------------------------------------------
+# This script applies the procedure for preparing  the configure process. 
+# It creates configuration files (ex: ltmain.sh) using libtoolize, 
+# the aclocal macro, the configure script using autoconf and some scripts
+# used in building process (ex: install-sh) using automake. 
+
+
+#--------------------------------------------------------------------------------------
+cd ${0%/*} || exit 1    # run from this directory
+
+
+#--------------------------------------------------------------------------------------
+# aclocal creates the aclocal.m4 file from the standard macro and the
+# custom macro embedded in the directory ./admin.
+# output:
+#   aclocal.m4
+#   autom4te.cache (directory)
+echo "---------------------------------- aclocal --------------------------------------"
+aclocal -I admin || exit 1
+
+
+#--------------------------------------------------------------------------------------
+# libtoolize creates some configuration files (ltmain.sh,
+# config.guess and config.sub). It only depends on the libtool
+# version. The files are created in the directory specified with the
+# AC_CONFIG_AUX_DIR(<mydir>) tag (see configure.ac).
+# output:
+#   ./admin/config.guess
+#   ./admin/config.sub
+#   ./admin/ltmain.sh
+echo "--------------------------------- libtoolize ------------------------------------"
+libtoolize --force --copy --automake || exit 1
+
+
+#--------------------------------------------------------------------------------------
+# autoconf creates the configure script from the file configure.ac (or
+# configure.in if configure.ac doesn't exist)
+# output:
+#   configure
+echo "---------------------------------- autoconf -------------------------------------"
+autoconf
+
+
+#--------------------------------------------------------------------------------------
+# automake creates some scripts used in building process
+# (install-sh, missing, ...). It only depends on the automake
+# version. The files are created in the directory specified with the
+# AC_CONFIG_AUX_DIR(<mydir>) tag (see configure.ac). This step also
+# creates the Makefile.in files from the Makefile.am files.
+# output:
+#   ./admin/compile
+#   ./admin/depcomp
+#   ./admin/install-sh
+#   ./admin/missing
+#   ./admin/py-compile
+#   Makefile.in (from Makefile.am)
+echo "---------------------------------- automake -------------------------------------"
+automake --add-missing --copy --gnu
+
+
+#--------------------------------------------------------------------------------------

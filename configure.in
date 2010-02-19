@@ -1,0 +1,114 @@
+## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
+## 
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+## 
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+## 
+## See https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/pyfoam
+##
+## Author : Alexey PETROV
+##
+
+
+#--------------------------------------------------------------------------------------
+# Process this file with autoconf to produce a configure script
+#--------------------------------------------------------------------------------------
+#AC_PREREQ(2.59)
+#
+AC_INIT([pyFoam Project], [7.3], [alexey.petrov.nnov@gmail.com], [pyfoam])
+
+# AC_CONFIG_AUX_DIR defines an alternative directory where to find the auxiliary
+# scripts such as config.guess, install-sh, ...
+#AC_PROG_INSTALL()
+AC_CONFIG_AUX_DIR(admin)
+AC_CONFIG_MACRO_DIR([admin])
+AM_INIT_AUTOMAKE([tar-pax -Wno-portability])
+
+
+echo "--------------------------------------------------------------------------------------"
+PYFOAM_CHECK_OPENFOAM
+echo 
+
+echo "--------------------------------------------------------------------------------------"
+PYFOAM_CHECK_EXTFOAM
+echo 
+
+echo "--------------------------------------------------------------------------------------"
+PYFOAM_CHECK_BOOST
+echo 
+
+
+echo "--------------------------------------------------------------------------------------"
+PYFOAM_CHECK_SINGLELIB
+echo 
+
+
+echo "--------------------------------------------------------------------------------------"
+PYFOAM_CHECK_EMBEDDEDCXX
+echo 
+
+
+#--------------------------------------------------------------------------------------
+function summary {
+  variables=$*
+  for var in $variables
+  do
+    eval toto=\$$var
+    if test x$toto != "x"; then
+      printf "   %10s : " `echo \$var | sed -e "s,_ok,,"`
+      eval echo \$$var
+    fi
+  done
+}
+
+
+#--------------------------------------------------------------------------------------
+function check_fatal_error {
+  variables=$*
+  for var in $variables
+  do
+    eval toto=\$$var
+    if test x$toto != "xyes"; then
+        echo "FATAL ERROR: some mandatory products are missing."
+	echo "Installing the missing products is required before running the configure script".
+    	exit 1
+    fi
+  done  
+}
+
+
+#--------------------------------------------------------------------------------------
+echo "---------------------------- mandatory products --------------------------------"
+summary "openfoam_ok"
+check_fatal_error "openfoam_ok"
+echo
+echo "---------------------------- optional products ---------------------------------"
+summary "extfoam_ok boost_ok"
+echo
+echo "--------------------------------- features -------------------------------------"
+summary "singlelib embeddedcxx"
+echo
+echo "--------------------------------------------------------------------------------"
+
+
+#--------------------------------------------------------------------------------------
+AC_OUTPUT( [ Makefile \
+	     Foam/__init__.py \
+	     Foam/pyfoam.cxx \
+	     Foam/Makefile \
+	     Foam/applications/utilities/Makefile \
+	     Foam/applications/solvers/incompressible/Makefile \
+	     EFoam/pbmr/diffusion/Makefile \
+	     EFoam/common/shared_ptr/Makefile ] )
+
+
+#--------------------------------------------------------------------------------------

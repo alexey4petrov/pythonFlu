@@ -1,0 +1,46 @@
+//  Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
+//  
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//  
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//  
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+//  See https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/pyfoam
+//
+//  Author : Alexey PETROV
+
+
+//---------------------------------------------------------------------------
+#ifndef DimensionedField_sphericalTensor_surfaceMesh_cxx
+#define DimensionedField_sphericalTensor_surfaceMesh_cxx
+
+
+//---------------------------------------------------------------------------
+%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
+
+%include "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
+
+%include "src/finiteVolume/surfaceMesh.hxx"
+
+%ignore Foam::DimensionedField< Foam::sphericalTensor, Foam::surfaceMesh >::typeName;
+%ignore Foam::DimensionedField< Foam::sphericalTensor, Foam::surfaceMesh >::debug;
+%ignore Foam::DimensionedField< Foam::sphericalTensor, Foam::surfaceMesh >::T;
+
+DIMENSIONED_FIELD_TEMPLATE_FUNC( sphericalTensor, surfaceMesh )
+
+
+//---------------------------------------------------------------------------
+%template( DimensionedField_sphericalTensor_surfaceMesh ) Foam::DimensionedField< Foam::sphericalTensor, Foam::surfaceMesh >;
+
+
+//---------------------------------------------------------------------------
+
+#endif
