@@ -88,6 +88,11 @@
         return *self + theArg;
     }
 
+    Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::dimensioned< Type >& theArg )
+    {
+        return *self + theArg;
+    }
+
     Foam::tmp< Foam::fvMatrix< Type > > __sub__( const Foam::fvMatrix< Type >& theArg )
     {
         return *self - theArg;
