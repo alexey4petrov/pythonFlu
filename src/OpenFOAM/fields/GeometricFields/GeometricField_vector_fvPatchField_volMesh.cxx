@@ -40,7 +40,7 @@
 
 %include "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
 
-VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::volMesh );
+%template ( TGeometricBoundaryField_vector_fvPatchField_volMesh ) Foam::TGeometricBoundaryField< Foam::vector, Foam::fvPatchField, Foam::volMesh >;
 
 
 //---------------------------------------------------------------------------
@@ -53,6 +53,8 @@ VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::volMesh );
 %ignore Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >::T;
 
 %template( GeometricField_vector_fvPatchField_volMesh ) Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >;
+
+VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::volMesh );
 
 %inline
 {

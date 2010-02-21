@@ -34,43 +34,9 @@
 
 
 //---------------------------------------------------------------------------
-
 %include "src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hxx"
 
-
-//---------------------------------------------------------------------------
-%define NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Type, TPatchField, TMesh )
-
-%typecheck( SWIG_TYPECHECK_POINTER ) Foam::GeometricField< Type, TPatchField, TMesh >& 
-{
-    void *ptr;
-    int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::GeometricField< Type, TPatchField, TMesh > * ), 0 );
-    int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
-    $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 );
-}
-
-%typemap( in ) Foam::GeometricField< Type, TPatchField, TMesh >& 
-{
-  void  *argp = 0;
-  int res = 0;
-  
-  res = SWIG_ConvertPtr( $input, &argp, $descriptor(  Foam::GeometricField< Type, TPatchField, TMesh > * ), %convertptr_flags );
-  if ( SWIG_IsOK( res )&& argp  ){
-    Foam::GeometricField< Type, TPatchField, TMesh > * res =  %reinterpret_cast( argp, Foam::GeometricField< Type, TPatchField, TMesh >* );
-    $1 = res;
-  } else {
-    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > >* ), %convertptr_flags );
-    if ( SWIG_IsOK( res ) && argp ) {
-      Foam::tmp<Foam::GeometricField< Type, TPatchField, TMesh> >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
-      $1 = tmp_res->operator->();
-      } else {
-        %argument_fail( res, "$type", $symname, $argnum );
-        }
-    }
- 
-}    
-%enddef
-
+%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/db/objectRegistry.cxx"
@@ -155,16 +121,7 @@
 
 %extend Foam::GeometricField< Type, TPatchField, TMesh > COMMON_EXTENDS;
 
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
 %include "src/OpenFOAM/primitives/scalar.cxx"
-
-NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::scalar, Foam::fvPatchField, Foam::volMesh );
-NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::vector, Foam::fvPatchField, Foam::volMesh );
-NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::tensor, Foam::fvPatchField, Foam::volMesh );
-NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::symmTensor, Foam::fvPatchField, Foam::volMesh );
-NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::sphericalTensor, Foam::fvPatchField, Foam::volMesh );
-NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh );
-NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh );
 
 %extend Foam::GeometricField< Type, TPatchField, TMesh >
 {
@@ -213,6 +170,16 @@ NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::vector, Foam::fvsPatchField, Foam::surface
     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __rmul__( const Foam::scalar& theArg )
     {
         return theArg * *self;
+    }
+    
+    Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __rmul__( const Foam::dimensioned< Foam::scalar >& theArg )
+    {
+        return theArg * *self ;
+    }
+    
+    Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __mul__( const Foam::dimensioned< Foam::scalar >& theArg )
+    {
+        return *self * theArg ;
     }
     
     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __radd__( const Foam::scalar& theArg )
@@ -264,7 +231,7 @@ NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::vector, Foam::fvsPatchField, Foam::surface
     {
         return *self * theArg;
     }
-
+    
 }
 %enddef
 
@@ -282,6 +249,7 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::scalar, TPatchField, TMesh )
 
 
 //---------------------------------------------------------------------------
+%include "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
 %define __VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
 {
     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __and__( const Foam::GeometricField< Foam::vector, TPatchField, TMesh >& theArg )
@@ -292,7 +260,16 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::scalar, TPatchField, TMesh )
     {
         return *self / theArg;
     }
+    Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > >  __rxor__( const Foam::dimensioned< Foam::vector >& theArg )
+    {
+        return theArg ^ *self;
+    }
 
+    Foam::tmp<Foam::GeometricField<Foam::scalar, TPatchField, TMesh > > __rand__( const Foam::dimensioned< Foam::vector >& theArg )
+    {
+        return theArg & *self;
+    }
+   
 }
 %enddef
 

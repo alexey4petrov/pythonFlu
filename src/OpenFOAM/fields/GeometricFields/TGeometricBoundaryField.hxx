@@ -48,6 +48,10 @@ namespace Foam
        {
         engine.updateCoeffs();
        }
+       List< word > types()
+       {
+         return engine.types();
+       }
   };  
 }
 

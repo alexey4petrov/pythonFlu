@@ -50,13 +50,10 @@
 
 %include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
-
-
-SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::volMesh );
-
-
 //---------------------------------------------------------------------------
 %template( GeometricField_scalar_fvPatchField_volMesh ) Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >;
+
+SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::volMesh );
 
 %inline
 {
