@@ -56,6 +56,11 @@
         self->dimensions() = theValue;
     }
 
+    Foam::dimensioned< Type > __neg__()
+    {
+        return -*self;
+    }
+    
     Foam::dimensioned< Type > __div__( const Foam::dimensioned< Foam::scalar >& ds )
     {
         return *self / ds;
@@ -66,9 +71,18 @@
         return ds * *self;
     }
     
+    Foam::dimensioned< Type > __rmul__( const Foam::scalar& ds )
+    {
+        return ds * *self;
+    }
+
     Foam::dimensioned< Type > __sub__( const Foam::dimensioned< Type >& ds )
     {
         return *self - ds;
+    }
+    Foam::dimensioned< Foam::scalar > mag()
+    {
+     return Foam::mag( *self );
     }
 }
 
@@ -77,7 +91,35 @@
 %extend Foam::dimensioned< Type > OSTREAM_EXTENDS;
 
 %enddef
+//---------------------------------------------------------------------------
+%define DIMENSIONEDSCALAR_ADDONS
+
+DIMENSIONEDTYPE_ADDONS( Foam::scalar )
+
+%extend Foam::dimensioned< Foam::scalar >
+{
+  Foam::dimensioned< Foam::scalar > sqrt()
+  {
+     return Foam::sqrt( *self );
+  }
+}
+
+%enddef
 
 
 //---------------------------------------------------------------------------
+%define DIMENSIONEDVECTOR_ADDONS
+
+DIMENSIONEDTYPE_ADDONS( Foam::vector )
+
+%extend Foam::dimensioned< Foam::vector >
+{
+  Foam::dimensioned< Foam::scalar > __and__( const Foam::dimensioned< Foam::vector >& ds )
+  {
+     return *self & ds;
+  }
+}
+
+%enddef
+
 #endif

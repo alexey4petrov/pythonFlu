@@ -26,9 +26,7 @@
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx"
 
-%include "src/OpenFOAM/primitives/s_ymmTensor.cxx"
-
-typedef Foam::dimensioned< Foam::symmTensor > dimensionedSymmTensor;
+%typedef Foam::dimensioned< Foam::symmTensor > dimensionedSymmTensor;
 
 %template( dimensionedSymmTensor ) Foam::dimensioned< Foam::symmTensor >; 
 

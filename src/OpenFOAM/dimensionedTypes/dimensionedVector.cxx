@@ -28,11 +28,15 @@
 
 %include "src/OpenFOAM/primitives/vector.cxx"
 
+%{
+    #include "dimensionedVector.H"
+%}
+
 %ignore Foam::dimensioned< Foam::vector >::component;
 %ignore Foam::dimensioned< Foam::vector >::replace;
 %ignore Foam::dimensioned< Foam::vector >::T;
 
-typedef Foam::dimensioned< Foam::vector > dimensionedVector;
+%typedef Foam::dimensioned< Foam::vector > dimensionedVector;
 
 %typemap( out ) Foam::dimensioned< Foam::vector >
 {
@@ -43,11 +47,7 @@ typedef Foam::dimensioned< Foam::vector > dimensionedVector;
 
 %include "dimensionedVector.H"
 
-%{
-    #include "dimensionedVector.H"
-%}
-
-DIMENSIONEDTYPE_ADDONS( Foam::vector )
+DIMENSIONEDVECTOR_ADDONS;
 
 
 //---------------------------------------------------------------------------
