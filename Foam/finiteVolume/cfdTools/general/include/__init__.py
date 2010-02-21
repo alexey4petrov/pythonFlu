@@ -53,29 +53,42 @@ def readPISOControls( mesh ):
 
     nCorr = readInt( piso.lookup( word( "nCorrectors" ) ) )
 
-    nNonOrthCorr = 0;
-    if piso.found( word( "nNonOrthogonalCorrectors" ) ) :
-        nNonOrthCorr = readInt( piso.lookup( word( "nNonOrthogonalCorrectors" ) ) )
-        pass
-
-    momentumPredictor = True;
-    if piso.found( word( "momentumPredictor" ) ) :
-        momentumPredictor = Switch( piso.lookup( word( "momentumPredictor" ) ) )
-        pass
-    
-    transonic = False;
-    if piso.found( word( "transonic" ) ) :
-        transonic = Switch( piso.lookup( word( "transonic" ) ) )
-        pass
-
-    nOuterCorr = 1;
-    if piso.found( word( "nOuterCorrectors" ) ) :
-        nOuterCorr = readInt( piso.lookup( word( "nOuterCorrectors" ) ) )
-
     ddtPhiCorr = False;
-    if piso.found( word( "ddtPhiCorr" ) ) :
-        ddtPhiCorr = Switch( piso.lookup( word( "ddtPhiCorr" ) ) )
-        pass
+    
+    from Foam import WM_PROJECT_VERSION
+    if WM_PROJECT_VERSION() <= "1.4.1-dev":
+      nNonOrthCorr = 0;
+      if piso.found( word( "nNonOrthogonalCorrectors" ) ) :
+         nNonOrthCorr = readInt( piso.lookup( word( "nNonOrthogonalCorrectors" ) ) )
+         pass
+    
+      momentumPredictor = True;
+      if piso.found( word( "momentumPredictor" ) ) :
+         momentumPredictor = Switch( piso.lookup( word( "momentumPredictor" ) ) )
+         pass
+   
+      transonic = False;
+      if piso.found( word( "transonic" ) ) :
+         transonic = Switch( piso.lookup( word( "transonic" ) ) )
+         pass
+
+      nOuterCorr = 1;
+      if piso.found( word( "nOuterCorrectors" ) ) :
+         nOuterCorr = readInt( piso.lookup( word( "nOuterCorrectors" ) ) )
+         pass
+    
+      if piso.found( word( "ddtPhiCorr" ) ) :
+         ddtPhiCorr = Switch( piso.lookup( word( "ddtPhiCorr" ) ) )
+         pass
+      pass
+    else:
+       nNonOrthCorr = piso.lookupOrDefault( word( "nNonOrthogonalCorrectors" ), 0 )
+       
+       momentumPredictor = piso.lookupOrDefault( word( "momentumPredictor" ), Switch( True ) )
+       
+       transonic = piso.lookupOrDefault( word( "transonic" ), Switch( False ) )
+       
+       nOuterCorr = piso.lookupOrDefault( word( "nOuterCorrectors" ), 1 )
 
     return piso, nCorr, nNonOrthCorr, momentumPredictor, transonic, nOuterCorr, ddtPhiCorr
 
