@@ -39,6 +39,10 @@ PYFOAM_CHECK_OPENFOAM
 echo 
 
 echo "--------------------------------------------------------------------------------------"
+PYFOAM_CHECK_PYTHON
+echo 
+
+echo "--------------------------------------------------------------------------------------"
 PYFOAM_CHECK_EXTFOAM
 echo 
 
@@ -88,8 +92,7 @@ function check_fatal_error {
 
 #--------------------------------------------------------------------------------------
 echo "---------------------------- mandatory products --------------------------------"
-summary "openfoam_ok"
-check_fatal_error "openfoam_ok"
+summary "openfoam_ok python_ok"
 echo
 echo "---------------------------- optional products ---------------------------------"
 summary "extfoam_ok boost_ok"
@@ -98,6 +101,7 @@ echo "--------------------------------- features -------------------------------
 summary "singlelib embeddedcxx"
 echo
 echo "--------------------------------------------------------------------------------"
+check_fatal_error "openfoam_ok python_ok"
 
 
 #--------------------------------------------------------------------------------------
