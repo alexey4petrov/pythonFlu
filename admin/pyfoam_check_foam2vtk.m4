@@ -72,7 +72,7 @@ AC_CHECK_FILE( [${foam2vtk_root_dir}/lib/libfoam2vtk.so], [ foam2vtk_ok=yes ], [
 if test "x${foam2vtk_ok}" = "xyes" ; then
    FOAM2VTK_CXXFLAGS=""
 
-   FOAM2VTK_LDFLAGS="-L${foam2vtk_root_dir}/lib -llibfoam2vtk"
+   FOAM2VTK_LDFLAGS="-L${foam2vtk_root_dir}/lib -lfoam2vtk"
 
    dnl AC_MSG_CHECKING( for linking to foam2vtk library )
    dnl AC_LINK_IFELSE( [ AC_LANG_PROGRAM( [ [ #include <vtkFoamInterfaces.H> ] ],
