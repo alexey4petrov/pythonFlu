@@ -60,28 +60,15 @@ PROJECT_LIBS       = -l$(WM_PROJECT)
 
 
 #--------------------------------------------------------------------------------------
-PYTHON_VERSION := $(shell python -c "import sys; print sys.version[:3]")
-
-ifndef PYTHON_INCLUDE
-	PYTHON_INCLUDE := /usr/include/python$(PYTHON_VERSION)
-endif
-
-__CXX_INCLUDES__:=$(__CXX_INCLUDES__) $(PROJECT_INC) -I$(PYTHON_INCLUDE) -I$(pyfoam_root_dir)
+__CXX_INCLUDES__:=$(__CXX_INCLUDES__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I$(pyfoam_root_dir)
 
 
 #--------------------------------------------------------------------------------------
-__LIB_FLAGS__:=$(__LIB_FLAGS__) -lstdc++
+__LIB_FLAGS__:=$(__LIB_FLAGS__) @PYTHON_LDFLAGS@ -lstdc++
 
 ifdef WM_PROJECT_VERSION
 	__LIB_FLAGS__:=-L$(LIB_WM_OPTIONS_DIR) $(PROJECT_LIBS) $(__LIB_FLAGS__) -lpthread -ldl -lm
 endif
-
-PYTHON_LIB := -lpython$(PYTHON_VERSION)
-ifdef PYTHONHOME
-	PYTHON_LIB := $(PYTHONHOME)/lib/libpython$(PYTHON_VERSION).so
-endif
-
-__LIB_FLAGS__ := $(__LIB_FLAGS__) $(PYTHON_LIB)
 
 
 #--------------------------------------------------------------------------------------

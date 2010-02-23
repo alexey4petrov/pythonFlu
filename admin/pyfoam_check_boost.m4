@@ -55,7 +55,7 @@ if test ! "x${withval}" = "xno" ; then
       boost_dir=${withval}
    fi
 
-   AC_CHECK_FILE( [${boost_dir}], [ boost_ok=yes ], [ boost_ok=no ] )
+   AC_CHECK_FILE( [${boost_dir}/include/boost/shared_ptr.hpp], [ boost_ok=yes ], [ boost_ok=no ] )
 
    if test "x${boost_ok}" = "xyes" ; then
       test ! "x${boost_dir}" = "x/usr" && BOOST_CPPFLAGS="-I${boost_dir}/include"

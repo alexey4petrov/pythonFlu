@@ -32,6 +32,9 @@ AC_SUBST(PYTHON_CPPFLAGS)
 PYTHON_CXXFLAGS=""
 AC_SUBST(PYTHON_CXXFLAGS)
 
+PYTHON_LDFLAGS=""
+AC_SUBST(PYTHON_LDFLAGS)
+
 dnl --------------------------------------------------------------------------------
 python_ok=yes
 AC_SUBST(python_ok)
@@ -87,8 +90,9 @@ if test "x${python_libraries_ok}" = "xyes" ; then
    PYTHON_CXXFLAGS=""
    CXXFLAGS="${PYTHON_CXXFLAGS}"
 
-   test ! "x${with_python_libraries}" = "x/usr/lib" && PYTHON_LDFLAGS="-L${with_python_libraries}"
-   LDFLAGS="${PYTHON_LDFLAGS} -lpython${python_version}"
+   PYTHON_LDFLAGS="-lpython${python_version}"
+   test ! "x${with_python_libraries}" = "x/usr/lib" && PYTHON_LDFLAGS="-L${with_python_libraries} ${PYTHON_LDFLAGS}"
+   LDFLAGS=${PYTHON_LDFLAGS}
 
    AC_MSG_CHECKING( for linking to Python libraries )
    AC_LINK_IFELSE( [ AC_LANG_PROGRAM( [ [ #include <Python.h> ] ],

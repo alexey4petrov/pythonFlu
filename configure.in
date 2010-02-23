@@ -106,6 +106,7 @@ check_fatal_error "openfoam_ok python_ok"
 
 #--------------------------------------------------------------------------------------
 AC_OUTPUT( [ Makefile \
+	     include.makefile \
 	     Foam/__init__.py \
 	     Foam/pyfoam.cxx \
 	     Foam/Makefile \
