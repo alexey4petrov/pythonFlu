@@ -23,7 +23,7 @@
 ifdef DIFFUSION_ROOT_DIR
 #--------------------------------------------------------------------------------------
 
-__CXX_INCLUDES__ := \
+__CPPFLAGS__ := \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude\
 	-I$(DIFFUSION_ROOT_DIR)/diffusionFoamLib/lnInclude
 

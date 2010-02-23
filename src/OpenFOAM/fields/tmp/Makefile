@@ -26,12 +26,12 @@ include $(pyfoam_root_dir)/foam.version.makefile
  
  
 #--------------------------------------------------------------------------------------
-__CXX_INCLUDES__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels
+__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels
 
 
 #--------------------------------------------------------------------------------------
 ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-        __CXX_INCLUDES__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/LES/LESdeltas/lnInclude
+        __CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/LES/LESdeltas/lnInclude
 
 endif
 

@@ -22,7 +22,7 @@
 #--------------------------------------------------------------------------------------
 ifneq "$(BOOSTDIR)xx" "xx"
 
-__CXX_INCLUDES__ := $(__CXX_INCLUDES__) -I$(BOOSTDIR)/include
+__CPPFLAGS__ := $(__CPPFLAGS__) -I$(BOOSTDIR)/include
 
 pyfoam_root_dir:=../..
 

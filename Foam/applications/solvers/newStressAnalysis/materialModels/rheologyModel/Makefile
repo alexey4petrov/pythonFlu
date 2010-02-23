@@ -29,7 +29,7 @@ include $(pyfoam_root_dir)/foam.version.makefile
 ifeq "$(shell if [ ${__FOAM_VERSION__} -lt 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 #--------------------------------------------------------------------------------------
 
-__CXX_INCLUDES__ := $(__CXX_INCLUDES__) \
+__CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
 	-I$(WM_PROJECT_DIR)/applications/solvers/newStressAnalysis/materialModels/lnInclude 	
 	

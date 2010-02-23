@@ -20,7 +20,7 @@
 
 
 #--------------------------------------------------------------------------------------
-__CXX_INCLUDES__ := $(__CXX_INCLUDES__) \
+__CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/basic/lnInclude
 

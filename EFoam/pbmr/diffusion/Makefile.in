@@ -23,7 +23,7 @@
 ifeq "@ENABLE_EXTFOAM@xx" "yesxx"
 #--------------------------------------------------------------------------------------
 
-__CXX_INCLUDES__ := \
+__CPPFLAGS__ := \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
 	@EXTFOAM_CPPFLAGS@ 
 

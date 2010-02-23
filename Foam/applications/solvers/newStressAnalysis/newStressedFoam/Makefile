@@ -31,7 +31,7 @@ ifeq "$(shell if [ ${__FOAM_VERSION__} -lt 010500 ]; then echo 'true'; else echo
 
 obj_dir := $(WM_PROJECT_DIR)/applications/solvers/newStressAnalysis/materialModels/Make/$(WM_OPTIONS)
 
-__CXX_INCLUDES__ := $(__CXX_INCLUDES__) \
+__CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
 	-I$(WM_PROJECT_DIR)/applications/solvers/newStressAnalysis/materialModels/lnInclude 	
 	

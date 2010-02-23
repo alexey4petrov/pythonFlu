@@ -25,7 +25,7 @@ ifeq "@ENABLE_FOAM2VTK@xx" "yesxx"
 
 pyfoam_root_dir:=../../../../..
 
-__CXX_INCLUDES__ := $(__CXX_INCLUDES__) \
+__CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
 	@FOAM2VTK_CPPFLAGS@ @VTK_CPPFLAGS@
 

@@ -60,7 +60,7 @@ PROJECT_LIBS       = -l$(WM_PROJECT)
 
 
 #--------------------------------------------------------------------------------------
-__CXX_INCLUDES__:=$(__CXX_INCLUDES__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I$(pyfoam_root_dir)
+__CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I$(pyfoam_root_dir)
 
 
 #--------------------------------------------------------------------------------------
@@ -160,7 +160,7 @@ $(RECURSIVE_CLEAN_TARGETS):
 
 
 #--------------------------------------------------------------------------------------
-__SWIG_INCLUDES__=-I$(pyfoam_root_dir)/patch-$(__FOAM_PATCH__) $(__CXX_INCLUDES__)
+__SWIG_INCLUDES__=-I$(pyfoam_root_dir)/patch-$(__FOAM_PATCH__) $(__CPPFLAGS__)
 
 __SWIG_FLAGS__ = -python -c++ -MD -D__restrict__ -D__CINT__ $(GFLAGS) $(__SWIG_INCLUDES__)
 
@@ -184,7 +184,7 @@ endif
 %.cpp : %.cxx
 	swig $(__SWIG_FLAGS__) -module $(patsubst %.cxx,%,$<) -o $@ $<
 
-__OBJ_FLAGS__ := $(__OBJ_FLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(__CXX_INCLUDES__)
+__OBJ_FLAGS__ := $(__OBJ_FLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(__CPPFLAGS__)
 
 %.o : %.cpp
 	gcc $(__OBJ_FLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cpp,%.h,$<)>" -c $< -o $@

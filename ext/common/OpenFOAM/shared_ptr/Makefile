@@ -23,7 +23,7 @@
 ifdef BOOSTDIR
 #--------------------------------------------------------------------------------------
 
-__CXX_INCLUDES__ := -I$(BOOSTDIR)/include
+__CPPFLAGS__ := -I$(BOOSTDIR)/include
 
 pyfoam_root_dir:=../../../..
 
