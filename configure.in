@@ -43,6 +43,10 @@ PYFOAM_CHECK_PYTHON
 echo 
 
 echo "--------------------------------------------------------------------------------------"
+PYFOAM_CHECK_FOAM2VTK
+echo 
+
+echo "--------------------------------------------------------------------------------------"
 PYFOAM_CHECK_EXTFOAM
 echo 
 
@@ -95,7 +99,7 @@ echo "---------------------------- mandatory products --------------------------
 summary "openfoam_ok python_ok"
 echo
 echo "---------------------------- optional products ---------------------------------"
-summary "extfoam_ok boost_ok"
+summary "extfoam_ok foam2vtk_ok boost_ok"
 echo
 echo "--------------------------------- features -------------------------------------"
 summary "singlelib embeddedcxx"
@@ -110,8 +114,9 @@ AC_OUTPUT( [ Makefile \
 	     Foam/__init__.py \
 	     Foam/pyfoam.cxx \
 	     Foam/Makefile \
-	     Foam/applications/utilities/Makefile \
 	     Foam/applications/solvers/incompressible/Makefile \
+	     Foam/applications/utilities/Makefile \
+	     Foam/applications/utilities/postProcessing/graphics/Makefile \
 	     EFoam/pbmr/diffusion/Makefile \
 	     EFoam/common/shared_ptr/Makefile ] )
 
