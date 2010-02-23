@@ -29,7 +29,7 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
 	@FOAM2VTK_CPPFLAGS@ @VTK_CPPFLAGS@
 
-__OBJ_FLAGS__ := $(__OBJ_FLAGS__)  @FOAM2VTK_CXXFLAGS@ @VTK_CXXFLAGS@
+__CXXFLAGS__ := $(__CXXFLAGS__)  @FOAM2VTK_CXXFLAGS@ @VTK_CXXFLAGS@
 
 __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \

@@ -27,7 +27,7 @@ __CPPFLAGS__ := \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
 	@EXTFOAM_CPPFLAGS@ 
 
-__OBJ_FLAGS__ : = @EXTFOAM_CXXFLAGS@
+__CXXFLAGS__ : = @EXTFOAM_CXXFLAGS@
 
 __LDFLAGS__ := \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \

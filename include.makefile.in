@@ -184,10 +184,10 @@ endif
 %.cpp : %.cxx
 	swig $(__SWIG_FLAGS__) -module $(patsubst %.cxx,%,$<) -o $@ $<
 
-__OBJ_FLAGS__ := $(__OBJ_FLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(__CPPFLAGS__)
+__CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(__CPPFLAGS__)
 
 %.o : %.cpp
-	gcc $(__OBJ_FLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cpp,%.h,$<)>" -c $< -o $@
+	gcc $(__CXXFLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cpp,%.h,$<)>" -c $< -o $@
 
 
 PACKAGE_DEPENDENCIES = $(wildcard *.d)
