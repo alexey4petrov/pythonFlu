@@ -70,5 +70,38 @@ if test "x${python_includes_ok}" = "xno" ; then
 fi
 
 dnl --------------------------------------------------------------------------------
+python_libraries_ok=no
+AC_ARG_WITH( [python_libraries],
+             AC_HELP_STRING( [--with-python-libraries=<path>],
+		             [use <path> to look for Python libraries] ),
+             [],
+	     [ with_python_libraries=no ]  )
+   
+if test "x${with_python_libraries}" = "xno" ; then
+   with_python_libraries=/usr/lib
+fi
+
+AC_CHECK_FILE( [${with_python_libraries}/libpython${python_version}.so], [ python_libraries_ok=yes ], [ python_libraries_ok=no ] )
+
+if test "x${python_libraries_ok}" = "xyes" ; then
+   PYTHON_CXXFLAGS=""
+   CXXFLAGS="${PYTHON_CXXFLAGS}"
+
+   test ! "x${with_python_libraries}" = "x/usr/lib" && PYTHON_LDFLAGS="-L${with_python_libraries}"
+   LDFLAGS="${PYTHON_LDFLAGS} -lpython${python_version}"
+
+   AC_MSG_CHECKING( for linking to Python libraries )
+   AC_LINK_IFELSE( [ AC_LANG_PROGRAM( [ [ #include <Python.h> ] ],
+      			                [ PyDict_New() ] ) ],
+					[ python_libraries_ok=yes ],
+					[ python_libraries_ok=no ] )
+   AC_MSG_RESULT( ${python_libraries_ok} )
+fi
+
+if test "x${python_libraries_ok}" = "xno" ; then
+   AC_MSG_ERROR( [use --with-python-libraries=<path> to define Python libraries location] )
+fi
+
+dnl --------------------------------------------------------------------------------
 AC_LANG_RESTORE
 ])
