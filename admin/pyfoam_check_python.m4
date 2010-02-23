@@ -42,6 +42,33 @@ if test "x${python_ok}" = "xno" ; then
    AC_MSG_ERROR( [Python need to be installed to continue] )
 fi
 
+python_version=[`python -c "import sys; print sys.version[:3]"`]
+
+dnl --------------------------------------------------------------------------------
+python_includes_ok=no
+AC_ARG_WITH( [python_includes],
+             AC_HELP_STRING( [--with-python-includes=<path>],
+		             [use <path> to look for Python includes] ),
+             [],
+	     [ with_python_includes=no ] )
+   
+if test "x${with_python_includes}" = "xno" ; then
+   with_python_includes=/usr/include/python${python_version}
+fi
+
+AC_CHECK_FILE( [${with_python_includes}/Python.h], [ python_includes_ok=yes ], [ python_includes_ok=no ] )
+
+if test "x${python_includes_ok}" = "xyes" ; then
+   PYTHON_CPPFLAGS="-I${with_python_includes}"
+   CPPFLAGS="${PYTHON_CPPFLAGS}"
+
+   AC_CHECK_HEADERS( [Python.h], [ python_includes_ok=yes ], [ python_includes_ok=no ] )
+fi
+
+if test "x${python_includes_ok}" = "xno" ; then
+   AC_MSG_ERROR( [use --with-python-includes=<path> to define Python header files location] )
+fi
+
 dnl --------------------------------------------------------------------------------
 AC_LANG_RESTORE
 ])
