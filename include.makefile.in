@@ -64,10 +64,10 @@ __CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@
 
 
 #--------------------------------------------------------------------------------------
-__LIB_FLAGS__:=$(__LIB_FLAGS__) @PYTHON_LDFLAGS@ -lstdc++
+__LDFLAGS__:=$(__LDFLAGS__) @PYTHON_LDFLAGS@ -lstdc++
 
 ifdef WM_PROJECT_VERSION
-	__LIB_FLAGS__:=-L$(LIB_WM_OPTIONS_DIR) $(PROJECT_LIBS) $(__LIB_FLAGS__) -lpthread -ldl -lm
+	__LDFLAGS__:=-L$(LIB_WM_OPTIONS_DIR) $(PROJECT_LIBS) $(__LDFLAGS__) -lpthread -ldl -lm
 endif
 
 
@@ -197,9 +197,9 @@ endif
 
 
 _%.so : %.o
-	$(LINKLIBSO) $< $(__LIB_FLAGS__) -o $@
+	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@
 
-__APP_FLAGS__ = $(__LIB_FLAGS__)
+__APP_FLAGS__ = $(__LDFLAGS__)
 
 % : %.o
 	gcc $< $(__APP_FLAGS__) -o $@

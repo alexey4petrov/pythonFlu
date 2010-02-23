@@ -4,7 +4,7 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(UNV2FOAM_ROOT_DIR)/lib/lnInclude
 
 
-__LIB_FLAGS__ := $(__LIB_FLAGS__) \
+__LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
 	-L$(UNV2FOAM_ROOT_DIR)/lib -lunv2foam
 

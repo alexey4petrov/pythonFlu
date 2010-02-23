@@ -31,13 +31,13 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/basic/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/radiation/lnInclude \
 
-__LIB_FLAGS__ := $(__LIB_FLAGS__) \
+__LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lbasicThermophysicalModels \
         -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lspecie 
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-	__LIB_FLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lradiation 	
+	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lradiation 	
 endif
 
 

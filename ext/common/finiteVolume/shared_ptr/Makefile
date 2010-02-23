@@ -27,7 +27,7 @@ __CPPFLAGS__ :=\
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude\
 	-I$(BOOSTDIR)/include
 
-__LIB_FLAGS__ :=\
+__LDFLAGS__ :=\
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume
 
 pyfoam_root_dir:=../../../..

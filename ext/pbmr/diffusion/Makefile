@@ -27,7 +27,7 @@ __CPPFLAGS__ := \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude\
 	-I$(DIFFUSION_ROOT_DIR)/diffusionFoamLib/lnInclude
 
-__LIB_FLAGS__ := \
+__LDFLAGS__ := \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume\
 	-L$(DIFFUSION_ROOT_DIR)/lib -lblockMatrix -ldiffusionFoam
 
