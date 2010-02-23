@@ -35,23 +35,23 @@ AM_INIT_AUTOMAKE([tar-pax -Wno-portability])
 
 
 echo "--------------------------------------------------------------------------------------"
-PYFOAM_CHECK_OPENFOAM
+CONFFOAM_CHECK_OPENFOAM
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-PYFOAM_CHECK_PYTHON
+CONFFOAM_CHECK_PYTHON
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-PYFOAM_CHECK_FOAM2VTK
+CONFFOAM_CHECK_FOAM2VTK
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-PYFOAM_CHECK_EXTFOAM
+CONFFOAM_CHECK_EXTFOAM
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-PYFOAM_CHECK_BOOST
+CONFFOAM_CHECK_BOOST
 echo 
 
 
