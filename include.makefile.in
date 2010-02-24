@@ -81,11 +81,19 @@ subdirs := $(subst .,,$(subdirs))
 
 SUBDIRS = $(subdirs)
 
-apps = $(patsubst %.cxx, %, $(wildcard *.cxx))
-libs = $(patsubst %.cxx, _%.so, $(wildcard *.cxx))
-objs = $(patsubst %.cxx, %.o, $(wildcard *.cxx))
-stubs = $(patsubst %.cxx, %.cpp, $(wildcard *.cxx))
-pyths = $(patsubst %.cxx, %.py, $(wildcard *.cxx))
+
+#--------------------------------------------------------------------------------------
+ifeq "@COMPILE_EMBEDDED_CXX@xx" "yesxx"
+sources = $(wildcard *.cxx)
+else
+sources = $(filter-out emb_%.cxx,$(wildcard *.cxx))
+endif
+
+apps = $(patsubst %.cxx, %, $(sources))
+libs = $(patsubst %.cxx, _%.so, $(sources))
+objs = $(patsubst %.cxx, %.o, $(sources))
+stubs = $(patsubst %.cxx, %.cpp, $(sources))
+pyths = $(patsubst %.cxx, %.py, $(sources))
 tests = $(patsubst %.py, %.pyc, $(wildcard test_*.py))
 
 
@@ -93,7 +101,7 @@ tests = $(patsubst %.py, %.pyc, $(wildcard test_*.py))
 RECURSIVE_TARGETS = all-recursive test-recursive
 
 all: $(libs) $(apps) $(objs) $(stubs) $(tests) all-recursive
-	@echo output : $(pyths) $(tests)
+	@echo output : $(sources) $(pyths) $(tests)
 
 test: $(pyths) test-recursive
 

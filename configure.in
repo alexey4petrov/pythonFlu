@@ -114,8 +114,6 @@ AC_OUTPUT( [ Makefile \
 	     Foam/__init__.py \
 	     Foam/pyfoam.cxx \
 	     Foam/Makefile \
-	     Foam/applications/solvers/incompressible/Makefile \
-	     Foam/applications/utilities/Makefile \
 	     Foam/applications/utilities/postProcessing/graphics/Makefile \
 	     EFoam/pbmr/diffusion/Makefile \
 	     EFoam/common/shared_ptr/Makefile ] )
