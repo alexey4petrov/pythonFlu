@@ -28,16 +28,27 @@
 
 %include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cxx"
 
+
+//----------------------------------------------------------------------------
 %template( tmp_surfaceVectorField ) Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh > >;
 
 %inline
 {
     namespace Foam
     {
-        typedef tmp< GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh > > tmp_surfaceVectorField;
+        typedef tmp< GeometricField< vector, fvsPatchField, surfaceMesh > > tmp_surfaceVectorField;
     }
 }
 
+
+//-----------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh > >::TMP_PYTHONAPPEND_ATTR( tmp_surfaceVectorField );
+
+
+%extend Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh > >
+{
+    TMP_EXTEND_ATTR( tmp_surfaceVectorField )    
+}
 
 //---------------------------------------------------------------------------
 #endif

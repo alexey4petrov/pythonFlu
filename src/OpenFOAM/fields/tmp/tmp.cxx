@@ -36,6 +36,24 @@
 
 
 //---------------------------------------------------------------------------
+%{
+    namespace Foam
+    {
+      template<class T>
+      T& get_ref( T* theArg )
+      {
+        return *theArg;
+      }
+    
+      template<class T>
+      T& get_ref( tmp< T >* theArg )
+      {
+        return (*theArg)();
+      }
+      
+   }
+%}
+//---------------------------------------------------------------------------
 %define TMP_TYPEMAP( Type )
 
 %feature( "novaluewrapper" ) Foam::tmp< Type >;

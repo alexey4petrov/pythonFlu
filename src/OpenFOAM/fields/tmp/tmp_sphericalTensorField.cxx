@@ -28,6 +28,8 @@
 
 %include "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
 
+
+//---------------------------------------------------------------------------
 %template( tmp_sphericalTensorField ) Foam::tmp< Foam::Field< Foam::sphericalTensor > >;
 
 %inline
@@ -40,4 +42,13 @@
 
 
 //---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::sphericalTensor > >::TMP_PYTHONAPPEND_ATTR( tmp_sphericalTensorField );
+
+%extend Foam::tmp< Foam::Field< Foam::sphericalTensor > >
+{
+    TMP_EXTEND_ATTR( tmp_sphericalTensorField )
+}
+
+
+//----------------------------------------------------------------------------
 #endif

@@ -28,6 +28,8 @@
 
 %include "src/OpenFOAM/fields/Fields/vectorField.cxx"
 
+
+//---------------------------------------------------------------------------
 %template( tmp_vectorField ) Foam::tmp< Foam::Field< Foam::vector > >;
 
 %inline
@@ -36,6 +38,15 @@
     {
         typedef tmp< Field< vector > > tmp_vectorField;
     }
+}
+
+
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::vector > >::TMP_PYTHONAPPEND_ATTR( tmp_vectorField );
+
+%extend Foam::tmp< Foam::Field< Foam::vector > >
+{
+    TMP_EXTEND_ATTR( tmp_vectorField )
 }
 
 

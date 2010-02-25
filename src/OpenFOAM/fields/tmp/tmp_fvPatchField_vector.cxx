@@ -30,12 +30,28 @@
 
 TMP_TYPEMAP( Foam::fvPatchField< Foam::vector > )
 
+
+//----------------------------------------------------------------------------
 %ignore Foam::tmp< Foam::fvPatchField< Foam::vector > >::tmp;
 
 %template( tmp_fvPatchField_vector ) Foam::tmp< Foam::fvPatchField< Foam::vector > >;
 
+%inline
+{
+  namespace Foam
+  {
+    typedef tmp< fvPatchField< vector > > tmp_fvPatchField_vector;
+  }
+}
+
+
+//----------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::fvPatchField< Foam::vector > >::TMP_PYTHONAPPEND_ATTR( tmp_fvPatchField_vector );
+
 %extend Foam::tmp< Foam::fvPatchField< Foam::vector > >
 {
+  TMP_EXTEND_ATTR( tmp_fvPatchField_vector )
+  
   Foam::tmp< Foam::fvPatchField< Foam::vector > >( const  Foam::tmp< Foam::fvPatchField< Foam::vector > >&  theArg ) 
   {
     return new Foam::tmp< Foam::fvPatchField< Foam::vector > >( theArg );
@@ -47,5 +63,7 @@ TMP_TYPEMAP( Foam::fvPatchField< Foam::vector > )
     return *aSelf == theArg;
   }
 }
+
+
 //---------------------------------------------------------------------------
 #endif

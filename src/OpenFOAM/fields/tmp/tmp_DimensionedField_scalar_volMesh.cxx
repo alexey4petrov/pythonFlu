@@ -28,6 +28,8 @@
 
 %include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.cxx"
 
+
+//---------------------------------------------------------------------------
 %template( tmp_DimensionedField_scalar_volMesh ) Foam::tmp< Foam::DimensionedField< Foam::scalar, Foam::volMesh > >;
 
 %inline

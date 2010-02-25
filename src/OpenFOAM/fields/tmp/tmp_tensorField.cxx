@@ -28,6 +28,8 @@
 
 %include "src/OpenFOAM/fields/Fields/tensorField.cxx"
 
+
+//----------------------------------------------------------------------------
 %template( tmp_tensorField ) Foam::tmp< Foam::Field< Foam::tensor > >;
 
 %inline
@@ -38,6 +40,14 @@
     }
 }
 
+
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::tensor > >::TMP_PYTHONAPPEND_ATTR( tmp_tensorField );
+
+%extend Foam::tmp< Foam::Field< Foam::tensor > >
+{
+    TMP_EXTEND_ATTR( tmp_tensorField )
+}
 
 //---------------------------------------------------------------------------
 #endif

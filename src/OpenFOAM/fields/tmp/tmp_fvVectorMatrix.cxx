@@ -30,6 +30,8 @@
 
 
 //---------------------------------------------------------------------------
+%template( tmp_fvVectorMatrix ) Foam::tmp< Foam::fvMatrix< Foam::vector > >;
+
 %inline
 {
     namespace Foam
@@ -38,6 +40,8 @@
     }
 }
 
+
+//---------------------------------------------------------------------------
 %feature( "pythonappend" ) Foam::tmp< Foam::fvMatrix< Foam::vector > >::TMP_PYTHONAPPEND_ATTR( tmp_fvVectorMatrix );
 
 %extend Foam::tmp< Foam::fvMatrix< Foam::vector > >
@@ -47,7 +51,7 @@
 
 
 //---------------------------------------------------------------------------
-%template( tmp_fvVectorMatrix ) Foam::tmp< Foam::fvMatrix< Foam::vector > >;
+
 
 
 //---------------------------------------------------------------------------

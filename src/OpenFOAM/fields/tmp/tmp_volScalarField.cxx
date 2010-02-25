@@ -30,10 +30,26 @@
 
 %include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
 
+
+//---------------------------------------------------------------------------
 %template( tmp_volScalarField ) Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh > >;
+
+%inline
+{
+    namespace Foam
+    {
+        typedef tmp< GeometricField< scalar, fvPatchField, volMesh > > tmp_volScalarField;
+    }
+}
+
+
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh > >::TMP_PYTHONAPPEND_ATTR( tmp_volScalarField );
 
 %extend Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh > >
 {
+    TMP_EXTEND_ATTR( tmp_volScalarField )
+    
     bool operator==( const Foam::UList< Foam::scalar >& theArg )
     {
         Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
@@ -41,13 +57,6 @@
     }
 }
 
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh > > tmp_volScalarField;
-    }
-}
 
 
 //---------------------------------------------------------------------------

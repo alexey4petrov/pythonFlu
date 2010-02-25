@@ -28,6 +28,8 @@
 
 %include "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
 
+
+//----------------------------------------------------------------------------
 %template( tmp_symmTensorField ) Foam::tmp< Foam::Field< Foam::symmTensor > >;
 
 %inline
@@ -36,6 +38,15 @@
     {
         typedef tmp< Field< symmTensor > > tmp_symmTensorField;
     }
+}
+
+
+//-----------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::symmTensor > >::TMP_PYTHONAPPEND_ATTR( tmp_symmTensorField );
+
+%extend Foam::tmp< Foam::Field< Foam::symmTensor > >
+{
+    TMP_EXTEND_ATTR( tmp_symmTensorField )
 }
 
 

@@ -28,16 +28,9 @@
 
 %include "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvPatchField_volMesh.cxx"
 
-%template( tmp_volTensorField ) Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh > >;
 
-%extend Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh > >
-{
-    bool operator==( const Foam::UList< Foam::tensor >& theArg )
-    {
-        Foam::UList< Foam::tensor >* aSelf = static_cast< Foam::UList< Foam::tensor >* >( self->ptr() );
-        return *aSelf == theArg;
-    }
-}
+//--------------------------------------------------------------------------
+%template( tmp_volTensorField ) Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh > >;
 
 %inline
 {
@@ -46,6 +39,22 @@
         typedef tmp< GeometricField< tensor, fvPatchField, volMesh > > tmp_volTensorField;
     }
 }
+
+
+//--------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh > >::TMP_PYTHONAPPEND_ATTR( tmp_volTensorField );
+
+%extend Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh > >
+{
+    TMP_EXTEND_ATTR( tmp_volTensorField )
+    
+    bool operator==( const Foam::UList< Foam::tensor >& theArg )
+    {
+        Foam::UList< Foam::tensor >* aSelf = static_cast< Foam::UList< Foam::tensor >* >( self->ptr() );
+        return *aSelf == theArg;
+    }
+}
+
 
 
 //---------------------------------------------------------------------------

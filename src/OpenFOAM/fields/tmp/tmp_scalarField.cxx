@@ -28,6 +28,10 @@
 
 %include "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
+
+//----------------------------------------------------------------------------
+%template( tmp_scalarField ) Foam::tmp< Foam::Field< Foam::scalar > >;
+
 %inline
 {
     namespace Foam
@@ -35,6 +39,9 @@
         typedef tmp< Field< scalar > > tmp_scalarField;
     }
 }
+
+
+//----------------------------------------------------------------------------
 %feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::scalar > >::TMP_PYTHONAPPEND_ATTR( tmp_scalarField );
 
 %extend Foam::tmp< Foam::Field< Foam::scalar > >
@@ -42,7 +49,6 @@
     TMP_EXTEND_ATTR( tmp_scalarField )
 }
 
-%template( tmp_scalarField ) Foam::tmp< Foam::Field< Foam::scalar > >;
 
 
 //---------------------------------------------------------------------------

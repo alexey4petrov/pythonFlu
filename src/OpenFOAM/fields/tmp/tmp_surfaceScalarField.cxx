@@ -28,25 +28,32 @@
 
 %include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cxx"
 
-%extend Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > >
-{
-    bool operator==( const Foam::UList< Foam::scalar >& theArg )
-    {
-        Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
-        return *aSelf == theArg;
-    }
-}
 
+//---------------------------------------------------------------------------
 %template( tmp_surfaceScalarField ) Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > >;
 
 %inline
 {
     namespace Foam
     {
-        typedef tmp< GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > > tmp_surfaceScalarField;
+        typedef tmp< GeometricField< scalar, fvsPatchField, surfaceMesh > > tmp_surfaceScalarField;
     }
 }
 
+
+//----------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > >::TMP_PYTHONAPPEND_ATTR( tmp_surfaceScalarField );
+
+%extend Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > >
+{
+    TMP_EXTEND_ATTR( tmp_surfaceScalarField )
+    
+    bool operator==( const Foam::UList< Foam::scalar >& theArg )
+    {
+        Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
+        return *aSelf == theArg;
+    }
+}
 
 //---------------------------------------------------------------------------
 #endif

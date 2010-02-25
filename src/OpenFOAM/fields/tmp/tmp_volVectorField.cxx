@@ -30,16 +30,25 @@
 
 %include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.cxx"
 
+
+//---------------------------------------------------------------------------
 %template( tmp_volVectorField ) Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > >;
 
 %inline
 {
     namespace Foam
     {
-        typedef tmp< GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > > tmp_volVectorField;
+        typedef tmp< GeometricField< vector, fvPatchField, volMesh > > tmp_volVectorField;
     }
 }
 
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > >::TMP_PYTHONAPPEND_ATTR( tmp_volVectorField );
+
+%extend Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > >
+{
+    TMP_EXTEND_ATTR( tmp_volVectorField )
+}
 
 //---------------------------------------------------------------------------
 #endif

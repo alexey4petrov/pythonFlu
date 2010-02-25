@@ -30,6 +30,8 @@
 
 
 //---------------------------------------------------------------------------
+%template( tmp_fvScalarMatrix ) Foam::tmp< Foam::fvMatrix< Foam::scalar > >;
+
 %inline
 {
     namespace Foam
@@ -38,16 +40,14 @@
     }
 }
 
+
+//---------------------------------------------------------------------------
 %feature( "pythonappend" ) Foam::tmp< Foam::fvMatrix< Foam::scalar > >::TMP_PYTHONAPPEND_ATTR( tmp_fvScalarMatrix );
 
 %extend Foam::tmp< Foam::fvMatrix< Foam::scalar > >
 {
     TMP_EXTEND_ATTR( tmp_fvScalarMatrix )
 }
-
-
-//---------------------------------------------------------------------------
-%template( tmp_fvScalarMatrix ) Foam::tmp< Foam::fvMatrix< Foam::scalar > >;
 
 
 //---------------------------------------------------------------------------
