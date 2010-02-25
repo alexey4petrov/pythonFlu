@@ -37,11 +37,30 @@
 
 %include "src/turbulenceModels/incompressible/LES/LESModel.cxx"
 
+
+//----------------------------------------------------------------------------
 AUTOPTR_TYPEMAP( Foam::incompressible::LESModel )
 
 %ignore Foam::autoPtr< Foam::incompressible::LESModel >::operator->;
 
 %template( autoPtr_incompressible_LESModel ) Foam::autoPtr< Foam::incompressible::LESModel >;
+
+%inline
+{
+  namespace Foam
+  {
+    typedef autoPtr< incompressible::LESModel > autoPtr_incompressible_LESModel;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::autoPtr< Foam::incompressible::LESModel >::TMP_PYTHONAPPEND_ATTR( autoPtr_incompressible_LESModel );
+
+%extend Foam::autoPtr< Foam::incompressible::LESModel >
+{
+  TMP_EXTEND_ATTR( autoPtr_incompressible_LESModel )
+}
 
 
 //---------------------------------------------------------------------------

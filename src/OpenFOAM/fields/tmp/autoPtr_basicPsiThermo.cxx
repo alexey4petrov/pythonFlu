@@ -35,12 +35,30 @@
 
 %include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx"
 
+
+//---------------------------------------------------------------------------
 AUTOPTR_TYPEMAP( Foam::basicPsiThermo )
 
 %ignore Foam::autoPtr< Foam::basicPsiThermo >::operator->;
 
 %template( autoPtr_basicPsiThermo ) Foam::autoPtr< Foam::basicPsiThermo >;
 
+%inline
+{
+  namespace Foam
+  {
+    typedef autoPtr< basicPsiThermo > autoPtr_basicPsiThermo;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::autoPtr< Foam::basicPsiThermo >::TMP_PYTHONAPPEND_ATTR( autoPtr_basicPsiThermo );
+
+%extend Foam::autoPtr< Foam::basicPsiThermo >
+{
+  TMP_EXTEND_ATTR( autoPtr_basicPsiThermo )
+}
 
 //---------------------------------------------------------------------------
 #endif

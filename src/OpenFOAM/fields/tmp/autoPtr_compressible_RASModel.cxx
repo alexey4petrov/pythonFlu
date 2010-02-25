@@ -37,12 +37,30 @@
 
 %include "src/turbulenceModels/compressible/RAS/RASModel.cxx"
 
+
+//----------------------------------------------------------------------------
 AUTOPTR_TYPEMAP( Foam::compressible::RASModel )
 
 %ignore Foam::autoPtr< Foam::compressible::RASModel >::operator->;
 
 %template( autoPtr_compressible_RASModel ) Foam::autoPtr< Foam::compressible::RASModel >;
 
+%inline
+{
+  namespace Foam
+  {
+    typedef autoPtr< compressible::RASModel > autoPtr_compressible_RASModel;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::autoPtr< Foam::compressible::RASModel >::TMP_PYTHONAPPEND_ATTR( autoPtr_compressible_RASModel );
+
+%extend Foam::autoPtr< Foam::compressible::RASModel >
+{
+  TMP_EXTEND_ATTR( autoPtr_compressible_RASModel )
+}
 
 //---------------------------------------------------------------------------
 #endif

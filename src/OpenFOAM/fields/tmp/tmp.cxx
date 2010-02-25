@@ -84,27 +84,4 @@
 
 
 //---------------------------------------------------------------------------
-%define TMP_PYTHONAPPEND_ATTR( Type ) __getattr__
-%{
-    name = args[ 0 ]
-    try:
-        return _swig_getattr( self, Type, name )
-    except AttributeError:
-        if self.valid() :
-            attr = None
-            exec "attr = self.__call__().%s" % name
-            return attr
-        pass
-    raise AttributeError()
-%}
-%enddef
-
-
-//---------------------------------------------------------------------------
-%define TMP_EXTEND_ATTR( Type )
-    void __getattr__( const char* name ){} // dummy function
-%enddef
-
-
-//---------------------------------------------------------------------------
 #endif

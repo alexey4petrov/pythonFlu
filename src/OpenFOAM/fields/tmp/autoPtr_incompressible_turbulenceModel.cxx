@@ -28,6 +28,8 @@
 
 %include "src/turbulenceModels/incompressible/turbulenceModel.cxx"
 
+
+//----------------------------------------------------------------------------
 //There is no namespace "incompressible" in OpenFOAM-1.4.1-dev
 
 #if ( __FOAM_VERSION__ < 010500 )                                                 
@@ -37,16 +39,54 @@ AUTOPTR_TYPEMAP( Foam::turbulenceModel )
 
 %template( autoPtr_incompressible_turbulenceModel ) Foam::autoPtr< Foam::turbulenceModel >;
 
-#endif
+%inline
+{
+  namespace Foam
+  {
+    typedef autoPtr< turbulenceModel > autoPtr_incompressible_turbulenceModel;
+  }
+}
 
 
-//---------------------------------------------------------------------------
+//-----------------------------------------------
+%feature( "pythonappend" ) Foam::autoPtr< Foam::turbulenceModel >::TMP_PYTHONAPPEND_ATTR( autoPtr_incompressible_turbulenceModel );
+
+%extend Foam::autoPtr< Foam::turbulenceModel >
+{
+  TMP_EXTEND_ATTR( autoPtr_incompressible_turbulenceModel )
+}
+#endif 
+
+
+//-------------------------------------------------------------------------------------------------
 #if ( __FOAM_VERSION__ >= 010500 )
+
+
 AUTOPTR_TYPEMAP( Foam::incompressible::turbulenceModel )
 
 %template( autoPtr_incompressible_turbulenceModel ) Foam::autoPtr< Foam::incompressible::turbulenceModel >;
 
+%inline
+{
+  namespace Foam
+  {
+    typedef autoPtr< incompressible::turbulenceModel > autoPtr_incompressible_turbulenceModel;
+  }
+}
+
+
+//----------------------------------------------
+%feature( "pythonappend" ) Foam::autoPtr< Foam::incompressible::turbulenceModel >::TMP_PYTHONAPPEND_ATTR( autoPtr_incompressible_turbulenceModel );
+
+%extend Foam::autoPtr< Foam::incompressible::turbulenceModel >
+{
+  TMP_EXTEND_ATTR( autoPtr_incompressible_turbulenceModel )
+}
+
+
 #endif
 
 //----------------------------------------------------------------------------
+
+
 #endif

@@ -32,17 +32,34 @@
 
 
 //---------------------------------------------------------------------------
-
 %include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
 %include "src/turbulenceModels/incompressible/RAS/RASModel.cxx"
 
+
+//----------------------------------------------------------------------------
 AUTOPTR_TYPEMAP( Foam::incompressible::RASModel )
 
 %ignore Foam::autoPtr< Foam::incompressible::RASModel >::operator->;
 
 %template( autoPtr_incompressible_RASModel ) Foam::autoPtr< Foam::incompressible::RASModel >;
 
+%inline
+{
+  namespace Foam
+  {
+    typedef autoPtr< incompressible::RASModel > autoPtr_incompressible_RASModel;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::autoPtr< Foam::incompressible::RASModel >::TMP_PYTHONAPPEND_ATTR( autoPtr_incompressible_RASModel );
+
+%extend Foam::autoPtr< Foam::incompressible::RASModel >
+{
+  TMP_EXTEND_ATTR( autoPtr_incompressible_RASModel )
+}
 
 //---------------------------------------------------------------------------
 #endif

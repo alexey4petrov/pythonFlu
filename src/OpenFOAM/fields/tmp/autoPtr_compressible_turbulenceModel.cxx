@@ -28,11 +28,30 @@
 
 %include "src/turbulenceModels/compressible/turbulenceModel.cxx"
 
+
+//----------------------------------------------------------------------------
 AUTOPTR_TYPEMAP( Foam::compressible::turbulenceModel )
 
 %ignore Foam::autoPtr< Foam::compressible::turbulenceModel >::operator->;
 
 %template( autoPtr_compressible_turbulenceModel ) Foam::autoPtr< Foam::compressible::turbulenceModel >;
+
+%inline
+{
+  namespace Foam
+  {
+    typedef autoPtr< compressible::turbulenceModel > autoPtr_compressible_turbulenceModel;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::autoPtr< Foam::compressible::turbulenceModel >::TMP_PYTHONAPPEND_ATTR( autoPtr_compressible_turbulenceModel );
+
+%extend Foam::autoPtr< Foam::compressible::turbulenceModel >
+{
+  TMP_EXTEND_ATTR( autoPtr_compressible_turbulenceModel )
+}
 
 
 //---------------------------------------------------------------------------

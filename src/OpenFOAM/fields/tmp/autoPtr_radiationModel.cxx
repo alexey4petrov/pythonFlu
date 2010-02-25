@@ -37,12 +37,30 @@
 
 %include "src/thermophysicalModels/radiation/radiationModel/radiationModel.cxx"
 
+
+//-----------------------------------------------------------------------------
 AUTOPTR_TYPEMAP( Foam::radiation::radiationModel )
 
 %ignore Foam::autoPtr< Foam::radiation::radiationModel >::operator->;
 
 %template( autoPtr_radiationModel ) Foam::autoPtr< Foam::radiation::radiationModel >;
 
+%inline
+{
+  namespace Foam
+  {
+    typedef autoPtr< radiation::radiationModel > autoPtr_radiationModel;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::autoPtr< Foam::radiation::radiationModel >::TMP_PYTHONAPPEND_ATTR( autoPtr_radiationModel );
+
+%extend Foam::autoPtr< Foam::radiation::radiationModel >
+{
+  TMP_EXTEND_ATTR( autoPtr_radiationModel )
+}
 
 //---------------------------------------------------------------------------
 #endif
