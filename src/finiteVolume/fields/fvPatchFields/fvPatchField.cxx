@@ -26,7 +26,7 @@
 %include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx"
 %include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
 
-%include "fvPatchField.H"
+%include "src/OpenFOAM/fields/tmp/tmp.cxx"
 
 %{
     #include "fvPatchField.H"
@@ -36,6 +36,7 @@
 
 %feature( "director" ) fvPatchField;
 
+%include "fvPatchField.H"
 
 //---------------------------------------------------------------------------
 %define FVPATCHFIELD_VIRTUAL_EXTENDS( Type )
@@ -69,15 +70,15 @@ NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::tensor > );
 
 
 //---------------------------------------------------------------------------
-%define __FVPATCHFIELD_TEMPLATE_OPERATOR__( Type )
+/*%define __FVPATCHFIELD_TEMPLATE_OPERATOR__( Type )
 {
   Foam::tmp< Foam::Field< Foam::Type > > __mul__( const Foam::Field< Foam::Type >& theArg)
   {
-    return *self * theArg;
+    return get_ref( self ) * theArg;
   }
 }
 
-%enddef
+%enddef*/
 
 
 //---------------------------------------------------------------------------
@@ -114,13 +115,13 @@ NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::tensor > );
 
 
 //---------------------------------------------------------------------------
-%define FVPATCH_SCALAR_FIELD_ADOONS (Type)
+/*%define FVPATCH_SCALAR_FIELD_ADOONS (Type)
   __FVPATCHFIELD_TEMPLATE_OPERATOR__( Type )
   FVPATCHFIELD_EXTENDS( Type )
   FVPATCHFIELD_CONSTRUCTORTOTABLE_TEMPLATE_FUNC( Type )
 
 %enddef
-
+*/
 
 //---------------------------------------------------------------------------
 #endif

@@ -40,6 +40,8 @@
 //---------------------------------------------------------------------------
 %include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
 
+%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+
 
 //---------------------------------------------------------------------------
 %define NO_TMP_TYPEMAP_FVMATRIX( Type )
@@ -80,46 +82,46 @@
 {
     Foam::tmp< Foam::fvMatrix< Type > > __neg__()
     {
-        return -*self;
+        return -get_ref( self );
     }
 
     Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::fvMatrix< Type >& theArg )
     {
-        return *self + theArg;
+        return get_ref( self ) + theArg;
     }
 
     Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::dimensioned< Type >& theArg )
     {
-        return *self + theArg;
+        return get_ref( self ) + theArg;
     }
 
     Foam::tmp< Foam::fvMatrix< Type > > __sub__( const Foam::fvMatrix< Type >& theArg )
     {
-        return *self - theArg;
+        return get_ref( self ) - theArg;
     }
 
     Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
     {
-        return *self + theArg;
+        return get_ref( self ) + theArg;
     }
 
     Foam::tmp< Foam::fvMatrix< Type > > __radd__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
     {
-        return theArg + *self  ;
+        return theArg + get_ref( self )  ;
     }
 
     Foam::tmp< Foam::fvMatrix< Type > > __sub__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
     {
-        return *self - theArg;
+        return get_ref( self ) - theArg;
     }
 
     Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::fvMatrix< Type >& theArg )
     {
-        return *self == theArg;
+        return get_ref( self ) == theArg;
     }
     Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
     {
-        return *self == theArg;
+        return get_ref( self ) == theArg;
     }
 }
 %enddef
