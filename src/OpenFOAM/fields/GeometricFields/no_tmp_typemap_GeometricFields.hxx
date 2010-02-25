@@ -28,23 +28,6 @@
 
 %include "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "src/OpenFOAM/primitives/scalar.cxx"
-%include "src/OpenFOAM/primitives/vector.cxx"
-%include "src/OpenFOAM/primitives/Lists/sphericalTensorList.cxx"
-%include "src/OpenFOAM/primitives/s_ymmTensor.cxx"
-%include "src/OpenFOAM/primitives/tensor.cxx"
-
-
-//----------------------------------------------------------------------------
-%include "src/finiteVolume/surfaceMesh.hxx"
-
-%include "src/finiteVolume/volMesh.hxx"
-
-
-//----------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
-
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
 
 //---------------------------------------------------------------------------
 %define NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Type, TPatchField, TMesh )
@@ -81,12 +64,57 @@
 
 
 //---------------------------------------------------------------------------
+%include "src/OpenFOAM/primitives/scalar.cxx"
+%include "src/finiteVolume/volMesh.hxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::scalar, Foam::fvPatchField, Foam::volMesh );
+
+
+//----------------------------------------------------------------------------
+%include "src/OpenFOAM/primitives/vector.cxx"
+%include "src/finiteVolume/volMesh.hxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::Vector< Foam::scalar >, Foam::fvPatchField, Foam::volMesh );
+
+
+//----------------------------------------------------------------------------
+%include "src/OpenFOAM/primitives/tensor.cxx"
+%include "src/finiteVolume/volMesh.hxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::Tensor< Foam::scalar >, Foam::fvPatchField, Foam::volMesh );
+
+
+//-----------------------------------------------------------------------------
+%include "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+%include "src/finiteVolume/volMesh.hxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::SymmTensor< Foam::scalar >, Foam::fvPatchField, Foam::volMesh );
+
+
+//------------------------------------------------------------------------------
+%include "src/OpenFOAM/primitives/s_phericalTensor.cxx"
+%include "src/finiteVolume/volMesh.hxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::SphericalTensor< Foam::scalar >, Foam::fvPatchField, Foam::volMesh );
+
+
+//------------------------------------------------------------------------------
+%include "src/OpenFOAM/primitives/scalar.cxx"
+%include "src/finiteVolume/surfaceMesh.hxx"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh );
+
+
+//-------------------------------------------------------------------------------
+%include "src/OpenFOAM/primitives/vector.cxx"
+%include "src/finiteVolume/surfaceMesh.hxx"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::Vector< Foam::scalar >, Foam::fvsPatchField, Foam::surfaceMesh );
 
 

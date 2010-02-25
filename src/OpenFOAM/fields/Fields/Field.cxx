@@ -34,6 +34,8 @@
 
 %include "Field.H"
 
+%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+
 
 //---------------------------------------------------------------------------
 %define NO_TMP_TYPEMAP_FIELD( Field_Type )
@@ -95,15 +97,15 @@
 {
   Foam::tmp< Foam::Field< Foam::Type > > __mul__( const Foam::Field< Foam::Type >& theArg)
   {
-    return *self * theArg;
+    return get_ref( self ) * theArg;
   }
   Foam::tmp< Foam::Field< Foam::Type > > __add__( const Foam::Field< Foam::Type >& theArg)
   {
-    return *self + theArg;
+    return get_ref( self ) + theArg;
   }
   Foam::tmp< Foam::Field< Foam::Type > > __div__( const Foam::Field< Foam::Type >& theArg)
   {
-    return *self / theArg;
+    return get_ref( self ) / theArg;
   }
 }
 
