@@ -42,8 +42,7 @@ def createFields( runTime, mesh ):
     
     from Foam.thermophysicalModels import autoPtr_basicPsiThermo, basicPsiThermo
 
-    pThermo = basicPsiThermo.New(mesh)
-    thermo = pThermo()
+    thermo = basicPsiThermo.New(mesh)
     
     from Foam.finiteVolume import volScalarField
     from Foam.OpenFOAM import IOobject, word, fileName
@@ -71,7 +70,7 @@ def createFields( runTime, mesh ):
     
     ext_Info() << "Creating turbulence model\n" << nl
     from Foam import compressible
-    pTurbulence = compressible.RASModel.New( rho, U, phi, thermo ) 
+    turbulence = compressible.RASModel.New( rho, U, phi, thermo ) 
 
     thermo.correct()
 
@@ -84,7 +83,7 @@ def createFields( runTime, mesh ):
     initialMass = fvc.domainIntegrate( rho )
     
                         
-    return pThermo, rho, p, h, psi, U, phi, pTurbulence, pRefCell, pRefValue, initialMass 
+    return thermo, rho, p, h, psi, U, phi, turbulence, pRefCell, pRefValue, initialMass 
 
 
 #------------------------------------------------------------------------------------
@@ -100,8 +99,7 @@ def initConvergenceCheck( simple ):
 
 
 #-------------------------------------------------------------------------------------
-def fun_UEqn( pTurbulence, phi, U, rho, g, p, mesh, eqnResidual, maxResidual ):
-    turbulence = pTurbulence()
+def fun_UEqn( turbulence, phi, U, rho, g, p, mesh, eqnResidual, maxResidual ):
     from Foam import fvm, fvc 
     UEqn = fvm.div(phi, U) - fvm.Sp(fvc.div(phi), U)+ turbulence.divDevRhoReff(U)
 
@@ -115,10 +113,8 @@ def fun_UEqn( pTurbulence, phi, U, rho, g, p, mesh, eqnResidual, maxResidual ):
     
     
 #------------------------------------------------------------------------------------
-def fun_hEqn( pTurbulence, phi, h, rho, pRadiation, p, pThermo, eqnResidual, maxResidual  ):
-    turbulence = pTurbulence()
-    radiation = pRadiation()
-    thermo = pThermo()
+def fun_hEqn( turbulence, phi, h, rho, radiation, p, thermo, eqnResidual, maxResidual  ):
+    
     from Foam import fvc, fvm    
     left_exp = fvm.div( phi, h ) - fvm.Sp( fvc.div( phi ), h ) - fvm.laplacian( turbulence.alphaEff(), h )
     right_exp = fvc.div( phi/fvc.interpolate( rho )*fvc.interpolate( p ) ) - p*fvc.div( phi/fvc.interpolate( rho ) ) + radiation.Sh( thermo )
@@ -138,8 +134,8 @@ def fun_hEqn( pTurbulence, phi, h, rho, pRadiation, p, pThermo, eqnResidual, max
     
     
 #------------------------------------------------------------------------------------
-def fun_pEqn( pThermo, g, rho, UEqn, p, U, psi, phi, initialMass, runTime, mesh, nNonOrthCorr, pRefCell, eqnResidual, maxResidual, cumulativeContErr ):
-    thermo = pThermo()
+def fun_pEqn( thermo, g, rho, UEqn, p, U, psi, phi, initialMass, runTime, mesh, nNonOrthCorr, pRefCell, eqnResidual, maxResidual, cumulativeContErr ):
+
     rho.ext_assign( thermo.rho() )
 
     rUA = 1.0/UEqn.A()
@@ -213,12 +209,10 @@ def main_standalone( argc, argv ):
     
     g = readGravitationalAcceleration( runTime, mesh )
     
-    pThermo, rho, p, h, psi, U, phi, pTurbulence, pRefCell, pRefValue, initialMass = createFields( runTime, mesh )
-    
-    turbulence = pTurbulence()
+    thermo, rho, p, h, psi, U, phi, turbulence, pRefCell, pRefValue, initialMass = createFields( runTime, mesh )
     
     from Foam.radiation import createRadiationModel
-    pRadiation = createRadiationModel(pThermo)
+    radiation = createRadiationModel( thermo )
     
     
     from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
@@ -237,11 +231,11 @@ def main_standalone( argc, argv ):
        p.storePrevIter()
        rho.storePrevIter()
        
-       UEqn, eqnResidual, maxResidual = fun_UEqn( pTurbulence, phi, U, rho, g, p, mesh, eqnResidual, maxResidual )
+       UEqn, eqnResidual, maxResidual = fun_UEqn( turbulence, phi, U, rho, g, p, mesh, eqnResidual, maxResidual )
        
-       hEqn, eqnResidual, maxResidual = fun_hEqn( pTurbulence, phi, h, rho, pRadiation, p, pThermo, eqnResidual, maxResidual )
+       hEqn, eqnResidual, maxResidual = fun_hEqn( turbulence, phi, h, rho, radiation, p, thermo, eqnResidual, maxResidual )
        
-       eqnResidual, maxResidual, cumulativeContErr = fun_pEqn( pThermo, g, rho, UEqn, p, U, psi, phi, initialMass,\
+       eqnResidual, maxResidual, cumulativeContErr = fun_pEqn( thermo, g, rho, UEqn, p, U, psi, phi, initialMass,\
                                                               runTime, mesh, nNonOrthCorr, pRefCell, eqnResidual, maxResidual, cumulativeContErr )
            
        turbulence.correct()

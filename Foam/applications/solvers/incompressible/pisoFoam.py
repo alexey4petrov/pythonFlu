@@ -58,9 +58,9 @@ def _createFields( runTime, mesh ):
     laminarTransport = singlePhaseTransportModel( U, phi )
     
     from Foam import incompressible
-    pTurbulence = incompressible.turbulenceModel.New( U, phi, laminarTransport )
+    turbulence = incompressible.turbulenceModel.New( U, phi, laminarTransport )
 
-    return p, U, phi, pTurbulence, pRefCell, pRefValue, laminarTransport
+    return p, U, phi, turbulence, pRefCell, pRefValue, laminarTransport
 
 
 #--------------------------------------------------------------------------------------
@@ -75,8 +75,7 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM.include import createMesh
     mesh = createMesh( runTime )
 
-    p, U, phi, pTurbulence, pRefCell, pRefValue, laminarTransport = _createFields( runTime, mesh )
-    turbulence = pTurbulence()
+    p, U, phi, turbulence, pRefCell, pRefValue, laminarTransport = _createFields( runTime, mesh )
     
     from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
     cumulativeContErr = initContinuityErrs()

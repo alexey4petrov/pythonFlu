@@ -28,9 +28,8 @@ def _createFields( runTime, mesh ):
     ext_Info() << "Reading thermophysical properties\n" << nl
 
     from Foam.thermophysicalModels import basicPsiThermo, autoPtr_basicPsiThermo
-    pThermo = basicPsiThermo.New( mesh )
-    thermo = pThermo()
-
+    thermo = basicPsiThermo.New( mesh )
+    
     from Foam.OpenFOAM import IOdictionary, IOobject, word, fileName
     from Foam.finiteVolume import volScalarField
     rho = volScalarField( IOobject( word( "rho" ),
@@ -67,7 +66,7 @@ def _createFields( runTime, mesh ):
        
     ext_Info() << "Creating turbulence model\n" << nl
     from Foam import compressible
-    pTurbulence = compressible.RASModel.New( rho, U, phi, thermo )
+    turbulence = compressible.RASModel.New( rho, U, phi, thermo )
     
     from Foam import fvc
     initialMass = fvc.domainIntegrate( rho )
@@ -91,7 +90,7 @@ def _createFields( runTime, mesh ):
           pass
        pass
     
-    return p, h, psi, rho, U, phi, pTurbulence, pThermo, pZones, pMin, pressureImplicitPorosity, initialMass, nUCorr, pRefCell, pRefValue
+    return p, h, psi, rho, U, phi, turbulence, thermo, pZones, pMin, pressureImplicitPorosity, initialMass, nUCorr, pRefCell, pRefValue
 
 
 #------------------------------------------------------------------------------------------------------
@@ -107,9 +106,7 @@ def initConvergenceCheck( simple ):
 
 
 #------------------------------------------------------------------------------------- 
-def _UEqn( phi, U, p, pTurbulence, pZones, pressureImplicitPorosity, nUCorr, eqnResidual, maxResidual ):
-    
-    turbulence = pTurbulence()
+def _UEqn( phi, U, p, turbulence, pZones, pressureImplicitPorosity, nUCorr, eqnResidual, maxResidual ):
     
     from Foam import fvm, fvc    
     # Construct the Momentum equation
@@ -158,10 +155,7 @@ def _UEqn( phi, U, p, pTurbulence, pZones, pressureImplicitPorosity, nUCorr, eqn
 
 
 #---------------------------------------------------------------------------------------
-def _hEqn( pThermo, phi, h, pTurbulence, p, rho, eqnResidual, maxResidual):
-    turbulence = pTurbulence()
-    thermo = pThermo()
-    
+def _hEqn( thermo, phi, h, turbulence, p, rho, eqnResidual, maxResidual):
     from Foam.finiteVolume import fvScalarMatrix
     from Foam import fvc, fvm
     
@@ -183,10 +177,9 @@ def _hEqn( pThermo, phi, h, pTurbulence, p, rho, eqnResidual, maxResidual):
 
 
 #----------------------------------------------------------------------------------------    
-def _pEqn( mesh, rho, pThermo, p, U, trTU, trAU, UEqn, phi, \
+def _pEqn( mesh, rho, thermo, p, U, trTU, trAU, UEqn, phi, \
            runTime, pMin, pressureImplicitPorosity, nNonOrthCorr, eqnResidual, maxResidual, cumulativeContErr, initialMass, pRefCell, pRefValue ):
-    thermo = pThermo()
-    
+   
     if pressureImplicitPorosity :
        U.ext_assign( trTU & UEqn.H() )
     else:
@@ -280,11 +273,8 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM.include import createMesh
     mesh = createMesh( runTime )
 
-    p, h, psi, rho, U, phi, pTurbulence, pThermo, pZones, pMin,\
+    p, h, psi, rho, U, phi, turbulence, thermo, pZones, pMin,\
     pressureImplicitPorosity, initialMass, nUCorr, pRefCell, pRefValue  = _createFields( runTime, mesh )
-    
-    turbulence = pTurbulence()
-    thermo = pThermo()
       
     from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
     cumulativeContErr = initContinuityErrs()
@@ -304,12 +294,12 @@ def main_standalone( argc, argv ):
         rho.storePrevIter()
         # Pressure-velocity SIMPLE corrector
         
-        UEqn, trTU, trAU, eqnResidual, maxResidual = _UEqn( phi, U, p, pTurbulence, pZones,\
+        UEqn, trTU, trAU, eqnResidual, maxResidual = _UEqn( phi, U, p, turbulence, pZones,\
                                                                         pressureImplicitPorosity, nUCorr, eqnResidual, maxResidual )
         
-        hEqn, eqnResidual, maxResidual = _hEqn( pThermo, phi, h, pTurbulence, p, rho, eqnResidual, maxResidual )
+        hEqn, eqnResidual, maxResidual = _hEqn( thermo, phi, h, turbulence, p, rho, eqnResidual, maxResidual )
         
-        eqnResidual, maxResidual = _pEqn( mesh, rho, pThermo, p, U, trTU, trAU, UEqn, phi, \
+        eqnResidual, maxResidual = _pEqn( mesh, rho, thermo, p, U, trTU, trAU, UEqn, phi, \
                                           runTime, pMin, pressureImplicitPorosity, nNonOrthCorr, eqnResidual,\
                                           maxResidual, cumulativeContErr, initialMass, pRefCell, pRefValue )
         

@@ -28,8 +28,7 @@ def _createFields( runTime, mesh ):
     ext_Info() << "Reading thermophysical properties\n" << nl
 
     from Foam.thermophysicalModels import basicPsiThermo, autoPtr_basicPsiThermo
-    pThermo = basicPsiThermo.New( mesh )
-    thermo = pThermo()
+    thermo = basicPsiThermo.New( mesh )
 
     p = thermo.p()
     e = thermo.e()
@@ -57,13 +56,12 @@ def _createFields( runTime, mesh ):
 
     ext_Info() << "Creating turbulence model\n" << nl
     from Foam import compressible
-    pTurbulence = compressible.turbulenceModel.New( rho,
+    turbulence = compressible.turbulenceModel.New( rho,
                                                     U,
                                                     phi,
-                                                    thermo
-                                                    )
+                                                    thermo )
 
-    return p, e, psi, rho, U, phi, pTurbulence, pThermo
+    return p, e, psi, rho, U, phi, turbulence, thermo
 
 
 #--------------------------------------------------------------------------------------
@@ -139,10 +137,8 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM.include import createMesh
     mesh = createMesh( runTime )
 
-    p, e, psi, rho, U, phi, pTurbulence, pThermo = _createFields( runTime, mesh )
-    turbulence = pTurbulence()
-    thermo = pThermo()
-
+    p, e, psi, rho, U, phi, turbulence, thermo = _createFields( runTime, mesh )
+    
     from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
     cumulativeContErr = initContinuityErrs()
 

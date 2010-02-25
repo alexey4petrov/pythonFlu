@@ -82,8 +82,8 @@ def createFluidFields( fluidRegions, runTime ) :
         
         from Foam.thermophysicalModels import autoPtr_basicPsiThermo, basicPsiThermo
  
-        pthermo= basicPsiThermo.New( fluidRegions[ index ] )
-        thermoFluid.ext_set( index, pthermo )
+        thermo= basicPsiThermo.New( fluidRegions[ index ] )
+        thermoFluid.ext_set( index, thermo )
         
         ext_Info()<< "    Adding to rhoFluid\n" << nl
         from Foam.OpenFOAM import word, fileName, IOobject

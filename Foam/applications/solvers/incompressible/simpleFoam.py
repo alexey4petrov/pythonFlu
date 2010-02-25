@@ -61,13 +61,13 @@ def _createFields( runTime, mesh ):
     from Foam import incompressible
     from Foam import WM_PROJECT_VERSION
     if WM_PROJECT_VERSION() <= "1.4.1-dev" :
-       pTurbulence = incompressible.turbulenceModel.New( U, phi, laminarTransport )
+       turbulence = incompressible.turbulenceModel.New( U, phi, laminarTransport )
        pass
     else:
-       pTurbulence = incompressible.RASModel.New( U, phi, laminarTransport )
+       turbulence = incompressible.RASModel.New( U, phi, laminarTransport )
        pass
            
-    return p, U, phi, pTurbulence, pRefCell, pRefValue, laminarTransport
+    return p, U, phi, turbulence, pRefCell, pRefValue, laminarTransport
 
 
 #--------------------------------------------------------------------------------------
@@ -187,8 +187,7 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM.include import createMesh
     mesh = createMesh( runTime )
 
-    p, U, phi, pTurbulence, pRefCell, pRefValue, laminarTransport = _createFields( runTime, mesh )
-    turbulence = pTurbulence()
+    p, U, phi, turbulence, pRefCell, pRefValue, laminarTransport = _createFields( runTime, mesh )
     
     from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
     cumulativeContErr = initContinuityErrs()
