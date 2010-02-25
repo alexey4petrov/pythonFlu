@@ -32,8 +32,6 @@
     #include "dimensionedScalar.H"
 %}
 
-%include "dimensionedScalar.H"
-
 %ignore Foam::dimensioned< Foam::scalar >::component;
 %ignore Foam::dimensioned< Foam::scalar >::replace;
 %ignore Foam::dimensioned< Foam::scalar >::T;
@@ -47,7 +45,19 @@
 
 %template( dimensionedScalar ) Foam::dimensioned< Foam::scalar >; 
 
-DIMENSIONEDSCALAR_ADDONS;
+%include "dimensionedScalar.H"
+
+
+//--------------------------------------------------
+DIMENSIONEDTYPE_ADDONS( Foam::scalar )
+
+%extend Foam::dimensioned< Foam::scalar >
+{
+  Foam::dimensioned< Foam::scalar > sqrt()
+  {
+     return Foam::sqrt( *self );
+  }
+}
 
 
 //---------------------------------------------------------------------------

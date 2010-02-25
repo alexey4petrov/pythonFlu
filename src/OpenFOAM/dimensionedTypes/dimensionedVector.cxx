@@ -47,7 +47,17 @@
 
 %include "dimensionedVector.H"
 
-DIMENSIONEDVECTOR_ADDONS;
+
+//-------------------------------------------------------------------------
+DIMENSIONEDTYPE_ADDONS( Foam::vector )
+
+%extend Foam::dimensioned< Foam::vector >
+{
+  Foam::dimensioned< Foam::scalar > __and__( const Foam::dimensioned< Foam::vector >& ds )
+  {
+     return *self & ds;
+  }
+}
 
 
 //---------------------------------------------------------------------------

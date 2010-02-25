@@ -91,35 +91,7 @@
 %extend Foam::dimensioned< Type > OSTREAM_EXTENDS;
 
 %enddef
-//---------------------------------------------------------------------------
-%define DIMENSIONEDSCALAR_ADDONS
-
-DIMENSIONEDTYPE_ADDONS( Foam::scalar )
-
-%extend Foam::dimensioned< Foam::scalar >
-{
-  Foam::dimensioned< Foam::scalar > sqrt()
-  {
-     return Foam::sqrt( *self );
-  }
-}
-
-%enddef
 
 
 //---------------------------------------------------------------------------
-%define DIMENSIONEDVECTOR_ADDONS
-
-DIMENSIONEDTYPE_ADDONS( Foam::vector )
-
-%extend Foam::dimensioned< Foam::vector >
-{
-  Foam::dimensioned< Foam::scalar > __and__( const Foam::dimensioned< Foam::vector >& ds )
-  {
-     return *self & ds;
-  }
-}
-
-%enddef
-
 #endif
