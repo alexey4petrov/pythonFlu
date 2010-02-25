@@ -30,6 +30,8 @@
 
 %include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
 
+%include "src/thermophysicalModels/basic/basicThermo.cxx"
+
 %include "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
 %include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
