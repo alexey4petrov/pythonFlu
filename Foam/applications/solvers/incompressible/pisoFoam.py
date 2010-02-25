@@ -112,7 +112,7 @@ def main_standalone( argc, argv ):
         for corr in range( nCorr ) :
             rUA = 1.0 / UEqn.A()
             U.ext_assign( rUA * UEqn.H() )
-            tmp = rUA.mag()
+
             phi.ext_assign( ( fvc.interpolate(U) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, U, phi ) )
          
             from Foam.finiteVolume import adjustPhi

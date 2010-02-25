@@ -95,8 +95,7 @@ def _pEqn( rho, thermo, UEqn, nNonOrthCorr, psi, U, mesh, phi, p, cumulativeCont
 
     rUA = 1.0 / UEqn.A()
     
-    U_tmp = rUA * UEqn.H()
-    U.ext_assign( U_tmp )
+    U.ext_assign( rUA * UEqn.H() )
 
     from Foam import fvc
     phid_tmp = fvc.interpolate( psi ) * ( ( fvc.interpolate( U ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, rho, U, phi ) )
