@@ -39,7 +39,7 @@ def createSolidMeshes( rp, runTime ):
                                                        runTime,
                                                        IOobject.MUST_READ ) ) )
         pass
-    
+
     return solidRegions
 
 
@@ -63,44 +63,39 @@ def createSolidField( solidRegions, runTime ):
             << solidRegions[ index ].name() << nl << nl
 
         ext_Info()<< "    Adding to rhos\n" << nl
-        tmp = volScalarField( IOobject ( word( "rho" ), 
-                                         fileName( runTime.timeName() ), 
-                                         solidRegions[ index ], 
-                                         IOobject.MUST_READ, 
-                                         IOobject.AUTO_WRITE ),
-                              solidRegions[ index ] ) 
-        rhos.ext_set( index, tmp )
+        rhos.ext_set( index, volScalarField( IOobject ( word( "rho" ), 
+                                                        fileName( runTime.timeName() ), 
+                                                        solidRegions[ index ], 
+                                                        IOobject.MUST_READ, 
+                                                        IOobject.AUTO_WRITE ),
+                                             solidRegions[ index ] )  )
         
         ext_Info()<< "    Adding to cps\n" << nl
-        tmp = volScalarField( IOobject( word( "cp" ),
-                                        fileName( runTime.timeName() ),
-                                        solidRegions[ index ],
-                                        IOobject.MUST_READ,
-                                        IOobject.AUTO_WRITE ),
-                              solidRegions[ index ] )
-        cps.ext_set( index, tmp )
+        cps.ext_set( index, volScalarField( IOobject( word( "cp" ),
+                                                      fileName( runTime.timeName() ),
+                                                      solidRegions[ index ],
+                                                      IOobject.MUST_READ,
+                                                      IOobject.AUTO_WRITE ),
+                                            solidRegions[ index ] ) )
         
         rhosCps.ext_set( index, volScalarField( word( "rhosCps" ), rhos[ index ] * cps[ index ]  ) )
         
         ext_Info()<< "    Adding to Ks\n" << nl
-        tmp = volScalarField( IOobject( word( "K" ),
-                                        fileName( runTime.timeName() ),
-                                        solidRegions[ index ],
-                                        IOobject.MUST_READ,
-                                        IOobject.AUTO_WRITE ),
-                              solidRegions[ index ] )
-
-        Ks.ext_set( index,tmp )
+        Ks.ext_set( index, volScalarField( IOobject( word( "K" ),
+                                                     fileName( runTime.timeName() ),
+                                                     solidRegions[ index ],
+                                                     IOobject.MUST_READ,
+                                                     IOobject.AUTO_WRITE ),
+                                           solidRegions[ index ] ) )
         
         ext_Info()<< "    Adding to Ts\n" << nl
-        tmp = volScalarField( IOobject( word( "T" ),
-                                        fileName( runTime.timeName() ),
-                                        solidRegions[ index ],
-                                        IOobject.MUST_READ,
-                                        IOobject.AUTO_WRITE ),
-                              solidRegions[ index ] )
-        
-        Ts.ext_set( index, tmp )
+       
+        Ts.ext_set( index, volScalarField( IOobject( word( "T" ),
+                                                     fileName( runTime.timeName() ),
+                                                     solidRegions[ index ],
+                                                     IOobject.MUST_READ,
+                                                     IOobject.AUTO_WRITE ),
+                                           solidRegions[ index ] ) )
    
     return rhos, cps, rhos, Ks, Ts
 

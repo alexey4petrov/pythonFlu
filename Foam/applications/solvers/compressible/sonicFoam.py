@@ -98,11 +98,10 @@ def _pEqn( rho, thermo, UEqn, nNonOrthCorr, psi, U, mesh, phi, p, cumulativeCont
     U.ext_assign( rUA * UEqn.H() )
 
     from Foam import fvc
-    phid_tmp = fvc.interpolate( psi ) * ( ( fvc.interpolate( U ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, rho, U, phi ) )
-
     from Foam.OpenFOAM import word
     from Foam.finiteVolume import surfaceScalarField
-    phid = surfaceScalarField( word( "phid" ), phid_tmp() )
+    phid = surfaceScalarField( word( "phid" ), 
+                               fvc.interpolate( psi ) * ( ( fvc.interpolate( U ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, rho, U, phi ) ) )
 
     for nonOrth in range( nNonOrthCorr + 1 ) :
         from Foam import fvm

@@ -255,12 +255,11 @@ def componentReferenceList( is_, inewt):
                  result.append( inewt( is_ ) )
                  is_.fatalCheck( "PtrList<T>::read(Istream& is, const INew& inewt) : reading entry" )
           else:
-             tmp = inewt( is_ )
-             result.append( tmp )
+             result.append( inewt( is_ ) )
              is_.fatalCheck( "PtrList<T>::read(Istream& is, const INew& inewt) : reading the single entry" ) 
 
              for index in range(s):
-                 result.append( tmp.clone() )
+                 result.append( inewt( is_ ).clone() )
                     
        is_.readEndList("PtrList")
     

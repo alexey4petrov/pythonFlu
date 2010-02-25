@@ -88,69 +88,61 @@ def createFluidFields( fluidRegions, runTime ) :
         ext_Info()<< "    Adding to rhoFluid\n" << nl
         from Foam.OpenFOAM import word, fileName, IOobject
         from Foam.finiteVolume import volScalarField
-        tmp = volScalarField( IOobject( word( "rho" ), 
-                                        fileName( runTime.timeName() ), 
-                                        fluidRegions[ index ], 
-                                        IOobject.NO_READ, 
-                                        IOobject.AUTO_WRITE ),
-                              thermoFluid[ index ].rho() )
-        rhoFluid.ext_set( index, tmp )
+        rhoFluid.ext_set( index, volScalarField( IOobject( word( "rho" ), 
+                                                           fileName( runTime.timeName() ), 
+                                                           fluidRegions[ index ], 
+                                                           IOobject.NO_READ, 
+                                                           IOobject.AUTO_WRITE ),
+                                                 thermoFluid[ index ].rho() ) )
         
         ext_Info()<< "    Adding to KFluid\n" << nl
-        tmp = volScalarField( IOobject( word( "K" ),
-                                        fileName( runTime.timeName() ),
-                                        fluidRegions[ index ],
-                                        IOobject.NO_READ,
-                                        IOobject.NO_WRITE ),
-                              thermoFluid[ index ].Cp().ptr() * thermoFluid[ index ].alpha() )
-        KFluid.ext_set( index, tmp )
-        
+        KFluid.ext_set( index, volScalarField( IOobject( word( "K" ),
+                                                         fileName( runTime.timeName() ),
+                                                         fluidRegions[ index ],
+                                                         IOobject.NO_READ,
+                                                         IOobject.NO_WRITE ),
+                                               thermoFluid[ index ].Cp().ptr() * thermoFluid[ index ].alpha() ) )
+                                                       
         ext_Info()<< "    Adding to UFluid\n" << nl
         from Foam.finiteVolume import volVectorField
-        tmp=volVectorField( IOobject( word( "U" ),
-                                      fileName( runTime.timeName() ),
-                                      fluidRegions[ index ],
-                                      IOobject.MUST_READ,
-                                      IOobject.AUTO_WRITE ),
-                            fluidRegions[ index ] )
-        UFluid.ext_set( index, tmp )
+        UFluid.ext_set( index, volVectorField( IOobject( word( "U" ),
+                                                         fileName( runTime.timeName() ),
+                                                         fluidRegions[ index ],
+                                                         IOobject.MUST_READ,
+                                                         IOobject.AUTO_WRITE ),
+                                               fluidRegions[ index ] ) )
         
         ext_Info()<< "    Adding to phiFluid\n" << nl
         from Foam.finiteVolume import surfaceScalarField
         from Foam.finiteVolume import linearInterpolate
 
-        tmp = surfaceScalarField( IOobject( word( "phi" ),
-                                            fileName( runTime.timeName() ),
-                                            fluidRegions[ index ],
-                                            IOobject.READ_IF_PRESENT,
-                                            IOobject.AUTO_WRITE),
-                                  linearInterpolate( rhoFluid[ index ] * UFluid[ index ] ) & fluidRegions[ index ].Sf() )
- 
-        phiFluid.ext_set( index, tmp )
+        phiFluid.ext_set( index, surfaceScalarField( IOobject( word( "phi" ),
+                                                               fileName( runTime.timeName() ),
+                                                               fluidRegions[ index ],
+                                                               IOobject.READ_IF_PRESENT,
+                                                               IOobject.AUTO_WRITE),
+                                                     linearInterpolate( rhoFluid[ index ] * UFluid[ index ] ) & fluidRegions[ index ].Sf() ) )
         
         ext_Info()<< "    Adding to gFluid\n" << nl
         from Foam.OpenFOAM import UniformDimensionedVectorField
-        tmp = UniformDimensionedVectorField( IOobject( word( "g" ),
-                                                       fileName( runTime.constant() ),
-                                                       fluidRegions[ index ],
-                                                       IOobject.MUST_READ,
-                                                       IOobject.NO_WRITE ) )
-        gFluid.ext_set( index, tmp )        
+        gFluid.ext_set( index, UniformDimensionedVectorField( IOobject( word( "g" ),
+                                                                        fileName( runTime.constant() ),
+                                                                        fluidRegions[ index ],
+                                                                        IOobject.MUST_READ,
+                                                                        IOobject.NO_WRITE ) ) )        
         
         ext_Info()<< "    Adding to turbulence\n" << nl
         from Foam import compressible
-        tmp = compressible.turbulenceModel.New( rhoFluid[ index ],
-                                                UFluid[ index ],
-                                                phiFluid[ index ],
-                                                thermoFluid[ index ] )
-        turbulence.ext_set( index, tmp )
+        turbulence.ext_set( index, compressible.turbulenceModel.New( rhoFluid[ index ],
+                                                                     UFluid[ index ],
+                                                                     phiFluid[ index ],
+                                                                     thermoFluid[ index ] ) )
         
         ext_Info()<< "    Adding to DpDtFluid\n" << nl
         from Foam import fvc
-        tmp = volScalarField( word( "DpDt" ), fvc.DDt( surfaceScalarField( word( "phiU" ), 
-                                                                           phiFluid[ index ] / fvc.interpolate( rhoFluid[ index ] ) ),
-                                                       thermoFluid[ index ].p() ) )           
-        DpDtFluid.ext_set( index, tmp )
+        DpDtFluid.ext_set( index, volScalarField( word( "DpDt" ), fvc.DDt( surfaceScalarField( word( "phiU" ), 
+                                                                                               phiFluid[ index ] / fvc.interpolate( rhoFluid[ index ] ) ),
+                                                                           thermoFluid[ index ].p() ) ) )
 
         initialMassFluid[ index ] = fvc.domainIntegrate( rhoFluid[ index ] ).value()              
         pass
@@ -276,8 +268,7 @@ def fun_UEqn( rho, U, phi, g, p, turb, mesh, momentumPredictor ) :
     if momentumPredictor :
         from Foam import fvc
         from Foam.finiteVolume import solve
-        tmp = fvc.reconstruct( fvc.interpolate( rho ) * ( g & mesh.Sf() )  - fvc.snGrad( p ) * mesh.magSf() )
-        solve( UEqn == tmp )
+        solve( UEqn == fvc.reconstruct( fvc.interpolate( rho ) * ( g & mesh.Sf() )  - fvc.snGrad( p ) * mesh.magSf() ) )
         pass
     
     return UEqn
@@ -325,10 +316,10 @@ def fun_pEqn( i, mesh, p, g, rho, turb, thermo, thermoFluid, K, UEqn, U, phi, ps
     U.ext_assign( rUA * UEqn.H() ) 
     
     from Foam import fvc
-    phiU_tmp = ( fvc.interpolate( rho ) *
+
+    phiU = ( fvc.interpolate( rho ) *
                  (  ( fvc.interpolate( U ) & mesh.Sf() ) +
-                    fvc.ddtPhiCorr( rUA, rho, U, phi ) ) )
-    phiU = phiU_tmp()
+                      fvc.ddtPhiCorr( rUA, rho, U, phi ) ) )
     phi.ext_assign( phiU + fvc.interpolate( rho ) * ( g & mesh.Sf() ) * rhorUAf )
     
     from Foam import fvm

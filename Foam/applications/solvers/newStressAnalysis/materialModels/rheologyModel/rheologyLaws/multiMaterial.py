@@ -114,8 +114,7 @@ class multiMaterial( rheologyLaw, list ):
         from Foam.OpenFOAM import ext_Info 
         
         for lawI in self:
-            tmp = lawI.rho()
-            result.internalField().ext_assign( result.internalField() + self.indicator( self.index( lawI ) ) * tmp.internalField() )
+            result.internalField().ext_assign( result.internalField() + self.indicator( self.index( lawI ) ) * lawI.rho().internalField() )
         
         result.correctBoundaryConditions()
         
