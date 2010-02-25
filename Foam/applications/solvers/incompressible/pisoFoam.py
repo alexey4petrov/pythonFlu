@@ -92,28 +92,28 @@ def main_standalone( argc, argv ):
 
         from Foam.finiteVolume.cfdTools.incompressible import CourantNo
         CoNum, meanCoNum = CourantNo( mesh, phi, runTime )
-        
+
         # Pressure-velocity PISO corrector
         
         #Momentum predictor
         from Foam import fvm
         UEqn = fvm.ddt( U ) + fvm.div( phi, U ) + turbulence.divDevReff( U )
         
-        UEqn().relax()
+        UEqn.relax()
 
         from Foam.finiteVolume import solve
         from Foam import fvc
         if momentumPredictor :
-           solve( UEqn() == -fvc.grad( p ) )
+           solve( UEqn == -fvc.grad( p ) )
            pass
            
         # --- PISO loop
 
         for corr in range( nCorr ) :
-            rUA = 1.0 / UEqn().A()
-            U.ext_assign( rUA() * UEqn().H() )
-            
-            phi.ext_assign( (fvc.interpolate(U) & mesh.Sf()) + fvc.ddtPhiCorr( rUA, U, phi ) )
+            rUA = 1.0 / UEqn.A()
+            U.ext_assign( rUA * UEqn.H() )
+            tmp = rUA.mag()
+            phi.ext_assign( ( fvc.interpolate(U) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, U, phi ) )
          
             from Foam.finiteVolume import adjustPhi
             adjustPhi( phi, U, p )
@@ -123,25 +123,25 @@ def main_standalone( argc, argv ):
                 #Pressure corrector
                 pEqn = fvm.laplacian( rUA, p ) == fvc.div( phi )
 
-                pEqn().setReference( pRefCell, pRefValue )
+                pEqn.setReference( pRefCell, pRefValue )
 
                 if corr == ( nCorr-1 ) and nonOrth == nNonOrthCorr :
                    from Foam.OpenFOAM import word
-                   pEqn().solve( mesh.solver( word( "pFinal" ) ) ) 
+                   pEqn.solve( mesh.solver( word( "pFinal" ) ) ) 
                    pass
                 else:
-                   pEqn().solve()   
+                   pEqn.solve()   
                    pass
                    
                 if nonOrth == nNonOrthCorr:
-                   phi.ext_assign( phi - pEqn().flux() )
+                   phi.ext_assign( phi - pEqn.flux() )
                    pass
-                   
+                
                 pass
             from Foam.finiteVolume.cfdTools.incompressible import continuityErrs
             cumulativeContErr = continuityErrs( mesh, phi, runTime, cumulativeContErr )       
-            
-            U.ext_assign( U - rUA() * fvc.grad(p) )
+
+            U.ext_assign( U - rUA * fvc.grad( p ) )
             U.correctBoundaryConditions()
             pass
 

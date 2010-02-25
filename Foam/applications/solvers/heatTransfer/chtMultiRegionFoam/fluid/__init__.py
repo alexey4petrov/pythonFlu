@@ -88,23 +88,21 @@ def createFluidFields( fluidRegions, runTime ) :
         ext_Info()<< "    Adding to rhoFluid\n" << nl
         from Foam.OpenFOAM import word, fileName, IOobject
         from Foam.finiteVolume import volScalarField
-        tmp =  thermoFluid[ index ].rho()
         tmp = volScalarField( IOobject( word( "rho" ), 
                                         fileName( runTime.timeName() ), 
                                         fluidRegions[ index ], 
                                         IOobject.NO_READ, 
                                         IOobject.AUTO_WRITE ),
-                              tmp() )
+                              thermoFluid[ index ].rho() )
         rhoFluid.ext_set( index, tmp )
         
         ext_Info()<< "    Adding to KFluid\n" << nl
-        tmp=thermoFluid[ index ].Cp().ptr() * thermoFluid[ index ].alpha()
         tmp = volScalarField( IOobject( word( "K" ),
                                         fileName( runTime.timeName() ),
                                         fluidRegions[ index ],
                                         IOobject.NO_READ,
                                         IOobject.NO_WRITE ),
-                              tmp() )
+                              thermoFluid[ index ].Cp().ptr() * thermoFluid[ index ].alpha() )
         KFluid.ext_set( index, tmp )
         
         ext_Info()<< "    Adding to UFluid\n" << nl
@@ -120,16 +118,13 @@ def createFluidFields( fluidRegions, runTime ) :
         ext_Info()<< "    Adding to phiFluid\n" << nl
         from Foam.finiteVolume import surfaceScalarField
         from Foam.finiteVolume import linearInterpolate
-                
-        tmp = rhoFluid[ index ] * UFluid[ index ]
-        tmp = linearInterpolate( tmp )
-        tmp = tmp() & fluidRegions[ index ].Sf()
+
         tmp = surfaceScalarField( IOobject( word( "phi" ),
                                             fileName( runTime.timeName() ),
                                             fluidRegions[ index ],
                                             IOobject.READ_IF_PRESENT,
                                             IOobject.AUTO_WRITE),
-                                  tmp() )
+                                  linearInterpolate( rhoFluid[ index ] * UFluid[ index ] ) & fluidRegions[ index ].Sf() )
  
         phiFluid.ext_set( index, tmp )
         
@@ -152,10 +147,9 @@ def createFluidFields( fluidRegions, runTime ) :
         
         ext_Info()<< "    Adding to DpDtFluid\n" << nl
         from Foam import fvc
-        tmp = phiFluid[ index ] / fvc.interpolate( rhoFluid[ index ] )
-        tmp = surfaceScalarField( word( "phiU" ), tmp() )
-        tmp = fvc.DDt( tmp, thermoFluid[ index ].p() )
-        tmp = volScalarField( word( "DpDt" ), tmp() )           
+        tmp = volScalarField( word( "DpDt" ), fvc.DDt( surfaceScalarField( word( "phiU" ), 
+                                                                           phiFluid[ index ] / fvc.interpolate( rhoFluid[ index ] ) ),
+                                                       thermoFluid[ index ].p() ) )           
         DpDtFluid.ext_set( index, tmp )
 
         initialMassFluid[ index ] = fvc.domainIntegrate( rhoFluid[ index ] ).value()              
@@ -175,8 +169,7 @@ def compressibleCourantNo( mesh, runTime, rho, phi) :
     meanCoNum = 0.0;
 
     from Foam import fvc
-    tmp_SfUfbyDelta = mesh.deltaCoeffs() * phi.mag() / fvc.interpolate( rho )
-    SfUfbyDelta = tmp_SfUfbyDelta()
+    SfUfbyDelta = mesh.deltaCoeffs() * phi.mag() / fvc.interpolate( rho )
     CoNum = ( SfUfbyDelta / mesh.magSf() ).ext_max().value() * runTime.deltaT().value()
     meanCoNum = ( SfUfbyDelta.sum() / mesh.magSf().sum() ).value() * runTime.deltaT().value()
 
@@ -284,7 +277,7 @@ def fun_UEqn( rho, U, phi, g, p, turb, mesh, momentumPredictor ) :
         from Foam import fvc
         from Foam.finiteVolume import solve
         tmp = fvc.reconstruct( fvc.interpolate( rho ) * ( g & mesh.Sf() )  - fvc.snGrad( p ) * mesh.magSf() )
-        solve( UEqn() == tmp )
+        solve( UEqn == tmp )
         pass
     
     return UEqn
@@ -294,9 +287,7 @@ def fun_UEqn( rho, U, phi, g, p, turb, mesh, momentumPredictor ) :
 def fun_hEqn( rho, h, phi, turb, DpDt, thermo, mesh, oCorr, nOuterCorr ) :
     
     from Foam import fvm
-    tmp = fvm.ddt( rho, h ) + fvm.div( phi, h ) - fvm.laplacian( turb.alphaEff(), h )
-    
-    hEqn = ( tmp() == DpDt )
+    hEqn = ( ( fvm.ddt( rho, h ) + fvm.div( phi, h ) - fvm.laplacian( turb.alphaEff(), h ) ) == DpDt )
     
     if oCorr == nOuterCorr - 1 :
        hEqn.relax()
@@ -317,23 +308,19 @@ def fun_hEqn( rho, h, phi, turb, DpDt, thermo, mesh, oCorr, nOuterCorr ) :
 
 
 #---------------------------------------------------------------------------------------------------------    
-def fun_pEqn( i, mesh, p, g, rho, turb, thermo, thermoFluid, K, UEqn_tmp, U, phi, psi, DpDt, massIni, \
+def fun_pEqn( i, mesh, p, g, rho, turb, thermo, thermoFluid, K, UEqn, U, phi, psi, DpDt, massIni, \
               nNonOrthCorr, oCorr, nOuterCorr, corr, nCorr, cumulativeContErr ) :
     
     closedVolume = p.needReference()
 
     rho.ext_assign( thermo.rho() )
-    UEqn = UEqn_tmp()
-
-    rUA_tmp = 1.0 / UEqn.A()
-    rUA = rUA_tmp()
+    
+    rUA = 1.0 / UEqn.A()
     
     from Foam import fvc
-    tmp = fvc.interpolate( rho * rUA )
-
     from Foam.OpenFOAM import word 
     from Foam.finiteVolume import surfaceScalarField
-    rhorUAf = surfaceScalarField( word( "(rho*(1|A(U)))" ) , tmp() )
+    rhorUAf = surfaceScalarField( word( "(rho*(1|A(U)))" ) , fvc.interpolate( rho * rUA ) )
 
     U.ext_assign( rUA * UEqn.H() ) 
     
@@ -346,8 +333,7 @@ def fun_pEqn( i, mesh, p, g, rho, turb, thermo, thermoFluid, K, UEqn_tmp, U, phi
     
     from Foam import fvm
     for nonOrth in range ( nNonOrthCorr + 1 ):
-        pEqn_tmp = ( fvm.ddt( psi, p) + fvc.div( phi ) - fvm.laplacian( rhorUAf, p ) )
-        pEqn = pEqn_tmp()
+        pEqn = ( fvm.ddt( psi, p) + fvc.div( phi ) - fvm.laplacian( rhorUAf, p ) )
         if oCorr == ( nOuterCorr - 1 ) and corr == ( nCorr - 1 ) and nonOrth == nNonOrthCorr :
             pEqn.solve( mesh.solver( word( str( p.name() ) +  "Final" ) ) )
         else:
@@ -364,8 +350,7 @@ def fun_pEqn( i, mesh, p, g, rho, turb, thermo, thermoFluid, K, UEqn_tmp, U, phi
     U.correctBoundaryConditions()
 
     #Update pressure substantive derivative
-    tmp =  phi / fvc.interpolate( rho )
-    DpDt.ext_assign( fvc.DDt( surfaceScalarField( word( "phiU" ), tmp() ), p ) )
+    DpDt.ext_assign( fvc.DDt( surfaceScalarField( word( "phiU" ), phi / fvc.interpolate( rho ) ), p ) )
     
     # Solve continuity
     from Foam.finiteVolume.cfdTools.compressible import rhoEqn
@@ -395,12 +380,12 @@ def solveFluid( i, mesh, thermo, thermoFluid, rho, K, U, phi, g, h, turb, DpDt, 
         rhoEqn( rho, phi )
         pass
     
-    UEqn_tmp = fun_UEqn( rho, U, phi, g, p, turb, mesh, momentumPredictor )
-    hEqn_tmp = fun_hEqn( rho, h, phi, turb, DpDt, thermo, mesh, oCorr, nOuterCorr )
+    UEqn = fun_UEqn( rho, U, phi, g, p, turb, mesh, momentumPredictor )
+    hEqn = fun_hEqn( rho, h, phi, turb, DpDt, thermo, mesh, oCorr, nOuterCorr )
     
     # --- PISO loop
     for corr in range( nCorr ):
-        cumulativeContErr =  fun_pEqn( i, mesh, p, g, rho, turb, thermo, thermoFluid, K, UEqn_tmp, U, phi, psi, DpDt, massIni,
+        cumulativeContErr =  fun_pEqn( i, mesh, p, g, rho, turb, thermo, thermoFluid, K, UEqn, U, phi, psi, DpDt, massIni,
                                        nNonOrthCorr, oCorr, nOuterCorr, corr, nCorr, cumulativeContErr )
         pass
     

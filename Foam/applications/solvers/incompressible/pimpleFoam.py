@@ -69,25 +69,25 @@ def Ueqn( mesh, phi, U, p, turbulence, oCorr, nOuterCorr, momentumPredictor ):
     UEqn = fvm.ddt(U) + fvm.div(phi, U) + turbulence.divDevReff(U)
     
     if ( oCorr == nOuterCorr - 1 ):
-       UEqn().relax(1)
+       UEqn.relax( 1 )
        pass
     else:
-       UEqn().relax()
+       UEqn.relax()
        pass
     
-    rUA = 1.0/UEqn().A()
+    rUA = 1.0/UEqn.A()
     
     from Foam.finiteVolume import solve
     if momentumPredictor:
        if ( oCorr == nOuterCorr - 1 ):
           from Foam.OpenFOAM import word
-          solve(UEqn() == -fvc.grad(p), mesh.solver( word( "UFinal" ) ) )
+          solve( UEqn == -fvc.grad(p), mesh.solver( word( "UFinal" ) ) )
           pass
        else:
-          solve(UEqn() == -fvc.grad(p))
+          solve( UEqn == -fvc.grad(p))
           pass
     else:
-       U.ext_assign( rUA() * ( UEqn().H() - fvc.grad( p ) ) )
+       U.ext_assign( rUA * ( UEqn.H() - fvc.grad( p ) ) )
        U.correctBoundaryConditions()
        pass
     
@@ -97,16 +97,16 @@ def Ueqn( mesh, phi, U, p, turbulence, oCorr, nOuterCorr, momentumPredictor ):
 #--------------------------------------------------------------------------------------
 def pEqn( runTime, mesh, U, rUA, UEqn, phi, p, nCorr, nOuterCorr, nNonOrthCorr, oCorr, corr, pRefCell, pRefValue, cumulativeContErr ): 
 
-    U.ext_assign( rUA() * UEqn().H() )
+    U.ext_assign( rUA * UEqn.H() )
     if ( nCorr <= 1 ):
        UEqn.clear()
        pass
        
     from Foam import fvc 
-    phi.ext_assign( ( fvc.interpolate(U) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, U, phi ) )
+    phi.ext_assign( ( fvc.interpolate( U ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, U, phi ) )
  
     from Foam.finiteVolume import adjustPhi
-    adjustPhi(phi, U, p)
+    adjustPhi( phi, U, p )
 
     # Non-orthogonal pressure corrector loop
     for nonOrth in range( nNonOrthCorr + 1):
@@ -135,7 +135,7 @@ def pEqn( runTime, mesh, U, rUA, UEqn, phi, p, nCorr, nOuterCorr, nNonOrthCorr, 
        p.relax()
        pass
        
-    U.ext_assign(  U - rUA() * fvc.grad( p ) )
+    U.ext_assign(  U - rUA * fvc.grad( p ) )
     U.correctBoundaryConditions()
 
     return cumulativeContErr
@@ -165,13 +165,13 @@ def main_standalone( argc, argv ):
     while runTime.run() :
         from Foam.finiteVolume.cfdTools.general.include import readTimeControls
         adjustTimeStep, maxCo, maxDeltaT = readTimeControls( runTime )
-        
+
         from Foam.finiteVolume.cfdTools.general.include import readPIMPLEControls
         pimple, nOuterCorr, nCorr, nNonOrthCorr, momentumPredictor, transonic = readPIMPLEControls( mesh )
-        
+
         from Foam.finiteVolume.cfdTools.general.include import CourantNo
         CoNum, meanCoNum = CourantNo( mesh, phi, runTime )
-        
+      
         from Foam.finiteVolume.cfdTools.general.include import setDeltaT
         runTime = setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
         

@@ -134,7 +134,7 @@ def CourantNo( runTime, mesh, h, phi, magg ):
        from Foam import fvc
        SfUfbyDelta = mesh.deltaCoeffs() * phi.mag() / fvc.interpolate(h)
        
-       CoNum = ( SfUfbyDelta() / mesh.magSf() ).ext_max().value() * runTime.deltaT().value()
+       CoNum = ( SfUfbyDelta / mesh.magSf() ).ext_max().value() * runTime.deltaT().value()
        
        meanCoNum = ( SfUfbyDelta.sum() / mesh.magSf().sum() ).value() * runTime.deltaT().value()
 
@@ -185,16 +185,16 @@ def main_standalone( argc, argv ):
            from Foam import fvm
            hUEqn = fvm.ddt( hU ) + fvm.div( phiv, hU ) 
            
-           hUEqn().relax()
+           hUEqn.relax()
            
            if momentumPredictor:
               from Foam.finiteVolume import solve
               from Foam import fvc
               if rotating:
-                  solve( hUEqn() + ( F ^ hU ) == -magg * h * fvc.grad( h + h0 ) )
+                  solve( hUEqn + ( F ^ hU ) == -magg * h * fvc.grad( h + h0 ) )
                   pass
               else:
-                  solve( hUEqn() == -magg * h * fvc.grad( h + h0 ) ) 
+                  solve( hUEqn == -magg * h * fvc.grad( h + h0 ) ) 
                   pass
               
               # Constrain the momentum to be in the geometry if 3D geometry
@@ -205,15 +205,15 @@ def main_standalone( argc, argv ):
            
            for corr in range( nCorr ): 
                hf = fvc.interpolate( h )
-               rUA = 1.0 / hUEqn().A()
+               rUA = 1.0 / hUEqn.A()
                ghrUAf = magg * fvc.interpolate( h * rUA )
                
-               phih0 = ghrUAf() * mesh.magSf() * fvc.snGrad( h0 )
+               phih0 = ghrUAf * mesh.magSf() * fvc.snGrad( h0 )
                if rotating:
-                  hU.ext_assign( rUA() * ( hUEqn() .H() - ( F ^ hU ) ) )
+                  hU.ext_assign( rUA * ( hUEqn .H() - ( F ^ hU ) ) )
                   pass
                else:
-                  hU = rUA() * hUEqn().H()
+                  hU = rUA * hUEqn.H()
                   pass
                
                phi.ext_assign( ( fvc.interpolate( hU ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, h, hU, phi )- phih0 )
@@ -222,13 +222,13 @@ def main_standalone( argc, argv ):
                    hEqn = fvm.ddt( h ) + fvc.div( phi ) - fvm.laplacian( ghrUAf, h )
                    
                    if ucorr < nOuterCorr-1 or corr < nCorr-1 :
-                      hEqn().solve()
+                      hEqn.solve()
                       pass
                    else:
-                      hEqn().solve( mesh.solver( word( str( h.name() ) + "Final" ) ) )
+                      hEqn.solve( mesh.solver( word( str( h.name() ) + "Final" ) ) )
                       pass
                    if nonOrth == nNonOrthCorr:
-                      phi.ext_assign( phi + hEqn().flux() )
+                      phi.ext_assign( phi + hEqn.flux() )
                    pass
                
                hU.ext_assign( hU - rUA * h * magg * fvc.grad( h + h0 ) )

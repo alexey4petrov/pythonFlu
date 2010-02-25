@@ -310,7 +310,7 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
                                          distMap.constructSize(), 
                                          distMap.subMap(),       #what to send
                                          distMap.constructMap(), #what to receive
-                                         nbrIntFld() ) # need to write typemap for tmp< Field<T> >
+                                         nbrIntFld() ) 
                
                # Swap to obtain full local values of neighbour K*delta
                nbrKDelta = nbrField.K()*nbrPatch.deltaCoeffs()
@@ -320,18 +320,17 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
                                          distMap.constructSize(), 
                                          distMap.subMap(),       #what to send
                                          distMap.constructMap(), #what to receive
-                                         nbrKDelta() ) # need to write typemap for tmp< Field<T> >
+                                         nbrKDelta() ) 
                
                myKDelta = self.K()*self.patch().deltaCoeffs()
                
                # Calculate common wall temperature. Reuse *this to store common value.
                               
-               Twall = ( myKDelta()*intFld() +  nbrKDelta()*nbrIntFld ) / ( myKDelta() + nbrKDelta() )
-               # (myKDelta()*intFld() + nbrKDelta*nbrIntFld) / (myKDelta() + nbrKDelta)); - from the OpenFOAM
-               
+               Twall = ( myKDelta*intFld +  nbrKDelta*nbrIntFld ) / ( myKDelta + nbrKDelta )
+
                # Assign to me
                from Foam.finiteVolume import fvPatchScalarField
-               fvPatchScalarField.ext_assign( self, Twall() )
+               fvPatchScalarField.ext_assign( self, Twall )
                mapDistribute.distribute( Pstream.defaultCommsType.fget(),
                                          distMap.schedule(),
                                          nbrField.size(),
@@ -339,7 +338,7 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
                                          distMap.subMap(),
                                          Twall() )
                
-               fvPatchScalarField.ext_assign( nbrField, Twall() )
+               fvPatchScalarField.ext_assign( nbrField, Twall )
                pass
                
             # Switch between fixed value (of harmonic avg) or gradient
@@ -347,10 +346,10 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
             nFixed = 0
                
             #Like snGrad but bypass switching on refValue/refGrad.
-            normalGradient = (self-intFld())*self.patch().deltaCoeffs()
+            normalGradient = ( self-intFld )*self.patch().deltaCoeffs()
             
             if self.debug: 
-              Q = (self.K()*self.patch().magSf()*normalGradient())().gSum()
+              Q = ( self.K() * self.patch().magSf() * normalGradient() ).gSum()
               ext_Info ()<< "solidWallMixedTemperatureCoupledFvPatchScalarField::" << "updateCoeffs() :"\
                          << " patch:" << self.patch().name()<< " heatFlux:" << Q << " walltemperature "\
                          << " min:" << self.gMin() << " max:" << self.gMax() << " avg:" << self.gAverage() << nl

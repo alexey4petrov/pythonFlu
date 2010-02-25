@@ -80,8 +80,7 @@ def createSolidField( solidRegions, runTime ):
                               solidRegions[ index ] )
         cps.ext_set( index, tmp )
         
-        tmp = rhos[ index ] * cps[ index ]                               
-        rhosCps.ext_set( index, volScalarField( word( "rhosCps" ), tmp() ) )
+        rhosCps.ext_set( index, volScalarField( word( "rhosCps" ), rhos[ index ] * cps[ index ]  ) )
         
         ext_Info()<< "    Adding to Ks\n" << nl
         tmp = volScalarField( IOobject( word( "K" ),
@@ -130,10 +129,9 @@ def setRegionSolidFields( i, solidRegions, rhos, cps, Ks, Ts ):
 def solveSolid( mesh, rho, cp, K, T, nNonOrthCorr ):
     for index in range( nNonOrthCorr + 1 ):
        from Foam import fvm
-       tmp= rho * cp
-       tmp_TEqn = fvm.ddt( tmp(), T ) - fvm.laplacian( K, T )
-       tmp_TEqn().relax()
-       tmp_TEqn().solve()
+       TEqn = fvm.ddt( rho * cp, T ) - fvm.laplacian( K, T )
+       TEqn.relax()
+       TEqn.solve()
        pass
     from Foam.OpenFOAM import ext_Info, nl   
     ext_Info()<< "Min/max T:" << T.ext_min() << ' ' << T.ext_max() << nl

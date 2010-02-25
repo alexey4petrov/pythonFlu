@@ -54,8 +54,7 @@ zeroGradientFvPatchScalarField = zeroGradientFvPatchField_scalar
 def continuityErrs( mesh, phi, runTime, cumulativeContErr ):
     from Foam import fvm, fvc
 
-    tmp_contErr = fvc.div( phi )
-    contErr = tmp_contErr()
+    contErr = fvc.div( phi )
     
     sumLocalContErr = runTime.deltaT().value() * contErr.mag().weightedAverage( mesh.V() ).value()
 

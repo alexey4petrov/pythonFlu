@@ -38,8 +38,7 @@ def _createFields( runTime, mesh ):
                                     mesh,
                                     IOobject.READ_IF_PRESENT,
                                     IOobject.AUTO_WRITE ),
-                          thermo.rho()
-                          )
+                          thermo.rho() )
     p = thermo.p()
     h = thermo.h()
     psi = thermo.psi()
@@ -116,7 +115,7 @@ def _UEqn( phi, U, p, pTurbulence, pZones, pressureImplicitPorosity, nUCorr, eqn
     # Construct the Momentum equation
     UEqn = fvm.div( phi, U ) - fvm.Sp( fvc.div( phi ), U ) + turbulence.divDevRhoReff( U )
   
-    UEqn().relax()
+    UEqn.relax()
 
     # Include the porous media resistance and solve the momentum equation
     # either implicit in the tensorial resistance or transport using by
@@ -128,15 +127,15 @@ def _UEqn( phi, U, p, pTurbulence, pZones, pressureImplicitPorosity, nUCorr, eqn
         from Foam.finiteVolume import sphericalTensor, tensor
         tTU = tensor( sphericalTensor.I ) * UEqn.A()
 
-        pZones.addResistance( UEqn(), tTU() )
+        pZones.addResistance( UEqn, tTU )
     
-        trTU = tTU().inv()
+        trTU = tTU.inv()
                
         from Foam.OpenFOAM import word
-        trTU().rename( word( "rAU" ) )
+        trTU.rename( word( "rAU" ) )
         
         for UCorr in range ( nUCorr ):
-            U.ext_assign( trTU() & ( UEqn().H() - fvc.grad( p ) ) )
+            U.ext_assign( trTU & ( UEqn.H() - fvc.grad( p ) ) )
             pass
         
         U.correctBoundaryConditions()
@@ -144,14 +143,14 @@ def _UEqn( phi, U, p, pTurbulence, pZones, pressureImplicitPorosity, nUCorr, eqn
         pZones.addResistance( UEqn )
         
         from Foam.finiteVolume import solve
-        eqnResidual =  solve( UEqn() == - fvc.grad( p ) ).initialResidual()
+        eqnResidual =  solve( UEqn == - fvc.grad( p ) ).initialResidual()
         
         maxResidual = max( eqnResidual, maxResidual )
         
         trAU = 1.0 / UEqn.A()
         
         from Foam.OpenFOAM import word
-        trAU().rename( word( "rAU" ) )
+        trAU.rename( word( "rAU" ) )
         
         pass
     
@@ -160,22 +159,25 @@ def _UEqn( phi, U, p, pTurbulence, pZones, pressureImplicitPorosity, nUCorr, eqn
 
 #---------------------------------------------------------------------------------------
 def _hEqn( pThermo, phi, h, pTurbulence, p, rho, eqnResidual, maxResidual):
-
+    turbulence = pTurbulence()
+    thermo = pThermo()
+    
     from Foam.finiteVolume import fvScalarMatrix
     from Foam import fvc, fvm
     
-    left_expr = fvm.div( phi, h ) - fvm.Sp( fvc.div( phi ), h ) - fvm.laplacian( pTurbulence().alphaEff(), h )
+    
+    left_expr = fvm.div( phi, h ) - fvm.Sp( fvc.div( phi ), h ) - fvm.laplacian( turbulence.alphaEff(), h )
     from Foam.OpenFOAM import word
     right_expr = fvc.div( phi / fvc.interpolate( rho ) * fvc.interpolate( p, word( "div(U,p)" ) ) ) - p * fvc.div( phi / fvc.interpolate( rho ) )
     
     hEqn =  ( left_expr == right_expr ) 
         
-    hEqn().relax()
+    hEqn.relax()
     
-    eqnResidual = hEqn().solve().initialResidual()
+    eqnResidual = hEqn.solve().initialResidual()
     maxResidual = max( eqnResidual, maxResidual )
 
-    pThermo().correct()
+    thermo.correct()
     
     return hEqn, eqnResidual, maxResidual 
 
@@ -183,11 +185,12 @@ def _hEqn( pThermo, phi, h, pTurbulence, p, rho, eqnResidual, maxResidual):
 #----------------------------------------------------------------------------------------    
 def _pEqn( mesh, rho, pThermo, p, U, trTU, trAU, UEqn, phi, \
            runTime, pMin, pressureImplicitPorosity, nNonOrthCorr, eqnResidual, maxResidual, cumulativeContErr, initialMass, pRefCell, pRefValue ):
-
+    thermo = pThermo()
+    
     if pressureImplicitPorosity :
-       U.ext_assign( trTU() & UEqn().H() )
+       U.ext_assign( trTU & UEqn.H() )
     else:
-       U.ext_assign( trAU() * UEqn().H() )
+       U.ext_assign( trAU * UEqn.H() )
        pass
     
     UEqn.clear() 
@@ -206,17 +209,17 @@ def _pEqn( mesh, rho, pThermo, p, U, trTU, trAU, UEqn, phi, \
             tpEqn = (fvm.laplacian( rho * trAU, p ) == fvc.div( phi ) )
             pass
         
-        tpEqn().setReference( pRefCell, pRefValue )
+        tpEqn.setReference( pRefCell, pRefValue )
         # retain the residual from the first iteration
         if nonOrth == 0 :
-            eqnResidual = tpEqn().solve().initialResidual()
+            eqnResidual = tpEqn.solve().initialResidual()
             maxResidual = max( eqnResidual, maxResidual )
         else:
-            tpEqn().solve()
+            tpEqn.solve()
             pass
         
         if nonOrth == nNonOrthCorr :
-            phi.ext_assign( phi - tpEqn().flux() )
+            phi.ext_assign( phi - tpEqn.flux() )
             pass
         
         pass
@@ -228,9 +231,9 @@ def _pEqn( mesh, rho, pThermo, p, U, trTU, trAU, UEqn, phi, \
     p.relax()
            
     if pressureImplicitPorosity :
-        U.ext_assign( U - ( trTU() & fvc.grad( p ) ) )
+        U.ext_assign( U - ( trTU & fvc.grad( p ) ) )
     else:
-        U.ext_assign( U - ( trAU() * fvc.grad( p ) ) )
+        U.ext_assign( U - ( trAU * fvc.grad( p ) ) )
         pass
        
     U.correctBoundaryConditions()
@@ -244,7 +247,7 @@ def _pEqn( mesh, rho, pThermo, p, U, trTU, trAU, UEqn, phi, \
        p.ext_assign( p + ( initialMass - fvc.domainIntegrate( psi * p ) ) / fvc.domainIntegrate( psi ) )
        pass
    
-    rho.ext_assign( pThermo().rho() )
+    rho.ext_assign( thermo.rho() )
     rho.relax()
     
     from Foam.OpenFOAM import ext_Info, nl
@@ -279,7 +282,10 @@ def main_standalone( argc, argv ):
 
     p, h, psi, rho, U, phi, pTurbulence, pThermo, pZones, pMin,\
     pressureImplicitPorosity, initialMass, nUCorr, pRefCell, pRefValue  = _createFields( runTime, mesh )
-        
+    
+    turbulence = pTurbulence()
+    thermo = pThermo()
+      
     from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
     cumulativeContErr = initContinuityErrs()
     
@@ -307,7 +313,7 @@ def main_standalone( argc, argv ):
                                           runTime, pMin, pressureImplicitPorosity, nNonOrthCorr, eqnResidual,\
                                           maxResidual, cumulativeContErr, initialMass, pRefCell, pRefValue )
         
-        pTurbulence().correct();
+        turbulence.correct();
 
         runTime.write()
         ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" \

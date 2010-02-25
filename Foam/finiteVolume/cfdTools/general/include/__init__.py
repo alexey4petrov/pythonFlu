@@ -31,9 +31,9 @@ def ContinuityErrs( phi, runTime, mesh, cumulativeContErr ):
     from Foam import fvc
     contErr = fvc.div(phi)
 
-    sumLocalContErr = runTime.deltaT().value()* contErr().mag().weightedAverage(mesh.V()).value()
+    sumLocalContErr = runTime.deltaT().value() * contErr.mag().weightedAverage( mesh.V() ).value()
 
-    globalContErr = runTime.deltaT().value()* contErr().weightedAverage(mesh.V()).value();
+    globalContErr = runTime.deltaT().value() * contErr.weightedAverage( mesh.V() ).value();
         
     cumulativeContErr += globalContErr
     from Foam.OpenFOAM import ext_Info, nl
@@ -126,7 +126,7 @@ def setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum ):
     if adjustTimeStep :
         maxDeltaTFact = maxCo/(CoNum + SMALL)
         deltaTFact = min( min( maxDeltaTFact, 1.0 + 0.1 * maxDeltaTFact ), 1.2 )
-        runTime.setDeltaT( min( deltaTFact*runTime.deltaT().value(), maxDeltaT ) )
+        runTime.setDeltaT( min( deltaTFact * runTime.deltaT().value(), maxDeltaT ) )
         from Foam.OpenFOAM import ext_Info, nl
         ext_Info() << "deltaT = " << runTime.deltaT().value()<<nl
         pass
@@ -211,10 +211,8 @@ def CourantNo( mesh, phi, runTime ):
 
     if mesh.nInternalFaces() :
         from Foam import fvc
-        tmp_SfUfbyDelta = mesh.deltaCoeffs()*phi.mag()
-        SfUfbyDelta = tmp_SfUfbyDelta()
-
-        CoNum = ( SfUfbyDelta / mesh.magSf() ).ext_max().value() * runTime.deltaT().value()
+        SfUfbyDelta = mesh.deltaCoeffs()*phi.mag()
+        CoNum =  ( SfUfbyDelta / mesh.magSf() ).ext_max().value() * runTime.deltaT().value()
         meanCoNum = ( SfUfbyDelta.sum() / mesh.magSf().sum() ).value() * runTime.deltaT().value();
         pass
 

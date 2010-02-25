@@ -40,20 +40,16 @@ def createFields( runTime, mesh ):
     
     rho = volScalarField( IOobject( word( "rho" ),
                                     fileName( runTime.timeName() ),
-                                    mesh
-                                    ),
-                          rho()
-                          )
+                                    mesh ),
+                          rho )
     ext_Info() << "Reading field U\n" << nl    
     from Foam.finiteVolume import volVectorField
     U = volVectorField( IOobject( word( "U" ),
                                   fileName( runTime.timeName() ),
                                   mesh,
                                   IOobject.MUST_READ,
-                                  IOobject.AUTO_WRITE
-                                  ),
-                        mesh
-                        )
+                                  IOobject.AUTO_WRITE ),
+                        mesh )
         
     from Foam.finiteVolume.cfdTools.compressible import compressibleCreatePhi
     phi = compressibleCreatePhi( runTime, mesh, rho, U )    
@@ -69,9 +65,7 @@ def createFields( runTime, mesh ):
     from Foam import fvc
     from Foam.finiteVolume import surfaceScalarField
     
-    tmp_phi=phi / fvc.interpolate(rho)
-    
-    DpDt = fvc.DDt( surfaceScalarField(word( "phiU" ), tmp_phi()), p );
+    DpDt = fvc.DDt( surfaceScalarField(word( "phiU" ), phi / fvc.interpolate( rho ) ), p );
         
     return thermo_ptr, p, h, psi, rho, U, phi, pTurbulence, DpDt
 
@@ -79,20 +73,19 @@ def createFields( runTime, mesh ):
 #--------------------------------------------------------------------------------------
 def _UEqn( U, rho, phi, turbulence, p ):
     from Foam import fvm    
-    UEqn_tmp = fvm.ddt( rho, U ) + fvm.div( phi, U ) + turbulence.divRhoR( U )
-    UEqn = UEqn_tmp()
+    UEqn = fvm.ddt( rho, U ) + fvm.div( phi, U ) + turbulence.divRhoR( U )
     
     from Foam import fvc
     from Foam.finiteVolume import solve
     solve( UEqn == -fvc.grad( p ) )
-    return UEqn_tmp    
+    return UEqn
 
 
 #--------------------------------------------------------------------------------------
 def _hEqn( rho, h, phi, turbulence, DpDt, thermo ):
     from Foam import fvm
     from Foam.finiteVolume import solve
-    solve( fvm.ddt( rho, h ) + fvm.div( phi, h ) - fvm.laplacian( turbulence.alphaEff(), h) == DpDt )
+    solve( fvm.ddt( rho, h ) + fvm.div( phi, h ) - fvm.laplacian( turbulence.alphaEff(), h ) == DpDt )
     thermo.correct() 
     pass 
     
@@ -100,21 +93,17 @@ def _hEqn( rho, h, phi, turbulence, DpDt, thermo ):
 #---------------------------------------------------------------------------------------
 def _pEqn( rho, thermo, UEqn, nNonOrthCorr, psi, U, mesh, phi, p, cumulativeContErr ):
     from Foam.finiteVolume import volScalarField
-    rUA_tmp = 1.0/UEqn.A()
-    rUA=rUA_tmp()
+    rUA = 1.0/UEqn.A()
     U.ext_assign( rUA*UEqn.H() )
             
     from Foam import fvc
-    phid_tmp = ( (fvc.interpolate(rho*U) & mesh.Sf()) + fvc.ddtPhiCorr(rUA, rho, U, phi) )/fvc.interpolate(p);
-            
     from Foam.finiteVolume import surfaceScalarField
     from Foam.OpenFOAM import word
-    phid = surfaceScalarField( word( "phid" ),phid_tmp() )
+    phid = surfaceScalarField( word( "phid" ), ( ( fvc.interpolate( rho * U ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, rho, U, phi ) ) / fvc.interpolate( p ) )
             
     for nonOrth in range( nNonOrthCorr + 1 ) :
         from Foam import fvm
-        pEqn_tmp =  ( fvm.ddt(psi, p) + fvm.div(phid, p) - fvm.laplacian(rho*rUA, p) )
-        pEqn = pEqn_tmp()
+        pEqn = ( fvm.ddt(psi, p) + fvm.div(phid, p) - fvm.laplacian(rho*rUA, p) )
         pEqn.solve()
         if (nonOrth == nNonOrthCorr) :
            phi.ext_assign( pEqn.flux() )
@@ -126,7 +115,7 @@ def _pEqn( rho, thermo, UEqn, nNonOrthCorr, psi, U, mesh, phi, p, cumulativeCont
     from Foam.finiteVolume.cfdTools.compressible import compressibleContinuityErrs
     cumulativeContErr = compressibleContinuityErrs( rho, thermo, cumulativeContErr )
            
-    U.ext_assign( U - rUA*fvc.grad(p) )
+    U.ext_assign( U - rUA * fvc.grad(p) )
     U.correctBoundaryConditions()
     
     return cumulativeContErr
@@ -167,8 +156,7 @@ def main_standalone( argc, argv ):
         from Foam.finiteVolume.cfdTools.compressible import rhoEqn
         rhoEqn( rho, phi )
         
-        UEqn_tmp = _UEqn( U, rho, phi, turbulence, p )
-        UEqn = UEqn_tmp()
+        UEqn = _UEqn( U, rho, phi, turbulence, p )
         
         _hEqn( rho, h, phi, turbulence, DpDt,thermo )
         
@@ -178,18 +166,16 @@ def main_standalone( argc, argv ):
             cumulativeContErr = _pEqn( rho, thermo, UEqn, nNonOrthCorr, psi, U, mesh, phi, p, cumulativeContErr )          
             pass
         from Foam import fvc
-        phi_tmp = phi/fvc.interpolate(rho)
-        
         from Foam.finiteVolume import surfaceScalarField
         from Foam.OpenFOAM import word
-        DpDt = fvc.DDt( surfaceScalarField( word("phiU"), phi_tmp() ), p )
+        DpDt = fvc.DDt( surfaceScalarField( word("phiU"), phi / fvc.interpolate( rho ) ), p )
 
         
         turbulence.correct()
 
-        rho.ext_assign( psi*p )
+        rho.ext_assign( psi * p )
                 
-        runTime.write();
+        runTime.write()
 
         ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
                       "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl

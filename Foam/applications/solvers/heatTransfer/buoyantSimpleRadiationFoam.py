@@ -105,9 +105,9 @@ def fun_UEqn( pTurbulence, phi, U, rho, g, p, mesh, eqnResidual, maxResidual ):
     from Foam import fvm, fvc 
     UEqn = fvm.div(phi, U) - fvm.Sp(fvc.div(phi), U)+ turbulence.divDevRhoReff(U)
 
-    UEqn().relax();
+    UEqn.relax();
     from Foam.finiteVolume import solve
-    eqnResidual = solve( UEqn() == fvc.reconstruct( fvc.interpolate(rho)*(g & mesh.Sf()) - fvc.snGrad(p)*mesh.magSf() ) ).initialResidual()
+    eqnResidual = solve( UEqn == fvc.reconstruct( fvc.interpolate(rho)*(g & mesh.Sf()) - fvc.snGrad(p)*mesh.magSf() ) ).initialResidual()
 
     maxResidual = max(eqnResidual, maxResidual);
     
@@ -125,9 +125,9 @@ def fun_hEqn( pTurbulence, phi, h, rho, pRadiation, p, pThermo, eqnResidual, max
     
     hEqn = (left_exp == right_exp )
 
-    hEqn().relax()
+    hEqn.relax()
 
-    eqnResidual = hEqn().solve().initialResidual()
+    eqnResidual = hEqn.solve().initialResidual()
     maxResidual = max(eqnResidual, maxResidual)
 
     thermo.correct()
@@ -142,13 +142,13 @@ def fun_pEqn( pThermo, g, rho, UEqn, p, U, psi, phi, initialMass, runTime, mesh,
     thermo = pThermo()
     rho.ext_assign( thermo.rho() )
 
-    rUA = 1.0/UEqn().A()
+    rUA = 1.0/UEqn.A()
     
     from Foam.OpenFOAM import word
     from Foam import fvc,fvm
     from Foam.finiteVolume import surfaceScalarField
     rhorUAf = surfaceScalarField(word( "(rho*(1|A(U)))" ) , fvc.interpolate(rho*rUA));
-    U.ext_assign(rUA()*UEqn().H())
+    U.ext_assign(rUA*UEqn.H())
     UEqn.clear()
     
     phi.ext_assign( fvc.interpolate( rho )*(fvc.interpolate(U) & mesh.Sf()) )
@@ -164,7 +164,7 @@ def fun_pEqn( pThermo, g, rho, UEqn, p, U, psi, phi, initialMass, runTime, mesh,
         from Foam import fvm
         pEqn = fvm.laplacian(rhorUAf, p) == fvc.div(phi)
 
-        pEqn().setReference(pRefCell, p[pRefCell]);
+        pEqn.setReference(pRefCell, p[pRefCell]);
 
 
         if (nonOrth == 0):

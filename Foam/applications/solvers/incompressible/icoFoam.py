@@ -45,10 +45,9 @@ class solver( object ):
 
         from Foam.finiteVolume.cfdTools.incompressible import CourantNo
         CoNum, meanCoNum = CourantNo( self.mesh, self.phi, self.runTime )
-        
+
         from Foam import fvm
-        tmp_UEqn = ( fvm.ddt( self.U ) + fvm.div( self.phi, self.U ) - fvm.laplacian( self.nu, self.U ) )
-        UEqn = tmp_UEqn()
+        UEqn = ( fvm.ddt( self.U ) + fvm.div( self.phi, self.U ) - fvm.laplacian( self.nu, self.U ) )
 
         from Foam import fvc
         from Foam.finiteVolume import solve
@@ -57,8 +56,7 @@ class solver( object ):
         # --- PISO loop
 
         for corr in range( nCorr ) :
-            tmp_rUA = 1.0 / UEqn.A()
-            rUA = tmp_rUA()
+            rUA = 1.0 / UEqn.A()
 
             self.U.ext_assign( rUA * UEqn.H() )
             self.phi.ext_assign( ( fvc.interpolate( self.U ) & self.mesh.Sf() ) + fvc.ddtPhiCorr( rUA, self.U, self.phi ) )
@@ -67,8 +65,7 @@ class solver( object ):
             adjustPhi( self.phi, self.U, self.p )
 
             for nonOrth in range( nNonOrthCorr + 1 ) :
-                tmp_pEqn = ( fvm.laplacian( rUA, self.p ) == fvc.div( self.phi ) )
-                pEqn = tmp_pEqn()
+                pEqn = ( fvm.laplacian( rUA, self.p ) == fvc.div( self.phi ) )
                 
                 pEqn.setReference( self.pRefCell, self.pRefValue )
                 pEqn.solve()
@@ -78,7 +75,7 @@ class solver( object ):
                     pass
                 
                 pass
-            
+                        
             from Foam.finiteVolume.cfdTools.incompressible import continuityErrs
             cumulativeContErr = continuityErrs( self.mesh, self.phi, self.runTime, self.cumulativeContErr )
 
@@ -122,9 +119,7 @@ def createFields( runTime, mesh ):
                                                   fileName( runTime.constant() ),
                                                   mesh,
                                                   IOobject.MUST_READ,
-                                                  IOobject.NO_WRITE
-                                                  )
-                                        )
+                                                  IOobject.NO_WRITE ) )
 
     from Foam.OpenFOAM import dimensionedScalar
     nu = dimensionedScalar( transportProperties.lookup( word( "nu" ) ) );
@@ -135,10 +130,8 @@ def createFields( runTime, mesh ):
                                   fileName( runTime.timeName() ),
                                   mesh,
                                   IOobject.MUST_READ,
-                                  IOobject.AUTO_WRITE
-                                  ),
-                        mesh
-                        )
+                                  IOobject.AUTO_WRITE ),
+                        mesh )
 
     ext_Info() << "Reading field U\n" << nl
     from Foam.finiteVolume import volVectorField
@@ -146,10 +139,8 @@ def createFields( runTime, mesh ):
                                   fileName( runTime.timeName() ),
                                   mesh,
                                   IOobject.MUST_READ,
-                                  IOobject.AUTO_WRITE
-                                  ),
-                        mesh
-                        )
+                                  IOobject.AUTO_WRITE ),
+                        mesh )
 
     from Foam.finiteVolume.cfdTools.incompressible import createPhi
     phi = createPhi( runTime, mesh, U )
@@ -212,8 +203,7 @@ def main_standalone( argc, argv ):
         CoNum, meanCoNum = CourantNo( mesh, phi, runTime )
 
         from Foam import fvm
-        tmp_UEqn = ( fvm.ddt( U ) + fvm.div( phi, U ) - fvm.laplacian( nu, U ) )
-        UEqn = tmp_UEqn()
+        UEqn = ( fvm.ddt( U ) + fvm.div( phi, U ) - fvm.laplacian( nu, U ) )
 
         from Foam import fvc
         from Foam.finiteVolume import solve
@@ -222,8 +212,7 @@ def main_standalone( argc, argv ):
         # --- PISO loop
 
         for corr in range( nCorr ) :
-            tmp_rUA = 1.0 / UEqn.A()
-            rUA = tmp_rUA()
+            rUA = 1.0 / UEqn.A()
 
             U.ext_assign( rUA * UEqn.H() )
             phi.ext_assign( ( fvc.interpolate( U ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, U, phi ) )
@@ -232,8 +221,7 @@ def main_standalone( argc, argv ):
             adjustPhi( phi, U, p )
 
             for nonOrth in range( nNonOrthCorr + 1 ) :
-                tmp_pEqn = ( fvm.laplacian( rUA, p ) == fvc.div( phi ) )
-                pEqn = tmp_pEqn()
+                pEqn = ( fvm.laplacian( rUA, p ) == fvc.div( phi ) )
 
                 pEqn.setReference( pRefCell, pRefValue )
                 pEqn.solve()

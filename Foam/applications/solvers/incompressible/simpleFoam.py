@@ -93,14 +93,14 @@ def Ueqn( phi, U, p, turbulence, eqnResidual, maxResidual ):
        UEqn = fvm.div( phi, U ) + turbulence.divDevReff( U ) 
        pass
 
-    UEqn().relax()
+    UEqn.relax()
     
     from Foam.finiteVolume import solve
     if WM_PROJECT_VERSION() <= "1.4.1-dev" :
-       solve( UEqn() == -fvc.grad(p) )
+       solve( UEqn == -fvc.grad(p) )
        pass
     else:
-       eqnResidual = solve( UEqn() == -fvc.grad(p) ).initialResidual()
+       eqnResidual = solve( UEqn == -fvc.grad(p) ).initialResidual()
        maxResidual = max(eqnResidual, maxResidual)
        pass
        
@@ -112,8 +112,8 @@ def pEqn( runTime, mesh, p, phi, U, UEqn, eqnResidual, maxResidual, nNonOrthCorr
     
     p.ext_boundaryField().updateCoeffs()
 
-    AU = UEqn().A()
-    U.ext_assign( UEqn().H() / AU )
+    AU = UEqn.A()
+    U.ext_assign( UEqn.H() / AU )
     UEqn.clear()
     
     from Foam import fvc 
@@ -126,27 +126,27 @@ def pEqn( runTime, mesh, p, phi, U, UEqn, eqnResidual, maxResidual, nNonOrthCorr
     for nonOrth in range( nNonOrthCorr+1 ):
         
         from Foam import fvm, fvc
-        pEqn = fvm.laplacian( 1.0 / AU(), p ) == fvc.div( phi ) 
-        pEqn().setReference( pRefCell, pRefValue )
+        pEqn = fvm.laplacian( 1.0 / AU, p ) == fvc.div( phi ) 
+        pEqn.setReference( pRefCell, pRefValue )
         
         
         from Foam import WM_PROJECT_VERSION
         if WM_PROJECT_VERSION() <= "1.4.1-dev" :
-           pEqn().solve()
+           pEqn.solve()
            pass
         else:
            # retain the residual from the first iteration
            if ( nonOrth == 0 ):
-              eqnResidual = pEqn().solve().initialResidual()
+              eqnResidual = pEqn.solve().initialResidual()
               maxResidual = max( eqnResidual, maxResidual )
               pass
            else:
-              pEqn().solve()
+              pEqn.solve()
               pass
            pass
         
         if ( nonOrth == nNonOrthCorr ):
-           phi.ext_assign( phi - pEqn().flux() )
+           phi.ext_assign( phi - pEqn.flux() )
            pass
         
         pass

@@ -12,17 +12,12 @@ def compressibleCreatePhi( runTime, mesh, rho, U ):
     from Foam.finiteVolume import surfaceScalarField
     from Foam.finiteVolume import linearInterpolate
 
-    tmp = rho * U
-    tmp = linearInterpolate( tmp() ) & mesh.Sf()
-
     phi = surfaceScalarField( IOobject( word( "phi" ),
                                         fileName( runTime.timeName() ),
                                         mesh,
                                         IOobject.READ_IF_PRESENT,
-                                        IOobject.AUTO_WRITE
-                                        ),
-                              tmp()
-                              )
+                                        IOobject.AUTO_WRITE ),
+                              linearInterpolate( rho * U ) & mesh.Sf() )
     
     return phi
 
@@ -38,8 +33,7 @@ def compressibleCourantNo( mesh, phi, rho, runTime ):
 
     if mesh.nInternalFaces() :
         from Foam import fvc
-        tmp_SfUfbyDelta = mesh.deltaCoeffs() * phi.mag() / fvc.interpolate( rho )
-        SfUfbyDelta = tmp_SfUfbyDelta()
+        SfUfbyDelta = mesh.deltaCoeffs() * phi.mag() / fvc.interpolate( rho )
 
         CoNum = ( SfUfbyDelta / mesh.magSf() ).ext_max().value() * runTime.deltaT().value()
         meanCoNum = ( SfUfbyDelta.sum() / mesh.magSf().sum() ).value() * runTime.deltaT().value();
