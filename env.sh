@@ -37,7 +37,7 @@ source /opt/OpenFOAM/r${which_open_foam}/debug/bashrc
 #source /opt/SALOME_5.1.1/v1.0.2/from_sources/bashrc 
 #source /opt/SALOME/r5.1.3/r1.0/from_sources/bashrc
 
-#source /opt/unv2foam/r0.2/OpenFOAM-${which_open_foam}/bashrc 
+source /opt/unv2foam/r0.3/OpenFOAM-${which_open_foam}/bashrc 
 
 source /opt/foam2vtk/r0.3/OpenFOAM-${which_open_foam}/bashrc 
 

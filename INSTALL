@@ -24,7 +24,7 @@ See https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/pyfoam
 Pre-requisites
 #--------------------------------------------------------------------------------------
 
-pyFoam Python OpenFOAM binding requires OpenFOAM, SWIG as its pre-requisites.
+"pyFoam" Python OpenFOAM binding requires OpenFOAM, SWIG as its pre-requisites.
 
 * Install OpenFOAM (tested with versions 1.4.1-dev and 1.6)
 Please follow instructions from corresponding INSTALL file to setup OpenFOAM
@@ -38,21 +38,24 @@ Please follow instructions from http://www.python.org/ web-site.
 Please follow instructions from http://www.python.org/ web-site.
 
 * Install extFoam (optional)
+Can be found at https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/extfoam.
 Please follow instructions from corresponding INSTALL file to setup extFoam
 on your computer.
 
 * Install foam2vtk (optional)
+Can be found at https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/foam2vtk.
 Please follow instructions from corresponding INSTALL file to setup foam2med
 on your computer.
 
 * Install unv2foam (optional)
+Can be found at https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/unv2foam.
 Please follow instructions from corresponding INSTALL file to setup unv2foam
 on your computer.
 
 * Install boost library (optional) (tested with 1.35.0 )
 Please follow instructions from http://www.boost.org/ web-site.
 
-Then follow below instructions in order to build and install the pyFoam Python 
+Then follow below instructions in order to build and install the "pyFoam" Python 
 OpenFOAM binding.
 
 
@@ -60,7 +63,7 @@ OpenFOAM binding.
 Basic Installation
 #--------------------------------------------------------------------------------------
 
-The build procedure of the FOAM module is based on GNU make utility. 
+The build procedure of the "pyFoam" package is based on GNU autoconf and make utilities. 
 In order to build the module you have to perform the following actions:
 
 1. Go to the source directory:
@@ -70,24 +73,24 @@ In order to build the module you have to perform the following actions:
 2. Modify and source the provided "env.sh" & "bashrc" files to adjust to your 
    local environment.
 
-3. Configuring the pyFoam build system:
+3. Configuring the "pyFoam" build system:
 
-   ./build_configure
+   build_configure
    ./configure
 
 ( make sure that this step was passed succesfully )
-( to see all applicable option run ./configure --help )
+( to see all applicable options run ./configure --help )
 
-4. Build pyFoam:
+4. Build "pyFoam":
 
    make
 
 
 #--------------------------------------------------------------------------------------
-pyFoam installation check
+"pyFoam" installation check
 #--------------------------------------------------------------------------------------
 
-Run the following pyFoam solver
+Run the following "pyFoam" solver
   ./Foam/applications/solvers/incompressible/icoFoam.py 
 on the appropriate OpenFOAM case 
 ( use the same command line option as for referenced OpenFOAM implementation )

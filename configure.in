@@ -43,11 +43,15 @@ CONFFOAM_CHECK_PYTHON
 echo 
 
 echo "--------------------------------------------------------------------------------------"
+CONFFOAM_CHECK_EXTFOAM
+echo 
+
+echo "--------------------------------------------------------------------------------------"
 CONFFOAM_CHECK_FOAM2VTK
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_EXTFOAM
+CONFFOAM_CHECK_UNV2FOAM
 echo 
 
 echo "--------------------------------------------------------------------------------------"
@@ -99,7 +103,7 @@ echo "---------------------------- mandatory products --------------------------
 summary "openfoam_ok python_ok"
 echo
 echo "---------------------------- optional products ---------------------------------"
-summary "extfoam_ok foam2vtk_ok boost_ok"
+summary "extfoam_ok foam2vtk_ok unv2foam_ok boost_ok"
 echo
 echo "--------------------------------- features -------------------------------------"
 summary "singlelib embeddedcxx"

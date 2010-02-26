@@ -26,21 +26,25 @@ Introduction
 This is a Python OpenFOAM binding that allows interactivelly use OpenFOAM 
 (Open Source CFD Toolbox, see http://sourceforge.net/projects/foam/ )
 API into Python (see http://www.python.org/ ). 
-The initial goals of development of OpenFOAM binding was to provide more
-convinient way to extend / customize OpenFOAM functionality and perform all
-calculation in memory (not through files).
+The main goals of development of Python OpenFOAM binding are 
+ - to provide more convinient way to extend / customize OpenFOAM functionality
+   (as for analysts as for method developers);
+ - support interaction with third-party libraries & utilities into a transparent 
+   and non-intruisive way;
+ - perform all calculations and data processing interactively and in memory
+   (not through files).
 
 #--------------------------------------------------------------------------------------
 Installation
 #--------------------------------------------------------------------------------------
 
-See the INSTALL file for more information about building of pyFoam binding.
+See the INSTALL file for more information about building of "pyFoam" package.
 
 #--------------------------------------------------------------------------------------
 Usage
 #--------------------------------------------------------------------------------------
 
-There are two ways to use pyFoam
+There are two ways to use "pyFoam"
   - Use predefined set of solvers in the same way as referenced OpenFOAM ones
     ( ${PYFOAM_ROOT_DIR}/Foam/applications/solvers/incompressible/icoFoam.py, for example )
   - Write your own solver ( or modify existing one ) through usage of corresponding 
