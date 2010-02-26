@@ -20,9 +20,32 @@
 
 
 #--------------------------------------------------------------------------------------
-pyfoam_root_dir:=../../../..
+ifeq "@ENABLE_UNV2FOAM@xx" "yesxx"
+#--------------------------------------------------------------------------------------
+
+pyfoam_root_dir:=../../../../..
+
+__CPPFLAGS__ := $(__CPPFLAGS__) \
+	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
+	@UNV2FOAM_CPPFLAGS@
+
+__CXXFLAGS__ := $(__CXXFLAGS__)  @UNV2FOAM_CXXFLAGS@
+
+__LDFLAGS__ := $(__LDFLAGS__) \
+	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
+	@UNV2FOAM_LDFLAGS@
 
 include $(pyfoam_root_dir)/include.makefile
 
+#--------------------------------------------------------------------------------------
+else
+#--------------------------------------------------------------------------------------
 
+$(warning To compile this package use --with-unv2foam=<path> configure option)
+
+all:
+clean:
+
+#--------------------------------------------------------------------------------------
+endif
 #--------------------------------------------------------------------------------------

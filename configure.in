@@ -120,6 +120,7 @@ AC_OUTPUT( [ Makefile \
 	     Foam/pyfoam.cxx \
 	     Foam/Makefile \
 	     Foam/applications/utilities/postProcessing/graphics/Makefile \
+	     Foam/applications/utilities/mesh/conversion/Makefile \
 	     EFoam/pbmr/diffusion/Makefile \
 	     EFoam/common/shared_ptr/Makefile ] )
 
