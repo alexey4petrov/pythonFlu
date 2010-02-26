@@ -226,6 +226,9 @@ class iNew:
        
 
 #--------------------------------------------------------------------------------------          
+#This function is constructor for List<ComponentReference>(from Istream and Inew). But we not use OpenFOAM's PtrList,
+#we use Python's list. The reference code you can see in OpenFOAM "PtrListIO.C"
+
 def componentReferenceList( is_, inewt):
     #from Foam.OpenFOAM import ITstream
     #if is_.__class__ != ITstream or is_.__class__ != Istream:
