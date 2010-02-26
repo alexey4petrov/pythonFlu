@@ -31,7 +31,8 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/turbulenceModels \
 	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/radiation/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/transportModels/incompressible/lnInclude \
-	-I$(WM_PROJECT_DIR)/src/transportModels
+	-I$(WM_PROJECT_DIR)/src/transportModels \
+	-I$(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude 	
 
 	
 #--------------------------------------------------------------------------------------
@@ -39,7 +40,8 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lbasicThermophysicalModels \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lspecie \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTransportModels
+	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTransportModels \
+	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -ldynamicFvMesh	
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -lt 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleTurbulenceModels
