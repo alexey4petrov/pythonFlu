@@ -43,8 +43,7 @@ def createTime( args ) :
     
     runTime = Time( Time.controlDictName.fget(),
                     args.rootPath(),
-                    args.caseName()
-                  )
+                    args.caseName() )
 
     return runTime
                     
@@ -57,6 +56,7 @@ class getTime( object ):
     def __init__( self, args ):
         self.args = args
         pass
+    
     def __call__( self ):
         return createTime( self.args )
 
