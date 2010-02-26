@@ -19,41 +19,12 @@
 
 
 //---------------------------------------------------------------------------
-#if ( "@USE_SINGLE_LIB@" == "no" )
-%include "src/common.hxx"
-#define pyfoam_cxx
-#endif
+#ifndef dynamicFvMesh__cxx
+#define dynamicFvMesh__cxx
 
+%include "src/dynamicFvMesh/dynamicFvMesh.cxx"
 
-//---------------------------------------------------------------------------
-#ifndef pyfoam_cxx
-#define pyfoam_cxx
-
-
-//---------------------------------------------------------------------------
-%include "Foam/OpenFOAM/OpenFOAM_.cxx"
-
-%include "Foam/meshTools/meshTools_.cxx"
-
-%include "Foam/finiteVolume/finiteVolume_.cxx"
-
-%include "Foam/fvc/fvc_.cxx"
-
-%include "Foam/fvm/fvm_.cxx"
-
-%include "Foam/sampling/sampling.cxx"
-
-%include "Foam/dynamicFvMesh/dynamicFvMesh_.cxx"
-
-%include "Foam/thermophysicalModels/thermophysicalModels_.cxx"
-
-%include "Foam/radiation/radiation_.cxx"
-
-%include "Foam/transportModels/transportModels_.cxx"
-
-%include "Foam/compressible/compressible_.cxx"
-
-%include "Foam/incompressible/incompressible_.cxx"
+%include "src/OpenFOAM/fields/tmp/autoPtr_dynamicFvMesh.cxx"
 
 
 //---------------------------------------------------------------------------
