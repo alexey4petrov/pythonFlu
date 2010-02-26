@@ -25,3 +25,24 @@ exec get_module_initializtion_command( "dynamicFvMesh_" )
 
 
 #---------------------------------------------------------------------------
+dynamicFvMesh.defaultRegion = dynamicFvMesh.defaultRegion.fget()
+
+dynamicFvMesh.meshSubDir = dynamicFvMesh.meshSubDir.fget()
+
+
+#---------------------------------------------------------------------------
+def createDynamicFvMesh( runTime ):
+    from Foam.OpenFOAM import ext_Info, nl, IOobject, fileName
+    ext_Info() << "Create mesh for time = " << runTime.timeName() << nl << nl
+
+    mesh = dynamicFvMesh.New( IOobject( dynamicFvMesh.defaultRegion,
+                                        fileName( runTime.timeName() ),
+                                        runTime ) ) 
+
+    return mesh
+
+
+#------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------
+
