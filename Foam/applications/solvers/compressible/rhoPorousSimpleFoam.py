@@ -48,10 +48,8 @@ def _createFields( runTime, mesh ):
                                   fileName( runTime.timeName() ),
                                   mesh,
                                   IOobject.MUST_READ,
-                                  IOobject.AUTO_WRITE
-                                  ),
-                        mesh
-                        )
+                                  IOobject.AUTO_WRITE ),
+                        mesh )
 
     from Foam.finiteVolume.cfdTools.compressible import compressibleCreatePhi
     phi = compressibleCreatePhi( runTime, mesh, rho, U )
@@ -66,7 +64,7 @@ def _createFields( runTime, mesh ):
        
     ext_Info() << "Creating turbulence model\n" << nl
     from Foam import compressible
-    turbulence = compressible.RASModel.New( rho, U, phi, thermo )
+    turbulence = compressible.RASModel.New( rho, U, phi, thermo() )
     
     from Foam import fvc
     initialMass = fvc.domainIntegrate( rho )

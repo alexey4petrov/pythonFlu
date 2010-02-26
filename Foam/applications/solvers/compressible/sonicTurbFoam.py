@@ -59,7 +59,7 @@ def createFields( runTime, mesh ):
     turbulence = compressible.turbulenceModel.New( rho,
                                                     U,
                                                     phi,
-                                                    thermo )
+                                                    thermo() )
     ext_Info() << "Creating field DpDt\n" << nl
     
     from Foam import fvc

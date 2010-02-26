@@ -38,31 +38,6 @@
     #include "basicThermo.H"
 %}
 
-%typemap( in ) Foam::basicThermo& 
-{
-  void  *argp = 0;
-  int res = 0;
-  res = SWIG_ConvertPtr( $input, &argp, $descriptor(  Foam::basicThermo * ), %convertptr_flags );
-  if ( SWIG_IsOK( res )&& argp  ){
-    Foam::basicThermo * res =  %reinterpret_cast( argp, Foam::basicThermo* );
-    $1 = res;
-  } else {
-    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::autoPtr< Foam::basicThermo >* ), %convertptr_flags );
-    if ( SWIG_IsOK( res ) && argp ) {
-      Foam::autoPtr< Foam::basicThermo >* autoPtr_res =%reinterpret_cast( argp, Foam::autoPtr< Foam::basicThermo > * );
-      $1 = autoPtr_res->operator->();
-      } else {
-        res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::autoPtr< Foam::basicPsiThermo >* ), %convertptr_flags );  
-        if ( SWIG_IsOK( res ) && argp ) {
-          Foam::autoPtr< Foam::basicPsiThermo >* autoPtr_res =%reinterpret_cast( argp, Foam::autoPtr< Foam::basicPsiThermo > * );
-          $1 = autoPtr_res->operator->();
-          } else { 
-            %argument_fail( res, "$type", $symname, $argnum );
-            }
-        }
-  }    
-}
-
 
 //---------------------------------------------------------------------------
 %include "basicThermo.H"

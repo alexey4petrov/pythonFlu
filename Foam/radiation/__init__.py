@@ -25,10 +25,10 @@ exec get_module_initializtion_command( "radiation_" )
 
 
 #---------------------------------------------------------------------------
-def createRadiationModel(pThermo):
-    thermo = pThermo()
+def createRadiationModel(thermo):
     from Foam import radiation
     pRadiation =radiationModel.New( thermo.T() )
+    
     return pRadiation
 
 

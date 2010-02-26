@@ -70,7 +70,7 @@ def createFields( runTime, mesh ):
     
     ext_Info() << "Creating turbulence model\n" << nl
     from Foam import compressible
-    turbulence = compressible.RASModel.New( rho, U, phi, thermo ) 
+    turbulence = compressible.RASModel.New( rho, U, phi, thermo() ) 
 
     thermo.correct()
 
@@ -117,7 +117,7 @@ def fun_hEqn( turbulence, phi, h, rho, radiation, p, thermo, eqnResidual, maxRes
     
     from Foam import fvc, fvm    
     left_exp = fvm.div( phi, h ) - fvm.Sp( fvc.div( phi ), h ) - fvm.laplacian( turbulence.alphaEff(), h )
-    right_exp = fvc.div( phi/fvc.interpolate( rho )*fvc.interpolate( p ) ) - p*fvc.div( phi/fvc.interpolate( rho ) ) + radiation.Sh( thermo )
+    right_exp = fvc.div( phi/fvc.interpolate( rho )*fvc.interpolate( p ) ) - p*fvc.div( phi/fvc.interpolate( rho ) ) + radiation.Sh( thermo() )
     
     hEqn = (left_exp == right_exp )
 

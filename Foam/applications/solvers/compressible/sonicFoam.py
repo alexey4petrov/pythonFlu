@@ -59,7 +59,7 @@ def _createFields( runTime, mesh ):
     turbulence = compressible.turbulenceModel.New( rho,
                                                     U,
                                                     phi,
-                                                    thermo )
+                                                    thermo() )
 
     return p, e, psi, rho, U, phi, turbulence, thermo
 
