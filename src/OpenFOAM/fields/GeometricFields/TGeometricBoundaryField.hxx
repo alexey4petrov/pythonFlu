@@ -52,6 +52,16 @@ namespace Foam
        {
          return engine.types();
        }
+       
+       label size()
+       {
+         return engine.size();
+       }
+       
+       Field< Type >& operator[]( label index )
+       {
+         return engine[ index ];
+       }
   };  
 }
 
