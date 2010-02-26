@@ -43,5 +43,10 @@ reconstruct = fvc_reconstruct
 
 snGrad = fvc_snGrad
 
+makeRelative = fvc_makeRelative
+
+makeAbsolute = fvc_makeAbsolute
+
 
 #---------------------------------------------------------------------------
+

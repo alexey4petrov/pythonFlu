@@ -54,6 +54,7 @@
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
 %include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField_scalar.cxx"
 %include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField_vector.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.cxx"
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchFieldMapper.cxx"
 
 %include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_scalar.cxx"

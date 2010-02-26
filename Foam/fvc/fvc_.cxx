@@ -33,6 +33,7 @@
 %include "src/finiteVolume/finiteVolume/fvc/fvcVolumeIntegrate.cxx"
 %include "src/finiteVolume/finiteVolume/fvc/fvcSnGrad.cxx"
 %include "src/finiteVolume/finiteVolume/fvc/fvcReconstruct.cxx"
+%include "src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.cxx"
 
 %include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.cxx"
 
