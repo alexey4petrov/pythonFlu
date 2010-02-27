@@ -70,18 +70,6 @@ NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::tensor > );
 
 
 //---------------------------------------------------------------------------
-/*%define __FVPATCHFIELD_TEMPLATE_OPERATOR__( Type )
-{
-  Foam::tmp< Foam::Field< Foam::Type > > __mul__( const Foam::Field< Foam::Type >& theArg)
-  {
-    return get_ref( self ) * theArg;
-  }
-}
-
-%enddef*/
-
-
-//---------------------------------------------------------------------------
 %{
     #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hxx"
 %}
@@ -113,15 +101,6 @@ NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::tensor > );
   FVPATCHFIELD_CONSTRUCTORTOTABLE_TEMPLATE_FUNC( Type )
 %enddef
 
-
-//---------------------------------------------------------------------------
-/*%define FVPATCH_SCALAR_FIELD_ADOONS (Type)
-  __FVPATCHFIELD_TEMPLATE_OPERATOR__( Type )
-  FVPATCHFIELD_EXTENDS( Type )
-  FVPATCHFIELD_CONSTRUCTORTOTABLE_TEMPLATE_FUNC( Type )
-
-%enddef
-*/
 
 //---------------------------------------------------------------------------
 #endif
