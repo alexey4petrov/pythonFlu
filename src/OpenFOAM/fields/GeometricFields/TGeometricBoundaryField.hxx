@@ -35,7 +35,7 @@ namespace Foam
      public: 
               
        typedef typename GeometricField<Type, PatchField, GeoMesh>::GeometricBoundaryField GeomBounField;
-     
+       
      private:  
        GeomBounField& engine;
      
@@ -48,6 +48,7 @@ namespace Foam
        {
         engine.updateCoeffs();
        }
+       
        List< word > types()
        {
          return engine.types();
@@ -58,14 +59,51 @@ namespace Foam
          return engine.size();
        }
        
-       Field< Type >& operator[]( label index )
+       //this function( with the "TGEOM_BOUND_FIELD_PYTHONAPPEND_ATTR" macro)
+       // allow to use  full functional from the base classes, except __getitem__, __and__ and other's
+       FieldField< PatchField, Type >& base()
        {
-         return engine[ index ];
+          return engine;
        }
+       
   };  
 }
 
 }
+
+//--------------------------------------------------------------------------
+%define TGEOM_BOUND_FIELD_PYTHONAPPEND_ATTR( Type ) __getattr__
+%{
+    name = args[ 0 ]
+    try:
+        return _swig_getattr( self, Type, name )
+    except AttributeError:
+        if self.valid() :
+            attr = None
+            exec "attr = self.base().%s" % name
+            return attr
+        pass
+    raise AttributeError()
+%}
+%enddef
+//---------------------------------------------------------------------------
+%define TGEOM_BOUND_FIELD_EXTEND_ATTR( Type )
+    void __getattr__( const char* name ){} // dummy function
+%enddef
+
+
+//-------------------------------------------------------------------------
+//the __getitem__, as  __and__,__sub__ and other's don't work with the __getattr__
+%include "src/OpenFOAM/primitives/label.cxx"
+
+%define TGEOM_BOUND_FIELD_GETITEM_EXTEND( Type )
+    Type& __getitem__( const Foam::label theIndex )
+    {
+            return self->base()[ theIndex ];
+    }
+%enddef
+
+
 
 
 //----------------------------------------------------------------------------
