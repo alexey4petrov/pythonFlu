@@ -85,20 +85,73 @@ def readControls( runTime, mesh ):
     correctPhi = False
     from Foam.OpenFOAM import word
     if (pimple.found( word( "correctPhi" ) ) ):
-       correctPhi = Switch(pimple.lookup( word( "correctPhi" ) ) )
+       correctPhi = Switch( pimple.lookup( word( "correctPhi" ) ) )
+       pass
   
     checkMeshCourantNo = False
     if ( pimple.found( word( "checkMeshCourantNo" ) ) ):
-        checkMeshCourantNo = Switch(pimple.lookup("checkMeshCourantNo"));
+        checkMeshCourantNo = Switch( pimple.lookup( "checkMeshCourantNo" ) )
+        pass
 
     return adjustTimeStep, maxCo, maxDeltaT, pimple, nOuterCorr, nCorr, nNonOrthCorr, \
            momentumPredictor, transonic, correctPhi, checkMeshCourantNo
     
 #--------------------------------------------------------------------------------------
-def Ueqn( mesh, phi, U, p, turbulence, oCorr, nOuterCorr, momentumPredictor ):
-    from Foam import fvm, fvc
+def _correctPhi( runTime, mesh, p, rAU, phi, nNonOrthCorr, pRefCell, pRefValue, cumulativeContErr ):
+    from Foam.OpenFOAM import wordList
+    from Foam.finiteVolume import zeroGradientFvPatchScalarField
+    pcorrTypes = wordList( p.ext_boundaryField().size(), zeroGradientFvPatchScalarField.typeName )
+    
+    from Foam.finiteVolume import fixedValueFvPatchScalarField
+    for i in range( p.ext_boundaryField().size() ):
+        if p.ext_boundaryField()[i].fixesValue():
+           pcorrTypes[i] = fixedValueFvPatchScalarField.typeName
+           pass
+        pass
+    
+    from Foam.finiteVolume import volScalarField
+    from Foam.OpenFOAM import IOobject, word, fileName, dimensionedScalar
+    pcorr = volScalarField( IOobject( word( "pcorr" ),
+                                      fileName( runTime.timeName() ),
+                                      mesh(),
+                                      IOobject.NO_READ,
+                                      IOobject.NO_WRITE ),
+                            mesh(),
+                            dimensionedScalar( word( "pcorr" ), p.dimensions(), 0.0),
+                            pcorrTypes )
+     
+    for nonOrth in range( nNonOrthCorr + 1 ):
+        from Foam import fvm,fvc
+        pcorrEqn = ( fvm.laplacian( rAU, pcorr ) == fvc.div( phi ) )
 
-    pass
+        pcorrEqn.setReference(pRefCell, pRefValue)
+        pcorrEqn.solve()
+
+        if nonOrth == nNonOrthCorr:
+           phi.ext_assign( phi - pcorrEqn.flux() )
+           pass
+        pass
+    from Foam.finiteVolume.cfdTools.general.include import ContinuityErrs
+    cumulativeContErr = ContinuityErrs( phi, runTime, mesh, cumulativeContErr )     
+
+    return cumulativeContErr
+
+#--------------------------------------------------------------------------------------
+def _UEqn( mesh, phi, U, p, turbulence, ocorr, nOuterCorr, momentumPredictor ):
+    from Foam import fvm
+    UEqn = fvm.ddt(U) + fvm.div(phi, U) + turbulence.divDevReff( U ) 
+    
+    if ocorr != nOuterCorr - 1:
+       UEqn.relax()
+       pass
+    
+    if momentumPredictor:
+       from Foam.finiteVolume import solve
+       from Foam import fvc
+       solve( UEqn == -fvc.grad( p ) )
+       pass
+    
+    return UEqn
 
 
 #--------------------------------------------------------------------------------------
@@ -149,9 +202,77 @@ def main_standalone( argc, argv ):
         mesh.update()
         
         if mesh.changing() and correctPhi :
+           cumulativeContErr = _correctPhi( runTime, mesh, p, rAU, phi, nNonOrthCorr, pRefCell, pRefValue, cumulativeContErr  )
            pass
+        
+        # Make the fluxes relative to the mesh motion
+        fvc.makeRelative( phi, U )
+        
+        
+        if mesh.changing() and checkMeshCourantNo :
+           from Foam.dynamicFvMesh import meshCourantNo
+           meshCoNum, meanMeshCoNum = meshCourantNo( runTime, mesh, phi )
+           pass
+        
+        from Foam import fvm
+        #PIMPLE loop
+        for ocorr in range( nOuterCorr ):
+           if nOuterCorr != 1:
+              p.storePrevIter()
+              pass
+           UEqn = _UEqn( mesh, phi, U, p, turbulence, ocorr, nOuterCorr, momentumPredictor )
+           
+           # --- PISO loop
+           for corr in range( nCorr ):
+              rAU.ext_assign( 1.0 / UEqn.A() )
+              
+              U.ext_assign( rAU * UEqn.H() )
+              phi.ext_assign( fvc.interpolate( U ) & mesh.Sf() )
+              
+              if p.needReference() :
+                 fvc.makeRelative( phi, U )
+                 adjustPhi( phi, U, p )
+                 fvc.makeAbsolute( phi, U )
+                 pass
+              
+              for nonOrth in range( nNonOrthCorr + 1 ):
+                 pEqn = ( fvm.laplacian( rAU, p ) == fvc.div( phi ) )
+                 
+                 pEqn.setReference( pRefCell, pRefValue )
+                 
+                 if ocorr == nOuterCorr - 1 and corr == nCorr - 1 \
+                                            and nonOrth == nNonOrthCorr :
+                    from Foam.OpenFOAM import word
+                    pEqn.solve( mesh.solver( word( str( p.name() ) + "Final" ) ) )
+                    pass
+                 else:
+                    pEqn.solve( mesh.solver( p.name() ) )
+                    pass
+                    
+                 if nonOrth == nNonOrthCorr:
+                    phi.ext_assign( phi - pEqn.flux() )
+                    pass
+                 
+                 pass
+                 
+              from Foam.finiteVolume.cfdTools.general.include import ContinuityErrs
+              cumulativeContErr = ContinuityErrs( phi, runTime, mesh, cumulativeContErr )
+                 
+              # Explicitly relax pressure for momentum corrector
+              if ocorr != nOuterCorr - 1:
+                 p.relax()
+                 pass
+                 
+              # Make the fluxes relative to the mesh motion
+              fvc.makeRelative( phi, U )
+              U.ext_assign( U - rAU * fvc.grad( p ) )
+              U.correctBoundaryConditions()
+              pass
+           pass
+        
+        turbulence.correct()
 
-        runTime.write();
+        runTime.write()
         
         ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
               "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
