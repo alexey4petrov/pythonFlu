@@ -43,6 +43,19 @@ def createDynamicFvMesh( runTime ):
 
 
 #------------------------------------------------------------------------------
-
+def meshCourantNo( runTime, mesh, phi ):
+    meshCoNum = 0.0
+    meanMeshCoNum = 0.0
+    
+    if mesh.nInternalFaces():
+       SfUfbyDelta = mesh.deltaCoeffs() * mesh.phi().mag()
+       meshCoNum = (SfUfbyDelta/mesh.magSf()).ext_max().value() * runTime.deltaT().value()
+       meanMeshCoNum = ( SfUfbyDelta.sum() / mesh.magSf().sum() ).value() * runTime.deltaT().value()
+       pass
+    
+    from Foam.OpenFOAM import ext_Info, nl
+    ext_Info() << "Mesh Courant Number mean: " << meanMeshCoNum << " max: " << meshCoNum << nl << nl
+    
+    return meshCoNum, meanMeshCoNum
 #----------------------------------------------------------------------------
 
