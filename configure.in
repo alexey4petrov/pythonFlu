@@ -39,6 +39,10 @@ CONFFOAM_CHECK_OPENFOAM
 echo 
 
 echo "--------------------------------------------------------------------------------------"
+CONFFOAM_CHECK_SWIG
+echo 
+
+echo "--------------------------------------------------------------------------------------"
 CONFFOAM_CHECK_PYTHON
 echo 
 
@@ -100,7 +104,7 @@ function check_fatal_error {
 
 #--------------------------------------------------------------------------------------
 echo "---------------------------- mandatory products --------------------------------"
-summary "openfoam_ok python_ok"
+summary "openfoam_ok swig_ok python_ok"
 echo
 echo "---------------------------- optional products ---------------------------------"
 summary "extfoam_ok foam2vtk_ok unv2foam_ok boost_ok"
@@ -109,7 +113,7 @@ echo "--------------------------------- features -------------------------------
 summary "singlelib embeddedcxx"
 echo
 echo "--------------------------------------------------------------------------------"
-check_fatal_error "openfoam_ok python_ok"
+check_fatal_error "openfoam_ok swig_ok python_ok"
 
 
 #--------------------------------------------------------------------------------------
