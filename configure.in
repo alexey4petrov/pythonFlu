@@ -73,47 +73,17 @@ PYFOAM_CHECK_EMBEDDEDCXX
 echo 
 
 
-#--------------------------------------------------------------------------------------
-function summary {
-  variables=$*
-  for var in $variables
-  do
-    eval toto=\$$var
-    if test x$toto != "x"; then
-      printf "   %10s : " `echo \$var | sed -e "s,_ok,,"`
-      eval echo \$$var
-    fi
-  done
-}
-
-
-#--------------------------------------------------------------------------------------
-function check_fatal_error {
-  variables=$*
-  for var in $variables
-  do
-    eval toto=\$$var
-    if test x$toto != "xyes"; then
-        echo "FATAL ERROR: some mandatory products are missing."
-	echo "Installing the missing products is required before running the configure script".
-    	exit 1
-    fi
-  done  
-}
-
-
-#--------------------------------------------------------------------------------------
 echo "---------------------------- mandatory products --------------------------------"
-summary "openfoam_ok swig_ok python_ok"
+CONFFOAM_PRINT_SUMMURY( "openfoam_ok swig_ok python_ok" )
 echo
 echo "---------------------------- optional products ---------------------------------"
-summary "extfoam_ok foam2vtk_ok unv2foam_ok boost_ok"
+CONFFOAM_PRINT_SUMMURY( "extfoam_ok foam2vtk_ok unv2foam_ok boost_ok" )
 echo
 echo "--------------------------------- features -------------------------------------"
-summary "singlelib embeddedcxx"
+CONFFOAM_PRINT_SUMMURY( "singlelib embeddedcxx" )
 echo
 echo "--------------------------------------------------------------------------------"
-check_fatal_error "openfoam_ok swig_ok python_ok"
+CONFFOAM_CHECK_MANDATORY( "openfoam_ok swig_ok python_ok" )
 
 
 #--------------------------------------------------------------------------------------
