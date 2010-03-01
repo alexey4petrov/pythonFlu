@@ -19,50 +19,19 @@
 
 
 //---------------------------------------------------------------------------
-#if ( "@USE_SINGLE_LIB@" == "no" )
-%include "src/common.hxx"
-#define pyfoam_cxx
-#endif
+#ifndef finiteVolume_director_hxx
+#define finiteVolume_director_hxx
 
 
 //---------------------------------------------------------------------------
-#ifndef pyfoam_cxx
-#define pyfoam_cxx
+%include "src/director.hxx"
 
-
-//---------------------------------------------------------------------------
-//It is necessary to include "director's" classes above first DIRECTOR_INCLUDE 
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "Foam/OpenFOAM/OpenFOAM_.cxx"
-
-%include "Foam/meshTools/meshTools_.cxx"
-
-%include "Foam/finiteVolume/finiteVolume_.cxx"
-
-%include "Foam/fvc/fvc_.cxx"
-
-%include "Foam/fvm/fvm_.cxx"
-
-%include "Foam/sampling/sampling.cxx"
-
-%include "Foam/dynamicFvMesh/dynamicFvMesh_.cxx"
-
-%include "Foam/thermophysicalModels/thermophysicalModels_.cxx"
-
-%include "Foam/radiation/radiation_.cxx"
-
-%include "Foam/transportModels/transportModels_.cxx"
-
-%include "Foam/compressible/compressible_.cxx"
-
-%include "Foam/incompressible/incompressible_.cxx"
-
+%{
+   #include "fvPatchField.H"
+   #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hxx"
+   #include "mixedFvPatchField.H"
+   #include "fixedGradientFvPatchField.H"   
+%}
 
 //---------------------------------------------------------------------------
 #endif

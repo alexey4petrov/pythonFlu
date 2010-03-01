@@ -24,6 +24,11 @@
 
 
 //---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/OpenFOAM/directors.hxx"
+
+
+//---------------------------------------------------------------------------
 %include "src/OpenFOAM/db/IOobject.cxx"
 
 %{

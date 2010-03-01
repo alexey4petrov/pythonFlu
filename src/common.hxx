@@ -24,10 +24,6 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) pyfoam;
-
-
-//---------------------------------------------------------------------------
 %{
   namespace Foam
   {}
@@ -46,62 +42,6 @@
   #include "OStringStream.H"
   #include <stdio.h>
 %}
-
-
-//---------------------------------------------------------------------------
-%feature( "director:except" ) 
-{
-  if ( $error != NULL ) {
-    //PyErr_Print();
-    Foam::error::printStack( Foam::Info );
-    Swig::DirectorMethodException::raise("Error detected when calling director's method");
-  }
-}
-
-
-//---------------------------------------------------------------------------
-%define DIRECTOR_EXTENDS( Typename )
-  static const Foam::Typename&
-  ext_lookupObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
-  {
-    const Foam::Typename& res = theRegistry.lookupObject< Foam::Typename >( theName );
-    
-    if ( const SwigDirector_##Typename* director = dynamic_cast< const SwigDirector_##Typename* >( &res ) )
-      return *director;
-
-    return res;
-  }
-%enddef
-
-
-//--------------------------------------------------------------------------
-%define DIRECTOR_PRE_EXTENDS( Typename )
-
-%{
-   #include "Time.H"
-   #include "regIOobject.H"
-   #include "IOdictionary.H"
-
-   #include "fvPatchField.H"
-   #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hxx"
-   #include "mixedFvPatchField.H"
-   #include "fixedGradientFvPatchField.H"   
-
-   #include DIRECTOR_INCLUDE
-%}
-
-%typemap( out ) Foam::Typename&
-{
-  Swig::Director *director = SWIG_DIRECTOR_CAST( $1 );
-  if ( Swig::Director *director = SWIG_DIRECTOR_CAST( $1 ) ) {
-    $result = director->swig_get_self();
-    Py_INCREF( $result );
-  } else {
-    $result = SWIG_NewPointerObj( SWIG_as_voidptr( $1 ), $1_descriptor, 0 |  0 );
-  }
-}
-
-%enddef
 
 
 //---------------------------------------------------------------------------
@@ -208,30 +148,6 @@
   PyErr_SetString( PyExc_StopIteration, "out of range" );
   SWIG_fail;
 %}
-
-
-//---------------------------------------------------------------------------
-//For using tmp<T> & autoPtr<T> as T
-%define TMP_PYTHONAPPEND_ATTR( Type ) __getattr__
-%{
-    name = args[ 0 ]
-    try:
-        return _swig_getattr( self, Type, name )
-    except AttributeError:
-        if self.valid() :
-            attr = None
-            exec "attr = self.__call__().%s" % name
-            return attr
-        pass
-    raise AttributeError()
-%}
-%enddef
-
-
-//---------------------------------------------------------------------------
-%define TMP_EXTEND_ATTR( Type )
-    void __getattr__( const char* name ){} // dummy function
-%enddef
 
 
 //---------------------------------------------------------------------------
