@@ -42,11 +42,11 @@
 
 
 //---------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::tmp< Foam::fvMatrix< Foam::scalar > >::TMP_PYTHONAPPEND_ATTR( tmp_fvScalarMatrix );
+%feature( "pythonappend" ) Foam::tmp< Foam::fvMatrix< Foam::scalar > >::SMARTPTR_PYAPPEND_GETATTR( tmp_fvScalarMatrix );
 
 %extend Foam::tmp< Foam::fvMatrix< Foam::scalar > >
 {
-    TMP_EXTEND_ATTR( tmp_fvScalarMatrix )
+    SMARTPTR_EXTEND_ATTR( tmp_fvScalarMatrix )
 }
 
 

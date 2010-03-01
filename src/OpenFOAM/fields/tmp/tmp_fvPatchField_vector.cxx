@@ -46,11 +46,11 @@ TMP_TYPEMAP( Foam::fvPatchField< Foam::vector > )
 
 
 //----------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::tmp< Foam::fvPatchField< Foam::vector > >::TMP_PYTHONAPPEND_ATTR( tmp_fvPatchField_vector );
+%feature( "pythonappend" ) Foam::tmp< Foam::fvPatchField< Foam::vector > >::SMARTPTR_PYAPPEND_GETATTR( tmp_fvPatchField_vector );
 
 %extend Foam::tmp< Foam::fvPatchField< Foam::vector > >
 {
-  TMP_EXTEND_ATTR( tmp_fvPatchField_vector )
+  SMARTPTR_EXTEND_ATTR( tmp_fvPatchField_vector )
   
   Foam::tmp< Foam::fvPatchField< Foam::vector > >( const  Foam::tmp< Foam::fvPatchField< Foam::vector > >&  theArg ) 
   {

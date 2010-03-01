@@ -55,11 +55,11 @@ AUTOPTR_TYPEMAP( Foam::incompressible::LESModel )
 
 
 //------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::incompressible::LESModel >::TMP_PYTHONAPPEND_ATTR( autoPtr_incompressible_LESModel );
+%feature( "pythonappend" ) Foam::autoPtr< Foam::incompressible::LESModel >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_incompressible_LESModel );
 
 %extend Foam::autoPtr< Foam::incompressible::LESModel >
 {
-  TMP_EXTEND_ATTR( autoPtr_incompressible_LESModel )
+  SMARTPTR_EXTEND_ATTR( autoPtr_incompressible_LESModel )
 }
 
 

@@ -43,11 +43,11 @@
 }
 
 //---------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > >::TMP_PYTHONAPPEND_ATTR( tmp_volVectorField );
+%feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > >::SMARTPTR_PYAPPEND_GETATTR( tmp_volVectorField );
 
 %extend Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > >
 {
-    TMP_EXTEND_ATTR( tmp_volVectorField )
+    SMARTPTR_EXTEND_ATTR( tmp_volVectorField )
 }
 
 //---------------------------------------------------------------------------

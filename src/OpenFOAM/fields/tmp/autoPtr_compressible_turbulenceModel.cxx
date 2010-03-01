@@ -46,11 +46,11 @@ AUTOPTR_TYPEMAP( Foam::compressible::turbulenceModel )
 
 
 //------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::compressible::turbulenceModel >::TMP_PYTHONAPPEND_ATTR( autoPtr_compressible_turbulenceModel );
+%feature( "pythonappend" ) Foam::autoPtr< Foam::compressible::turbulenceModel >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_compressible_turbulenceModel );
 
 %extend Foam::autoPtr< Foam::compressible::turbulenceModel >
 {
-  TMP_EXTEND_ATTR( autoPtr_compressible_turbulenceModel )
+  SMARTPTR_EXTEND_ATTR( autoPtr_compressible_turbulenceModel )
 }
 
 

@@ -26,6 +26,8 @@
 //---------------------------------------------------------------------------
 %include "src/common.hxx"
 
+%include "src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
+
 %include "autoPtr.H"
 
 %{

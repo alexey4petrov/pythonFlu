@@ -42,11 +42,11 @@
 
 
 //----------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::scalar > >::TMP_PYTHONAPPEND_ATTR( tmp_scalarField );
+%feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::scalar > >::SMARTPTR_PYAPPEND_GETATTR( tmp_scalarField );
 
 %extend Foam::tmp< Foam::Field< Foam::scalar > >
 {
-    TMP_EXTEND_ATTR( tmp_scalarField )
+    SMARTPTR_EXTEND_ATTR( tmp_scalarField )
 }
 
 

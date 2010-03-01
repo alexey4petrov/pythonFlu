@@ -28,6 +28,8 @@
 
 %include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
+%include "src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
+
 %{
     #include "tmp.H"
 %}

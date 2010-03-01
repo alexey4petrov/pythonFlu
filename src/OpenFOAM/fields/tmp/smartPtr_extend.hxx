@@ -19,46 +19,35 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ < 010600 )
-#define autoPtr_basicPsiThermo_cxx
-%include "src/common.hxx"
-#endif
+#ifndef smartPtr_extend_hxx
+#define smartPtr_extend_hxx
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_basicPsiThermo_cxx
-#define autoPtr_basicPsiThermo_cxx
+//For using tmp<T> & autoPtr<T> as T
+%define SMARTPTR_PYAPPEND_GETATTR( Type ) __getattr__
+%{
+    name = args[ 0 ]
+    try:
+        return _swig_getattr( self, Type, name )
+    except AttributeError:
+        if self.valid() :
+            attr = None
+            exec "attr = self.__call__().%s" % name
+            return attr
+        pass
+    raise AttributeError()
+%}
+%enddef
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx"
-
-
-//---------------------------------------------------------------------------
-AUTOPTR_TYPEMAP( Foam::basicPsiThermo )
-
-%ignore Foam::autoPtr< Foam::basicPsiThermo >::operator->;
-
-%template( autoPtr_basicPsiThermo ) Foam::autoPtr< Foam::basicPsiThermo >;
-
-%inline
-{
-  namespace Foam
-  {
-    typedef autoPtr< basicPsiThermo > autoPtr_basicPsiThermo;
-  }
-}
+%define SMARTPTR_EXTEND_ATTR( Type )
+    void __getattr__( const char* name ){} // dummy function
+%enddef
 
 
-//------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::basicPsiThermo >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_basicPsiThermo );
 
-%extend Foam::autoPtr< Foam::basicPsiThermo >
-{
-  SMARTPTR_EXTEND_ATTR( autoPtr_basicPsiThermo )
-}
 
 //---------------------------------------------------------------------------
 #endif

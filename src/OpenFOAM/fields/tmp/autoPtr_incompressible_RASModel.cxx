@@ -54,11 +54,11 @@ AUTOPTR_TYPEMAP( Foam::incompressible::RASModel )
 
 
 //------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::incompressible::RASModel >::TMP_PYTHONAPPEND_ATTR( autoPtr_incompressible_RASModel );
+%feature( "pythonappend" ) Foam::autoPtr< Foam::incompressible::RASModel >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_incompressible_RASModel );
 
 %extend Foam::autoPtr< Foam::incompressible::RASModel >
 {
-  TMP_EXTEND_ATTR( autoPtr_incompressible_RASModel )
+  SMARTPTR_EXTEND_ATTR( autoPtr_incompressible_RASModel )
 }
 
 //---------------------------------------------------------------------------

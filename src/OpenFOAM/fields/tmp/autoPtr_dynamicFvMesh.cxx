@@ -46,11 +46,11 @@ AUTOPTR_TYPEMAP( Foam::dynamicFvMesh )
 
 
 //------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::dynamicFvMesh >::TMP_PYTHONAPPEND_ATTR( autoPtr_dynamicFvMesh );
+%feature( "pythonappend" ) Foam::autoPtr< Foam::dynamicFvMesh >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_dynamicFvMesh );
 
 %extend Foam::autoPtr< Foam::dynamicFvMesh >
 {
-  TMP_EXTEND_ATTR( autoPtr_dynamicFevMesh )
+  SMARTPTR_EXTEND_ATTR( autoPtr_dynamicFevMesh )
 }
 
 

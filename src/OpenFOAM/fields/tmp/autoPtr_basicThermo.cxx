@@ -44,11 +44,11 @@
 
 
 //------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::basicThermo >::TMP_PYTHONAPPEND_ATTR( autoPtr_basicThermo );
+%feature( "pythonappend" ) Foam::autoPtr< Foam::basicThermo >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_basicThermo );
 
 %extend Foam::autoPtr< Foam::basicThermo >
 {
-  TMP_EXTEND_ATTR( autoPtr_basicThermo )
+  SMARTPTR_EXTEND_ATTR( autoPtr_basicThermo )
 }
 
 //---------------------------------------------------------------------------

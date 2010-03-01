@@ -42,11 +42,11 @@
 
 
 //---------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::tensor > >::TMP_PYTHONAPPEND_ATTR( tmp_tensorField );
+%feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::tensor > >::SMARTPTR_PYAPPEND_GETATTR( tmp_tensorField );
 
 %extend Foam::tmp< Foam::Field< Foam::tensor > >
 {
-    TMP_EXTEND_ATTR( tmp_tensorField )
+    SMARTPTR_EXTEND_ATTR( tmp_tensorField )
 }
 
 //---------------------------------------------------------------------------

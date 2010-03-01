@@ -44,11 +44,11 @@
 
 
 //---------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh > >::TMP_PYTHONAPPEND_ATTR( tmp_volScalarField );
+%feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh > >::SMARTPTR_PYAPPEND_GETATTR( tmp_volScalarField );
 
 %extend Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh > >
 {
-    TMP_EXTEND_ATTR( tmp_volScalarField )
+    SMARTPTR_EXTEND_ATTR( tmp_volScalarField )
     
     bool operator==( const Foam::UList< Foam::scalar >& theArg )
     {

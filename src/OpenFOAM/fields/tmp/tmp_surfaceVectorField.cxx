@@ -42,12 +42,12 @@
 
 
 //-----------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh > >::TMP_PYTHONAPPEND_ATTR( tmp_surfaceVectorField );
+%feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh > >::SMARTPTR_PYAPPEND_GETATTR( tmp_surfaceVectorField );
 
 
 %extend Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh > >
 {
-    TMP_EXTEND_ATTR( tmp_surfaceVectorField )    
+    SMARTPTR_EXTEND_ATTR( tmp_surfaceVectorField )    
 }
 
 //---------------------------------------------------------------------------

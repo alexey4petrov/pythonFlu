@@ -55,11 +55,11 @@ AUTOPTR_TYPEMAP( Foam::radiation::radiationModel )
 
 
 //------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::radiation::radiationModel >::TMP_PYTHONAPPEND_ATTR( autoPtr_radiationModel );
+%feature( "pythonappend" ) Foam::autoPtr< Foam::radiation::radiationModel >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_radiationModel );
 
 %extend Foam::autoPtr< Foam::radiation::radiationModel >
 {
-  TMP_EXTEND_ATTR( autoPtr_radiationModel )
+  SMARTPTR_EXTEND_ATTR( autoPtr_radiationModel )
 }
 
 //---------------------------------------------------------------------------
