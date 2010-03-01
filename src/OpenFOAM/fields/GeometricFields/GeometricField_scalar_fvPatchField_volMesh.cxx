@@ -44,11 +44,11 @@
 
 %template ( TGeometricBoundaryField_scalar_fvPatchField_volMesh ) Foam::TGeometricBoundaryField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >;
 
-%feature( "pythonappend" ) Foam::TGeometricBoundaryField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >::TGEOM_BOUND_FIELD_PYTHONAPPEND_ATTR( TGeometricBoundaryField_scalar_fvPatchField_volMesh );
+%feature( "pythonappend" ) Foam::TGeometricBoundaryField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >::NESTEDCLASS_PYAPPEND_GETATTR( TGeometricBoundaryField_scalar_fvPatchField_volMesh );
 
 %extend Foam::TGeometricBoundaryField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >
 {
-    TGEOM_BOUND_FIELD_EXTEND_ATTR( TGeometricBoundaryField_scalar_fvPatchField_volMesh )
+    NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_scalar_fvPatchField_volMesh )
     TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvPatchScalarField )
 }
 

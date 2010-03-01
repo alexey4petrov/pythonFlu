@@ -22,6 +22,7 @@
 #ifndef TGeometricBoundaryField_hxx
 #define TGeometricBoundaryField_hxx
 
+%include "src/nestedClass_extend.hxx"
 
 %inline
 {
@@ -54,12 +55,7 @@ namespace Foam
          return engine.types();
        }
        
-       label size()
-       {
-         return engine.size();
-       }
-       
-       //this function( with the "TGEOM_BOUND_FIELD_PYTHONAPPEND_ATTR" macro)
+        //this function( with the "NESTEDCLASS_PYAPPEND_GETATTR" macro)
        // allow to use  full functional from the base classes, except __getitem__, __and__ and other's
        FieldField< PatchField, Type >& base()
        {
@@ -70,27 +66,6 @@ namespace Foam
 }
 
 }
-
-//--------------------------------------------------------------------------
-%define TGEOM_BOUND_FIELD_PYTHONAPPEND_ATTR( Type ) __getattr__
-%{
-    name = args[ 0 ]
-    try:
-        return _swig_getattr( self, Type, name )
-    except AttributeError:
-        if self.valid() :
-            attr = None
-            exec "attr = self.base().%s" % name
-            return attr
-        pass
-    raise AttributeError()
-%}
-%enddef
-//---------------------------------------------------------------------------
-%define TGEOM_BOUND_FIELD_EXTEND_ATTR( Type )
-    void __getattr__( const char* name ){} // dummy function
-%enddef
-
 
 //-------------------------------------------------------------------------
 //the __getitem__, as  __and__,__sub__ and other's don't work with the __getattr__
