@@ -26,6 +26,8 @@
 //---------------------------------------------------------------------------
 %include "src/director.hxx"
 
+%include "src/OpenFOAM/directors.hxx"
+
 %{
    #include "fvPatchField.H"
    #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hxx"
