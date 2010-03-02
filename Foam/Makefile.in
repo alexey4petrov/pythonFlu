@@ -31,7 +31,7 @@ ifneq "@USE_SINGLE_LIB@xx" "yesxx"
 
 include $(pyfoam_root_dir)/include.makefile
 
-SUBDIRS = OpenFOAM meshTools finiteVolume fvc fvm sampling dynamicFvMesh thermophysicalModels radiation incompressible compressible applications
+SUBDIRS = OpenFOAM meshTools finiteVolume fvc fvm sampling dynamicFvMesh thermophysicalModels transportModels radiation incompressible compressible applications
 
 #--------------------------------------------------------------------------------------
 else
