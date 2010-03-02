@@ -22,6 +22,10 @@
 #ifndef meshTools_cxx
 #define meshTools_cxx
 
+//---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/OpenFOAM/directors.hxx"
+
 
 //---------------------------------------------------------------------------
 %include "src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.cxx"
