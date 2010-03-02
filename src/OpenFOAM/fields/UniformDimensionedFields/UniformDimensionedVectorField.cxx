@@ -35,8 +35,6 @@
 
 %include "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cxx"
-
 %ignore Foam::UniformDimensionedField< Foam::vector >::typeName;
 %ignore Foam::UniformDimensionedField< Foam::vector >::debug;
 
@@ -51,6 +49,10 @@
 }
 
 
+//--------------------------------------------------------------------------
+%include "src/try_reverce.hxx"
+
+%feature ("pythonprepend") Foam::UniformDimensionedField< Foam::vector >::TRY_REVERSE_PYPREPEND( and )
 
 %extend Foam::UniformDimensionedField< Foam::vector >
 {
@@ -58,13 +60,8 @@
   {
     return new Foam::UniformDimensionedField< Foam::vector >( io );
   }
-
-  Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > >__and__
-           ( const Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >& theArg )
-  {
-    return *self & theArg;
-  }
   
+  TRY_REVERCE_EXTEND( and )
 }
 
 //---------------------------------------------------------------------------
