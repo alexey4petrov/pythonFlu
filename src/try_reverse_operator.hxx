@@ -32,7 +32,7 @@
 %}  
 %enddef
 
-%define TRY_REVERCE_EXTEND( Name )
+%define TRY_REVERSE_EXTEND( Name )
 
  void __##Name##__( int theArg ) {}
  

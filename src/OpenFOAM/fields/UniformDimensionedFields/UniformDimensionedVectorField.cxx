@@ -61,7 +61,7 @@
     return new Foam::UniformDimensionedField< Foam::vector >( io );
   }
   
-  TRY_REVERCE_EXTEND( and )
+  TRY_REVERSE_EXTEND( and )
 }
 
 //---------------------------------------------------------------------------
