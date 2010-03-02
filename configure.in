@@ -23,7 +23,6 @@
 # Process this file with autoconf to produce a configure script
 #--------------------------------------------------------------------------------------
 #AC_PREREQ(2.59)
-#
 AC_INIT([pyFoam Project], [7.3], [alexey.petrov.nnov@gmail.com], [pyfoam])
 
 # AC_CONFIG_AUX_DIR defines an alternative directory where to find the auxiliary
@@ -59,7 +58,7 @@ CONFFOAM_CHECK_UNV2FOAM
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_BOOST
+CONFFOAM_CHECK_BOOST_SHARED_PTR
 echo 
 
 
@@ -77,7 +76,7 @@ echo "---------------------------- mandatory products --------------------------
 CONFFOAM_PRINT_SUMMURY( "openfoam_ok swig_ok python_ok" )
 echo
 echo "---------------------------- optional products ---------------------------------"
-CONFFOAM_PRINT_SUMMURY( "extfoam_ok foam2vtk_ok unv2foam_ok boost_ok" )
+CONFFOAM_PRINT_SUMMURY( "extfoam_ok foam2vtk_ok unv2foam_ok boost_shared_ptr_ok" )
 echo
 echo "--------------------------------- features -------------------------------------"
 CONFFOAM_PRINT_SUMMURY( "singlelib embeddedcxx" )
