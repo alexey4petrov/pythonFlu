@@ -24,6 +24,11 @@
 
 
 //---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
 %include "src/finiteVolume/finiteVolume/fvm/fvmDdt.cxx"
 %include "src/finiteVolume/finiteVolume/fvm/fvmD2dt2.cxx"
 %include "src/finiteVolume/finiteVolume/fvm/fvmDiv.cxx"

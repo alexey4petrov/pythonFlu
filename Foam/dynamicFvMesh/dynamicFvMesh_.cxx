@@ -22,6 +22,13 @@
 #ifndef dynamicFvMesh__cxx
 #define dynamicFvMesh__cxx
 
+
+//---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
 %include "src/dynamicFvMesh/dynamicFvMesh.cxx"
 
 %include "src/OpenFOAM/fields/tmp/autoPtr_dynamicFvMesh.cxx"

@@ -24,6 +24,11 @@
 
 
 //---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
 %include "src/thermophysicalModels/radiation/radiationModel/radiationModel.cxx"
 %include "src/OpenFOAM/fields/tmp/autoPtr_radiationModel.cxx"
 
