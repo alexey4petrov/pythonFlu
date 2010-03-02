@@ -50,7 +50,7 @@
 
 
 //--------------------------------------------------------------------------
-%include "src/try_reverce_operator.hxx"
+%include "src/try_reverse_operator.hxx"
 
 %feature ("pythonprepend") Foam::UniformDimensionedField< Foam::vector >::TRY_REVERSE_PYPREPEND( and )
 
