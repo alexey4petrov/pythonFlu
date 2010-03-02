@@ -49,6 +49,10 @@ fvPatchTensorField = fvPatchField_tensor
 #---------------------------------------------------------------------------
 zeroGradientFvPatchScalarField = zeroGradientFvPatchField_scalar
 
+zeroGradientFvPatchVectorField = zeroGradientFvPatchField_vector
+
+zeroGradientFvPatchTensorField = zeroGradientFvPatchField_tensor
+
 
 #----------------------------------------------------------------------------
 def continuityErrs( mesh, phi, runTime, cumulativeContErr ):
