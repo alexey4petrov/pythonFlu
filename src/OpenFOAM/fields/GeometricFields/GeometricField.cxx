@@ -251,6 +251,7 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::scalar, TPatchField, TMesh )
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
+%include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.cxx"
 %define __VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
 {
     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __and__( const Foam::GeometricField< Foam::vector, TPatchField, TMesh >& theArg )
@@ -270,7 +271,10 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::scalar, TPatchField, TMesh )
     {
         return theArg & get_ref( self );
     }
-   
+     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > >__rand__( const Foam::UniformDimensionedField< Foam::vector >& theArg )
+    {
+        return theArg & *self;
+    }
 }
 %enddef
 
