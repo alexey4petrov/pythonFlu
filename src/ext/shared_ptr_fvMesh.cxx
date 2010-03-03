@@ -22,6 +22,10 @@
 #ifndef shared_ptr_fvMesh_cxx
 #define shared_ptr_fvMesh_cxx
 
+//---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
 
 //---------------------------------------------------------------------------
 %include "src/ext/shared_ptr.hxx"
