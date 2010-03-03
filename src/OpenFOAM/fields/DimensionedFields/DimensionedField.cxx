@@ -110,6 +110,7 @@ NO_TMP_TYPEMAP_DIMENSIONED_FIELD( Foam::Type, Foam::TMesh );
     *self = theArg;
   }
   
+  ISINSTANCE_TEMPLATE_2_EXTEND( DimensionedField, Foam::Type, Foam::TMesh )
 }
 
 %include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"

@@ -44,12 +44,6 @@ DIMENSIONED_FIELD_TEMPLATE_FUNC( scalar, volMesh )
 //---------------------------------------------------------------------------
 %template( DimensionedField_scalar_volMesh ) Foam::DimensionedField< Foam::scalar, Foam::volMesh >;
 
-%extend Foam::DimensionedField< Foam::scalar, Foam::volMesh >
-{
-   ISINSTANCE_TEMPLATE_2_EXTEND( DimensionedField, Foam::scalar, Foam::volMesh )
-}
-
-
 
 //---------------------------------------------------------------------------
 
