@@ -29,6 +29,10 @@
 #ifndef radiationModel_cxx
 #define radiationModel_cxx
 
+//---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/db/IOdictionary.cxx"
