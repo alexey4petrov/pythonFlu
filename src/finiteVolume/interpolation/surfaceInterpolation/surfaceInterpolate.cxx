@@ -4,6 +4,11 @@
 
 
 //---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
 %include "src/finiteVolume/fields/volFields/volFields.cxx"
 
 %include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
