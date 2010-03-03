@@ -22,6 +22,10 @@
 #ifndef fvBoundaryMesh_cxx
 #define fvBoundaryMesh_cxx
 
+//---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
 
 //---------------------------------------------------------------------------
 %include "src/finiteVolume/fvMesh/fvPatches/fvPatchList.cxx"
