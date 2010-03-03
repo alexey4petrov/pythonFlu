@@ -22,6 +22,10 @@
 #ifndef fvPatchField_scalar_cxx
 #define fvPatchField_scalar_cxx
 
+//---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/Fields/scalarField.cxx"
