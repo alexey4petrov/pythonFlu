@@ -29,6 +29,12 @@
 #ifndef compressibleRASModel_cxx
 #define compressibleRASModel_cxx
 
+//---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
+
+//----------------------------------------------------------------------------
 %include "src/turbulenceModels/compressible/turbulenceModel.cxx"
 
 %include "src/finiteVolume/fields/volFields/volFields.cxx"
