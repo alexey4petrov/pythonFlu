@@ -24,6 +24,14 @@
 
 
 //---------------------------------------------------------------------------
+// Keep on corresponding "director" includes at the top of SWIG defintion file
+
+%include "src/OpenFOAM/directors.hxx"
+
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
 %include "ext/common/OpenFOAM/shared_ptr/shared_ptr_dimensionedScalar.cxx"
 %include "ext/common/OpenFOAM/shared_ptr/shared_ptr_IOdictionary.cxx"
 %include "ext/common/OpenFOAM/shared_ptr/shared_ptr_Time.cxx"
