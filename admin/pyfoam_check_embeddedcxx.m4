@@ -28,8 +28,8 @@ AC_SUBST(COMPILE_EMBEDDED_CXX)
 AC_ARG_ENABLE( [embeddedcxx],
                AC_HELP_STRING( [--enable-embeddedcxx ],
 		               [ enable compilation of embedded C++ libraries ( disabled by default ) ]),
-               [ COMPILE_EMBEDDED_CXX=$enableval ],
-	       [ COMPILE_EMBEDDED_CXX=no ] )
+               [ COMPILE_EMBEDDED_CXX=${enableval} ],
+	       [ COMPILE_EMBEDDED_CXX="yes" ] )
 
 embeddedcxx=$COMPILE_EMBEDDED_CXX
 
