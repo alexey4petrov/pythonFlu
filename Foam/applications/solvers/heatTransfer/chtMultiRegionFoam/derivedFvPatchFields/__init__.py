@@ -73,13 +73,17 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
             raise AssertionError( "len( args ) != 2" )
         argc = 0
 
-        from Foam.OpenFOAM import fvPatch
-        if args[ argc ].__class__ != fvPatch :
+        from Foam.finiteVolume import fvPatch
+        try:
+            fvPatch.ext_isinstance( args[ argc ] )
+        except TypeError:
             raise AssertionError( "args[ argc ].__class__ != fvPatch" )
         p = args[ argc ]; argc += 1
         
-        from Foam.OpenFOAM import DimensionedField_scalar_volMesh
-        if args[ argc ].__class__ != DimensionedField_scalar_volMesh :
+        from Foam.finiteVolume import DimensionedField_scalar_volMesh
+        try:
+            DimensionedField_scalar_volMesh.ext_isinstance( args[ argc ] )
+        except TypeError:
             raise AssertionError( "args[ argc ].__class__ != DimensionedField_scalar_volMesh" )
         iF = args[ argc ]; argc += 1
         
@@ -102,18 +106,24 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
             raise AssertionError( "len( args ) != 3" )
         argc = 0
         
-        from Foam.OpenFOAM import fvPatch
-        if args[ argc ].__class__ != fvPatch :
+        from Foam.finiteVolume import fvPatch        
+        try:
+            fvPatch.ext_isinstance( args[ argc ] )
+        except TypeError:
             raise AssertionError( "args[ argc ].__class__ != fvPatch" )
         p = args[ argc ]; argc += 1
-
-        from Foam.OpenFOAM import DimensionedField_scalar_volMesh
-        if args[ argc ].__class__ != DimensionedField_scalar_volMesh :
+        
+        from Foam.finiteVolume import DimensionedField_scalar_volMesh
+        try:
+            DimensionedField_scalar_volMesh.ext_isinstance( args[ argc ] )
+        except TypeError:
             raise AssertionError( "args[ argc ].__class__ != DimensionedField_scalar_volMesh" )
         iF = args[ argc ]; argc += 1
         
         from Foam.OpenFOAM import dictionary
-        if args[ argc ].__class__ != dictionary :
+        try:
+            dictionary.ext_isinstance( args[ argc ] )
+        except TypeError:
             raise AssertionError( "args[ argc ].__class__ != dictionary" )
         dict_ = args[ argc ]; argc += 1
         
@@ -153,8 +163,10 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
             raise AssertionError( "args[ argc ].__class__ != self.__class__" )
         wtcsf = args[ argc ]; argc += 1
         
-        from Foam.OpenFOAM import DimensionedField_scalar_volMesh
-        if args[ argc ].__class__ != DimensionedField_scalar_volMesh :
+        from Foam.finiteVolume import DimensionedField_scalar_volMesh        
+        try:
+            DimensionedField_scalar_volMesh.ext_isinstance( args[ argc ] )
+        except TypeError:
             raise AssertionError( "args[ argc ].__class__ != DimensionedField_scalar_volMesh" )
         iF = args[ argc ]; argc += 1
 
@@ -220,9 +232,11 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
             raise AssertionError( "len( args ) != 1" )
         argc = 0
 
-        from Foam.OpenFOAM import DimensionedField_scalar_volMesh
-        if args[ argc ].__class__ != DimensionedField_scalar_volMesh :
-            return AssertionError( "args[ argc ].__class__ != DimensionedField_scalar_volMesh" )
+        from Foam.finiteVolume import DimensionedField_scalar_volMesh
+        try:
+            DimensionedField_scalar_volMesh.ext_isinstance( args[ argc ] )
+        except TypeError:
+            raise AssertionError( "args[ argc ].__class__ != DimensionedField_scalar_volMesh" )
         iF = args[ argc ]; argc += 1
 
         from Foam.finiteVolume import tmp_fvPatchField_scalar

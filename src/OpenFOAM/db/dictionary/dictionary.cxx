@@ -67,6 +67,8 @@
   {
     self->add< tokenList >( keyword, value );
   }
+  
+  ISINSTANCE_EXTEND( Foam::dictionary ) 
 
 #if ( __FOAM_VERSION__ >= 010600 )
   void add( const Foam::word& keyword, const Foam::word& value, bool overwrite = false )

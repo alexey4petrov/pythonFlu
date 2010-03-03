@@ -24,6 +24,11 @@
 
 
 //---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
+
+//----------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
 
 %include "src/OpenFOAM/fields/Fields/scalarField.cxx"
@@ -38,6 +43,12 @@ DIMENSIONED_FIELD_TEMPLATE_FUNC( scalar, volMesh )
 
 //---------------------------------------------------------------------------
 %template( DimensionedField_scalar_volMesh ) Foam::DimensionedField< Foam::scalar, Foam::volMesh >;
+
+%extend Foam::DimensionedField< Foam::scalar, Foam::volMesh >
+{
+   ISINSTANCE_TEMPLATE_2_EXTEND( DimensionedField, Foam::scalar, Foam::volMesh )
+}
+
 
 
 //---------------------------------------------------------------------------

@@ -26,6 +26,8 @@
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
+%include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
+
 %{
     #include "fvPatch.H"
 %}
@@ -34,6 +36,10 @@
 
 //%extend Foam::fvPatch COMMON_EXTENDS;
 
+%extend Foam::fvPatch 
+{
+ ISINSTANCE_EXTEND( Foam::fvPatch ) 
+}
 
 //---------------------------------------------------------------------------
 #endif
