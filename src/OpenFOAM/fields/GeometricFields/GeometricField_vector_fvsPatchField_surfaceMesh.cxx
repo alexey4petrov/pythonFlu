@@ -24,6 +24,11 @@
 
 
 //---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
 %include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
 %include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_surfaceMesh.cxx"

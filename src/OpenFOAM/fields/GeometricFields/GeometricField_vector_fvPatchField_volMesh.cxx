@@ -22,6 +22,10 @@
 #ifndef GeometricField_vector_fvPatchField_volMesh_cxx
 #define GeometricField_vector_fvPatchField_volMesh_cxx
 
+//---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
