@@ -26,7 +26,7 @@ source /opt/conffoam/r0.1/bashrc
 #--------------------------------------------------------------------------------------
 which_open_foam="1.6"
 
-source /opt/OpenFOAM/r${which_open_foam}/debug/bashrc
+source_openfoam /opt/OpenFOAM/r${which_open_foam}/debug/bashrc
 
 #if [ "${which_open_foam}" == "1.4.1-dev" ]; then
 #    source /opt/diffusionFoam/r1.3/OpenFOAM-${which_open_foam}/bashrc 
@@ -34,7 +34,7 @@ source /opt/OpenFOAM/r${which_open_foam}/debug/bashrc
 #    source /opt/thermalFoam/r0.2/OpenFOAM-${which_open_foam}/bashrc 
 #fi
 
-source /opt/SALOME/r5.1.3/r1.0/from_sources/bashrc
+source_salome /opt/SALOME/r5.1.3/r1.0/from_sources/bashrc
 
 source /opt/unv2foam/r0.3/OpenFOAM-${which_open_foam}/bashrc 
 
