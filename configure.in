@@ -86,7 +86,8 @@ CONFFOAM_CHECK_MANDATORY( "openfoam_ok swig_ok python_ok" )
 
 
 #--------------------------------------------------------------------------------------
-AC_OUTPUT( [ Makefile \
+AC_OUTPUT( [ bashrc \
+	     Makefile \
 	     include.makefile \
 	     foam.version.makefile \
 	     Foam/__init__.py \
