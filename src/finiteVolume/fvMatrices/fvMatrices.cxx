@@ -24,6 +24,11 @@
 
 
 //---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
 %include "src/finiteVolume/fvMatrices/fvScalarMatrix.cxx"
 
 %include "src/finiteVolume/fvMatrices/fvVectorMatrix.cxx"
