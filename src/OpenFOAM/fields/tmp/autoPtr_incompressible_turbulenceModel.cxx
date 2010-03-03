@@ -22,6 +22,10 @@
 #ifndef autoPtr_incompressible_turbulenceModel_cxx
 #define autoPtr_incompressible_turbulenceModel_cxx
 
+//---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
