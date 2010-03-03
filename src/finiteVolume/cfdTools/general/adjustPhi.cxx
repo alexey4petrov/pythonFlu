@@ -24,6 +24,11 @@
 
 
 //---------------------------------------------------------------------------
+//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
 %include "src/common.hxx"
 
 %include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
