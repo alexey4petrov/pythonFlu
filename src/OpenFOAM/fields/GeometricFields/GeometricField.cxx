@@ -276,10 +276,12 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::scalar, TPatchField, TMesh )
     {
         return theArg & get_ref( self );
     }
-     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > >__rand__( const Foam::UniformDimensionedField< Foam::vector >& theArg )
+#if ( __FOAM_VERSION__ > 010500 )     
+    Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > >__rand__( const Foam::UniformDimensionedField< Foam::vector >& theArg )
     {
         return theArg & *self;
     }
+#endif    
 }
 %enddef
 
