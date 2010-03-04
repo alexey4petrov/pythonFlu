@@ -28,14 +28,12 @@ include $(pyfoam_root_dir)/foam.version.makefile
 #--------------------------------------------------------------------------------------
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
-	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/basic/lnInclude
+	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/basic/lnInclude \
+	-I$(WM_PROJECT_DIR)/src/turbulenceModels
 
-ifeq "$(shell if [ ${__FOAM_VERSION__} -lt 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/compressible/lnInclude
-else
+ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/compressible/turbulenceModel/lnInclude 
 	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/compressible/RAS/lnInclude 
-	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels
 endif
 
 
