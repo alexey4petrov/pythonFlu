@@ -22,6 +22,16 @@
 #--------------------------------------------------------------------------------------
 pyfoam_root_dir:=../..
 
+include $(pyfoam_root_dir)/foam.version.makefile
+
+
+#--------------------------------------------------------------------------------------
+ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+        __CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/OSspecific/Unix/lnInclude
+endif
+
+
+#---------------------------------------------------------------------------------------
 include $(pyfoam_root_dir)/include.makefile
 
 

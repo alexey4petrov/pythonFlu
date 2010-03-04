@@ -43,15 +43,24 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTransportModels \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -ldynamicFvMesh	
 
-ifeq "$(shell if [ ${__FOAM_VERSION__} -lt 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+ifeq "$(shell if [ ${__FOAM_VERSION__} -le 010400 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleTurbulenceModels
 	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTurbulenceModels
-else
+endif
+
+ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleLESModels
+	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleLESModels	
+	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleRASModels	
+endif
+
+
+ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010600 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleTurbulenceModel
 	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTurbulenceModel
 	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lradiation 
-endif
 
+endif
 
 #--------------------------------------------------------------------------------------
 include $(pyfoam_root_dir)/include.makefile
