@@ -20,11 +20,23 @@
 
 
 #--------------------------------------------------------------------------------------
+pyfoam_root_dir:=../..
+
+include $(pyfoam_root_dir)/foam.version.makefile
+
+
+#--------------------------------------------------------------------------------------
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude\
 	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/basic/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/meshTools/lnInclude
 
+ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+        __CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/OSspecific/Unix/lnInclude
+endif
+
+
+#-------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lbasicThermophysicalModels \
@@ -32,7 +44,7 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 
 #--------------------------------------------------------------------------------------
-pyfoam_root_dir:=../..
+
 
 include $(pyfoam_root_dir)/include.makefile
 
