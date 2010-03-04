@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 See https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/pyfoam
 
+
 #--------------------------------------------------------------------------------------
 Introduction
 #--------------------------------------------------------------------------------------
@@ -34,21 +35,28 @@ The main goals of development of Python OpenFOAM binding are
  - perform all calculations and data processing interactively and in memory
    (not through files).
 
+
 #--------------------------------------------------------------------------------------
 Installation
 #--------------------------------------------------------------------------------------
 
 See the INSTALL file for more information about building of "pyFoam" package.
 
+
 #--------------------------------------------------------------------------------------
 Usage
 #--------------------------------------------------------------------------------------
 
-There are two ways to use "pyFoam"
+Before start to use "pyFoam" it is necessary to source the generated "bashrc" file
+
+There are two main ways to use "pyFoam", namely:
+
   - Use predefined set of solvers in the same way as referenced OpenFOAM ones
     ( ${PYFOAM_ROOT_DIR}/Foam/applications/solvers/incompressible/icoFoam.py, for example )
+
   - Write your own solver ( or modify existing one ) through usage of corresponding 
     Python OpenFOAM API
     (see, ${PYFOAM_ROOT_DIR}/Foam/applications/solvers/incompressible/icoFoam.py, for example ) 
+
 
 #--------------------------------------------------------------------------------------
