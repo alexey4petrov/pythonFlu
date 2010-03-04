@@ -78,14 +78,15 @@ In order to build the module you have to perform the following actions:
 
 2. Modify and source the provided "env.sh" file to adjust to your local environment.
 
-3. Configuring the "pyFoam" build system:
+3. Configuring the build system:
 
    build_configure
    ./configure
 
    Make sure that this step was passed succesfully.
 
-   Currently, the following options are available
+   Currently, the following options are available:
+
       --disable-singlelib
       --enable-embeddedcxx
       --with-swig=<path>
@@ -107,12 +108,22 @@ In order to build the module you have to perform the following actions:
 
 
 #--------------------------------------------------------------------------------------
+"pyFoam" environment
+#--------------------------------------------------------------------------------------
+
+Before start to use "pyFoam" it is necessary to source the generated "bashrc" file
+
+
+#--------------------------------------------------------------------------------------
 "pyFoam" installation check
 #--------------------------------------------------------------------------------------
 
 Run the following "pyFoam" solver
+
   ./Foam/applications/solvers/incompressible/icoFoam.py 
+
 on the appropriate OpenFOAM case 
+
 ( use the same command line option as for referenced OpenFOAM implementation )
 
 
