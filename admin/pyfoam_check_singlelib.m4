@@ -19,20 +19,23 @@ dnl Author : Alexey PETROV
 dnl
 
 
-AC_DEFUN([PYFOAM_CHECK_SINGLELIB],dnl
+dnl --------------------------------------------------------------------------------
+AC_DEFUN([PYFOAM_CHECK_SINGLELIB],
 [
 AC_MSG_CHECKING(whether to use optimized pyFoam libraries structure)
 
 AC_SUBST(USE_SINGLE_LIB)
 
 AC_ARG_ENABLE( [singlelib],
-               AC_HELP_STRING( [--disable-singlelib ],
-		               [ disable singlelib ( enabled by default ) ]),
+               AC_HELP_STRING( [--enable-singlelib ],
+		               [ enable singlelib to speedup compilation process ( disabled by default ) ]),
                [ USE_SINGLE_LIB=$enableval ],
-	       [ USE_SINGLE_LIB=yes ] )
+	       [ USE_SINGLE_LIB="no" ] )
 
-singlelib=$USE_SINGLE_LIB
+singlelib=${USE_SINGLE_LIB}
 
-AC_MSG_RESULT($USE_SINGLE_LIB)
+AC_MSG_RESULT(${USE_SINGLE_LIB})
 ])
 
+
+dnl --------------------------------------------------------------------------------

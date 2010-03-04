@@ -76,8 +76,7 @@ In order to build the module you have to perform the following actions:
 
    cd <path to the sources>
 
-2. Modify and source the provided "env.sh" & "bashrc" files to adjust to your 
-   local environment.
+2. Modify and source the provided "env.sh" file to adjust to your local environment.
 
 3. Configuring the "pyFoam" build system:
 

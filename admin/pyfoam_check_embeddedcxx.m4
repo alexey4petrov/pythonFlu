@@ -19,20 +19,23 @@ dnl Author : Alexey PETROV
 dnl
 
 
-AC_DEFUN([PYFOAM_CHECK_EMBEDDEDCXX],dnl
+dnl --------------------------------------------------------------------------------
+AC_DEFUN([PYFOAM_CHECK_EMBEDDEDCXX],
 [
 AC_MSG_CHECKING(whether to compile embedded C++ pyFoam libraries)
 
 AC_SUBST(COMPILE_EMBEDDED_CXX)
 
 AC_ARG_ENABLE( [embeddedcxx],
-               AC_HELP_STRING( [--enable-embeddedcxx ],
+               AC_HELP_STRING( [--disable-embeddedcxx ],
 		               [ enable compilation of embedded C++ libraries ( disabled by default ) ]),
                [ COMPILE_EMBEDDED_CXX=${enableval} ],
 	       [ COMPILE_EMBEDDED_CXX="yes" ] )
 
-embeddedcxx=$COMPILE_EMBEDDED_CXX
+embeddedcxx=${COMPILE_EMBEDDED_CXX}
 
-AC_MSG_RESULT($COMPILE_EMBEDDED_CXX)
+AC_MSG_RESULT(${COMPILE_EMBEDDED_CXX})
 ])
 
+
+dnl --------------------------------------------------------------------------------

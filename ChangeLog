@@ -25,16 +25,20 @@
 ##
 ## ------------------------------------------------------------------------------
 
-2009-02-09 Ivor CLIFFORD <Ivor.Clifford@pbmr.co.za>
-
-    * Initial developmen
-
 2009-03-30 Alexey PETROV <Alexey.Petrov@pbmr.co.za>
 
-    * Approbation of the new development strategy
+    * Initial stable realese
 
 2009-04-15 Alexey PETROV <Alexey.Petrov@pbmr.co.za>
 
     * Introduction of 'hybrid scripting' capabilities
+
+2010-03-19 Alexey PETROV <Alexey.Petrov@pbmr.co.za>
+
+    * Advancing the wrapping technic & wrapping the missed functionality
+
+2010-04-04 Alexey PETROV <Alexey.Petrov@pbmr.co.za>
+
+    * Adjusting to the "common configuration system" (confFoam package)
 
 	

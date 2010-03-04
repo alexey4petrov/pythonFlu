@@ -21,6 +21,70 @@ See See https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/pyfoam
 
 ---------------------------------------------------------------------------
 
+New Features and Important Changes, r7.4 vs r7.3
+
+Author(s) :  Alexey PETROV
+
+2010-04-04
+
+1. Adjusting to the "common configuration system" (confFoam package)
+--------------------------------------------------------------------
+"confFoam" is a "common configuration package" for the realted OpenFOAM (Open
+Source CFD Toolbox, see http://sourceforge.net/projects/foam/ ) developement. 
+The neccessity for defintion of such kind of functionality appears from the
+issue that OpenFOAM referece build system does not provide corresponding
+capabilities. As result of lack of the configuration capabilties OpenFOAM
+users/developers strugle with compilation procidure trying to discover reasons
+for this or that failure.
+
+"confFoam" proposed implementation based on standard Linux/UNIX "GNU automake"
+tools. This set of tools allow users adjust the environment they are going to
+use for compilation of sources and check, wheter everything is correct, before
+starting actual compilation. As result, users become aware of the all
+prerequisites needed to compile the given sources and directly informed if
+something is wrong.
+
+2. Restoring the support for "singlelib" disabled compilation
+-------------------------------------------------------------
+"singlelib" mode of compilation allows dramaticaly reduce the compilation time 
+(up to 10 times, for now) by combining all the avaialble pyFoam SWIG packages 
+into single library. This feature is especially important when users are trying 
+to advance the pyFoam, by wrapping missed OpenFOAM functionality or extending 
+existing OpenFOAM API with features they like.
+
+At the same time this feature is disabled by default to keep modularisation 
+capabilties of the current pyFoam implementation. It means, that each package 
+should have the same dependencies as the referenced OpenFOAM once. So, users 
+will be able to load and use only functionality they need.
+
+
+---------------------------------------------------------------------------
+
+New Features and Important Changes, r7.3 vs r5.0
+
+Author(s) :  Alexey PETROV
+
+2010-03-19
+
+1. Support for definition of the derived Python classes
+-------------------------------------------------------
+pyFoam users can define derived classes from corresponding C++ ones. This 
+feature is extremely usefull when users are trying to define their own
+implementation of "fvPathFields". This also means, that pyFoam could be used as
+a fullgrown developement platform for the OpenFOAM developement.
+
+2. Support for "constructor to table" OpenFOAM feature
+-------------------------------------------------------
+OpenFOAM implementation defines its own "plugin" system, also known as 
+"constructor to table" feture; when derived functionality can be instateated 
+and be used by its name. Now it is possible as to write your own derived classes
+in pure Python, as to register it into corresponding OpenFOAM "factory". This 
+also means, that pyFoam could be used as a fullgrown developement platform for 
+the OpenFOAM developement.
+
+
+---------------------------------------------------------------------------
+
 New Features and Important Changes, r5.0 vs r4.0
 
 Author(s) :  Alexey PETROV
@@ -51,6 +115,7 @@ dependecies. As an example it is possible to check the following packages:
 As an implicit result, "Foam.OpenFOAM" Python module now dependes only from
 corresponding C++ OpenFOAM library, as well as "Foam.finiteVolume" Python
 module dependes from C++ finiteVolume one and so on.
+
 
 2. Wrapping of the new third-party package - unv2foam
 -------------------------------
