@@ -166,7 +166,7 @@ public:
     // Selectors
 
         //- Return a reference to the selected turbulence model
-        static autoPtr<RASModel> New
+        static autoPtr< compressible::RASModel> New
         (
             const volScalarField& rho,
             const volVectorField& U,
