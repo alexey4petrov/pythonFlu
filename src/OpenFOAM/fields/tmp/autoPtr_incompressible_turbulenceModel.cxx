@@ -23,7 +23,10 @@
 #define autoPtr_incompressible_turbulenceModel_cxx
 
 //---------------------------------------------------------------------------
-//It is necessary to include "director's" classes above first's DIRECTOR_INCLUDE
+// Keep on corresponding "director" includes at the top of SWIG defintion file
+
+%include "src/OpenFOAM/directors.hxx"
+
 %include "src/finiteVolume/directors.hxx"
 
 
