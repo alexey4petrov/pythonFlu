@@ -19,7 +19,7 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ < 010600 )
+#if ( __FOAM_VERSION__ < 010500 )
 %include "src/common.hxx"
 #define incompressibleLESModel_cxx
 #endif
@@ -56,10 +56,22 @@
 %include "src/OpenFOAM/db/IOdictionary.cxx"
 
 
+//----------------------------------------------------------------------------
+#if ( __FOAM_VERSION__ == 010500 )
+%{
+    #include "LES/incompressible/LESModel/LESModel.H"
+%}
+#endif
+
+
+#if ( __FOAM_VERSION__ >= 010600 )
 %{
     #include "incompressible/LES/LESModel/LESModel.H"
 %}
+#endif
 
+
+//----------------------------------------------------------------------------
 %rename( incompressible_LESModel ) Foam::incompressible::LESModel;
 
 %include "incompressible/LESModel.H"

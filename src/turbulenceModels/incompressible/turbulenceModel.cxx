@@ -19,6 +19,12 @@
 
 
 //---------------------------------------------------------------------------
+#if ( __FOAM_VERSION__ == 010500 )   
+%include "src/common.hxx"
+#define incompressibleturbulenceModel_cxx
+#endif
+
+//---------------------------------------------------------------------------
 #ifndef incompressibleturbulenceModel_cxx
 #define incompressibleturbulenceModel_cxx
 
@@ -58,7 +64,7 @@
 
 
 //-------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ >= 010500 )   
+#if ( __FOAM_VERSION__ >= 010600 )   
 
 %rename( incompressible_turbulenceModel ) Foam::incompressible::turbulenceModel;
 
