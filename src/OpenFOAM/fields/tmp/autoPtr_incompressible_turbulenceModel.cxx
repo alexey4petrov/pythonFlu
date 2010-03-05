@@ -19,6 +19,13 @@
 
 
 //---------------------------------------------------------------------------
+#if ( __FOAM_VERSION__ == 010500 )   
+%include "src/common.hxx"
+#define autoPtr_incompressible_turbulenceModel_cxx
+#endif
+
+
+//---------------------------------------------------------------------------
 #ifndef autoPtr_incompressible_turbulenceModel_cxx
 #define autoPtr_incompressible_turbulenceModel_cxx
 
@@ -63,7 +70,7 @@ AUTOPTR_TYPEMAP( Foam::turbulenceModel )
 
 
 //-------------------------------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ >= 010500 )
+#if ( __FOAM_VERSION__ >= 010600 )
 
 
 AUTOPTR_TYPEMAP( Foam::incompressible::turbulenceModel )
