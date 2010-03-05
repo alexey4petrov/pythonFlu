@@ -19,7 +19,7 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ < 010600 )
+#if ( __FOAM_VERSION__ < 010500 )
 %include "src/common.hxx"
 #define compressibleRASModel_cxx
 #endif
@@ -45,10 +45,22 @@
 
 %include "src/thermophysicalModels/basic/basicThermo.cxx"
 
+
+//----------------------------------------------------------------------------
+#if ( __FOAM_VERSION__ == 010500 )
+%{
+    #include "RAS/compressible/RASModel/RASModel.H"
+%}
+#endif
+
+#if ( __FOAM_VERSION__ >= 010600 )
 %{
     #include "compressible/RAS/RASModel/RASModel.H"
 %}
+#endif
 
+
+//-----------------------------------------------------------------------------
 %rename( compressible_RASModel ) Foam::compressible::RASModel;
 
 %include "compressible/RASModel.H"

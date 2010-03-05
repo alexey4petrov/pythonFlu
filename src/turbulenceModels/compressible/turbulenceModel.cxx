@@ -19,6 +19,13 @@
 
 
 //---------------------------------------------------------------------------
+#if ( __FOAM_VERSION__ == 010500 )   
+%include "src/common.hxx"
+#define compressibleturbulenceModel_cxx
+#endif
+
+
+//---------------------------------------------------------------------------
 #ifndef compressibleturbulenceModel_cxx
 #define compressibleturbulenceModel_cxx
 
