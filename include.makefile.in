@@ -51,7 +51,16 @@ CLASSES_DIR        = $(MAKE_DIR)/classes
 SYS_INC            =
 SYS_LIBS           =
 
-PROJECT_INC        = -I$(LIB_SRC)/$(WM_PROJECT)/lnInclude -I$(LIB_SRC)/OSspecific/$(WM_OSTYPE)/lnInclude
+PROJECT_INC        = -I$(LIB_SRC)/$(WM_PROJECT)/lnInclude
+
+ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+PROJECT_INC        += -I$(LIB_SRC)/OSspecific/$(WM_OS)/lnInclude
+endif
+
+ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010600 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+PROJECT_INC        += -I$(LIB_SRC)/OSspecific/$(WM_OSTYPE)/lnInclude
+endif
+
 PROJECT_LIBS       = -l$(WM_PROJECT)
 
 

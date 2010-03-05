@@ -20,19 +20,8 @@
 
 
 #--------------------------------------------------------------------------------------
-pyfoam_root_dir:=../..
-
-include $(pyfoam_root_dir)/foam.version.makefile
-
-
-#--------------------------------------------------------------------------------------
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/meshTools/lnInclude
-
-ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-        __CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/OSspecific/Unix/lnInclude
-endif
-
 
 #--------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
@@ -41,9 +30,7 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 
 #--------------------------------------------------------------------------------------
-
+pyfoam_root_dir:=../..
 
 include $(pyfoam_root_dir)/include.makefile
 
-
-#--------------------------------------------------------------------------------------
