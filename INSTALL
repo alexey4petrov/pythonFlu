@@ -41,7 +41,7 @@ pre-requisites.
   Please follow instructions from http://www.python.org/ web-site.
 
 * Make sure that SWIG is installed (tested with 1.3.36 - 1.3.40 )
-  Please follow instructions from http://www.python.org/ web-site.
+  Please follow instructions from http://www.swig.org/ web-site.
 
 * Install extFoam (optional)
   Can be found at https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/extfoam.
@@ -58,7 +58,7 @@ pre-requisites.
   Please follow instructions from corresponding INSTALL file to setup unv2foam
   in your environment.
 
-* Install boost library (optional) (tested with 1.35.0 )
+* Install Boost library (optional) (tested with 1.35.0 )
   Please follow instructions from http://www.boost.org/ web-site.
 
 Then follow below instructions in order to build and install the "pyFoam" - Python 

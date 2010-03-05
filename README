@@ -24,16 +24,126 @@ See https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/pyfoam
 Introduction
 #--------------------------------------------------------------------------------------
 
-This is a Python OpenFOAM binding that allows interactivelly use OpenFOAM 
-(Open Source CFD Toolbox, see http://sourceforge.net/projects/foam/ )
-API into Python (see http://www.python.org/ ). 
-The main goals of development of Python OpenFOAM binding are 
- - to provide more convinient way to extend / customize OpenFOAM functionality
-   (as for analysts as for method developers);
- - support interaction with third-party libraries & utilities into a transparent 
-   and non-intruisive way;
- - perform all calculations and data processing interactively and in memory
-   (not through files).
+pyFoam is a Python front-end to the OpenFOAM (Open Source CFD Toolbox). pyFoam
+intends to define a new level of flexibility and user interaction scenario for
+numerical simulation software; it brings innovative ideas to break the
+long-standing wall between the solver developers and the end-users. 
+
+  - If you are a careful analyst, you will be able easily understand what your
+    solver is doing and why. 
+
+  - If you are an experienced guy, it will provide you the full control over
+    the solver execution - you will be able to 
+
+    * couple different solvers you have, 
+
+    * write customization subroutines, 
+
+    * define your benchmarking and pre/post processing procedures. 
+
+  - If you are a solver developer, you will clearly understand why users need
+    all this features; users will be able to adopt your code to their needs
+    even without you! 
+
+  - If you are thoughtful project manager, you will appreciate this software
+    because it increases team productivity by 
+
+    * alignment of the user experience communication; solver developers and
+      end-users will speak in the same terms and in the same language 
+
+    * ability to formalize and automate most of the analyst tasks as well, as
+      quickly be adopted to new non-standard demands 
+
+    * improving quality of the calculations, because through this software
+      your team will obtain not just solver engines, but the general way to
+      standardize your routines 
+
+    * applying the best software for every subtask you do; pyFoam will be able
+      glue them all into one application / environment.
+
+
+#--------------------------------------------------------------------------------------
+Unique pyFoam calculation capabiltities 
+#--------------------------------------------------------------------------------------
+  - Pure interactive behavior 
+
+    * run solver as in "step by step", as in "all at once" mode 
+
+    * direct access to the all solver data during its execution 
+
+    * ability to couple different solvers into a new calculation scheme 
+
+    * batch mode benchmarking and optimization (users need not to use
+      scripting, they already have Python) 
+
+  - Full customization control 
+
+    * ability to modify or extend solver code without additional compilation
+      step 
+
+    * easy to introduce entry points for to customize solver behavior 
+
+  - Non-intrusive gluing with different technologies, libraries and
+    applications 
+
+    * seamless integration with SALOME application 
+
+    * data post-processing through VTK and Qwt 
+
+    * can use Qtlibrary as a GUI front-end 
+
+    * can use CORBA for remote access / communication 
+
+  - Keeps the same performance as the referenced OpenFOAM C++ code 
+
+
+#--------------------------------------------------------------------------------------
+Why Python 
+#--------------------------------------------------------------------------------------
+  - Python is mostly used in scientific and engineering programming 
+
+  - Python code is easy to read, understand and learn to program 
+
+  - Python support all the modern programming features 
+
+  - Python code is typically 5-10 times shorter than equivalent C++ code 
+
+  - Python programmer can finish in two months what two C++ programmers can't
+    complete in a year 
+
+  - Python comes with a vast collection of libraries (as standard, as
+    third-party) 
+
+  - Object Oriented Programming (classes, inheritance, virtual functions e.t.c) 
+
+  - Operators customization (user can write your own definition for '+' or
+    '-') 
+
+  - Exception based error handling
+
+
+#--------------------------------------------------------------------------------------
+Why OpenFOAM 
+#--------------------------------------------------------------------------------------
+
+In principle, the technology pyFoamuses (SWIG) to deliver its functionality,
+can be applied to any library and solver framework. At the same time pyFoam
+choose OpenFOAM as its source by the following reasons: 
+
+  - OpenFOAM uses advanced, robust and proven numerical simulation engine 
+
+  - OpenFoam allows the user to use syntax that closely resemble the partial
+    differential equations being solved. For example: 
+
+      solve( fvm.ddt( rho, U ) + fvm.div( phi, U ) - fvm.laplacian( mu, U ) 
+             ==
+             - fvc.grad( p ) )
+
+  - It comes with a growing collection of pre-written solvers applicable to a
+    wide range of problems 
+
+  - First and most capable general purpose CFD package to be released under an
+    open-source license 
 
 
 #--------------------------------------------------------------------------------------

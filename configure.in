@@ -22,12 +22,10 @@
 #--------------------------------------------------------------------------------------
 # Process this file with autoconf to produce a configure script
 #--------------------------------------------------------------------------------------
-#AC_PREREQ(2.59)
 AC_INIT([pyFoam Project], [7.3], [alexey.petrov.nnov@gmail.com], [pyfoam])
 
 # AC_CONFIG_AUX_DIR defines an alternative directory where to find the auxiliary
 # scripts such as config.guess, install-sh, ...
-#AC_PROG_INSTALL()
 AC_CONFIG_AUX_DIR(admin)
 AC_CONFIG_MACRO_DIR([admin])
 AM_INIT_AUTOMAKE([tar-pax -Wno-portability])
