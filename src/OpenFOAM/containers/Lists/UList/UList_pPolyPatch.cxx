@@ -25,6 +25,9 @@
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+
+%include "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
+
 %include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
 
 %ignore Foam::UList< Foam::polyPatch* >::writeEntry;
