@@ -157,7 +157,15 @@ public:
 
 
     // Selectors
-
+#ifndef SWIG
+        //- Return a reference to the selected RAS model
+        static autoPtr<RASModel> New
+        (
+            const volVectorField& U,
+            const surfaceScalarField& phi,
+            transportModel& lamTransportModel
+        );
+#else
         //- Return a reference to the selected RAS model
         static autoPtr<incompressible::RASModel> New
         (
@@ -165,8 +173,7 @@ public:
             const surfaceScalarField& phi,
             transportModel& lamTransportModel
         );
-
-
+#endif
     //- Destructor
     virtual ~RASModel()
     {}

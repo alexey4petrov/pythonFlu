@@ -22,29 +22,6 @@
 #--------------------------------------------------------------------------------------
 pyfoam_root_dir:=../../../..
  
-include $(pyfoam_root_dir)/foam.version.makefile
- 
- 
-#--------------------------------------------------------------------------------------
-__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels
-
-
-#--------------------------------------------------------------------------------------
-ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-        __CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/LES/LESdeltas/lnInclude
-
-endif
-
-#-----------------------------------------------------------------------------------------------------
-ifeq "$(shell if [ ${__FOAM_VERSION__} -lt 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleTurbulenceModels
-	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTurbulenceModels	
-else
-	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleRASModels
-	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleRASModels
-	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleLESModels		
-endif
-
 
 #--------------------------------------------------------------------------------------
 include $(pyfoam_root_dir)/src.include.makefile

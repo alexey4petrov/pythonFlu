@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 1991-2009 OpenCFD Ltd.
+    \\  /    A nd           | Copyright (C) 1991-2008 OpenCFD Ltd.
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -23,18 +23,16 @@ License
     Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 Namespace
-    Foam::compressible::RASModels
+    Foam::incompressible::RASModels
 
 Description
-    Namespace for compressible RAS turbulence models.
-
+    Namespace for incompressible RAS turbulence models.
 
 Class
-    Foam::compressible::RASModel
+    Foam::incompressible::RASModel
 
 Description
-    Abstract base class for turbulence models for compressible and combusting
-    flows.
+    Abstract base class for incompressible turbulence models.
 
 SourceFiles
     RASModel.C
@@ -42,17 +40,16 @@ SourceFiles
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef compressibleRASModel_H
-#define compressibleRASModel_H
+#ifndef RASModel_H
+#define RASModel_H
 
-#include "compressible/turbulenceModel/turbulenceModel.H"
 #include "volFields.H"
 #include "surfaceFields.H"
 #include "nearWallDist.H"
 #include "fvm.H"
 #include "fvc.H"
 #include "fvMatrices.H"
-#include "basicThermo.H"
+#include "incompressible/transportModel/transportModel.H"
 #include "IOdictionary.H"
 #include "Switch.H"
 #include "bound.H"
@@ -63,7 +60,7 @@ SourceFiles
 
 namespace Foam
 {
-namespace compressible
+namespace incompressible
 {
 
 /*---------------------------------------------------------------------------*\
@@ -72,7 +69,6 @@ namespace compressible
 
 class RASModel
 :
-    public turbulenceModel,
     public IOdictionary
 {
 
@@ -80,34 +76,28 @@ protected:
 
     // Protected data
 
-        //- Turbulence on/off flag
+        const Time& runTime_;
+        const fvMesh& mesh_;
+
+        const volVectorField& U_;
+        const surfaceScalarField& phi_;
+
+        transportModel& transportModel_;
+
         Switch turbulence_;
-
-        //- Flag to print the model coeffs at run-time
         Switch printCoeffs_;
-
-        //- Model coefficients dictionary
         dictionary coeffDict_;
 
-        //- Value of y+ at the edge of the laminar sublayer
+        dimensionedScalar kappa_;
+        dimensionedScalar E_;
+
+        scalar yPlusLam(const scalar kappa, const scalar E);
         scalar yPlusLam_;
 
-        //- Lower limit of k
         dimensionedScalar k0_;
-
-        //- Lower limit of epsilon
         dimensionedScalar epsilon0_;
-
-        //- Small epsilon value used to avoid divide by zero
         dimensionedScalar epsilonSmall_;
 
-        //- Lower limit for omega
-        dimensionedScalar omega0_;
-
-        //- Small omega value used to avoid divide by zero
-        dimensionedScalar omegaSmall_;
-
-        //- Near wall distance boundary field
         nearWallDist y_;
 
 
@@ -135,19 +125,18 @@ public:
 
 
     // Declare run-time constructor selection table
-#ifndef SWIG 
+#ifndef SWIG
         declareRunTimeSelectionTable
         (
             autoPtr,
             RASModel,
             dictionary,
             (
-                const volScalarField& rho,
                 const volVectorField& U,
                 const surfaceScalarField& phi,
-                const basicThermo& thermoPhysicalModel
+                transportModel& transport
             ),
-            (rho, U, phi, thermoPhysicalModel)
+            (U, phi, transport)
         );
 #endif
 
@@ -157,10 +146,9 @@ public:
         RASModel
         (
             const word& type,
-            const volScalarField& rho,
             const volVectorField& U,
             const surfaceScalarField& phi,
-            const basicThermo& thermoPhysicalModel
+            transportModel& transport
         );
 
 
@@ -170,23 +158,22 @@ public:
 #ifndef SWIG
         static autoPtr<RASModel> New
         (
-            const volScalarField& rho,
             const volVectorField& U,
             const surfaceScalarField& phi,
-            const basicThermo& thermoPhysicalModel
+            transportModel& transport
         );
 #else
-        static autoPtr< compressible::RASModel > New
+        static autoPtr< incompressible::RASModel > New
         (
-            const volScalarField& rho,
             const volVectorField& U,
             const surfaceScalarField& phi,
-            const basicThermo& thermoPhysicalModel
+            transportModel& transport
         );
+
 #endif
-    //- Destructor
-    virtual ~RASModel()
-    {}
+    // Destructor
+
+        virtual ~RASModel();
 
 
     // Member Functions
@@ -213,19 +200,6 @@ public:
                 return epsilonSmall_;
             }
 
-            //- Return the value of omega0 which epsilon is not allowed to be
-            //  less than
-            const dimensionedScalar& omega0() const
-            {
-                return omega0_;
-            }
-
-            //- Return the value of omegaSmall which is added to epsilon when
-            //  calculating nut
-            const dimensionedScalar& omegaSmall() const
-            {
-                return omegaSmall_;
-            }
 
             //- Allow k0 to be changed
             dimensionedScalar& k0()
@@ -245,26 +219,25 @@ public:
                 return epsilonSmall_;
             }
 
-            //- Allow omega0 to be changed
-            dimensionedScalar& omega0()
+
+            //- Return kappa for use in wall-functions
+            dimensionedScalar kappa() const
             {
-                return omega0_;
+                return kappa_;
             }
 
-            //- Allow omegaSmall to be changed
-            dimensionedScalar& omegaSmall()
+            //- Return E for use in wall-functions
+            dimensionedScalar E() const
             {
-                return omegaSmall_;
+                return E_;
             }
 
-            //- Return the near wall distances
-            const nearWallDist& y() const
+            //- Return y+ at the edge of the laminar sublayer
+            //  for use in wall-functions
+            scalar yPlusLam() const
             {
-                return y_;
+                return yPlusLam_;
             }
-
-            //- Calculate y+ at the edge of the laminar sublayer
-            scalar yPlusLam(const scalar kappa, const scalar E) const;
 
             //- Const access to the coefficients dictionary
             const dictionary& coeffDict() const
@@ -273,20 +246,23 @@ public:
             }
 
 
+        //- Return the laminar viscosity
+        const volScalarField& nu() const
+        {
+            return transportModel_.nu();
+        }
+
         //- Return the turbulence viscosity
-        virtual tmp<volScalarField> mut() const = 0;
+        virtual tmp<volScalarField> nut() const = 0;
 
         //- Return the effective viscosity
-        virtual tmp<volScalarField> muEff() const
+        virtual tmp<volScalarField> nuEff() const
         {
             return tmp<volScalarField>
             (
-                new volScalarField("muEff", mut() + mu())
+                new volScalarField("nuEff", nut() + nu())
             );
         }
-
-        //- Return the effective turbulent thermal diffusivity
-        virtual tmp<volScalarField> alphaEff() const = 0;
 
         //- Return the turbulence kinetic energy
         virtual tmp<volScalarField> k() const = 0;
@@ -298,29 +274,25 @@ public:
         virtual tmp<volSymmTensorField> R() const = 0;
 
         //- Return the effective stress tensor including the laminar stress
-        virtual tmp<volSymmTensorField> devRhoReff() const = 0;
+        virtual tmp<volSymmTensorField> devReff() const = 0;
 
         //- Return the source term for the momentum equation
-        virtual tmp<fvVectorMatrix> divDevRhoReff(volVectorField& U) const = 0;
+        virtual tmp<fvVectorMatrix> divDevReff(volVectorField& U) const = 0;
 
         //- Return yPlus for the given patch
-        virtual tmp<scalarField> yPlus
-        (
-            const label patchI,
-            const scalar Cmu
-        ) const;
+        virtual tmp<scalarField> yPlus(const label patchI) const;
 
         //- Solve the turbulence equations and correct the turbulence viscosity
         virtual void correct() = 0;
 
-        //- Read RASProperties dictionary
+        //- Read turbulenceProperties dictionary
         virtual bool read() = 0;
 };
 
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-} // End namespace compressible
+} // End namespace incompressible
 } // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

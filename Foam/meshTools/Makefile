@@ -23,6 +23,7 @@
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/meshTools/lnInclude
 
+#--------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lmeshTools 
 
@@ -33,5 +34,3 @@ pyfoam_root_dir:=../..
 
 include $(pyfoam_root_dir)/include.makefile
 
-
-#--------------------------------------------------------------------------------------

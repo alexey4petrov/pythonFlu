@@ -19,7 +19,7 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ < 010600 )
+#if ( __FOAM_VERSION__ < 010500 )
 %include "src/common.hxx"
 #define incompressibleRASModel_cxx
 #endif
@@ -62,10 +62,22 @@
 //#include "autoPtr.H"
 //#include "runTimeSelectionTables.H"
 
+
+//----------------------------------------------------------------------------
+#if ( __FOAM_VERSION__ == 010500 )
+%{
+    #include "RAS/incompressible/RASModel/RASModel.H"
+%}
+#endif
+
+#if ( __FOAM_VERSION__ >= 010600 )
 %{
     #include "incompressible/RAS/RASModel/RASModel.H"
 %}
+#endif
 
+
+//----------------------------------------------------------------------------
 %rename( incompressible_RASModel ) Foam::incompressible::RASModel;
 
 %include "incompressible/RASModel.H"

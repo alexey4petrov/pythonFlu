@@ -22,35 +22,6 @@
 #--------------------------------------------------------------------------------------
 pyfoam_root_dir:=../../../..
 
-include $(pyfoam_root_dir)/foam.version.makefile
-
-
-#--------------------------------------------------------------------------------------
-__CPPFLAGS__ := $(__CPPFLAGS__) \
-	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
-	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/basic/lnInclude \
-
-ifeq "$(shell if [ ${__FOAM_VERSION__} -lt 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/RAS/compressible/lnInclude
-	__CPPFLAGS__ += -I$(pyfoam_root_dir)/src
-else
-	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/compressible/RAS/lnInclude
-	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels
-endif
-
-
-#--------------------------------------------------------------------------------------
-__LDFLAGS__ := $(__LDFLAGS__) \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lbasicThermophysicalModels \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lspecie
-
-ifeq "$(shell if [ ${__FOAM_VERSION__} -lt 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleTurbulenceModels
-else
-	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleRASModels
-endif
-
 
 #--------------------------------------------------------------------------------------
 include $(pyfoam_root_dir)/src.include.makefile

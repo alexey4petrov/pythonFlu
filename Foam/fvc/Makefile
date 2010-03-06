@@ -24,6 +24,7 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude
 
 
+#-----------------------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume
 
@@ -34,4 +35,4 @@ pyfoam_root_dir:=../..
 include $(pyfoam_root_dir)/include.makefile
 
 
-#--------------------------------------------------------------------------------------
+

@@ -20,7 +20,7 @@
 
 //---------------------------------------------------------------------------
 
-#if ( __FOAM_VERSION__ < 010600 )
+#if ( __FOAM_VERSION__ < 010500 )
 %include "src/common.hxx"
 #define autoPtr_incompressible_LESModel_cxx
 #endif
