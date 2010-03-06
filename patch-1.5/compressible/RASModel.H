@@ -166,6 +166,15 @@ public:
     // Selectors
 
         //- Return a reference to the selected turbulence model
+#ifndef SWIG
+        static autoPtr<RASModel> New
+        (
+            const volScalarField& rho,
+            const volVectorField& U,
+            const surfaceScalarField& phi,
+            basicThermo& thermoPhysicalModel
+        );
+#else        
         static autoPtr< compressible::RASModel> New
         (
             const volScalarField& rho,
@@ -174,6 +183,7 @@ public:
             basicThermo& thermoPhysicalModel
         );
 
+#endif
 
     // Destructor
 
