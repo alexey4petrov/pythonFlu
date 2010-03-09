@@ -61,7 +61,7 @@ pre-requisites.
 * Install Boost library (optional) (tested with 1.35.0 )
   Please follow instructions from http://www.boost.org/ web-site.
 
-Then follow below instructions in order to build and install the "pyFoam" - Python 
+Then follow the instructions below in order to build and install the "pyFoam" - Python 
 OpenFOAM binding.
 
 
@@ -76,15 +76,23 @@ In order to build the module you have to perform the following actions:
 
    cd <path to the sources>
 
-2. Modify and source the provided "env.sh" file to adjust to your local environment.
+2. Modify the provided "env.sh" file to adjust to your local environment.
+   
+   <your favorite editor> ./env.sh
 
-3. Configuring the build system:
+3. Source this "env.sh" file to define corresponding build environment.
+
+   source ./env.sh
+
+4. Configuring the build system:
 
    build_configure
    ./configure
 
-   Make sure that this step was passed succesfully.
+   Make sure that after each configuration step "--- OK ---" message is
+   printed in your console.
 
+   To see all applicable configuration options run "./configure --help"
    Currently, the following options are available:
 
       --disable-singlelib
@@ -100,11 +108,11 @@ In order to build the module you have to perform the following actions:
       --with-boost-includes=<path>
       --with-boost-libraries=<path>
 
-  To see more details for the applicable options run ./configure --help.
-
-4. Build "pyFoam":
+5. Build "pyFoam":
 
    make
+
+  (use "make clean" command to cleanup the build folder)
 
 
 #--------------------------------------------------------------------------------------
@@ -118,13 +126,17 @@ Before start to use "pyFoam" it is necessary to source the generated "bashrc" fi
 "pyFoam" installation check
 #--------------------------------------------------------------------------------------
 
-Run the following "pyFoam" solver
+Run one of the "pyFoam" solvers on the appropriate OpenFOAM case, for example
 
-  ./Foam/applications/solvers/incompressible/icoFoam.py 
+  (for OpenFOAM-1.4.1-dev)
+  ./Foam/applications/solvers/incompressible/icoFoam.py \
+    ${WM_PROJECT_USER_DIR}/run/tutorials/icoFoam cavity
 
-on the appropriate OpenFOAM case 
+  (for OpenFOAM-1.6)
+  ./Foam/applications/solvers/incompressible/icoFoam.py \
+    -case ${WM_PROJECT_USER_DIR}/run/tutorials/incompressible/icoFoam/cavity
 
-( use the same command line option as for referenced OpenFOAM implementation )
+(use the same command line option as for referenced OpenFOAM implementation)
 
 
 #--------------------------------------------------------------------------------------

@@ -27,10 +27,10 @@ AC_MSG_CHECKING(whether to use optimized pyFoam libraries structure)
 AC_SUBST(USE_SINGLE_LIB)
 
 AC_ARG_ENABLE( [singlelib],
-               AC_HELP_STRING( [--enable-singlelib ],
+               AC_HELP_STRING( [--disable-singlelib ],
 		               [ enable singlelib to speedup compilation process ( disabled by default ) ]),
                [ USE_SINGLE_LIB=$enableval ],
-	       [ USE_SINGLE_LIB="no" ] )
+	       [ USE_SINGLE_LIB="yes" ] )
 
 singlelib=${USE_SINGLE_LIB}
 
