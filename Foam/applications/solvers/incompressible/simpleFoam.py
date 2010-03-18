@@ -240,24 +240,53 @@ def main_standalone( argc, argv ):
 
 
 #--------------------------------------------------------------------------------------
-import sys, os
-if __name__ == "__main__" :
-   argv = sys.argv
-   os._exit( main_standalone( len( argv ), argv ) )
-   pass
-else :
-   argv = None
-   from Foam import WM_PROJECT_VERSION
-   if WM_PROJECT_VERSION() <= "1.4.1-dev" :
-      test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.4.1-dev', 'incompressible', 'simpleFoam' )
-      argv = [ __file__, test_dir, 'pitzDaily3Blocks' ]
-      pass
+import os, sys
+from Foam import WM_PROJECT_VERSION
+if WM_PROJECT_VERSION() <= "1.4.1-dev" :
+   if __name__ == "__main__" :
+      argv = sys.argv
+      if len( argv ) > 1 and argv[ 1 ] == "-test":
+         argv = None
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.4.1-dev', 'incompressible', 'simpleFoam' )
+         argv = [ __file__, test_dir, 'pitzDaily3Blocks' ]
+         pass
+      from Foam.applications.solvers.incompressible.r1_4_1_dev.simpleFoam import main_standalone
+      os._exit( main_standalone( len( argv ), argv ) )
    else:
-      test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.6', 'incompressible', 'simpleFoam', 'pitzDaily' )
-      argv = [ __file__, "-case", test_dir ]
+      from Foam.applications.solvers.incompressible.r1_4_1_dev.simpleFoam import *
       pass
-   
-   os._exit( main_standalone( len( argv ), argv ) )
+
+#------------------------------------------------------------------------------------
+if WM_PROJECT_VERSION() == "1.5" :
+   if __name__ == "__main__" :
+      argv = sys.argv
+      if len( argv ) > 1 and argv[ 1 ] == "-test":
+         argv = None
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.5', 'incompressible', 'simpleFoam', 'pitzDaily' )
+         argv = [ __file__, "-case", test_dir ]
+         pass
+      from Foam.applications.solvers.incompressible.r1_5.simpleFoam import main_standalone 
+      os._exit( main_standalone( len( argv ), argv ) )
+   else:
+      from Foam.applications.solvers.incompressible.r1_5.simpleFoam import *
+      pass
+   pass
+
+
+#------------------------------------------------------------------------------------
+if WM_PROJECT_VERSION() >= "1.6" :
+   if __name__ == "__main__" :
+      argv = sys.argv
+      if len( argv ) > 1 and argv[ 1 ] == "-test":
+         argv = None
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.6', 'incompressible', 'simpleFoam', 'pitzDaily' )
+         argv = [ __file__, "-case", test_dir ]
+         pass
+      from Foam.applications.solvers.incompressible.r1_6.simpleFoam import main_standalone 
+      os._exit( main_standalone( len( argv ), argv ) )
+   else:
+      from Foam.applications.solvers.incompressible.r1_6.simpleFoam import * 
+      pass
    pass
    
 

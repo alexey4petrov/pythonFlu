@@ -25,23 +25,32 @@ exec get_module_initializtion_command( "incompressible_" )
 
 
 #---------------------------------------------------------------------------
-turbulenceModel = incompressible_turbulenceModel
-
-autoPtr_turbulenceModel = autoPtr_incompressible_turbulenceModel
+from Foam import WM_PROJECT_VERSION
+if WM_PROJECT_VERSION() <= "1.4.1-dev":
+   turbulenceModel = incompressible_turbulenceModel
+   autoPtr_turbulenceModel = autoPtr_incompressible_turbulenceModel
+   pass
 
 
 #---------------------------------------------------------------------------
-import os
-if os.environ["WM_PROJECT_VERSION"] >= "1.5" :
+if WM_PROJECT_VERSION() == "1.5":
    RASModel = incompressible_RASModel
    autoPtr_RASModel = autoPtr_incompressible_RASModel
 
    LESModel = incompressible_LESModel
    autoPtr_LESModel = autoPtr_incompressible_LESModel
-
-
    pass
 
 
 #----------------------------------------------------------------------------
+if WM_PROJECT_VERSION() >= "1.6":
+   RASModel = incompressible_RASModel
+   autoPtr_RASModel = autoPtr_incompressible_RASModel
+
+   LESModel = incompressible_LESModel
+   autoPtr_LESModel = autoPtr_incompressible_LESModel
+   
+   turbulenceModel = incompressible_turbulenceModel
+   autoPtr_turbulenceModel = autoPtr_incompressible_turbulenceModel
+   pass
 

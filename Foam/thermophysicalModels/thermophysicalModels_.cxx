@@ -34,6 +34,7 @@
 //---------------------------------------------------------------------------
 %include "src/thermophysicalModels/basic/basicThermo.cxx"
 %include "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.cxx"
 
 %include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx"
 %include "src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx"

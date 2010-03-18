@@ -25,20 +25,28 @@ exec get_module_initializtion_command( "compressible_" )
 
 
 #---------------------------------------------------------------------------
-turbulenceModel = compressible_turbulenceModel
-
-autoPtr_turbulenceModel = autoPtr_compressible_turbulenceModel
+from Foam import WM_PROJECT_VERSION
+if WM_PROJECT_VERSION() <= "1.4.1-dev":
+   turbulenceModel = compressible_turbulenceModel
+   autoPtr_turbulenceModel = autoPtr_compressible_turbulenceModel
+   
+   pass
 
 
 #---------------------------------------------------------------------------
-import os
-if os.environ["WM_PROJECT_VERSION"] >= "1.5" :
+if WM_PROJECT_VERSION() == "1.5":
    RASModel = compressible_RASModel
-
    autoPtr_RASModel = autoPtr_compressible_RASModel
-
+   
    pass
 
 
 #----------------------------------------------------------------------------
+if WM_PROJECT_VERSION() >= "1.6":
+   turbulenceModel = compressible_turbulenceModel
+   autoPtr_turbulenceModel = autoPtr_compressible_turbulenceModel
+
+   RASModel = compressible_RASModel
+   autoPtr_RASModel = autoPtr_compressible_RASModel
+   pass
 

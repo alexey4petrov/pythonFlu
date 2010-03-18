@@ -68,6 +68,7 @@
 %include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx"
 %include "src/OpenFOAM/db/IOstreams/Sstreams/ISstream.cxx"
 %include "src/OpenFOAM/db/IOstreams/Fstreams/OFstream.cxx"
+%include "src/OpenFOAM/db/IOstreams/Fstreams/IFstream.cxx"
 %include "src/OpenFOAM/db/IOstreams/StringStreams/IStringStream.cxx"
 %include "src/OpenFOAM/db/IOstreams/StringStreams/OStringStream.cxx"
 %include "src/OpenFOAM/db/IOstreams/Pstreams/Pstream.cxx"

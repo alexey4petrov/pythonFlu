@@ -40,6 +40,7 @@
 //---------------------------------------------------------------------------
 %include "src/turbulenceModels/compressible/RAS/RASModel.cxx"
 %include "src/OpenFOAM/fields/tmp/autoPtr_compressible_RASModel.cxx"
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_RASModel.cxx"
 
 
 //---------------------------------------------------------------------------

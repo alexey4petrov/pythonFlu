@@ -82,3 +82,18 @@ def createMesh( runTime ):
 
 
 #---------------------------------------------------------------------------
+def createMeshNoClear( runTime ):
+    from Foam.OpenFOAM import ext_Info, nl
+    ext_Info() << "Create mesh, no clear-out for time = " << runTime.timeName() << nl << nl
+
+    from Foam.OpenFOAM import Time
+    from Foam.OpenFOAM import IOobject
+    from Foam.OpenFOAM import fileName
+    from Foam.finiteVolume import fvMesh
+    
+    mesh = fvMesh( IOobject( fvMesh.defaultRegion.fget(),
+                             fileName( runTime.timeName() ),
+                             runTime,
+                             IOobject.MUST_READ ) )
+
+    return mesh

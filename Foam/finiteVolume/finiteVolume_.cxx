@@ -55,6 +55,7 @@
 
 %include "src/finiteVolume/fvMesh/fvBoundaryMesh.cxx"
 %include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx"
+%include "src/finiteVolume/fvMesh/fvPatches/derived/wallFvPatch.cxx"
 %include "src/finiteVolume/surfaceMesh.cxx"
 %include "src/finiteVolume/volMesh.cxx"
 
@@ -62,6 +63,7 @@
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
 %include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField_scalar.cxx"
 %include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField_vector.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField_scalar.cxx"
 %include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.cxx"
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchFieldMapper.cxx"
 

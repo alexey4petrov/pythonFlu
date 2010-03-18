@@ -41,6 +41,18 @@ def WM_PROJECT_VERSION():
 
 
 #-------------------------------------------------------------------------------
+def dispatcher( path, base_name, project_ver, default_case ="1.6" ):
+    try:
+       fun_name = base_name + "_" + project_ver.replace( ".", "_" ).replace("-","_")
+       an_expr = "from %s import %s as fun" %( path, fun_name )
+       exec( an_expr )
+       return fun
+    except NameError:
+       fun_name = base_name + "_" + default_case.replace( ".", "_" ).replace("-","_")
+       an_expr = "from %s import %s as fun" %( path, fun_name )
+       exec( an_expr )
+       return fun
 
 
+#--------------------------------------------------------------------------------
    
