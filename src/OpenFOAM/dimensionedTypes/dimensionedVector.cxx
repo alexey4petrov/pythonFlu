@@ -48,6 +48,12 @@
 %include "dimensionedVector.H"
 
 
+//------------------------------------------------------------------------
+%include "src/try_reverse_operator.hxx"
+
+%feature ("pythonprepend") Foam::dimensioned< Foam::vector >::TRY_REVERSE_PYPREPEND( and );
+
+
 //-------------------------------------------------------------------------
 DIMENSIONEDTYPE_ADDONS( Foam::vector )
 

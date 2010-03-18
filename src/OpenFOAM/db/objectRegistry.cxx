@@ -34,5 +34,58 @@
     #include "objectRegistry.H"
 %}
 
+
 //---------------------------------------------------------------------------
+%define OBJECTREGISTRY_EXTENDS( Typename )
+  
+  static const Foam::Typename&
+  ext_lookupObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
+  {
+    const Foam::Typename& res = theRegistry.lookupObject< Foam::Typename >( theName );
+    return res;
+  }
+  
+  static bool ext_foundObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
+  {
+        return theRegistry.foundObject< Foam::Typename >( theName );
+  }
+%enddef
+
+
+//----------------------------------------------------------------------------
+%define OBJECTREGISTRY_TEMPLATE_2_EXTENDS( Template, Type1, Type2  )
+  
+  static const Foam::Template< Type1, Type2 >&
+  ext_lookupObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
+  {
+    const Foam::Template< Type1, Type2 >& res = theRegistry.lookupObject< Foam::Template< Type1, Type2 > >( theName );
+    return res;
+  }
+  
+  static bool ext_foundObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
+  {
+        return theRegistry.foundObject< Foam::Template< Type1, Type2 > >( theName );
+  }
+%enddef
+
+
+//----------------------------------------------------------------------------
+%define OBJECTREGISTRY_TEMPLATE_3_EXTENDS( Template, Type1, Type2, Type3 )
+  
+  static const Foam::Template< Type1, Type2, Type3 >&
+  ext_lookupObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
+  {
+    const Foam::Template< Type1, Type2, Type3 >& res = theRegistry.lookupObject< Foam::Template< Type1, Type2, Type3 > >( theName );
+    return res;
+  }
+  
+  static bool ext_foundObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
+  {
+        return theRegistry.foundObject< Foam::Template< Type1, Type2, Type3 > >( theName );
+  }
+%enddef
+
+
+
+//----------------------------------------------------------------------------
 #endif

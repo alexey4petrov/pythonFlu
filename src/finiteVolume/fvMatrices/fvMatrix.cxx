@@ -130,6 +130,11 @@
     {
         return get_ref( self ) == theArg;
     }
+    
+    Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::dimensioned< Type >& theArg )
+    {
+        return get_ref( self ) == theArg;
+    }
 }
 %enddef
 

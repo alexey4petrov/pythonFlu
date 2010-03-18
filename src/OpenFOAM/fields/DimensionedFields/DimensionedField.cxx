@@ -98,13 +98,8 @@ NO_TMP_TYPEMAP_DIMENSIONED_FIELD( Foam::Type, Foam::TMesh );
 
 %extend Foam::DimensionedField< Foam::Type, Foam::TMesh > 
 {
-  static 
-    const Foam::DimensionedField< Foam::Type, Foam::TMesh >&
-    ext_lookupObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
-  {
-    return theRegistry.lookupObject< Foam::DimensionedField< Foam::Type, Foam::TMesh > >( theName );
-  }
-  
+  OBJECTREGISTRY_TEMPLATE_2_EXTENDS( DimensionedField, Foam::Type, Foam::TMesh  )
+    
   void ext_assign( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theArg )
   {
     *self = theArg;

@@ -47,6 +47,8 @@
 %extend Foam::fvMesh
 {
   TYPEINFO_EXTENDS( polyMesh, fvMesh );
+  OBJECTREGISTRY_EXTENDS( fvMesh );
+  
 }
 
 

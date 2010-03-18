@@ -28,6 +28,8 @@
 
 %include "src/OpenFOAM/primitives/scalar.cxx"
 
+%include "src/OpenFOAM/primitives/vector.cxx"
+
 %{
     #include "dimensionedScalar.H"
 %}
@@ -56,6 +58,10 @@ DIMENSIONEDTYPE_ADDONS( Foam::scalar )
   Foam::dimensioned< Foam::scalar > sqrt()
   {
      return Foam::sqrt( *self );
+  }
+  Foam::dimensioned< Foam::vector > __rmul__( const Foam::vector& ds )
+  {
+      return ds * *self;
   }
 }
 

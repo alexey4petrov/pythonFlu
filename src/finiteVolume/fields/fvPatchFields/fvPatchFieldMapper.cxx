@@ -23,7 +23,6 @@
 #define fvPatchFieldMapper_cxx
 
 //---------------------------------------------------------------------------
-
 %include "src/OpenFOAM/fields/Fields/FieldMapper.cxx"
 
 %{
@@ -32,6 +31,10 @@
 
 %include "fvPatchFieldMapper.H"
 
+%extend Foam::fvPatchFieldMapper
+{
+  ISINSTANCE_EXTEND( Foam::fvPatchFieldMapper )
+}
 
 //---------------------------------------------------------------------------
 

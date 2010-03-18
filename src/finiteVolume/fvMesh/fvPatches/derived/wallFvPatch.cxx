@@ -19,23 +19,27 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fixedValueFvPatchField_cxx
-#define fixedValueFvPatchField_cxx
+#ifndef wallFvPatch_cxx
+#define wallFvPatch_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+
+%include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx"
 
 %{
-    #include "fixedValueFvPatchField.H"
+    #include "wallFvPatch.H"
 %}
 
-%feature( "director" ) fixedValueFvPatchField;
+%include "wallFvPatch.H"
 
-%include "fixedValueFvPatchField.H"
 
+%extend Foam::wallFvPatch 
+{
+ ISINSTANCE_EXTEND( Foam::fvPatch ) 
+ _IS_EXTENDS( fvPatch, Foam::wallFvPatch ) 
+}
 
 //---------------------------------------------------------------------------
-
-
 #endif

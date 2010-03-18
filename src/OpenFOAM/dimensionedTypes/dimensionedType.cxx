@@ -66,6 +66,11 @@
         return *self / ds;
     }
 
+    Foam::dimensioned< Type > __add__( const Foam::dimensioned< Type >& ds )
+    {
+        return *self + ds;
+    }
+
     Foam::dimensioned< Type > __rmul__( const Foam::dimensioned< Foam::scalar >& ds )
     {
         return ds * *self;

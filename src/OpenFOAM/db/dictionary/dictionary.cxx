@@ -70,7 +70,48 @@
   
   ISINSTANCE_EXTEND( Foam::dictionary ) 
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if ( __FOAM_VERSION__ == 010500 )
+  void add( const Foam::word& keyword, const Foam::word& value, bool overwrite = false )
+  {
+    self->add( keyword, value, overwrite );
+  }
+  void add( const Foam::word& keyword, const Foam::string& value, bool overwrite = false )
+  {
+    self->add( keyword, value, overwrite );
+  }
+  void add( const Foam::word& keyword, const Foam::label& value, bool overwrite = false )
+  {
+    self->add( keyword, value, overwrite );
+  }
+  void add( const Foam::word& keyword, const Foam::scalar& value, bool overwrite = false )
+  {
+    self->add( keyword, value, overwrite );
+  }
+  void add( const Foam::word& keyword, const Foam::dictionary& value, bool overwrite = false )
+  {
+    self->add( keyword, value, overwrite );
+  }
+  bool readIfPresent( const Foam::word& k, double& val, bool recursive = false ) const
+  {
+    return self->readIfPresent( k, val, recursive );
+  }
+  Foam::scalar lookupOrDefault( const Foam::word& keyword, const Foam::scalar& deflt, bool recursive = false) const
+  {
+    return self->lookupOrDefault( keyword, deflt, recursive ) ;
+  }
+  int lookupOrDefault( const Foam::word& keyword, const int& deflt, bool recursive = false ) const
+  {
+    return self->lookupOrDefault( keyword, deflt, recursive ) ;
+  }
+  Foam::Switch lookupOrDefault( const Foam::word& keyword, const Foam::Switch& deflt, bool recursive = false ) const
+  {
+    return self->lookupOrDefault( keyword, deflt, recursive ) ;
+  }
+#endif
+
+
+//-----------------------------------------------------------------------------------------------
+#if ( __FOAM_VERSION__ >= 010600 )  
   void add( const Foam::word& keyword, const Foam::word& value, bool overwrite = false )
   {
     self->add( keyword, value, overwrite );

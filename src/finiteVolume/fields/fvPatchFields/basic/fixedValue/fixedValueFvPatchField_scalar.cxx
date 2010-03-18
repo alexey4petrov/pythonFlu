@@ -36,10 +36,9 @@
 
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
 
-
 %include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField.cxx"
 
-%template( fixedValueFvPatchScalarField ) Foam::fixedValueFvPatchField< Foam::scalar >;
+%feature( "director" ) fixedValueFvPatchScalarField;
 
 %inline
 {
@@ -49,6 +48,21 @@
   }
 }
 
+DIRECTOR_PRE_EXTENDS( fixedValueFvPatchScalarField );
+
+%template( fixedValueFvPatchScalarField ) Foam::fixedValueFvPatchField< Foam::scalar >;
+
 
 //---------------------------------------------------------------------------
+%include "src/OpenFOAM/db/objectRegistry.cxx"
+
+%extend Foam::fixedValueFvPatchField< Foam::scalar >
+{
+  DIRECTOR_EXTENDS( fixedValueFvPatchScalarField );
+  TYPEINFO_DIRECTOR_EXTENDS( fvPatchScalarField, fixedValueFvPatchScalarField );
+}
+
+//---------------------------------------------------------------------------
+
+
 #endif

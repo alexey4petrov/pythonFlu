@@ -56,21 +56,12 @@
 
 %define __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
 {
-    static const Foam::GeometricField< Type, TPatchField, TMesh >&
-    ext_lookupObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
-    {
-        return theRegistry.lookupObject< Foam::GeometricField< Type, TPatchField, TMesh > >( theName );
-    }
+    OBJECTREGISTRY_TEMPLATE_3_EXTENDS( GeometricField, Type, TPatchField, TMesh )
     
     static const TPatchField< Type >&
     ext_lookupPatchField(const Foam::fvPatch& thePatch, const word& theName )
     {
         return thePatch.lookupPatchField< Foam::GeometricField< Type, TPatchField, TMesh >, Type >( theName );
-    }
-
-    static bool ext_foundObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
-    {
-        return theRegistry.foundObject< Foam::GeometricField< Type, TPatchField, TMesh > >( theName );
     }
 
     void ext_assign( const Foam::GeometricField< Type, TPatchField, TMesh >& theArg )
@@ -170,6 +161,11 @@
     {
         return get_ref( self ) / theArg;
     }
+    
+    Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __div__( const Foam::dimensioned< Foam::scalar >& theArg )
+    {
+        return get_ref( self ) / theArg;
+    }
 
     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __rdiv__( const Foam::scalar& theArg )
     {
@@ -177,6 +173,11 @@
     }
 
     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __rmul__( const Foam::scalar& theArg )
+    {
+        return theArg * get_ref( self );
+    }
+    
+    Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __rmul__( const Foam::vector& theArg )
     {
         return theArg * get_ref( self );
     }
@@ -270,6 +271,10 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::scalar, TPatchField, TMesh )
     {
         return get_ref( self ) / theArg;
     }
+    Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __mul__( const Foam::dimensioned< Foam::scalar >& theArg )
+    {
+        return get_ref( self ) * theArg;
+    }
     Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > >  __rxor__( const Foam::dimensioned< Foam::vector >& theArg )
     {
         return theArg ^ get_ref( self );
@@ -279,6 +284,12 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::scalar, TPatchField, TMesh )
     {
         return theArg & get_ref( self );
     }
+    
+    Foam::tmp<Foam::GeometricField<Foam::scalar, TPatchField, TMesh > > __rand__( const Foam::vector& theArg )
+    {
+        return theArg & get_ref( self );
+    }
+    
 #if ( __FOAM_VERSION__ > 010500 )     
     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > >__rand__( const Foam::UniformDimensionedField< Foam::vector >& theArg )
     {

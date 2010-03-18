@@ -71,11 +71,20 @@
 //---------------------------------------------------------------------------
 %{
     #include "vector.H"
+    #include "Tensor.H"
 %}
 
 %include "vector.H"
 
 %template( vector ) Foam::Vector< Foam::scalar >;
+
+%extend Foam::Vector< Foam::scalar >
+{
+  Foam::Tensor< Foam::scalar > sqr()
+  {
+     return Foam::sqr( *self );
+  }
+}
 
 
 //---------------------------------------------------------------------------

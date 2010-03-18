@@ -19,66 +19,55 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef typeInfo_hxx
-#define typeInfo_hxx
+#if ( __FOAM_VERSION__ < 010500 )   
+%include "src/common.hxx"
+#define PtrList_ccompressible_RASModel_cxx
+#endif
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/typeInfo/className.hxx"
-
-%include "typeInfo.H"
+#ifndef PtrList_ccompressible_RASModel_cxx
+#define PtrList_compressible_RASModel_cxx
 
 
 //---------------------------------------------------------------------------
-%define _DIRECTOR_EXTENDS( TSource, TTarget )
-static Foam::TTarget& ext_refCast( Foam::TSource& theArg )
+// Keep on corresponding "director" includes at the top of SWIG defintion file
+
+%include "src/OpenFOAM/directors.hxx"
+
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
+%include "src/turbulenceModels/compressible/RAS/RASModel.cxx"
+
+%include "src/OpenFOAM/fields/tmp/autoPtr_compressible_RASModel.cxx"
+
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+
+%ignore Foam::PtrList< Foam::compressible::RASModel >::PtrList;
+%ignore Foam::PtrList< Foam::compressible::RASModel >::begin;
+%ignore Foam::PtrList< Foam::compressible::RASModel >::end;
+%ignore Foam::PtrList< Foam::compressible::RASModel >::set;
+
+#if ( __FOAM_VERSION__ >= 010600 )
+%ignore Foam::PtrList< Foam::compressible::RASModel >::xfer;
+#endif
+
+%template( PtrList_compressible_RASModel ) Foam::PtrList< Foam::compressible::RASModel >;
+
+
+//---------------------------------------------------------------------------
+%extend Foam::PtrList< Foam::compressible::RASModel >
 {
-  Foam::TTarget& res = refCast< TTarget >( theArg );
-
-  if ( SwigDirector_##TTarget* director = dynamic_cast< SwigDirector_##TTarget* >( &res ) )
-    return *director;
-  
-  return res;
-}
-%enddef
-
-//---------------------------------------------------------------------------
-%define _TYPEINFO_EXTENDS( TSource, TTarget )
-static Foam::TTarget& ext_refCast( Foam::TSource& theArg )
-{
-  return refCast< TTarget >( theArg );
-}
-%enddef
-
-
-//--------------------------------------------------------------------------
-%define _IS_EXTENDS( TSource, TTarget ) 
-static bool ext_isA(const Foam::TSource& theArg )
-{
-  return isA< TTarget >( theArg );
-}
-static bool ext_isType(const Foam::TSource& theArg )
-{
-  return isType< TTarget >( theArg );
+  Foam::PtrList< Foam::compressible::RASModel >( const Foam::label s )
+  {
+    return new Foam::PtrList< Foam::compressible::RASModel >( s );
+  }
 }
 
-%enddef
-
-
-//---------------------------------------------------------------------------
-%define TYPEINFO_EXTENDS( TSource, TTarget )
-  _IS_EXTENDS( TSource, TTarget ) 
-  _TYPEINFO_EXTENDS( TSource, TTarget )
-%enddef
-
-
-//---------------------------------------------------------------------------
-%define TYPEINFO_DIRECTOR_EXTENDS( TSource, TTarget )
-  _IS_EXTENDS( TSource, TTarget ) 
-  _DIRECTOR_EXTENDS( TSource, TTarget )
-%enddef
+%extend Foam::PtrList< Foam::compressible::RASModel > PTRLISTBASED_ADDONS( Foam::compressible::RASModel )
 
 
 //---------------------------------------------------------------------------
 #endif
-

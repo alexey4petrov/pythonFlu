@@ -45,6 +45,11 @@
   {
     return *self / ds2;
   }
+  
+  Foam::dimensionSet __mul__( const dimensionSet& ds2)
+  {
+    return *self * ds2;
+  }
 }
 
 //---------------------------------------------------------------------------

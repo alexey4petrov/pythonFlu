@@ -19,8 +19,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef singlePhaseTransportModel_cxx
-#define singlePhaseTransportModel_cxx
+#ifndef PtrList_basicThermo_cxx
+#define PtrList_basicThermo_cxx
 
 
 //---------------------------------------------------------------------------
@@ -32,27 +32,34 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/transportModels/incompressible/transportModel.cxx"
+%include "src/thermophysicalModels/basic/basicThermo.cxx"
 
-%include "src/transportModels/incompressible/viscosityModels/viscosityModel.cxx"
+%include "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
 
-%{
-    #include "singlePhaseTransportModel.H"
-%}
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
-%ignore Foam::singlePhaseTransportModel::nu;
+%ignore Foam::PtrList< Foam::basicThermo >::PtrList;
+%ignore Foam::PtrList< Foam::basicThermo >::begin;
+%ignore Foam::PtrList< Foam::basicThermo >::end;
+%ignore Foam::PtrList< Foam::basicThermo >::set;
 
-%include "singlePhaseTransportModel.H"
+#if ( __FOAM_VERSION__ >= 010600 )
+%ignore Foam::PtrList< Foam::basicThermo >::xfer;
+#endif
+
+%template( PtrList_basicThermo ) Foam::PtrList< Foam::basicThermo >;
 
 
-//--------------------------------------------------------------------------
-%extend Foam::singlePhaseTransportModel
+//---------------------------------------------------------------------------
+%extend Foam::PtrList< Foam::basicThermo >
 {
-  Foam::volScalarField& nu()
+  Foam::PtrList< Foam::basicThermo >( const Foam::label s )
   {
-    return self->nu()()
+    return new Foam::PtrList< Foam::basicThermo >( s );
   }
 }
+
+%extend Foam::PtrList< Foam::basicThermo > PTRLISTBASED_ADDONS( Foam::basicThermo )
 
 
 //---------------------------------------------------------------------------

@@ -19,66 +19,55 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef typeInfo_hxx
-#define typeInfo_hxx
+#ifndef fixedGradientFvPatchField_scalar_cxx
+#define fixedGradientFvPatchField_scalar_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/typeInfo/className.hxx"
+// Keep on corresponding "director" includes at the top of SWIG defintion file
 
-%include "typeInfo.H"
+%include "src/OpenFOAM/directors.hxx"
+
+%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%define _DIRECTOR_EXTENDS( TSource, TTarget )
-static Foam::TTarget& ext_refCast( Foam::TSource& theArg )
-{
-  Foam::TTarget& res = refCast< TTarget >( theArg );
+%include "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
-  if ( SwigDirector_##TTarget* director = dynamic_cast< SwigDirector_##TTarget* >( &res ) )
-    return *director;
-  
-  return res;
-}
-%enddef
-
-//---------------------------------------------------------------------------
-%define _TYPEINFO_EXTENDS( TSource, TTarget )
-static Foam::TTarget& ext_refCast( Foam::TSource& theArg )
-{
-  return refCast< TTarget >( theArg );
-}
-%enddef
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
 
 
-//--------------------------------------------------------------------------
-%define _IS_EXTENDS( TSource, TTarget ) 
-static bool ext_isA(const Foam::TSource& theArg )
+%include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField.cxx"
+
+
+%feature( "director" ) fixedGradientFvPatchScalarField;
+
+%inline
 {
-  return isA< TTarget >( theArg );
-}
-static bool ext_isType(const Foam::TSource& theArg )
-{
-  return isType< TTarget >( theArg );
+  namespace Foam 
+  {
+    typedef fixedGradientFvPatchField< scalar > fixedGradientFvPatchScalarField;
+  }
 }
 
-%enddef
+
+//---------------------------------------------------------------------------
+DIRECTOR_PRE_EXTENDS( fixedGradientFvPatchScalarField );
 
 
 //---------------------------------------------------------------------------
-%define TYPEINFO_EXTENDS( TSource, TTarget )
-  _IS_EXTENDS( TSource, TTarget ) 
-  _TYPEINFO_EXTENDS( TSource, TTarget )
-%enddef
+%template( fixedGradientFvPatchScalarField ) Foam::fixedGradientFvPatchField< Foam::scalar >;
 
 
 //---------------------------------------------------------------------------
-%define TYPEINFO_DIRECTOR_EXTENDS( TSource, TTarget )
-  _IS_EXTENDS( TSource, TTarget ) 
-  _DIRECTOR_EXTENDS( TSource, TTarget )
-%enddef
+%include "src/OpenFOAM/db/objectRegistry.cxx"
+
+%extend Foam::fixedGradientFvPatchField< Foam::scalar >
+{
+  DIRECTOR_EXTENDS( fixedGradientFvPatchScalarField );
+  TYPEINFO_DIRECTOR_EXTENDS( fvPatchScalarField, fixedGradientFvPatchScalarField );
+}
 
 
 //---------------------------------------------------------------------------
 #endif
-
