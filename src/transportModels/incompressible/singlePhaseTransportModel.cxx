@@ -48,9 +48,9 @@
 //--------------------------------------------------------------------------
 %extend Foam::singlePhaseTransportModel
 {
-  Foam::volScalarField& nu()
+  Foam::volScalarField& ext_nu()
   {
-    return self->nu()()
+    return self->nu()();
   }
 }
 

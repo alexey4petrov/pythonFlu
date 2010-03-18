@@ -93,7 +93,7 @@ def main_standalone( argc, argv ):
         fluid.correct()
         from Foam import fvm, fvc
         
-        UEqn = fvm.ddt( U ) + fvm.div( phi, U ) - fvm.laplacian( fluid.nu(), U )
+        UEqn = fvm.ddt( U ) + fvm.div( phi, U ) - fvm.laplacian( fluid.ext_nu(), U )
         
         from Foam.finiteVolume import solve
         solve( UEqn == -fvc.grad( p ) )
@@ -102,7 +102,7 @@ def main_standalone( argc, argv ):
 
         for corr in range( nCorr ):
             rUA = 1.0 / UEqn.A()
-            U = rUA * UEqn.H()
+            U.ext_assign( rUA * UEqn.H() )
             phi.ext_assign( ( fvc.interpolate( U ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, U, phi ) )
             
             from Foam.finiteVolume import adjustPhi
@@ -119,13 +119,15 @@ def main_standalone( argc, argv ):
                    phi.ext_assign( phi - pEqn.flux() )
                    pass
                 
-                from Foam.finiteVolume.cfdTools.incompressible import continuityErrs
-                cumulativeContErr = continuityErrs( mesh, phi, runTime, cumulativeContErr )     
-                
-                U.ext_assign( U - rUA * fvc.grad( p ) )
-                U.correctBoundaryConditions()
                 pass
-
+                
+            from Foam.finiteVolume.cfdTools.incompressible import continuityErrs
+            cumulativeContErr = continuityErrs( mesh, phi, runTime, cumulativeContErr )     
+               
+            U.ext_assign( U - rUA * fvc.grad( p ) )
+            U.correctBoundaryConditions()
+            pass
+        
         runTime.write()
         
         ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
