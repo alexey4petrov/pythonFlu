@@ -57,13 +57,11 @@
 {
     NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_vector_fvPatchField_volMesh )
     TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvPatchVectorField )
+    TGEOM_BOUND_FIELD_FVPATCHFIELD_EXTENDS()
 }
 
 
 //----------------------------------------------------------------------------
-
-
-//---------------------------------------------------------------------------
 %ignore Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >::debug;
 %ignore Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >::typeName;
 %ignore Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >::boundaryField;

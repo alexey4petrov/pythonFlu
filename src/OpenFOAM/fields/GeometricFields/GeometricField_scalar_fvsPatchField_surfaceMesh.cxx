@@ -37,6 +37,19 @@
 %include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_surfaceMesh.cxx"
 
 
+//----------------------------------------------------------------------------
+%template ( TGeometricBoundaryField_scalar_fvsPatchField_surfaceMesh ) Foam::TGeometricBoundaryField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >;
+
+%feature( "pythonappend" ) Foam::TGeometricBoundaryField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >::NESTEDCLASS_PYAPPEND_GETATTR( TGeometricBoundaryField_scalar_fvsPatchField_surfaceMesh );
+
+%extend Foam::TGeometricBoundaryField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >
+{
+    NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_scalar_fvsPatchField_surfaceMesh )
+    TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvsPatchField_scalar )
+}
+
+
+//-----------------------------------------------------------------------------
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >::debug;
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >::typeName;
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >::boundaryField;

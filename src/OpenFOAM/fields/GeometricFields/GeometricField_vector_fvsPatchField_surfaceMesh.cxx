@@ -36,6 +36,20 @@
 %include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
 %include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_surfaceMesh.cxx"
 
+
+//----------------------------------------------------------------------------
+%template ( TGeometricBoundaryField_vector_fvsPatchField_surfaceMesh ) Foam::TGeometricBoundaryField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >;
+
+%feature( "pythonappend" ) Foam::TGeometricBoundaryField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >::NESTEDCLASS_PYAPPEND_GETATTR( TGeometricBoundaryField_vector_fvsPatchField_surfaceMesh );
+
+%extend Foam::TGeometricBoundaryField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >
+{
+    NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_vector_fvsPatchField_surfaceMesh )
+    TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvsPatchField_vector )
+}
+
+
+//-------------------------------------------------------------------------------
 %ignore Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >::debug;
 %ignore Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >::typeName;
 %ignore Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >::boundaryField;

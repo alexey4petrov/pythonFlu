@@ -58,6 +58,7 @@
 {
     NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_scalar_fvPatchField_volMesh )
     TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvPatchScalarField )
+    TGEOM_BOUND_FIELD_FVPATCHFIELD_EXTENDS()
 }
 
 
@@ -72,6 +73,7 @@
 
 %include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
+
 //---------------------------------------------------------------------------
 %template( GeometricField_scalar_fvPatchField_volMesh ) Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >;
 
@@ -84,8 +86,6 @@ SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::volMesh );
         typedef GeometricField< scalar, fvPatchField, volMesh > volScalarField;
     }
 }
-
-
 
 
 //---------------------------------------------------------------------------

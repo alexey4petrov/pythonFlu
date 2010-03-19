@@ -45,9 +45,9 @@ namespace Foam
        TGeometricBoundaryField(  GeomBounField& theArg ):engine( theArg )
        { }
        
-       void updateCoeffs()
+       GeomBounField& get_engine()
        {
-        engine.updateCoeffs();
+          return engine;
        }
        
        List< word > types()
@@ -79,6 +79,14 @@ namespace Foam
 %enddef
 
 
+//--------------------------------------------------------------------------
+%define TGEOM_BOUND_FIELD_FVPATCHFIELD_EXTENDS()
+    void updateCoeffs()
+    {
+      self->get_engine().updateCoeffs();
+    }
+
+%enddef
 
 
 //----------------------------------------------------------------------------
