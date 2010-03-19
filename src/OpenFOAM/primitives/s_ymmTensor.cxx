@@ -63,4 +63,14 @@
 
 
 //---------------------------------------------------------------------------
+%extend Foam::SymmTensor< Foam::scalar >
+{
+  Foam::Vector< Foam::scalar > __rand__( const Foam::Vector< Foam::scalar >& theArg )
+  {
+    return theArg & *self;
+  }
+}
+
+
+//----------------------------------------------------------------------------
 #endif

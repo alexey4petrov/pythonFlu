@@ -78,12 +78,35 @@
 
 %template( vector ) Foam::Vector< Foam::scalar >;
 
+
+//---------------------------------------------------------------------------
+%include "src/try_reverse_operator.hxx"
+
+%feature ("pythonprepend") Foam::Vector< Foam::scalar >::TRY_REVERSE_PYPREPEND( and )
+
 %extend Foam::Vector< Foam::scalar >
 {
   Foam::Tensor< Foam::scalar > sqr()
   {
      return Foam::sqr( *self );
   }
+  Foam::Vector< Foam::scalar > __neg__()
+  {
+     return - *self;
+  }
+  Foam::scalar __and__( const Foam::Vector< Foam::scalar >& theArg )
+  {
+     return  *self & theArg;
+  }
+  
+  Foam::Vector< Foam::scalar > __div__( const Foam::scalar& theArg )
+  {
+     return  *self / theArg;
+  }
+  Foam::scalar mag()
+  {
+     return  Foam::mag( *self );
+  }  
 }
 
 
