@@ -35,17 +35,17 @@ namespace Foam
   
      public: 
               
-       typedef typename GeometricField<Type, PatchField, GeoMesh>::GeometricBoundaryField GeomBounField;
+       typedef typename GeometricField<Type, PatchField, GeoMesh>::GeometricBoundaryField TSelf;
        
      private:  
-       GeomBounField& engine;
+       TSelf& engine;
      
      public:   
        
-       TGeometricBoundaryField(  GeomBounField& theArg ):engine( theArg )
+       TGeometricBoundaryField(  TSelf& theArg ):engine( theArg )
        { }
        
-       GeomBounField& get_engine()
+       TSelf& get_self()
        {
           return engine;
        }
@@ -83,7 +83,7 @@ namespace Foam
 %define TGEOM_BOUND_FIELD_FVPATCHFIELD_EXTENDS()
     void updateCoeffs()
     {
-      self->get_engine().updateCoeffs();
+      self->get_self().updateCoeffs();
     }
 
 %enddef
