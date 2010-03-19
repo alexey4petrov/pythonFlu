@@ -41,9 +41,9 @@ def WM_PROJECT_VERSION():
 
 
 #-------------------------------------------------------------------------------
-def get_proper_function( module_path, function_name, X, default_version ="1.6" ):
+def get_proper_function( module_path, function_name, default_version ="1.6" ):
     try:
-       fun_name = function_name + "_" + X.replace( ".", "_" ).replace("-","_")
+       fun_name = function_name + "_" + WM_PROJECT_VERSION().replace( ".", "_" ).replace("-","_")
        an_expr = "from %s import %s as fun" %( module_path, fun_name )
        exec( an_expr )
        return fun

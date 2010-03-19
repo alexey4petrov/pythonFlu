@@ -44,10 +44,9 @@ def ContinuityErrs( phi, runTime, mesh, cumulativeContErr ):
 
 #---------------------------------------------------------------------------
 def readPISOControls( mesh ):
-    from Foam import get_proper_function, WM_PROJECT_VERSION
+    from Foam import get_proper_function
     fun = get_proper_function( "Foam.finiteVolume.cfdTools.general.include.readPISOControls_impl",
-                               "readPISOControls",
-                               WM_PROJECT_VERSION() )
+                               "readPISOControls" )
     return fun( mesh )
 
 
@@ -106,10 +105,9 @@ def setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum ):
 
 #---------------------------------------------------------------------------------------------
 def readSIMPLEControls( mesh ):
-    from Foam import get_proper_function, WM_PROJECT_VERSION
+    from Foam import get_proper_function
     fun = get_proper_function( "Foam.finiteVolume.cfdTools.general.include.readSIMPLEControls_impl",
-                               "readSIMPLEControls",
-                               WM_PROJECT_VERSION() )
+                               "readSIMPLEControls" )
                       
     return fun( mesh )
 
