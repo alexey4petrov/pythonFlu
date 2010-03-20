@@ -78,10 +78,27 @@
 
 
 //----------------------------------------------------------------------------
+%ignore Foam::incompressible::RASModel::k;
+
+%ignore Foam::incompressible::RASModel::epsilon;
+
 %rename( incompressible_RASModel ) Foam::incompressible::RASModel;
 
 %include "incompressible/RASModel.H"
 
 
 //---------------------------------------------------------------------------
+%extend Foam::incompressible::RASModel
+{
+  Foam::volScalarField& ext_k()
+  {
+    return self->k()();
+  }
+  Foam::volScalarField& ext_epsilon()
+  {
+    return self->epsilon()();
+  }
+  
+}
+
 #endif
