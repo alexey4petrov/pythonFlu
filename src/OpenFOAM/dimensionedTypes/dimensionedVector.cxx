@@ -28,6 +28,8 @@
 
 %include "src/OpenFOAM/primitives/vector.cxx"
 
+%include "src/OpenFOAM/primitives/tensor.cxx"
+
 %{
     #include "dimensionedVector.H"
 %}
@@ -60,6 +62,10 @@ DIMENSIONEDTYPE_ADDONS( Foam::vector )
 %extend Foam::dimensioned< Foam::vector >
 {
   Foam::dimensioned< Foam::scalar > __and__( const Foam::dimensioned< Foam::vector >& ds )
+  {
+     return *self & ds;
+  }
+  Foam::dimensioned< Foam::vector > __rand__( const Foam::tensor& ds )
   {
      return *self & ds;
   }
