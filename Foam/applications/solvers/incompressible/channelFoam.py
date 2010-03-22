@@ -42,7 +42,8 @@ def readTransportProperties( runTime, mesh):
     Ubar = dimensionedVector( transportProperties.lookup( word( "Ubar" ) ) )
 
     magUbar = Ubar.mag()
-    flowDirection = ( Ubar / magUbar ).value()
+    from Foam.OpenFOAM import vector
+    flowDirection = vector( ( Ubar / magUbar ).value() )
     
     return transportProperties, nu, Ubar, magUbar, flowDirection
 
@@ -213,7 +214,7 @@ def main_standalone( argc, argv ):
 
         U.ext_assign( U + flowDirection * rUA * gragPplus )
         
-        gradP = gradP + gragPplus
+        gradP +=gragPplus
         ext_Info() << "Uncorrected Ubar = " << magUbarStar.value() << "     " << "pressure gradient = " << gradP.value() << nl
         
         runTime.write()

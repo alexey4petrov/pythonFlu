@@ -145,7 +145,7 @@ def main_standalone( argc, argv ):
         UbarStar = flowMask & U.weightedAverage(mesh.V())
         
         U.ext_assign( U + ( Ubar - UbarStar ) )
-        gradP = gradP + ( Ubar - UbarStar ) / ( 1.0 / UEqn.A() ).weightedAverage( mesh.V() )
+        gradP += ( Ubar - UbarStar ) / ( 1.0 / UEqn.A() ).weightedAverage( mesh.V() )
         
         id_ = y.size() - 1
         
