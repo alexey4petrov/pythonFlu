@@ -37,6 +37,7 @@
 %ignore Foam::dimensioned< Foam::vector >::component;
 %ignore Foam::dimensioned< Foam::vector >::replace;
 %ignore Foam::dimensioned< Foam::vector >::T;
+%ignore Foam::dimensioned< Foam::vector >::operator+=;
 
 %typedef Foam::dimensioned< Foam::vector > dimensionedVector;
 
