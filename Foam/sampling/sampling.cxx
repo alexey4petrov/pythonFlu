@@ -34,6 +34,8 @@
 //---------------------------------------------------------------------------
 %include "src/sampling/meshToMeshInterpolation/meshToMesh.cxx"
 
+%include "src/sampling/graphField/makeGraph.cxx"
+
 
 //--------------------------------------------------------------------------------------
 #endif
