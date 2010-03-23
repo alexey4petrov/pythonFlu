@@ -72,19 +72,21 @@ Basic Installation
 The build procedure of the "pyFoam" package is based on GNU autoconf and make utilities. 
 In order to build the module you have to perform the following actions:
 
-1. Go to the source directory:
+1. Start a new shell session (to ensure a clear environment).
+
+2. Go to the source directory:
 
    cd <path to the sources>
 
-2. Modify the provided "env.sh" file to adjust to your local environment.
+3. Modify the provided "env.sh" file to adjust to your local environment.
    
    <your favorite editor> ./env.sh
 
-3. Source this "env.sh" file to define corresponding build environment.
+4. Source this "env.sh" file to define corresponding build environment.
 
    source ./env.sh
 
-4. Configuring the build system:
+5. Configuring the build system:
 
    build_configure
    ./configure
@@ -108,7 +110,7 @@ In order to build the module you have to perform the following actions:
       --with-boost-includes=<path>
       --with-boost-libraries=<path>
 
-5. Build "pyFoam":
+6. Build "pyFoam":
 
    make
 
