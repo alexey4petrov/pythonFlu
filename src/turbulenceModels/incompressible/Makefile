@@ -1,3 +1,4 @@
+## VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
 ## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 ## 
 ## This program is free software: you can redistribute it and/or modify
@@ -13,7 +14,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ## 
-## See https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/pyfoam
+## See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka/pyfoam
 ##
 ## Author : Alexey PETROV
 ##

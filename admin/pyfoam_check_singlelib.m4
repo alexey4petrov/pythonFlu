@@ -13,7 +13,7 @@ dnl
 dnl You should have received a copy of the GNU General Public License
 dnl along with this program.  If not, see <http://www.gnu.org/licenses/>.
 dnl 
-dnl See https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/pyfoam
+dnl See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka/pyfoam
 dnl
 dnl Author : Alexey PETROV
 dnl

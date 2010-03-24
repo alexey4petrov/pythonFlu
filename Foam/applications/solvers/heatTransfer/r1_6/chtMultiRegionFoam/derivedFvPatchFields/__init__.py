@@ -17,7 +17,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ## 
-## See https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/pyfoam
+## See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka/pyfoam
 ##
 ## Author : Alexey PETROV
 ##
