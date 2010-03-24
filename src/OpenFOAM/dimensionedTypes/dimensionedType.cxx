@@ -72,12 +72,6 @@
         return *self / ds;
     }
     
-    Foam::dimensioned< Type >& __iadd__( const Foam::dimensioned< Type >& ds )
-    {
-        *self += ds;
-        return *self;
-    }
-    
     Foam::dimensioned< Type > __add__( const Foam::dimensioned< Type >& ds )
     {
         return *self + ds;

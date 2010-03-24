@@ -37,7 +37,6 @@
 %ignore Foam::dimensioned< Foam::scalar >::component;
 %ignore Foam::dimensioned< Foam::scalar >::replace;
 %ignore Foam::dimensioned< Foam::scalar >::T;
-%ignore Foam::dimensioned< Foam::scalar >::operator+=;
 
 %typedef Foam::dimensioned< Foam::scalar > dimensionedScalar;
 
