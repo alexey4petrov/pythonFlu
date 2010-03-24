@@ -43,7 +43,7 @@ def readTransportProperties( runTime, mesh):
 
     magUbar = Ubar.mag()
     from Foam.OpenFOAM import vector
-    flowDirection = vector( ( Ubar / magUbar ).value() )
+    flowDirection = ( Ubar / magUbar ).ext_value()
     
     return transportProperties, nu, Ubar, magUbar, flowDirection
 

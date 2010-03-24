@@ -62,7 +62,7 @@ def _createFields( runTime, mesh ):
     from Foam.OpenFOAM import dimensionedVector, vector
     Ubar = dimensionedVector( transportProperties.lookup( word( "Ubar" ) ) )
     
-    flowDirection = vector( ( Ubar / Ubar.mag() ).value() )
+    flowDirection = ( Ubar / Ubar.mag() ).ext_value()
     flowMask = flowDirection.sqr()
     
     nWallFaces = 0.0
