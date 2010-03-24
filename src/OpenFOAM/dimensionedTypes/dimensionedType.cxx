@@ -51,11 +51,17 @@
         self->value() = theValue;
     }
     
+    Type ext_value()
+    {
+        return self->value();
+    }
+    
     void setDimensions( const Foam::dimensionSet& theValue )
     {
         self->dimensions() = theValue;
     }
 
+    
     Foam::dimensioned< Type > __neg__()
     {
         return -*self;
@@ -65,8 +71,8 @@
     {
         return *self / ds;
     }
-
-    Foam::dimensioned< Type > __iadd__( const Foam::dimensioned< Type >& ds )
+    
+    Foam::dimensioned< Type >& __iadd__( const Foam::dimensioned< Type >& ds )
     {
         *self += ds;
         return *self;
