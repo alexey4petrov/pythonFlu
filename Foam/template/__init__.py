@@ -1,3 +1,4 @@
+## VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
 ## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 ## 
 ## This program is free software: you can redistribute it and/or modify
