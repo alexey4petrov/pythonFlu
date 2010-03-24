@@ -90,6 +90,16 @@
         return get_ref( self ) + theArg;
     }
     
+    Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __mul__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
+    {
+       return  get_ref( self ) * theArg;
+    }
+    
+    Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __rmul__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
+    {
+       return  theArg * get_ref( self );
+    }
+        
     Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __rmul__( const Foam::label& theArg )
     {
         return theArg * get_ref( self );
@@ -205,26 +215,6 @@
     Foam::tmp< Foam::GeometricField< Foam::tensor, TPatchField, TMesh > > __rmul__( const Foam::tensor& theArg )
     {
         return  theArg * get_ref( self );
-    }
-    
-    Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __mul__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
-    {
-        return get_ref( self ) * theArg;
-    }
-
-    Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __mul__( const Foam::GeometricField< Foam::vector, TPatchField, TMesh >& theArg )
-    {
-        return get_ref( self ) * theArg;
-    }
-
-    Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __rmul__( const Foam::GeometricField< Foam::vector, TPatchField, TMesh >& theArg )
-    {
-        return theArg * get_ref( self );
-    }
-
-    Foam::tmp< Foam::GeometricField< Foam::tensor, TPatchField, TMesh > > __mul__( const Foam::GeometricField< Foam::tensor, TPatchField, TMesh >& theArg )
-    {
-        return get_ref( self ) * theArg;
     }
     
     Foam::tmp< Foam::GeometricField< Foam::sphericalTensor, TPatchField, TMesh > > __rmul__( const Foam::sphericalTensor& theArg )
