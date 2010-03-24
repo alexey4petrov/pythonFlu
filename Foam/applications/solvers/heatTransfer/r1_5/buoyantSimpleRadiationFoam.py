@@ -111,6 +111,7 @@ def fun_UEqn( phi, U, turbulence, pd, rho, gh, eqnResidual, maxResidual ):
     UEqn = fvm.div(phi, U) - fvm.Sp(fvc.div(phi), U)+ turbulence.divDevRhoReff(U)
 
     UEqn.relax();
+
     from Foam.finiteVolume import solve
     eqnResidual = solve( UEqn == -fvc.grad( pd ) - fvc.grad( rho ) * gh ).initialResidual()
 
@@ -251,7 +252,7 @@ def main_standalone( argc, argv ):
        from Foam.finiteVolume.cfdTools.general.include import readSIMPLEControls
        simple, nNonOrthCorr, momentumPredictor, fluxGradp, transonic = readSIMPLEControls( mesh )
 
-       UEqn, eqnResidual, maxResidual = eqnResidual, maxResidual, convergenceCriterion = initConvergenceCheck( simple )
+       eqnResidual, maxResidual, convergenceCriterion = initConvergenceCheck( simple )
         
        pd.storePrevIter()
        rho.storePrevIter()
