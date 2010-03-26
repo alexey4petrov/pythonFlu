@@ -40,7 +40,7 @@
 
 
 //----------------------------------------------------------------------------
-PYAPPEND_RETURN_SELF_ADD_ASSIGN( scalar )
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(dimensioned, scalar, operator+= )
 
 
 //----------------------------------------------------------------------------
@@ -73,7 +73,7 @@ DIMENSIONEDTYPE_ADDONS( Foam::scalar )
 
 
 //-----------------------------------------------------------------------------
-CLEAR_PYAPPEND_RETURN_SELF_ADD_ASSIGN( scalar );
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(dimensioned, scalar, operator+= );
 
 
 //---------------------------------------------------------------------------
