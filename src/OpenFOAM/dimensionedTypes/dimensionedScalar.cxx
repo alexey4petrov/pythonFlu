@@ -38,6 +38,12 @@
 %ignore Foam::dimensioned< Foam::scalar >::replace;
 %ignore Foam::dimensioned< Foam::scalar >::T;
 
+
+//----------------------------------------------------------------------------
+PYAPPEND_RETURN_SELF_ADD_ASSIGN( scalar )
+
+
+//----------------------------------------------------------------------------
 %typedef Foam::dimensioned< Foam::scalar > dimensionedScalar;
 
 %typemap( out ) Foam::dimensioned< Foam::scalar >
@@ -64,6 +70,10 @@ DIMENSIONEDTYPE_ADDONS( Foam::scalar )
       return ds * *self;
   }
 }
+
+
+//-----------------------------------------------------------------------------
+CLEAR_PYAPPEND_RETURN_SELF_ADD_ASSIGN( scalar );
 
 
 //---------------------------------------------------------------------------

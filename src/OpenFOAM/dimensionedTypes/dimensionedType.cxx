@@ -105,4 +105,26 @@
 
 
 //---------------------------------------------------------------------------
+//In case of "<x>=" Python operations it is necessary to return "self" 
+// (corresponding C++ OpenFOAM API returns void);
+// otherwise object will be destroyed
+%define PYAPPEND_RETURN_SELF_ADD_ASSIGN( Type )
+
+%feature("pythonappend") Foam::dimensioned< Foam::Type >::operator+=
+%{
+  return self
+%}
+%enddef
+
+
+//-----------
+// To prevent propagation of the previously defined "pythonappend" on the derived classes
+// (if corresponding C++ OpenFOAM API returns non-void value, it is necessary to use the original SWIG implementation)
+%define CLEAR_PYAPPEND_RETURN_SELF_ADD_ASSIGN( Type )
+%feature("pythonappend") Foam::dimensioned< Foam::Type >::operator+=%{%};
+%enddef
+
+
+//---------------------------------------------------------------------------
 #endif
+
