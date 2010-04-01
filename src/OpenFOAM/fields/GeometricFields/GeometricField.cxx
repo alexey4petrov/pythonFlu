@@ -90,6 +90,16 @@
         return get_ref( self ) + theArg;
     }
     
+    Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __sub__( const Foam::dimensioned< Type >& theArg )
+    {
+        return get_ref( self ) - theArg;
+    }
+        
+    Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __radd__( const Foam::dimensioned< Type >& theArg )
+    {
+        return theArg + get_ref( self ) ;
+    }
+        
     Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __mul__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
     {
        return  get_ref( self ) * theArg;
