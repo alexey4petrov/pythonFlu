@@ -31,7 +31,7 @@ ifneq "@USE_SINGLE_LIB@xx" "yesxx"
 
 include $(pyfoam_root_dir)/include.makefile
 
-SUBDIRS = OpenFOAM meshTools finiteVolume fvc fvm sampling dynamicFvMesh thermophysicalModels transportModels radiation incompressible compressible applications
+SUBDIRS = OpenFOAM meshTools finiteVolume fvc fvm sampling dynamicMesh dynamicFvMesh thermophysicalModels transportModels radiation incompressible compressible applications
 
 #--------------------------------------------------------------------------------------
 else
@@ -46,7 +46,8 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/radiation/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/transportModels/incompressible/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/transportModels	\
-	-I$(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude 	
+	-I$(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude \
+	-I$(WM_PROJECT_DIR)/src/dynamicMesh/lnInclude
 
 #-----------------------------------------------------------------------------------------------------
 ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
