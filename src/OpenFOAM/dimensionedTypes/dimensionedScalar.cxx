@@ -39,6 +39,12 @@
 %ignore Foam::dimensioned< Foam::scalar >::replace;
 %ignore Foam::dimensioned< Foam::scalar >::T;
 
+
+//----------------------------------------------------------------------------
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(dimensioned, scalar, operator+= )
+
+
+//----------------------------------------------------------------------------
 %typedef Foam::dimensioned< Foam::scalar > dimensionedScalar;
 
 %typemap( out ) Foam::dimensioned< Foam::scalar >
@@ -52,6 +58,12 @@
 
 
 //--------------------------------------------------
+%include "src/try_reverse_operator.hxx"
+
+%feature ("pythonprepend") Foam::dimensioned< Foam::scalar >::TRY_REVERSE_PYPREPEND( mul )
+
+%feature ("pythonprepend") Foam::dimensioned< Foam::scalar >::TRY_REVERSE_PYPREPEND( add )
+
 DIMENSIONEDTYPE_ADDONS( Foam::scalar )
 
 %extend Foam::dimensioned< Foam::scalar >
@@ -65,6 +77,10 @@ DIMENSIONEDTYPE_ADDONS( Foam::scalar )
       return ds * *self;
   }
 }
+
+
+//-----------------------------------------------------------------------------
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(dimensioned, scalar, operator+= );
 
 
 //---------------------------------------------------------------------------

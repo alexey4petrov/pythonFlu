@@ -52,6 +52,8 @@
 
 %include "Foam/sampling/sampling.cxx"
 
+%include "Foam/dynamicMesh/dynamicMesh_.cxx"
+
 %include "Foam/dynamicFvMesh/dynamicFvMesh_.cxx"
 
 %include "Foam/thermophysicalModels/thermophysicalModels_.cxx"

@@ -46,6 +46,12 @@
     $result = SWIG_NewPointerObj( ( new $1_type( *&$1 ) ), $&1_descriptor, SWIG_POINTER_OWN |  0 );
 }
 
+
+//-----------------------------------------------------------------------
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(dimensioned, vector, operator+= )
+
+
+//-----------------------------------------------------------------------
 %template( dimensionedVector ) Foam::dimensioned< Foam::vector >; 
 
 %include "dimensionedVector.H"
@@ -71,6 +77,10 @@ DIMENSIONEDTYPE_ADDONS( Foam::vector )
      return *self & ds;
   }
 }
+
+
+//---------------------------------------------------------------------------
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(dimensioned, vector, operator+= );
 
 
 //---------------------------------------------------------------------------

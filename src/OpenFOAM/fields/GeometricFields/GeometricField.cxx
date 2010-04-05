@@ -91,6 +91,16 @@
         return get_ref( self ) + theArg;
     }
     
+    Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __sub__( const Foam::dimensioned< Type >& theArg )
+    {
+        return get_ref( self ) - theArg;
+    }
+        
+    Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __radd__( const Foam::dimensioned< Type >& theArg )
+    {
+        return theArg + get_ref( self ) ;
+    }
+        
     Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __mul__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
     {
        return  get_ref( self ) * theArg;
@@ -110,7 +120,12 @@
     {
         return Foam::mag( get_ref( self ) );
     }
-
+    
+    Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > magSqr()
+    {
+        return Foam::magSqr( get_ref( self ) );
+    }
+    
     Foam::dimensioned< Type > ext_max() const
     {
         return Foam::max( get_ref( self ) );

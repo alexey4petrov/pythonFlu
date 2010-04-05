@@ -33,7 +33,8 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/radiation/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/transportModels/incompressible/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/transportModels \
-	-I$(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude 	
+	-I$(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude \
+	-I$(WM_PROJECT_DIR)/src/dynamicMesh/lnInclude
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/LES/LESdeltas/lnInclude
