@@ -119,7 +119,12 @@
     {
         return Foam::mag( get_ref( self ) );
     }
-
+    
+    Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > magSqr()
+    {
+        return Foam::magSqr( get_ref( self ) );
+    }
+    
     Foam::dimensioned< Type > ext_max() const
     {
         return Foam::max( get_ref( self ) );
