@@ -157,7 +157,10 @@
   {
     return Foam::gAverage( *self );
   }
-  
+  Foam::Type max()
+  {
+    return Foam::max( *self );
+  }
 }
 %enddef
 
