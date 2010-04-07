@@ -39,6 +39,8 @@
 
 
 //---------------------------------------------------------------------------
+%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+
 %define DIMENSIONED_FIELD_VIRTUAL_EXTENDS( Type, TMesh )
 {
   void ext_assign( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theSource )
@@ -107,6 +109,7 @@ NO_TMP_TYPEMAP_DIMENSIONED_FIELD( Foam::Type, Foam::TMesh );
   }
   
   ISINSTANCE_TEMPLATE_2_EXTEND( DimensionedField, Foam::Type, Foam::TMesh )
+  
 }
 
 %include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
@@ -117,4 +120,23 @@ NO_TMP_TYPEMAP_DIMENSIONED_FIELD( Foam::Type, Foam::TMesh );
 
 
 //--------------------------------------------------------------------------------
+%define __VECTOR_DIMENSIONED_FIELD_OPERATORS( TMesh )
+{
+   Foam::tmp< Foam::DimensionedField< Foam::vector, TMesh > > __div__( const Foam::DimensionedField< Foam::scalar, TMesh >& theArg )
+   {
+      return *self / theArg;
+   }
+}
+%enddef
+
+
+//---------------------------------------------------------------------------------
+%define VECTOR_DIMENSIONED_FIELD_TEMPLATE_FUNC( TMesh )
+   DIMENSIONED_FIELD_TEMPLATE_FUNC( vector, TMesh );
+   
+   %extend Foam::DimensionedField< Foam::vector, Foam::TMesh > __VECTOR_DIMENSIONED_FIELD_OPERATORS( TMesh );
+%enddef
+
+
+//---------------------------------------------------------------------------------
 #endif

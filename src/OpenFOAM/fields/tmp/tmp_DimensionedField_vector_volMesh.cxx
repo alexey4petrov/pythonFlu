@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef DimensionedField_vector_surfaceMesh_cxx
-#define DimensionedField_vector_surfaceMesh_cxx
+#ifndef tmp_DimensionedField_vector_volMesh_cxx
+#define tmp_DimensionedField_vector_volMesh_cxx
 
 
 //---------------------------------------------------------------------------
@@ -33,23 +33,22 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
+%include "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "src/OpenFOAM/fields/Fields/vectorField.cxx"
-
-%include "src/finiteVolume/surfaceMesh.hxx"
-
-%ignore Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >::typeName;
-%ignore Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >::debug;
-%ignore Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >::T;
-
-VECTOR_DIMENSIONED_FIELD_TEMPLATE_FUNC( surfaceMesh )
+%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cxx"
 
 
 //---------------------------------------------------------------------------
-%template( DimensionedField_vector_surfaceMesh ) Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >;
+%template( tmp_DimensionedField_vector_volMesh ) Foam::tmp< Foam::DimensionedField< Foam::vector, Foam::volMesh > >;
+
+%inline
+{
+    namespace Foam
+    {
+        typedef tmp< DimensionedField< vector, volMesh > > tmp_DimensionedField_vector_volMesh;
+    }
+}
 
 
 //---------------------------------------------------------------------------
-
 #endif
