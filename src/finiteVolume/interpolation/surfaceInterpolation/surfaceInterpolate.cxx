@@ -63,6 +63,16 @@
     {
         return Foam::fvc::interpolate( tvf, name );
     }
+
+    Foam::tmp< GeometricField< Type, Foam::fvsPatchField, Foam::surfaceMesh> > interpolate
+    (
+        const Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& tvf,
+        const Foam::surfaceScalarField& faceFlux,
+        const Foam::word& name
+    )
+    {
+        return Foam::fvc::interpolate( tvf, faceFlux, name );
+    }
     
 %}
 %enddef
