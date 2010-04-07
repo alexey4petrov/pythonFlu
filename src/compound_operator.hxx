@@ -29,7 +29,7 @@
 // otherwise object will be destroyed
 %define PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Type, OperatorName )
 
-%feature("pythonappend") Foam::Type::##OperatorName
+%feature("pythonappend") Type::##OperatorName
 %{
   return self
 %}
@@ -40,14 +40,14 @@
 // To prevent propagation of the previously defined "pythonappend" on the derived classes
 // (if corresponding C++ OpenFOAM API returns non-void value, it is necessary to use the original SWIG implementation)
 %define CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Type, OperatorName )
-%feature("pythonappend") Foam::Type::##OperatorName##%{%};
+%feature("pythonappend") Type::##OperatorName##%{%};
 %enddef
 
 
 //--------------------------------------------------------------------------
 %define PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Template, Type, OperatorName   )
 
-%feature("pythonappend") Foam::Template< Foam::Type >::##OperatorName
+%feature("pythonappend") Template< Type >::##OperatorName
 %{
   return self
 %}
@@ -57,7 +57,7 @@
 
 %define CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Template, Type, OperatorName )
 
-%feature("pythonappend") Foam::Template< Foam::Type >::##OperatorName##%{%};
+%feature("pythonappend") Template< Type >::##OperatorName##%{%};
 
 %enddef
 
@@ -65,7 +65,7 @@
 //--------------------------------------------------------------------------
 %define PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_2( Template, Type1, Type2, OperatorName   )
 
-%feature("pythonappend") Foam::Template< Foam::Type1, Foam::Type2 >::##OperatorName
+%feature("pythonappend") Template< Type1, Type2 >::##OperatorName
 %{
   return self
 %}
@@ -75,7 +75,7 @@
 
 %define CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_2( Template, Type1, Type2, OperatorName )
 
-%feature("pythonappend") Foam::Template< Foam::Type1, Foam::Type2 >::##OperatorName##%{%};
+%feature("pythonappend") Template< Type1, Type2 >::##OperatorName##%{%};
 
 %enddef
 
@@ -83,7 +83,7 @@
 //--------------------------------------------------------------------------
 %define PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Template, Type1, Type2, Type3, OperatorName   )
 
-%feature("pythonappend") Foam::Template< Foam::Type1, Foam::Type2, Foam::Type3 >::##OperatorName
+%feature("pythonappend") Template< Type1, Type2, Type3 >::##OperatorName
 %{
   return self
 %}
@@ -94,7 +94,26 @@
 
 %define CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Template, Type1, Type2, Type3, OperatorName )
 
-%feature("pythonappend") Foam::Template< Foam::Type1, Foam::Type2, Foam::Type3 >::##OperatorName##%{%};
+%feature("pythonappend") Template< Type1, Type2, Type3 >::##OperatorName##%{%};
+
+%enddef
+
+
+//--------------------------------------------------------------------------
+%define PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Template1, Template2, Type1, Type2, Type3, OperatorName   )
+
+%feature("pythonappend") Template1< Template2< Type1, Type2, Type3 > >::##OperatorName
+%{
+  return self
+%}
+
+%enddef
+//------------
+
+
+%define CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Template1, Template2, Type1, Type2, Type3, OperatorName )
+
+%feature("pythonappend") Foam::Template1< Foam::Template2< Foam::Type1, Foam::Type2, Foam::Type3 > >::##OperatorName##%{%};
 
 %enddef
 

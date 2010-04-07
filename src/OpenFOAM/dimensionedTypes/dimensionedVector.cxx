@@ -48,7 +48,7 @@
 
 
 //-----------------------------------------------------------------------
-PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(dimensioned, vector, operator+= )
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(Foam::dimensioned, Foam::vector, operator+= )
 
 
 //-----------------------------------------------------------------------
@@ -80,7 +80,7 @@ DIMENSIONEDTYPE_ADDONS( Foam::vector )
 
 
 //---------------------------------------------------------------------------
-CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(dimensioned, vector, operator+= );
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(Foam::dimensioned, Foam::vector, operator+= );
 
 
 //---------------------------------------------------------------------------
