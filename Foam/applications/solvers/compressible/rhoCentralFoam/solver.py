@@ -134,7 +134,44 @@ def _createFields( runTime, mesh ):
                               mesh,
                               dimensionedScalar( word( "neg" ), dimless, -1.0 ) )
     
-    return thermo, p, e, T, psi, mu, U, pbf, rhoBoundaryTypes, rho, rhoU, rhoE, pos, neg
+    return thermo, p, e, T, psi, mu, U, pbf, rhoBoundaryTypes, rho, rhoU, rhoE, pos, neg, inviscid
+
+
+#--------------------------------------------------------------------------------------
+def readFluxScheme( mesh ):
+    from Foam.OpenFOAM import word
+    fluxScheme = word("Kurganov")
+    if mesh.schemesDict().found( word( "fluxScheme" ) ):
+       fluxScheme = word( mesh.schemesDict().lookup( word( "fluxScheme" ) ) )
+       from Foam.OpenFOAM import ext_Info, nl
+       if str( fluxScheme ) == "Tadmor" or str( fluxScheme ) == "Kurganov":
+          ext_Info() << "fluxScheme: " << fluxScheme << nl
+          pass
+       else:
+          ext_Info() << "rhoCentralFoam::readFluxScheme" \
+                     << "fluxScheme: " << fluxScheme \
+                     << " is not a valid choice. " \
+                     << "Options are: Tadmor, Kurganov" <<nl
+          import os
+          os.abort()           
+          pass
+       pass
+    return fluxScheme
+
+#--------------------------------------------------------------------------------------
+def compressibleCourantNo( mesh, amaxSf, runTime ):
+    CoNum = 0.0
+    meanCoNum = 0.0
+    
+    if mesh.nInternalFaces():
+       amaxSfbyDelta = mesh.deltaCoeffs() * amaxSf 
+       CoNum = ( amaxSfbyDelta / mesh.magSf() ).ext_max().value() * runTime.deltaT().value()
+       meanCoNum = ( amaxSfbyDelta.sum() / mesh.magSf().sum() ).value() * runTime.deltaT().value()
+       pass
+    from Foam.OpenFOAM import ext_Info, nl
+    ext_Info() << "Mean and max Courant Numbers = " << meanCoNum << " " << CoNum << nl
+    
+    return CoNum, meanCoNum
 
 
 #--------------------------------------------------------------------------------------
@@ -149,53 +186,109 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM.include import createMesh
     mesh = createMesh( runTime )
     
-    thermo, p, e, T, psi, mu, U, pbf, rhoBoundaryTypes, rho, rhoU, rhoE, pos, neg = _createFields( runTime, mesh )
+    thermo, p, e, T, psi, mu, U, pbf, rhoBoundaryTypes, rho, rhoU, rhoE, pos, neg, inviscid = _createFields( runTime, mesh )
     
     thermophysicalProperties, Pr = readThermophysicalProperties( runTime, mesh )
     
-        
+    from Foam.finiteVolume.cfdTools.general.include import readTimeControls
+    adjustTimeStep, maxCo, maxDeltaT = readTimeControls( runTime )
+    
+    fluxScheme = readFluxScheme( mesh )
+    
+    from Foam.OpenFOAM import dimensionedScalar, dimVolume, dimTime, word
+    v_zero = dimensionedScalar( word( "v_zero" ) ,dimVolume/dimTime, 0.0)
+    
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "\nStarting time loop\n" << nl
     
-    while runTime.loop() :
-        ext_Info() << "Time = " << runTime.timeName() << nl << nl
+    while runTime.run() :
+        # --- upwind interpolation of primitive fields on faces
+        from Foam import fvc
+        rho_pos = fvc.interpolate( rho, pos, word( "reconstruct(rho)" ) )
+        rho_neg = fvc.interpolate( rho, neg, word( "reconstruct(rho)" ) )
+        
+        rhoU_pos = fvc.interpolate( rhoU, pos, word( "reconstruct(U)" ) )
+        rhoU_neg = fvc.interpolate( rhoU, neg, word( "reconstruct(U)" ) )
+        
+        rPsi = 1.0 / psi
+        rPsi_pos = fvc.interpolate( rPsi, pos, word( "reconstruct(T)" ) )
+        rPsi_neg = fvc.interpolate( rPsi, neg, word( "reconstruct(T)" ) )
+        
+        e_pos = fvc.interpolate( e, pos, word( "reconstruct(T)" ) )
+        e_neg = fvc.interpolate( e, neg, word( "reconstruct(T)" ) )
+        
+        U_pos = rhoU_pos / rho_pos
+        U_neg = rhoU_neg / rho_neg
+
+        p_pos = rho_pos * rPsi_pos
+        p_neg = rho_neg * rPsi_neg
+
+        phiv_pos = U_pos & mesh.Sf()
+        phiv_neg = U_neg & mesh.Sf()
+        
+        c = ( thermo.Cp() / thermo.Cv() * rPsi ).sqrt()
+        cSf_pos = fvc.interpolate( c, pos, word( "reconstruct(T)" ) ) * mesh.magSf()
+        cSf_neg = fvc.interpolate( c, neg, word( "reconstruct(T)" ) ) * mesh.magSf()
+        
+        ap = ( phiv_pos + cSf_pos ).ext_max( phiv_neg + cSf_neg ).ext_max( v_zero )
+        am = ( phiv_pos - cSf_pos ).ext_min( phiv_neg - cSf_neg ).ext_min( v_zero )
+
+        a_pos = ap / ( ap - am )
         
         from Foam.finiteVolume import surfaceScalarField
-        from Foam.OpenFOAM import IOobject, word, fileName
-        from Foam import fvc
-        phiv = surfaceScalarField( IOobject( word( "phiv" ),
-                                             fileName( runTime.timeName() ),
-                                             mesh,
-                                             IOobject.NO_READ,
-                                             IOobject.NO_WRITE ),
-                                   fvc.interpolate( rhoU ) / fvc.interpolate( rho ) & mesh.Sf() )
+        amaxSf = surfaceScalarField( word( "amaxSf" ), am.mag().ext_max( ap.mag() ) )
         
-        CoNum = ( mesh.deltaCoeffs() * phiv.mag() / mesh.magSf() ).ext_max().value()*runTime.deltaT().value();
-        ext_Info() << "\nMax Courant Number = " << CoNum << nl
+        CoNum, meanCoNum = compressibleCourantNo( mesh, amaxSf, runTime )
         
-        from Foam import fvm
+        from Foam.finiteVolume.cfdTools.general.include import readTimeControls
+        adjustTimeStep, maxCo, maxDeltaT = readTimeControls( runTime )
         
-        from Foam.finiteVolume import solve
-        solve( fvm.ddt(rho) + fvm.div( phiv, rho ) )
+        from Foam.finiteVolume.cfdTools.general.include import setDeltaT
+        runTime = setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
         
-        p.ext_assign( rho / psi )
+        runTime.step()
         
-        solve( fvm.ddt( rhoU ) + fvm.div( phiv, rhoU ) == - fvc.grad( p ) )
+        ext_Info() << "Time = " << runTime.timeName() << nl << nl
+        
+        aSf = am * a_pos
 
-        U == rhoU / rho
+        if str( fluxScheme ) == "Tadmor":
+           aSf.ext_assign( -0.5 * amaxSf )
+           a_pos.ext_assign( 0.5 )
+           pass
         
-        phiv2 = surfaceScalarField( IOobject( word( "phiv2" ),
-                                              fileName( runTime.timeName() ),
-                                              mesh,
-                                              IOobject.NO_READ,
-                                              IOobject.NO_WRITE ),
-                                    fvc.interpolate( rhoU ) / fvc.interpolate( rho ) & mesh.Sf() )
+        a_neg = 1.0 - a_pos
         
-        solve( fvm.ddt( rhoE ) + fvm.div( phiv, rhoE ) == - fvc.div( phiv2, p ) )
+        phiv_pos *= a_pos
+        phiv_neg *= a_neg
         
-        T.ext_assign( ( rhoE - 0.5 * rho * ( rhoU / rho ).magSqr() ) / Cv / rho )
+        aphiv_pos = phiv_pos - aSf
         
-        psi.ext_assign( 1.0 / ( R * T ) )
+        aphiv_neg = phiv_neg + aSf
+        
+        phi = surfaceScalarField( word( "phi" ), aphiv_pos * rho_pos + aphiv_neg * rho_neg )
+        
+        phiUp = ( aphiv_pos * rhoU_pos + aphiv_neg * rhoU_neg) + ( a_pos * p_pos + a_neg * p_neg ) * mesh.Sf()
+        
+        phiEp = aphiv_pos * ( rho_pos * ( e_pos + 0.5*U_pos.magSqr() ) + p_pos ) + aphiv_neg * ( rho_neg * ( e_neg + 0.5 * U_neg.magSqr() ) + p_neg )\
+                + aSf * p_pos - aSf * p_neg
+        
+        from Foam.finiteVolume import volTensorField
+        from Foam import fvc
+        tauMC = volTensorField( word( "tauMC" ) , mu * fvc.grad(U).T().dev2() ) 
+        
+        # --- Solve density
+        from Foam.finiteVolume import solve
+        from Foam import fvm
+        solve( fvm.ddt( rho ) + fvc.div( phi ) )
+        
+        # --- Solve momentum
+        solve( fvm.ddt( rhoU ) + fvc.div( phiUp ) )
+        
+        U.dimensionedInternalField().ext_assign( rhoU.dimensionedInternalField() / rho.dimensionedInternalField() )
+        U.correctBoundaryConditions()
+
+        rhoU.ext_boundaryField().ext_assign( rho.ext_boundaryField() * U.ext_boundaryField() )
         
         runTime.write()
 
