@@ -113,7 +113,7 @@
 
 %define CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Template1, Template2, Type1, Type2, Type3, OperatorName )
 
-%feature("pythonappend") Foam::Template1< Foam::Template2< Foam::Type1, Foam::Type2, Foam::Type3 > >::##OperatorName##%{%};
+%feature("pythonappend") Template1< Template2< Type1, Type2, Type3 > >::##OperatorName##%{%};
 
 %enddef
 
