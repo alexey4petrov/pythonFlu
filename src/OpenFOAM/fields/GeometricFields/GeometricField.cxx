@@ -362,6 +362,11 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::vector, TPatchField, TMesh )
     return Foam::tr( get_ref( self ) );
   }
   
+  Foam::tmp< Foam::GeometricField< Foam::tensor, TPatchField, TMesh > > dev2()
+  {
+    return Foam::dev2( get_ref( self ) );
+  }
+  
   Foam::tmp< Foam::GeometricField< Foam::symmTensor, TPatchField, TMesh > > symm()
   {
     return Foam::symm( get_ref( self ) );

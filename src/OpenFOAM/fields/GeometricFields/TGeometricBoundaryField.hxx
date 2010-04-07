@@ -51,6 +51,11 @@ namespace Foam
           return engine;
        }
        
+       const TSelf& get_self() const
+       {
+          return engine;
+       }
+       
        List< word > types()
        {
          return engine.types();
@@ -63,6 +68,10 @@ namespace Foam
           return engine;
        }
        
+       void ext_assign( const FieldField< PatchField, Type >& theArg )
+       {
+         engine = theArg; 
+       }
   };  
 }
 
@@ -89,6 +98,15 @@ namespace Foam
 
 %enddef
 
+
+//---------------------------------------------------------------------------
+%define TGEOM_BOUND_FIELD_SCALAR_OPERATORS( TPatchField, TMesh )
+    Foam::tmp< Foam::FieldField< TPatchField, Foam::vector > > __mul__
+    ( const Foam::TGeometricBoundaryField< Foam::vector, TPatchField, TMesh >& theArg )
+    {
+      return self->get_self() * theArg.get_self();
+    }
+%enddef
 
 //----------------------------------------------------------------------------
 #endif

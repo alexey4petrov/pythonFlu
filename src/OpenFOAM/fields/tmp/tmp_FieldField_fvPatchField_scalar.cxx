@@ -20,45 +20,44 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef FieldField_cxx
-#define FieldField_cxx
+#ifndef tmp_FieldField_fvPatchField_scalar_cxx
+#define tmp_FieldField_fvPatchField_scalar_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+// Keep on corresponding "director" includes at the top of SWIG defintion file
 
-%include "FieldField.H"
+%include "src/OpenFOAM/directors.hxx"
 
-%include "src/OpenFOAM/fields/Fields/scalarField.cxx"
-
-%{
-    #include "FieldField.H"
-%}
+%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%define NO_TMP_TYPEMAP_FIELDFIELD(  TPatchField, Type )
+%include "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%typemap( in ) const Foam::FieldField< TPatchField, Type  >& 
+%include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.cxx"
+
+//-----------------------------------------------------------------------------
+%template( tmp_FieldField_fvPatchField_scalar ) Foam::tmp< Foam::FieldField< Foam::fvPatchField, Foam::scalar > >;
+
+%inline
 {
-  void  *argp = 0;
-  int res = 0;
-  
-  res = SWIG_ConvertPtr( $input, &argp, $descriptor(  Foam::FieldField< TPatchField, Type  > * ), %convertptr_flags );
-  if ( SWIG_IsOK( res )&& argp  ){
-    Foam::FieldField< TPatchField, Type  > * res =  %reinterpret_cast( argp, Foam::FieldField< TPatchField, Type  >* );
-    $1 = res;
-  } else {
-    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::FieldField< TPatchField, Type  > >* ), %convertptr_flags );
-    if ( SWIG_IsOK( res ) && argp ) {
-      Foam::tmp<Foam::FieldField< TPatchField, Type > >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::FieldField< TPatchField, Type  > > * );
-      $1 = tmp_res->operator->();
-      } else {
-        %argument_fail( res, "$type", $symname, $argnum );
-        }
-    }
- 
-}    
+  namespace Foam
+  {
+    typedef tmp< FieldField< fvPatchField, scalar > > tmp_FieldField_fvPatchField_scalar;
+  }
+}
 
-%enddef
+
+//------------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::FieldField< Foam::fvPatchField, Foam::scalar > >::SMARTPTR_PYAPPEND_GETATTR( tmp_FieldField_fvPatchField_scalar );
+
+%extend Foam::tmp< Foam::FieldField< Foam::fvPatchField, Foam::scalar > >
+{
+  SMARTPTR_EXTEND_ATTR( tmp_FieldField_fvPatchField_scalar )
+  
+}
+
+
+//---------------------------------------------------------------------------
 #endif

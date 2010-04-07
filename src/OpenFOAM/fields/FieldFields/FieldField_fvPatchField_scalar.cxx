@@ -37,6 +37,8 @@
 
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
 
+NO_TMP_TYPEMAP_FIELDFIELD(  Foam::fvPatchField, Foam::scalar )
+
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::scalar >::FieldField;
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::scalar >::T;
 

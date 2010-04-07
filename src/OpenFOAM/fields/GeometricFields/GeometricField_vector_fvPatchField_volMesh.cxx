@@ -40,11 +40,15 @@
 
 %include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.cxx"
 
+%include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_vector.cxx"
+
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
 
 %include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cxx"
+
+%include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.cxx"
 
 %include "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
 
