@@ -45,11 +45,11 @@
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hxx"
 
-
-
 %include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
 
+
 //---------------------------------------------------------------------------
+%include "src/compound_operator.hxx"
 %include "src/OpenFOAM/fields/tmp/tmp.cxx"
 
 %include "src/OpenFOAM/db/objectRegistry.cxx"
@@ -74,7 +74,6 @@
     {
         return -get_ref( self );
     }
-
 
     Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __sub__( const Foam::GeometricField< Type, TPatchField, TMesh >& theArg )
     {
@@ -131,11 +130,30 @@
         return Foam::max( get_ref( self ) );
     }
     
+    Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_max(const Foam::GeometricField< Type, TPatchField, TMesh >& theArg)
+    {
+        return Foam::max( get_ref( self ), theArg );
+    }
+    
+    Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_min(const Foam::GeometricField< Type, TPatchField, TMesh >& theArg)
+    {
+        return Foam::min( get_ref( self ), theArg );
+    }
+    
+    Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_max(const Foam::dimensioned< Type >& theArg)
+    {
+        return Foam::max( get_ref( self ), theArg );
+    }
+    
+    Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_min(const Foam::dimensioned< Type >& theArg)
+    {
+        return Foam::min( get_ref( self ), theArg );
+    }
+    
     Foam::dimensioned< Type > ext_min() const
     {
         return Foam::min( get_ref( self ) );
     }
-    
 
     Foam::dimensioned< Type > sum() const
     {
@@ -217,7 +235,12 @@
     {
         return get_ref( self ) * theArg ;
     }
-    
+
+    void __imul__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
+    {
+       get_ref( self ) *= theArg;
+    }    
+
     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __radd__( const Foam::scalar& theArg )
     {
         return  theArg + get_ref( self );
@@ -257,9 +280,17 @@
 
 GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::scalar, TPatchField, TMesh )
 
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ )
+
 %extend Foam::GeometricField< Foam::scalar, TPatchField, TMesh > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
 
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ )
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ )
+
 %extend Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ )
 
 %enddef
 
