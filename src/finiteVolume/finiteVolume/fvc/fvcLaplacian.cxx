@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvc_cxx
-#define fvc_cxx
+#ifndef fvcLaplacian_cxx
+#define fvcLaplacian_cxx
 
 
 //---------------------------------------------------------------------------
@@ -33,19 +33,36 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_scalarField.cxx"
+%{
+    #include "fvcLaplacian.H"
+%}
 
-%include "src/finiteVolume/finiteVolume/fvc/fvcDdt.cxx"
-%include "src/finiteVolume/finiteVolume/fvc/fvcD_Dt.cxx"
-%include "src/finiteVolume/finiteVolume/fvc/fvcGrad.cxx"
-%include "src/finiteVolume/finiteVolume/fvc/fvcDiv.cxx"
-%include "src/finiteVolume/finiteVolume/fvc/fvcVolumeIntegrate.cxx"
-%include "src/finiteVolume/finiteVolume/fvc/fvcSnGrad.cxx"
-%include "src/finiteVolume/finiteVolume/fvc/fvcReconstruct.cxx"
-%include "src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.cxx"
-%include "src/finiteVolume/finiteVolume/fvc/fvcLaplacian.cxx"
 
-%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.cxx"
+//---------------------------------------------------------------------------
+%include "src/finiteVolume/fields/volFields/volFields.cxx"
+
+
+//---------------------------------------------------------------------------
+%define FVC_LAPLACIAN_TEMPLATE_FUNC( Type1, Type2 )
+%{
+    Foam::tmp< Foam::GeometricField< Type1, Foam::fvPatchField, Foam::volMesh> > fvc_laplacian
+    (
+       const Foam::GeometricField< Type2, Foam::fvPatchField, Foam::volMesh>& gamma,
+       const Foam::GeometricField< Type1, Foam::fvPatchField, Foam::volMesh>& vf
+    )
+    {
+        return Foam::fvc::laplacian( gamma, vf );
+    }
+%}
+%enddef 
+
+
+//---------------------------------------------------------------------------
+%inline FVC_LAPLACIAN_TEMPLATE_FUNC( Foam::scalar, Foam::scalar )
+
+
+//---------------------------------------------------------------------------
+%include "fvcLaplacian.H"
 
 
 //---------------------------------------------------------------------------
