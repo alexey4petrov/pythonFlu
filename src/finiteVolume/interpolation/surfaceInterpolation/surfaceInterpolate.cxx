@@ -37,6 +37,8 @@
 
 %include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
 
+
+
 %{
     #include "surfaceInterpolate.H"
 %}
@@ -82,6 +84,8 @@
 %inline FVC_INTERPOLATE_TEMPLATE_FUNC( Foam::vector )
 
 %inline FVC_INTERPOLATE_TEMPLATE_FUNC( Foam::scalar )
+
+%inline FVC_INTERPOLATE_TEMPLATE_FUNC( Foam::tensor )
 
 
 //---------------------------------------------------------------------------
