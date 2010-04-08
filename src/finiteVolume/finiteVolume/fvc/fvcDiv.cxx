@@ -79,6 +79,8 @@
 
 %inline FVC_DIV_TEMPLATE_FUNC( Foam::vector )
 
+%inline FVC_DIV_TEMPLATE_FUNC( Foam::tensor )
+
 
 //---------------------------------------------------------------------------
 %inline 
@@ -91,6 +93,14 @@
     {
         return Foam::fvc::div( ssf, name );
     }
+    Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > > fvc_div
+    (
+     const Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh >& vf
+    )
+    {
+        return Foam::fvc::div( vf );
+    }
+  
 %}
 
 
