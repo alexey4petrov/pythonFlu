@@ -61,4 +61,30 @@
 }    
 
 %enddef
+//------------------------------------------------------------------------------
+%define _FIELDFIELD_TEMPLATE_FUNC( TPatchField, Type )
+{  
+  Foam::tmp< Foam::FieldField< TPatchField, Foam::scalar > > magSqr()
+  {
+     return Foam::magSqr( *self );
+  }
+  
+  Foam::tmp< Foam::FieldField< TPatchField, Type > > __rmul__( const  Foam::scalar& theArg)
+  {
+     return theArg * *self;
+  }
+}
+%enddef
+
+
+//-------------------------------------------------------------------------------
+%define FIELDFIELD_TEMPLATE_FUNC( TPatchField, Type )
+
+%extend  Foam::FieldField< TPatchField, Type > _FIELDFIELD_TEMPLATE_FUNC( TPatchField, Type );
+
+%extend  Foam::tmp< Foam::FieldField< TPatchField, Type > > _FIELDFIELD_TEMPLATE_FUNC( TPatchField, Type );
+
+%enddef
+
+
 #endif

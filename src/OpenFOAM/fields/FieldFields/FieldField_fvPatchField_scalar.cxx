@@ -67,7 +67,10 @@ NO_TMP_TYPEMAP_FIELDFIELD(  Foam::fvPatchField, Foam::scalar )
     {
         self->operator[]( theIndex ) = theValue;
     }
+    
 }
+
+FIELDFIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::scalar );
 
 
 //---------------------------------------------------------------------------

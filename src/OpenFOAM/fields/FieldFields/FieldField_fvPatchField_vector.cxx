@@ -69,6 +69,8 @@ NO_TMP_TYPEMAP_FIELDFIELD( Foam::fvPatchField, Foam::Vector<Foam::scalar> )
     }
 }
 
+FIELDFIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::vector );
+
 
 //---------------------------------------------------------------------------
 #endif

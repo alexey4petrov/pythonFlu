@@ -61,8 +61,9 @@
     {
             return self->operator[]( theIndex );
     }
+}    
 
-}
+FIELDFIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::tensor );
 
 
 //---------------------------------------------------------------------------
