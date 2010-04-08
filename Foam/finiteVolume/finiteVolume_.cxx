@@ -35,6 +35,7 @@
 //---------------------------------------------------------------------------
 %include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
 %include "src/finiteVolume/fields/surfaceFields/surfaceVectorField.cxx"
+%include "src/finiteVolume/fields/surfaceFields/surfaceTensorField.cxx"
 
 %include "src/finiteVolume/fields/volFields/volScalarField.cxx"
 %include "src/finiteVolume/fields/volFields/volVectorField.cxx"
