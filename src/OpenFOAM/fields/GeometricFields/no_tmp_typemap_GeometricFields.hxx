@@ -120,4 +120,12 @@ NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::Vector< Foam::scalar >, Foam::fvsPatchFiel
 
 
 //-------------------------------------------------------------------------------
+%include "src/OpenFOAM/primitives/tensor.cxx"
+%include "src/finiteVolume/surfaceMesh.hxx"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+
+NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::Tensor< Foam::scalar >, Foam::fvsPatchField, Foam::surfaceMesh );
+
+
+//-------------------------------------------------------------------------------
 #endif
