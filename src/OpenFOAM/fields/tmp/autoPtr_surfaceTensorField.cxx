@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef surfaceFields_cxx
-#define surfaceFields_cxx
+#ifndef autoPtr_surfaceTensorField_cxx
+#define autoPtr_surfaceTensorField_cxx
 
 
 //---------------------------------------------------------------------------
@@ -33,11 +33,19 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
+%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceVectorField.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvsPatchField_surfaceMesh.cxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceTensorField.cxx"
+%template( autoPtr_surfaceTensorField ) Foam::autoPtr< Foam::surfaceTensorField >;
+
+%inline
+{
+    namespace Foam
+    {
+        typedef autoPtr< surfaceTensorField > autoPtr_surfaceTensorField;
+    }
+}
 
 
 //---------------------------------------------------------------------------

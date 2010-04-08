@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef surfaceFields_cxx
-#define surfaceFields_cxx
+#ifndef tmp_surfaceTensorField_cxx
+#define tmp_surfaceTensorField_cxx
 
 
 //---------------------------------------------------------------------------
@@ -33,12 +33,37 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
+%include "src/OpenFOAM/fields/tmp/tmp_tensorField.cxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceVectorField.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvsPatchField_surfaceMesh.cxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceTensorField.cxx"
 
+//----------------------------------------------------------------------------
+%template( tmp_surfaceTensorField ) Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh > >;
+
+%inline
+{
+    namespace Foam
+    {
+        typedef tmp< GeometricField< tensor, fvsPatchField, surfaceMesh > > tmp_surfaceTensorField;
+    }
+}
+
+
+//-----------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh > >::SMARTPTR_PYAPPEND_GETATTR( tmp_surfaceTensorField );
+
+
+%extend Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh > >
+{
+    SMARTPTR_EXTEND_ATTR( tmp_surfaceTensorField )
+
+    bool operator==( const Foam::UList< Foam::tensor >& theArg )
+    {
+        Foam::UList< Foam::tensor >* aSelf = static_cast< Foam::UList< Foam::tensor >* >( self->ptr() );
+        return *aSelf == theArg;
+    }
+}
 
 //---------------------------------------------------------------------------
 #endif
