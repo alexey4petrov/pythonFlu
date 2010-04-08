@@ -309,7 +309,7 @@ def main_standalone( argc, argv ):
         from Foam.finiteVolume import volScalarField
         rhoE.ext_boundaryField().ext_assign( rho.ext_boundaryField() * ( e.ext_boundaryField() + 0.5 * U.ext_boundaryField().magSqr() ) )
         
-        if inviscid:
+        if not inviscid:
            k = volScalarField( word( "k" ) , thermo.Cp() * mu / Pr )
            solve( fvm.ddt( rho, e ) - fvc.ddt( rho, e ) - fvm.laplacian( thermo.alpha(), e ) \
                   + fvc.laplacian( thermo.alpha(), e ) - fvc.laplacian( k, T ) )
