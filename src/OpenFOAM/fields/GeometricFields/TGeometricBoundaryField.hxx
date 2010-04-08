@@ -106,6 +106,23 @@ namespace Foam
     {
       return self->get_self() * theArg.get_self();
     }
+    
+    Foam::tmp< Foam::FieldField< TPatchField, Foam::scalar > > __mul__( const Foam::FieldField< TPatchField, Foam::scalar >& theArg )
+    {
+      return self->get_self() * theArg; 
+    }
+       
+    Foam::tmp< Foam::FieldField< TPatchField, Foam::scalar > > __mul__( const Foam::TGeometricBoundaryField< Foam::scalar, TPatchField, TMesh >& theArg )
+    {
+      return self->get_self() * theArg.get_self();
+    }    
+    
+    Foam::tmp< Foam::FieldField< TPatchField, Foam::scalar > > __add__
+    ( const Foam::FieldField< TPatchField, Foam::scalar >& theArg )
+    {
+      return self->get_self() + theArg;
+    }
+    
 %enddef
 
 //----------------------------------------------------------------------------
