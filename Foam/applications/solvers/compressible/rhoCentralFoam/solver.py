@@ -32,7 +32,7 @@ def _rhoBoundaryTypes( p ):
     rhoBoundaryTypes = pbf.types()
     
     for patchi in range( rhoBoundaryTypes.size() ):
-        if rhoBoundaryTypes[patchi] == "waveTransmissive":
+        if str( rhoBoundaryTypes[patchi] ) == "waveTransmissive":
            from Foam.finiteVolume import zeroGradientFvPatchScalarField
            rhoBoundaryTypes[patchi] = zeroGradientFvPatchScalarField.typeName
            pass
@@ -265,11 +265,13 @@ def main_standalone( argc, argv ):
         aphiv_pos = phiv_pos - aSf
         
         aphiv_neg = phiv_neg + aSf
-        
+
+        phi = None
+
         phi = surfaceScalarField( word( "phi" ), aphiv_pos * rho_pos + aphiv_neg * rho_neg )
-        
+
         phiUp = ( aphiv_pos * rhoU_pos + aphiv_neg * rhoU_neg) + ( a_pos * p_pos + a_neg * p_neg ) * mesh.Sf()
-        
+
         phiEp = aphiv_pos * ( rho_pos * ( e_pos + 0.5*U_pos.magSqr() ) + p_pos ) + aphiv_neg * ( rho_neg * ( e_neg + 0.5 * U_neg.magSqr() ) + p_neg )\
                 + aSf * p_pos - aSf * p_neg
         
@@ -287,8 +289,37 @@ def main_standalone( argc, argv ):
         
         U.dimensionedInternalField().ext_assign( rhoU.dimensionedInternalField() / rho.dimensionedInternalField() )
         U.correctBoundaryConditions()
-
         rhoU.ext_boundaryField().ext_assign( rho.ext_boundaryField() * U.ext_boundaryField() )
+        
+        rhoBydt = rho / runTime.deltaT()
+        
+        if not inviscid:
+           solve( fvm.ddt( rho, U ) - fvc.ddt( rho, U ) - fvm.laplacian( mu, U ) - fvc.div( tauMC ) )
+           rhoU.ext_assign( rho * U )
+           pass
+        
+        # --- Solve energy
+        sigmaDotU = ( fvc.interpolate( mu ) * mesh.magSf() * fvc.snGrad( U ) + ( mesh.Sf() & fvc.interpolate( tauMC ) ) ) & ( a_pos * U_pos + a_neg * U_neg )
+
+        solve( fvm.ddt( rhoE ) + fvc.div( phiEp ) - fvc.div( sigmaDotU ) )
+        
+        e.ext_assign( rhoE / rho - 0.5 * U.magSqr() )
+        e.correctBoundaryConditions()
+        thermo.correct()
+        from Foam.finiteVolume import volScalarField
+        rhoE.ext_boundaryField().ext_assign( rho.ext_boundaryField() * ( e.ext_boundaryField() + 0.5 * U.ext_boundaryField().magSqr() ) )
+        
+        if inviscid:
+           k = volScalarField( word( "k" ) , thermo.Cp() * mu / Pr )
+           solve( fvm.ddt( rho, e ) - fvc.ddt( rho, e ) - fvm.laplacian( thermo.alpha(), e ) \
+                  + fvc.laplacian( thermo.alpha(), e ) - fvc.laplacian( k, T ) )
+           thermo.correct()
+           rhoE.ext_assign( rho * ( e + 0.5 * U.magSqr() ) )
+           pass
+        
+        p.dimensionedInternalField().ext_assign( rho.dimensionedInternalField() / psi.dimensionedInternalField() )
+        p.correctBoundaryConditions()
+        rho.ext_boundaryField().ext_assign( psi.ext_boundaryField() * p.ext_boundaryField() )
         
         runTime.write()
 
