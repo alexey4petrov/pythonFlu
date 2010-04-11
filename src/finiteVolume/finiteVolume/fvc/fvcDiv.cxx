@@ -70,6 +70,16 @@
     {
         return Foam::fvc::div( flux, vf );
     }
+    
+    Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > > fvc_div
+    (
+     const Foam::surfaceScalarField& flux,
+     const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+     const Foam::word& name
+    )
+    {
+        return Foam::fvc::div( flux, vf, name );
+    }
 %}
 %enddef
 
