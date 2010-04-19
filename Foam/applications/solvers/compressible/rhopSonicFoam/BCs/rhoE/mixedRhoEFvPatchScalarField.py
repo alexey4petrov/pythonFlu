@@ -320,7 +320,7 @@ class mixedRhoEFvPatchScalarField( mixedFvPatchScalarField ):
         addr = args[ argc ]
 
         from Foam.finiteVolume import mixedFvPatchScalarField
-        mixedFvPatchScalarField.autoMap( self, ptf, addr )
+        mixedFvPatchScalarField.rmap( self, ptf, addr )
         pass 
     
     
@@ -329,108 +329,30 @@ class mixedRhoEFvPatchScalarField( mixedFvPatchScalarField ):
         try:
             if self.updated() :
                 return
+            from Foam.finiteVolume import volScalarField
+            from Foam.OpenFOAM import word
+            rhop = volScalarField.ext_lookupPatchField( self.patch(), word( "rho" ) )
+            from Foam.finiteVolume import volVectorField            
+            rhoUp =volVectorField.ext_lookupPatchField( self.patch(), word( "rhoU" ) )
             
-            from Foam.meshTools import directMappedPatchBase
-            mpp = directMappedPatchBase.ext_refCast( self.patch().patch() )
+            T = volScalarField.ext_lookupObject( self.db(), word( "T" ) )
+            patchi = self.patch().index()
+            Tp = T.ext_boundaryField()[patchi] 
             
-            nbrMesh = mpp.sampleMesh()
-            intFld = self.patchInternalField()
+            Tp.evaluate()
             
-            if self.interfaceOwner( nbrMesh ):
-               # Note: other side information could be cached - it only needs
-               # to be updated the first time round the iteration (i.e. when
-               # switching regions) but unfortunately we don't have this information.
-               distMap = mpp.map()
-               from Foam.finiteVolume import fvMesh
-               nbrPatch = fvMesh.ext_refCast( nbrMesh ).boundary()[ mpp.samplePolyPatch().index() ]
-               
-               # Calculate the temperature by harmonic averaging
-               # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-               from Foam.finiteVolume import volScalarField
-               nbrField = solidWallMixedTemperatureCoupledFvPatchScalarField.ext_refCast( volScalarField.ext_lookupPatchField( nbrPatch, self.neighbourFieldName_ ) )
-               
-               #Swap to obtain full local values of neighbour internal field
-               nbrIntFld = nbrField.patchInternalField()
-               
-               from Foam.OpenFOAM import mapDistribute, Pstream
-               mapDistribute.distribute( Pstream.defaultCommsType.fget(), 
-                                         distMap.schedule(), 
-                                         distMap.constructSize(), 
-                                         distMap.subMap(),       #what to send
-                                         distMap.constructMap(), #what to receive
-                                         nbrIntFld() ) 
-               
-               # Swap to obtain full local values of neighbour K*delta
-               nbrKDelta = nbrField.K()*nbrPatch.deltaCoeffs()
-              
-               mapDistribute.distribute( Pstream.defaultCommsType.fget(), 
-                                         distMap.schedule(), 
-                                         distMap.constructSize(), 
-                                         distMap.subMap(),       #what to send
-                                         distMap.constructMap(), #what to receive
-                                         nbrKDelta() ) 
-               
-               myKDelta = self.K()*self.patch().deltaCoeffs()
-               
-               # Calculate common wall temperature. Reuse *this to store common value.
-                              
-               Twall = ( myKDelta*intFld +  nbrKDelta*nbrIntFld ) / ( myKDelta + nbrKDelta )
-
-               # Assign to me
-               from Foam.finiteVolume import fvPatchScalarField
-               fvPatchScalarField.ext_assign( self, Twall )
-               mapDistribute.distribute( Pstream.defaultCommsType.fget(),
-                                         distMap.schedule(),
-                                         nbrField.size(),
-                                         distMap.constructMap(),     # reverse : what to send
-                                         distMap.subMap(),
-                                         Twall() )
-               
-               fvPatchScalarField.ext_assign( nbrField, Twall )
-               pass
-               
-            # Switch between fixed value (of harmonic avg) or gradient
-            # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            nFixed = 0
-               
-            #Like snGrad but bypass switching on refValue/refGrad.
-            normalGradient = ( self-intFld )*self.patch().deltaCoeffs()
+            from Foam.OpenFOAM import IOdictionary
+            thermodynamicProperties = IOdictionary.ext_lookupObject( self.db(), word( "thermodynamicProperties" ) )
             
-            if self.debug: 
-              Q = ( self.K() * self.patch().magSf() * normalGradient() ).gSum()
-              ext_Info ()<< "solidWallMixedTemperatureCoupledFvPatchScalarField::" << "updateCoeffs() :"\
-                         << " patch:" << self.patch().name()<< " heatFlux:" << Q << " walltemperature "\
-                         << " min:" << self.gMin() << " max:" << self.gMax() << " avg:" << self.gAverage() << nl
-              pass           
-
-            for i in range( self.size() ):
-               # if outgoing flux use fixed value.
-               if normalGradient()[i] < 0.0:
-                  self.refValue()[i] = self[i] 
-                  self.refGrad()[i] = 0.0  # not used
-                  self.valueFraction()[i] = 1.0 
-                  nFixed+=1
-                  pass
-               else:
-                  self.refValue()[i]=  0.0  # not used
-                  self.refGrad()[i] = normalGradient()[i] 
-                  self.valueFraction()[i] =  0.0 
-                  pass
-              
-                        
-            from Foam.OpenFOAM import ext_reduce, sumOp_label
-                        
-            nFixed = ext_reduce( nFixed, sumOp_label() )
-            self.fixesValue_ = ( nFixed > 0 )
+            from Foam.OpenFOAM import dimensionedScalar
+            Cv = dimensionedScalar( thermodynamicProperties.lookup( word( "Cv" ) ) )
             
-            if (self.debug):
-               from Foam.OpenFOAM import returnReduce
-               nTotSize = returnReduce(self.size(), sumOp_label())
-               ext_Info() << "solidWallMixedTemperatureCoupledFvPatchScalarField::" << "updateCoeffs() :" \
-                          << " patch:" << self.patch().name() << " out of:" << nTotSize << " fixedBC:" << nFixed \
-                          << " gradient:" << nTotSize-nFixed << nl
-               pass                 
+            self.valueFraction().ext_assign( rhop.snGrad() / ( rhop.snGrad() - rhop * self.patch().deltaCoeffs() ) )
             
+            self.refValue().ext_assign( 0.5 * rhop * (rhoUp/rhop).magSqr() )
+            self.refGrad().ext_assign( rhop * Cv.value() * Tp.snGrad() +\
+                                       ( self.refValue() - ( 0.5 * rhop.patchInternalField()\
+                                                          * ( rhoUp.patchInternalField() /rhop.patchInternalField() ).magSqr() ) ) * patch().deltaCoeffs() )
             mixedFvPatchScalarField.updateCoeffs( self )
             
             pass
