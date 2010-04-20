@@ -53,7 +53,6 @@ def _rhoBoundaryTypes( p ):
 def _rhoUboundaryTypes( U ):
     Ubf = U.ext_boundaryField();
     rhoUboundaryTypes = Ubf.types()
-    
     for patchi in range( rhoUboundaryTypes.size() ):
         if Ubf[patchi].fixesValue():
            from Foam.applications.solvers.compressible.rhopSonicFoam.BCs.rhoU import fixedRhoUFvPatchVectorField
@@ -75,7 +74,6 @@ def _rhoEboundaryTypes( T ):
         else:
            from Foam.applications.solvers.compressible.rhopSonicFoam.BCs.rhoE import mixedRhoEFvPatchScalarField
            rhoEboundaryTypes[ patchi ] = mixedRhoEFvPatchScalarField.typeName
-           print rhoEboundaryTypes[ patchi ]
            pass
         pass
           
@@ -114,6 +112,49 @@ def readThermodynamicProperties( runTime, mesh ):
 
 
 #---------------------------------------------------------------------------
+def compressibleCreatePhi( runTime, mesh, rhoU ):
+    from Foam.OpenFOAM import IOobject, word, fileName
+    phiHeader = IOobject( word( "phi" ),
+                          fileName( runTime.timeName() ),
+                          mesh,
+                          IOobject.NO_READ )
+    
+    from Foam.OpenFOAM import ext_Info, nl
+    if phiHeader.headerOk():
+       ext_Info() << "Reading face flux field phi\n" << nl
+       from Foam.finiteVolume import surfaceScalarField
+       phi = surfaceScalarField( IOobject( word( "phi" ),
+                                           fileName( runTime.timeName() ),
+                                           mesh,
+                                           IOobject.MUST_READ,
+                                           IOobject.AUTO_WRITE ),
+                                 mesh )
+       pass
+    else:
+       ext_Info() << "Calculating face flux field phi\n" << nl
+       
+       from Foam.OpenFOAM import wordList
+       #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+       # phiTypes =wordList( rhoU.ext_boundaryField().size(), calculatedFvPatchScalarField.typeName )
+       phiTypes = wordList( 2, word( "calculated" ) )
+       
+       from Foam.finiteVolume import surfaceScalarField, linearInterpolate
+       phi = surfaceScalarField( IOobject( word( "phi" ),
+                                           fileName( runTime.timeName() ),
+                                           mesh,
+                                           IOobject.NO_READ,
+                                           IOobject.AUTO_WRITE ),
+                                 linearInterpolate( rhoU ) & mesh.Sf(),
+                                 phiTypes )
+       print "2222"
+       pass
+       
+    
+    return phiHeader, phi
+    
+
+
+#---------------------------------------------------------------------------
 def _createFields( runTime, mesh, R, Cv ):
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "Reading field p\n" << nl
@@ -146,7 +187,7 @@ def _createFields( runTime, mesh, R, Cv ):
     psi.oldTime()
 
     pbf, rhoBoundaryTypes = _rhoBoundaryTypes( p )
-    
+
     rho = volScalarField( IOobject( word( "rho" ),
                                     fileName( runTime.timeName() ),
                                     mesh,
@@ -154,7 +195,7 @@ def _createFields( runTime, mesh, R, Cv ):
                                     IOobject.AUTO_WRITE ),
                           p * psi,
                           rhoBoundaryTypes )
-
+    print "rho.ext_boundaryField().types() = ", rho.ext_boundaryField().types()
     ext_Info() << "Reading field U\n" << nl
     from Foam.finiteVolume import volVectorField
     U = volVectorField( IOobject( word( "U" ),
@@ -165,7 +206,7 @@ def _createFields( runTime, mesh, R, Cv ):
                         mesh )
     
     Ubf, rhoUboundaryTypes = _rhoUboundaryTypes( U )
-    
+    print " rhoUboundaryTypes =  ", rhoUboundaryTypes
     rhoU = volVectorField( IOobject( word( "rhoU" ),
                                      fileName( runTime.timeName() ),
                                      mesh,
@@ -173,6 +214,7 @@ def _createFields( runTime, mesh, R, Cv ):
                                      IOobject.AUTO_WRITE ),
                            rho * U,
                            rhoUboundaryTypes )
+    print "rhoU.ext_boundaryField().types() = ", rhoU.ext_boundaryField().size()
                            
     Tbf, rhoEboundaryTypes = _rhoEboundaryTypes( T )
     
@@ -184,8 +226,8 @@ def _createFields( runTime, mesh, R, Cv ):
                            rho * Cv * T + 0.5 * rho * ( rhoU / rho ).magSqr(),
                            rhoEboundaryTypes )
     
-    from Foam.finiteVolume.cfdTools.compressible import compressibleCreatePhi
-    phi = compressibleCreatePhi( runTime, mesh, rho, U )
+    
+    phiHeader, phi = compressibleCreatePhi( runTime, mesh, rhoU )
     
     phi.oldTime()
     
@@ -198,8 +240,17 @@ def _createFields( runTime, mesh, R, Cv ):
     
     rhoU.correctBoundaryConditions()
     
+    from Foam.finiteVolume import TfieldTable_scalar
+    fields = TfieldTable_scalar()
     
-    return p, T, psi, pbf, rhoBoundaryTypes, rho, U, Ubf, rhoUboundaryTypes, rhoU, Tbf, rhoEboundaryTypes, rhoE, phi, phiv
+    magRhoU = rhoU.mag()
+    H = volScalarField( word( "H" ) , ( rhoE + p ) / rho )
+
+    fields.add( rho )
+    fields.add( magRhoU )
+    fields.add( H )
+    
+    return p, T, psi, pbf, rhoBoundaryTypes, rho, U, Ubf, rhoUboundaryTypes, rhoU, Tbf, rhoEboundaryTypes, rhoE, phi, phiv, rhoU, fields, magRhoU, H 
 
 
 #--------------------------------------------------------------------------------------
@@ -254,27 +305,34 @@ def main_standalone( argc, argv ):
     thermodynamicProperties, R, Cv, Cp, gamma, Pr = readThermodynamicProperties( runTime, mesh )
     
     p, T, psi, pbf, rhoBoundaryTypes, rho, U, Ubf, rhoUboundaryTypes, \
-    rhoU, Tbf, rhoEboundaryTypes, rhoE, phi, phiv = _createFields( runTime, mesh, R, Cv )
-    
-    
-    
-    from Foam.finiteVolume.cfdTools.general.include import readTimeControls
-    adjustTimeStep, maxCo, maxDeltaT = readTimeControls( runTime )
-    
-    fluxScheme = readFluxScheme( mesh )
-    
-    from Foam.OpenFOAM import dimensionedScalar, dimVolume, dimTime, word
-    v_zero = dimensionedScalar( word( "v_zero" ) ,dimVolume/dimTime, 0.0)
+    rhoU, Tbf, rhoEboundaryTypes, rhoE, phi, phiv, rhoU, fields, magRhoU, H = _createFields( runTime, mesh, R, Cv )
     
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "\nStarting time loop\n" << nl
     
-    while runTime.run() :
-
+    while runTime.loop():
+        ext_Info() << "Time = " << runTime.value() << nl << nl
+        
+        from Foam.finiteVolume.cfdTools.general.include import readPISOControls
+        piso, nCorr, nNonOrthCorr, momentumPredictor, transonic, nOuterCorr = readPISOControls( mesh )
+        
+        from Foam.OpenFOAM import readScalar, word
+        HbyAblend = readScalar( piso.lookup( word( "HbyAblend" ) ) )
+        
+        from Foam.finiteVolume.cfdTools.general.include import readTimeControls
+        adjustTimeStep, maxCo, maxDeltaT = readTimeControls( runTime )
+    
+        CoNum = ( mesh.deltaCoeffs() * phiv.mag() / mesh.magSf() ).ext_max().value() * runTime.deltaT().value()
+        
+        ext_Info() << "Max Courant Number = " << CoNum << nl
+        
+        from Foam.finiteVolume.cfdTools.general.include import setDeltaT
+        runTime = setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
 
         ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
               "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
-        
+        import os
+        os.abort()
         pass
 
     ext_Info() << "End\n"
