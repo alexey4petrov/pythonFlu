@@ -81,6 +81,7 @@
 %include "src/finiteVolume/cfdTools/general/bound.cxx"
 
 %include "src/finiteVolume/interpolation/surfaceInterpolation/schemes/linear.cxx"
+%include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_scalar.cxx"
 
 %include "src/finiteVolume/cfdTools/general/porousMedia/porousZones.cxx"
 
