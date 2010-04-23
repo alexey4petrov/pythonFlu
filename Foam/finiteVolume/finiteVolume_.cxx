@@ -81,8 +81,11 @@
 %include "src/finiteVolume/cfdTools/general/bound.cxx"
 
 %include "src/finiteVolume/interpolation/surfaceInterpolation/schemes/linear.cxx"
+%include "src/finiteVolume/interpolation/surfaceInterpolation/schemes/weighted/weighted_vector.cxx"
+
 %include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_scalar.cxx"
 %include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_scalar.cxx"
+%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.cxx"
 
 %include "src/OpenFOAM/fields/tmp/tmp_multivariateSurfaceInterpolationScheme_scalar.cxx"
 %include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.cxx"
