@@ -48,4 +48,13 @@
 
 
 //---------------------------------------------------------------------------
+%define SURFACEINTRPOLATIONSCHEME_TEMPLATE_FUNC( Type )
+{
+   Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > ext_weights( 
+            const Foam::GeometricField< Foam::Type, Foam::fvPatchField, Foam::volMesh >& theArg )
+   {
+      return self->weights( theArg );
+   }
+}
+%enddef
 #endif

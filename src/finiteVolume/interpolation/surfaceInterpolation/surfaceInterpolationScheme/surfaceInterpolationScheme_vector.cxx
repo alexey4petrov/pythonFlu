@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef surfaceInterpolationScheme_scalar_cxx
-#define surfaceInterpolationScheme_scalar_cxx
+#ifndef surfaceInterpolationScheme_vector_cxx
+#define surfaceInterpolationScheme_vector_cxx
 
 //---------------------------------------------------------------------------
 // Keep on corresponding "director" includes at the top of SWIG defintion file
@@ -40,17 +40,17 @@
 //---------------------------------------------------------------------------
 %include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx"
 
-%ignore Foam::surfaceInterpolationScheme< Foam::scalar >::typeName;
-%ignore Foam::surfaceInterpolationScheme< Foam::scalar >::debug;
-%ignore Foam::surfaceInterpolationScheme< Foam::scalar >::weights;
+%ignore Foam::surfaceInterpolationScheme< Foam::vector >::typeName;
+%ignore Foam::surfaceInterpolationScheme< Foam::vector >::debug;
+%ignore Foam::surfaceInterpolationScheme< Foam::vector >::weights;
 
 
 //---------------------------------------------------------------------------
-%template ( surfaceInterpolationScheme_scalar) Foam::surfaceInterpolationScheme< Foam::scalar >;
+%template ( surfaceInterpolationScheme_vector) Foam::surfaceInterpolationScheme< Foam::vector >;
 
 
 //---------------------------------------------------------------------------
-%extend Foam::surfaceInterpolationScheme< Foam::scalar > SURFACEINTRPOLATIONSCHEME_TEMPLATE_FUNC( scalar )
+%extend Foam::surfaceInterpolationScheme< Foam::vector > SURFACEINTRPOLATIONSCHEME_TEMPLATE_FUNC( vector )
 
 
 //---------------------------------------------------------------------------
