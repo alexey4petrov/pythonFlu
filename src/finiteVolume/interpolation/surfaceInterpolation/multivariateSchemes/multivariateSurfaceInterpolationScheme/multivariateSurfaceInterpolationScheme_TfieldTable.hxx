@@ -42,9 +42,6 @@ namespace Foam
        TSelf engine;
     
     public:
-       TfieldTable( TSelf& theArg ): engine( theArg )
-       {}
-    
        TfieldTable(): engine()
        {}
        
