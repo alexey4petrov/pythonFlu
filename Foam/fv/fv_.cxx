@@ -34,6 +34,10 @@
 
 //---------------------------------------------------------------------------
 %include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme_scalar.cxx"
+%include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme_vector.cxx"
+
+%include "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme_scalar.cxx"
+%include "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme_vector.cxx"
 
 
 //---------------------------------------------------------------------------
