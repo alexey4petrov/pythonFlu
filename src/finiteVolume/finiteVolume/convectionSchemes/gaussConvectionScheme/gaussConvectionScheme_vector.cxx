@@ -42,4 +42,14 @@
 
 
 //---------------------------------------------------------------------------
+%extend Foam::fv::gaussConvectionScheme< Foam::vector >
+{
+  Foam::fv::gaussConvectionScheme< Foam::vector >( const Foam::fvMesh& mesh,
+                                                   const Foam::surfaceScalarField& faceFlux,
+                                                   const Foam::surfaceInterpolationScheme< Foam::vector >& scheme )
+  {
+     return new Foam::fv::gaussConvectionScheme< Foam::vector >( mesh, faceFlux, scheme );
+  }                                                 
+
+}
 #endif
