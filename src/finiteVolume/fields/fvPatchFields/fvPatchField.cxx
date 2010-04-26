@@ -50,7 +50,34 @@
 %enddef
 
 
+//--------------------------------------------------------------------------
+%define __COMMON_FVPATCHFIELD_TEMPLATE_FUNC_EXTENDS( Type )
+{
+  Foam::Field< Type > ext_snGrad()
+  {
+    return self-> snGrad();
+  }
+  Foam::tmp< Foam::Field< Type > > __rmul__( const Foam::scalar& theArg )
+  {
+    return theArg * get_ref( self ); 
+  }
+  
+  Foam::tmp< Foam::Field< Type > > __mul__( const Foam::scalar& theArg )
+  {
+    return get_ref( self ) * theArg; 
+  }
+  
+  Foam::tmp< Foam::Field< Type > > __div__( const Foam::fvPatchField< scalar >& theArg )
+  {
+    return  get_ref( self ) / theArg; 
+  }
+  
+}
+%enddef
+
+
 //---------------------------------------------------------------------------
+
 %define FVPATCHFIELD_EXTENDS( Type )
 
 %feature( "director" ) fvPatchField_##Type;
@@ -60,6 +87,8 @@ NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::vector > );
 NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::tensor > );
 
 %extend Foam::fvPatchField< Foam::Type > FIELD_VIRTUAL_EXTENDS( Type );
+
+%extend Foam::fvPatchField< Foam::Type > __COMMON_FVPATCHFIELD_TEMPLATE_FUNC_EXTENDS( Type );
 
 %extend Foam::fvPatchField< Foam::Type > FVPATCHFIELD_VIRTUAL_EXTENDS( Type );
 
