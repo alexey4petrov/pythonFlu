@@ -94,28 +94,30 @@
 
 
 //---------------------------------------------------------------------------
-%define __FIELD_TEMPLATE_OPERATOR__( Type )
+%define __COMMON_FIELD_TEMPLATE_OPERATOR( Type )
 {
-  Foam::tmp< Foam::Field< Foam::Type > > __mul__( const Foam::Field< Foam::Type >& theArg)
+  Foam::tmp< Foam::Field< Foam::Type > > __rmul__( const Foam::scalar& theArg)
   {
-    return get_ref( self ) * theArg;
+    return theArg * get_ref( self );
   }
   Foam::tmp< Foam::Field< Foam::Type > > __add__( const Foam::Field< Foam::Type >& theArg)
   {
     return get_ref( self ) + theArg;
   }
-  Foam::tmp< Foam::Field< Foam::Type > > __div__( const Foam::Field< Foam::Type >& theArg)
+  Foam::tmp< Foam::Field< Foam::Type > > __sub__( const Foam::Field< Foam::Type >& theArg)
+  {
+    return get_ref( self ) - theArg;
+  }
+  Foam::tmp< Foam::Field< Foam::Type > > __div__( const Foam::Field< Foam::scalar >& theArg)
   {
     return get_ref( self ) / theArg;
   }
 }
-
 %enddef
 
 
 //---------------------------------------------------------------------------
 %define __FIELD_TEMPLATE_FUNC__( Type )
-
 {
   Foam::Field< Foam::Type >()
   {
@@ -138,6 +140,10 @@
   }
 
   Foam::tmp< Foam::Field< Foam::scalar > > mag()
+  {
+    return Foam::mag( *self );
+  }
+  Foam::tmp< Foam::Field< Foam::scalar > > magSqr()
   {
     return Foam::mag( *self );
   }
@@ -177,6 +183,9 @@ NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
 %extend Foam::Field< Foam::Type > FIELD_VIRTUAL_EXTENDS( Type );
 %extend Foam::Field< Foam::Type > __FIELD_TEMPLATE_FUNC__( Type );
 
+%extend Foam::Field< Foam::Type >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+%extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+
 %include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::Field< Foam::Type > OSTREAM_EXTENDS;
@@ -184,14 +193,49 @@ NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
 %enddef
 
 //--------------------------------------------------------------------------
+%define __SCALAR_FIELD_TEMPLATE_OPERATOR__( Type )
+{
+  Foam::tmp< Foam::Field< Foam::Type > > __mul__( const Foam::Field< Foam::Type >& theArg)
+  {
+    return get_ref( self ) * theArg;
+  }
+  Foam::tmp< Foam::Field< Foam::Type > > __div__( const Foam::Field< Foam::Type >& theArg)
+  {
+    return get_ref( self ) / theArg;
+  }
+}
+
+%enddef
+
+
+//--------------------------------------------------------------------------
 %define SCALAR_FIELD_TEMPLATE_FUNC( Type )
 
 FIELD_TEMPLATE_FUNC( Type );
-%extend Foam::Field< Foam::Type >__FIELD_TEMPLATE_OPERATOR__( Type )
-%extend Foam::tmp< Foam::Field< Foam::Type > >__FIELD_TEMPLATE_OPERATOR__( Type )
-
+%extend Foam::Field< Foam::Type >__SCALAR_FIELD_TEMPLATE_OPERATOR__( Type )
+%extend Foam::tmp< Foam::Field< Foam::Type > >__SCALAR_FIELD_TEMPLATE_OPERATOR__( Type )
 
 %enddef
 
 //---------------------------------------------------------------------------
+%define __VECTOR_FIELD_TEMPLATE_FUNC( Type )
+{
+  Foam::tmp< Foam::Field< Foam::tensor > > __mul__( const Foam::Field< Foam::Type >& theArg)
+  {
+    return get_ref( self ) * theArg;
+  }
+}
+%enddef
+
+
+//---------------------------------------------------------------------------
+%define VECTOR_FIELD_TEMPLATE_FUNC( Type )
+
+FIELD_TEMPLATE_FUNC( Type );
+
+%extend Foam::Field< Foam::Type > __VECTOR_FIELD_TEMPLATE_FUNC( Type )
+%extend Foam::tmp< Foam::Field< Foam::Type > >__VECTOR_FIELD_TEMPLATE_FUNC( Type )
+
+%enddef
+
 #endif
