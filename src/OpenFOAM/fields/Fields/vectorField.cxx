@@ -45,7 +45,7 @@
 
 %typedef Foam::Field< Foam::vector > vectorField;
 
-FIELD_TEMPLATE_FUNC( vector )
+VECTOR_FIELD_TEMPLATE_FUNC( vector )
 
 
 //---------------------------------------------------------------------------
