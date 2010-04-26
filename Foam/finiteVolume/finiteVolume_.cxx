@@ -89,6 +89,7 @@
 
 %include "src/OpenFOAM/fields/tmp/tmp_multivariateSurfaceInterpolationScheme_scalar.cxx"
 %include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.cxx"
+%include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.cxx"
 
 %include "src/finiteVolume/cfdTools/general/porousMedia/porousZones.cxx"
 
