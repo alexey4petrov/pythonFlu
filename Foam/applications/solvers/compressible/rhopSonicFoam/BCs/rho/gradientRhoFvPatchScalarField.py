@@ -228,7 +228,7 @@ class gradientRhoFvPatchScalarField( fixedGradientFvPatchScalarField ):
         return word("gradientRho")
     
     
-    #--------------------------------
+    #--------------------------------    
     def clone( self, *args ) :
         try:
             return self._clone( *args )
@@ -288,7 +288,7 @@ class gradientRhoFvPatchScalarField( fixedGradientFvPatchScalarField ):
            psip = volScalarField.ext_lookupPatchField(self.patch(), word( "psi" ) )
            pp = volScalarField.ext_lookupPatchField( self.patch(), word( "p" ) )
            
-           self.gradient().ext_assign( psip * pp.snGrad() + psip.snGrad() * pp )
+           self.gradient().ext_assign( psip * pp.ext_snGrad() + psip.ext_snGrad() * pp )
 
            fixedGradientFvPatchScalarField.updateCoeffs( self )
         except Exception as exc:

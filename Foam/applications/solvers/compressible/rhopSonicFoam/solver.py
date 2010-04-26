@@ -328,7 +328,45 @@ def main_standalone( argc, argv ):
         
         from Foam.finiteVolume.cfdTools.general.include import setDeltaT
         runTime = setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
-
+        
+        for outerCorr in range( nOuterCorr):
+            magRhoU.ext_assign( rhoU.mag() )
+            H.ext_assign( ( rhoE + p ) / rho )
+            
+            from Foam.fv import multivariateGaussConvectionScheme_scalar
+            mvConvection = multivariateGaussConvectionScheme_scalar( mesh, fields, phiv, mesh.divScheme( word( "div(phiv,rhoUH)" ) ) )
+            
+            from Foam.finiteVolume import solve
+            from Foam import fvm
+            solve( fvm.ddt( rho ) + mvConvection.fvmDiv( phiv, rho ) )
+            
+            tmp = mvConvection.interpolationScheme()()( magRhoU )
+            
+            rhoUWeights = tmp.ext_weights( magRhoU )
+            
+            
+            from Foam.finiteVolume import weighted_vector
+            from Foam.finiteVolume import tmp_surfaceInterpolationScheme_vector
+            rhoUScheme = weighted_vector(rhoUWeights)
+            from Foam import fv, fvc
+            rhoUEqn = fvm.ddt(rhoU) + fv.gaussConvectionScheme_vector( mesh, phiv, rhoUScheme ).fvmDiv( phiv, rhoU )
+            solve( rhoUEqn == -fvc.grad( p ) )
+            
+            solve( fvm.ddt( rhoE ) + mvConvection.fvmDiv( phiv, rhoE ) == - mvConvection.fvcDiv( phiv, p ) )
+            T.ext_assign( (rhoE - 0.5 * rho * ( rhoU / rho ).magSqr() ) / Cv / rho )
+            psi.ext_assign( 1.0 / ( R * T ) )
+            p.ext_assign( rho / psi )
+            
+            for corr in range( nCorr ):
+                rrhoUA = 1.0 / rhoUEqn.A()
+                from Foam.finiteVolume import surfaceScalarField
+                rrhoUAf = surfaceScalarField( word( "rrhoUAf" ), fvc.interpolate( rrhoUA ) )
+                HbyA = rrhoUA * rhoUEqn.H()
+                
+                
+            
+            print "111"
+            pass
         ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
               "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
         import os

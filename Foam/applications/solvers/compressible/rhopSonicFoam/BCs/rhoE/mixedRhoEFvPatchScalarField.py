@@ -299,7 +299,6 @@ class mixedRhoEFvPatchScalarField( mixedFvPatchScalarField ):
     
     #-------------------------------------------------------------------------------------
     def autoMap(self, *args):
-        print "in autoMap"
         if len( args ) != 1 :
             raise AssertionError( "len( args ) != 1" )
         argc = 0
@@ -312,7 +311,6 @@ class mixedRhoEFvPatchScalarField( mixedFvPatchScalarField ):
    
     #-------------------------------------------------------------------------------------
     def rmap(self, *args):
-        print "in rmap"
         if len( args ) != 2 :
             raise AssertionError( "len( args ) != 2" )
         argc = 0
@@ -347,14 +345,15 @@ class mixedRhoEFvPatchScalarField( mixedFvPatchScalarField ):
             from Foam.OpenFOAM import dimensionedScalar
             Cv = dimensionedScalar( thermodynamicProperties.lookup( word( "Cv" ) ) )
             
-            self.valueFraction().ext_assign( rhop.snGrad() / ( rhop.snGrad() - rhop * self.patch().deltaCoeffs() ) )
-            
+            self.valueFraction().ext_assign( rhop.ext_snGrad() / ( rhop.ext_snGrad() -  rhop * self.patch().deltaCoeffs()  ) )
+                        
             self.refValue().ext_assign( 0.5 * rhop * (rhoUp/rhop).magSqr() )
-            self.refGrad().ext_assign( rhop * Cv.value() * Tp.snGrad() +\
-                                       ( self.refValue() - ( 0.5 * rhop.patchInternalField()\
-                                                          * ( rhoUp.patchInternalField() /rhop.patchInternalField() ).magSqr() ) ) * patch().deltaCoeffs() )
-            mixedFvPatchScalarField.updateCoeffs( self )
+
             
+            self.refGrad().ext_assign( rhop * Cv.value() * Tp.ext_snGrad() +\
+                                       ( self.refValue() - ( 0.5 * rhop.patchInternalField()\
+                                                          * ( rhoUp.patchInternalField() /rhop.patchInternalField() ).magSqr() ) ) * self.patch().deltaCoeffs() )
+            mixedFvPatchScalarField.updateCoeffs( self )
             pass
         except Exception as exc:
             import sys, traceback

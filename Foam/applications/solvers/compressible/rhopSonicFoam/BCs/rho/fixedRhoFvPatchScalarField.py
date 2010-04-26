@@ -32,6 +32,7 @@ from Foam.OpenFOAM import word
 class fixedRhoFvPatchScalarField( fixedValueFvPatchScalarField ):
     typeName = word( "fixedRho" )
     def __init__( self, *args ):
+        print "fixedRho"
         try:
             self._init__fvPatch__DimensionedField_scalar_volMesh( *args )
             return
