@@ -53,9 +53,9 @@
 //--------------------------------------------------------------------------
 %define __COMMON_FVPATCHFIELD_TEMPLATE_FUNC_EXTENDS( Type )
 {
-  Foam::Field< Type > ext_snGrad()
+  Foam::Field< Type >& ext_snGrad()
   {
-    return self-> snGrad();
+    return self->snGrad()();
   }
   Foam::tmp< Foam::Field< Type > > __rmul__( const Foam::scalar& theArg )
   {
