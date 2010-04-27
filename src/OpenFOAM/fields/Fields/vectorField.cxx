@@ -41,24 +41,14 @@
 %ignore Foam::Field< Foam::vector >::Field;
 %ignore Foam::Field< Foam::vector >::T;
 
+VECTOR_FIELD_TEMPLATE_FUNC;
+
 %template( vectorField ) Foam::Field< Foam::vector >; 
 
 %typedef Foam::Field< Foam::vector > vectorField;
 
-VECTOR_FIELD_TEMPLATE_FUNC( vector )
 
 
-//---------------------------------------------------------------------------
-%extend Foam::Field< Foam::vector >
-{
-  Foam::tmp< Foam::Field< Foam::scalar > > __rand__( const Foam::vector& theArg)
-  {
-    return theArg & get_ref( self );
-  }
-  Foam::tmp< Foam::Field< Foam::vector > > __rand__( const Foam::tensor& theArg)
-  {
-    return theArg & get_ref( self );
-  }
-}
+
 //---------------------------------------------------------------------------
 #endif

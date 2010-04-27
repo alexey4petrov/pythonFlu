@@ -41,7 +41,7 @@
 %ignore Foam::Field< Foam::scalar >::Field;
 %ignore Foam::Field< Foam::scalar >::T;
 
-SCALAR_FIELD_TEMPLATE_FUNC( scalar )
+SCALAR_FIELD_TEMPLATE_FUNC;
 
 %template( scalarField ) Foam::Field< Foam::scalar >; 
 

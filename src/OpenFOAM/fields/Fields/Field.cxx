@@ -209,32 +209,40 @@ NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
 
 
 //--------------------------------------------------------------------------
-%define SCALAR_FIELD_TEMPLATE_FUNC( Type )
+%define SCALAR_FIELD_TEMPLATE_FUNC
 
-FIELD_TEMPLATE_FUNC( Type );
-%extend Foam::Field< Foam::Type >__SCALAR_FIELD_TEMPLATE_OPERATOR__( Type )
-%extend Foam::tmp< Foam::Field< Foam::Type > >__SCALAR_FIELD_TEMPLATE_OPERATOR__( Type )
+FIELD_TEMPLATE_FUNC( scalar );
+%extend Foam::Field< Foam::scalar >__SCALAR_FIELD_TEMPLATE_OPERATOR__( scalar )
+%extend Foam::tmp< Foam::Field< Foam::scalar > >__SCALAR_FIELD_TEMPLATE_OPERATOR__( scalar )
 
 %enddef
 
 //---------------------------------------------------------------------------
-%define __VECTOR_FIELD_TEMPLATE_FUNC( Type )
+%define __VECTOR_FIELD_TEMPLATE_FUNC
 {
-  Foam::tmp< Foam::Field< Foam::tensor > > __mul__( const Foam::Field< Foam::Type >& theArg)
+  Foam::tmp< Foam::Field< Foam::tensor > > __mul__( const Foam::Field< Foam::vector >& theArg)
   {
     return get_ref( self ) * theArg;
+  }
+  Foam::tmp< Foam::Field< Foam::scalar > > __rand__( const Foam::vector& theArg)
+  {
+    return theArg & get_ref( self );
+  }
+  Foam::tmp< Foam::Field< Foam::vector > > __rand__( const Foam::tensor& theArg)
+  {
+    return theArg & get_ref( self );
   }
 }
 %enddef
 
 
 //---------------------------------------------------------------------------
-%define VECTOR_FIELD_TEMPLATE_FUNC( Type )
+%define VECTOR_FIELD_TEMPLATE_FUNC
 
-FIELD_TEMPLATE_FUNC( Type );
+FIELD_TEMPLATE_FUNC( vector );
 
-%extend Foam::Field< Foam::Type > __VECTOR_FIELD_TEMPLATE_FUNC( Type )
-%extend Foam::tmp< Foam::Field< Foam::Type > >__VECTOR_FIELD_TEMPLATE_FUNC( Type )
+%extend Foam::Field< Foam::vector > __VECTOR_FIELD_TEMPLATE_FUNC;
+%extend Foam::tmp< Foam::Field< Foam::vector > >__VECTOR_FIELD_TEMPLATE_FUNC;
 
 %enddef
 
