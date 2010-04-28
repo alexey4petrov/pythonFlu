@@ -37,9 +37,7 @@
 
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
 
-
 %include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField.cxx"
-
 
 %feature( "director" ) fixedGradientFvPatchScalarField;
 
@@ -53,6 +51,8 @@
 
 
 //---------------------------------------------------------------------------
+%ignore Foam::fixedGradientFvPatchField< Foam::scalar >::snGrad;
+
 DIRECTOR_PRE_EXTENDS( fixedGradientFvPatchScalarField );
 
 
@@ -67,6 +67,7 @@ DIRECTOR_PRE_EXTENDS( fixedGradientFvPatchScalarField );
 {
   DIRECTOR_EXTENDS( fixedGradientFvPatchScalarField );
   TYPEINFO_DIRECTOR_EXTENDS( fvPatchScalarField, fixedGradientFvPatchScalarField );
+  COMMON_FIXEDGRADIENT_FVPATCHFIELD_TEMPLATE_FUNC_EXTENDS( Foam::scalar );
 }
 
 

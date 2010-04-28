@@ -38,6 +38,7 @@
 
 %ignore Foam::fvPatchField< Foam::vector >::typeName;
 %ignore Foam::fvPatchField< Foam::vector >::debug;
+%ignore Foam::fvPatchField< Foam::vector >::snGrad;
 
 
 //--------------------------------------------------------------------------

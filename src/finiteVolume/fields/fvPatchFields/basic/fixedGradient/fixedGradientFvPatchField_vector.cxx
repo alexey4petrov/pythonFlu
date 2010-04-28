@@ -53,6 +53,8 @@
 
 
 //---------------------------------------------------------------------------
+%ignore Foam::fixedGradientFvPatchField< Foam::scalar >::snGrad;
+
 DIRECTOR_PRE_EXTENDS( fixedGradientFvPatchVectorField );
 
 
@@ -67,6 +69,7 @@ DIRECTOR_PRE_EXTENDS( fixedGradientFvPatchVectorField );
 {
   DIRECTOR_EXTENDS( fixedGradientFvPatchVectorField );
   TYPEINFO_DIRECTOR_EXTENDS( fvPatchVectorField, fixedGradientFvPatchVectorField );
+  COMMON_FIXEDGRADIENT_FVPATCHFIELD_TEMPLATE_FUNC_EXTENDS( Foam::vector );
 }
 
 

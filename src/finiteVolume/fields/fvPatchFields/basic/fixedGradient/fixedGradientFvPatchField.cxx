@@ -40,6 +40,15 @@
 
 
 //---------------------------------------------------------------------------
+%define COMMON_FIXEDGRADIENT_FVPATCHFIELD_TEMPLATE_FUNC_EXTENDS( Type )
+
+  Foam::Field< Type >& ext_snGrad()
+  {
+    return self->snGrad()();
+  }
+
+%enddef
 
 
+//---------------------------------------------------------------------------
 #endif
