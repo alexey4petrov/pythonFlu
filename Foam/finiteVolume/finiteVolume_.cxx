@@ -67,6 +67,7 @@
 %include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField_vector.cxx"
 %include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField_scalar.cxx"
 %include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField_scalar.cxx"
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchFieldMapper.cxx"
 
 %include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_scalar.cxx"

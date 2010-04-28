@@ -52,6 +52,10 @@ calculatedFvsPatchScalarField = calculatedFvsPatchField_scalar
 
 
 #---------------------------------------------------------------------------
+calculatedFvPatchScalarField = calculatedFvPatchField_scalar
+
+
+#---------------------------------------------------------------------------
 zeroGradientFvPatchScalarField = zeroGradientFvPatchField_scalar
 
 zeroGradientFvPatchVectorField = zeroGradientFvPatchField_vector
