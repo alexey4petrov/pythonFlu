@@ -47,6 +47,10 @@ fvPatchVectorField = fvPatchField_vector
 fvPatchTensorField = fvPatchField_tensor
 
 
+#----------------------------------------------------------------------------
+calculatedFvsPatchScalarField = calculatedFvsPatchField_scalar
+
+
 #---------------------------------------------------------------------------
 zeroGradientFvPatchScalarField = zeroGradientFvPatchField_scalar
 

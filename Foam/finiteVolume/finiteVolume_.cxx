@@ -73,6 +73,8 @@
 %include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_vector.cxx"
 %include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_tensor.cxx"
 
+%include "src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchField_scalar.cxx"
+
 %include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_scalar.cxx"
 %include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_vector.cxx"
 
