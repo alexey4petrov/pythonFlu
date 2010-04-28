@@ -120,7 +120,7 @@
   Foam::tmp< Foam::Field< Type > > __div__( const Foam::Field< scalar >& theArg )
   {
     return  get_ref( self ) / theArg; 
-  }  
+  }
 }
 %enddef
 
@@ -240,6 +240,10 @@ FIELD_TEMPLATE_FUNC( scalar );
   Foam::tmp< Foam::Field< Foam::vector > > __rand__( const Foam::tensor& theArg)
   {
     return theArg & get_ref( self );
+  }
+  Foam::tmp< Foam::Field< Foam::scalar > > __and__( const Foam::Field< Foam::vector >& theArg )
+  {
+    return  get_ref( self ) & theArg; 
   }
 }
 %enddef
