@@ -57,21 +57,6 @@
   {
     return self->snGrad()();
   }
-  Foam::tmp< Foam::Field< Type > > __rmul__( const Foam::scalar& theArg )
-  {
-    return theArg * get_ref( self ); 
-  }
-  
-  Foam::tmp< Foam::Field< Type > > __mul__( const Foam::scalar& theArg )
-  {
-    return get_ref( self ) * theArg; 
-  }
-  
-  Foam::tmp< Foam::Field< Type > > __div__( const Foam::fvPatchField< scalar >& theArg )
-  {
-    return  get_ref( self ) / theArg; 
-  }
-  
 }
 %enddef
 

@@ -112,6 +112,15 @@
   {
     return get_ref( self ) / theArg;
   }
+  Foam::tmp< Foam::Field< Type > > __mul__( const Foam::scalar& theArg )
+  {
+    return get_ref( self ) * theArg; 
+  }
+  
+  Foam::tmp< Foam::Field< Type > > __div__( const Foam::Field< scalar >& theArg )
+  {
+    return  get_ref( self ) / theArg; 
+  }  
 }
 %enddef
 
