@@ -87,6 +87,8 @@
 %include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_scalar.cxx"
 %include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.cxx"
 
+%include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/LimitedScheme_vector_MUSCLLimiter_NVDTVD_limitFuncs_magSqr.cxx"
+
 %include "src/OpenFOAM/fields/tmp/tmp_multivariateSurfaceInterpolationScheme_scalar.cxx"
 %include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.cxx"
 %include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.cxx"
