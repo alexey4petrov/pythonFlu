@@ -134,10 +134,8 @@ def compressibleCreatePhi( runTime, mesh, rhoU ):
        ext_Info() << "Calculating face flux field phi\n" << nl
        
        from Foam.OpenFOAM import wordList
-       #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-       # phiTypes =wordList( rhoU.ext_boundaryField().size(), calculatedFvPatchScalarField.typeName )
-       phiTypes = wordList( 2, word( "calculated" ) )
-       
+       from Foam.finiteVolume import calculatedFvPatchScalarField
+       phiTypes =wordList( 2, calculatedFvPatchScalarField.typeName )
        from Foam.finiteVolume import surfaceScalarField, linearInterpolate
        phi = surfaceScalarField( IOobject( word( "phi" ),
                                            fileName( runTime.timeName() ),
@@ -146,11 +144,10 @@ def compressibleCreatePhi( runTime, mesh, rhoU ):
                                            IOobject.AUTO_WRITE ),
                                  linearInterpolate( rhoU ) & mesh.Sf(),
                                  phiTypes )
-       print "2222"
        pass
        
     
-    return phiHeader, phi
+    return phiHeader, phi, phiTypes
     
 
 
@@ -187,7 +184,7 @@ def _createFields( runTime, mesh, R, Cv ):
     psi.oldTime()
 
     pbf, rhoBoundaryTypes = _rhoBoundaryTypes( p )
-
+    
     rho = volScalarField( IOobject( word( "rho" ),
                                     fileName( runTime.timeName() ),
                                     mesh,
@@ -195,7 +192,7 @@ def _createFields( runTime, mesh, R, Cv ):
                                     IOobject.AUTO_WRITE ),
                           p * psi,
                           rhoBoundaryTypes )
-    print "rho.ext_boundaryField().types() = ", rho.ext_boundaryField().types()
+                          
     ext_Info() << "Reading field U\n" << nl
     from Foam.finiteVolume import volVectorField
     U = volVectorField( IOobject( word( "U" ),
@@ -204,9 +201,9 @@ def _createFields( runTime, mesh, R, Cv ):
                                   IOobject.MUST_READ,
                                   IOobject.AUTO_WRITE ),
                         mesh )
-    
+
     Ubf, rhoUboundaryTypes = _rhoUboundaryTypes( U )
-    print " rhoUboundaryTypes =  ", rhoUboundaryTypes
+
     rhoU = volVectorField( IOobject( word( "rhoU" ),
                                      fileName( runTime.timeName() ),
                                      mesh,
@@ -214,10 +211,9 @@ def _createFields( runTime, mesh, R, Cv ):
                                      IOobject.AUTO_WRITE ),
                            rho * U,
                            rhoUboundaryTypes )
-    print "rhoU.ext_boundaryField().types() = ", rhoU.ext_boundaryField().size()
-                           
+
     Tbf, rhoEboundaryTypes = _rhoEboundaryTypes( T )
-    
+
     rhoE = volScalarField( IOobject( word( "rhoE" ),
                                      fileName( runTime.timeName() ),
                                      mesh,
@@ -225,9 +221,8 @@ def _createFields( runTime, mesh, R, Cv ):
                                      IOobject.AUTO_WRITE ),
                            rho * Cv * T + 0.5 * rho * ( rhoU / rho ).magSqr(),
                            rhoEboundaryTypes )
-    
-    
-    phiHeader, phi = compressibleCreatePhi( runTime, mesh, rhoU )
+                           
+    phiHeader, phi, phiTypes = compressibleCreatePhi( runTime, mesh, rhoU )
     
     phi.oldTime()
     
@@ -291,6 +286,22 @@ def compressibleCourantNo( mesh, amaxSf, runTime ):
 
 
 #--------------------------------------------------------------------------------------
+def resetPhiPatches( phi, rhoU, mesh ):
+    phiPatches = phi.ext_boundaryField()
+    rhoUpatches = rhoU.ext_boundaryField()
+    SfPatches = mesh.Sf().ext_boundaryField()
+    
+    for patchI in range( phiPatches.types().size() ):
+        from Foam.OpenFOAM import word
+        if str( phi.ext_boundaryField().types()[patchI] ) == "calculated":
+           from Foam.finiteVolume import calculatedFvsPatchScalarField
+           phiPatch = calculatedFvsPatchScalarField.ext_refCast( phiPatches[ patchI ] ) 
+           phiPatch == ( rhoUpatches[ patchI ] & SfPatches[ patchI ] ) 
+           pass
+        pass
+    pass        
+
+#--------------------------------------------------------------------------------------
 def main_standalone( argc, argv ):
 
     from Foam.OpenFOAM.include import setRootCase
@@ -344,9 +355,7 @@ def main_standalone( argc, argv ):
             
             rhoUWeights = tmp.ext_weights( magRhoU )
             
-            
             from Foam.finiteVolume import weighted_vector
-            from Foam.finiteVolume import tmp_surfaceInterpolationScheme_vector
             rhoUScheme = weighted_vector(rhoUWeights)
             from Foam import fv, fvc
             rhoUEqn = fvm.ddt(rhoU) + fv.gaussConvectionScheme_vector( mesh, phiv, rhoUScheme ).fvmDiv( phiv, rhoU )
@@ -363,14 +372,46 @@ def main_standalone( argc, argv ):
                 rrhoUAf = surfaceScalarField( word( "rrhoUAf" ), fvc.interpolate( rrhoUA ) )
                 HbyA = rrhoUA * rhoUEqn.H()
                 
+                from Foam.finiteVolume import LimitedScheme_vector_MUSCLLimiter_NVDTVD_limitFuncs_magSqr
+                from Foam.OpenFOAM import IStringStream, word
+                HbyAWeights = HbyAblend * mesh.weights() + ( 1.0 - HbyAblend ) * \
+                              LimitedScheme_vector_MUSCLLimiter_NVDTVD_limitFuncs_magSqr( mesh, phi, IStringStream( "HbyA" )() ).weights( HbyA )
                 
-            
-            print "111"
+                from Foam.finiteVolume import surfaceInterpolationScheme_vector
+                phi.ext_assign( ( surfaceInterpolationScheme_vector.ext_interpolate(HbyA, HbyAWeights) & mesh.Sf() ) \
+                                  + HbyAblend * fvc.ddtPhiCorr( rrhoUA, rho, rhoU, phi ) )
+                
+                p.ext_boundaryField().updateCoeffs()
+                
+                phiGradp = rrhoUAf * mesh.magSf() * fvc.snGrad( p )
+                
+                phi.ext_assign( phi - phiGradp )
+                
+                resetPhiPatches( phi, rhoU, mesh )
+                rhof = mvConvection.interpolationScheme()()(rho).interpolate(rho)
+                phiv.ext_assign( phi/rhof )
+                
+                pEqn = fvm.ddt( psi, p ) + mvConvection.fvcDiv( phiv, rho ) + fvc.div( phiGradp ) - fvm.laplacian( rrhoUAf, p )
+                
+                pEqn.solve()
+                
+                phi.ext_assign( phi + phiGradp + pEqn.flux() )
+                rho.ext_assign( psi * p )
+                
+                rhof.ext_assign( mvConvection.interpolationScheme()()( rho).interpolate(rho) )
+                phiv.ext_assign( phi / rhof )
+                
+                rhoU.ext_assign( HbyA - rrhoUA * fvc.grad(p) )
+                rhoU.correctBoundaryConditions()
+                pass
             pass
+        
+        U.ext_assign( rhoU / rho )
+
+        runTime.write()
+
         ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
               "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
-        import os
-        os.abort()
         pass
 
     ext_Info() << "End\n"
