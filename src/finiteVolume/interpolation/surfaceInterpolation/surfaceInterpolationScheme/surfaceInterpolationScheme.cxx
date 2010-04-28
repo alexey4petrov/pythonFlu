@@ -54,6 +54,23 @@
    {
       return self->weights( theArg )();
    }
+   
+   static Foam::tmp<Foam::GeometricField< Foam::Type, Foam::fvsPatchField, Foam::surfaceMesh > >
+   ext_interpolate( 
+              const Foam::GeometricField< Foam::Type, fvPatchField, volMesh >& vf,
+              const Foam::tmp< Foam::surfaceScalarField >& tlambdas,
+              const Foam::tmp< Foam::surfaceScalarField >& tys )
+   {
+     return Foam::surfaceInterpolationScheme< Foam::Type >::interpolate( vf, tlambdas, tys );
+   }
+   
+   static Foam::tmp<Foam::GeometricField< Foam::Type, Foam::fvsPatchField, Foam::surfaceMesh > >
+   ext_interpolate( 
+              const Foam::GeometricField< Foam::Type, fvPatchField, volMesh >& vf,
+              const Foam::tmp< Foam::surfaceScalarField >& tlambdas )
+   {
+     return Foam::surfaceInterpolationScheme< Foam::Type >::interpolate( vf, tlambdas );
+   }
 }
 %enddef
 #endif
