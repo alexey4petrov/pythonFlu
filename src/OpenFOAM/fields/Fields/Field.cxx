@@ -259,4 +259,27 @@ FIELD_TEMPLATE_FUNC( vector );
 
 %enddef
 
+
+//----------------------------------------------------------------------------
+%define __TENSOR_FIELD_TEMPLATE_FUNC
+{
+  Foam::tmp< Foam::Field< Foam::tensor > > ext_T()
+  {
+    return self->T();
+  }
+} 
+%enddef
+
+
+//-----------------------------------------------------------------------------
+%define TENSOR_FIELD_TEMPLATE_FUNC
+
+FIELD_TEMPLATE_FUNC( tensor );
+
+%extend Foam::Field< Foam::tensor > __TENSOR_FIELD_TEMPLATE_FUNC;
+
+%enddef
+
+
+//----------------------------------------------------------------------------
 #endif

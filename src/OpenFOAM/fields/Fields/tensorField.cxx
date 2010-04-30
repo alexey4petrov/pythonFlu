@@ -49,8 +49,9 @@
 
 %typedef Foam::Field< Foam::tensor > tensorField;
 
-FIELD_TEMPLATE_FUNC( tensor )
+TENSOR_FIELD_TEMPLATE_FUNC;
 
 
 //---------------------------------------------------------------------------
+
 #endif
