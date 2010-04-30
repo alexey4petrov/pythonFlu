@@ -53,7 +53,7 @@
 
 
 //---------------------------------------------------------------------------
-%ignore Foam::fixedGradientFvPatchField< Foam::scalar >::snGrad;
+%ignore Foam::fixedGradientFvPatchField< Foam::vector >::snGrad;
 
 DIRECTOR_PRE_EXTENDS( fixedGradientFvPatchVectorField );
 
