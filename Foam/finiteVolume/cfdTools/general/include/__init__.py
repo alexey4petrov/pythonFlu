@@ -174,3 +174,14 @@ def readEnvironmentalProperties( runTime, mesh ):
 
 
 #--------------------------------------------------------------------------------------------
+def readGravitationalAcceleration( runTime, mesh):
+    from Foam.OpenFOAM import ext_Info,  nl
+    ext_Info() << "\nReading g" << nl
+    from Foam.OpenFOAM import UniformDimensionedVectorField, IOobject, fileName, word
+    
+    g = UniformDimensionedVectorField( IOobject( word( "g" ),
+                                                 fileName( runTime.constant() ),
+                                                 mesh,
+                                                 IOobject.MUST_READ,
+                                                 IOobject.NO_WRITE ) )
+    return g
