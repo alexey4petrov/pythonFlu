@@ -41,6 +41,11 @@
 %include "src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx"
 %include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.cxx"
 
+%include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.cxx"
+%include "src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.cxx"
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicRhoThermo.cxx"
+
+
 
 //---------------------------------------------------------------------------
 #endif
