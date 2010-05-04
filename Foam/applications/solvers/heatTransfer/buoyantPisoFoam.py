@@ -153,6 +153,12 @@ def _pEqn( runTime, mesh, UEqn, thermo, p, psi, U, rho, phi, DpDt, g, initialMas
     U.correctBoundaryConditions()
     
     DpDt.ext_assign( fvc.DDt( surfaceScalarField( word( "phiU" ), phi / fvc.interpolate( rho ) ), p ) )
+    
+    from Foam.finiteVolume.cfdTools.compressible import rhoEqn  
+    rhoEqn( rho, phi )
+    
+    from Foam.finiteVolume.cfdTools.compressible import compressibleContinuityErrs
+    cumulativeContErr = compressibleContinuityErrs( rho, thermo, cumulativeContErr )
 
     # For closed-volume cases adjust the pressure and density levels
     # to obey overall mass continuity
@@ -162,7 +168,7 @@ def _pEqn( runTime, mesh, UEqn, thermo, p, psi, U, rho, phi, DpDt, g, initialMas
        rho.ext_assign( rho + ( initialMass - fvc.domainIntegrate( rho ) ) / totalVolume )
        pass
 
-    return pEqn
+    return cumulativeContErr
 
 
    
@@ -223,7 +229,8 @@ def main_standalone( argc, argv ):
         
         # --- PISO loop
         for corr in range( nCorr ):
-            pEqn = _pEqn( runTime, mesh, UEqn, thermo, p, psi, U, rho, phi, DpDt, g, initialMass, totalVolume, corr, nCorr, nNonOrthCorr, cumulativeContErr )
+            cumulativeContErr = _pEqn( runTime, mesh, UEqn, thermo, p, psi, U, rho, phi, DpDt, g,\
+                                       initialMass, totalVolume, corr, nCorr, nNonOrthCorr, cumulativeContErr )
             pass
 
         turbulence.correct()
