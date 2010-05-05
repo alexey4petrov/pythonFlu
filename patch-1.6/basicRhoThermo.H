@@ -103,10 +103,10 @@ public:
     // Member functions
 
         // Fields derived from thermodynamic state variables
-
+#ifndef SWIG
             //- Density [kg/m^3]
             virtual tmp<volScalarField> rho() const;
-
+#endif
             //- Return non-const access to the local density field [kg/m^3]
             virtual volScalarField& rho();
 };
