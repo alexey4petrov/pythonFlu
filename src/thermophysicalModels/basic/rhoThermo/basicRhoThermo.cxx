@@ -48,6 +48,8 @@
     #include "basicRhoThermo.H"
 %}
 
+%ignore Foam::basicRhoThermo::rho() const;
+
 %include "basicRhoThermo.H"
 
 
