@@ -20,8 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef thermophysicalModels_cxx
-#define thermophysicalModels_cxx
+#if ( __FOAM_VERSION__ < 010600 )
+#define basicRhoThermo_cxx
+%include "src/common.hxx"
+#endif
+
+
+//---------------------------------------------------------------------------
+#ifndef basicRhoThermo_cxx
+#define basicRhoThermo_cxx
 
 
 //---------------------------------------------------------------------------
@@ -34,19 +41,17 @@
 
 //---------------------------------------------------------------------------
 %include "src/thermophysicalModels/basic/basicThermo.cxx"
-%include "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.cxx"
 
-%include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx"
-%include "src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx"
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.cxx"
+//%include "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
 
-%include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.cxx"
-%include "src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.cxx"
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicRhoThermo.cxx"
+%{
+    #include "basicRhoThermo.H"
+%}
 
+%ignore Foam::basicRhoThermo::rho() const;
+
+%include "basicRhoThermo.H"
 
 
 //---------------------------------------------------------------------------
 #endif
-

@@ -20,8 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef thermophysicalModels_cxx
-#define thermophysicalModels_cxx
+#if ( __FOAM_VERSION__ < 010600 )
+%include "src/common.hxx"
+#define PtrList_basicRhoThermo_cxx
+#endif
+
+
+//---------------------------------------------------------------------------
+#ifndef PtrList_basicRhoThermo_cxx
+#define PtrList_basicRhoThermo_cxx
 
 
 //---------------------------------------------------------------------------
@@ -33,20 +40,33 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/thermophysicalModels/basic/basicThermo.cxx"
-%include "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.cxx"
-
-%include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx"
-%include "src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx"
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.cxx"
-
 %include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.cxx"
-%include "src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.cxx"
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicRhoThermo.cxx"
 
+%include "src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.cxx"
+
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+
+%ignore Foam::PtrList< Foam::basicRhoThermo >::PtrList;
+%ignore Foam::PtrList< Foam::basicRhoThermo >::begin;
+%ignore Foam::PtrList< Foam::basicRhoThermo >::end;
+%ignore Foam::PtrList< Foam::basicRhoThermo >::set;
+%ignore Foam::PtrList< Foam::basicRhoThermo >::xfer;
+
+
+%template( PtrList_basicRhoThermo ) Foam::PtrList< Foam::basicRhoThermo >;
+
+
+//---------------------------------------------------------------------------
+%extend Foam::PtrList< Foam::basicRhoThermo >
+{
+  Foam::PtrList< Foam::basicRhoThermo >( const Foam::label s )
+  {
+    return new Foam::PtrList< Foam::basicRhoThermo >( s );
+  }
+}
+
+%extend Foam::PtrList< Foam::basicRhoThermo > PTRLISTBASED_ADDONS( Foam::basicRhoThermo )
 
 
 //---------------------------------------------------------------------------
 #endif
-

@@ -108,6 +108,11 @@ NO_TMP_TYPEMAP_DIMENSIONED_FIELD( Foam::Type, Foam::TMesh );
     *self = theArg;
   }
   
+  Foam::dimensioned< Type > ext_sum()
+  {
+    return Foam::sum( *self );
+  }
+  
   ISINSTANCE_TEMPLATE_2_EXTEND( DimensionedField, Foam::Type, Foam::TMesh )
   
 }

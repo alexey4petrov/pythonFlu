@@ -50,7 +50,7 @@
 %ignore Foam::fvMatrix< Foam::scalar >::addCmptAvBoundaryDiag;
 %ignore Foam::fvMatrix< Foam::scalar >::addBoundarySource;
 
-FVMATRIX_TEMPLATE_FUNC( Foam::scalar );
+SCALAR_FVMATRIX_TEMPLATE_FUNC;
 
 %template( fvScalarMatrix ) Foam::fvMatrix< Foam::scalar >;
 

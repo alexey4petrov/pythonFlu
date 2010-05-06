@@ -20,8 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef thermophysicalModels_cxx
-#define thermophysicalModels_cxx
+#if ( __FOAM_VERSION__ < 010600 )
+#define autoPtr_basicRhoThermo_cxx
+%include "src/common.hxx"
+#endif
+
+
+//---------------------------------------------------------------------------
+#ifndef autoPtr_basicRhoThermo_cxx
+#define autoPtr_basicRhoThermo_cxx
 
 
 //---------------------------------------------------------------------------
@@ -33,20 +40,34 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/thermophysicalModels/basic/basicThermo.cxx"
-%include "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.cxx"
-
-%include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx"
-%include "src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx"
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.cxx"
+%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
 %include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.cxx"
-%include "src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.cxx"
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicRhoThermo.cxx"
-
 
 
 //---------------------------------------------------------------------------
-#endif
+AUTOPTR_TYPEMAP( Foam::basicRhoThermo )
 
+%ignore Foam::autoPtr< Foam::basicRhoThermo >::operator->;
+
+%template( autoPtr_basicRhoThermo ) Foam::autoPtr< Foam::basicRhoThermo >;
+
+%inline
+{
+  namespace Foam
+  {
+    typedef autoPtr< basicRhoThermo > autoPtr_basicRhoThermo;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::autoPtr< Foam::basicRhoThermo >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_basicRhoThermo );
+
+%extend Foam::autoPtr< Foam::basicRhoThermo >
+{
+  SMARTPTR_EXTEND_ATTR( autoPtr_basicRhoThermo )
+}
+
+//---------------------------------------------------------------------------
+#endif

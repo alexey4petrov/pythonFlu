@@ -117,7 +117,7 @@
     {
         return theArg + get_ref( self )  ;
     }
-
+    
     Foam::tmp< Foam::fvMatrix< Type > > __sub__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
     {
         return get_ref( self ) - theArg;
@@ -203,11 +203,38 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
     {
         return checkMethod< Type >( fvm, dt, op );
     }
+#if ( __FOAM_VERSION__ >= 010500 )    
+    Foam::tmp< Foam::fvMatrix< Type > > correction(const Foam::fvMatrix< Type >& fvm)
+    {
+      return correction< Type >( fvm );
+    }
+#endif    
 %}
 
 %enddef
 
 
 //---------------------------------------------------------------------------
+%define __SCALAR_FVMATRIX_TEMPLATE_OPERATORS
+{
+    Foam::tmp< Foam::fvMatrix< Foam::scalar > > __rmul__( const Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& theArg )
+    {
+        return theArg * get_ref( self )  ;
+    }
+}
+%enddef
 
+
+//---------------------------------------------------------------------------
+%define SCALAR_FVMATRIX_TEMPLATE_FUNC
+
+FVMATRIX_TEMPLATE_FUNC( Foam::scalar );
+
+%extend Foam::fvMatrix< Foam::scalar > __SCALAR_FVMATRIX_TEMPLATE_OPERATORS;
+
+%extend Foam::tmp< Foam::fvMatrix< Foam::scalar > > __SCALAR_FVMATRIX_TEMPLATE_OPERATORS;
+
+
+%enddef
+//----------------------------------------------------------------------------
 #endif

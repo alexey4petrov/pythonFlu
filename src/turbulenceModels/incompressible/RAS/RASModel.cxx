@@ -83,6 +83,8 @@
 
 %ignore Foam::incompressible::RASModel::epsilon;
 
+%ignore Foam::incompressible::RASModel::nut;
+
 %rename( incompressible_RASModel ) Foam::incompressible::RASModel;
 
 %include "incompressible/RASModel.H"
@@ -99,7 +101,10 @@
   {
     return self->epsilon()();
   }
-  
+  Foam::volScalarField& ext_nut()
+  {
+    return self->nut()();
+  }
 }
 
 #endif
