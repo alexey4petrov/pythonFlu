@@ -203,10 +203,12 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
     {
         return checkMethod< Type >( fvm, dt, op );
     }
+#if ( __FOAM_VERSION__ >= 010500 )    
     Foam::tmp< Foam::fvMatrix< Type > > correction(const Foam::fvMatrix< Type >& fvm)
     {
       return correction< Type >( fvm );
     }
+#endif    
 %}
 
 %enddef
