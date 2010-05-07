@@ -20,38 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef vectorField_cxx
-#define vectorField_cxx
+#ifndef pTraits_vector_cxx
+#define pTraits_vector_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/Field.cxx"
-
 %include "src/OpenFOAM/primitives/vector.cxx"
 
-%include "src/OpenFOAM/primitives/Lists/vectorList.cxx"
+%include "src/OpenFOAM/primitives/pTraits.cxx"
 
-%include "src/OpenFOAM/primitives/tensor.cxx"
-
-%include "src/OpenFOAM/primitives/pTraits_vector.cxx"
-
-//---------------------------------------------------------------------------
-%{
-    #include "vectorField.H"
-%}
-
-%ignore Foam::Field< Foam::vector >::typeName;
-%ignore Foam::Field< Foam::vector >::Field;
-%ignore Foam::Field< Foam::vector >::T;
-
-VECTOR_FIELD_TEMPLATE_FUNC;
-
-%template( vectorField ) Foam::Field< Foam::vector >; 
-
-%typedef Foam::Field< Foam::vector > vectorField;
-
-
-
+%template ( pTraits_vector ) Foam::pTraits<Foam::vector>;
 
 //---------------------------------------------------------------------------
 #endif
