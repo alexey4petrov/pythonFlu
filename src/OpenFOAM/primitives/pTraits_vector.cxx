@@ -31,5 +31,6 @@
 
 %template ( pTraits_vector ) Foam::pTraits<Foam::vector>;
 
+
 //---------------------------------------------------------------------------
 #endif
