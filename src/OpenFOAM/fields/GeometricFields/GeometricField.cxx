@@ -69,6 +69,11 @@
     {
         get_ref( self ) = theArg;
     }
+    
+    void ext_assign( const Foam::dimensioned< Type >& theArg )
+    {
+        get_ref( self ) = theArg;
+    }
 
     Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __neg__()
     {
@@ -199,6 +204,11 @@
     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > sqrt()
     {
         return Foam::sqrt( get_ref( self ) );
+    }
+    
+    Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > sqr()
+    {
+        return Foam::sqr( get_ref( self ) );
     }
     
     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __div__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
