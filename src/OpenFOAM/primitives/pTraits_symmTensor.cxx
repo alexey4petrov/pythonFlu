@@ -31,5 +31,6 @@
 
 %template ( pTraits_symmTensor ) Foam::pTraits<Foam::symmTensor>;
 
+
 //---------------------------------------------------------------------------
 #endif
