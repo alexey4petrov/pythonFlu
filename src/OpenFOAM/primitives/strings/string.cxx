@@ -101,6 +101,8 @@ namespace Foam
 
 %include "string.H"
 
+STRINGBASED_ADDONS( Foam::string )
+
 %extend Foam::string
 {
     int __len__()
@@ -108,11 +110,6 @@ namespace Foam
         return self->size();
     }
     
-    const char* __str__()
-    {
-        return self->c_str();
-    }
-
     char __getitem__( size_t theIndex )
     {
         return self->at( theIndex );
