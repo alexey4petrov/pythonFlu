@@ -67,7 +67,6 @@ namespace Foam
     }
 }
 
-
 %typemap( in ) const SWIGTYPE &
 {
     void *ptr;
@@ -115,6 +114,7 @@ STRINGBASED_ADDONS( Foam::string )
         return self->at( theIndex );
     }
 }
+
 
 //---------------------------------------------------------------------------
 #endif
