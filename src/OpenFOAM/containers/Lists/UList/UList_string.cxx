@@ -39,7 +39,7 @@
 {
   #if ( __FOAM_VERSION__ >= 010600 ) 
 
-    Foam::label ext_findIndex( Foam::string t, const label start=0 )
+    Foam::label ext_findIndex( const Foam::string& t, const label start=0 )
     {
        return Foam::findIndex( *self, t, start );
     }
@@ -48,7 +48,7 @@
 
   #if ( __FOAM_VERSION__ < 010600 )
 
-    Foam::label ext_findIndex( Foam::string t )
+    Foam::label ext_findIndex( const Foam::string& t )
     {
      return Foam::findIndex( *self, t );
     }
