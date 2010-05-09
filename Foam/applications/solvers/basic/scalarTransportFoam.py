@@ -117,7 +117,10 @@ if WM_PROJECT_VERSION() >= "1.6" :
          argv = [ __file__, "-case", test_dir ]
          pass
       os._exit( main_standalone( len( argv ), argv ) )
-
-
+	  pass
+	pass
+  pass
+	
+	
 #--------------------------------------------------------------------------------------
 
