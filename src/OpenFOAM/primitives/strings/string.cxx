@@ -54,9 +54,7 @@ namespace Foam
 
 
 //---------------------------------------------------------------------------
-%define STRINGBASED_ADDONS( SWIGTYPE )
-
-%typecheck( SWIG_TYPECHECK_POINTER ) const SWIGTYPE &
+%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::string &
 {
     void *ptr;
     if ( SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 ) == -1 ) {
@@ -67,7 +65,7 @@ namespace Foam
     }
 }
 
-%typemap( in ) const SWIGTYPE &
+%typemap( in ) const Foam::string &
 {
     void *ptr;
     if ( SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 ) == -1 ) {
@@ -83,24 +81,13 @@ namespace Foam
     }
 }
 
-%extend SWIGTYPE
-{
-    const char* __str__()
-    {
-        return self->c_str();
-    }
-    
-}
 
-%enddef
 
 
 //---------------------------------------------------------------------------
 %include "std_string.i"
 
 %include "string.H"
-
-STRINGBASED_ADDONS( Foam::string )
 
 %extend Foam::string
 {
@@ -112,6 +99,11 @@ STRINGBASED_ADDONS( Foam::string )
     char __getitem__( size_t theIndex )
     {
         return self->at( theIndex );
+    }
+    
+    const char* __str__()
+    {
+        return self->c_str();
     }
 }
 
