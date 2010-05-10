@@ -62,11 +62,11 @@
 
 
 //---------------------------------------------------------------------------
-%define LISTS_FUNCS( TList )
+%define LISTS_FUNCS( TItem )
 {
   #if ( __FOAM_VERSION__ >= 010600 ) 
 
-    Foam::label ext_findIndex( typename Foam::TList::const_reference t, const label start=0 )
+    Foam::label ext_findIndex( TItem& t, const label start=0 )
     {
        return Foam::findIndex( *self, t, start );
     }
@@ -75,7 +75,7 @@
 
   #if ( __FOAM_VERSION__ < 010600 )
 
-    Foam::label ext_findIndex( typename Foam::TList::const_reference t )
+    Foam::label ext_findIndex( TItem& t )
     {
      return Foam::findIndex( *self, t );
     }
@@ -90,7 +90,7 @@
 
 %extend Foam::UList< TItem > SEQUENCE_ADDONS( TItem )
 
-%extend Foam::UList< TItem > LISTS_FUNCS( UList< TItem > )
+%extend Foam::UList< TItem > LISTS_FUNCS( TItem )
 
 %enddef
 

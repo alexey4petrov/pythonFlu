@@ -33,29 +33,7 @@
 
 %template( UList_string ) Foam::UList< Foam::string >; 
 
-%extend Foam::UList< Foam::string > SEQUENCE_ADDONS( Foam::string )
-
-%extend Foam::UList< Foam::string >
-{
-  #if ( __FOAM_VERSION__ >= 010600 ) 
-
-    Foam::label ext_findIndex( const Foam::string& t, const label start=0 )
-    {
-       return Foam::findIndex( *self, t, start );
-    }
-
-  #endif
-
-  #if ( __FOAM_VERSION__ < 010600 )
-
-    Foam::label ext_findIndex( const Foam::string& t )
-    {
-     return Foam::findIndex( *self, t );
-    }
-
-  #endif
-}
-
+ULISTBASED_ADDONS( Foam::string )
 
 //---------------------------------------------------------------------------
 #endif
