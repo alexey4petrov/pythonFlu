@@ -40,8 +40,16 @@
 %include "src/transportModels/incompressible/singlePhaseTransportModel.cxx"
 
 
+//-----------------------------------------------------------------------------
+%include "src/transportModels/incompressible/twoPhaseMixture.cxx"
+
+
 //----------------------------------------------------------------------------
 %include "src/transportModels/incompressible/viscosityModels/viscosityModel.cxx"
+
+
+//---------------------------------------------------------------------------
+%include "src/transportModels/interfaceProperties/interfaceProperties.cxx"
 
 
 //---------------------------------------------------------------------------
