@@ -64,23 +64,21 @@
 //---------------------------------------------------------------------------
 %define LISTS_FUNCS( TItem )
 {
-  #if ( __FOAM_VERSION__ >= 010600 ) 
 
-    Foam::label ext_findIndex( TItem& t, const label start=0 )
-    {
-       return Foam::findIndex( *self, t, start );
-    }
+#if ( __FOAM_VERSION__ < 010600 )
+  Foam::label ext_findIndex( TItem& t )
+  {
+    return Foam::findIndex( *self, t );
+  }
+#endif
 
-  #endif
+#if ( __FOAM_VERSION__ >= 010600 ) 
+  Foam::label ext_findIndex( TItem& t, const label start=0 )
+  {
+    return Foam::findIndex( *self, t, start );
+  }
+#endif
 
-  #if ( __FOAM_VERSION__ < 010600 )
-
-    Foam::label ext_findIndex( TItem& t )
-    {
-     return Foam::findIndex( *self, t );
-    }
-
-  #endif
 }  
 %enddef
 
