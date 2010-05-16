@@ -39,6 +39,8 @@
 
 %include "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
 
+%include "src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.cxx"
+
 
 //---------------------------------------------------------------------------
 #endif
