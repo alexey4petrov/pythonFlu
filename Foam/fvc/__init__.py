@@ -50,6 +50,8 @@ makeRelative = fvc_makeRelative
 
 makeAbsolute = fvc_makeAbsolute
 
+flux = fvc_flux
+
 
 #---------------------------------------------------------------------------
 

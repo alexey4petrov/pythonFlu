@@ -39,6 +39,7 @@
 %include "src/finiteVolume/finiteVolume/fvc/fvcD_Dt.cxx"
 %include "src/finiteVolume/finiteVolume/fvc/fvcGrad.cxx"
 %include "src/finiteVolume/finiteVolume/fvc/fvcDiv.cxx"
+%include "src/finiteVolume/finiteVolume/fvc/fvcFlux.cxx"
 %include "src/finiteVolume/finiteVolume/fvc/fvcVolumeIntegrate.cxx"
 %include "src/finiteVolume/finiteVolume/fvc/fvcSnGrad.cxx"
 %include "src/finiteVolume/finiteVolume/fvc/fvcReconstruct.cxx"
