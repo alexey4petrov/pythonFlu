@@ -20,19 +20,12 @@
 
 
 //---------------------------------------------------------------------------
-#if ( "@USE_SINGLE_LIB@" == "no" )
-%include "src/common.hxx"
-#define pyfoam_cxx
-#endif
+#ifndef MULES__cxx
+#define MULES__cxx
 
 
 //---------------------------------------------------------------------------
-#ifndef pyfoam_cxx
-#define pyfoam_cxx
-
-
-//---------------------------------------------------------------------------
-//It is necessary to include "director's" classes above first DIRECTOR_INCLUDE 
+// Keep on corresponding "director" includes at the top of SWIG defintion file
 
 %include "src/OpenFOAM/directors.hxx"
 
@@ -40,35 +33,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "Foam/OpenFOAM/OpenFOAM_.cxx"
-
-%include "Foam/meshTools/meshTools_.cxx"
-
-%include "Foam/finiteVolume/finiteVolume_.cxx"
-
-%include "Foam/fv/fv_.cxx"
-
-%include "Foam/fvc/fvc_.cxx"
-
-%include "Foam/fvm/fvm_.cxx"
-
-%include "Foam/MULES/MULES_.cxx"
-
-%include "Foam/sampling/sampling.cxx"
-
-%include "Foam/dynamicMesh/dynamicMesh_.cxx"
-
-%include "Foam/dynamicFvMesh/dynamicFvMesh_.cxx"
-
-%include "Foam/thermophysicalModels/thermophysicalModels_.cxx"
-
-%include "Foam/radiation/radiation_.cxx"
-
-%include "Foam/transportModels/transportModels_.cxx"
-
-%include "Foam/compressible/compressible_.cxx"
-
-%include "Foam/incompressible/incompressible_.cxx"
+%include "src/finiteVolume/fvMatrices/solvers/MULES/MULES.cxx"
 
 
 //---------------------------------------------------------------------------
