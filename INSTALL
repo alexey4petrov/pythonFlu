@@ -29,7 +29,7 @@ Pre-requisites
 pre-requisites.
 
 * Make sure that confFoam (common configuration package) is installed 
-  Can be found at https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/conffoam.
+  Can be found at https://vulashaka.svn.sourceforge.net/svnroot/vulashaka/conffoam.
   Please follow instructions from corresponding INSTALL file to setup confFoam
   in your environment.
 
@@ -45,17 +45,17 @@ pre-requisites.
   Please follow instructions from http://www.swig.org/ web-site.
 
 * Install extFoam (optional)
-  Can be found at https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/extfoam.
+  Can be found at https://vulashaka.svn.sourceforge.net/svnroot/vulashaka/extfoam.
   Please follow instructions from corresponding INSTALL file to setup extFoam
   in your environment.
 
 * Install foam2vtk (optional)
-  Can be found at https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/foam2vtk.
+  Can be found at https://vulashaka.svn.sourceforge.net/svnroot/vulashaka/foam2vtk.
   Please follow instructions from corresponding INSTALL file to setup foam2vtk
   in your environment.
 
 * Install unv2foam (optional)
-  Can be found at https://csrcs.pbmr.co.za/svn/nea/prototypes/reaktor/unv2foam.
+  Can be found at https://vulashaka.svn.sourceforge.net/svnroot/vulashaka/unv2foam.
   Please follow instructions from corresponding INSTALL file to setup unv2foam
   in your environment.
 
@@ -83,7 +83,7 @@ In order to build the module you have to perform the following actions:
    
    <your favorite editor> ./env.sh
 
-4. Source this "env.sh" file to define corresponding build environment.
+4. Source this "env.sh" file to define the corresponding build environment.
 
    source ./env.sh
 
@@ -92,7 +92,7 @@ In order to build the module you have to perform the following actions:
    build_configure
    ./configure
 
-   Make sure that after each configuration step "--- OK ---" message is
+   Make sure that after each configuration step the "--- OK ---" message is
    printed in your console.
 
    To see all applicable configuration options run "./configure --help"

@@ -21,12 +21,12 @@
 
 
 #--------------------------------------------------------------------------------------
+# Source the conffoam environment
 source /opt/conffoam/r0.1/bashrc
 
-
 #--------------------------------------------------------------------------------------
+# Source the OpenFOAM environment
 which_open_foam="1.6"
-
 source_openfoam /opt/OpenFOAM/r${which_open_foam}/debug/bashrc
 
 #if [ "${which_open_foam}" == "1.4.1-dev" ]; then
@@ -35,10 +35,11 @@ source_openfoam /opt/OpenFOAM/r${which_open_foam}/debug/bashrc
 #    source /opt/thermalFoam/r0.2/OpenFOAM-${which_open_foam}/bashrc 
 #fi
 
-source_salome /opt/SALOME/r5.1.3/r1.0/from_sources/bashrc
+# Source the SALOME environment
+source_salome /opt/SALOME/r5.1.3/r1.0/from_sources/env_products.sh
 
+# Source the VulaSHAKA utility components : unv2foam and foam2vtk
 source /opt/unv2foam/r0.3/OpenFOAM-${which_open_foam}/bashrc 
-
 source /opt/foam2vtk/r0.3/OpenFOAM-${which_open_foam}/bashrc 
 
 #source /opt/extfoam/r1.2/OpenFOAM-${which_open_foam}/bashrc 

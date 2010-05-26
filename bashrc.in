@@ -25,11 +25,11 @@ if test "${PYFOAM_ROOT_DIR}x" = "x" ; then
    export PYFOAM_ROOT_DIR="@abs_top_builddir@"
    echo PYFOAM_ROOT_DIR=\"${PYFOAM_ROOT_DIR}\"
 
+   source ${PYFOAM_ROOT_DIR}/env.sh
+
    export PATH=${PYFOAM_ROOT_DIR}:${PATH}
    export PYTHONPATH=${PYFOAM_ROOT_DIR}:${PYTHONPATH}
    export LD_LIBRARY_PATH=${PYFOAM_ROOT_DIR}:${LD_LIBRARY_PATH}
-
-   source ${PYFOAM_ROOT_DIR}/env.sh
 fi
 
 
