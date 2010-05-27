@@ -401,7 +401,7 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
             mixedFvPatchScalarField.updateCoeffs( self )
             
             pass
-        except Exception as exc:
+        except Exception, exc:
             import sys, traceback
             traceback.print_exc( file = sys.stdout )
             raise exc

@@ -291,7 +291,7 @@ class gradientRhoFvPatchScalarField( fixedGradientFvPatchScalarField ):
            self.gradient().ext_assign( psip * pp.ext_snGrad() + psip.ext_snGrad() * pp )
 
            fixedGradientFvPatchScalarField.updateCoeffs( self )
-        except Exception as exc:
+        except Exception, exc:
             import sys, traceback
             traceback.print_exc( file = sys.stdout )
             raise exc

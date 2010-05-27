@@ -280,7 +280,7 @@ class fixedRhoFvPatchScalarField( fixedValueFvPatchScalarField ):
            self == ( psip * pp )
 
            fixedValueFvPatchScalarField.updateCoeffs( self )
-        except Exception as exc:
+        except Exception, exc:
             import sys, traceback
             traceback.print_exc( file = sys.stdout )
             raise exc

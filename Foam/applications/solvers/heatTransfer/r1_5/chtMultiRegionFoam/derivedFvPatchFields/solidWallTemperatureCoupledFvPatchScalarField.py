@@ -273,7 +273,7 @@ class solidWallTemperatureCoupledFvPatchScalarField( fixedValueFvPatchScalarFiel
            self == neighbourField
         
            fixedValueFvPatchScalarField.updateCoeffs( self )
-        except Exception as exc:
+        except Exception, exc:
             import sys, traceback
             traceback.print_exc( file = sys.stdout )
             raise exc
@@ -291,7 +291,7 @@ class solidWallTemperatureCoupledFvPatchScalarField( fixedValueFvPatchScalarFiel
            os.writeKeyword( word( "K" ) ) << self.KName_ << token( token.END_STATEMENT ) << nl
            self.writeEntry( word( "value" ), os )
            pass
-        except Exception as exc:
+        except Exception, exc:
             import sys, traceback
             traceback.print_exc( file = sys.stdout )
             raise exc
@@ -304,7 +304,7 @@ class solidWallTemperatureCoupledFvPatchScalarField( fixedValueFvPatchScalarFiel
            Tw = self
         
            return Tw.snGrad()*self.patch().magSf()*Kw
-        except Exception as exc:
+        except Exception, exc:
             import sys, traceback
             traceback.print_exc( file = sys.stdout )
             raise exc

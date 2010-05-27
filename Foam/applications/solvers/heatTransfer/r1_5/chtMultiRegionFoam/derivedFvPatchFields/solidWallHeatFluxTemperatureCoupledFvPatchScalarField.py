@@ -274,7 +274,7 @@ class solidWallHeatFluxTemperatureCoupledFvPatchScalarField( fixedGradientFvPatc
         
            fixedGradientFvPatchScalarField.updateCoeffs( self )
            pass
-        except Exception as exc:
+        except Exception, exc:
             import sys, traceback
             traceback.print_exc( file = sys.stdout )
             raise exc   
@@ -290,7 +290,7 @@ class solidWallHeatFluxTemperatureCoupledFvPatchScalarField( fixedGradientFvPatc
            from Foam.OpenFOAM import word, token, nl
            os.writeKeyword( word( "K" ) ) << self.KName_ << token( token.END_STATEMENT ) << nl
            self.writeEntry( word( "value" ), os )
-        except Exception as exc:
+        except Exception, exc:
             import sys, traceback
             traceback.print_exc( file = sys.stdout )
             raise exc
