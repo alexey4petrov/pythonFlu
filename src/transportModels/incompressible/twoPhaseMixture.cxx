@@ -20,16 +20,34 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef pTraits_symmTensor_cxx
-#define pTraits_symmTensor_cxx
+#ifndef twoPhaseMixture_cxx
+#define twoPhaseMixture_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+// Keep on corresponding "director" includes at the top of SWIG defintion file
 
-%include "src/OpenFOAM/primitives/pTraits.cxx"
+%include "src/OpenFOAM/directors.hxx"
 
-%template ( pTraits_symmTensor ) Foam::pTraits<Foam::symmTensor>;
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
+%include "src/transportModels/incompressible/transportModel.cxx"
+
+%include "src/transportModels/incompressible/viscosityModels/viscosityModel.cxx"
+
+%include "src/finiteVolume/fields/volFields/volFields.cxx"
+
+%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+
+
+//----------------------------------------------------------------------------
+%{
+    #include "twoPhaseMixture.H"
+%}
+
+%include "twoPhaseMixture.H"
 
 
 //---------------------------------------------------------------------------

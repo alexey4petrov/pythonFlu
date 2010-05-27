@@ -52,6 +52,8 @@
 
 %include "Foam/fvm/fvm_.cxx"
 
+%include "Foam/MULES/MULES_.cxx"
+
 %include "Foam/sampling/sampling.cxx"
 
 %include "Foam/dynamicMesh/dynamicMesh_.cxx"

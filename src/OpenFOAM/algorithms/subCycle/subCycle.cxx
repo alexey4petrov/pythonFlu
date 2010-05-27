@@ -20,78 +20,71 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef UList_cxx
-#define UList_cxx
+#ifndef subCycle_cxx
+#define subCycle_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/label.cxx"
+%include "src/OpenFOAM/db/Time/subCycleTime.cxx"
 
 %{
-   #include "UList.H"
-   #include "ListOps.H"
+    #include "subCycle.H"
 %}
 
-%include "UList.H"
+%include "subCycle.H"
 
 
 //---------------------------------------------------------------------------
-%define SEQUENCE_ADDONS( TItem )
+// To support native Python of iteration over subCycle
+%inline
+%{
+  namespace Foam
+  {
+    template< class TsubCycle >
+    struct subCycleIterator
+    {
+     subCycleIterator( TsubCycle& the_subCycle )
+        : m_subCycle( the_subCycle )
+      {}
+
+      subCycleTime& __iter__()
+      {
+        return this->m_subCycle++;
+      }
+
+      subCycleTime& next() throw( const TStopIterationException& )
+      {
+        if ( !this->m_subCycle.end() )
+          return this->__iter__();
+        
+        throw TStopIterationException();
+      }
+
+    private :
+      TsubCycle& m_subCycle;
+    }; 
+  }
+%}
+
+
+//---------------------------------------------------------------------------
+%define SUBCYCLE_SEQUENCE_ADDONS( TItem )
 {
-    int __len__()
-    {
-      return self->size();
-    }
-    
-    TItem __getitem__( const Foam::label theIndex )
-    {
-      return self->operator[]( theIndex );
-    }
-
-    void __setitem__( const Foam::label theIndex, TItem theValue )
-    {
-      self->operator[]( theIndex ) = theValue;
-    }
-
-    TContainer_iterator< UList< TItem > >* __iter__()
-    {
-      return new TContainer_iterator< UList< TItem > >( *self );
-    }
+  Foam::subCycleIterator< Foam::subCycle< TItem > >* __iter__()
+  {
+    return new Foam::subCycleIterator< Foam::subCycle< TItem > >( *self );
+  }
 }
 %enddef
 
 
-//---------------------------------------------------------------------------
-%define LISTS_FUNCS( TItem )
-{
+//----------------------------------------------------------------------------
+%define SUBCYCLE_ADDONS( TItem )
 
-#if ( __FOAM_VERSION__ < 010600 )
-  Foam::label ext_findIndex( TItem& t )
-  {
-    return Foam::findIndex( *self, t );
-  }
-#endif
+%extend Foam::subCycle< TItem > SUBCYCLE_SEQUENCE_ADDONS( TItem )
 
-#if ( __FOAM_VERSION__ >= 010600 ) 
-  Foam::label ext_findIndex( TItem& t, const label start=0 )
-  {
-    return Foam::findIndex( *self, t, start );
-  }
-#endif
-
-}  
 %enddef
 
 
 //----------------------------------------------------------------------------
-%define ULISTBASED_ADDONS( TItem )
-
-%extend Foam::UList< TItem > SEQUENCE_ADDONS( TItem )
-
-%extend Foam::UList< TItem > LISTS_FUNCS( TItem )
-
-%enddef
-
-
-//---------------------------------------------------------------------------
 #endif

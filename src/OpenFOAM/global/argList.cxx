@@ -33,6 +33,8 @@
 
 %include "src/OpenFOAM/primitives/strings/fileName.cxx"
 
+%include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.cxx"
+
 //---------------------------------------------------------------------------
 %{
   #include "argList.H"

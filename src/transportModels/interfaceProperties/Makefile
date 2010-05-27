@@ -20,29 +20,11 @@
 ##
 
 
-#--------------------------------------------------------------------------------------
-pyfoam_root_dir:=../..
+#---------------------------------------------------------------------------------------
+pyfoam_root_dir:=../../..
 
-include $(pyfoam_root_dir)/foam.version.makefile
-
-
-#--------------------------------------------------------------------------------------
-__CPPFLAGS__ := $(__CPPFLAGS__) \
-	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
-	-I$(WM_PROJECT_DIR)/src/transportModels/incompressible/lnInclude \
-	-I$(WM_PROJECT_DIR)/src/transportModels/interfaceProperties/lnInclude \
-	-I$(WM_PROJECT_DIR)/src/transportModels	
+include $(pyfoam_root_dir)/src.include.makefile
 
 
 #--------------------------------------------------------------------------------------
-__LDFLAGS__ := $(__LDFLAGS__) \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTransportModels \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -linterfaceProperties
-	
 
-#--------------------------------------------------------------------------------------
-include $(pyfoam_root_dir)/include.makefile
-
-
-#--------------------------------------------------------------------------------------

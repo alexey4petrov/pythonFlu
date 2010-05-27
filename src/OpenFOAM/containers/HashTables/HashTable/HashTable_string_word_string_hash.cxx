@@ -20,16 +20,28 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef pTraits_symmTensor_cxx
-#define pTraits_symmTensor_cxx
+#ifndef HashTable_string_word_string_hash_cxx
+#define HashTable_string_word_string_hash_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+%include "src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
 
-%include "src/OpenFOAM/primitives/pTraits.cxx"
+%include "src/OpenFOAM/primitives/strings/string.cxx"
 
-%template ( pTraits_symmTensor ) Foam::pTraits<Foam::symmTensor>;
+%ignore Foam::HashTable< Foam::string, Foam::word, Foam::string_hash >::HashTable;
+%ignore Foam::HashTable< Foam::string, Foam::word, Foam::string_hash >::begin;
+%ignore Foam::HashTable< Foam::string, Foam::word, Foam::string_hash >::find;
+
+#if ( __FOAM_VERSION__ >= 010600 )
+%ignore Foam::HashTable< Foam::string, Foam::word, Foam::string_hash >::cbegin;
+#endif
+
+%template( HashTable_string_word_string_hash ) Foam::HashTable< Foam::string, Foam::word, Foam::string_hash >; 
+
+%template( TContainer_word_string ) Foam::TContainer_iterator< Foam::HashTable< Foam::string, Foam::word, Foam::string_hash > >;
+
+HASHTABLE_ADDONS( Foam::string, Foam::word, Foam::string_hash )
 
 
 //---------------------------------------------------------------------------

@@ -20,17 +20,29 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef pTraits_symmTensor_cxx
-#define pTraits_symmTensor_cxx
+#ifndef subCycleTime_cxx
+#define subCycleTime_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+%include "src/OpenFOAM/db/Time/Time.cxx"
 
-%include "src/OpenFOAM/primitives/pTraits.cxx"
+%{
+    #include "subCycleTime.H"
+%}
 
-%template ( pTraits_symmTensor ) Foam::pTraits<Foam::symmTensor>;
+%include "subCycleTime.H"
 
 
 //---------------------------------------------------------------------------
+%extend Foam::subCycleTime
+{ 
+   Foam::subCycleTime& step()
+   {
+     return self->operator++();
+   }
+}
+
+
+//
 #endif

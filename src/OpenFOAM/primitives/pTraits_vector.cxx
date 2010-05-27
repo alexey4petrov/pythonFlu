@@ -20,16 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef pTraits_symmTensor_cxx
-#define pTraits_symmTensor_cxx
+#ifndef pTraits_vector_cxx
+#define pTraits_vector_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+%include "src/OpenFOAM/primitives/vector.cxx"
 
 %include "src/OpenFOAM/primitives/pTraits.cxx"
 
-%template ( pTraits_symmTensor ) Foam::pTraits<Foam::symmTensor>;
+%template ( pTraits_vector ) Foam::pTraits<Foam::vector>;
 
 
 //---------------------------------------------------------------------------

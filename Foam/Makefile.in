@@ -32,7 +32,7 @@ ifneq "@USE_SINGLE_LIB@xx" "yesxx"
 
 include $(pyfoam_root_dir)/include.makefile
 
-SUBDIRS = OpenFOAM meshTools finiteVolume fv fvc fvm sampling dynamicMesh dynamicFvMesh thermophysicalModels transportModels radiation incompressible compressible applications
+SUBDIRS = OpenFOAM meshTools finiteVolume fv fvc fvm MULES sampling dynamicMesh dynamicFvMesh thermophysicalModels transportModels radiation incompressible compressible applications
 
 #--------------------------------------------------------------------------------------
 else
@@ -46,6 +46,7 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/sampling/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/radiation/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/transportModels/incompressible/lnInclude \
+	-I$(WM_PROJECT_DIR)/src/transportModels/interfaceProperties/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/transportModels	\
 	-I$(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/dynamicMesh/lnInclude
@@ -66,6 +67,7 @@ __LDFLAGS__ := $(__LDFLAGS__) \
         -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lspecie \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lsampling \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTransportModels \
+	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -linterfaceProperties \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -ldynamicFvMesh	
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -le 010401 ]; then echo 'true'; else echo 'false'; fi )" "true" 

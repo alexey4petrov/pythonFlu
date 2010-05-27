@@ -33,7 +33,7 @@
 
 %template( UList_string ) Foam::UList< Foam::string >; 
 
-ULISTBASED_ADDONS( Foam::string );
+ULISTBASED_ADDONS( Foam::string )
 
 
 //---------------------------------------------------------------------------

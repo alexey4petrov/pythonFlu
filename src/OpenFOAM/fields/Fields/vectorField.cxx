@@ -32,6 +32,9 @@
 %include "src/OpenFOAM/primitives/Lists/vectorList.cxx"
 
 %include "src/OpenFOAM/primitives/tensor.cxx"
+
+%include "src/OpenFOAM/primitives/pTraits_vector.cxx"
+
 //---------------------------------------------------------------------------
 %{
     #include "vectorField.H"

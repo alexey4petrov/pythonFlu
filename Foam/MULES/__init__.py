@@ -22,35 +22,7 @@
 
 #---------------------------------------------------------------------------
 from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "fvc_" ) 
-
-
-#---------------------------------------------------------------------------
-ddt = fvc_ddt
-
-ddtPhiCorr = fvc_ddtPhiCorr
-
-DDt = fvc_DDt
-
-div = fvc_div
-
-grad = fvc_grad
-
-volumeIntegrate = fvc_volumeIntegrate
-
-domainIntegrate = fvc_domainIntegrate
-
-reconstruct = fvc_reconstruct
-
-snGrad = fvc_snGrad
-
-laplacian = fvc_laplacian
-
-makeRelative = fvc_makeRelative
-
-makeAbsolute = fvc_makeAbsolute
-
-flux = fvc_flux
+exec get_module_initializtion_command( "MULES_" ) 
 
 
 #---------------------------------------------------------------------------

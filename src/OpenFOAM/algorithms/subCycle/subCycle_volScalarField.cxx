@@ -20,16 +20,30 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef pTraits_symmTensor_cxx
-#define pTraits_symmTensor_cxx
+#ifndef subCycle_volScalarField_cxx
+#define subCycle_volScalarField_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+// Keep on corresponding "director" includes at the top of SWIG defintion file
 
-%include "src/OpenFOAM/primitives/pTraits.cxx"
+%include "src/OpenFOAM/directors.hxx"
 
-%template ( pTraits_symmTensor ) Foam::pTraits<Foam::symmTensor>;
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
+%include "src/OpenFOAM/algorithms/subCycle/subCycle.cxx"
+
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
+
+%template ( subCycle_volScalarField ) Foam::subCycle< Foam::volScalarField >;
+
+%template ( subCycleIterator_volScalarField) Foam::subCycleIterator< Foam::subCycle< Foam::volScalarField > >;
+
+
+//---------------------------------------------------------------------------
+SUBCYCLE_ADDONS( Foam::volScalarField );
 
 
 //---------------------------------------------------------------------------
