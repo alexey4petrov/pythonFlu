@@ -37,6 +37,8 @@
 
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
 
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.cxx"
+
 NO_TMP_TYPEMAP_FIELDFIELD( Foam::fvPatchField, Foam::Vector<Foam::scalar> )
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::vector >::FieldField;
@@ -51,22 +53,11 @@ NO_TMP_TYPEMAP_FIELDFIELD( Foam::fvPatchField, Foam::Vector<Foam::scalar> )
 
 
 //---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::FieldField< Foam::fvPatchField, Foam::vector >::REDIRECT2BASE_PYAPPEND_GETATTR( FieldField_fvPatchField_vector );
+
 %extend Foam::FieldField< Foam::fvPatchField, Foam::vector >
 {
-    int __len__()
-    {
-        return self->size();
-    }
-    
-    vectorField& __getitem__( const Foam::label theIndex )
-    {
-            return self->operator[]( theIndex );
-    }
-
-    void __setitem__( const Foam::label theIndex, const vectorField& theValue )
-    {
-        self->operator[]( theIndex ) = theValue;
-    }
+    REDIRECT2BASE_EXTEND_ATTR( FieldField_fvPatchField_vector )
 }
 
 FIELDFIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::vector );
