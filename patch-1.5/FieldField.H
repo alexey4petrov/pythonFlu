@@ -74,8 +74,12 @@ Ostream& operator<<
 template<template<class> class Field, class Type>
 class FieldField
 :
+#ifndef SWIG    
     public refCount,
     public PtrList<Field<Type> >
+#else
+      public refCount
+#endif
 {
 
 public:
