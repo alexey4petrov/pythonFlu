@@ -20,22 +20,30 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef nestedClass_extend_hxx
-#define nestedClass_extend_hxx
+#ifndef redirect2base_hxx
+#define redirect2base_hxx
 
-%include "src/redirect2base.hxx"
 
-//this trick allows to access to the base class's member's of the nested class
-//the nested class(the struct which redirect call to the nested class) 
+//this trick allows to access to the base class's ( member's of the nested class or if inheritance not correctly wrapped )
+//the class(the struct which redirect call to the nested class) 
 //should be extended by base() function( return baseClass& )
-%define NESTEDCLASS_PYAPPEND_GETATTR( Type ) 
-     REDIRECT2BASE_PYAPPEND_GETATTR( Type )
+%define REDIRECT2BASE_PYAPPEND_GETATTR( Type ) __getattr__
+%{
+    name = args[ 0 ]
+    try:
+        return _swig_getattr( self, Type, name )
+    except AttributeError:
+        attr = None
+        exec "attr = self.base().%s" % name
+        return attr
+    raise AttributeError()
+%}
 %enddef
 
 
 //---------------------------------------------------------------------------
-%define NESTEDCLASS_EXTEND_ATTR( Type )
-    REDIRECT2BASE_EXTEND_ATTR( Type )
+%define REDIRECT2BASE_EXTEND_ATTR( Type )
+    void __getattr__( const char* name ){} // dummy function
 %enddef
 
 
