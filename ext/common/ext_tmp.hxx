@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef extTmp_H
-#define extTmp_H
+#ifndef ext_tmp_H
+#define ext_tmp_H
 
 
 //---------------------------------------------------------------------------
@@ -36,23 +36,23 @@
  {
     //---------------------------------------------------------------------------
     template< class T >
-    struct extTmp
+    struct ext_tmp
     {
         autoPtr< tmp< T > > engine;
 
-        explicit extTmp( T* tPtr = 0 )
+        explicit ext_tmp( T* tPtr = 0 )
             : engine( new tmp< T >( tPtr ) )
         {}
 
-        extTmp( const T& tRef )
+        ext_tmp( const T& tRef )
             : engine( new tmp< T >( tRef ) )
         {}
 
-        extTmp( const tmp< T >& t )
+        ext_tmp( const tmp< T >& t )
             : engine( new tmp< T >( t ) )
         {}
 
-        extTmp( const extTmp< T >& at )
+        ext_tmp( const ext_tmp< T >& at )
             : engine( new tmp< T >( at.engine ) )
         {}
 
@@ -71,7 +71,7 @@
             this->engine.reset( new tmp< T >( t ) );
         }
 
-        void operator=( const extTmp< T >& at )
+        void operator=( const ext_tmp< T >& at )
         {
             this->engine.reset( new tmp< T >( at.engine ) );
         }

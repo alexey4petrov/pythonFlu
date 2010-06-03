@@ -21,20 +21,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef extTmp_volScalarField_H
-#define extTmp_volScalarField_H
+#ifndef ext_tmp_volScalarField_H
+#define ext_tmp_volScalarField_H
 
 
 //---------------------------------------------------------------------------
-%include "ext/common/extTmp.hxx"
+%include "ext/common/ext_tmp.hxx"
 
 %include "src/finiteVolume/fields/volFields/volScalarField.cxx"
 
 
 //---------------------------------------------------------------------------
-%template ( extTmp_volScalarField ) Foam::extTmp< Foam::volScalarField >;
+%template ( ext_tmp_volScalarField ) Foam::ext_tmp< Foam::volScalarField >;
 
-%extend Foam::extTmp< Foam::volScalarField >
+%extend Foam::ext_tmp< Foam::volScalarField >
 {
     bool operator==( const Foam::UList< Foam::scalar >& theArg )
     {

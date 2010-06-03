@@ -53,7 +53,7 @@
 
 %include "src/transportModels/incompressible/transportModel.cxx"
 
-%include "ext/common/finiteVolume/extTmp/extTmp_volScalarField.cxx"
+%include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.cxx"
 
 %{
     #include "incompressible/turbulenceModel/turbulenceModel.H"
@@ -74,7 +74,7 @@
     
     %extend Foam::incompressible::turbulenceModel  
     {
-      Foam::extTmp< Foam::volScalarField > ext_nut()
+      Foam::ext_tmp< Foam::volScalarField > ext_nut()
       {
           return self->nut();
       }
@@ -95,7 +95,7 @@
     
     %extend Foam::incompressible::turbulenceModel  
     {
-      Foam::extTmp< Foam::volScalarField > ext_nut()
+      Foam::ext_tmp< Foam::volScalarField > ext_nut()
       {
           return self->nut();
       }

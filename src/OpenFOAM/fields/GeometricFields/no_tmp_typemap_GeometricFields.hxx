@@ -29,7 +29,7 @@
 
 %include "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "ext/common/extTmp.hxx"
+%include "ext/common/ext_tmp.hxx"
 
 
 //---------------------------------------------------------------------------
@@ -40,8 +40,8 @@
     void *ptr;
     int res_T = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::GeometricField< Type, TPatchField, TMesh > * ), 0 );
     int res_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
-    int res_extTmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::extTmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
-    $1 = SWIG_CheckState( res_T ) || SWIG_CheckState( res_tmpT ) || SWIG_CheckState( res_extTmpT );
+    int res_ext_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
+    $1 = SWIG_CheckState( res_T ) || SWIG_CheckState( res_tmpT ) || SWIG_CheckState( res_ext_tmpT );
 }
 
 %typemap( in ) Foam::GeometricField< Type, TPatchField, TMesh >& 
@@ -59,9 +59,9 @@
       Foam::tmp<Foam::GeometricField< Type, TPatchField, TMesh> >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
       $1 = tmp_res->operator->();
       } else {
-    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::extTmp< Foam::GeometricField< Type, TPatchField, TMesh > >* ), %convertptr_flags );
+    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > >* ), %convertptr_flags );
     if ( SWIG_IsOK( res ) && argp ) {
-      Foam::extTmp<Foam::GeometricField< Type, TPatchField, TMesh> >* tmp_res =%reinterpret_cast( argp, Foam::extTmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
+      Foam::ext_tmp<Foam::GeometricField< Type, TPatchField, TMesh> >* tmp_res =%reinterpret_cast( argp, Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
       $1 = tmp_res->operator->();
       } else {
         %argument_fail( res, "$type", $symname, $argnum );
