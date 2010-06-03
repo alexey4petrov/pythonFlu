@@ -1,12 +1,12 @@
 %module(directors="1") ext_icoFoam
 
-%include "src/ext/shared_ptr_Time.cxx"
-%include "src/ext/shared_ptr_fvMesh.cxx"
-%include "src/ext/shared_ptr_volScalarField.cxx"
-%include "src/ext/shared_ptr_IOdictionary.cxx"
-%include "src/ext/shared_ptr_volVectorField.cxx"
-%include "src/ext/shared_ptr_surfaceScalarField.cxx"
-%include "src/ext/shared_ptr_dimensionedScalar.cxx"
+%include "ext/common/OpenFOAM/shared_ptr/shared_ptr_Time.cxx"
+%include "ext/common/finiteVolume/shared_ptr/shared_ptr_fvMesh.cxx"
+%include "ext/common/finiteVolume/shared_ptr/shared_ptr_volScalarField.cxx"
+%include "ext/common/OpenFOAM/shared_ptr/shared_ptr_IOdictionary.cxx"
+%include "ext/common/finiteVolume/shared_ptr/shared_ptr_volVectorField.cxx"
+%include "ext/common/finiteVolume/shared_ptr/shared_ptr_surfaceScalarField.cxx"
+%include "ext/common/OpenFOAM/shared_ptr/shared_ptr_dimensionedScalar.cxx"
 
 %{
 #include "ext_icoFoam.hpp"
