@@ -25,6 +25,14 @@
 
 
 //---------------------------------------------------------------------------
+// Keep on corresponding "director" includes at the top of SWIG defintion file
+
+%include "src/OpenFOAM/directors.hxx"
+
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
 %include "ext/pbmr/diffusion/nuclearCalculation.cxx"
 %include "ext/pbmr/diffusion/temperatureCalculation.cxx"
 
