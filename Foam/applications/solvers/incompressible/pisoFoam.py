@@ -97,7 +97,12 @@ def main_standalone( argc, argv ):
         
         #Momentum predictor
         from Foam import fvm
-        UEqn = fvm.ddt( U ) + fvm.div( phi, U ) + turbulence.divDevReff( U )
+        
+        UEqn = turbulence.divDevReff( U ) + ( fvm.ddt( U ) + fvm.div( phi, U ) )
+        #UEqn = fvm.ddt( U ) + fvm.div( phi, U ) + turbulence.divDevReff( U )
+        # Does not work, because of
+        #  1. turbulence.divDevRhoReff( U ) - changes values for the U boundaries
+        #  2. the order of expression arguments computation differs between C++
         
         UEqn.relax()
 
