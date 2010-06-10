@@ -21,18 +21,18 @@
 
 
 #--------------------------------------------------------------------------------------
-ifeq "@ENABLE_EXTFOAM@xx" "yesxx"
+ifeq "@ENABLE_DIFFUSIONFOAMLIB@xx" "yesxx"
 #--------------------------------------------------------------------------------------
 
 __CPPFLAGS__ := \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
-	@EXTFOAM_CPPFLAGS@ 
+	@DIFFUSIONFOAMLIB_CPPFLAGS@ 
 
-__CXXFLAGS__ : = @EXTFOAM_CXXFLAGS@
+__CXXFLAGS__ : = @DIFFUSIONFOAMLIB_CXXFLAGS@
 
 __LDFLAGS__ := \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
-	@EXTFOAM_LDFLAGS@
+	@DIFFUSIONFOAMLIB_LDFLAGS@
 
 pyfoam_root_dir = ../../..
 
