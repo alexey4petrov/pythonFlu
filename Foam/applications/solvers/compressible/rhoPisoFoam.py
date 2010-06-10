@@ -75,8 +75,13 @@ def _createFields( runTime, mesh ):
 def _UEqn( U, rho, phi, turbulence, p, momentumPredictor ):
     from Foam import fvm
     # Solve the Momentum equation
-    UEqn = fvm.ddt( rho, U ) + fvm.div( phi, U ) + turbulence.divDevRhoReff( U )
     
+    UEqn = turbulence.divDevRhoReff( U ) + ( fvm.ddt( rho, U ) + fvm.div( phi, U ) )
+    #UEqn = fvm.ddt( rho, U ) + fvm.div( phi, U ) + turbulence.divDevRhoReff( U )
+    # Does not work, because of
+    #  1. turbulence.divDevRhoReff( U ) - changes values for the U boundaries
+    #  2. the order of expression arguments computation differs between C++
+
     from Foam.finiteVolume import solve
     if momentumPredictor:
        from Foam.finiteVolume import solve
