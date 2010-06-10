@@ -67,14 +67,14 @@ def _createFields( runTime, mesh ):
     
     ext_Info() << "Creating turbulence model\n" << nl
     from Foam import compressible
-    turbulence = compressible.turbulenceModel.New( rho,
-                                                    U,
-                                                    phi,
-                                                    thermo() )
+    turbulence = compressible.RASModel.New( rho,
+                                            U,
+                                            phi,
+                                            thermo() )
     
     from Foam.OpenFOAM import dimensionedScalar
     from Foam import fvc   
-    initialMass = fvc.domainIntegrate(rho);
+    initialMass = fvc.domainIntegrate( rho )
     
     return thermo, rho, p, h, psi, U, phi, pRefCell, pRefValue, turbulence, initialMass, pMin
 
@@ -108,8 +108,13 @@ def convergenceCheck( runTime, maxResidual, convergenceCriterion ):
 def _UEqn( phi, U, p, turbulence, eqnResidual, maxResidual ):
     from Foam import fvm, fvc
     # Solve the Momentum equation
-    UEqn = fvm.div( phi, U ) - fvm.Sp( fvc.div( phi ), U ) + turbulence.divDevRhoReff( U ) 
-
+    UEqn = turbulence.divDevRhoReff( U ) + ( fvm.div( phi, U ) - fvm.Sp( fvc.div( phi ), U ) )
+    
+    #UEqn = fvm.div( phi, U ) - fvm.Sp( fvc.div( phi ), U ) + turbulence.divDevRhoReff( U ) 
+    # Does not work, because of
+    #  1. turbulence.divDevRhoReff( U ) - changes values for the U boundaries
+    #  2. the order of expression arguments computation differs between C++
+    
     UEqn.relax()
     
     from Foam.finiteVolume import solve
@@ -143,7 +148,7 @@ def _pEqn( runTime,mesh, UEqn, rho, thermo, psi, U, p, phi, pMin, nNonOrthCorr, 
            pRefCell, pRefValue, eqnResidual, maxResidual, cumulativeContErr, transonic  ):
     rho.ext_assign( thermo.rho() )
 
-    rUA = 1.0/UEqn.A()
+    rUA = 1.0 / UEqn.A()
     U.ext_assign( rUA * UEqn.H() )
     UEqn.clear()
     
@@ -185,7 +190,7 @@ def _pEqn( runTime,mesh, UEqn, rho, thermo, psi, U, p, phi, pMin, nNonOrthCorr, 
        phi.ext_assign( fvc.interpolate( rho ) * ( ( fvc.interpolate(U) & mesh.Sf() ) ) )
        
        from Foam.finiteVolume import adjustPhi
-       closedVolume = adjustPhi(phi, U, p)
+       closedVolume = adjustPhi( phi, U, p )
        
        
        for nonOrth in range( nNonOrthCorr + 1 ) :
@@ -204,7 +209,7 @@ def _pEqn( runTime,mesh, UEqn, rho, thermo, psi, U, p, phi, pMin, nNonOrthCorr, 
               pass
            
            if nonOrth == nNonOrthCorr:
-              phi.ext_assign( phi + pEqn.flux() )
+              phi.ext_assign( phi - pEqn.flux() )
               pass
            pass
        pass
