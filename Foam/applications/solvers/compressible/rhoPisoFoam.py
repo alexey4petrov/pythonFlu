@@ -76,11 +76,12 @@ def _UEqn( U, rho, phi, turbulence, p, momentumPredictor ):
     from Foam import fvm
     # Solve the Momentum equation
     
-    UEqn = turbulence.divDevRhoReff( U ) + ( fvm.ddt( rho, U ) + fvm.div( phi, U ) )
-    #UEqn = fvm.ddt( rho, U ) + fvm.div( phi, U ) + turbulence.divDevRhoReff( U )
-    # Does not work, because of
+    # The initial C++ expression does not work properly, because of
     #  1. turbulence.divDevRhoReff( U ) - changes values for the U boundaries
     #  2. the order of expression arguments computation differs between C++
+    #UEqn = fvm.ddt( rho, U ) + fvm.div( phi, U ) + turbulence.divDevRhoReff( U )
+    
+    UEqn = turbulence.divDevRhoReff( U ) + ( fvm.ddt( rho, U ) + fvm.div( phi, U ) )
 
     from Foam.finiteVolume import solve
     if momentumPredictor:
