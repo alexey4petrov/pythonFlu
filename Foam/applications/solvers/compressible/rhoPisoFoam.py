@@ -78,7 +78,7 @@ def _UEqn( U, rho, phi, turbulence, p, momentumPredictor ):
     
     # The initial C++ expression does not work properly, because of
     #  1. turbulence.divDevRhoReff( U ) - changes values for the U boundaries
-    #  2. the order of expression arguments computation differs between C++
+    #  2. the order of expression arguments computation differs with C++
     #UEqn = fvm.ddt( rho, U ) + fvm.div( phi, U ) + turbulence.divDevRhoReff( U )
     
     UEqn = turbulence.divDevRhoReff( U ) + ( fvm.ddt( rho, U ) + fvm.div( phi, U ) )
