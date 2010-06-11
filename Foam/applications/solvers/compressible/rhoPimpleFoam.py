@@ -78,8 +78,14 @@ def _createFields( runTime, mesh ):
 def _UEqn( mesh, U, rho, phi, turbulence, p, oCorr, nOuterCorr, momentumPredictor ):
     from Foam import fvm
     # Solve the Momentum equation
-    UEqn = fvm.ddt( rho, U ) + fvm.div( phi, U ) + turbulence.divDevRhoReff( U )
+
+    # The initial C++ expression does not work properly, because of
+    #  1. turbulence.divDevRhoReff( U ) - changes values for the U boundaries
+    #  2. the order of expression arguments computation differs with C++
+    #UEqn = fvm.ddt( rho, U ) + fvm.div( phi, U ) + turbulence.divDevRhoReff( U )
     
+    UEqn = turbulence.divDevRhoReff( U ) + ( fvm.ddt( rho, U ) + fvm.div( phi, U ) )
+        
     if oCorr == nOuterCorr-1:
        UEqn().relax(1)
        pass
@@ -128,12 +134,12 @@ def _hEqn( mesh, rho, h, phi, turbulence, DpDt, thermo, oCorr, nOuterCorr ):
 
 
 #--------------------------------------------------------------------------------------
-def _pEqn( rho, thermo, UEqn, nNonOrthCorr, psi, U, mesh, phi, p, DpDt, pMin, cumulativeContErr, corr, nCorr, oCorr, nOuterCorr, transonic ):
+def _pEqn( rho, thermo, UEqn, nNonOrthCorr, psi, U, mesh, phi, p, DpDt, pMin, corr, cumulativeContErr, nCorr, oCorr, nOuterCorr, transonic ):
     rho.ext_assign( thermo.rho() )
 
-    rUA = 1.0/UEqn.A()
+    rUA = 1.0 / UEqn.A()
     U.ext_assign( rUA * UEqn.H() )
-
+    
     if nCorr <= 1:
        UEqn.clear()
        pass
@@ -142,6 +148,7 @@ def _pEqn( rho, thermo, UEqn, nNonOrthCorr, psi, U, mesh, phi, p, DpDt, pMin, cu
     from Foam.OpenFOAM import word
     from Foam.finiteVolume import surfaceScalarField
     if transonic: 
+       
        phid = surfaceScalarField( word( "phid" ), 
                                   fvc.interpolate( psi ) * ( ( fvc.interpolate( U ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, rho, U, phi ) ) )
        
@@ -160,7 +167,7 @@ def _pEqn( rho, thermo, UEqn, nNonOrthCorr, psi, U, mesh, phi, p, DpDt, pMin, cu
            pass
        pass
     else:
-       phi.ext_assign( fvc.interpolate( rho ) * ( ( fvc.interpolate(U) & mesh.Sf() ) ) )
+       phi.ext_assign( fvc.interpolate( rho ) * ( ( fvc.interpolate( U ) & mesh.Sf() ) ) )
        
        for nonOrth in range( nNonOrthCorr + 1 ) :
            # Pressure corrector
@@ -177,13 +184,13 @@ def _pEqn( rho, thermo, UEqn, nNonOrthCorr, psi, U, mesh, phi, p, DpDt, pMin, cu
               pass
            pass
        pass
-        
+    
     from Foam.finiteVolume.cfdTools.compressible import rhoEqn
     rhoEqn( rho, phi )
     
     from Foam.finiteVolume.cfdTools.compressible import compressibleContinuityErrs
     cumulativeContErr = compressibleContinuityErrs( rho, thermo, cumulativeContErr )
-
+    
     p.relax()
 
     rho.ext_assign( thermo.rho() )
@@ -194,7 +201,7 @@ def _pEqn( rho, thermo, UEqn, nNonOrthCorr, psi, U, mesh, phi, p, DpDt, pMin, cu
     
     U.ext_assign( U - rUA * fvc.grad( p ) )
     U.correctBoundaryConditions()
-    
+
     DpDt.ext_assign( fvc.DDt( surfaceScalarField( word( "phiU" ), phi / fvc.interpolate( rho ) ), p ) )
 
     from Foam.finiteVolume import bound
