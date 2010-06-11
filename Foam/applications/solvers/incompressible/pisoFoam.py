@@ -94,16 +94,17 @@ def main_standalone( argc, argv ):
         CoNum, meanCoNum = CourantNo( mesh, phi, runTime )
 
         # Pressure-velocity PISO corrector
-        
+
+        from Foam import fvm        
         #Momentum predictor
-        from Foam import fvm
-        
-        UEqn = turbulence.divDevReff( U ) + ( fvm.ddt( U ) + fvm.div( phi, U ) )
-        #UEqn = fvm.ddt( U ) + fvm.div( phi, U ) + turbulence.divDevReff( U )
-        # Does not work, because of
+
+        # The initial C++ expression does not work properly, because of
         #  1. turbulence.divDevRhoReff( U ) - changes values for the U boundaries
-        #  2. the order of expression arguments computation differs between C++
-        
+        #  2. the order of expression arguments computation differs with C++
+        #UEqn = fvm.ddt( U ) + fvm.div( phi, U ) + turbulence.divDevReff( U )
+
+        UEqn = turbulence.divDevReff( U ) + ( fvm.ddt( U ) + fvm.div( phi, U ) )        
+
         UEqn.relax()
 
         from Foam.finiteVolume import solve
