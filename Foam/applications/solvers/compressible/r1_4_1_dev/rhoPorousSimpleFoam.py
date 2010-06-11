@@ -101,11 +101,14 @@ def _UEqn( phi, U, p, turbulence, pZones, pressureImplicitPorosity, nUCorr ):
     
     from Foam import fvm, fvc    
     # Construct the Momentum equation
-    UEqn = turbulence.divRhoR( U ) + ( fvm.div( phi, U ) - fvm.Sp( fvc.div( phi ), U ) )
-    #UEqn = fvm.div( phi, U ) - fvm.Sp( fvc.div( phi ), U ) + turbulence.divRhoR( U )
-    # Does not work, because of
+
+    # The initial C++ expression does not work properly, because of
     #  1. turbulence.divDevRhoReff( U ) - changes values for the U boundaries
-    #  2. the order of expression arguments computation differs between C++
+    #  2. the order of expression arguments computation differs with C++
+    #UEqn = fvm.div( phi, U ) - fvm.Sp( fvc.div( phi ), U ) + turbulence.divDevRhoReff( U ) 
+
+    UEqn = turbulence.divDevRhoReff( U ) + ( fvm.div( phi, U ) - fvm.Sp( fvc.div( phi ), U ) )
+
     UEqn.relax()
 
     # Include the porous media resistance and solve the momentum equation
