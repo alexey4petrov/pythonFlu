@@ -79,7 +79,7 @@ def _createFields( runTime, mesh ):
     pRefValue = 0.0
     
     from Foam.finiteVolume import setRefCell
-    setRefCell( p, mesh.solutionDict().subDict( word( "PISO" ) ), pRefCell, pRefValue )
+    pRefCell, pRefValue = setRefCell( p, mesh.solutionDict().subDict( word( "PISO" ) ), pRefCell, pRefValue )
 
     from Foam.transportModels import singlePhaseTransportModel
     laminarTransport = singlePhaseTransportModel( U, phi )
@@ -148,42 +148,42 @@ def main_standalone( argc, argv ):
     
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "\nStarting time loop\n" << nl 
-    
+
     while runTime.loop() :
-        ext_Info() << "\nTime = " << runTime.timeName() << nl << nl
-        
+        ext_Info() << "Time = " << runTime.timeName() << nl << nl
+
         from Foam.finiteVolume.cfdTools.general.include import readPISOControls
         piso, nCorr, nNonOrthCorr, momentumPredictor, transonic, nOuterCorr = readPISOControls( mesh ) 
-        
+
         from Foam.finiteVolume.cfdTools.incompressible import CourantNo
         CoNum, meanCoNum = CourantNo( mesh, phi, runTime )
-        
+
         sgsModel.correct()
-        
+
         from Foam import fvm
-        UEqn =  fvm.ddt( U ) + fvm.div( phi, U ) + sgsModel.divDevBeff( U ) == flowDirection * gradP
+        UEqn = fvm.ddt( U ) + fvm.div( phi, U ) + sgsModel.divDevBeff( U ) == flowDirection * gradP
 
         if momentumPredictor:
            from Foam.finiteVolume import solve
            from Foam import fvc
            solve( UEqn == -fvc.grad( p ) )
            pass
-        
+
         rUA = 1.0 / UEqn.A()
 
         for corr in range( nCorr ):
             U.ext_assign( rUA * UEqn.H() )
             from Foam import fvc
             phi.ext_assign( ( fvc.interpolate( U ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, U, phi ) )
-            
+
             from Foam.finiteVolume import adjustPhi
             adjustPhi(phi, U, p)
+
             from Foam.OpenFOAM import word
-            
+
             for nonOrth in range( nNonOrthCorr + 1 ):
                 pEqn = fvm.laplacian( rUA, p ) == fvc.div( phi ) 
-
-                pEqn.setReference(pRefCell, pRefValue)
+                pEqn.setReference( pRefCell, pRefValue )
 
                 if corr == nCorr-1 and nonOrth == nNonOrthCorr:
                    pEqn.solve( mesh.solver( word( str( p.name() ) + "Final" ) ) )
@@ -191,7 +191,7 @@ def main_standalone( argc, argv ):
                 else:
                    pEqn.solve( mesh.solver( p.name() ) )
                    pass
-                
+
                 if nonOrth == nNonOrthCorr:
                    phi.ext_assign( phi - pEqn.flux() )
                    pass
@@ -203,7 +203,7 @@ def main_standalone( argc, argv ):
             U.ext_assign( U - rUA * fvc.grad( p ) )
             U.correctBoundaryConditions()
             pass
-        
+
         # Correct driving force for a constant mass flow rate
 
         # Extract the velocity in the flow direction
@@ -214,17 +214,17 @@ def main_standalone( argc, argv ):
         gragPplus = ( magUbar - magUbarStar ) / rUA.weightedAverage( mesh.V() )
 
         U.ext_assign( U + flowDirection * rUA * gragPplus )
-        
+
         gradP +=gragPplus
-        ext_Info() << "Uncorrected Ubar = " << magUbarStar.value() << "     " << "pressure gradient = " << gradP.value() << nl
-        
+        ext_Info() << "Uncorrected Ubar = " << magUbarStar.value() << " " << "pressure gradient = " << gradP.value() << nl
+
         runTime.write()
-        
+
         writeGradP( runTime, gradP )
-        
+
         ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
               "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
-        
+
         pass
 
     ext_Info() << "End\n" << nl 
