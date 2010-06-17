@@ -31,7 +31,7 @@ if WM_PROJECT_VERSION() >= "1.6":
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.6', 'compressible', 'rhoCentralFoam', 'forwardStep' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ], 'cases', 'r1.6', 'compressible', 'rhoCentralFoam', 'forwardStep' )
          argv = [ __file__, "-case", test_dir ]
          pass
       from Foam.applications.solvers.compressible.rhoCentralFoam.solver import main_standalone
@@ -42,6 +42,7 @@ if WM_PROJECT_VERSION() >= "1.6":
 else:
    from Foam.OpenFOAM import ext_Info
    ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.6 or higher\n "
+   pass
    
    
 #--------------------------------------------------------------------------------------
