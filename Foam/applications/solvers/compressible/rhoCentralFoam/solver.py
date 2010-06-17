@@ -317,8 +317,8 @@ def main_standalone( argc, argv ):
            #solve( fvm.ddt( rho, e ) - fvc.ddt( rho, e ) - fvm.laplacian( thermo.alpha(), e ) \
            #                                             + fvc.laplacian( thermo.alpha(), e ) - fvc.laplacian( k, T ) )
 
-           solve( -fvc.laplacian( k, T ) + ( fvc.laplacian( thermo.alpha(), e ) + \
-                                           (- fvm.laplacian( thermo.alpha(), e ) + (- fvc.ddt( rho, e ) + fvm.ddt( rho, e ) ) ) ) )
+           solve( -fvc.laplacian( k, T ) + ( fvc.laplacian( thermo.alpha(), e ) \
+                                         + (- fvm.laplacian( thermo.alpha(), e ) + (- fvc.ddt( rho, e ) + fvm.ddt( rho, e ) ) ) ) )
            
            thermo.correct()
            rhoE.ext_assign( rho * ( e + 0.5 * U.magSqr() ) )
