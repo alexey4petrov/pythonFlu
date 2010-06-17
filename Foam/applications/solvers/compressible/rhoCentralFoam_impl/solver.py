@@ -24,7 +24,7 @@
 
 
 #---------------------------------------------------------------------------
-from Foam.applications.solvers.compressible.rhoCentralFoam.BCs import rho
+from Foam.applications.solvers.compressible.rhoCentralFoam_impl.BCs import rho
 
 #---------------------------------------------------------------------------
 def _rhoBoundaryTypes( p ):
@@ -37,7 +37,7 @@ def _rhoBoundaryTypes( p ):
            rhoBoundaryTypes[patchi] = zeroGradientFvPatchScalarField.typeName
            pass
         elif pbf[patchi].fixesValue():
-           from Foam.applications.solvers.compressible.rhoCentralFoam.BCs.rho import fixedRhoFvPatchScalarField
+           from Foam.applications.solvers.compressible.rhoCentralFoam_impl.BCs.rho import fixedRhoFvPatchScalarField
            rhoBoundaryTypes[patchi] = fixedRhoFvPatchScalarField.typeName
            pass
         pass
@@ -311,8 +311,15 @@ def main_standalone( argc, argv ):
         
         if not inviscid:
            k = volScalarField( word( "k" ) , thermo.Cp() * mu / Pr )
-           solve( fvm.ddt( rho, e ) - fvc.ddt( rho, e ) - fvm.laplacian( thermo.alpha(), e ) \
-                  + fvc.laplacian( thermo.alpha(), e ) - fvc.laplacian( k, T ) )
+
+           # The initial C++ expression does not work properly, because of
+           #  1. the order of expression arguments computation differs with C++
+           #solve( fvm.ddt( rho, e ) - fvc.ddt( rho, e ) - fvm.laplacian( thermo.alpha(), e ) \
+           #                                             + fvc.laplacian( thermo.alpha(), e ) - fvc.laplacian( k, T ) )
+
+           solve( -fvc.laplacian( k, T ) + ( fvc.laplacian( thermo.alpha(), e ) \
+                                         + (- fvm.laplacian( thermo.alpha(), e ) + (- fvc.ddt( rho, e ) + fvm.ddt( rho, e ) ) ) ) )
+           
            thermo.correct()
            rhoE.ext_assign( rho * ( e + 0.5 * U.magSqr() ) )
            pass
