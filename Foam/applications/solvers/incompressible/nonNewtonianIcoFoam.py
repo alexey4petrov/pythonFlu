@@ -56,7 +56,7 @@ def _createFields( runTime, mesh ):
     pRefValue = 0.0
     
     from Foam.finiteVolume import setRefCell
-    setRefCell( p, mesh.solutionDict().subDict( word( "PISO" ) ), pRefCell, pRefValue )
+    pRefCell, pRefValue = setRefCell( p, mesh.solutionDict().subDict( word( "PISO" ) ), pRefCell, pRefValue )
 
         
     return p, U, phi, fluid, pRefCell, pRefValue
@@ -83,7 +83,7 @@ def main_standalone( argc, argv ):
     ext_Info() << "\nStarting time loop\n" << nl 
     
     while runTime.loop() :
-        ext_Info() << "\nTime = " << runTime.timeName() << nl << nl
+        ext_Info() << "Time = " << runTime.timeName() << nl << nl
         
         from Foam.finiteVolume.cfdTools.general.include import readPISOControls
         piso, nCorr, nNonOrthCorr, momentumPredictor, transonic, nOuterCorr = readPISOControls( mesh ) 
