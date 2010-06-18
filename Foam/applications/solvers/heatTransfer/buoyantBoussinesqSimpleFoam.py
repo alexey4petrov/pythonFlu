@@ -95,7 +95,7 @@ def _createFields( runTime, mesh, g ):
     pRefValue = 0.0
     
     from Foam.finiteVolume import setRefCell
-    setRefCell( p, mesh.solutionDict().subDict( word( "SIMPLE" ) ), pRefCell, pRefValue )
+    pRefCell, pRefValue = setRefCell( p, mesh.solutionDict().subDict( word( "SIMPLE" ) ), pRefCell, pRefValue )
 
     # Kinematic density for buoyancy force
     rhok = volScalarField( IOobject( word( "rhok" ),
