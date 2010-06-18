@@ -110,7 +110,7 @@ def _createFields( runTime, mesh ):
     pRefValue = 0.0
     
     from Foam.finiteVolume import setRefCell
-    setRefCell( p, mesh.solutionDict().subDict( word( "PISO" ) ), pRefCell, pRefValue )
+    pRefCell, pRefValue = setRefCell( p, mesh.solutionDict().subDict( word( "PISO" ) ), pRefCell, pRefValue )
     
     return p, alpha1, U, phi, rho1, rho2, rho, rhoPhi, twoPhaseProperties, pRefCell, pRefValue, interface, turbulence, pcorrTypes
     

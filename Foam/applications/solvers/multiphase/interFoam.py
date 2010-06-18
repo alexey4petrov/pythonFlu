@@ -89,7 +89,7 @@ def _createFields( runTime, mesh ):
     pRefValue = 0.0
     
     from Foam.finiteVolume import setRefCell
-    setRefCell( p, mesh.solutionDict().subDict( word( "PISO" ) ), pRefCell, pRefValue )
+    pRefCell, pRefValue = setRefCell( p, mesh.solutionDict().subDict( word( "PISO" ) ), pRefCell, pRefValue )
     
     # Construct interface from alpha1 distribution
     from Foam.transportModels import interfaceProperties
