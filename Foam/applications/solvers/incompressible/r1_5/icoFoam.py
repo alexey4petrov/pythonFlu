@@ -149,7 +149,7 @@ def createFields( runTime, mesh ):
     pRefCell = 0
     pRefValue = 0.0
     from Foam.finiteVolume import setRefCell
-    setRefCell( p, mesh.solutionDict().subDict( word( "PISO" ) ), pRefCell, pRefValue )
+    pRefCell, pRefValue = setRefCell( p, mesh.solutionDict().subDict( word( "PISO" ) ), pRefCell, pRefValue )
 
     return transportProperties, nu, p, U, phi, pRefCell, pRefValue
 
