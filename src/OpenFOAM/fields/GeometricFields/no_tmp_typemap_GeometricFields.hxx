@@ -29,6 +29,8 @@
 
 %include "src/OpenFOAM/fields/tmp/tmp.cxx"
 
+%include "ext/common/ext_tmp.hxx"
+
 
 //---------------------------------------------------------------------------
 %define NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Type, TPatchField, TMesh )
@@ -36,9 +38,10 @@
 %typecheck( SWIG_TYPECHECK_POINTER ) Foam::GeometricField< Type, TPatchField, TMesh >& 
 {
     void *ptr;
-    int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::GeometricField< Type, TPatchField, TMesh > * ), 0 );
-    int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
-    $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 );
+    int res_T = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::GeometricField< Type, TPatchField, TMesh > * ), 0 );
+    int res_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
+    int res_ext_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
+    $1 = SWIG_CheckState( res_T ) || SWIG_CheckState( res_tmpT ) || SWIG_CheckState( res_ext_tmpT );
 }
 
 %typemap( in ) Foam::GeometricField< Type, TPatchField, TMesh >& 
@@ -56,10 +59,15 @@
       Foam::tmp<Foam::GeometricField< Type, TPatchField, TMesh> >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
       $1 = tmp_res->operator->();
       } else {
+    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > >* ), %convertptr_flags );
+    if ( SWIG_IsOK( res ) && argp ) {
+      Foam::ext_tmp<Foam::GeometricField< Type, TPatchField, TMesh> >* tmp_res =%reinterpret_cast( argp, Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
+      $1 = tmp_res->operator->();
+      } else {
         %argument_fail( res, "$type", $symname, $argnum );
         }
     }
- 
+   }
 }    
 %enddef
 

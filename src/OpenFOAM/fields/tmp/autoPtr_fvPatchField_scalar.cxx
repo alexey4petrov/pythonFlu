@@ -20,15 +20,41 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/ext/shared_ptr.hxx"
-
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-
-SHAREDPTR_TYPEMAP( Foam::dimensionedScalar );
-
-//%ignore boost::shared_ptr< Foam::dimensionedScalar >::operator->;
-
-%template( shared_ptr_dimensionedScalar ) boost::shared_ptr< Foam::dimensionedScalar >;
+#ifndef autoPtr_fvPatchField_scalar_cxx
+#define autoPtr_fvPatchField_scalar_cxx
 
 
 //---------------------------------------------------------------------------
+%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
+
+%template( autoPtr_fvPatchField_scalar ) Foam::autoPtr< Foam::fvPatchField< Foam::scalar > >;
+
+%inline
+{
+    namespace Foam
+    {
+        typedef autoPtr< fvPatchField< scalar > > autoPtr_fvPatchField_scalar;
+    }
+}
+
+
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::autoPtr< Foam::fvPatchField< Foam::scalar > >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_fvPatchField_scalar );
+
+%extend Foam::autoPtr< Foam::fvPatchField< Foam::scalar > >
+{
+  SMARTPTR_EXTEND_ATTR( autoPtr_fvPatchField_scalar )
+  
+  bool operator==( const Foam::UList< Foam::scalar >& theArg )
+  {
+    Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
+    return *aSelf == theArg;
+  }
+
+}
+
+
+//---------------------------------------------------------------------------
+#endif

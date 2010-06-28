@@ -53,6 +53,8 @@
 
 %include "src/transportModels/incompressible/transportModel.cxx"
 
+%include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.cxx"
+
 %{
     #include "incompressible/turbulenceModel/turbulenceModel.H"
 %}
@@ -62,23 +64,53 @@
 //There is no namespace "incompressible" in OpenFOAM-1.4.1-dev
 
 #if ( __FOAM_VERSION__ < 010500 )   
-%rename( incompressible_turbulenceModel ) Foam::turbulenceModel;
+   %rename( incompressible_turbulenceModel ) Foam::turbulenceModel;
 
+   %ignore Foam::turbulenceModel::nut;
+
+
+    //--------------------------------------------------------
+    %include "incompressible/turbulenceModel.H"
+    
+    %extend Foam::incompressible::turbulenceModel  
+    {
+      Foam::ext_tmp< Foam::volScalarField > ext_nut()
+      {
+          return self->nut();
+      }
+    }
+    
 #endif
 
 
 //-------------------------------------------------------------------------
 #if ( __FOAM_VERSION__ >= 010600 )   
 
-%rename( incompressible_turbulenceModel ) Foam::incompressible::turbulenceModel;
+    %rename( incompressible_turbulenceModel ) Foam::incompressible::turbulenceModel;
+    
+    %ignore Foam::incompressible::turbulenceModel::nut;
 
+    //--------------------------------------------------------
+    %include "incompressible/turbulenceModel.H"
+    
+    %extend Foam::incompressible::turbulenceModel  
+    {
+      Foam::ext_tmp< Foam::volScalarField > ext_nut()
+      {
+          return self->nut();
+      }
+    }
 
 #endif
 
 
 
 //--------------------------------------------------------------------------
-%include "incompressible/turbulenceModel.H"
+
+
+
+//---------------------------------------------------------------------------
+
 
 
 //---------------------------------------------------------------------------

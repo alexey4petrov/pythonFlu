@@ -37,6 +37,8 @@
 
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
 
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_scalar.cxx"
+
 NO_TMP_TYPEMAP_FIELDFIELD(  Foam::fvPatchField, Foam::scalar )
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::scalar >::FieldField;
@@ -51,25 +53,12 @@ NO_TMP_TYPEMAP_FIELDFIELD(  Foam::fvPatchField, Foam::scalar )
 
 
 //---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::FieldField< Foam::fvPatchField, Foam::scalar >::REDIRECT2BASE_PYAPPEND_GETATTR( FieldField_fvPatchField_scalar );
+
 %extend Foam::FieldField< Foam::fvPatchField, Foam::scalar >
 {
-    int __len__()
-    {
-        return self->size();
-    }
-    
-    scalarField& __getitem__( const Foam::label theIndex )
-    {
-            return self->operator[]( theIndex );
-    }
-
-    void __setitem__( const Foam::label theIndex, const scalarField& theValue )
-    {
-        self->operator[]( theIndex ) = theValue;
-    }
-    
+    REDIRECT2BASE_EXTEND_ATTR( FieldField_fvPatchField_scalar )
 }
-
 FIELDFIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::scalar );
 
 

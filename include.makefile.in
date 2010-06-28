@@ -66,7 +66,7 @@ PROJECT_LIBS       = -l$(WM_PROJECT)
 
 
 #--------------------------------------------------------------------------------------
-__CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I$(pyfoam_root_dir)
+__CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I$(pyfoam_root_dir) -I/usr/include -I/usr/include/c++ 
 
 
 #--------------------------------------------------------------------------------------

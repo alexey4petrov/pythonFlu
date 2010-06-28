@@ -27,6 +27,8 @@
 //---------------------------------------------------------------------------
 %include "src/common.hxx"
 
+%include "src/redirect2base.hxx"
+
 %include "FieldField.H"
 
 %include "src/OpenFOAM/fields/Fields/scalarField.cxx"
@@ -62,6 +64,32 @@
 
 %enddef
 //------------------------------------------------------------------------------
+%define BASECLASS_FUNC( TPatchField, Type )
+{
+  Foam::PtrList< TPatchField< Type > >& base()
+  {
+    return *self;
+  }
+  int __len__()
+  {
+     return self->size();
+  }
+    
+  TPatchField< Type >& __getitem__( const Foam::label theIndex )
+  {
+     return self->operator[]( theIndex );
+  }
+
+  void __setitem__( const Foam::label theIndex, const TPatchField< Type >& theValue )
+  {
+     self->operator[]( theIndex ) = theValue;
+  }
+  
+}
+%enddef
+
+
+//------------------------------------------------------------------------------
 %define _FIELDFIELD_TEMPLATE_FUNC( TPatchField, Type )
 {  
   Foam::tmp< Foam::FieldField< TPatchField, Foam::scalar > > magSqr()
@@ -83,6 +111,8 @@
 %extend  Foam::FieldField< TPatchField, Type > _FIELDFIELD_TEMPLATE_FUNC( TPatchField, Type );
 
 %extend  Foam::tmp< Foam::FieldField< TPatchField, Type > > _FIELDFIELD_TEMPLATE_FUNC( TPatchField, Type );
+
+%extend  Foam::FieldField< TPatchField, Type > BASECLASS_FUNC( TPatchField, Type );
 
 %enddef
 

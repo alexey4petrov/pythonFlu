@@ -50,18 +50,11 @@
 
 
 //---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::FieldField< Foam::fvPatchField, Foam::sphericalTensor >::REDIRECT2BASE_PYAPPEND_GETATTR( FieldField_fvPatchField_sphericalTensor );
+
 %extend Foam::FieldField< Foam::fvPatchField, Foam::sphericalTensor >
 {
-    int __len__()
-    {
-        return self->size();
-    }
-    
-    Foam::sphericalTensorField& __getitem__( const Foam::label theIndex )
-    {
-            return self->operator[]( theIndex );
-    }
-    
+    REDIRECT2BASE_EXTEND_ATTR( FieldField_fvPatchField_sphericalTensor )
 }
 
 FIELDFIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::sphericalTensor );

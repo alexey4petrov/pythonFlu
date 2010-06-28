@@ -27,6 +27,8 @@
 //---------------------------------------------------------------------------
 %include "src/common.hxx"
 
+%include "usr/include/c++/climits.cxx"
+
 %{
     #include "label.H"
 %}

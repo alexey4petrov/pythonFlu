@@ -21,22 +21,9 @@
 
 
 #--------------------------------------------------------------------------------------
-ifneq "$(BOOSTDIR)xx" "xx"
+pyfoam_root_dir:=../../..
 
-__CPPFLAGS__ := $(__CPPFLAGS__) -I$(BOOSTDIR)/include
-
-pyfoam_root_dir:=../..
-
-include $(pyfoam_root_dir)/src.include.makefile
-
-else
-
-$(warning Define $$(BOOSTDIR) to process this package)
-
-all:
-clean:
-
-endif
+include $(pyfoam_root_dir)/include.makefile
 
 
 #--------------------------------------------------------------------------------------

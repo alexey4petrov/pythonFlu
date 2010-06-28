@@ -20,31 +20,40 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef shared_ptr_fvMesh_cxx
-#define shared_ptr_fvMesh_cxx
-
-//---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+#ifndef autoPtr_fvPatchField_vector_cxx
+#define autoPtr_fvPatchField_vector_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/ext/shared_ptr.hxx"
+%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+%template( autoPtr_fvPatchField_vector ) Foam::autoPtr< Foam::fvPatchField< Foam::vector > >;
 
-%include "src/finiteVolume/fvMesh/fvMesh.cxx"
+%inline
+{
+    namespace Foam
+    {
+        typedef autoPtr< fvPatchField< vector > > autoPtr_fvPatchField_vector;
+    }
+}
 
-SHAREDPTR_TYPEMAP( Foam::fvMesh );
 
-%ignore boost::shared_ptr< Foam::fvMesh >::operator->;
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::autoPtr< Foam::fvPatchField< Foam::vector > >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_fvPatchField_vector );
 
-%template( shared_ptr_fvMesh ) boost::shared_ptr< Foam::fvMesh >;
+%extend Foam::autoPtr< Foam::fvPatchField< Foam::vector > >
+{
+  SMARTPTR_EXTEND_ATTR( autoPtr_fvPatchField_vector )
+  
+  bool operator==( const Foam::UList< Foam::vector >& theArg )
+  {
+    Foam::UList< Foam::vector >* aSelf = static_cast< Foam::UList< Foam::vector >* >( self->ptr() );
+    return *aSelf == theArg;
+  }
+
+}
 
 
 //---------------------------------------------------------------------------

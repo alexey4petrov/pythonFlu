@@ -20,23 +20,46 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+#ifndef PtrList_fvPatchField_scalar_cxx
+#define PtrList_fvPatchField_scalar_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/ext/shared_ptr.hxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
 
-%include "src/finiteVolume/fields/volFields/volVectorField.cxx"
+%include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_scalar.cxx"
 
-SHAREDPTR_TYPEMAP( Foam::volVectorField );
+%include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_scalar.cxx"
 
-%ignore boost::shared_ptr< Foam::volVectorField >::operator->;
-
-%template( shared_ptr_volVectorField ) boost::shared_ptr< Foam::volVectorField >;
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 
 //---------------------------------------------------------------------------
+%ignore Foam::PtrList< Foam::fvPatchField< Foam::scalar > >::PtrList;
+
+%template( PtrList_fvPatchField_scalar ) Foam::PtrList< Foam::fvPatchField< Foam::scalar > >;
+
+%inline
+%{
+   namespace Foam
+   {
+    typedef PtrList< fvPatchField< scalar > > PtrList_fvPatchField_scalar;
+   }
+%}
+
+
+//---------------------------------------------------------------------------
+%extend Foam::PtrList< Foam::fvPatchField< Foam::scalar > >
+{
+  Foam::PtrList< Foam::fvPatchField< Foam::scalar > >( const Foam::label s )
+  {
+    return new Foam::PtrList< Foam::fvPatchField< Foam::scalar > >( s );
+  }
+}
+
+%extend Foam::PtrList< Foam::fvPatchField< Foam::scalar > > PTRLISTBASED_ADDONS( Foam::fvPatchField< Foam::scalar > )
+
+
+//---------------------------------------------------------------------------
+#endif
+    

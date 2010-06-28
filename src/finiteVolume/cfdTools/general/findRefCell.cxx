@@ -43,6 +43,7 @@
     #include "findRefCell.H"
 %}
 
+#if ( __FOAM_VERSION__ < 010500 )
 void setRefCell
 (
     const Foam::volScalarField& field,
@@ -50,7 +51,18 @@ void setRefCell
     Foam::label& INOUT,
     Foam::scalar& INOUT
 );
+#endif
 
+#if ( __FOAM_VERSION__ >= 010500 )
+void setRefCell
+(
+    const Foam::volScalarField& field,
+    const Foam::dictionary& dict,
+    Foam::label& INOUT,
+    Foam::scalar& INOUT,
+    const bool forceReference = false
+);
+#endif
 
 //---------------------------------------------------------------------------
 #endif

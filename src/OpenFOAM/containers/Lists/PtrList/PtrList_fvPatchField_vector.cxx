@@ -20,22 +20,46 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-//---------------------------------------------------------------------------
-%include "src/ext/shared_ptr.hxx"
-
-%include "src/finiteVolume/fields/volFields/volScalarField.cxx"
-
-SHAREDPTR_TYPEMAP( Foam::volScalarField );
-
-%ignore boost::shared_ptr< Foam::volScalarField >::operator->;
-
-%template( shared_ptr_volScalarField ) boost::shared_ptr< Foam::volScalarField >;
+#ifndef PtrList_fvPatchField_vector_cxx
+#define PtrList_fvPatchField_vector_cxx
 
 
 //---------------------------------------------------------------------------
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
+
+%include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_vector.cxx"
+
+%include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_vector.cxx"
+
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+
+
+//---------------------------------------------------------------------------
+%ignore Foam::PtrList< Foam::fvPatchField< Foam::vector > >::PtrList;
+
+%template( PtrList_fvPatchField_vector ) Foam::PtrList< Foam::fvPatchField< Foam::vector > >;
+
+%inline
+%{
+   namespace Foam
+   {
+    typedef PtrList< fvPatchField< vector > > PtrList_fvPatchField_vector;
+   }
+%}
+
+
+//---------------------------------------------------------------------------
+%extend Foam::PtrList< Foam::fvPatchField< Foam::vector > >
+{
+  Foam::PtrList< Foam::fvPatchField< Foam::vector > >( const Foam::label s )
+  {
+    return new Foam::PtrList< Foam::fvPatchField< Foam::vector > >( s );
+  }
+}
+
+%extend Foam::PtrList< Foam::fvPatchField< Foam::vector > > PTRLISTBASED_ADDONS( Foam::fvPatchField< Foam::vector > )
+
+
+//---------------------------------------------------------------------------
+#endif
+    

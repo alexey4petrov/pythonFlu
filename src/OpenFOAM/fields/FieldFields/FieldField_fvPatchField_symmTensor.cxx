@@ -50,20 +50,14 @@
 
 
 //---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::FieldField< Foam::fvPatchField, Foam::symmTensor >::REDIRECT2BASE_PYAPPEND_GETATTR( FieldField_fvPatchField_symmTensor );
+
 %extend Foam::FieldField< Foam::fvPatchField, Foam::symmTensor >
 {
-    int __len__()
-    {
-        return self->size();
-    }
-    
-    symmTensorField& __getitem__( const Foam::label theIndex )
-    {
-            return self->operator[]( theIndex );
-    }
+    REDIRECT2BASE_EXTEND_ATTR( FieldField_fvPatchField_symmTensor )
 }
-
 FIELDFIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::symmTensor );
+
 
 //---------------------------------------------------------------------------
 #endif
