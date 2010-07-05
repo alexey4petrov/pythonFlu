@@ -146,87 +146,93 @@ def main_standalone( argc, argv ):
 
     from Foam.OpenFOAM.include import createMesh
     mesh = createMesh( runTime )
-
-    thermodynamicProperties, R, Cv = readThermodynamicProperties( runTime, mesh )
     
-    transportProperties, mu = readingTransportProperties( runTime, mesh )
+    # All "IOobject" (fvMesh, for example)  should overlive all its dependency IOobjects (fields, for exmaple)
+    def runSeparateNamespace( runTime, mesh ):
+       thermodynamicProperties, R, Cv = readThermodynamicProperties( runTime, mesh )
     
-    p, T, e, U, psi, rho, phi = _createFields( runTime, mesh, R, Cv )
+       transportProperties, mu = readingTransportProperties( runTime, mesh )
     
-    from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
-    cumulativeContErr = initContinuityErrs()
-
-    from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() << "\nStarting time loop\n" << nl
+       p, T, e, U, psi, rho, phi = _createFields( runTime, mesh, R, Cv )
     
-    runTime += runTime.deltaT()
-    while not runTime.end() :
-        ext_Info() << "Time = " << runTime.timeName() << nl << nl
+       from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
+       cumulativeContErr = initContinuityErrs()
 
-        from Foam.finiteVolume.cfdTools.general.include import readPISOControls
-        piso, nCorr, nNonOrthCorr, momentumPredictor, transonic, nOuterCorr, ddtPhiCorr = readPISOControls( mesh )
+       from Foam.OpenFOAM import ext_Info, nl
+       ext_Info() << "\nStarting time loop\n" << nl
+    
+       runTime += runTime.deltaT()
+       while not runTime.end() :
+           ext_Info() << "Time = " << runTime.timeName() << nl << nl
+ 
+           from Foam.finiteVolume.cfdTools.general.include import readPISOControls
+           piso, nCorr, nNonOrthCorr, momentumPredictor, transonic, nOuterCorr, ddtPhiCorr = readPISOControls( mesh )
 
-        from Foam.finiteVolume.cfdTools.compressible import compressibleCourantNo
-        CoNum, meanCoNum = compressibleCourantNo( mesh, phi, rho, runTime )
+           from Foam.finiteVolume.cfdTools.compressible import compressibleCourantNo
+           CoNum, meanCoNum = compressibleCourantNo( mesh, phi, rho, runTime )
         
-        from Foam.finiteVolume.cfdTools.compressible import rhoEqn
-        rhoEqn( rho, phi )
+           from Foam.finiteVolume.cfdTools.compressible import rhoEqn
+           rhoEqn( rho, phi )
         
-        from Foam import fvm
-        UEqn = fvm.ddt( rho, U ) + fvm.div( phi, U ) - fvm.laplacian( mu, U )
+           from Foam import fvm
+           UEqn = fvm.ddt( rho, U ) + fvm.div( phi, U ) - fvm.laplacian( mu, U )
         
-        from Foam import fvc
-        from Foam.finiteVolume import solve
-        solve( UEqn == -fvc.grad( p ) )
+           from Foam import fvc
+           from Foam.finiteVolume import solve
+           solve( UEqn == -fvc.grad( p ) )
         
-        solve( fvm.ddt( rho, e ) + fvm.div( phi, e ) - fvm.laplacian( mu, e ) == \
-               - p * fvc.div( phi / fvc.interpolate( rho ) ) + mu * fvc.grad( U ).symm().magSqr() )
+           solve( fvm.ddt( rho, e ) + fvm.div( phi, e ) - fvm.laplacian( mu, e ) == \
+                  - p * fvc.div( phi / fvc.interpolate( rho ) ) + mu * fvc.grad( U ).symm().magSqr() )
+         
+           T.ext_assign( e / Cv )
         
-        T.ext_assign( e / Cv )
+           psi.ext_assign( 1.0 / ( R * T ) )
         
-        psi.ext_assign( 1.0 / ( R * T ) )
-        
-        # --- PISO loop
-        for corr in range( nCorr ):
-            rUA = 1.0/UEqn.A()
-            U.ext_assign( rUA * UEqn.H() )
+           # --- PISO loop
+           for corr in range( nCorr ):
+               rUA = 1.0/UEqn.A()
+               U.ext_assign( rUA * UEqn.H() )
             
-            from Foam.finiteVolume import surfaceScalarField
-            from Foam.OpenFOAM import word
-            phid = surfaceScalarField( word( "phid" ),
-                                       fvc.interpolate( psi ) * ( ( fvc.interpolate( U ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, rho, U, phi ) ) )
+               from Foam.finiteVolume import surfaceScalarField
+               from Foam.OpenFOAM import word
+               phid = surfaceScalarField( word( "phid" ),
+                                          fvc.interpolate( psi ) * ( ( fvc.interpolate( U ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, rho, U, phi ) ) )
             
-            for nonOrth in range( nNonOrthCorr + 1 ):
-                pEqn = fvm.ddt( psi, p ) + fvm.div( phid, p ) - fvm.laplacian( rho * rUA, p ) 
+               for nonOrth in range( nNonOrthCorr + 1 ):
+                   pEqn = fvm.ddt( psi, p ) + fvm.div( phid, p ) - fvm.laplacian( rho * rUA, p ) 
 
-                pEqn.solve()
-                phi.ext_assign( pEqn.flux() )
-                pass
+                   pEqn.solve()
+                   phi.ext_assign( pEqn.flux() )
+                   pass
             
-            cumulativeContErr = compressibleContinuityErrs( p, rho, phi, psi, cumulativeContErr )
+               cumulativeContErr = compressibleContinuityErrs( p, rho, phi, psi, cumulativeContErr )
             
-            U.ext_assign( U - rUA * fvc.grad( p ) )
-            U.correctBoundaryConditions()
+               U.ext_assign( U - rUA * fvc.grad( p ) )
+               U.correctBoundaryConditions()
             
-            pass
+               pass
             
-        rho.ext_assign( psi * p )
+           rho.ext_assign( psi * p )
         
-        runTime.write()
+           runTime.write()
 
-        ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
+           ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
               "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
         
-        runTime += runTime.deltaT()
-        pass
-
+           runTime += runTime.deltaT()
+           pass
+    #---------------------------------------------------------------------------------
+    runSeparateNamespace( runTime, mesh )
+    
+    from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "End\n"
-
+    
     import os
     return os.EX_OK
 
 
 #--------------------------------------------------------------------------------------
+
 import sys, os
 from Foam import WM_PROJECT_VERSION
 if WM_PROJECT_VERSION() == "1.5":

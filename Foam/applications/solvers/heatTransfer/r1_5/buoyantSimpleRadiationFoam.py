@@ -28,7 +28,6 @@ def createFields( runTime, mesh, g ):
     ext_Info() << "Reading thermophysical properties\n" << nl
     
     from Foam.thermophysicalModels import autoPtr_basicThermo, basicThermo
-
     thermo = basicThermo.New( mesh )
     
     from Foam.finiteVolume import volScalarField
@@ -209,11 +208,11 @@ def convergenceCheck(runTime, maxResidual, convergenceCriterion):
        ext_Info()<< "reached convergence criterion: " << convergenceCriterion << nl
        runTime.writeAndEnd()
        ext_Info()<< "latestTime = " << runTime.timeName() << nl
-
+       pass
+    pass
     
 #------------------------------------------------------------------------------------
 def main_standalone( argc, argv ):
-
     from Foam.OpenFOAM.include import setRootCase
     args = setRootCase( argc, argv )
 
@@ -223,63 +222,54 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM.include import createMesh
     mesh = createMesh( runTime )
     
-    #from Foam.finiteVolume.cfdTools.general.include  import readEnvironmentalProperties
-    #g = readEnvironmentalProperties( runTime, mesh )
+    # All "IOobject" (fvMesh, for example)  should overlive all its dependency IOobjects (fields, for exmaple)
+    def runSeparateNamespace( runTime, mesh ):
+        from Foam.finiteVolume.cfdTools.general.include  import readEnvironmentalProperties
+        g, environmentalProperties = readEnvironmentalProperties( runTime, mesh )
     
-    from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() << "\nReading environmentalProperties" << nl
+        thermo, rho, p, h, T, U, phi, turbulence, gh, pRef, pd, p, pdRefCell, pdRefValue, radiation, initialMass  = createFields( runTime, mesh, g )
     
-    from Foam.OpenFOAM import IOdictionary, fileName, word, IOobject
-    environmentalProperties = IOdictionary( IOobject( word( "environmentalProperties" ),
-                                                      fileName( runTime.constant() ),
-                                                      mesh,
-                                                      IOobject.MUST_READ,
-                                                      IOobject.NO_WRITE ) )
-    from Foam.OpenFOAM import dimensionedVector
-    g = dimensionedVector( environmentalProperties.lookup( word( "g" ) ) )
+        from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
+        cumulativeContErr = initContinuityErrs()
     
-    thermo, rho, p, h, T, U, phi, turbulence, gh, pRef, pd, p, pdRefCell, pdRefValue, radiation, initialMass  = createFields( runTime, mesh, g )
+        ext_Info() << "\nStarting time loop\n" << nl;
     
-    from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
-    cumulativeContErr = initContinuityErrs()
+        runTime +=runTime.deltaT()
     
-    ext_Info() << "\nStarting time loop\n" << nl;
-    
-    runTime +=runTime.deltaT()
-    
-    while not runTime.end():
-       ext_Info()<< "Time = " << runTime.timeName() << nl << nl
+        while not runTime.end():
+           ext_Info()<< "Time = " << runTime.timeName() << nl << nl
 
-       from Foam.finiteVolume.cfdTools.general.include import readSIMPLEControls
-       simple, nNonOrthCorr, momentumPredictor, fluxGradp, transonic = readSIMPLEControls( mesh )
+           from Foam.finiteVolume.cfdTools.general.include import readSIMPLEControls
+           simple, nNonOrthCorr, momentumPredictor, fluxGradp, transonic = readSIMPLEControls( mesh )
 
-       eqnResidual, maxResidual, convergenceCriterion = initConvergenceCheck( simple )
+           eqnResidual, maxResidual, convergenceCriterion = initConvergenceCheck( simple )
         
-       pd.storePrevIter()
-       rho.storePrevIter()
-       # Pressure-velocity SIMPLE corrector
-       UEqn, eqnResidual, maxResidual = fun_UEqn( phi, U, turbulence, pd, rho, gh, eqnResidual, maxResidual )
+           pd.storePrevIter()
+           rho.storePrevIter()
+           # Pressure-velocity SIMPLE corrector
+           UEqn, eqnResidual, maxResidual = fun_UEqn( phi, U, turbulence, pd, rho, gh, eqnResidual, maxResidual )
        
-       hEqn, eqnResidual, maxResidual = fun_hEqn( turbulence, phi, h, rho, radiation, p, thermo, eqnResidual, maxResidual )
+           hEqn, eqnResidual, maxResidual = fun_hEqn( turbulence, phi, h, rho, radiation, p, thermo, eqnResidual, maxResidual )
        
-       eqnResidual, maxResidual, cumulativeContErr = fun_pEqn( runTime, thermo, UEqn, U, phi, rho, gh, pd, p, initialMass, mesh, pRef, \
+           eqnResidual, maxResidual, cumulativeContErr = fun_pEqn( runTime, thermo, UEqn, U, phi, rho, gh, pd, p, initialMass, mesh, pRef, \
                                                                nNonOrthCorr, pdRefCell, pdRefValue, eqnResidual, maxResidual, cumulativeContErr )
            
-       turbulence.correct()
+           turbulence.correct()
 
-       runTime.write()
+           runTime.write()
 
-       ext_Info()<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s" \
-                 << "  ClockTime = " << runTime.elapsedClockTime() << " s" \
-                 << nl << nl
+           ext_Info()<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s" \
+                     << "  ClockTime = " << runTime.elapsedClockTime() << " s" \
+                     << nl << nl
                  
-       convergenceCheck( runTime, maxResidual, convergenceCriterion)          
+           convergenceCheck( runTime, maxResidual, convergenceCriterion)          
        
-       runTime +=runTime.deltaT()
-       
-       pass
+           runTime +=runTime.deltaT()
+           pass
+    #-----------------------------------------------------------------------------   
+    runSeparateNamespace( runTime, mesh )
+        
     ext_Info() << "End\n"
-    
     import os
     return os.EX_OK
 
