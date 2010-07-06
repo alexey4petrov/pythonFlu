@@ -170,7 +170,7 @@ def readEnvironmentalProperties( runTime, mesh ):
     from Foam.OpenFOAM import dimensionedVector
     g = dimensionedVector( environmentalProperties.lookup( word( "g" ) ) )
     
-    return g
+    return g, environmentalProperties
 
 
 #--------------------------------------------------------------------------------------------
