@@ -129,13 +129,22 @@ public:
     // Selectors
 
         //- Return a reference to the selected turbulence model
-        static autoPtr<incompressible::turbulenceModel> New
+#ifndef SWIG
+        static autoPtr<turbulenceModel> New
         (
             const volVectorField& U,
             const surfaceScalarField& phi,
             transportModel& lamTransportModel
         );
 
+#else
+        static autoPtr<incompressible::turbulenceModel> New
+        (
+            const volVectorField& U,
+            const surfaceScalarField& phi,
+            transportModel& lamTransportModel
+        );
+#endif
 
     //- Destructor
     virtual ~turbulenceModel()
