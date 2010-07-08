@@ -48,7 +48,7 @@ def get_proper_function( module_path, function_name, default_version ="1.6" ):
        an_expr = "from %s import %s as fun" %( module_path, fun_name )
        exec( an_expr )
        return fun
-    except NameError:
+    except ImportError:
        fun_name = function_name + "_" + default_version.replace( ".", "_" ).replace("-","_")
        an_expr = "from %s import %s as fun" %( module_path, fun_name )
        exec( an_expr )
