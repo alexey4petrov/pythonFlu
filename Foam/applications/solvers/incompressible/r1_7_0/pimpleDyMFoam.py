@@ -283,9 +283,8 @@ def main_standalone( argc, argv ):
               U.ext_assign( U - rAU * fvc.grad( p ) )
               U.correctBoundaryConditions()
               pass
+           turbulence.correct()   
            pass
-        
-        turbulence.correct()
 
         runTime.write()
         
