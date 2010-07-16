@@ -41,6 +41,8 @@
 
 %template( PtrList_fvPatchField_scalar ) Foam::PtrList< Foam::fvPatchField< Foam::scalar > >;
 
+%template( TPtrContainer_iterator_PtrList_fvPatchField_scalar ) Foam::TPtrContainer_iterator< Foam::PtrList< Foam::fvPatchField< Foam::scalar > > >;
+
 %inline
 %{
    namespace Foam
@@ -57,6 +59,12 @@
   {
     return new Foam::PtrList< Foam::fvPatchField< Foam::scalar > >( s );
   }
+  
+  Foam::TPtrContainer_iterator< Foam::PtrList< Foam::fvPatchField< Foam::scalar > > >* __iter__()
+  {
+    return new Foam::TPtrContainer_iterator< Foam::PtrList< Foam::fvPatchField< Foam::scalar > > >( *self );
+  }
+  
 }
 
 %extend Foam::PtrList< Foam::fvPatchField< Foam::scalar > > PTRLISTBASED_ADDONS( Foam::fvPatchField< Foam::scalar > )

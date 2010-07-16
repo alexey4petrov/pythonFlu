@@ -49,16 +49,17 @@
     $1 = $1_basetype( aValue );
 }
 
-%typecheck( SWIG_TYPECHECK_POINTER ) Foam::scalar&
+%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::scalar&
 {
    $1 = PyFloat_Check( $input );
 }
 
 
-%typemap( in ) Foam::scalar&
+%typemap( in ) const Foam::scalar&
 {
     Foam::scalar aValue = PyFloat_AsDouble( $input );
-    $1 = new $1_basetype( aValue );
+    $1 = new $*1_ltype( aValue );
+
 }
 
 
@@ -97,6 +98,7 @@ namespace Foam
 %}
 
 %include "scalar.H"
+
 
 
 //---------------------------------------------------------------------------

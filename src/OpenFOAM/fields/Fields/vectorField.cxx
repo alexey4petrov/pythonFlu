@@ -43,7 +43,6 @@
 %ignore Foam::Field< Foam::vector >::typeName;
 %ignore Foam::Field< Foam::vector >::Field;
 %ignore Foam::Field< Foam::vector >::T;
-%ignore Foam::Field< Foam::vector >::replace;
 
 VECTOR_FIELD_TEMPLATE_FUNC;
 
