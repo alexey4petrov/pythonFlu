@@ -37,53 +37,66 @@
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "scalar.H"
-%}
-
-%include "scalar.H"
-
-
-//---------------------------------------------------------------------------
-%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::scalar &
+%typecheck( SWIG_TYPECHECK_POINTER ) Foam::scalar 
 {
-    void *ptr;
-    int res = SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 );
-    if ( SWIG_IsOK( res ) ) {
-        $1 = true;
-    } else {
-        $1 = PyFloat_Check( $input );
-    }
+  $1 = PyFloat_Check( $input );
 }
 
 
-%typemap( in ) const Foam::scalar &
+%typemap( in ) Foam::scalar
 {
-    void *ptr;
-    int res = SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 );
-    if ( SWIG_IsOK( res ) ) {
-        $1 = reinterpret_cast< $1_ltype >( ptr );
-    } else if ( SWIG_IsOK( PyFloat_Check( $input ) ) ) {
-        Foam::scalar aValue = PyFloat_AsDouble( $input );
-        $1 = new $1_basetype( aValue );
-    }
+    Foam::scalar aValue = PyFloat_AsDouble( $input );
+    $1 = $1_basetype( aValue );
+}
+
+%typecheck( SWIG_TYPECHECK_POINTER ) Foam::scalar&
+{
+   $1 = PyFloat_Check( $input );
 }
 
 
+%typemap( in ) Foam::scalar&
+{
+    Foam::scalar aValue = PyFloat_AsDouble( $input );
+    $1 = new $1_basetype( aValue );
+}
+
+
+//----------------------------------------------
 %typemap( out ) Foam::scalar
 {
     $result = PyFloat_FromDouble( $1 );
 }
 
-%typemap( out ) const Foam::scalar &, const double &
+%typemap( out ) Foam::scalar*
+{
+    Foam::scalar aValue = *$1;
+    $result = PyFloat_FromDouble( aValue );
+}
+
+
+%typemap( out ) const Foam::scalar &
 {
     $result = PyFloat_FromDouble( *$1 );
 }
 
-%typemap( out ) Foam::scalar &, double&
+%typemap( out ) Foam::scalar &
 {
     $result = PyFloat_FromDouble( *$1 );
 }
+
+
+//---------------------------------------------------------------------------
+namespace Foam
+{ 
+   struct scalar{};
+}
+
+%{
+    #include "scalar.H"
+%}
+
+%include "scalar.H"
 
 
 //---------------------------------------------------------------------------

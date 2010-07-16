@@ -117,7 +117,7 @@ def main_standalone( argc, argv ):
     mesh = createMesh( runTime )
     
     p, U, phi, pRefCell, pRefValue = _createFields( runTime, mesh )
-
+    
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << nl << "Calculating potential flow" << nl
         
@@ -130,8 +130,8 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM import dimensionedScalar, word, dimTime, dimensionSet
     from Foam import fvc, fvm
     for nonOrth in range( nNonOrthCorr + 1):
-        pEqn = fvm.laplacian( dimensionedScalar( word( "1" ), dimTime / p.dimensions() * dimensionSet( 0, 2, -2, 0, 0 ), 1 ), p ) == fvc.div( phi )
-        
+        pEqn = fvm.laplacian( dimensionedScalar( word( "1" ), dimTime / p.dimensions() * dimensionSet( 0.0, 2.0, -2.0, 0.0, 0.0 ), 1.0 ), p ) == fvc.div( phi )
+
         pEqn.setReference( pRefCell, pRefValue )
         pEqn.solve()
 

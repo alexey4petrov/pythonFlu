@@ -36,6 +36,8 @@
 
 %include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
 
+%ignore Foam::Xfer< Foam::pointField >::replace;
+
 %template( Xfer_pointField ) Foam::Xfer< Foam::pointField >;
 
 XFER_ADDONS( Foam::pointField );

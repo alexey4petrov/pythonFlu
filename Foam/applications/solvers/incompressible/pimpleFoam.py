@@ -70,7 +70,7 @@ def Ueqn( mesh, phi, U, p, turbulence, oCorr, nOuterCorr, momentumPredictor ):
     UEqn = fvm.ddt(U) + fvm.div(phi, U) + turbulence.divDevReff(U)
     
     if ( oCorr == nOuterCorr - 1 ):
-       UEqn.relax( 1 )
+       UEqn.relax( 1.0 )
        pass
     else:
        UEqn.relax()
@@ -212,7 +212,14 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 import sys, os
 from Foam import WM_PROJECT_VERSION
-if WM_PROJECT_VERSION() >= "1.6" :
+if WM_PROJECT_VERSION() < "1.6" :
+   from Foam.OpenFOAM import ext_Info
+   ext_Info() << "\n\n To use this solver it is necessary to SWIG OpenFOAM-1.6 or higher\n"
+   pass
+
+
+#--------------------------------------------------------------------------------------
+if WM_PROJECT_VERSION() == "1.6" :
    if __name__ == "__main__" :
      argv = sys.argv
      os._exit( main_standalone( len( argv ), argv ) )
@@ -223,11 +230,17 @@ if WM_PROJECT_VERSION() >= "1.6" :
       argv = [ __file__, "-case", test_dir ]
       os._exit( main_standalone( len( argv ), argv ) )
       pass
-else :
-   from Foam.OpenFOAM import ext_Info
-   ext_Info() << "\n\n To use this solver it is necessary to SWIG OpenFOAM-1.6\n"
-   pass
 
     
 #--------------------------------------------------------------------------------------
-
+if WM_PROJECT_VERSION() >= "1.7.0" :
+   if __name__ == "__main__" :
+     argv = sys.argv
+     os._exit( main_standalone( len( argv ), argv ) )
+     pass
+   else :
+      argv = None
+      test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.7.0', 'incompressible', 'pimpleFoam', 't-junction' )
+      argv = [ __file__, "-case", test_dir ]
+      os._exit( main_standalone( len( argv ), argv ) )
+      pass

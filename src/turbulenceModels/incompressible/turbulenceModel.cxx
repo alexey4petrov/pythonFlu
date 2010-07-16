@@ -72,7 +72,7 @@
     //--------------------------------------------------------
     %include "incompressible/turbulenceModel.H"
     
-    %extend Foam::incompressible::turbulenceModel  
+    %extend Foam::turbulenceModel  
     {
       Foam::ext_tmp< Foam::volScalarField > ext_nut()
       {

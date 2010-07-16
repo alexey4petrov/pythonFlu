@@ -84,3 +84,10 @@ def continuityErrs( mesh, phi, runTime, cumulativeContErr ):
 
 
 #---------------------------------------------------------------------------
+def setRefCell( *args ):
+    from Foam.finiteVolume import ext_setRefCell
+    tmp = ext_setRefCell( *args )
+    return tmp.m_refCelli, tmp.m_refValue
+
+
+#---------------------------------------------------------------------------

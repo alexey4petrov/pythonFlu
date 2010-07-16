@@ -36,6 +36,8 @@
 
 //---------------------------------------------------------------------------
 %ignore Foam::PtrList< Foam::fvPatchField< Foam::scalar > >::PtrList;
+%ignore Foam::PtrList< Foam::fvPatchField< Foam::scalar > >::begin;
+%ignore Foam::PtrList< Foam::fvPatchField< Foam::scalar > >::end;
 
 %template( PtrList_fvPatchField_scalar ) Foam::PtrList< Foam::fvPatchField< Foam::scalar > >;
 

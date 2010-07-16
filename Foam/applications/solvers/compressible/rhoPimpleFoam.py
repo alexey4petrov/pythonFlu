@@ -87,7 +87,7 @@ def _UEqn( mesh, U, rho, phi, turbulence, p, oCorr, nOuterCorr, momentumPredicto
     UEqn = turbulence.divDevRhoReff( U ) + ( fvm.ddt( rho, U ) + fvm.div( phi, U ) )
         
     if oCorr == nOuterCorr-1:
-       UEqn().relax(1)
+       UEqn().relax( 1.0 )
        pass
     else:
        UEqn().relax()

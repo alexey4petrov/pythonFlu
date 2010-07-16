@@ -65,7 +65,7 @@ def _createFields( runTime, mesh ):
     pRefValue = 0.0
     from Foam.finiteVolume import setRefCell
     pRefCell, pRefValue = setRefCell( p, mesh.solutionDict().subDict( word( "SIMPLE" ) ), pRefCell, pRefValue )
-           
+
     return p, U, phi, pRefCell, pRefValue
 
 
@@ -130,7 +130,7 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM import dimensionedScalar, word, dimTime, dimensionSet
     from Foam import fvc, fvm
     for nonOrth in range( nNonOrthCorr + 1):
-        pEqn = fvm.laplacian( dimensionedScalar( word( "1" ), dimTime / p.dimensions() * dimensionSet( 0, 2, -2, 0, 0 ), 1 ), p ) == fvc.div( phi )
+        pEqn = fvm.laplacian( dimensionedScalar( word( "1" ), dimTime / p.dimensions() * dimensionSet( 0.0, 2.0, -2.0, 0.0, 0.0 ), 1.0 ), p ) == fvc.div( phi )
         
         pEqn.setReference( pRefCell, pRefValue )
         pEqn.solve()

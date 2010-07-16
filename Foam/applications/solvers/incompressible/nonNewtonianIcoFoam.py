@@ -145,7 +145,14 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 import sys, os
 from Foam import WM_PROJECT_VERSION
-if WM_PROJECT_VERSION() >= "1.6" :
+if WM_PROJECT_VERSION() < "1.6" :
+   from Foam.OpenFOAM import ext_Info
+   ext_Info() << "\n\n To use this solver it is necessary to SWIG OpenFOAM-1.6 or higher\n"
+   pass
+
+
+#--------------------------------------------------------------------------------------
+if WM_PROJECT_VERSION() == "1.6" :
    if __name__ == "__main__" :
      argv = sys.argv
      os._exit( main_standalone( len( argv ), argv ) )
@@ -156,11 +163,18 @@ if WM_PROJECT_VERSION() >= "1.6" :
       argv = [ __file__, "-case", test_dir ]
       os._exit( main_standalone( len( argv ), argv ) )
       pass
-else :
-   from Foam.OpenFOAM import ext_Info
-   ext_Info() << "\n\n To use this solver it is necessary to SWIG OpenFOAM-1.6\n"
-   pass
 
     
 #--------------------------------------------------------------------------------------
+if WM_PROJECT_VERSION() >= "1.7.0" :
+   if __name__ == "__main__" :
+     argv = sys.argv
+     os._exit( main_standalone( len( argv ), argv ) )
+     pass
+   else :
+      argv = None
+      test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.7.0', 'incompressible', 'nonNewtonianIcoFoam', 'offsetCylinder' )
+      argv = [ __file__, "-case", test_dir ]
+      os._exit( main_standalone( len( argv ), argv ) )
+      pass
 

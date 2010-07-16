@@ -94,7 +94,7 @@ def _createFields( runTime, mesh ):
 def createGradP( runTime ):
     from Foam.OpenFOAM import dimensionedScalar, dimensionSet, IFstream, word
     gradP = dimensionedScalar( word( "gradP" ),
-                               dimensionSet( 0, 1, -2, 0, 0 ),
+                               dimensionSet( 0.0, 1.0, -2.0, 0.0, 0.0 ),
                                0.0 )
     from Foam.OpenFOAM import word, fileName, ext_Info, nl
     gradPFile = IFstream( runTime.path()/fileName( runTime.timeName() )/fileName( "uniform" )/ fileName( "gradP.raw" ) )
@@ -236,20 +236,37 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 import sys, os
 from Foam import WM_PROJECT_VERSION
-if WM_PROJECT_VERSION() >= "1.6" :
+if WM_PROJECT_VERSION() < "1.6" :
+   from Foam.OpenFOAM import ext_Info
+   ext_Info() << "\n\n To use this solver it is necessary to SWIG OpenFOAM-1.6 or higher\n"
+   pass
+
+
+#--------------------------------------------------------------------------------------
+if WM_PROJECT_VERSION() == "1.6" :
    if __name__ == "__main__" :
      argv = sys.argv
+     if len( argv ) >1 and argv[ 1 ]=="-test":
+        argv = None
+        test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.6', 'incompressible', 'channelFoam', 'channel395' )
+        argv = [ __file__, "-case", test_dir ]  
+        pass
      os._exit( main_standalone( len( argv ), argv ) )
      pass
-   else :
-      argv = None
-      test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.6', 'incompressible', 'channelFoam', 'channel395' )
-      argv = [ __file__, "-case", test_dir ]
-      os._exit( main_standalone( len( argv ), argv ) )
-      pass
-else :
-   from Foam.OpenFOAM import ext_Info
-   ext_Info() << "\n\n To use this solver it is necessary to SWIG OpenFOAM-1.6\n"
+   pass
+   
+     
+#--------------------------------------------------------------------------------------
+if WM_PROJECT_VERSION() >= "1.7.0" :
+   if __name__ == "__main__" :
+     argv = sys.argv
+     if len( argv ) >1 and argv[ 1 ]=="-test":
+        argv = None
+        test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.7.0', 'incompressible', 'channelFoam', 'channel395' )
+        argv = [ __file__, "-case", test_dir ]  
+        pass
+     os._exit( main_standalone( len( argv ), argv ) )
+     pass
    pass
 
     

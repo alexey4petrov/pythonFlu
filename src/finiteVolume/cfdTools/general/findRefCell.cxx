@@ -32,7 +32,7 @@
 %include "src/finiteVolume/directors.hxx"
 
 
-//---------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
 %include "src/common.hxx"
 
 %include "src/OpenFOAM/primitives/label.cxx"
@@ -43,26 +43,51 @@
     #include "findRefCell.H"
 %}
 
+
+//--------------------------------------------------------------------------------------
+%inline
+{
+  namespace Foam
+  {
+    struct t_setRefCell
+    {
+      label m_refCelli;
+      scalar m_refValue;
+      t_setRefCell( label the_refCelli, scalar the_refValue ): m_refCelli( the_refCelli ),
+                                                               m_refValue( the_refValue )
+      {}
+    };
+  }
+}
+
+
+//--------------------------------------------------------------------------------------
+%inline
+{
 #if ( __FOAM_VERSION__ < 010500 )
-void setRefCell
-(
-    const Foam::volScalarField& field,
-    const Foam::dictionary& dict,
-    Foam::label& INOUT,
-    Foam::scalar& INOUT
-);
+Foam::t_setRefCell ext_setRefCell( const Foam::volScalarField& field,
+                                   const Foam::dictionary& dict,
+                                   Foam::label refCelli,
+                                   Foam::scalar refValue )
+{
+   Foam::setRefCell( field, dict, refCelli, refValue );
+   return t_setRefCell( refCelli, refValue );
+}                    
 #endif
 
 #if ( __FOAM_VERSION__ >= 010500 )
-void setRefCell
-(
-    const Foam::volScalarField& field,
-    const Foam::dictionary& dict,
-    Foam::label& INOUT,
-    Foam::scalar& INOUT,
-    const bool forceReference = false
-);
+Foam::t_setRefCell ext_setRefCell( const Foam::volScalarField& field,
+                                   const Foam::dictionary& dict,
+                                   Foam::label refCelli,
+                                   Foam::scalar refValue,
+                                   const bool forceReference = false )
+{
+   Foam::setRefCell( field, dict, refCelli, refValue, forceReference);
+   return t_setRefCell( refCelli, refValue );
+}
+
 #endif
+}
 
 //---------------------------------------------------------------------------
 #endif

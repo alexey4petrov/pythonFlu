@@ -43,6 +43,7 @@ NO_TMP_TYPEMAP_FIELDFIELD( Foam::fvPatchField, Foam::Vector<Foam::scalar> )
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::vector >::FieldField;
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::vector >::T;
+%ignore Foam::FieldField< Foam::fvPatchField, Foam::vector >::replace;
 
 %template( FieldField_fvPatchField_vector ) Foam::FieldField< Foam::fvPatchField, Foam::vector >;
 

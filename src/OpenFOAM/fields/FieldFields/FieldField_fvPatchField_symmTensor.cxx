@@ -40,6 +40,7 @@
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.cxx"
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::symmTensor >::FieldField;
+%ignore Foam::FieldField< Foam::fvPatchField, Foam::symmTensor >::replace;
 
 %inline
 %{

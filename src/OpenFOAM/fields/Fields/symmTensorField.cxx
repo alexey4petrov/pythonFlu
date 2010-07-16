@@ -43,6 +43,7 @@
 
 %ignore Foam::Field< Foam::symmTensor >::Field;
 %ignore Foam::Field< Foam::symmTensor >::typeName;
+%ignore Foam::Field< Foam::symmTensor >::replace;
 %ignore Foam::sqr;
 
 %template( symmTensorField ) Foam::Field< Foam::symmTensor >; 
