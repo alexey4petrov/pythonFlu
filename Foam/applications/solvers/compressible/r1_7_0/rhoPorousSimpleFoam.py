@@ -113,9 +113,9 @@ def _UEqn( phi, U, p, turbulence, pZones, pressureImplicitPorosity, nUCorr, eqnR
     # The initial C++ expression does not work properly, because of
     #  1. turbulence.divDevRhoReff( U ) - changes values for the U boundaries
     #  2. the order of expression arguments computation differs with C++
-    #UEqn = fvm.div( phi, U ) - fvm.Sp( fvc.div( phi ), U ) + turbulence.divDevRhoReff( U ) 
+    #UEqn = fvm.div( phi, U ) + turbulence.divDevRhoReff( U ) 
 
-    UEqn = turbulence.divDevRhoReff( U ) + ( fvm.div( phi, U ) - fvm.Sp( fvc.div( phi ), U ) )
+    UEqn = turbulence.divDevRhoReff( U ) + fvm.div( phi, U ) 
 
     UEqn.relax()
 
@@ -291,7 +291,7 @@ def main_standalone( argc, argv ):
         ext_Info() << "Time = " << runTime.timeName() << nl << nl
         
         from Foam.finiteVolume.cfdTools.general.include import readSIMPLEControls
-        simple, nNonOrthCorr, momentumPredictor, fluxGradp, transonic = readSIMPLEControls( mesh )
+        simple, nNonOrthCorr, momentumPredictor, transonic = readSIMPLEControls( mesh )
         
         eqnResidual, maxResidual, convergenceCriterion = initConvergenceCheck( simple )
         
@@ -327,12 +327,12 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 import sys, os
 from Foam import WM_PROJECT_VERSION
-if WM_PROJECT_VERSION() == "1.6":
+if WM_PROJECT_VERSION() >= "1.7.0":
    if __name__ == "__main__" :
       argv = sys.argv
       if len(argv) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.6', 'compressible', 'rhoPorousSimpleFoam', 'angledDuctExplicit' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.7.0', 'compressible', 'rhoPorousSimpleFoam', 'angledDuctExplicit' )
          argv = [ __file__, "-case", test_dir ]
          pass
       
@@ -341,7 +341,7 @@ if WM_PROJECT_VERSION() == "1.6":
    pass
 else:
    from Foam.OpenFOAM import ext_Info
-   ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.6 \n "
+   ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.7.0 or higher \n "
 
 
 #--------------------------------------------------------------------------------------
