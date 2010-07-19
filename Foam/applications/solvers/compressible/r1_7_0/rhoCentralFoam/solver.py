@@ -24,7 +24,7 @@
 
 
 #---------------------------------------------------------------------------
-from Foam.applications.solvers.compressible.rhoCentralFoam_impl.BCs import rho
+from Foam.applications.solvers.compressible.r1_7_0.rhoCentralFoam.BCs import rho
 
 #---------------------------------------------------------------------------
 def _rhoBoundaryTypes( p ):
@@ -37,7 +37,7 @@ def _rhoBoundaryTypes( p ):
            rhoBoundaryTypes[patchi] = zeroGradientFvPatchScalarField.typeName
            pass
         elif pbf[patchi].fixesValue():
-           from Foam.applications.solvers.compressible.rhoCentralFoam_impl.BCs.rho import fixedRhoFvPatchScalarField
+           from Foam.applications.solvers.compressible.r1_7_0.rhoCentralFoam.BCs.rho import fixedRhoFvPatchScalarField
            rhoBoundaryTypes[patchi] = fixedRhoFvPatchScalarField.typeName
            pass
         pass
@@ -238,18 +238,6 @@ def main_standalone( argc, argv ):
         from Foam.finiteVolume import surfaceScalarField
         amaxSf = surfaceScalarField( word( "amaxSf" ), am.mag().ext_max( ap.mag() ) )
         
-        CoNum, meanCoNum = compressibleCourantNo( mesh, amaxSf, runTime )
-        
-        from Foam.finiteVolume.cfdTools.general.include import readTimeControls
-        adjustTimeStep, maxCo, maxDeltaT = readTimeControls( runTime )
-        
-        from Foam.finiteVolume.cfdTools.general.include import setDeltaT
-        runTime = setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
-        
-        runTime.step()
-        
-        ext_Info() << "Time = " << runTime.timeName() << nl << nl
-        
         aSf = am * a_pos
 
         if str( fluxScheme ) == "Tadmor":
@@ -265,7 +253,22 @@ def main_standalone( argc, argv ):
         aphiv_pos = phiv_pos - aSf
         
         aphiv_neg = phiv_neg + aSf
+        
+        # Reuse amaxSf for the maximum positive and negative fluxes
+        # estimated by the central scheme
+        amaxSf.ext_assign( aphiv_pos.mag().ext_max(  aphiv_neg.mag() ) )
 
+        CoNum, meanCoNum = compressibleCourantNo( mesh, amaxSf, runTime )
+        
+        from Foam.finiteVolume.cfdTools.general.include import readTimeControls
+        adjustTimeStep, maxCo, maxDeltaT = readTimeControls( runTime )
+        
+        from Foam.finiteVolume.cfdTools.general.include import setDeltaT
+        runTime = setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
+        
+        runTime.step()
+        
+        ext_Info() << "Time = " << runTime.timeName() << nl << nl
         phi = None
 
         phi = surfaceScalarField( word( "phi" ), aphiv_pos * rho_pos + aphiv_neg * rho_neg )
@@ -344,12 +347,12 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 import sys, os
 from Foam import WM_PROJECT_VERSION
-if WM_PROJECT_VERSION() >= "1.6":
+if WM_PROJECT_VERSION() >= "1.7.0":
    if __name__ == "__main__" :
       argv = sys.argv
       if len(argv) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.6', 'compressible', 'rhoCentralFoam', 'forwardStep' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.7.0', 'compressible', 'rhoCentralFoam', 'forwardStep' )
          argv = [ __file__, "-case", test_dir ]
          pass
       os._exit( main_standalone( len( argv ), argv ) )
@@ -357,9 +360,7 @@ if WM_PROJECT_VERSION() >= "1.6":
    pass   
 else:
    from Foam.OpenFOAM import ext_Info
-   ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.6 or higher\n "
-
-
+   ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.7.0 or higher \n "
     
 #--------------------------------------------------------------------------------------
 
