@@ -53,7 +53,7 @@ if WM_PROJECT_VERSION() == "1.5" :
     
 
 #---------------------------------------------------------------------------------------------
-if WM_PROJECT_VERSION() >= "1.6":
+if WM_PROJECT_VERSION() == "1.6":
     if __name__ == "__main__" :
         argv = sys.argv
         if len( argv ) > 1 and argv[ 1 ] == "-test":
@@ -68,5 +68,20 @@ if WM_PROJECT_VERSION() >= "1.6":
         from Foam.applications.solvers.heatTransfer.r1_6.buoyantSimpleRadiationFoam import *
         pass
 
+
 #--------------------------------------------------------------------------------------
+if WM_PROJECT_VERSION() >= "1.7.0":
+    if __name__ == "__main__" :
+        argv = sys.argv
+        if len( argv ) > 1 and argv[ 1 ] == "-test":
+           argv = None
+           test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.7.0', 'heatTransfer', 'buoyantSimpleRadiationFoam', 'hotRadiationRoom' )
+           argv = [ __file__, "-case", test_dir ]
+           pass
+        from Foam.applications.solvers.heatTransfer.r1_7_0.buoyantSimpleRadiationFoam import main_standalone
+        os._exit( main_standalone( len( argv ), argv ) )
+        pass
+    else:
+        from Foam.applications.solvers.heatTransfer.r1_7_0.buoyantSimpleRadiationFoam import *
+        pass
 

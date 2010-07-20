@@ -38,7 +38,7 @@ def readGravitationalAcceleration( runTime, mesh ):
 
 
 #------------------------------------------------------------------------------------
-def createFields( runTime, mesh ):
+def createFields( runTime, mesh, g ):
     ext_Info() << "Reading thermophysical properties\n" << nl
     
     from Foam.thermophysicalModels import autoPtr_basicPsiThermo, basicPsiThermo
@@ -73,18 +73,33 @@ def createFields( runTime, mesh ):
     from Foam import compressible
     turbulence = compressible.RASModel.New( rho, U, phi, thermo() ) 
 
-    thermo.correct()
+    ext_Info() << "Calculating field g.h\n" << nl
+    gh = volScalarField ( word( "gh" ), g & mesh.C() )
+    from Foam.finiteVolume import surfaceScalarField
+    ghf = surfaceScalarField( word( "ghf" ), g & mesh.Cf() )
+
+    ext_Info() << "Reading field p_rgh\n" << nl
+    p_rgh = volScalarField( IOobject( word( "p_rgh" ),
+                                      fileName( runTime.timeName() ),
+                                      mesh,
+                                      IOobject.MUST_READ,
+                                      IOobject.AUTO_WRITE ),
+                            mesh )
+
+    #Force p_rgh to be consistent with p
+    p_rgh.ext_assign( p - rho*gh )
 
     pRefCell = 0
     pRefValue = 0.0
     from Foam.finiteVolume import setRefCell
-    pRefCell, pRefValue = setRefCell( p, mesh.solutionDict().subDict( word( "SIMPLE" ) ), pRefCell, pRefValue )
+    pRefCell, pRefValue = setRefCell( p, p_rgh, mesh.solutionDict().subDict( word( "SIMPLE" ) ), pRefCell, pRefValue )
     
     from Foam import fvc
     initialMass = fvc.domainIntegrate( rho )
+    totalVolume = mesh.V().ext_sum()
     
                         
-    return thermo, rho, p, h, psi, U, phi, turbulence, pRefCell, pRefValue, initialMass 
+    return thermo, rho, p, h, psi, U, phi, turbulence, gh, ghf, p_rgh, pRefCell, pRefValue, initialMass, totalVolume
 
 
 #------------------------------------------------------------------------------------
@@ -100,15 +115,17 @@ def initConvergenceCheck( simple ):
 
 
 #-------------------------------------------------------------------------------------
-def fun_UEqn( turbulence, phi, U, rho, g, p, mesh, eqnResidual, maxResidual ):
+def fun_UEqn( turbulence, phi, U, rho, g, p, ghf, p_rgh, mesh, eqnResidual, maxResidual, momentumPredictor ):
     from Foam import fvm, fvc 
-    UEqn = fvm.div(phi, U) - fvm.Sp(fvc.div(phi), U)+ turbulence.divDevRhoReff(U)
+    UEqn = fvm.div(phi, U) + turbulence.divDevRhoReff(U)
 
-    UEqn.relax();
-    from Foam.finiteVolume import solve
-    eqnResidual = solve( UEqn == fvc.reconstruct( fvc.interpolate(rho)*(g & mesh.Sf()) - fvc.snGrad(p)*mesh.magSf() ) ).initialResidual()
+    UEqn.relax()
+    if momentumPredictor:
+       from Foam.finiteVolume import solve
+       eqnResidual = solve( UEqn == fvc.reconstruct( (- ghf * fvc.snGrad( rho ) - fvc.snGrad( p_rgh ) ) * mesh.magSf() ) ).initialResidual()
 
-    maxResidual = max(eqnResidual, maxResidual);
+       maxResidual = max(eqnResidual, maxResidual)
+       pass
     
     return UEqn, eqnResidual, maxResidual
     
@@ -135,9 +152,10 @@ def fun_hEqn( turbulence, phi, h, rho, radiation, p, thermo, eqnResidual, maxRes
     
     
 #------------------------------------------------------------------------------------
-def fun_pEqn( thermo, g, rho, UEqn, p, U, psi, phi, initialMass, runTime, mesh, nNonOrthCorr, pRefCell, eqnResidual, maxResidual, cumulativeContErr ):
+def fun_pEqn( thermo, g, rho, UEqn, p, p_rgh, U, psi, phi, ghf, gh, initialMass, runTime, mesh, nNonOrthCorr, pRefCell, eqnResidual, maxResidual, cumulativeContErr ):
 
     rho.ext_assign( thermo.rho() )
+    rho.relax()
 
     rUA = 1.0/UEqn.A()
     
@@ -151,36 +169,45 @@ def fun_pEqn( thermo, g, rho, UEqn, p, U, psi, phi, initialMass, runTime, mesh, 
     phi.ext_assign( fvc.interpolate( rho )*(fvc.interpolate(U) & mesh.Sf()) )
 
     from Foam.finiteVolume import adjustPhi
-    closedVolume = adjustPhi(phi, U, p);
+    closedVolume = adjustPhi(phi, U, p_rgh );
 
-    buoyancyPhi =surfaceScalarField( rhorUAf * fvc.interpolate( rho )*( g & mesh.Sf() ) )
+    buoyancyPhi =surfaceScalarField( rhorUAf * ghf * fvc.snGrad( rho ) * mesh.magSf() )
     
-    phi.ext_assign( phi+buoyancyPhi )
+    phi.ext_assign( phi - buoyancyPhi )
 
     for nonOrth in range( nNonOrthCorr+1 ):
         from Foam import fvm
-        pEqn = fvm.laplacian(rhorUAf, p) == fvc.div(phi)
+        p_rghEqn = fvm.laplacian(rhorUAf, p_rgh) == fvc.div(phi)
+        
+        from Foam.finiteVolume import getRefCellValue
+        p_rghEqn.setReference(pRefCell, getRefCellValue( p_rgh, pRefCell ) )
 
-        pEqn.setReference(pRefCell, p[pRefCell]);
-
-
+        eqnResidual = p_rghEqn.solve().initialResidual()
+        
         if (nonOrth == 0):
-            eqnResidual = pEqn.solve().initialResidual()
             maxResidual = max(eqnResidual, maxResidual)
-        else:
-            pEqn.solve()
+            pass
 
         if (nonOrth == nNonOrthCorr):
-           if (closedVolume):
-              p.ext_assign( p + ( initialMass - fvc.domainIntegrate( psi * p ) ) / fvc.domainIntegrate( psi ) ) 
-           
-           phi.ext_assign( phi - pEqn.flux() )
-           p.relax()
-           U.ext_assign( U + rUA * fvc.reconstruct( ( buoyancyPhi - pEqn.flux() ) / rhorUAf ) )
-           U.correctBoundaryConditions();
+           # Calculate the conservative fluxes
+           phi.ext_assign( phi - p_rghEqn.flux() )
+           # Explicitly relax pressure for momentum corrector
+           p_rgh.relax()
+           U.ext_assign( U - rUA * fvc.reconstruct( ( buoyancyPhi + p_rghEqn.flux() ) / rhorUAf ) )
+           U.correctBoundaryConditions()
+           pass
     
     from Foam.finiteVolume.cfdTools.general.include import ContinuityErrs
     cumulativeContErr = ContinuityErrs( phi, runTime, mesh, cumulativeContErr )
+    
+    p.ext_assign( p_rgh + rho * gh )
+
+    # For closed-volume cases adjust the pressure level
+    # to obey overall mass continuity
+    if closedVolume:
+       p.ext_assign( p + (initialMass - fvc.domainIntegrate( psi * p ) ) / fvc.domainIntegrate( psi ) )
+       p_rgh.ext_assign( p - rho * gh )
+
     rho.ext_assign( thermo.rho() )
     rho.relax()
 
@@ -210,7 +237,7 @@ def main_standalone( argc, argv ):
     
     g = readGravitationalAcceleration( runTime, mesh )
     
-    thermo, rho, p, h, psi, U, phi, turbulence, pRefCell, pRefValue, initialMass = createFields( runTime, mesh )
+    thermo, rho, p, h, psi, U, phi, turbulence, gh, ghf, p_rgh, pRefCell, pRefValue, initialMass, totalVolume = createFields( runTime, mesh, g )
     
     from Foam.radiation import createRadiationModel
     radiation = createRadiationModel( thermo )
@@ -225,18 +252,18 @@ def main_standalone( argc, argv ):
        ext_Info()<< "Time = " << runTime.timeName() << nl << nl
 
        from Foam.finiteVolume.cfdTools.general.include import readSIMPLEControls
-       simple, nNonOrthCorr, momentumPredictor, fluxGradp, transonic = readSIMPLEControls( mesh )
+       simple, nNonOrthCorr, momentumPredictor, transonic = readSIMPLEControls( mesh )
        
        UEqn, eqnResidual, maxResidual = eqnResidual, maxResidual, convergenceCriterion = initConvergenceCheck( simple )
         
-       p.storePrevIter()
+       p_rgh.storePrevIter()
        rho.storePrevIter()
        
-       UEqn, eqnResidual, maxResidual = fun_UEqn( turbulence, phi, U, rho, g, p, mesh, eqnResidual, maxResidual )
+       UEqn, eqnResidual, maxResidual = fun_UEqn( turbulence, phi, U, rho, g, p, ghf, p_rgh, mesh, eqnResidual, maxResidual, momentumPredictor )
        
        hEqn, eqnResidual, maxResidual = fun_hEqn( turbulence, phi, h, rho, radiation, p, thermo, eqnResidual, maxResidual )
        
-       eqnResidual, maxResidual, cumulativeContErr = fun_pEqn( thermo, g, rho, UEqn, p, U, psi, phi, initialMass,\
+       eqnResidual, maxResidual, cumulativeContErr = fun_pEqn( thermo, g, rho, UEqn, p, p_rgh, U, psi, phi, ghf, gh, initialMass,\
                                                               runTime, mesh, nNonOrthCorr, pRefCell, eqnResidual, maxResidual, cumulativeContErr )
            
        turbulence.correct()
@@ -259,21 +286,20 @@ def main_standalone( argc, argv ):
 argv = None
 import sys, os
 from Foam import WM_PROJECT_VERSION
-if WM_PROJECT_VERSION() == "1.6" :
+if WM_PROJECT_VERSION() >= "1.7.0" :
     if __name__ == "__main__" :
         argv = sys.argv
         if len(argv) > 1 and argv[ 1 ] == "-test":
            argv = None
-           test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.6', 'heatTransfer', 'buoyantSimpleRadiationFoam', 'hotRadiationRoom' )
+           test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.7.0', 'heatTransfer', 'buoyantSimpleRadiationFoam', 'hotRadiationRoom' )
            argv = [ __file__, "-case", test_dir ]
            pass
-           
         os._exit( main_standalone( len( argv ), argv ) )
         pass
     pass
 else:
     from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() <<"\n\n The use buoyantSimpleRadiationFoam It is necessary to SWIG OpenFOAM-1.6\n"    
+    ext_Info() <<"\n\n The use buoyantSimpleRadiationFoam It is necessary to SWIG OpenFOAM-1.7.0 or higher\n"    
     pass
 
 
