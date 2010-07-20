@@ -65,29 +65,56 @@
 %inline
 {
 #if ( __FOAM_VERSION__ < 010500 )
-Foam::t_setRefCell ext_setRefCell( const Foam::volScalarField& field,
-                                   const Foam::dictionary& dict,
-                                   Foam::label refCelli,
-                                   Foam::scalar refValue )
-{
-   Foam::setRefCell( field, dict, refCelli, refValue );
-   return t_setRefCell( refCelli, refValue );
-}                    
+  Foam::t_setRefCell ext_setRefCell( const Foam::volScalarField& field,
+                                     const Foam::dictionary& dict,
+                                     Foam::label refCelli,
+                                     Foam::scalar refValue )
+  {
+     Foam::setRefCell( field, dict, refCelli, refValue );
+     return t_setRefCell( refCelli, refValue );
+  }                    
 #endif
 
+
+//----------------------------------
 #if ( __FOAM_VERSION__ >= 010500 )
-Foam::t_setRefCell ext_setRefCell( const Foam::volScalarField& field,
-                                   const Foam::dictionary& dict,
-                                   Foam::label refCelli,
-                                   Foam::scalar refValue,
-                                   const bool forceReference = false )
-{
-   Foam::setRefCell( field, dict, refCelli, refValue, forceReference);
-   return t_setRefCell( refCelli, refValue );
-}
+  Foam::t_setRefCell ext_setRefCell( const Foam::volScalarField& field,
+                                     const Foam::dictionary& dict,
+                                     Foam::label refCelli,
+                                     Foam::scalar refValue,
+                                     const bool forceReference = false )
+  {
+     Foam::setRefCell( field, dict, refCelli, refValue, forceReference);
+     return t_setRefCell( refCelli, refValue );
+  }
+#endif
 
+
+//----------------------------------
+#if ( __FOAM_VERSION__ >= 010700 )
+  Foam::t_setRefCell ext_setRefCell( const Foam::volScalarField& field,
+                                     const Foam::volScalarField& fieldRef,
+                                     const Foam::dictionary& dict,
+                                     Foam::label refCelli,
+                                     Foam::scalar refValue,
+                                     const bool forceReference=false )
+  {
+     Foam::setRefCell( field, fieldRef, dict, refCelli, refValue, forceReference );
+     return t_setRefCell( refCelli, refValue );
+  }
 #endif
 }
+
+
+//---------------------------------------------------------------------------
+#if ( __FOAM_VERSION__ >= 010500 )
+Foam::scalar getRefCellValue
+(
+    const Foam::volScalarField& field,
+    const Foam::label refCelli
+);
+#endif
+
 
 //---------------------------------------------------------------------------
 #endif
