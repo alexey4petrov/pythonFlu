@@ -174,7 +174,32 @@ $(RECURSIVE_CLEAN_TARGETS):
 
 
 #--------------------------------------------------------------------------------------
-__SWIG_INCLUDES__=-I$(pyfoam_root_dir)/patch-$(__FOAM_PATCH__) $(__CPPFLAGS__)
+__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/local/r$(__FOAM_PATCH__)
+
+ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010700 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.7.0
+__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.6
+__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.5
+__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.4.1
+endif	
+
+ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010600 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.6
+__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.5
+__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.4.1
+endif	
+
+ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.5
+__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.4.1
+endif	
+
+ifeq "$(shell if [ ${__FOAM_VERSION__} -le 010401 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.4.1
+endif
+
+#--------------------------------------------------------------------------------------------
+__SWIG_INCLUDES__ += $(__CPPFLAGS__)
 
 __SWIG_FLAGS__ = -python -c++ -MD -D__restrict__ -D__CINT__ $(GFLAGS) $(__SWIG_INCLUDES__)
 

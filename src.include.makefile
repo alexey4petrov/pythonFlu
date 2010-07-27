@@ -35,7 +35,8 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/transportModels/interfaceProperties/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/transportModels \
 	-I$(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude \
-	-I$(WM_PROJECT_DIR)/src/dynamicMesh/lnInclude
+	-I$(WM_PROJECT_DIR)/src/dynamicMesh/lnInclude \
+	
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/LES/LESdeltas/lnInclude
@@ -43,6 +44,10 @@ endif
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010600 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/LES/LESdeltas/lnInclude
+endif	
+
+ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010700 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/compressible/RAS/lnInclude
 endif	
 
 

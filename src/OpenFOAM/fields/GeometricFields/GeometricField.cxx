@@ -164,11 +164,16 @@
     {
         return Foam::sum( get_ref( self ) );
     }
+    Foam::dimensioned< Type > average() const
+    {
+        return Foam::average( get_ref( self ) );
+    }    
     
     Foam::TGeometricBoundaryField< Type, TPatchField, TMesh > ext_boundaryField()
     {
         return Foam::TGeometricBoundaryField< Type, TPatchField, TMesh >( get_ref( self ).boundaryField() );
     }    
+
 }
 %enddef
 
