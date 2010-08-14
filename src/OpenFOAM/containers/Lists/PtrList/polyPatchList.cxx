@@ -34,7 +34,7 @@
 %ignore Foam::PtrList< Foam::polyPatch >::end;
 %ignore Foam::PtrList< Foam::polyPatch >::set;
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
 
 %ignore Foam::PtrList< Foam::polyPatch >::xfer;
 

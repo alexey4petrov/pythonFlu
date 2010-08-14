@@ -21,7 +21,7 @@
 
 
 #------------------------------------------------------------------------------
-def readPISOControls_1_4_1_dev( mesh ):
+def readPISOControls_010401_dev( mesh ):
     from Foam.OpenFOAM import dictionary, readInt, Switch, word
 
     piso = dictionary( mesh.solutionDict().subDict( word( "PISO" ) ) )
@@ -57,7 +57,7 @@ def readPISOControls_1_4_1_dev( mesh ):
 
 
 #------------------------------------------------------------------------------------
-def readPISOControls_1_5( mesh ):
+def readPISOControls_010500( mesh ):
     from Foam.OpenFOAM import dictionary, readInt, Switch, word
 
     piso = dictionary( mesh.solutionDict().subDict( word( "PISO" ) ) )
@@ -94,7 +94,7 @@ def readPISOControls_1_5( mesh ):
 
 
 #---------------------------------------------------------------------------------
-def readPISOControls_1_6( mesh ):
+def readPISOControls_010600( mesh ):
     from Foam.OpenFOAM import dictionary, readInt, Switch, word
 
     piso = dictionary( mesh.solutionDict().subDict( word( "PISO" ) ) )

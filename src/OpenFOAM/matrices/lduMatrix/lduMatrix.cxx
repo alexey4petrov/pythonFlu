@@ -111,6 +111,11 @@ namespace Foam
     #include "lduMatrix.H"
 %}
 
+#if FOAM_BRANCH_VERSION( dev, ==, 010500 )
+%ignore Foam::lduMatrix::bufferedUpdateMatrixInterfaces;
+%ignore Foam::lduMatrix::bufferedInitMatrixInterfaces;
+#endif
+
 %include "lduMatrix.H"
 
 

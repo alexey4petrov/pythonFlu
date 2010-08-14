@@ -49,10 +49,20 @@
 //--------------------------------------------------------------------------
 %extend Foam::singlePhaseTransportModel
 {
-  Foam::volScalarField& ext_nu()
+  
+  #if FOAM_BRANCH_VERSION( dev, ==, 010500 )
+  const Foam::volScalarField& ext_nu() const 
+  {
+    return self->nu();
+  }
+
+  #else
+  Foam::volScalarField& ext_nu() const
   {
     return self->nu()();
   }
+  #endif
+
 }
 
 

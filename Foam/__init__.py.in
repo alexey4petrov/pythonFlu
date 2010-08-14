@@ -36,24 +36,73 @@ def get_module_initializtion_command( the_module_name ) :
 
 
 #----------------------------------------------------------------------------
-def WM_PROJECT_VERSION():
-    import os
-    return os.environ[ "WM_PROJECT_VERSION" ]
+def get_list_versions():
+    from Foam import FOAM_VERSION
+    list_versions = []
+    if FOAM_VERSION( ">", "010700" ) :
+       if "@FOAM_BRANCH@x" == "x":
+          list_versions = [ FOAM_VERSION() ]
+          pass
+       else:
+          list_versions = [ FOAM_VERSION() + "_" + "@FOAM_BRANCH@" ]
+          pass
+       
+    if FOAM_VERSION( ">=", "010700" ):
+       if "@FOAM_BRANCH@x" != "x":
+          list_versions.append( "010700_"+ "@FOAM_BRANCH@" )
+          pass
+       list_versions.append( "010700" )
+       pass
+
+    if FOAM_VERSION( ">=", "010600" ):
+       if "@FOAM_BRANCH@x" != "x":
+          list_versions.append( "010600_"+ "@FOAM_BRANCH@" )
+          pass
+       list_versions.append( "010600" )
+       pass
+
+    if FOAM_VERSION( ">=", "010500" ):
+       if "@FOAM_BRANCH@x" != "x":
+          list_versions.append( "010500_"+ "@FOAM_BRANCH@" )
+          pass
+       list_versions.append( "010500" )
+       pass
+ 
+    list_versions.append( "010401_dev" )
+
+    return list_versions
 
 
 #-------------------------------------------------------------------------------
-def get_proper_function( module_path, function_name, default_version ="1.6" ):
-    try:
-       fun_name = function_name + "_" + WM_PROJECT_VERSION().replace( ".", "_" ).replace("-","_")
-       an_expr = "from %s import %s as fun" %( module_path, fun_name )
-       exec( an_expr )
-       return fun
-    except ImportError:
-       fun_name = function_name + "_" + default_version.replace( ".", "_" ).replace("-","_")
-       an_expr = "from %s import %s as fun" %( module_path, fun_name )
-       exec( an_expr )
-       return fun
+def get_proper_function( module_path, function_name ):
+    list_versions = get_list_versions()
+    for vers in list_versions:
+        try:
+            fun_name = function_name + "_" + vers
+            an_expr = "from %s import %s as fun" %( module_path, fun_name )
+            exec( an_expr )
+            return fun
+        except ImportError:
+            if vers == "010401_dev":
+               raise ImportError
+               pass
+            else:
+               pass
+                            
+
+#--------------------------------------------------------------------------------
+def FOAM_VERSION( Cmp, Version):
+
+    return eval( "@FOAM_VERSION@" + Cmp + Version )
 
 
 #--------------------------------------------------------------------------------
-   
+def FOAM_REF_VERSION( Cmp, Version):
+
+    return eval( "@FOAM_VERSION@" + Cmp + Version ) and "@FOAM_BRANCH@x" == "x"
+
+
+#----------------------------------------------------------------------------
+def FOAM_BRANCH_VERSION( Name, Cmp, Version):
+
+    return eval( "@FOAM_VERSION@" + Cmp + Version ) and "@FOAM_BRANCH@x" == ( Name + "x" )

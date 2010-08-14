@@ -153,13 +153,21 @@ public:
     // Selectors
 
         //- Return a reference to the selected LES model
+#ifndef SWIG
         static autoPtr<LESModel> New
         (
             const volVectorField& U,
             const surfaceScalarField& phi,
             transportModel& transport
         );
-
+#else
+        static autoPtr< incompressible::LESModel > New
+        (
+            const volVectorField& U,
+            const surfaceScalarField& phi,
+            transportModel& transport
+        );
+#endif
 
     // Destructor
 

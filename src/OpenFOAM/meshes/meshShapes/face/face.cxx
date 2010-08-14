@@ -39,6 +39,10 @@
 %ignore Foam::face::intersection;
 %ignore Foam::face::nearestPoint;
 
+#if FOAM_BRANCH_VERSION( dev, ==, 010500 )
+   %ignore Foam::face::fastIntersection;
+#endif
+
 %include "face.H"
 
 

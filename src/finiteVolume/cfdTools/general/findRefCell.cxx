@@ -62,9 +62,11 @@
 
 
 //--------------------------------------------------------------------------------------
+
 %inline
 {
-#if ( __FOAM_VERSION__ < 010500 )
+
+#if FOAM_VERSION( <, 010500 ) || FOAM_REF_VERSION( ==, 010500 ) 
   Foam::t_setRefCell ext_setRefCell( const Foam::volScalarField& field,
                                      const Foam::dictionary& dict,
                                      Foam::label refCelli,
@@ -75,9 +77,8 @@
   }                    
 #endif
 
-
 //----------------------------------
-#if ( __FOAM_VERSION__ >= 010500 )
+#if FOAM_VERSION( >=, 010600 ) || FOAM_BRANCH_VERSION( dev, >=, 010500 )
   Foam::t_setRefCell ext_setRefCell( const Foam::volScalarField& field,
                                      const Foam::dictionary& dict,
                                      Foam::label refCelli,
@@ -91,7 +92,7 @@
 
 
 //----------------------------------
-#if ( __FOAM_VERSION__ >= 010700 )
+#if FOAM_VERSION( >=, 010700 )
   Foam::t_setRefCell ext_setRefCell( const Foam::volScalarField& field,
                                      const Foam::volScalarField& fieldRef,
                                      const Foam::dictionary& dict,
@@ -107,7 +108,7 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ >= 010500 )
+#if  FOAM_VERSION( >=, 010600 ) || FOAM_BRANCH_VERSION( dev, >=, 010500 )
 Foam::scalar getRefCellValue
 (
     const Foam::volScalarField& field,

@@ -35,7 +35,7 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
 %include "src/OpenFOAM/memory/Xfer_pointField.cxx"
 
 %include "src/OpenFOAM/memory/Xfer_faceList.cxx"

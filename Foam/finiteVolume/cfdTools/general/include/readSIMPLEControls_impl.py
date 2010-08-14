@@ -21,7 +21,7 @@
 
 
 #------------------------------------------------------------------------------
-def readSIMPLEControls_1_4_1_dev( mesh ):
+def readSIMPLEControls_010401_dev( mesh ):
     from Foam.OpenFOAM import Switch
     from Foam.OpenFOAM import word
    
@@ -52,7 +52,7 @@ def readSIMPLEControls_1_4_1_dev( mesh ):
 
 
 #--------------------------------------------------------------------------------
-def readSIMPLEControls_1_5( mesh ):
+def readSIMPLEControls_010500( mesh ):
     from Foam.OpenFOAM import Switch
     from Foam.OpenFOAM import word
     
@@ -78,12 +78,12 @@ def readSIMPLEControls_1_5( mesh ):
     if ( simple.found( word( "transSonic" ) ) ):
        transonic = Switch( simple.lookup( word( "transSonic" ) ) )
        pass
- 
+
     return simple, nNonOrthCorr, momentumPredictor, fluxGradp, transonic
 
 
 #--------------------------------------------------------------------------------
-def readSIMPLEControls_1_6( mesh ):
+def readSIMPLEControls_010600( mesh ):
     from Foam.OpenFOAM import Switch
     from Foam.OpenFOAM import word
     
@@ -101,7 +101,7 @@ def readSIMPLEControls_1_6( mesh ):
 
 
 #--------------------------------------------------------------------------------
-def readSIMPLEControls_1_7_0( mesh ):
+def readSIMPLEControls_010700( mesh ):
     from Foam.OpenFOAM import Switch
     from Foam.OpenFOAM import word
     

@@ -20,9 +20,9 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ < 010600 )
-#define autoPtr_basicRhoThermo_cxx
 %include "src/common.hxx"
+#if FOAM_VERSION( <, 010600 )
+#define autoPtr_basicRhoThermo_cxx
 #endif
 
 

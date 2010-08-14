@@ -346,7 +346,7 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::Geomet
         return theArg & get_ref( self );
     }
     
-#if ( __FOAM_VERSION__ > 010500 )     
+#if FOAM_VERSION( >, 010500 )
     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > >__rand__( const Foam::UniformDimensionedField< Foam::vector >& theArg )
     {
         return theArg & *self;

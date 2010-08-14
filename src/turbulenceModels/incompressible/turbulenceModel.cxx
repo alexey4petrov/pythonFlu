@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ == 010500 )   
 %include "src/common.hxx"
+#if FOAM_VERSION( ==, 010500 )   
 #define incompressibleturbulenceModel_cxx
 #endif
 
@@ -63,7 +63,7 @@
 //------------------------------------------------------------------------
 //There is no namespace "incompressible" in OpenFOAM-1.4.1-dev
 
-#if ( __FOAM_VERSION__ < 010500 )   
+#if FOAM_VERSION( <, 010500 )   
    %rename( incompressible_turbulenceModel ) Foam::turbulenceModel;
 
    %ignore Foam::turbulenceModel::nut;
@@ -84,7 +84,7 @@
 
 
 //-------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ >= 010600 )   
+#if FOAM_VERSION( >=, 010600 )
 
     %rename( incompressible_turbulenceModel ) Foam::incompressible::turbulenceModel;
     
@@ -102,15 +102,6 @@
     }
 
 #endif
-
-
-
-//--------------------------------------------------------------------------
-
-
-
-//---------------------------------------------------------------------------
-
 
 
 //---------------------------------------------------------------------------

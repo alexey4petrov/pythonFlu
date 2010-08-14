@@ -32,7 +32,7 @@
 %{
     #include "List.H"
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
     #include "SortableList.H"
 #endif
 %}

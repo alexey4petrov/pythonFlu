@@ -42,7 +42,7 @@
 %ignore Foam::PtrList< Foam::porousZone >::end;
 %ignore Foam::PtrList< Foam::porousZone >::set;
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
 %ignore Foam::PtrList< Foam::porousZone >::xfer;
 #endif
 
