@@ -49,7 +49,7 @@
 {
   TYPEINFO_EXTENDS( polyMesh, fvMesh );
   OBJECTREGISTRY_EXTENDS( fvMesh );
-  
+  ISINSTANCE_EXTEND( Foam::fvMesh );
 }
 
 

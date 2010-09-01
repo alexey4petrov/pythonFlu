@@ -37,6 +37,8 @@
 
 %include "src/OpenFOAM/fields/tmp/tmp.cxx"
 
+%include "ext/common/ext_tmp.hxx"
+
 
 //---------------------------------------------------------------------------
 %define NO_TMP_TYPEMAP_FIELD( Field_Type )
@@ -46,7 +48,8 @@
     void *ptr;
     int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::Field_Type * ), 0 );
     int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::Field_Type > * ), 0 );
-    $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 );
+    int res_ext_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::ext_tmp< Foam::Field_Type > * ), 0 );
+    $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( res_ext_tmpT );
 }
 
 %typemap( in ) const Foam::Field_Type& 
@@ -64,10 +67,14 @@
       Foam::tmp<Foam::Field_Type >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::Field_Type > * );
       $1 = tmp_res->operator->();
       } else {
+      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::ext_tmp< Foam::Field_Type >* ), %convertptr_flags );
+      if ( SWIG_IsOK( res ) && argp ) { Foam::ext_tmp< Foam::Field_Type >* tmp_res =%reinterpret_cast( argp, Foam::ext_tmp< Foam::Field_Type > * );
+      $1 = tmp_res->operator->();
+      } else {
         %argument_fail( res, "$type", $symname, $argnum );
         }
     }
- 
+ }
 }    
 %enddef
 
@@ -100,6 +107,14 @@
   {
     return theArg * get_ref( self );
   }
+  Foam::tmp< Foam::Field< Foam::Type > > __mul__( const Foam::Field< Foam::scalar >& theArg)
+  {
+    return get_ref( self ) * theArg;
+  }
+  Foam::tmp< Foam::Field< Foam::Type > > __rmul__( const Foam::Field< Foam::scalar >& theArg)
+  {
+    return theArg * get_ref( self );
+  }
   Foam::tmp< Foam::Field< Foam::Type > > __add__( const Foam::Field< Foam::Type >& theArg)
   {
     return get_ref( self ) + theArg;
@@ -120,6 +135,35 @@
   Foam::tmp< Foam::Field< Type > > __div__( const Foam::Field< scalar >& theArg )
   {
     return  get_ref( self ) / theArg; 
+  }
+  
+  Foam::tmp< Foam::Field< Foam::scalar > > mag()
+  {
+    return Foam::mag( get_ref( self ) );
+  }
+  Foam::tmp< Foam::Field< Foam::scalar > > magSqr()
+  {
+    return Foam::magSqr( get_ref( self ) );
+  }
+  Foam::Type gSum()
+  {
+    return Foam::gSum( get_ref( self ) );
+  }
+  Foam::Type gMin()
+  {
+    return Foam::gMin( get_ref( self ) );
+  }
+  Foam::Type gMax()
+  {
+    return Foam::gMax( get_ref( self ) );
+  }
+  Foam::Type gAverage()
+  {
+    return Foam::gAverage( get_ref( self ) );
+  }
+  Foam::Type max()
+  {
+    return Foam::max( get_ref( self ) );
   }
 }
 %enddef
@@ -147,35 +191,11 @@
   {
     return new Foam::Field< Foam::Type >( keyword, dict, size );
   }
+  Foam::Field< Foam::Type >( const Foam::Field< Foam::Type >& theField )
+  {
+    return new Foam::Field< Foam::Type >( theField );
+  }
 
-  Foam::tmp< Foam::Field< Foam::scalar > > mag()
-  {
-    return Foam::mag( *self );
-  }
-  Foam::tmp< Foam::Field< Foam::scalar > > magSqr()
-  {
-    return Foam::mag( *self );
-  }
-  Foam::Type gSum()
-  {
-    return Foam::gSum( *self );
-  }
-  Foam::Type gMin()
-  {
-    return Foam::gMin( *self );
-  }
-  Foam::Type gMax()
-  {
-    return Foam::gMax( *self );
-  }
-  Foam::Type gAverage()
-  {
-    return Foam::gAverage( *self );
-  }
-  Foam::Type max()
-  {
-    return Foam::max( *self );
-  }
 }
 %enddef
 
@@ -194,6 +214,7 @@ NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
 
 %extend Foam::Field< Foam::Type >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
 %extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+%extend Foam::ext_tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
 
 %include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
@@ -202,28 +223,8 @@ NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
 %enddef
 
 //--------------------------------------------------------------------------
-%define __SCALAR_FIELD_TEMPLATE_OPERATOR__( Type )
-{
-  Foam::tmp< Foam::Field< Foam::Type > > __mul__( const Foam::Field< Foam::Type >& theArg)
-  {
-    return get_ref( self ) * theArg;
-  }
-  Foam::tmp< Foam::Field< Foam::Type > > __div__( const Foam::Field< Foam::Type >& theArg)
-  {
-    return get_ref( self ) / theArg;
-  }
-}
-
-%enddef
-
-
-//--------------------------------------------------------------------------
 %define SCALAR_FIELD_TEMPLATE_FUNC
-
 FIELD_TEMPLATE_FUNC( scalar );
-%extend Foam::Field< Foam::scalar >__SCALAR_FIELD_TEMPLATE_OPERATOR__( scalar )
-%extend Foam::tmp< Foam::Field< Foam::scalar > >__SCALAR_FIELD_TEMPLATE_OPERATOR__( scalar )
-
 %enddef
 
 //---------------------------------------------------------------------------
@@ -242,6 +243,10 @@ FIELD_TEMPLATE_FUNC( scalar );
     return theArg & get_ref( self );
   }
   Foam::tmp< Foam::Field< Foam::scalar > > __and__( const Foam::Field< Foam::vector >& theArg )
+  {
+    return  get_ref( self ) & theArg; 
+  }
+  Foam::tmp< Foam::Field< Foam::vector > > __and__( const Foam::Field< Foam::tensor >& theArg )
   {
     return  get_ref( self ) & theArg; 
   }
@@ -266,6 +271,10 @@ FIELD_TEMPLATE_FUNC( vector );
   Foam::tmp< Foam::Field< Foam::tensor > > ext_T()
   {
     return self->T();
+  }
+  Foam::tmp< Foam::Field< Foam::scalar > > tr()
+  {
+    return Foam::tr( *self );
   }
 } 
 %enddef

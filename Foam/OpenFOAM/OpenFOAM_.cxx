@@ -78,6 +78,8 @@
 %include "src/OpenFOAM/db/regIOobject.cxx"
 %include "src/OpenFOAM/db/Time/Time.cxx"
 
+%include "src/OpenFOAM/fields/tmp/autoPtr_IOdictionary.cxx"
+
 %include "src/OpenFOAM/dimensionSet.cxx"
 %include "src/OpenFOAM/dimensionSets.cxx"
 %include "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"

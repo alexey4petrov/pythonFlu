@@ -36,6 +36,7 @@
 %include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.cxx"
 %include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.cxx"
 
+%include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.cxx"
 
 //----------------------------------------------------------------------------
 %ignore Foam::fv::multivariateGaussConvectionScheme< Foam::scalar >::multivariateGaussConvectionScheme;

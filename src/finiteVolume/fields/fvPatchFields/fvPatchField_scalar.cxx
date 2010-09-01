@@ -36,6 +36,8 @@
 
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 
+%include "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.cxx"
+
 %ignore Foam::fvPatchField< Foam::scalar >::typeName;
 %ignore Foam::fvPatchField< Foam::scalar >::debug;
 %ignore Foam::fvPatchField< Foam::scalar >::snGrad;

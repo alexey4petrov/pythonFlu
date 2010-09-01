@@ -52,7 +52,6 @@ def CourantNo_010500_dev( mesh, phi, runTime ):
     meanCoNum = 0.0
     velMag = 0.0
     
-    print "010500_dev"
     if mesh.nInternalFaces() :
         from Foam import fvc
         SfUfbyDelta = mesh.deltaCoeffs()*phi.mag()

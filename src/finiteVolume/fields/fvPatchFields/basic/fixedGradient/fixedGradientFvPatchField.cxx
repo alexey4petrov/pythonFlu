@@ -47,6 +47,12 @@
     return self->snGrad()();
   }
 
+  Foam::Field< Type >& ext_gradientBoundaryCoeffs()
+  {
+    return self->gradientBoundaryCoeffs()();
+  }
+
+
 %enddef
 
 

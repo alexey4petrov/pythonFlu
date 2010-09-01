@@ -54,6 +54,7 @@
 
 //---------------------------------------------------------------------------
 %ignore Foam::fixedGradientFvPatchField< Foam::vector >::snGrad;
+%ignore Foam::fixedGradientFvPatchField< Foam::vector >::gradientBoundaryCoeffs;
 
 DIRECTOR_PRE_EXTENDS( fixedGradientFvPatchVectorField );
 

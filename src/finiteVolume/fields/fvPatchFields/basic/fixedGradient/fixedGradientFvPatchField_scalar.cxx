@@ -52,6 +52,7 @@
 
 //---------------------------------------------------------------------------
 %ignore Foam::fixedGradientFvPatchField< Foam::scalar >::snGrad;
+%ignore Foam::fixedGradientFvPatchField< Foam::scalar >::gradientBoundaryCoeffs;
 
 DIRECTOR_PRE_EXTENDS( fixedGradientFvPatchScalarField );
 

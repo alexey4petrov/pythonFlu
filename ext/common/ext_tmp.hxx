@@ -25,8 +25,10 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%{
+#include "tmp.H"
+#include "autoPtr.H" 
+%}
 
 
 //---------------------------------------------------------------------------
