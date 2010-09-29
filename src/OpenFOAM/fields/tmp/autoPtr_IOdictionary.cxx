@@ -29,7 +29,7 @@
 
 %include "src/OpenFOAM/db/IOdictionary.cxx"
 
-BAREPTR_TYPEMAP( Foam::IOdictionary );
+AUTOPTR_TYPEMAP( Foam::IOdictionary );
 
 %ignore Foam::autoPtr< Foam::IOdictionary >::operator->;
 
