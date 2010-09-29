@@ -66,23 +66,7 @@ __FOAM_VERSION__ CMP VERSION
 
 
 //---------------------------------------------------------------------------
-%define BAREPTR_TYPEMAP( Type )
-
-%typemap( in ) Type* ( void  *argp = 0, int check = 0, Type* result ) 
-{
-  check = SWIG_ConvertPtr( $input, &argp, $descriptor( Type * ), SWIG_POINTER_DISOWN | %convertptr_flags );
-  if ( SWIG_IsOK( check ) && argp ) {
-    result = %reinterpret_cast( argp, Type * );
-    // "Director" derived classes need special care
-    if ( Swig::Director *director = SWIG_DIRECTOR_CAST( result ) ) {
-      PyObject_CallMethod( director->swig_get_self(), (char *) "__disown__", NULL );
-    }
-  }
-  $1 = result;
-}
-
-%enddef
-
+%include "src/bareptr_typemap.hxx"
 
 //---------------------------------------------------------------------------
 %define COMMON_EXTENDS
@@ -98,80 +82,8 @@ __FOAM_VERSION__ CMP VERSION
 
 
 //---------------------------------------------------------------------------
-// To support native Python of iteration over containers
-%inline
-%{
-  namespace Foam
-  {
-    struct TStopIterationException
-    {};
+%include "src/iterators.hxx"
 
-    template< class TContainer >
-    struct TContainer_iterator
-    {
-      typedef typename TContainer::reference TReturnType;
-
-      TContainer_iterator( TContainer& the_Container )
-        : m_container( the_Container )
-        , m_iter( the_Container.begin() )
-      {}
-
-      TReturnType __iter__()
-      {
-        return *(this->m_iter++);
-      }
-
-      TReturnType next() throw( const TStopIterationException& )
-      {
-        if ( this->m_iter != m_container.end() )
-          return this->__iter__();
-        
-        throw TStopIterationException();
-      }
-
-    private :
-      TContainer& m_container;
-      typename TContainer::iterator m_iter;
-    };
-
-
-    template< class TPtrContainer >
-    struct TPtrContainer_iterator
-    {
-      typedef typename TPtrContainer::value_type TReturnType;
-
-      TPtrContainer_iterator( TPtrContainer& the_Container )
-        : m_container( the_Container )
-        , m_iter( the_Container.begin() )
-      {}
-
-      TReturnType __iter__()
-      {
-        return *(this->m_iter++);
-      }
-
-      TReturnType next() throw( const TStopIterationException& )
-      {
-        if ( this->m_iter != m_container.end() )
-          return this->__iter__();
-        
-        throw TStopIterationException();
-      }
-
-    private :
-      TPtrContainer& m_container;
-      typename TPtrContainer::iterator m_iter;
-    };
-  }
-%}
-
-%typemap(throws) const Foam::TStopIterationException& %{
-  PyErr_SetString( PyExc_StopIteration, "out of range" );
-  SWIG_fail;
-%}
-
-
-//---------------------------------------------------------------------------
 %include "src/isinstance.hxx"
 
 %include "src/compound_operator.hxx"
