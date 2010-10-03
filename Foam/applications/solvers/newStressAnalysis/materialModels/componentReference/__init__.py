@@ -29,7 +29,8 @@
 
 
 #--------------------------------------------------------------------------------
-class componentReference:
+from Foam.template import PtrList_TypeBase
+class componentReference( PtrList_TypeBase ):
     def __init__( self, *args ):
         #- Construct from components
         try:
@@ -120,7 +121,7 @@ class componentReference:
         except TypeError:
             raise AssertionError( "args[ argc ].__class__ != dictionary" )
         dict_ = args[ argc ]
-        
+        PtrList_TypeBase.__init__( self )
         from Foam.OpenFOAM import polyPatchID, word, readLabel, readScalar
         self.patchID_ = polyPatchID( dict_.lookup( word( "patch" ) ), mesh.boundaryMesh() )
         self.faceIndex_ = readLabel( dict_.lookup( word( "face" ) ) )
@@ -147,24 +148,31 @@ class componentReference:
         
         
     #------------------------------------------------------------------------------    
-    class iNew:
+    from Foam.template import PtrList_INewBase
+    class iNew( PtrList_INewBase ):
         def __init__( self, mesh_ ):
             from Foam.finiteVolume import fvMesh
             try:
                fvMesh.ext_isinstance( mesh_ )
             except TypeError:
                raise AssertionError( "args[ argc ].__class__ != fvMesh" )
-       
+            from Foam.template import PtrList_INewBase
+            PtrList_INewBase.__init__( self )
             self.mesh_ = mesh_
+            pass
 
 
     #---------------------------------------------------------------------------------
         def __call__(self, is_):
-             
-           from Foam.OpenFOAM import dictionary
-           crDict = dictionary(is_)
-       
-           return componentReference( self.mesh_, crDict )
+           try:
+              from Foam.OpenFOAM import dictionary
+              crDict = dictionary(is_)
+              from Foam.template import autoPtr_PtrList_TypeHolder
+              return autoPtr_PtrList_TypeHolder( componentReference( self.mesh_, crDict ) )
+           except Exception:
+              import sys, traceback
+              traceback.print_exc( file = sys.stdout )
+              pass
     #---------------------------------------------------------------------------------
     
     #- Create direction given a name
@@ -233,7 +241,7 @@ class componentReference:
     #--------------------------------------------------------------------------------
     #- Return value
     def value( self ):
-        return self. value_
+        return self.value_
 
 
 #------------------------------------------------------------------------------------
