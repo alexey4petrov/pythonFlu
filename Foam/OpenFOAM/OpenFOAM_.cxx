@@ -116,6 +116,7 @@
 %include "src/OpenFOAM/fields/tmp/autoPtr_UniformDimensionedVectorField.cxx" 
 %include "src/OpenFOAM/containers/Lists/PtrList/PtrList_UniformDimensionedVectorField.cxx"
 %include "src/OpenFOAM/containers/Lists/PtrList/PtrList_entry.cxx"
+%include "src/OpenFOAM/containers/Lists/PtrList/genericPtrList/PtrList_generic.cxx"
 
 %include "/src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.cxx"
 
