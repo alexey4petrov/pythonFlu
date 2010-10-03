@@ -217,6 +217,11 @@ __SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.4.1-dev
 
 
 #--------------------------------------------------------------------------------------------
+__CPPFLAGS__ := $(__CPPFLAGS__) \
+	-I$(PYFOAM_ROOT_DIR)/src/OpenFOAM/containers/Lists/PtrList/genericPtrList
+
+
+#--------------------------------------------------------------------------------------------
 __SWIG_INCLUDES__ += $(__CPPFLAGS__)
 
 __SWIG_FLAGS__ = -python -c++ -MD -D__restrict__ -D__CINT__ $(GFLAGS) $(__SWIG_INCLUDES__)

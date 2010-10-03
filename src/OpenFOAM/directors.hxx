@@ -31,6 +31,8 @@
    #include "Time.H"
    #include "regIOobject.H"
    #include "IOdictionary.H"
+   #include "PtrList_GenericType.H"
+   #include "PtrList_GenericINew.H"
 %}
 
 
