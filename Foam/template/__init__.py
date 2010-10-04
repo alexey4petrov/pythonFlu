@@ -159,4 +159,6 @@ def getfvPatchFieldConstructorToTableBase_vector() :
 #-------------------------------------------------------------------------------------------
 from Foam.template.PtrList import *
 
-from Foam.OpenFOAM import genericPtrList, PtrList_INewHolder, PtrList_INewBase, PtrList_TypeHolder, PtrList_TypeBase, autoPtr_PtrList_TypeHolder
+from Foam.OpenFOAM import PtrList_INewHolder, PtrList_INewBase, PtrList_TypeHolder, PtrList_TypeBase, autoPtr_PtrList_TypeHolder
+
+from Foam.OpenFOAM import PtrList_generic as PtrList

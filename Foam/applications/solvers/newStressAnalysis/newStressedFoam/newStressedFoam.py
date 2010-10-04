@@ -79,8 +79,8 @@ def readStressedFoamControls( mesh):
 #    from Foam.template import PtrList
 #    cr = PtrList( componentReference )( stressControl.lookup( word( "componentReference" ) ), componentReference.iNew(mesh) )
     
-    from Foam.template import genericPtrList
-    cr = genericPtrList( stressControl.lookup( word( "componentReference" ) ), componentReference.iNew(mesh) )
+    from Foam.template import PtrList
+    cr = PtrList( stressControl.lookup( word( "componentReference" ) ), componentReference.iNew(mesh) )
     
     return stressControl, nCorr, convergenceTolerance, cr
 
