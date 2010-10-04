@@ -29,26 +29,25 @@
 
 namespace Foam
 {
- struct PtrList_INewBase
- {
-      PtrList_INewBase() {}
-      virtual autoPtr<PtrList_TypeHolder> operator()( Istream & is ) const  = 0;
-      virtual ~PtrList_INewBase(){}
- };
+  struct PtrList_INewBase
+  {
+     PtrList_INewBase() {}
+     virtual autoPtr<PtrList_TypeHolder> operator()( Istream & is ) const  = 0;
+     virtual ~PtrList_INewBase(){}
+  };
 
-
- struct PtrList_INewHolder: PtrList_INewBase
- {
-        PtrList_INewHolder( PtrList_INewBase* the_PtrList_INewBase ): m_engine( the_PtrList_INewBase ){};
-        PtrList_INewHolder(){};
-        virtual autoPtr< PtrList_TypeHolder > operator()( Istream& is ) const
-        {
-          return this->m_engine->operator()( is );
-        };
-        PtrList_INewBase* operator->() 
-        {
-          return this->m_engine;
-        }
+  struct PtrList_INewHolder: PtrList_INewBase
+  {
+     PtrList_INewHolder( PtrList_INewBase* the_PtrList_INewBase ): m_engine( the_PtrList_INewBase ){};
+     PtrList_INewHolder(){};
+     virtual autoPtr< PtrList_TypeHolder > operator()( Istream& is ) const
+     {
+        return this->m_engine->operator()( is );
+     };
+     PtrList_INewBase* operator->() 
+     {
+        return this->m_engine;
+     }
      private :
         PtrList_INewBase* m_engine;
   }; 

@@ -41,10 +41,10 @@
 
 //---------------------------------------------------------------------------
 %{
-#include "PtrList_GenericINew.H"
+#include "src/OpenFOAM/containers/Lists/PtrList/genericPtrList/PtrList_GenericINew.H"
 %}
 
-%include "PtrList_GenericINew.H" 
+%include "src/OpenFOAM/containers/Lists/PtrList/genericPtrList/PtrList_GenericINew.H" 
 
 
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::PtrList_INewHolder&

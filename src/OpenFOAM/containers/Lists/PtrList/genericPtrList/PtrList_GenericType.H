@@ -35,49 +35,29 @@ namespace Foam
   struct PtrList_TypeHolder;
   struct PtrList_TypeBase    
   {
-      PtrList_TypeBase() {}
-      virtual autoPtr<PtrList_TypeHolder>  clone() = 0;
-      virtual label patchIndex() = 0;
-      virtual label faceIndex() = 0;
-      virtual direction dir() = 0;
-      virtual double value() = 0;
-      virtual ~PtrList_TypeBase() {}
+     PtrList_TypeBase() {}
+     virtual autoPtr<PtrList_TypeHolder>  clone() = 0;
+     virtual ~PtrList_TypeBase() {}
   };
 
   struct PtrList_TypeHolder : PtrList_TypeBase
   {
-        PtrList_TypeHolder( PtrList_TypeBase* the_PtrList_TypeBase ): m_engine( the_PtrList_TypeBase )
-        {};
-        PtrList_TypeHolder(){}
-        
-        virtual autoPtr< PtrList_TypeHolder > clone()
-        {
-          return this->m_engine->clone() ;
-        }       
-        PtrList_TypeBase* operator->() 
-        {
-          return this->m_engine;
-        }
-        PtrList_TypeBase* getBase() 
-        {
-          return this->m_engine;
-        }
-        virtual label patchIndex()
-        {
-          return this->m_engine->patchIndex();
-        }
-        virtual label faceIndex()
-        {
-         return this->m_engine->faceIndex();
-        }
-        virtual direction dir()
-        {
-         return this->m_engine->dir();
-        }
-        virtual double value()
-        {
-         return this->m_engine->value();
-        }
+     PtrList_TypeHolder( PtrList_TypeBase* the_PtrList_TypeBase ): m_engine( the_PtrList_TypeBase )
+     {};
+     PtrList_TypeHolder(){}
+       
+     virtual autoPtr< PtrList_TypeHolder > clone()
+     {
+        return this->m_engine->clone() ;
+     }       
+     PtrList_TypeBase* operator->() 
+     {
+        return this->m_engine;
+     }
+     PtrList_TypeBase* base() 
+     {
+        return this->m_engine;
+     }
      private :
         PtrList_TypeBase* m_engine;
   };

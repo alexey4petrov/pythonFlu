@@ -35,6 +35,7 @@
 %include "src/OpenFOAM/primitives/label.cxx"
 %include "src/OpenFOAM/primitives/scalar.cxx"
 
+%include "src/redirect2base.hxx"
 
 //---------------------------------------------------------------------------
 %feature( "director" ) PtrList_TypeBase;
@@ -45,10 +46,22 @@ BAREPTR_TYPEMAP( Foam::PtrList_TypeBase );
 
 //---------------------------------------------------------------------------
 %{
-#include "PtrList_GenericType.H"
+#include "src/OpenFOAM/containers/Lists/PtrList/genericPtrList/PtrList_GenericType.H"
 %}
 
-%include "PtrList_GenericType.H"
+
+%include "src/OpenFOAM/containers/Lists/PtrList/genericPtrList/PtrList_GenericType.H"
+
+
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::PtrList_TypeHolder::REDIRECT2BASE_PYAPPEND_GETATTR( PtrList_TypeHolder );
+
+%extend Foam::PtrList_TypeHolder
+{
+   REDIRECT2BASE_EXTEND_ATTR( PtrList_TypeHolder );
+}
+
+
 
 //---------------------------------------------------------------------------
 %typecheck( SWIG_TYPECHECK_POINTER ) Foam::PtrList_TypeHolder * 
