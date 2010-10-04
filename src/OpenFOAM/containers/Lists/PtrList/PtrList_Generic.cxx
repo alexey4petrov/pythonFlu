@@ -26,8 +26,8 @@
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
-%include "src/OpenFOAM/containers/Lists/PtrList/genericPtrList/PtrList_GenericType.cxx"
-%include "src/OpenFOAM/containers/Lists/PtrList/genericPtrList/PtrList_GenericINew.cxx"
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.cxx"
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.cxx"
 
 %ignore Foam::PtrList< Foam::PtrList_TypeHolder >::begin;
 %ignore Foam::PtrList< Foam::PtrList_TypeHolder >::end;
