@@ -20,46 +20,40 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IOdictionary_cxx
-#define IOdictionary_cxx
+#ifndef PtrList_GenericINew_H
+#define PtrList_GenericINew_H
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+#include "PtrList_GenericType.H"
 
-%include "src/OpenFOAM/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/regIOobject.cxx"
-
-%include "src/OpenFOAM/db/dictionary/dictionary.cxx"
-
-%include "src/OpenFOAM/db/objectRegistry.cxx"
-
-%{
-    #include "IOdictionary.H"
-%}
-
-
-//---------------------------------------------------------------------------
-%feature( "director" ) IOdictionary;
-
-DIRECTOR_PRE_EXTENDS( IOdictionary );
-
-
-//---------------------------------------------------------------------------
-%include "IOdictionary.H"
-
-
-//---------------------------------------------------------------------------
-%extend Foam::IOdictionary
+namespace Foam
 {
-  DIRECTOR_EXTENDS( IOdictionary );
+  struct PtrList_INewBase
+  {
+     PtrList_INewBase() {}
+     virtual autoPtr<PtrList_TypeHolder> operator()( Istream & is ) const  = 0;
+     virtual ~PtrList_INewBase(){}
+  };
+
+  struct PtrList_INewHolder: PtrList_INewBase
+  {
+     PtrList_INewHolder( PtrList_INewBase* the_PtrList_INewBase ): m_engine( the_PtrList_INewBase ){};
+     PtrList_INewHolder(){};
+     virtual autoPtr< PtrList_TypeHolder > operator()( Istream& is ) const
+     {
+        return this->m_engine->operator()( is );
+     };
+     PtrList_INewBase* operator->() 
+     {
+        return this->m_engine;
+     }
+     private :
+        PtrList_INewBase* m_engine;
+  }; 
 }
 
 
 //---------------------------------------------------------------------------
-BAREPTR_TYPEMAP( Foam::IOdictionary );
-
 #endif
+

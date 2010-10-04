@@ -76,10 +76,12 @@ def readStressedFoamControls( mesh):
     convergenceTolerance = readScalar(stressControl.lookup( word( "U" ) ) )
     
     from Foam.applications.solvers.newStressAnalysis.materialModels.componentReference import componentReference
-    from Foam.template import PtrList
+#    from Foam.template import PtrList
+#    cr = PtrList( componentReference )( stressControl.lookup( word( "componentReference" ) ), componentReference.iNew(mesh) )
     
-    cr = PtrList( componentReference )( stressControl.lookup( word( "componentReference" ) ), componentReference.iNew(mesh) )
-
+    from Foam.template import PtrList
+    cr = PtrList( stressControl.lookup( word( "componentReference" ) ), componentReference.iNew(mesh) )
+    
     return stressControl, nCorr, convergenceTolerance, cr
 
 

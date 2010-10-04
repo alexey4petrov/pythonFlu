@@ -20,46 +20,50 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IOdictionary_cxx
-#define IOdictionary_cxx
+#ifndef PtrList_GenericType_H
+#define PtrList_GenericType_H
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+#include "Istream.H"
+#include "refCount.H"
+#include "direction.H"
+#include "scalar.H"
 
-%include "src/OpenFOAM/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/regIOobject.cxx"
-
-%include "src/OpenFOAM/db/dictionary/dictionary.cxx"
-
-%include "src/OpenFOAM/db/objectRegistry.cxx"
-
-%{
-    #include "IOdictionary.H"
-%}
-
-
-//---------------------------------------------------------------------------
-%feature( "director" ) IOdictionary;
-
-DIRECTOR_PRE_EXTENDS( IOdictionary );
-
-
-//---------------------------------------------------------------------------
-%include "IOdictionary.H"
-
-
-//---------------------------------------------------------------------------
-%extend Foam::IOdictionary
+namespace Foam
 {
-  DIRECTOR_EXTENDS( IOdictionary );
+  struct PtrList_TypeHolder;
+  struct PtrList_TypeBase    
+  {
+     PtrList_TypeBase() {}
+     virtual autoPtr<PtrList_TypeHolder>  clone() = 0;
+     virtual ~PtrList_TypeBase() {}
+  };
+
+  struct PtrList_TypeHolder : PtrList_TypeBase
+  {
+     PtrList_TypeHolder( PtrList_TypeBase* the_PtrList_TypeBase ): m_engine( the_PtrList_TypeBase )
+     {};
+     PtrList_TypeHolder(){}
+       
+     virtual autoPtr< PtrList_TypeHolder > clone()
+     {
+        return this->m_engine->clone() ;
+     }       
+     PtrList_TypeBase* operator->() 
+     {
+        return this->m_engine;
+     }
+     PtrList_TypeBase* base() 
+     {
+        return this->m_engine;
+     }
+     private :
+        PtrList_TypeBase* m_engine;
+  };
 }
 
 
 //---------------------------------------------------------------------------
-BAREPTR_TYPEMAP( Foam::IOdictionary );
-
 #endif
+
