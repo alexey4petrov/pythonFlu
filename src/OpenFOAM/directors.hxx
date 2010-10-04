@@ -31,8 +31,8 @@
    #include "Time.H"
    #include "regIOobject.H"
    #include "IOdictionary.H"
-   #include "src/OpenFOAM/containers/Lists/PtrList/genericPtrList/PtrList_GenericType.H"
-   #include "src/OpenFOAM/containers/Lists/PtrList/genericPtrList/PtrList_GenericINew.H"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.H"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.H"
 %}
 
 
