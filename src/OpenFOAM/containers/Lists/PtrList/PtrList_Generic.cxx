@@ -36,7 +36,7 @@
 %ignore Foam::PtrList< Foam::PtrList_TypeHolder >::xfer;
 
 
-%template( PtrList_generic ) Foam::PtrList< Foam::PtrList_TypeHolder >;
+%template( PtrList_Generic ) Foam::PtrList< Foam::PtrList_TypeHolder >;
 
 %template ( TContainer_PtrList_TypeHolder ) Foam::TContainer_iterator< Foam::PtrList< Foam::PtrList_TypeHolder > >;
 
