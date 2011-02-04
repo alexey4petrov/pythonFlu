@@ -95,7 +95,9 @@ AC_OUTPUT( [ bashrc \
 	     Foam/applications/utilities/postProcessing/graphics/Makefile \
 	     Foam/applications/utilities/mesh/conversion/Makefile \
 	     EFoam/pbmr/diffusion/Makefile \
-	     EFoam/common/shared_ptr/Makefile ] )
+	     EFoam/common/shared_ptr/Makefile \
+	     make-deb.sh ] )
 
 
 echo "------------------------------------ OK -----------------------------------------"
+chmod 755 make-deb.sh
