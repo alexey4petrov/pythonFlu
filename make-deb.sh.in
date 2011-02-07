@@ -71,6 +71,13 @@ cp ${template_folder}/Makefile ${package_folder}
 dh_make -s -c gpl -createorig --templates ${template_folder} -p ${package_name}
 
 
+#--------------------------------------------------------------------------------------
+#replace readme and copyrights
+cp -f ${curr_folder}/README ${package_folder}/debian/README.Debian
+cp -f ${curr_folder}/README ${package_folder}/debian/README.source
+cp -f ${curr_folder}/deb-template/copyright ${package_folder}/debian/
+
+
 #---------------------------------------------------------------------------------------
 #create package
 echo "create package"
