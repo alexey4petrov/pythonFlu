@@ -29,6 +29,9 @@ export DEBFULLNAME="Alexey Petrov"
 
 
 #--------------------------------------------------------------------------------------
+#read build option "-S" -source, "-b" binary
+build_option=$1
+
 foam_fork="@FOAM_BRANCH@"
 foam_version=`echo ${WM_PROJECT_VERSION} | sed  -e"s%\([0-9\.]\+\)-[a-z]*%\1%g"`
 
@@ -53,13 +56,16 @@ pgp_key_id="7533E278"
 #--------------------------------------------------------------------------------------
 # Prepare folder for deb-packaging and copy folder "Foam" to it 
 install -d ${package_folder}
+echo "--------------------------------------------------------------------------------"
 echo "Copying \"Foam\" to ${package_folder}"
+echo "--------------------------------------------------------------------------------"
 cp -rf Foam ${package_folder}
 
 
 #--------------------------------------------------------------------------------------
 #remove all unnecessary from the ${package_folder}
 echo "cleaning cxx, h, o, etc..."
+echo "--------------------------------------------------------------------------------"
 (cd ${package_folder} && find \( -name "*.cxx" -o -name "*.h" -o -name "*.d" -o -name "pyfoam" \) -delete)
 (cd ${package_folder} && find \( -name "*.h" -o -name "*_" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
 (cd ${package_folder} && find ./ -name ".svn" -exec rm -rf {} \; 2>/dev/null)
@@ -68,7 +74,9 @@ echo "cleaning cxx, h, o, etc..."
 #--------------------------------------------------------------------------------------
 #create folder debian with control,changelog, etc files
 echo "create debian folder and all necessary files( control, changelog etc ) in it "
+echo "--------------------------------------------------------------------------------"
 cp ${template_folder}/Makefile ${package_folder}
+cp ${curr_folder}/changelog deb-template/
 (cd ${package_folder} && dh_make -s -c gpl -createorig --templates ${template_folder} -p ${package_name})
 
 
@@ -82,4 +90,5 @@ cp -f ${curr_folder}/deb-template/copyright ${package_folder}/debian/
 #---------------------------------------------------------------------------------------
 #create package
 echo "create package"
-(cd ${package_folder} && dpkg-buildpackage -rfakeroot -k${pgp_key_id} -S)
+echo "--------------------------------------------------------------------------------"
+(cd ${package_folder} && dpkg-buildpackage -rfakeroot -k${pgp_key_id} ${build_option})
