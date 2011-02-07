@@ -38,8 +38,10 @@ if [ "x${foam_fork}" = "x" ]; then
 fi
 
 foam_build="@FOAM_PACKAGE_BUILD@"
+pythonflu_version=@PACKAGE_VERSION@
+
 package_version=` echo ${foam_build} | awk "-F~" '{print $1}'`
-package_version=${foam_version}-${package_version}
+package_version=${foam_version}-${package_version}-${pythonflu_version}
 
 curr_folder=@abs_top_builddir@
 package_folder=${curr_folder}/${package_name}-${package_version}
@@ -57,18 +59,17 @@ cp -rf Foam ${package_folder}
 
 #--------------------------------------------------------------------------------------
 #remove all unnecessary from the ${package_folder}
-cd ${package_folder}
 echo "cleaning cxx, h, o, etc..."
-find \( -name "*.cxx" -o -name "*.h" -o -name "*.d" -o -name "pyfoam" \) -delete
-find \( -name "*.h" -o -name "*_" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete
-find ./ -name ".svn" -exec rm -rf {} \; 2>/dev/null
+(cd ${package_folder} && find \( -name "*.cxx" -o -name "*.h" -o -name "*.d" -o -name "pyfoam" \) -delete)
+(cd ${package_folder} && find \( -name "*.h" -o -name "*_" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
+(cd ${package_folder} && find ./ -name ".svn" -exec rm -rf {} \; 2>/dev/null)
 
 
 #--------------------------------------------------------------------------------------
 #create folder debian with control,changelog, etc files
 echo "create debian folder and all necessary files( control, changelog etc ) in it "
 cp ${template_folder}/Makefile ${package_folder}
-dh_make -s -c gpl -createorig --templates ${template_folder} -p ${package_name}
+(cd ${package_folder} && dh_make -s -c gpl -createorig --templates ${template_folder} -p ${package_name})
 
 
 #--------------------------------------------------------------------------------------
@@ -81,4 +82,4 @@ cp -f ${curr_folder}/deb-template/copyright ${package_folder}/debian/
 #---------------------------------------------------------------------------------------
 #create package
 echo "create package"
-dpkg-buildpackage -rfakeroot -k${pgp_key_id} -S
+(cd ${package_folder} && dpkg-buildpackage -rfakeroot -k${pgp_key_id} -S)
