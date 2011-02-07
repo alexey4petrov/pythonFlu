@@ -102,8 +102,9 @@ AC_OUTPUT( [ bashrc \
 	     EFoam/common/shared_ptr/Makefile \
 	     make-deb.sh \
 	     deb-template/control \
-	     deb-template/changelog ] )
+	     deb-template/changelog ],
+	     [ chmod 755 make-deb.sh ] )
 
 
 echo "------------------------------------ OK -----------------------------------------"
-chmod 755 make-deb.sh
+
