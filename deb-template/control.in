@@ -7,7 +7,7 @@ Standards-Version: #POLICY#
 Homepage: http://sourceforge.net/projects/pythonflu/
 
 Package: #PACKAGE#
-Architecture: @ARCHITECTURE@
+Architecture: @OS_ARCHITECTURE@
 Depends: ${shlibs:Depends}, ${misc:Depends}, @FOAM_PACKAGE_NAME@ (= @FOAM_PACKAGE_BUILD@)
 Description: #PACKAGE#
 
