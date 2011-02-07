@@ -74,4 +74,4 @@ dh_make -s -c gpl -createorig --templates ${template_folder} -p ${package_name}
 #---------------------------------------------------------------------------------------
 #create package
 echo "create package"
-dpkg-buildpackage -rfakeroot -k${pgp_key_id}
+dpkg-buildpackage -rfakeroot -k${pgp_key_id} -S
