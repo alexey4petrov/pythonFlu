@@ -1,0 +1,13 @@
+Source: #PACKAGE#
+Section: science
+Priority: extra
+Maintainer: #USERNAME# <#EMAIL#>
+Build-Depends: #BUILD_DEPS#
+Standards-Version: #POLICY#
+Homepage: http://sourceforge.net/projects/pythonflu/
+
+Package: #PACKAGE#
+Architecture: amd64
+Depends: ${shlibs:Depends}, ${misc:Depends}, openfoam-dev-1.5 (= 1726-1ppa2~lucid1)
+Description: #PACKAGE#
+
