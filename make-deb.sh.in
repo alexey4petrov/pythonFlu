@@ -29,17 +29,17 @@ export DEBFULLNAME="Alexey Petrov"
 
 
 #--------------------------------------------------------------------------------------
-# Prepare folder for deb-packaging and copy folder "Foam" to it 
 foam_fork="@FOAM_BRANCH@"
 foam_version=`echo ${WM_PROJECT_VERSION} | sed  -e"s%\([0-9\.]\+\)-[a-z]*%\1%g"`
 
-package_name="pythonflu-${foam_fork}-${foam_version}"
+package_name="pythonflu-${foam_fork}"
 if [ "x${foam_fork}" = "x" ]; then
-   package_name="pythonflu-${foam_version}"
+   package_name="pythonflu"
 fi
 
 foam_build="@FOAM_PACKAGE_BUILD@"
 package_version=` echo ${foam_build} | awk "-F~" '{print $1}'`
+package_version=${foam_version}-${package_version}
 
 curr_folder=@abs_top_builddir@
 package_folder=${curr_folder}/${package_name}-${package_version}
@@ -48,6 +48,8 @@ template_folder=${curr_folder}/deb-template
 pgp_key_id="7533E278"
 
 
+#--------------------------------------------------------------------------------------
+# Prepare folder for deb-packaging and copy folder "Foam" to it 
 install -d ${package_folder}
 echo "Copying \"Foam\" to ${package_folder}"
 cp -rf Foam ${package_folder}
