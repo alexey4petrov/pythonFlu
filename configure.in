@@ -100,7 +100,9 @@ AC_OUTPUT( [ bashrc \
 	     Foam/applications/utilities/mesh/conversion/Makefile \
 	     EFoam/pbmr/diffusion/Makefile \
 	     EFoam/common/shared_ptr/Makefile \
-	     make-deb.sh ] )
+	     make-deb.sh \
+	     deb-template/control \
+	     deb-template/changelog ] )
 
 
 echo "------------------------------------ OK -----------------------------------------"
