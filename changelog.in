@@ -1,0 +1,26 @@
+#PACKAGE# (#VERSION#-1) @OS_CODENAME@; urgency=high
+
+  * Binary package preparation
+
+ -- #USERNAME# <#EMAIL#>  #DATE#
+
+pythonflu (7.2-1) lucid; urgency=high
+ 
+  * Adjusting to the "common configuration system" (confFoam package)
+  
+ -- Alexey PETROV <Alexey.Petrov@pbmr.co.za> 2010-04-04 
+ 
+pythonflu (7.0-1) lucid; urgency=high
+
+  * Introduction of 'hybrid scripting' capabilities
+  
+ -- Alexey PETROV <Alexey.Petrov@pbmr.co.za> 2009-04-15
+ 
+pythonflu (6.4-1) lucid; urgency=high
+
+  * Initial stable realese
+  
+ -- Alexey PETROV <Alexey.Petrov@pbmr.co.za> 2009-03-30
+
+
+
