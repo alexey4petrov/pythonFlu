@@ -76,16 +76,18 @@ echo "--------------------------------------------------------------------------
 echo "create debian folder and all necessary files( control, changelog etc ) in it "
 echo "--------------------------------------------------------------------------------"
 cp ${template_folder}/Makefile ${package_folder}
-cp ${curr_folder}/changelog deb-template/
-(cd ${package_folder} && dh_make -s -c gpl -createorig --templates ${template_folder} -p ${package_name})
+cp ${curr_folder}/ChangeLog deb-template/changelog
+(cd ${package_folder} && ../silent_dh_make.sh ${template_folder} ${package_name}) 
+echo "--------------------------------------------------------------------------------"
 
 
 #--------------------------------------------------------------------------------------
 #replace readme and copyrights
+echo "copying readme and copyrights"
 cp -f ${curr_folder}/README ${package_folder}/debian/README.Debian
 cp -f ${curr_folder}/README ${package_folder}/debian/README.source
 cp -f ${curr_folder}/deb-template/copyright ${package_folder}/debian/
-
+echo "--------------------------------------------------------------------------------"
 
 #---------------------------------------------------------------------------------------
 #create package
