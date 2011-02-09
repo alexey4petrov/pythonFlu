@@ -37,7 +37,9 @@ pythonflu_version=@PACKAGE_VERSION@
 
 package_name="pythonflu${foam_package_suffix}"
 
-package_version=${pythonflu_version}-${our_build}
+build_version=@BUILD_VERSION@
+
+package_version=${pythonflu_version}-${build_version}
 
 curr_folder=@abs_top_builddir@
 package_folder=${curr_folder}/${package_name}-${package_version}
