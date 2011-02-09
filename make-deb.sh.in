@@ -32,19 +32,12 @@ export DEBFULLNAME="Alexey Petrov"
 #read build option "-S" -source, "-b" binary
 build_option=$1
 
-foam_fork="@FOAM_BRANCH@"
-foam_version=`echo ${WM_PROJECT_VERSION} | sed  -e"s%\([0-9\.]\+\)-[a-z]*%\1%g"`
-
-package_name="pythonflu-${foam_fork}"
-if [ "x${foam_fork}" = "x" ]; then
-   package_name="pythonflu"
-fi
-
-foam_build="@FOAM_PACKAGE_BUILD@"
+foam_package_suffix=`echo "@FOAM_PACKAGE_NAME@" | sed 's/openfoam//'`
 pythonflu_version=@PACKAGE_VERSION@
 
-package_version=` echo ${foam_build} | awk "-F~" '{print $1}'`
-package_version=${foam_version}-${package_version}-${pythonflu_version}
+package_name="pythonflu${foam_package_suffix}"
+
+package_version=${pythonflu_version}-${our_build}
 
 curr_folder=@abs_top_builddir@
 package_folder=${curr_folder}/${package_name}-${package_version}
@@ -77,7 +70,7 @@ echo "create debian folder and all necessary files( control, changelog etc ) in 
 echo "--------------------------------------------------------------------------------"
 cp ${template_folder}/Makefile ${package_folder}
 cp ${curr_folder}/ChangeLog deb-template/changelog
-(cd ${package_folder} && ../silent_dh_make.sh ${template_folder} ${package_name}) 
+( cd ${package_folder} && ../silent_dh_make.sh ${template_folder} ${package_name} )
 echo "--------------------------------------------------------------------------------"
 
 
