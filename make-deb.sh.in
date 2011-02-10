@@ -45,7 +45,7 @@ curr_folder=@abs_top_builddir@
 package_folder=${curr_folder}/${package_name}-${package_version}
 template_folder=${curr_folder}/deb-template
 
-pgp_key_id="7533E278"
+pgp_key_id=@PGP_KEY_ID@
 
 
 #--------------------------------------------------------------------------------------
@@ -88,4 +88,10 @@ echo "--------------------------------------------------------------------------
 #create package
 echo "create package"
 echo "--------------------------------------------------------------------------------"
-(cd ${package_folder} && dpkg-buildpackage -rfakeroot -k${pgp_key_id} ${build_option})
+
+pgp_key_option="-k${pgp_key_id}"
+if [ "x${pgp_key_id}" = "x" ];then
+   pgp_option=""
+fi
+
+(cd ${package_folder} && dpkg-buildpackage -rfakeroot ${pgp_key_option} ${build_option})
