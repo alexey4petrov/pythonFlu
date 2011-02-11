@@ -29,6 +29,22 @@ export DEBFULLNAME="Alexey Petrov"
 
 
 #--------------------------------------------------------------------------------------
+silent_dh_make()
+{
+template_folder=$1
+package_name=$2
+
+expect  <<EOD
+spawn dh_make -s -createorig -c gpl --templates ${template_folder} -p ${package_name}
+expect "Hit <enter> to confirm:"
+send "\r"
+wait 10
+expect eof
+EOD
+}
+
+
+#--------------------------------------------------------------------------------------
 # read build option "-S" -source, "-b" binary
 build_option=$1
 
@@ -76,7 +92,7 @@ echo "create debian folder and all necessary files( control, changelog etc ) in 
 echo "--------------------------------------------------------------------------------"
 cp ${template_folder}/Makefile ${package_folder}
 cp ${curr_folder}/ChangeLog deb-template/changelog
-( cd ${package_folder} && ../silent_dh_make.sh ${template_folder} ${package_name} )
+( cd ${package_folder} && silent_dh_make ${template_folder} ${package_name} )
 echo "--------------------------------------------------------------------------------"
 
 
@@ -88,6 +104,7 @@ cp -f ${curr_folder}/README ${package_folder}/debian/README.source
 cp -f ${curr_folder}/deb-template/copyright ${package_folder}/debian/
 echo "--------------------------------------------------------------------------------"
 
+
 #---------------------------------------------------------------------------------------
 # create package
 echo "create package"
@@ -95,7 +112,10 @@ echo "--------------------------------------------------------------------------
 
 pgp_key_option="-k${pgp_key_id}"
 if [ "x${pgp_key_id}" = "x" ];then
-   pgp_option=""
+   pgp_key_option=""
 fi
 
 ( cd ${package_folder} && dpkg-buildpackage -rfakeroot ${pgp_key_option} ${build_option} )
+
+
+#---------------------------------------------------------------------------------------
