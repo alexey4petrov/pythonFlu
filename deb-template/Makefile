@@ -27,7 +27,7 @@ PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python2.6/dist-packages/
 
 dirs := $(shell ls Foam/applications/solvers -F | grep / | sed 's/\///g')
 
-solvers_template :=  $(addsuffix /*Foam.py, $(addprefix Foam/applications/solvers/, $(dirs)))
+solvers_template :=  $(addsuffix /*Flu.py, $(addprefix Foam/applications/solvers/, $(dirs)))
 
 solvers := $(wildcard $(solvers_template) )
 
