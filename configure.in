@@ -33,6 +33,18 @@ AM_INIT_AUTOMAKE([tar-pax -Wno-portability])
 
 
 echo "--------------------------------------------------------------------------------------"
+CONFFOAM_CHECK_OS
+echo 
+
+echo "--------------------------------------------------------------------------------------"
+CONFFOAM_CHECK_BUILD_VERSION1
+echo 
+
+echo "--------------------------------------------------------------------------------------"
+CONFFOAM_CHECK_PGP_KEY_ID
+echo 
+
+echo "--------------------------------------------------------------------------------------"
 CONFFOAM_CHECK_OPENFOAM
 echo 
 
@@ -95,7 +107,12 @@ AC_OUTPUT( [ bashrc \
 	     Foam/applications/utilities/postProcessing/graphics/Makefile \
 	     Foam/applications/utilities/mesh/conversion/Makefile \
 	     EFoam/pbmr/diffusion/Makefile \
-	     EFoam/common/shared_ptr/Makefile ] )
+	     EFoam/common/shared_ptr/Makefile \
+	     make-deb.sh \
+	     deb-template/control \
+	     ChangeLog ],
+	     [ chmod 755 make-deb.sh ] )
 
 
 echo "------------------------------------ OK -----------------------------------------"
+

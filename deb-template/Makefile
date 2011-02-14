@@ -15,31 +15,31 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ## 
 ## See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
-
-## ------------------------------------------------------------------------------
 ##
-## Changes are listed by modification time in the descending order,
-## i.e. newer changes are listed at the top of the file.
+## Author : Alexey PETROV
 ##
-## Each record lists the modification date, author and short description of
-## the made changes.
-##
-## ------------------------------------------------------------------------------
 
-2009-03-30 Alexey PETROV <Alexey.Petrov@pbmr.co.za>
 
-    * Initial stable realese
+#--------------------------------------------------------------------------------------
+DESTDIR=
+PYTHON_FLU_BIN=$(DESTDIR)/usr/local/bin
+PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python2.6/dist-packages/
 
-2009-04-15 Alexey PETROV <Alexey.Petrov@pbmr.co.za>
+dirs := $(shell ls Foam/applications/solvers -F | grep / | sed 's/\///g')
 
-    * Introduction of 'hybrid scripting' capabilities
+solvers_template :=  $(addsuffix /*Flu.py, $(addprefix Foam/applications/solvers/, $(dirs)))
 
-2010-03-19 Alexey PETROV <Alexey.Petrov@pbmr.co.za>
+solvers := $(wildcard $(solvers_template) )
 
-    * Advancing the wrapping technic & wrapping the missed functionality
+solvers_in_lib := $(addprefix $(PYTHON_FLU_LIB), $(solvers))
 
-2010-04-04 Alexey PETROV <Alexey.Petrov@pbmr.co.za>
+install: $(PYTHON_FLU_LIB)/Foam
+	@ echo "That's all"
 
-    * Adjusting to the "common configuration system" (confFoam package)
-
-	
+$(PYTHON_FLU_LIB)/Foam: 
+	@ install -d $(PYTHON_FLU_LIB)
+	@ cp -rf Foam $(PYTHON_FLU_LIB)/
+	@ install -d $(PYTHON_FLU_BIN)
+	@ install -m 755 $(solvers) $(PYTHON_FLU_BIN)
+	@ rm -f $(solvers_in_lib)
+      	
