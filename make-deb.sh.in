@@ -117,5 +117,13 @@ fi
 
 ( cd ${package_folder} && dpkg-buildpackage -rfakeroot ${pgp_key_option} ${build_option} )
 
+if [ "${build_option}" = "-S" ]; then 
+   echo "--------------------------------------------------------------------------------"
+   echo "upload to launchpad"
+   echo "--------------------------------------------------------------------------------"
+   changes_file="${package_name}_${package_version}-1_source.changes"
+   dput ppa:flu-team/@OS_ARCHITECTURE@ ${changes_file}
+fi
+
 
 #---------------------------------------------------------------------------------------

@@ -42,4 +42,11 @@ $(PYTHON_FLU_LIB)/Foam:
 	@ install -d $(PYTHON_FLU_BIN)
 	@ install -m 755 $(solvers) $(PYTHON_FLU_BIN)
 	@ rm -f $(solvers_in_lib)
-      	
+	@ solvers_=`ls $(PYTHON_FLU_BIN)/*Flu.py`; \
+	  for solver in $$solvers_; do \
+	      solver_basename=`basename $$solver `; \
+	      new_solver_name=`basename $$solver .py`;  \
+	      ( cd $(PYTHON_FLU_BIN) && mv $$solver_basename $$new_solver_name ); \
+	  done; \
+
+#--------------------------------------------------------------------------------------     	
