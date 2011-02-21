@@ -166,44 +166,51 @@ def main_standalone( argc, argv ):
 
     from Foam.OpenFOAM.include import createMesh
     mesh = createMesh( runTime )
-
-    p, U, phi, turbulence, pRefCell, pRefValue, laminarTransport = _createFields( runTime, mesh )
     
-    from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
-    cumulativeContErr = initContinuityErrs()
-
-    from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() << "\nStarting time loop\n" <<nl
-    
-    runTime += runTime.deltaT()    
-    
-    while not runTime.end():
-        ext_Info() << "Time = " << runTime.timeName() << nl << nl
-
-        from Foam.finiteVolume.cfdTools.general.include import readSIMPLEControls
-        simple, nNonOrthCorr, momentumPredictor, transonic = readSIMPLEControls( mesh )
+    def runSeparateNamespace( runTime, mesh ):
+        p, U, phi, turbulence, pRefCell, pRefValue, laminarTransport = _createFields( runTime, mesh )
         
-        eqnResidual, maxResidual, convergenceCriterion = initConvergenceCheck( simple )
+        from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
+        cumulativeContErr = initContinuityErrs()
+        
+        from Foam.OpenFOAM import ext_Info, nl
+        ext_Info() << "\nStarting time loop\n" <<nl
+        
+        runTime += runTime.deltaT()
+        
+        while not runTime.end():
+            ext_Info() << "Time = " << runTime.timeName() << nl << nl
+
+            from Foam.finiteVolume.cfdTools.general.include import readSIMPLEControls
+            simple, nNonOrthCorr, momentumPredictor, transonic = readSIMPLEControls( mesh )
+        
+            eqnResidual, maxResidual, convergenceCriterion = initConvergenceCheck( simple )
                 
-        p.storePrevIter()
+            p.storePrevIter()
         
-        UEqn, eqnResidual, maxResidual = Ueqn( phi, U, p, turbulence, eqnResidual, maxResidual )
+            UEqn, eqnResidual, maxResidual = Ueqn( phi, U, p, turbulence, eqnResidual, maxResidual )
         
-        eqnResidual, maxResidual, cumulativeContErr = pEqn( runTime, mesh, p, phi, U, UEqn, \
-                                                            eqnResidual, maxResidual, nNonOrthCorr, cumulativeContErr, pRefCell, pRefValue )
+            eqnResidual, maxResidual, cumulativeContErr = pEqn( runTime, mesh, p, phi, U, UEqn, \
+                                                                eqnResidual, maxResidual, nNonOrthCorr, cumulativeContErr, pRefCell, pRefValue )
         
-        turbulence.correct()
+            turbulence.correct()
 
-        runTime.write();
+            runTime.write();
         
-        ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
-              "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
+            ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
+                   "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
         
-        convergenceCheck( maxResidual, convergenceCriterion ) 
+            convergenceCheck( maxResidual, convergenceCriterion ) 
         
-        runTime +=runTime.deltaT()
-        pass
+            runTime +=runTime.deltaT()
+            pass
         
+        
+        #--------------------------------------------------------------------------------------
+    
+    runSeparateNamespace( runTime, mesh )
+    
+    from Foam.OpenFOAM import ext_Info, nl    
     ext_Info() << "End\n" << nl 
 
     import os
@@ -213,18 +220,18 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 import os, sys
 from Foam import FOAM_VERSION
-if FOAM_VERSION( ">=", "010700" ):
+if FOAM_VERSION( ">=", "010701" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.7.0', 'incompressible', 'simpleFoam', 'pitzDaily' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.7.0', 'incompressible', 'simpleFoam', 'pitzDailyExptInlet' )
          argv = [ __file__, "-case", test_dir ]
          pass
       os._exit( main_standalone( len( argv ), argv ) )
 else:
    from Foam.OpenFOAM import ext_Info
-   ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.7.0 \n "   
+   ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.7.1 \n "   
 
    
 
