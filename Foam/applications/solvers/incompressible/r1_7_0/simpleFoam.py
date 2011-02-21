@@ -213,7 +213,7 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 import os, sys
 from Foam import FOAM_VERSION
-if FOAM_VERSION( ">=", "010700" ):
+if FOAM_VERSION( "==", "010700" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
