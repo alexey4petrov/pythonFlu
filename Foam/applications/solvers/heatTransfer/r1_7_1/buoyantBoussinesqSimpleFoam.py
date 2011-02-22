@@ -93,6 +93,15 @@ def createFields( runTime, mesh, g ):
                                      mesh ),
                            1.0 - beta * ( T - TRef ) )
     
+    # kinematic turbulent thermal thermal conductivity m2/s
+    ext_Info() << "Reading field kappat\n" << nl
+    kappat = volScalarField( IOobject( word( "kappat" ),
+                                       fileName( runTime.timeName() ),
+                                       mesh,
+                                       IOobject.MUST_READ,
+                                       IOobject.AUTO_WRITE ),
+                             mesh )
+    
     ext_Info() << "Calculating field g.h\n" << nl
     gh = volScalarField( word( "gh" ), g & mesh.C() )
     from Foam.finiteVolume import surfaceScalarField
@@ -117,7 +126,7 @@ def createFields( runTime, mesh, g ):
        p.ext_assign( p + dimensionedScalar( word( "p" ), p.dimensions(), pRefValue - getRefCellValue( p, pRefCell) ) )
        pass
     
-    return T, p, p_rgh, U, phi, laminarTransport, gh, ghf, TRef,Pr, Prt, turbulence, beta, pRefCell, pRefValue, rhok
+    return T, p, p_rgh, U, phi, laminarTransport, gh, ghf, TRef,Pr, Prt, turbulence, beta, pRefCell, pRefValue, rhok, kappat
 
 
 #--------------------------------------------------------------------------------------
@@ -148,11 +157,15 @@ def fun_UEqn( phi, U, p_rgh, turbulence, mesh, ghf, rhok, eqnResidual, maxResidu
 
 
 #--------------------------------------------------------------------------------------
-def fun_TEqn( turbulence, phi, T, rhok, beta, TRef, Pr, Prt, eqnResidual, maxResidual ):
+def fun_TEqn( turbulence, phi, T, rhok, beta, TRef, Pr, Prt, kappat, eqnResidual, maxResidual ):
     from Foam.OpenFOAM import word
     from Foam.finiteVolume import volScalarField
+    
+    kappat.ext_assign( turbulence.ext_nut() / Prt )
+    kappat.correctBoundaryConditions()
+
     kappaEff = volScalarField( word( "kappaEff" ),
-                               turbulence.nu() / Pr + turbulence.ext_nut() / Prt )
+                               turbulence.nu() / Pr + kappat )
 
     from Foam import fvc, fvm
     TEqn = fvm.div( phi, T ) - fvm.Sp( fvc.div( phi ), T ) - fvm.laplacian( kappaEff, T ) 
@@ -259,44 +272,49 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM.include import createMesh
     mesh = createMesh( runTime )
 
-    from Foam.finiteVolume.cfdTools.general.include import readGravitationalAcceleration
-    g = readGravitationalAcceleration( runTime, mesh)
-    
-    T, p, p_rgh, U, phi, laminarTransport, gh, ghf, TRef,Pr, Prt, turbulence, beta, pRefCell, pRefValue, rhok = createFields( runTime, mesh, g )
-    
-    from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
-    cumulativeContErr = initContinuityErrs()
-
-    from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() << "\nStarting time loop\n" <<nl
-    
-    while runTime.loop():
-        ext_Info() << "Time = " << runTime.timeName() << nl << nl
-
-        from Foam.finiteVolume.cfdTools.general.include import readSIMPLEControls
-        simple, nNonOrthCorr, momentumPredictor, transonic = readSIMPLEControls( mesh )
+    def runSeparateNamespace( runTime, mesh ):
+        from Foam.finiteVolume.cfdTools.general.include import readGravitationalAcceleration
+        g = readGravitationalAcceleration( runTime, mesh)
         
-        eqnResidual, maxResidual, convergenceCriterion = initConvergenceCheck( simple )
+        T, p, p_rgh, U, phi, laminarTransport, gh, ghf, TRef,Pr, Prt, turbulence, beta, pRefCell, pRefValue, rhok, kappat = createFields( runTime, mesh, g )
+        
+        from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
+        cumulativeContErr = initContinuityErrs()
+        
+        from Foam.OpenFOAM import ext_Info, nl
+        ext_Info() << "\nStarting time loop\n" <<nl
+        
+        while runTime.loop():
+            ext_Info() << "Time = " << runTime.timeName() << nl << nl
+ 
+            from Foam.finiteVolume.cfdTools.general.include import readSIMPLEControls
+            simple, nNonOrthCorr, momentumPredictor, transonic = readSIMPLEControls( mesh )
+        
+            eqnResidual, maxResidual, convergenceCriterion = initConvergenceCheck( simple )
                 
-        p_rgh.storePrevIter()
+            p_rgh.storePrevIter()
         
-        UEqn, eqnResidual, maxResidual = fun_UEqn( phi, U, p_rgh, turbulence, mesh, ghf, rhok, eqnResidual, maxResidual, momentumPredictor )
+            UEqn, eqnResidual, maxResidual = fun_UEqn( phi, U, p_rgh, turbulence, mesh, ghf, rhok, eqnResidual, maxResidual, momentumPredictor )
         
-        TEqn, kappaEff = fun_TEqn( turbulence, phi, T, rhok, beta, TRef, Pr, Prt, eqnResidual, maxResidual )
-        eqnResidual, maxResidual, cumulativeContErr = fun_pEqn( runTime, mesh, p, p_rgh, phi, U, UEqn, ghf, gh, rhok, eqnResidual, \
-                                                            maxResidual, nNonOrthCorr, cumulativeContErr, pRefCell, pRefValue )
+            TEqn, kappaEff = fun_TEqn( turbulence, phi, T, rhok, beta, TRef, Pr, Prt, kappat, eqnResidual, maxResidual )
+            
+            eqnResidual, maxResidual, cumulativeContErr = fun_pEqn( runTime, mesh, p, p_rgh, phi, U, UEqn, ghf, gh, rhok, eqnResidual, \
+                                                                   maxResidual, nNonOrthCorr, cumulativeContErr, pRefCell, pRefValue )
         
-        turbulence.correct()
+            turbulence.correct()
 
-        runTime.write()
+            runTime.write()
         
-        ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
-              "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
+            ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
+                          "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
         
-        convergenceCheck( maxResidual, convergenceCriterion ) 
+            convergenceCheck( maxResidual, convergenceCriterion ) 
         
-        pass
-        
+            pass
+    
+    runSeparateNamespace( runTime, mesh )    
+    
+    from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "End\n" << nl 
 
     import os
@@ -306,12 +324,12 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 from Foam import FOAM_VERSION
 import sys, os
-if FOAM_VERSION( ">=", "010700" ):
+if FOAM_VERSION( ">=", "010701" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated','r1.7.0', 'heatTransfer', 'buoyantBoussinesqSimpleFoam', 'iglooWithFridges' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated','r1.7.1', 'heatTransfer', 'buoyantBoussinesqSimpleFoam', 'iglooWithFridges' )
          argv = [ __file__, "-case", test_dir ]
          pass
       os._exit( main_standalone( len( argv ), argv ) )
