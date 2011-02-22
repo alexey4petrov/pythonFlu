@@ -26,7 +26,7 @@
 #--------------------------------------------------------------------------------------
 import sys, os
 from Foam import FOAM_VERSION
-if FOAM_VERSION( ">=", "010600" ):
+if FOAM_VERSION( "==", "010600" ) or FOAM_VERSION( "==", "010700" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len(argv) > 1 and argv[ 1 ] == "-test":
@@ -42,7 +42,7 @@ if FOAM_VERSION( ">=", "010600" ):
    pass   
 else:
    from Foam.OpenFOAM import ext_Info
-   ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.6 or higher\n "
+   ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.6 or 1.7.0\n "
    
 
 
