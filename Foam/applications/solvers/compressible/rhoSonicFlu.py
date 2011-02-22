@@ -181,14 +181,14 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 import sys, os
 from Foam import FOAM_VERSION
-if FOAM_VERSION( "<", "010600" ):
+if FOAM_VERSION( "<", "010600" ) or FOAM_VERSION( ">", "010700" ):
    from Foam.OpenFOAM import ext_Info
-   ext_Info() << "\n\n To use this solver it is necessary to SWIG OpenFOAM-1.6 or higher\n"
+   ext_Info() << "\n\n To use this solver it is necessary to SWIG OpenFOAM-1.6 or 1.7.0\n"
    pass
 
 
 #--------------------------------------------------------------------------------------
-if FOAM_VERSION( "==", "010600" ):
+if FOAM_VERSION( "==", "010600" ) or FOAM_VERSION( "==", "010700" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len(argv) > 1 and argv[ 1 ] == "-test":
@@ -202,18 +202,3 @@ if FOAM_VERSION( "==", "010600" ):
 
     
 #--------------------------------------------------------------------------------------
-if FOAM_VERSION( ">=", "010700" ):
-   if __name__ == "__main__" :
-      argv = sys.argv
-      if len(argv) > 1 and argv[ 1 ] == "-test":
-         argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6', 'compressible', 'rhoSonicFoam', 'forwardStep' )
-         argv = [ __file__, "-case", test_dir ]
-         pass
-      os._exit( main_standalone( len( argv ), argv ) )
-      pass
-   pass   
-
-    
-#--------------------------------------------------------------------------------------
-
