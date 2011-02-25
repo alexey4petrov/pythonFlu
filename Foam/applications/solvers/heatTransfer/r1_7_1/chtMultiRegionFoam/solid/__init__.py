@@ -123,13 +123,12 @@ def solidRegionDiffNo( mesh, runTime, Cprho, K ):
     DiNum = 0.0
     meanDiNum = 0.0
 
-    #- Can have fluid domains with 0 cells so do not test.
-    if mesh.nInternalFaces():
-       from Foam import fvc
-       KrhoCpbyDelta = mesh.deltaCoeffs() * fvc.interpolate( K ) / fvc.interpolate(Cprho);
-       DiNum = KrhoCpbyDelta.internalField().max() * runTime.deltaT().value()
-       meanDiNum = KrhoCpbyDelta.average().value() * runTime.deltaT().value()
-       pass
+    #- Take care: can have fluid domains with 0 cells so do not test for
+    #  zero internal faces.
+    from Foam import fvc
+    KrhoCpbyDelta = mesh.deltaCoeffs() * fvc.interpolate( K ) / fvc.interpolate(Cprho);
+    DiNum = KrhoCpbyDelta.internalField().gMax() * runTime.deltaT().value()
+    meanDiNum = KrhoCpbyDelta.average().value() * runTime.deltaT().value()
     
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "Region: " << mesh.name() << " Diffusion Number mean: " << meanDiNum << " max: " << DiNum << nl

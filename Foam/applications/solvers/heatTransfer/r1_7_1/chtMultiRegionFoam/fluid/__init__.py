@@ -66,8 +66,8 @@ def createFluidFields( fluidRegions, runTime ) :
     from Foam.compressible import PtrList_compressible_turbulenceModel
     turbulence = PtrList_compressible_turbulenceModel( fluidRegions.size() ) 
     
-    from Foam.thermophysicalModels import PtrList_basicPsiThermo
-    thermoFluid = PtrList_basicPsiThermo( fluidRegions.size() ) 
+    from Foam.thermophysicalModels import PtrList_basicRhoThermo
+    thermoFluid = PtrList_basicRhoThermo( fluidRegions.size() ) 
     
     p_rghFluid = PtrList_volScalarField( fluidRegions.size() )
     
@@ -87,9 +87,9 @@ def createFluidFields( fluidRegions, runTime ) :
 
         ext_Info()<< "    Adding to thermoFluid\n" << nl
         
-        from Foam.thermophysicalModels import autoPtr_basicPsiThermo, basicPsiThermo
+        from Foam.thermophysicalModels import autoPtr_basicRhoThermo, basicRhoThermo
  
-        thermo= basicPsiThermo.New( fluidRegions[ index ] )
+        thermo= basicRhoThermo.New( fluidRegions[ index ] )
         thermoFluid.ext_set( index, thermo )
         
         ext_Info()<< "    Adding to rhoFluid\n" << nl
@@ -327,6 +327,12 @@ def fun_pEqn( i, mesh, p, rho, turb, thermo, thermoFluid, K, UEqn, U, phi, psi, 
               nNonOrthCorr, oCorr, nOuterCorr, corr, nCorr, cumulativeContErr ) :
     
     closedVolume = p_rgh.needReference()
+    
+    from Foam import fvc
+    compressibility = fvc.domainIntegrate( psi )
+    
+    from Foam.OpenFOAM import SMALL
+    compressible = ( compressibility.value() > SMALL )
 
     rho.ext_assign( thermo.rho() )
     
@@ -346,14 +352,25 @@ def fun_pEqn( i, mesh, p, rho, turb, thermo, thermoFluid, K, UEqn, U, phi, psi, 
                       fvc.ddtPhiCorr( rUA, rho, U, phi ) ) )
     phi.ext_assign( phiU - rhorUAf * ghf * fvc.snGrad( rho ) * mesh.magSf() )
     from Foam import fvm
+    
+    from Foam.finiteVolume import correction
+    p_rghDDtEqn = fvc.ddt( rho ) + psi * correction( fvm.ddt( p_rgh ) ) + fvc.div( phi )
+    
+    # Thermodynamic density needs to be updated by psi*d(p) after the
+    # pressure solution - done in 2 parts. Part 1:
+    thermo.rho().ext_assign( thermo.rho() - psi * p_rgh )
+
     for nonOrth in range ( nNonOrthCorr + 1 ):
-        p_rghEqn = ( fvm.ddt( psi, p_rgh) + fvc.ddt( psi, rho ) * gh + fvc.div( phi ) - fvm.laplacian( rhorUAf, p_rgh ) )
-        p_rghEqn.solve( mesh.solver( p_rgh.select( ( oCorr == nOuterCorr-1 and corr == ( nCorr-1 ) and nonOrth == nNonOrthCorr ) ) ) )
+        p_rghEqn = p_rghDDtEqn - fvm.laplacian( rhorUAf, p_rgh )
+        p_rghEqn.solve( mesh.solver( p_rgh.select( ( oCorr == nOuterCorr-1 and corr == nCorr-1 and nonOrth == nNonOrthCorr ) ) ) )
         
         if nonOrth == nNonOrthCorr :
-            phi.ext_assign( phi + p_rghEqn.flux() )
-            pass
+           phi.ext_assign( phi + p_rghEqn.flux() )
+           pass
         pass
+    
+    # Second part of thermodynamic density update
+    thermo.rho().ext_assign( thermo.rho() + psi * p_rgh )
     
     # Correct velocity field
     U.ext_assign( U + rUA * fvc.reconstruct( ( phi - phiU ) / rhorUAf ) )
@@ -373,8 +390,8 @@ def fun_pEqn( i, mesh, p, rho, turb, thermo, thermoFluid, K, UEqn, U, phi, psi, 
     
     # For closed-volume cases adjust the pressure and density levels
     # to obey overall mass continuity
-    if closedVolume :
-       p.ext_assign( p + ( initialMass - fvc.domainIntegrate( psi * p ) ) / fvc.domainIntegrate( psi ) )
+    if closedVolume and compressible:
+       p.ext_assign( p + ( initialMass - fvc.domainIntegrate( thermo.rho() ) ) / compressibility )
        rho.ext_assign( thermo.rho() )
        p_rgh.ext_assign( p - rho * gh )
        pass
