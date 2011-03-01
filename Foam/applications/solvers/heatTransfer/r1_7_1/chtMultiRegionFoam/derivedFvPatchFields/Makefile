@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-
-#--------------------------------------------------------------------------------------
 ## VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
 ## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 ## 
@@ -24,25 +21,9 @@
 
 
 #--------------------------------------------------------------------------------------
-import sys, os
-from Foam import FOAM_VERSION
-if FOAM_VERSION( ">=", "010600" ):
-   if __name__ == "__main__" :
-      argv = sys.argv
-      if len(argv) > 1 and argv[ 1 ] == "-test":
-         argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6', 'compressible', 'rhopSonicFoam', 'shockTube' )
-         argv = [ __file__, "-case", test_dir ]
-         pass
-      from Foam.applications.solvers.compressible.r1_6.rhopSonicFoam.solver import main_standalone
-      os._exit( main_standalone( len( argv ), argv ) )
-      pass
-   else:
-      from Foam.applications.solvers.compressible.r1_6.rhopSonicFoam.solver import *
-   pass   
-else:
-   from Foam.OpenFOAM import ext_Info
-   ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.6 or higher\n "
-   
+pyfoam_root_dir:=../../../../../../..
+
+include $(pyfoam_root_dir)/include.makefile
 
 
+#--------------------------------------------------------------------------------------

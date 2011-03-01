@@ -180,40 +180,12 @@ $(RECURSIVE_CLEAN_TARGETS):
 #--------------------------------------------------------------------------------------
 __SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/local/r$(WM_PROJECT_VERSION)
 
-ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010700 ]; then echo 'true'; else echo 'false'; fi )" "true"
+__HEADER_PATH_SUFFIXES__ := @HEADER_PATHS@
 
-   ifeq "$(shell if [ x${__FOAM_BRANCH__} != x ]; then echo 'true'; else echo 'false'; fi )" "true" 
-   __SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.7.0-${__FOAM_BRANCH__}
-   endif
+__HEADER_PATHS__ := $(foreach path,$(__HEADER_PATH_SUFFIXES__),$(addprefix -I$(pyfoam_root_dir),$(path)))
 
-   __SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.7.0
-endif	
+__SWIG_INCLUDES__ += $(__HEADER_PATHS__)
 
-
-#-----------------------------------
-ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010600 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-
-   ifeq "$(shell if [ x${__FOAM_BRANCH__} != x ]; then echo 'true'; else echo 'false'; fi )" "true" 
-   __SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.6-${__FOAM_BRANCH__}
-   endif
-
-   __SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.6
-endif	
-
-
-#-----------------------------------
-ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-
-   ifeq "$(shell if [ x${__FOAM_BRANCH__} != x ]; then echo 'true'; else echo 'false'; fi )" "true" 
-   __SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.5-${__FOAM_BRANCH__}
-   endif
-
-   __SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.5
-endif	
-
-
-#-----------------------------------
-__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.4.1-dev
 
 
 #--------------------------------------------------------------------------------------------

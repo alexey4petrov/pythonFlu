@@ -60,6 +60,7 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -linterfaceProperties \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -ldynamicFvMesh	
 
+
 ifeq "$(shell if [ ${__FOAM_VERSION__} -le 010401 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleTurbulenceModels
 	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTurbulenceModels
@@ -83,6 +84,12 @@ ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010600 ]; then echo 'true'; else echo
 	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleLESModels	
 	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleRASModels		
 endif
+
+ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010701 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -ltwoPhaseInterfaceProperties
+endif
+
+
 
 #--------------------------------------------------------------------------------------
 include $(pyfoam_root_dir)/include.makefile
