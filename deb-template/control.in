@@ -9,6 +9,5 @@ Homepage: http://sourceforge.net/projects/pythonflu/
 Package: #PACKAGE#
 Architecture: @OS_ARCHITECTURE@
 Depends: ${shlibs:Depends}, ${misc:Depends}, @FOAM_PACKAGE_NAME@, python@PYTHON_VERSION@
-Description: Python wrapping for OpenFOAM (R) C++ API.
- pythonFlu is a Python front-end to the OpenFOAM (Open Source CFD Toolbox).pythonFlu intends to define a new level of flexibility and user interaction scenario for numerical simulation software
+Description: Python wrapping for OpenFOAM (R) C++ API
 
