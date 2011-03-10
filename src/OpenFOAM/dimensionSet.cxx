@@ -44,12 +44,12 @@
 
 %extend Foam::dimensionSet
 {
-  Foam::dimensionSet __div__( const const dimensionSet& ds2)
+  Foam::dimensionSet __div__( const const dimensionSet& ds2 )
   {
     return *self / ds2;
   }
   
-  Foam::dimensionSet __mul__( const dimensionSet& ds2)
+  Foam::dimensionSet __mul__( const dimensionSet& ds2 )
   {
     return *self * ds2;
   }
