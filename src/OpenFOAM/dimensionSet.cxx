@@ -25,9 +25,11 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.dimensionSet";
+
 %include "src/OpenFOAM/db/typeInfo/className.hxx"
 
-%include "src/OpenFOAM/primitives/scalar.cxx"
+%import "src/OpenFOAM/primitives/scalar.cxx"
 
 %{
     #include "dimensionSet.H"

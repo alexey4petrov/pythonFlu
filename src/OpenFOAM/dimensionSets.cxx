@@ -25,9 +25,12 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/dimensionSet.cxx"
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.dimensionSets";
+
+%import "src/OpenFOAM/dimensionSet.cxx"
 
 %{
+    #include "dimensionSet.H"
     #include "dimensionSets.H"
 %}
 
