@@ -25,8 +25,6 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) pyfoam;
-
 %feature( "director:except" ) 
 {
   if ( $error != NULL ) {
@@ -61,7 +59,6 @@
 
 %typemap( out ) Foam::Typename&
 {
-  Swig::Director *director = SWIG_DIRECTOR_CAST( $1 );
   if ( Swig::Director *director = SWIG_DIRECTOR_CAST( $1 ) ) {
     $result = director->swig_get_self();
     Py_INCREF( $result );

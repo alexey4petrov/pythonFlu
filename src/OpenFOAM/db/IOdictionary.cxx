@@ -27,6 +27,8 @@
 //---------------------------------------------------------------------------
 // Keep on corresponding "director" includes at the top of SWIG defintion file
 
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.IOdictionary";
+
 %include "src/OpenFOAM/directors.hxx"
 
 

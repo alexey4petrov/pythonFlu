@@ -27,6 +27,8 @@
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.dimensionSets";
 
+%include "src/OpenFOAM/db/typeInfo/className.hxx"
+
 %import "src/OpenFOAM/dimensionSet.cxx"
 
 %{
