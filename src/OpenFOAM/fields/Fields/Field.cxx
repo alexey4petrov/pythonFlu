@@ -216,7 +216,7 @@ NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
 %extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
 %extend Foam::ext_tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
 
-%include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::Field< Foam::Type > OSTREAM_EXTENDS;
 
