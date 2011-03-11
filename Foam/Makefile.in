@@ -58,6 +58,10 @@ endif
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010600 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/LES/LESdeltas/lnInclude
+	ifeq "x$(__FOAM_BRANCH__)" "xdev" 
+                __CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/dynamicMesh/dynamicFvMesh/lnInclude
+                __CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/dynamicMesh/dynamicMesh/lnInclude
+        endif
 endif	
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010700 ]; then echo 'true'; else echo 'false'; fi )" "true" 
@@ -72,8 +76,7 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lsampling \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTransportModels \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -linterfaceProperties \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -ldynamicFvMesh	
-
+	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -ldynamicFvMesh
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -le 010401 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleTurbulenceModels
