@@ -82,8 +82,6 @@ __FOAM_VERSION__ CMP VERSION
 
 
 //---------------------------------------------------------------------------
-%include "src/iterators.hxx"
-
 %include "src/isinstance.hxx"
 
 %include "src/compound_operator.hxx"
