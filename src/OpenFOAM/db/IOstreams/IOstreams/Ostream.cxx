@@ -25,11 +25,15 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.IOstreams.IOstreams.Ostream";
+
 %include "src/common.hxx"
 
-%include "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx"
 
-%include "src/OpenFOAM/primitives/scalar.cxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx"
+
+%import "src/OpenFOAM/primitives/scalar.cxx"
 
 %include "src/OpenFOAM/primitives/strings/keyType.cxx"
 

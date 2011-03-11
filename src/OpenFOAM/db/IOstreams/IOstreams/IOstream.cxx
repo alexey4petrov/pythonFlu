@@ -25,10 +25,13 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.IOstreams.IOstreams.IOstream";
+
 %include "src/common.hxx"
 
-//%include "bits/ios_base.h"
 
+//---------------------------------------------------------------------------
+//%include "bits/ios_base.h"
 %{
     #include "IOstream.H"
 
