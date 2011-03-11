@@ -23,6 +23,8 @@
 #ifndef refCount_cxx
 #define refCount_cxx
 
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.fields.tmp.refCount";
+
 
 //---------------------------------------------------------------------------
 %include "src/common.hxx"

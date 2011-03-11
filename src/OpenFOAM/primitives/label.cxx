@@ -25,6 +25,8 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.label";
+
 %include "src/common.hxx"
 
 %include "usr/include/c++/climits.cxx"

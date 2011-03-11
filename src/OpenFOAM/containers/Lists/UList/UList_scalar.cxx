@@ -23,10 +23,13 @@
 #ifndef UList_scalar_cxx
 #define UList_scalar_cxx
 
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.UList.UList_scalar";
+
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
-%include "src/OpenFOAM/primitives/scalar.cxx"
+
+%import "src/OpenFOAM/primitives/scalar.cxx"
 
 %template( UList_scalar ) Foam::UList< Foam::scalar >; 
 

@@ -25,7 +25,12 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/List/List_scalar.cxx"
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.Lists.scalarList";
+%include "src/common.hxx"
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/Lists/List/List_scalar.cxx"
 
 %{
     #include "scalarList.H"

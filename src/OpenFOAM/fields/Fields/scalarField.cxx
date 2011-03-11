@@ -23,22 +23,21 @@
 #ifndef scalarField_cxx
 #define scalarField_cxx
 
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.fields.Fields.scalarField.cxx";
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.fields.Fields.scalarField";
+%include "src/common.hxx"
 
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/Fields/Field.cxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
-
-%include "src/OpenFOAM/primitives/Lists/scalarList.cxx"
-
-
-//---------------------------------------------------------------------------
 %{
     #include "scalarField.H"
 %}
 
+%import "src/OpenFOAM/primitives/Lists/scalarList.cxx"
+
+
+//---------------------------------------------------------------------------
 %ignore Foam::Field< Foam::scalar >::typeName;
 %ignore Foam::Field< Foam::scalar >::Field;
 %ignore Foam::Field< Foam::scalar >::T;

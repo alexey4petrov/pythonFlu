@@ -23,6 +23,8 @@
 #ifndef polyMesh_cxx
 #define polyMesh_cxx
 
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.meshes.polyMesh.polyMesh.cxx"
+
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"

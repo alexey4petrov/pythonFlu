@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%include "src/OpenFOAM/fields/tmp/refCount.cxx"
+%import "src/OpenFOAM/fields/tmp/refCount.cxx"
 
 %{
     #include "Field.H"

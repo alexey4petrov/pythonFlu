@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%include "src/OpenFOAM/primitives/label.cxx"
+%import "src/OpenFOAM/primitives/label.cxx"
 
 %{
     #include "List.H"

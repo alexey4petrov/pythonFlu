@@ -23,11 +23,12 @@
 #ifndef List_scalar_cxx
 #define List_scalar_cxx
 
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.List.List_scalar";
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%include "src/OpenFOAM/containers/Lists/UList/UList_scalar.cxx"
+%import "src/OpenFOAM/containers/Lists/UList/UList_scalar.cxx"
 
 %template( List_scalar ) Foam::List< Foam::scalar >; 
 
