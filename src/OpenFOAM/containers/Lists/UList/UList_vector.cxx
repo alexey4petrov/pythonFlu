@@ -31,7 +31,9 @@
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%include "src/OpenFOAM/primitives/vector.hpp"
+%{
+   #include "src/OpenFOAM/primitives/vector.hpp"
+%}
 %import "src/OpenFOAM/primitives/vector.cxx"
 
 %ignore Foam::UList< Foam::vector >::operator [];

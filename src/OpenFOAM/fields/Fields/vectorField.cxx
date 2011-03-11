@@ -38,7 +38,7 @@
 
 %import "src/OpenFOAM/primitives/tensor.cxx"
 
-%include "src/OpenFOAM/primitives/pTraits_vector.cxx"
+%import "src/OpenFOAM/primitives/pTraits_vector.cxx"
 
 
 //---------------------------------------------------------------------------

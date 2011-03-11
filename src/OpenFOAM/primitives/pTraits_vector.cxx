@@ -25,7 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/vector.cxx"
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.pTraits_vector";
+
+%include "src/common.hxx"
+
+
+//---------------------------------------------------------------------------
+%{
+   #include "src/OpenFOAM/primitives/vector.hpp"
+%}
+%import "src/OpenFOAM/primitives/vector.cxx"
 
 %include "src/OpenFOAM/primitives/pTraits.cxx"
 
