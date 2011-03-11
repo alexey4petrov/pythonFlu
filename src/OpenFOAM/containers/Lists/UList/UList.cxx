@@ -27,6 +27,11 @@
 //---------------------------------------------------------------------------
 %include "src/common.hxx"
 
+%{
+   #include "src/iterators.hpp"
+%}
+%import "src/iterators.cxx"
+
 %import "src/OpenFOAM/primitives/label.cxx"
 
 %{

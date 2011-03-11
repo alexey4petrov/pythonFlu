@@ -32,6 +32,9 @@
 
 //---------------------------------------------------------------------------
 // To support native Python of iteration over containers
+%{
+   #include "src/iterators.hpp"
+%}
 %include "src/iterators.hpp"
 
 %typemap(throws) const Foam::TStopIterationException& 

@@ -27,7 +27,9 @@
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.vector";
 
-%include "src/OpenFOAM/primitives/vector.hpp"
+%{
+  #include "src/OpenFOAM/primitives/vector.hpp"
+%}
 
 %include "src/common.hxx"
 
