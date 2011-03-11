@@ -99,7 +99,7 @@ else
 sources = $(filter-out emb_%.cxx,$(wildcard *.cxx))
 endif
 
-apps = $(patsubst %.cxx, %, $(sources))
+apps = $(patsubst %.cxx, %.exe, $(sources))
 libs = $(patsubst %.cxx, _%.so, $(sources))
 objs = $(patsubst %.cxx, %.o, $(sources))
 stubs = $(patsubst %.cxx, %.cpp, $(sources))
@@ -234,9 +234,9 @@ _%.so : %.o
 
 __APP_FLAGS__ = $(__LDFLAGS__)
 
-% : %.o
+%.exe : %.o
 	gcc $< $(__APP_FLAGS__) -o $@
-	python $@.py
+	python `basename $@ exe`py
 
 %.pyc : %.py
 	@python -c "import py_compile; py_compile.compile('$<')"
@@ -246,7 +246,7 @@ __APP_FLAGS__ = $(__LDFLAGS__)
 #--------------------------------------------------------------------------------------
 deb:
 	@./make-deb.sh -b
-	
+
 launchpad:
 	@./make-deb.sh -S
 
