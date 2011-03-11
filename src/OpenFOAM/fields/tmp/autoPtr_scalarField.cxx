@@ -27,7 +27,11 @@
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%{
+    #include "scalarField.H"
+%}
+
+%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
 %template( autoPtr_scalarField ) Foam::autoPtr< scalarField >;
 

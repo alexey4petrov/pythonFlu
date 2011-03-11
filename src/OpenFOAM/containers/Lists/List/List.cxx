@@ -31,7 +31,6 @@
 
 %{
     #include "List.H"
-
 #if FOAM_VERSION( >=, 010600 )
     #include "SortableList.H"
 #endif

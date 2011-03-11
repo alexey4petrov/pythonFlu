@@ -25,13 +25,16 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.direction";
 %include "src/common.hxx"
 
-%include "direction.H"
 
+//---------------------------------------------------------------------------
 %{
     #include "direction.H"
 %}
+
+%include "direction.H"
 
 
 //---------------------------------------------------------------------------

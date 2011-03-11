@@ -25,13 +25,22 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.List.List_vector";
+
+
+//---------------------------------------------------------------------------
 %include "src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%include "src/OpenFOAM/containers/Lists/UList/UList_vector.cxx"
+%{
+    #include "vector.H"
+%}
+
+%import "src/OpenFOAM/containers/Lists/UList/UList_vector.cxx"
 
 %template( List_vector ) Foam::List< Foam::vector >; 
 
 %extend Foam::List< Foam::vector > COMMON_EXTENDS;
+
 
 //---------------------------------------------------------------------------
 #endif

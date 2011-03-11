@@ -23,6 +23,8 @@
 #ifndef UList_scalar_cxx
 #define UList_scalar_cxx
 
+
+//---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.UList.UList_scalar";
 
 

@@ -25,7 +25,12 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/vector.cxx"
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.SphericalTensor";
+%include "src/common.hxx"
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/primitives/vector.cxx"
 
 %{
     #include "SphericalTensor.H"

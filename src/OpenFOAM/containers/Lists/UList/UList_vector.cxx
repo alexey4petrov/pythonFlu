@@ -25,8 +25,14 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.UList.UList_vector";
+
+
+//---------------------------------------------------------------------------
 %include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
-%include "src/OpenFOAM/primitives/vector.cxx"
+
+%include "src/OpenFOAM/primitives/vector.hpp"
+%import "src/OpenFOAM/primitives/vector.cxx"
 
 %ignore Foam::UList< Foam::vector >::operator [];
 %ignore Foam::UList< Foam::vector >::operator =;

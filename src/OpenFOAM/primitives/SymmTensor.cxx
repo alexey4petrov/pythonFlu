@@ -25,9 +25,14 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/vector.cxx"
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.SymmTensor";
+%include "src/common.hxx"
 
-%include "src/OpenFOAM/primitives/SphericalTensor.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/primitives/vector.cxx"
+
+%import "src/OpenFOAM/primitives/SphericalTensor.cxx"
 
 %{
     #include "SymmTensor.H"

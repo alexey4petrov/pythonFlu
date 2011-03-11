@@ -25,19 +25,26 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.fields.tmp.autoPtr_vectorField";
+
+
+//---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/OpenFOAM/fields/Fields/vectorField.cxx"
+%{
+    #include "List.H"
+#if FOAM_VERSION( >=, 010600 )
+    #include "SortableList.H"
+#endif
+%}
 
-%template( autoPtr_vectorField ) Foam::autoPtr< Foam::Field< Foam::vector > >;
+%{
+    #include "vectorField.H"
+%}
 
-%inline
-{
-    namespace Foam
-    {
-        typedef autoPtr< Field< vector > > autoPtr_vectorField;
-    }
-}
+%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
+
+%template( autoPtr_vectorField ) Foam::autoPtr< Foam::vectorField >;
 
 
 //---------------------------------------------------------------------------

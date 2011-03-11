@@ -23,11 +23,13 @@
 #ifndef contiguous_cxx
 #define contiguous_cxx
 
+
+//---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.contiguous";
 %include "src/common.hxx"
 
 
 //---------------------------------------------------------------------------
-
 %{
     #include "contiguous.H"
 %}

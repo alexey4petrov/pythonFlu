@@ -25,17 +25,27 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/vector.cxx"
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.sphericalTensor";
+%include "src/common.hxx"
 
-%include "src/OpenFOAM/primitives/scalar.cxx"
 
-%include "src/OpenFOAM/primitives/SphericalTensor.cxx"
+//---------------------------------------------------------------------------
+%{
+    #include "VectorSpace.H"
+    #include "SphericalTensor.H"
+%}
 
-%include "src/OpenFOAM/primitives/contiguous.cxx"
+%import "src/OpenFOAM/primitives/vector.cxx"
+
+%import "src/OpenFOAM/primitives/scalar.cxx"
+
+%import "src/OpenFOAM/primitives/SphericalTensor.cxx"
+
+%import "src/OpenFOAM/primitives/contiguous.cxx"
 
 %template( VectorSpace_sphericalTensor ) Foam::VectorSpace< Foam::SphericalTensor< Foam::scalar >, Foam::scalar, 1 >;
 
-%extend Foam::VectorSpace< Foam::Foam::SphericalTensor< Foam::scalar >, Foam::scalar, 1 >
+%extend Foam::VectorSpace< Foam::SphericalTensor< Foam::scalar >, Foam::scalar, 1 >
 {
     int __len__()
     {

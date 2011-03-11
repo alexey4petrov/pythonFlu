@@ -23,6 +23,8 @@
 #ifndef scalarField_cxx
 #define scalarField_cxx
 
+
+//---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.fields.Fields.scalarField";
 %include "src/common.hxx"
 

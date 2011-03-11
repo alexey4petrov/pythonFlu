@@ -29,7 +29,7 @@
 
 %include "src/OpenFOAM/primitives/pTraits.cxx"
 
-%template ( pTraits_vector ) Foam::pTraits<Foam::vector>;
+%template ( pTraits_vector ) Foam::pTraits< Foam::vector >;
 
 
 //---------------------------------------------------------------------------

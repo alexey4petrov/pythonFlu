@@ -26,7 +26,6 @@
 
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.scalar";
-
 %include "src/common.hxx"
 
 

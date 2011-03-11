@@ -25,16 +25,17 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.vector";
+
+%include "src/OpenFOAM/primitives/vector.hpp"
+
 %include "src/common.hxx"
 
-%include "src/OpenFOAM/primitives/scalar.cxx"
 
-%include "src/OpenFOAM/primitives/direction.cxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/primitives/scalar.cxx"
 
-%{
-    #include "VectorSpace.H"
-    #include "Vector.H"
-%}
+%import "src/OpenFOAM/primitives/direction.cxx"
 
 %include "VectorSpace.H"
 
@@ -62,19 +63,10 @@
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "Vector.H"
-%}
-
 %include "Vector.H"
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "vector.H"
-    #include "Tensor.H"
-%}
-
 %include "vector.H"
 
 %template( vector ) Foam::Vector< Foam::scalar >;

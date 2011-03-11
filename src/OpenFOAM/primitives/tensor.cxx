@@ -25,11 +25,14 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.tensor";
 %include "src/common.hxx"
 
-%include "src/OpenFOAM/primitives/scalar.cxx"
 
-%include "src/OpenFOAM/primitives/direction.cxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/primitives/scalar.cxx"
+
+%import "src/OpenFOAM/primitives/direction.cxx"
 
 %{
     #include "VectorSpace.H"
@@ -67,7 +70,6 @@
 %}
 
 %include "Tensor.H"
-
 
 
 //---------------------------------------------------------------------------

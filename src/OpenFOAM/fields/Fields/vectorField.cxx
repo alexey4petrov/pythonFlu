@@ -25,20 +25,29 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.fields.Fields.vectorField";
+%include "src/common.hxx"
+
+
+//---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/Fields/Field.cxx"
 
-%include "src/OpenFOAM/primitives/vector.cxx"
+%import "src/OpenFOAM/primitives/vector.cxx"
 
-%include "src/OpenFOAM/primitives/Lists/vectorList.cxx"
+%import "src/OpenFOAM/primitives/Lists/vectorList.cxx"
 
-%include "src/OpenFOAM/primitives/tensor.cxx"
+%import "src/OpenFOAM/primitives/tensor.cxx"
 
 %include "src/OpenFOAM/primitives/pTraits_vector.cxx"
 
+
 //---------------------------------------------------------------------------
 %{
+    #include "tensor.H"
     #include "vectorField.H"
 %}
+
+%include "vectorField.H"
 
 %ignore Foam::Field< Foam::vector >::typeName;
 %ignore Foam::Field< Foam::vector >::Field;
@@ -47,10 +56,6 @@
 VECTOR_FIELD_TEMPLATE_FUNC;
 
 %template( vectorField ) Foam::Field< Foam::vector >; 
-
-%typedef Foam::Field< Foam::vector > vectorField;
-
-
 
 
 //---------------------------------------------------------------------------
