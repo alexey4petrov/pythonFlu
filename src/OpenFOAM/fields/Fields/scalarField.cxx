@@ -23,11 +23,13 @@
 #ifndef scalarField_cxx
 #define scalarField_cxx
 
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.fields.Fields.scalarField.cxx";
+
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/Fields/Field.cxx"
 
-%include "src/OpenFOAM/primitives/scalar.cxx"
+%import "src/OpenFOAM/primitives/scalar.cxx"
 
 %include "src/OpenFOAM/primitives/Lists/scalarList.cxx"
 
@@ -44,10 +46,6 @@
 SCALAR_FIELD_TEMPLATE_FUNC;
 
 %template( scalarField ) Foam::Field< Foam::scalar >; 
-
-%typedef Foam::Field< Foam::scalar > scalarField;
-
-
 
 
 //---------------------------------------------------------------------------

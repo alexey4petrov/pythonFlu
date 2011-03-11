@@ -29,15 +29,7 @@
 
 %include "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
-%template( autoPtr_scalarField ) Foam::autoPtr< Foam::Field< Foam::scalar > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef autoPtr< Field< scalar > > autoPtr_scalarField;
-    }
-}
+%template( autoPtr_scalarField ) Foam::autoPtr< scalarField >;
 
 
 //---------------------------------------------------------------------------
