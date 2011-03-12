@@ -20,19 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef bool_cxx
-#define bool_cxx
+#ifndef bool_hpp
+#define bool_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.bool";
-%{
-  #include "src/OpenFOAM/primitives/bool.hpp"
-%}
+#include "src/common.hpp"
 
-
-//---------------------------------------------------------------------------
-%include <bool.H>
+#include <bool.H>
 
 
 //---------------------------------------------------------------------------
