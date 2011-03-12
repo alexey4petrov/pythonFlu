@@ -25,17 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.label";
-
-%include "src/common.hxx"
-
-%include "usr/include/c++/climits.cxx"
-
+%module "Foam.src.OpenFOAM.primitives.label";
 %{
-  #include "label.H"
+  #include "src/OpenFOAM/primitives/label.hpp"
 %}
 
-%include "src/OpenFOAM/primitives/int.cxx"
+
+//---------------------------------------------------------------------------
+%import "usr/include/c++/climits.cxx"
+
+%import "src/OpenFOAM/primitives/int.cxx"
 
 %include "label.H"
 

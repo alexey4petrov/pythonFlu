@@ -20,20 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef int_cxx
-#define int_cxx
+#ifndef label_hpp
+#define label_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.int";
-%{
-  #include "src/OpenFOAM/primitives/int.hpp"
-%}
+#include "src/OpenFOAM/primitives/int.hpp"
+
+#include <label.H>
 
 
-//---------------------------------------------------------------------------
-%include "int.H"
-
- 
 //---------------------------------------------------------------------------
 #endif
