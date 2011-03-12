@@ -29,6 +29,11 @@
 
 #include <string.H>
 
+namespace Foam
+{
+  typedef string::hash string_hash;
+}
+
 typedef std::string::size_type size_type;
 
 

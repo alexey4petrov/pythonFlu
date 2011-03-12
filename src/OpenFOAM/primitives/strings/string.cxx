@@ -39,14 +39,6 @@ namespace Foam
   {};
 }
 
-%inline
-{
-  namespace Foam
-  {
-    typedef string::hash string_hash;
-  }
-}
-
 
 //---------------------------------------------------------------------------
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::string &
