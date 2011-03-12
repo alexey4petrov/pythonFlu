@@ -130,6 +130,8 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM import dimensionedScalar, word, dimTime, dimensionSet
     from Foam import fvc, fvm
     for nonOrth in range( nNonOrthCorr + 1):
+        p.storePrevIter()
+        
         pEqn = fvm.laplacian( dimensionedScalar( word( "1" ), dimTime / p.dimensions() * dimensionSet( 0.0, 2.0, -2.0, 0.0, 0.0 ), 1.0 ), p ) == fvc.div( phi )
 
         pEqn.setReference( pRefCell, pRefValue )
@@ -137,6 +139,9 @@ def main_standalone( argc, argv ):
 
         if nonOrth == nNonOrthCorr:
            phi.ext_assign( phi - pEqn.flux() )
+           pass
+        else:
+           p.relax()
            pass
         pass
     
@@ -165,8 +170,8 @@ def main_standalone( argc, argv ):
 
 #--------------------------------------------------------------------------------------
 import sys, os
-from Foam import FOAM_VERSION
-if FOAM_VERSION( "==", "010600" ):
+from Foam import FOAM_VERSION, FOAM_BRANCH_VERSION
+if FOAM_BRANCH_VERSION( "dev", "==", "010600" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
@@ -177,7 +182,7 @@ if FOAM_VERSION( "==", "010600" ):
       os._exit( main_standalone( len( argv ), argv ) )
 else:
    from Foam.OpenFOAM import ext_Info
-   ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.6\n "
+   ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.6-ext\n "
    pass
 
 
