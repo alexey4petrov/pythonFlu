@@ -25,80 +25,80 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.global.argList";
+%{
+   #include "src/OpenFOAM/global/argList.hpp"
+%}
 
-%include "src/OpenFOAM/primitives/Lists/stringList.cxx"
-
-%include "src/OpenFOAM/primitives/strings/word.cxx"
-
-%include "src/OpenFOAM/primitives/strings/fileName.cxx"
-
-%include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.cxx"
 
 //---------------------------------------------------------------------------
-%{
-  #include "argList.H"
-%}
+%import "src/OpenFOAM/primitives/Lists/stringList.cxx"
+
+%import "src/OpenFOAM/primitives/strings/word.cxx"
+
+%import "src/OpenFOAM/primitives/strings/fileName.cxx"
+
+%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.cxx"
 
 
 //---------------------------------------------------------------------------
 %typemap( typecheck ) int&
 {
-    $1 = PyInt_Check( $input );
+  $1 = PyInt_Check( $input );
 }
 
 %typemap( in ) int&
 {
-    int aResult = PyInt_AsLong( $input );
-    $1 = new int( aResult );
+  int aResult = PyInt_AsLong( $input );
+  $1 = new int( aResult );
 }
 
 
 %typemap( typecheck ) char**&
 {
-    $1 = SWIG_OK;
+  $1 = SWIG_OK;
 
-    if ( PyList_Check( $input ) )
-        $1 = SWIG_TypeError;
+  if ( PyList_Check( $input ) )
+    $1 = SWIG_TypeError;
         
-    if ( SWIG_IsOK( $1 ) ) {
-        int aListSize = PyList_Size( $input );
-        for ( int anId = 0; anId < aListSize; anId++ ) {
-            PyObject * anItem = PyList_GetItem( $input, anId );
-            if( PyString_Check( anItem ) ) {
-                $1 = SWIG_TypeError;
-                break;
-            }
-        }
+  if ( SWIG_IsOK( $1 ) ) {
+    int aListSize = PyList_Size( $input );
+    for ( int anId = 0; anId < aListSize; anId++ ) {
+      PyObject * anItem = PyList_GetItem( $input, anId );
+      if( PyString_Check( anItem ) ) {
+	$1 = SWIG_TypeError;
+	break;
+      }
     }
+  }
 }
 
 %typemap( in ) char**&
 {
-    int aSize = PyList_Size( $input );
-    char** aResult = new char*[ aSize + 1 ];
-
-    for ( int anId = 0; anId < aSize; anId++ ) {
-        PyObject * anItem = PyList_GetItem( $input, anId );    
-        char* aString = PyString_AsString( anItem );
-        aResult[ anId ] = aString;
-    }
-    
-    $1 = &aResult;
+  int aSize = PyList_Size( $input );
+  char** aResult = new char*[ aSize + 1 ];
+  
+  for ( int anId = 0; anId < aSize; anId++ ) {
+    PyObject * anItem = PyList_GetItem( $input, anId );    
+    char* aString = PyString_AsString( anItem );
+    aResult[ anId ] = aString;
+  }
+  
+  $1 = &aResult;
 }
 
 %ignore Foam::argList::params;
 %ignore Foam::argList::additionalArgs;
 
 #if FOAM_VERSION( >=, 010600 )
-%ignore Foam::argList::optionLookup;
+  %ignore Foam::argList::optionLookup;
 #endif
 
 // To use as input / output value for readIfPresent function
 //%apply int& INOUT { int& argc }; 
 //%apply char**& INOUT { char**& argv }; 
 
-%include "argList.H"
+%include <argList.H>
 
 // To use as input / output value for readIfPresent function
 //%clear int& argc;
