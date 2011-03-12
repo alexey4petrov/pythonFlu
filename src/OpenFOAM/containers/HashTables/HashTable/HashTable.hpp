@@ -20,55 +20,19 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef HashTable_cxx
-#define HashTable_cxx
+#ifndef HashTable_hpp
+#define HashTable_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable";
-%{
-   #include "src/OpenFOAM/containers/HashTables/HashTable/HashTable.hpp"
-%}
+#include "src/OpenFOAM/primitives/strings/string.hpp"
 
+#include "src/OpenFOAM/primitives/strings/word.hpp"
 
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/typeInfo/className.hxx"
+#include "src/iterators.hpp"
 
-%import "src/OpenFOAM/primitives/strings/string.cxx"
-
-%import "src/OpenFOAM/primitives/strings/word.cxx"
-
-%import "src/iterators.cxx"
-
-%include "HashTable.H"
-
-
-//---------------------------------------------------------------------------
-%define __HASHTABLE_ADDONS__( TValue, TKey, THash )
-{
-  int __len__()
-  {
-    return self->size();
-  }
-  
-  TValue __getitem__( const TKey& key )
-  {
-    return self->operator[]( key );
-  }
-  
-  TContainer_iterator< Foam::HashTable< TValue, TKey, THash > >* __iter__()
-  {
-    return new TContainer_iterator< Foam::HashTable< TValue, TKey, THash > >( *self );
-  }
-}
-%enddef
-
-%define HASHTABLE_ADDONS( TValue, TKey, THash )
-  %extend Foam::HashTable< TValue, TKey, THash > __HASHTABLE_ADDONS__( TValue, TKey, THash )
-  %extend Foam::HashTable< TValue, TKey, THash > COMMON_EXTENDS;
-%enddef
+#include <HashTable.H>
 
 
 //---------------------------------------------------------------------------
 #endif
-
