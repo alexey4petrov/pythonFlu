@@ -20,25 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef List_string_cxx
-#define List_string_cxx
+#ifndef List_scalar_hpp
+#define List_scalar_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.List.List_string";
-%{
-   #include "src/OpenFOAM/containers/Lists/List/List_string.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/List/List.hpp"
 
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/List/List.cxx"
-
-%import "src/OpenFOAM/containers/Lists/UList/UList_string.cxx"
-
-%template( List_string ) Foam::List< Foam::string >; 
-
-%extend Foam::List< Foam::string > COMMON_EXTENDS;
+#include "src/OpenFOAM/containers/Lists/UList/UList_scalar.hpp"
 
 
 //---------------------------------------------------------------------------

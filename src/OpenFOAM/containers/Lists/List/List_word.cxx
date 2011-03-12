@@ -25,7 +25,10 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.List.List_word";
+%module "Foam.src.OpenFOAM.containers.Lists.List.List_word";
+%{
+   #include "src/OpenFOAM/containers/Lists/List/List_word.hpp"
+%}
 
 
 //---------------------------------------------------------------------------

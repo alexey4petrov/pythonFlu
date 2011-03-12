@@ -25,7 +25,10 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.List.List_scalar";
+%module "Foam.src.OpenFOAM.containers.Lists.List.List_scalar";
+%{
+   #include "src/OpenFOAM/containers/Lists/List/List_scalar.hpp"
+%}
 
 
 //---------------------------------------------------------------------------

@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.List.List_vector";
+%module "Foam.src.OpenFOAM.containers.Lists.List.List_vector";
 %{
    #include "src/OpenFOAM/containers/Lists/List/List_vector.hpp"
 %}
