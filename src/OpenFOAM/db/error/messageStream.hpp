@@ -20,43 +20,17 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef messageStream_cxx
-#define messageStream_cxx
+#ifndef messageStream_hpp
+#define messageStream_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.error.messageStream";
-%{
-   #include "src/OpenFOAM/db/error/messageStream.hpp"
-%}
+#include "src/OpenFOAM/db/dictionary/dictionary.hpp"
 
+#include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/dictionary/dictionary.cxx"
+#include <messageStream.H>
 
-%import "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx"
-
-%include "messageStream.H"
-
-
-//---------------------------------------------------------------------------
-%inline
-{
-  Foam::Ostream& ext_SeriousError()
-  {
-    return Foam::SeriousError;
-  }
-
-  Foam::Ostream& ext_Warning()
-  {
-    return Foam::Warning;
-  }
-
-  Foam::Ostream& ext_Info()
-  {
-    return Foam::Info;
-  } 
-}
 
 //---------------------------------------------------------------------------
 #endif
