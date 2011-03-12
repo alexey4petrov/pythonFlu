@@ -25,16 +25,13 @@
 
 
 //---------------------------------------------------------------------------
+%{
+   #include "src/OpenFOAM/containers/Lists/List/List.hpp"
+%}
+
 %include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
 %import "src/OpenFOAM/primitives/label.cxx"
-
-%{
-    #include "List.H"
-#if FOAM_VERSION( >=, 010600 )
-    #include "SortableList.H"
-#endif
-%}
 
 %include "List.H"
 

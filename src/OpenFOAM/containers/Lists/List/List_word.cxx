@@ -25,10 +25,15 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/label.cxx"
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.List.List_word";
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/primitives/label.cxx"
+
 %include "src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%include "src/OpenFOAM/containers/Lists/UList/UList_word.cxx"
+%import "src/OpenFOAM/containers/Lists/UList/UList_word.cxx"
 
 %template( List_word ) Foam::List< Foam::word >; 
 

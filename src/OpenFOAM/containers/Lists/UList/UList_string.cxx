@@ -25,13 +25,19 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.UList.UList_string";
+
+
+//---------------------------------------------------------------------------
 %include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%include "src/OpenFOAM/primitives/strings/string.cxx"
+%import "src/OpenFOAM/primitives/strings/string.cxx"
 
 %ignore Foam::UList< Foam::string >::writeEntry;
 
 %template( UList_string ) Foam::UList< Foam::string >; 
+
+%template( TContainer_string_iterator ) Foam::TContainer_iterator<  Foam::UList< Foam::string > >;
 
 ULISTBASED_ADDONS( Foam::string )
 

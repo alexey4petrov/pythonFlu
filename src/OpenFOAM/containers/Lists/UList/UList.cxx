@@ -25,19 +25,15 @@
 
 
 //---------------------------------------------------------------------------
+%{
+   #include "src/OpenFOAM/containers/Lists/UList/UList.hpp"
+%}
+
 %include "src/common.hxx"
 
-%{
-   #include "src/iterators.hpp"
-%}
 %import "src/iterators.cxx"
 
 %import "src/OpenFOAM/primitives/label.cxx"
-
-%{
-   #include "UList.H"
-   #include "ListOps.H"
-%}
 
 %include "UList.H"
 
@@ -45,25 +41,25 @@
 //---------------------------------------------------------------------------
 %define SEQUENCE_ADDONS( TItem )
 {
-    int __len__()
-    {
-      return self->size();
-    }
-    
-    TItem __getitem__( const Foam::label theIndex )
-    {
-      return self->operator[]( theIndex );
-    }
+  int __len__()
+  {
+    return self->size();
+  }
+  
+  TItem __getitem__( const Foam::label theIndex )
+  {
+    return self->operator[]( theIndex );
+  }
 
-    void __setitem__( const Foam::label theIndex, TItem theValue )
-    {
-      self->operator[]( theIndex ) = theValue;
-    }
+  void __setitem__( const Foam::label theIndex, TItem theValue )
+  {
+    self->operator[]( theIndex ) = theValue;
+  }
 
-    TContainer_iterator< UList< TItem > >* __iter__()
-    {
-      return new TContainer_iterator< UList< TItem > >( *self );
-    }
+  TContainer_iterator< UList< TItem > >* __iter__()
+  {
+    return new TContainer_iterator< UList< TItem > >( *self );
+  }
 }
 %enddef
 
@@ -71,7 +67,6 @@
 //---------------------------------------------------------------------------
 %define LISTS_FUNCS( TItem )
 {
-
 #if FOAM_VERSION( <, 010600 )
   Foam::label ext_findIndex( TItem& t )
   {
@@ -85,18 +80,15 @@
     return Foam::findIndex( *self, t, start );
   }
 #endif
-
 }  
 %enddef
 
 
 //----------------------------------------------------------------------------
 %define ULISTBASED_ADDONS( TItem )
+  %extend Foam::UList< TItem > SEQUENCE_ADDONS( TItem )
 
-%extend Foam::UList< TItem > SEQUENCE_ADDONS( TItem )
-
-%extend Foam::UList< TItem > LISTS_FUNCS( TItem )
-
+  %extend Foam::UList< TItem > LISTS_FUNCS( TItem )
 %enddef
 
 

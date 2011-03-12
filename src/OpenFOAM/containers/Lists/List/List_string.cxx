@@ -25,9 +25,13 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.List.List_string";
+
+
+//---------------------------------------------------------------------------
 %include "src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%include "src/OpenFOAM/containers/Lists/UList/UList_string.cxx"
+%import "src/OpenFOAM/containers/Lists/UList/UList_string.cxx"
 
 %template( List_string ) Foam::List< Foam::string >; 
 

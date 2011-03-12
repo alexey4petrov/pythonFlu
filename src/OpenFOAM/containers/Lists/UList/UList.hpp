@@ -20,26 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef UList_word_cxx
-#define UList_word_cxx
+#ifndef UList_hpp
+#define UList_hpp
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.UList.UList_word";
+#include "src/common.hpp"
+#include "src/iterators.hpp"
 
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
-
-%ignore Foam::UList< Foam::word >::writeEntry;
-
-%import "src/OpenFOAM/primitives/strings/word.cxx"
-
-%template( UList_word ) Foam::UList< Foam::word >; 
-
-%template( TContainer_word_iterator ) Foam::TContainer_iterator<  Foam::UList< Foam::word > >;
-
-ULISTBASED_ADDONS( Foam::word );
+#include <UList.H>
+#include <ListOps.H>
 
 
 //---------------------------------------------------------------------------
