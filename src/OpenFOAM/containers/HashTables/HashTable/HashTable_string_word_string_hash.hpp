@@ -20,35 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef HashTable_string_word_string_hash_cxx
-#define HashTable_string_word_string_hash_cxx
+#ifndef HashTable_string_word_string_hash_hpp
+#define HashTable_string_word_string_hash_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable_string_word_string_hash";
-%{
-   #include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.hpp"
-%}
+#include "src/OpenFOAM/containers/HashTables/HashTable/HashTable.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
-
-%import "src/OpenFOAM/primitives/strings/string.cxx"
-
-%ignore Foam::HashTable< Foam::string, Foam::word, Foam::string_hash >::HashTable;
-%ignore Foam::HashTable< Foam::string, Foam::word, Foam::string_hash >::begin;
-%ignore Foam::HashTable< Foam::string, Foam::word, Foam::string_hash >::find;
-
-#if FOAM_VERSION( >=, 010600 )
-%ignore Foam::HashTable< Foam::string, Foam::word, Foam::string_hash >::cbegin;
-#endif
-
-%template( HashTable_string_word_string_hash ) Foam::HashTable< Foam::string, Foam::word, Foam::string_hash >; 
-
-%template( TContainer_word_string ) Foam::TContainer_iterator< Foam::HashTable< Foam::string, Foam::word, Foam::string_hash > >;
-
-HASHTABLE_ADDONS( Foam::string, Foam::word, Foam::string_hash )
+#include "src/OpenFOAM/primitives/strings/string.hpp"
 
 
 //---------------------------------------------------------------------------
