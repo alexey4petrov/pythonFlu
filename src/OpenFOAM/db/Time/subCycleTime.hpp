@@ -20,31 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef subCycleTime_cxx
-#define subCycleTime_cxx
+#ifndef subCycleTime_hpp
+#define subCycleTime_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.Time.subCycleTime";
-%{
-  #include "src/OpenFOAM/db/Time/subCycleTime.hpp"
-%}
+#include "src/OpenFOAM/db/Time/Time.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/Time/Time.cxx"
-
-%include "subCycleTime.H"
-
-
-//---------------------------------------------------------------------------
-%extend Foam::subCycleTime
-{ 
-  Foam::subCycleTime& step()
-  {
-    return self->operator++();
-  }
-}
+#include <subCycleTime.H>
 
 
 //---------------------------------------------------------------------------
