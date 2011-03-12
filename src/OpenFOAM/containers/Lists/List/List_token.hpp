@@ -20,25 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef List_token_cxx
-#define List_token_cxx
+#ifndef List_token_hpp
+#define List_token_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.List.List_token";
-%{
-   #include "src/OpenFOAM/containers/Lists/List/List_token.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/List/List.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
-
-%import "src/OpenFOAM/containers/Lists/UList/UList_token.cxx"
-
-%template( List_token ) Foam::List< Foam::token >; 
-
-%extend Foam::List< Foam::token > COMMON_EXTENDS;
+#include "src/OpenFOAM/containers/Lists/UList/UList_token.hpp"
 
 
 //---------------------------------------------------------------------------
