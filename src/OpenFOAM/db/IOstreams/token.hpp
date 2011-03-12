@@ -20,35 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef token_cxx
-#define token_cxx
+#ifndef token_hpp
+#define token_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.IOstreams.token";
-%{
-   #include "src/OpenFOAM/db/IOstreams/token.hpp"
-%}
+#include "src/OpenFOAM/primitives/strings/word.hpp"
+#include "src/OpenFOAM/primitives/strings/string.hpp"
+#include "src/OpenFOAM/primitives/label.hpp"
 
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
-
-%import "src/OpenFOAM/primitives/strings/word.cxx"
-%import "src/OpenFOAM/primitives/strings/string.cxx"
-%import "src/OpenFOAM/primitives/label.cxx"
-
-%ignore Foam::token::transferCompoundToken();
-%ignore Foam::token::compoundToken() const;
-
-%ignore *::operator >>;
-%ignore *::operator <<;
-
-%include "token.H"
-
-%{
-    #include "token.H"
-%}
+#include <token.H>
 
 
 //---------------------------------------------------------------------------
