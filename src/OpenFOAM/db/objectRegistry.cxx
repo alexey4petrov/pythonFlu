@@ -25,54 +25,52 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.cxx"
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.objectRegistry";
+%{
+   #include "src/OpenFOAM/db/objectRegistry.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.cxx"
 
 %include "objectRegistry.H"
 
 %ignore Foam::objectRegistry::writeObject;
 
-%{
-    #include "objectRegistry.H"
-%}
-
 
 //---------------------------------------------------------------------------
 %define OBJECTREGISTRY_EXTENDS( Typename )
-  
   static const Foam::Typename&
   ext_lookupObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
   {
-    const Foam::Typename& res = theRegistry.lookupObject< Foam::Typename >( theName );
-    return res;
+    return theRegistry.lookupObject< Foam::Typename >( theName )theRegistry.lookupObject< Foam::Typename >( theName );
   }
   
   static bool ext_foundObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
   {
-        return theRegistry.foundObject< Foam::Typename >( theName );
+    return theRegistry.foundObject< Foam::Typename >( theName );
   }
 %enddef
 
 
 //----------------------------------------------------------------------------
 %define OBJECTREGISTRY_TEMPLATE_2_EXTENDS( Template, Type1, Type2  )
-  
   static const Foam::Template< Type1, Type2 >&
   ext_lookupObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
   {
-    const Foam::Template< Type1, Type2 >& res = theRegistry.lookupObject< Foam::Template< Type1, Type2 > >( theName );
-    return res;
+    return theRegistry.lookupObject< Foam::Template< Type1, Type2 > >( theName );
   }
   
   static bool ext_foundObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
   {
-        return theRegistry.foundObject< Foam::Template< Type1, Type2 > >( theName );
+    return theRegistry.foundObject< Foam::Template< Type1, Type2 > >( theName );
   }
 %enddef
 
 
 //----------------------------------------------------------------------------
 %define OBJECTREGISTRY_TEMPLATE_3_EXTENDS( Template, Type1, Type2, Type3 )
-  
   static const Foam::Template< Type1, Type2, Type3 >&
   ext_lookupObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
   {
@@ -82,10 +80,9 @@
   
   static bool ext_foundObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
   {
-        return theRegistry.foundObject< Foam::Template< Type1, Type2, Type3 > >( theName );
+    return theRegistry.foundObject< Foam::Template< Type1, Type2, Type3 > >( theName );
   }
 %enddef
-
 
 
 //----------------------------------------------------------------------------
