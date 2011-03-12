@@ -93,6 +93,43 @@ def readPISOControls_010500( mesh ):
     return piso, nCorr, nNonOrthCorr, momentumPredictor, transonic, nOuterCorr, ddtPhiCorr
 
 
+#------------------------------------------------------------------------------------
+def readPISOControls_010500_dev( mesh ):
+    from Foam.OpenFOAM import dictionary, readInt, Switch, word
+
+    piso = dictionary( mesh.solutionDict().subDict( word( "PISO" ) ) )
+
+    nCorr = readInt( piso.lookup( word( "nCorrectors" ) ) )
+
+    nNonOrthCorr = 0;
+    if piso.found( word( "nNonOrthogonalCorrectors" ) ) :
+       nNonOrthCorr = readInt( piso.lookup( word( "nNonOrthogonalCorrectors" ) ) )
+       pass
+    
+    momentumPredictor = True;
+    if piso.found( word( "momentumPredictor" ) ) :
+       momentumPredictor = Switch( piso.lookup( word( "momentumPredictor" ) ) )
+       pass
+   
+    transonic = False;
+    if piso.found( word( "transonic" ) ) :
+       transonic = Switch( piso.lookup( word( "transonic" ) ) )
+       pass
+
+    nOuterCorr = 1;
+    if piso.found( word( "nOuterCorrectors" ) ) :
+       nOuterCorr = readInt( piso.lookup( word( "nOuterCorrectors" ) ) )
+       pass
+    
+    ddtPhiCorr = False
+    if piso.found( word( "ddtPhiCorr" ) ) :
+       ddtPhiCorr = Switch( piso.lookup( word( "ddtPhiCorr" ) ) )
+       pass
+    
+    
+    return piso, nCorr, nNonOrthCorr, momentumPredictor, transonic, nOuterCorr, ddtPhiCorr
+
+
 #---------------------------------------------------------------------------------
 def readPISOControls_010600( mesh ):
     from Foam.OpenFOAM import dictionary, readInt, Switch, word

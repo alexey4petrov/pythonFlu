@@ -83,6 +83,37 @@ def readSIMPLEControls_010500( mesh ):
 
 
 #--------------------------------------------------------------------------------
+def readSIMPLEControls_010500_dev( mesh ):
+    from Foam.OpenFOAM import Switch
+    from Foam.OpenFOAM import word
+    
+    simple = mesh.solutionDict().subDict( word( "SIMPLE" ) )
+    
+    from Foam.OpenFOAM import readInt
+    nNonOrthCorr = 0
+    if ( simple.found( word( "nNonOrthogonalCorrectors" ) ) ):
+       nNonOrthCorr = readInt(simple.lookup( word( "nNonOrthogonalCorrectors" ) ) )
+       pass
+ 
+    momentumPredictor = True
+    if ( simple.found( word( "momentumPredictor" ) ) ):
+       momentumPredictor = Switch(simple.lookup( word( "momentumPredictor" ) ) )
+       pass
+ 
+    fluxGradp = False
+    if ( simple.found( word( "fluxGradp" ) ) ):
+       fluxGradp = Switch( simple.lookup( word( "fluxGradp" ) ) )
+       pass
+ 
+    transonic = False
+    if ( simple.found( word( "transSonic" ) ) ):
+       transonic = Switch( simple.lookup( word( "transSonic" ) ) )
+       pass
+
+    return simple, nNonOrthCorr, momentumPredictor, fluxGradp, transonic
+
+
+#--------------------------------------------------------------------------------
 def readSIMPLEControls_010600( mesh ):
     from Foam.OpenFOAM import Switch
     from Foam.OpenFOAM import word
