@@ -20,27 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef label_cxx
-#define label_cxx
+#ifndef vector_hpp
+#define vector_hpp
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.label";
+#include "src/common.hpp"
 
-%include "src/common.hxx"
+#include <VectorSpace.H>
+#include <Vector.H>
+#include <vector.H>
+#include <Tensor.H>
 
-%include "usr/include/c++/climits.cxx"
 
-%{
-  #include "label.H"
-%}
-
-%include "src/OpenFOAM/primitives/int.cxx"
-
-%include "label.H"
-
-typedef int label;
-
- 
 //---------------------------------------------------------------------------
 #endif
