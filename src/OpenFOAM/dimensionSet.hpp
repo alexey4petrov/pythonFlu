@@ -20,41 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef dimensionSet_cxx
-#define dimensionSet_cxx
+#ifndef dimensionSet_hpp
+#define dimensionSet_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.dimensionSet";
-%{
-  #include "src/OpenFOAM/dimensionSet.hpp"
-%}
+#include "src/OpenFOAM/primitives/scalar.hpp"
 
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/typeInfo/className.hxx"
-
-%import "src/OpenFOAM/primitives/scalar.cxx"
-
-%include "dimensionSet.H"
-
-%typemap( out ) Foam::dimensionSet
-{
-  $result = SWIG_NewPointerObj( ( new $1_type( *&$1 ) ), $&1_descriptor, SWIG_POINTER_OWN |  0 );
-}
-
-%extend Foam::dimensionSet
-{
-  Foam::dimensionSet __div__( const const dimensionSet& ds2 )
-  {
-    return *self / ds2;
-  }
-  
-  Foam::dimensionSet __mul__( const dimensionSet& ds2 )
-  {
-    return *self * ds2;
-  }
-}
+#include <dimensionSet.H>
 
 
 //---------------------------------------------------------------------------
