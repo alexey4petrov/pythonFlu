@@ -25,14 +25,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
-
-
-//---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.primitives.strings.string";
 %{
-    #include "string.H"
-
-    typedef std::string::size_type size_type;
+  #include "src/OpenFOAM/primitives/strings/string.hpp"
 %}
 
 
@@ -40,48 +35,46 @@
 // This trick intends to publish nested class into SWIG domain
 namespace Foam
 {
-    struct string_hash 
-    {};
+  struct string_hash 
+  {};
 }
 
 %inline
 {
-    namespace Foam
-    {
-        typedef string::hash string_hash;
-    }
+  namespace Foam
+  {
+    typedef string::hash string_hash;
+  }
 }
 
 
 //---------------------------------------------------------------------------
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::string &
 {
-    void *ptr;
-    if ( SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 ) == -1 ) {
-        char* aString = PyString_AsString( $input );
-        $1 = ( aString != 0 );
-    } else {
-        $1 = true;
-    }
+  void *ptr;
+  if ( SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 ) == -1 ) {
+    char* aString = PyString_AsString( $input );
+    $1 = ( aString != 0 );
+  } else {
+    $1 = true;
+  }
 }
 
 %typemap( in ) const Foam::string &
 {
-    void *ptr;
-    if ( SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 ) == -1 ) {
-        char* aString = PyString_AsString( $input );
+  void *ptr;
+  if ( SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 ) == -1 ) {
+    char* aString = PyString_AsString( $input );
 
-        if ( !aString ) {
-            SWIG_exception_fail(SWIG_ValueError, "can not convert input argument to Foam::string& "); 
-        }
-
-        $1 = new $1_basetype( aString );
-    } else {
-        $1 = reinterpret_cast< $1_ltype >( ptr );
+    if ( !aString ) {
+      SWIG_exception_fail(SWIG_ValueError, "can not convert input argument to Foam::string& "); 
     }
+    
+    $1 = new $1_basetype( aString );
+  } else {
+    $1 = reinterpret_cast< $1_ltype >( ptr );
+  }
 }
-
-
 
 
 //---------------------------------------------------------------------------
@@ -91,20 +84,20 @@ namespace Foam
 
 %extend Foam::string
 {
-    int __len__()
-    {
-        return self->size();
-    }
-    
-    char __getitem__( size_t theIndex )
-    {
-        return self->at( theIndex );
-    }
-    
-    const char* __str__()
-    {
-        return self->c_str();
-    }
+  int __len__()
+  {
+    return self->size();
+  }
+  
+  char __getitem__( size_t theIndex )
+  {
+    return self->at( theIndex );
+  }
+  
+  const char* __str__()
+  {
+    return self->c_str();
+  }
 }
 
 

@@ -25,13 +25,14 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.primitives.strings.word";
 %{
-    #include "word.H"
+  #include "src/OpenFOAM/primitives/strings/word.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/strings/string.cxx"
+%import "src/OpenFOAM/primitives/strings/string.cxx"
 
 %include "word.H"
 
