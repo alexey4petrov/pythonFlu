@@ -146,3 +146,24 @@ def readPISOControls_010600( mesh ):
     nOuterCorr = piso.lookupOrDefault( word( "nOuterCorrectors" ), 1 )
 
     return piso, nCorr, nNonOrthCorr, momentumPredictor, transonic, nOuterCorr
+
+
+#---------------------------------------------------------------------------------
+def readPISOControls_010600_dev( mesh ):
+    from Foam.OpenFOAM import dictionary, readInt, Switch, word
+
+    piso = dictionary( mesh.solutionDict().subDict( word( "PISO" ) ) )
+    nCorr = readInt( piso.lookup( word( "nCorrectors" ) ) )
+    
+    nNonOrthCorr = piso.lookupOrDefault( word( "nNonOrthogonalCorrectors" ), 0 )
+       
+    momentumPredictor = piso.lookupOrDefault( word( "momentumPredictor" ), Switch( True ) )
+      
+    transonic = piso.lookupOrDefault( word( "transonic" ), Switch( False ) )
+      
+    nOuterCorr = piso.lookupOrDefault( word( "nOuterCorrectors" ), 1 )
+
+    return piso, nCorr, nNonOrthCorr, momentumPredictor, transonic, nOuterCorr
+
+
+#---------------------------------------------------------------------------------
