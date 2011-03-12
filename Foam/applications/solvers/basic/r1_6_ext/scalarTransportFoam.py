@@ -82,7 +82,7 @@ def main_standalone( argc, argv ):
     ext_Info() << "\nCalculating scalar transport\n" << nl
         
     from Foam.finiteVolume.cfdTools.incompressible import CourantNo
-    CoNum, meanCoNum = CourantNo( mesh, phi, runTime )
+    CoNum, meanCoNum, velMag = CourantNo( mesh, phi, runTime )
     
     while runTime.loop():
         ext_Info() << "Time = " << runTime.timeName() << nl << nl
@@ -107,8 +107,8 @@ def main_standalone( argc, argv ):
 
 #--------------------------------------------------------------------------------------
 import sys, os
-from Foam import FOAM_VERSION
-if FOAM_VERSION( "==", "010600" ):
+from Foam import FOAM_VERSION, FOAM_BRANCH_VERSION
+if FOAM_BRANCH_VERSION( "dev", "==", "010600" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
