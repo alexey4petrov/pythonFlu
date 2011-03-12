@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef TimePaths_cxx
-#define TimePaths_cxx
+#ifndef TimePaths_hpp
+#define TimePaths_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.Time.TimePaths";
-%{
-  #include "src/OpenFOAM/db/Time/TimePaths.hpp"
-%}
+#include "src/OpenFOAM/primitives/strings/fileName.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/strings/fileName.cxx"
-
-%include "TimePaths.H"
+#include <TimePaths.H>
 
 
 //---------------------------------------------------------------------------
