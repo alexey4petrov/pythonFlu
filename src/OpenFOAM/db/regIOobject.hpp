@@ -20,38 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IOobject_cxx
-#define IOobject_cxx
+#ifndef regIOobject_hpp
+#define regIOobject_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.IOobject";
-%{
-   #include "src/OpenFOAM/db/IOobject.hpp"
-%}
+#include "src/OpenFOAM/db/IOobject.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx"
-
-%import "src/OpenFOAM/primitives/strings/fileName.cxx"
-
-%include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
-
-%include "IOobject.H"
-
-%extend Foam::IOobject
-{
-  void setWriteOpt( IOobject::writeOption opt )
-  {
-    self->writeOpt() = opt;
-  }
-  
-  void setReadOpt( IOobject::readOption opt )
-  {
-    self->readOpt() = opt;
-  }
-}
+#include <regIOobject.H>
 
 
 //---------------------------------------------------------------------------
