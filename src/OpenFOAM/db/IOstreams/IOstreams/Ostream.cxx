@@ -25,9 +25,10 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.IOstreams.IOstreams.Ostream";
-
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.db.IOstreams.IOstreams.Ostream";
+%{
+   #include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
@@ -35,16 +36,12 @@
 
 %import "src/OpenFOAM/primitives/scalar.cxx"
 
-%include "src/OpenFOAM/primitives/strings/keyType.cxx"
+%import "src/OpenFOAM/primitives/strings/keyType.cxx"
 
 %include "src/OpenFOAM/db/IOstreams/token.cxx"
 
 // To avoid cyclic dependencies
-//%include "src/OpenFOAM/db/dictionary/dictionary.cxx"
-
-%{
-    #include "Ostream.H"
-%}
+//%import "src/OpenFOAM/db/dictionary/dictionary.cxx"
 
 %rename( ext_print ) Foam::Ostream::print;
 
@@ -89,10 +86,10 @@
 //---------------------------------------------------------------------------
 %define OSTREAM_EXTENDS
 {
-    Foam::Ostream& __rlshift__( Foam::Ostream& theOstream )
-    {
-        return theOstream << *self;
-    }
+  Foam::Ostream& __rlshift__( Foam::Ostream& theOstream )
+  {
+    return theOstream << *self;
+  }
 }
 %enddef
 

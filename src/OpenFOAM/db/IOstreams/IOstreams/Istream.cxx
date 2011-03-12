@@ -25,19 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.IOstreams.IOstreams.Istream";
-
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.db.IOstreams.IOstreams.Istream";
+%{
+   #include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx"
 
 %include "src/OpenFOAM/db/IOstreams/token.cxx"
-
-%{
-    #include "Istream.H"
-%}
 
 %include "Istream.H"
 

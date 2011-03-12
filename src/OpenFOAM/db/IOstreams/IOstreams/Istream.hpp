@@ -20,48 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IOstream_cxx
-#define IOstream_cxx
+#ifndef Istream_hpp
+#define Istream_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.IOstreams.IOstreams.IOstream";
-%{
-   #include "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hpp"
-%}
+#include "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hpp"
 
-
-//---------------------------------------------------------------------------
-// Workaround for the nested class wrapping
-%feature( "valuewrapper" ) Foam::IOstream::versionNumber; // Don't use default constructor
-namespace Foam
-{
-  struct versionNumber
-  {
-    versionNumber( const Foam::scalar num );
-  };
-}
-
-
-//---------------------------------------------------------------------------
-%rename( ext_print ) Foam::IOstream::print;
-
-%include "IOstream.H"
-
-
-//---------------------------------------------------------------------------
-%inline
-%{
-  namespace Foam
-  {
-    typedef IOstream::versionNumber versionNumber;
-  }
-%}
-
-%typemap( out ) Foam::IOstream::versionNumber
-{
-  $result = SWIG_NewPointerObj( ( new $1_type( *&$1 ) ), $descriptor( Foam::versionNumber* ), SWIG_POINTER_OWN |  0 );
-}
+#include <Istream.H>
 
 
 //---------------------------------------------------------------------------
