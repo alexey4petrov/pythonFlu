@@ -19,49 +19,53 @@
 ## Author : Alexey PETROV
 ##
 
+from Foam.src.OpenFOAM.global_.argList import *
 
-#---------------------------------------------------------------------------
-from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "OpenFOAM_" ) 
-
-
-#---------------------------------------------------------------------------
-scalar = float
-
-string = str
-
-
-#---------------------------------------------------------------------------
-boolList = List_bool
-
-labelList = List_label
-
-scalarList = List_scalar
-
-scalarList = List_string
-
-scalarList = List_scalar
-
-tensorList = List_tensor
-
-tokenList = List_token
-
-vectorList = List_vector
-
-wordList = List_word
-
-
-#---------------------------------------------------------------------------
-wordList = List_word
-
-cellList = List_cell
-
-faceList = List_face
-
-pPolyPatchList = List_pPolyPatch
-
-wordHashTable = HashTable_word_word_string_hash
-
-
-#---------------------------------------------------------------------------
-I = sphericalTensor.I
+# #---------------------------------------------------------------------------
+# from Foam import get_module_initializtion_command
+# exec get_module_initializtion_command( "OpenFOAM_" ) 
+# 
+# 
+# #---------------------------------------------------------------------------
+# scalar = float
+# 
+# string = str
+# 
+# 
+# #---------------------------------------------------------------------------
+# boolList = List_bool
+# 
+# labelList = List_label
+# 
+# scalarList = List_scalar
+# 
+# scalarList = List_string
+# 
+# scalarList = List_scalar
+# 
+# tensorList = List_tensor
+# 
+# tokenList = List_token
+# 
+# vectorList = List_vector
+# 
+# wordList = List_word
+# 
+# 
+# #---------------------------------------------------------------------------
+# wordList = List_word
+# 
+# cellList = List_cell
+# 
+# faceList = List_face
+# 
+# pPolyPatchList = List_pPolyPatch
+# 
+# wordHashTable = HashTable_word_word_string_hash
+# 
+# 
+# #---------------------------------------------------------------------------
+# I = sphericalTensor.I
+#
+#
+# #---------------------------------------------------------------------------
