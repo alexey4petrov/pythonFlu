@@ -37,7 +37,7 @@
 
 #include "src/OpenFOAM/primitives/scalar.hpp"
 
-//#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
 
 #include "src/OpenFOAM/primitives/strings/word.hpp"
 
