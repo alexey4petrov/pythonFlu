@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tokenList_cxx
-#define tokenList_cxx
+#ifndef tokenList_hpp
+#define tokenList_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.Lists.tokenList";
-%{
-   #include "src/OpenFOAM/primitives/Lists/tokenList.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/UList/UList_token.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_token.cxx"
-
-%include "tokenList.H"
+#include <tokenList.H>
 
 
 //---------------------------------------------------------------------------
