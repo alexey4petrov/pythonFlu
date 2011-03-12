@@ -25,13 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/List/List_string.cxx"
+%module "Foam.src.OpenFOAM.primitives.Lists.stringList";
+%{
+   #include "src/OpenFOAM/primitives/Lists/stringList.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/Lists/List/List_string.cxx"
 
 %include "stringList.H"
-
-%{
-    #include "stringList.H"
-%}
 
 
 //---------------------------------------------------------------------------

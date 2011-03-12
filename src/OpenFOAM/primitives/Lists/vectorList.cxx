@@ -25,16 +25,14 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.Lists.vectorList";
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.primitives.Lists.vectorList";
+%{
+   #include "src/OpenFOAM/primitives/Lists/vectorList.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/containers/Lists/List/List_vector.cxx"
-
-%{
-    #include "vectorList.H"
-%}
 
 %include "vectorList.H"
 

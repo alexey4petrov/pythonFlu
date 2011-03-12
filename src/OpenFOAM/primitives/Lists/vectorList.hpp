@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef wordList_cxx
-#define wordList_cxx
+#ifndef vectorList_hpp
+#define vectorList_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.Lists.wordList";
-%{
-   #include "src/OpenFOAM/primitives/Lists/wordList.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/UList/UList_vector.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_word.cxx"
-
-%include "wordList.H"
+#include <vectorList.H>
 
 
 //---------------------------------------------------------------------------
