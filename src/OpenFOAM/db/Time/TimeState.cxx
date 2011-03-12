@@ -25,13 +25,16 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.db.Time.TimeState";
+%{
+  #include "src/OpenFOAM/db/Time/TimeState.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
 %include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 %include "TimeState.H"
-
-%{
-    #include "TimeState.H"
-%}
 
 
 //---------------------------------------------------------------------------

@@ -20,49 +20,28 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef Time_cxx
-#define Time_cxx
+#ifndef Time_hpp
+#define Time_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.Time.Time";
-%{
-  #include "src/OpenFOAM/db/Time/Time.hpp"
-%}
+#include "src/OpenFOAM/db/objectRegistry.hpp"
 
+#include "src/OpenFOAM/db/Time/clock.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/objectRegistry.cxx"
+#include "src/OpenFOAM/db/Time/cpuTime.hpp"
 
-%import "src/OpenFOAM/db/Time/clock.cxx"
+#include "src/OpenFOAM/db/Time/TimePaths.hpp"
 
-%import "src/OpenFOAM/db/Time/cpuTime.cxx"
+#include "src/OpenFOAM/db/Time/TimeState.hpp"
 
-%import "src/OpenFOAM/db/Time/TimePaths.cxx"
+#include "src/OpenFOAM/primitives/scalar.hpp"
 
-%import "src/OpenFOAM/db/Time/TimeState.cxx"
+//#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+#include "src/OpenFOAM/primitives/strings/word.hpp"
 
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-
-%import "src/OpenFOAM/primitives/strings/word.cxx"
-
-%ignore Foam::Time::writeVersion;
-
-%{
-  #include "Time.H"
-%}
-
-%include "Time.H"
-
-%extend Foam::Time
-{
-  void step()
-  {
-    self->operator++();
-  }
-}
+#include <Time.H>
 
 
 //---------------------------------------------------------------------------
