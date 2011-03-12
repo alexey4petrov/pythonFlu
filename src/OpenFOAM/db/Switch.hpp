@@ -20,40 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef Switch_cxx
-#define Switch_cxx
+#ifndef Switch_hpp
+#define Switch_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.Switch";
-%{
-   #include "src/OpenFOAM/db/Switch.hpp"
-%}
+#include "src/OpenFOAM/primitives/bool.hpp"
 
+#include "src/OpenFOAM/primitives/strings/word.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/bool.cxx"
-
-%import "src/OpenFOAM/primitives/strings/word.cxx"
-
-%include <Switch.H>
-
-
-//---------------------------------------------------------------------------
-%extend Foam::Switch
-{
-  bool __nonzero__()
-  {
-    return bool( *self );
-  }
-  
-  bool __not__()
-  {
-    return ! bool( *self );
-  }
-}
-
-%extend Foam::Switch COMMON_EXTENDS;
+#include <Switch.H>
 
 
 //---------------------------------------------------------------------------
