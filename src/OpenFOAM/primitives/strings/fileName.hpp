@@ -29,6 +29,8 @@
 
 #include "src/OpenFOAM/primitives/Lists/wordList.hpp"
 
+#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hpp"
+
 #include <fileName.H>
 
 
