@@ -25,19 +25,22 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/dimensionSet.cxx"
-
-%include "src/OpenFOAM/primitives/direction.cxx"
-
-%include "src/OpenFOAM/primitives/strings/word.cxx"
-
-%include "src/OpenFOAM/db/IOstreams/ITstream.cxx"
-
-%include "dimensionedType.H"
-
+%module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedType";
 %{
-    #include "dimensionedType.H"
+  #include "src/OpenFOAM/dimensionedTypes/dimensionedType.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/dimensionSet.cxx"
+
+%import "src/OpenFOAM/primitives/direction.cxx"
+
+%import "src/OpenFOAM/primitives/strings/word.cxx"
+
+%import "src/OpenFOAM/db/IOstreams/ITstream.cxx"
+
+%import <dimensionedType.H>
 
 
 //---------------------------------------------------------------------------
@@ -47,63 +50,63 @@
 
 %extend Foam::dimensioned< Type >
 {
-    void setValue( const Type& theValue )
-    {
-        self->value() = theValue;
-    }
-    
-    Type ext_value()
-    {
-        return self->value();
-    }
-    
-    void setDimensions( const Foam::dimensionSet& theValue )
-    {
-        self->dimensions() = theValue;
-    }
-
-    
-    Foam::dimensioned< Type > __neg__()
-    {
-        return -*self;
-    }
-    
-    Foam::dimensioned< Type > __div__( const Foam::dimensioned< Foam::scalar >& ds )
-    {
-        return *self / ds;
-    }
-    
-    Foam::dimensioned< Type > __add__( const Foam::dimensioned< Type >& ds )
-    {
-        return *self + ds;
-    }
-
-    Foam::dimensioned< Type > __rmul__( const Foam::dimensioned< Foam::scalar >& ds )
-    {
-        return ds * *self;
-    }
-    
-    Foam::dimensioned< Type > __mul__( const Foam::dimensioned< Foam::scalar >& ds )
-    {
-        return *self * ds;
-    }
-    
-    Foam::dimensioned< Type > __rmul__( const Foam::scalar& ds )
-    {
-        return ds * *self;
-    }
-
-    Foam::dimensioned< Type > __sub__( const Foam::dimensioned< Type >& ds )
-    {
-        return *self - ds;
-    }
-    Foam::dimensioned< Foam::scalar > mag()
-    {
-     return Foam::mag( *self );
-    }
+  void setValue( const Type& theValue )
+  {
+    self->value() = theValue;
+  }
+  
+  Type ext_value()
+  {
+    return self->value();
+  }
+  
+  void setDimensions( const Foam::dimensionSet& theValue )
+  {
+    self->dimensions() = theValue;
+  }
+  
+  
+  Foam::dimensioned< Type > __neg__()
+  {
+    return -*self;
+  }
+  
+  Foam::dimensioned< Type > __div__( const Foam::dimensioned< Foam::scalar >& ds )
+  {
+    return *self / ds;
+  }
+  
+  Foam::dimensioned< Type > __add__( const Foam::dimensioned< Type >& ds )
+  {
+    return *self + ds;
+  }
+  
+  Foam::dimensioned< Type > __rmul__( const Foam::dimensioned< Foam::scalar >& ds )
+  {
+    return ds * *self;
+  }
+  
+  Foam::dimensioned< Type > __mul__( const Foam::dimensioned< Foam::scalar >& ds )
+  {
+    return *self * ds;
+  }
+  
+  Foam::dimensioned< Type > __rmul__( const Foam::scalar& ds )
+  {
+    return ds * *self;
+  }
+  
+  Foam::dimensioned< Type > __sub__( const Foam::dimensioned< Type >& ds )
+  {
+    return *self - ds;
+  }
+  Foam::dimensioned< Foam::scalar > mag()
+  {
+    return Foam::mag( *self );
+  }
 }
 
-%include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::dimensioned< Type > OSTREAM_EXTENDS;
 

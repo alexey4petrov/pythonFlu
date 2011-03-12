@@ -25,15 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
-
-%include "src/OpenFOAM/primitives/scalar.cxx"
-
-%include "src/OpenFOAM/primitives/vector.cxx"
-
+%module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedScalar";
 %{
-    #include "dimensionedScalar.H"
+  #include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
+
+%import "src/OpenFOAM/primitives/scalar.cxx"
+
+%import "src/OpenFOAM/primitives/vector.cxx"
 
 %ignore Foam::dimensioned< Foam::scalar >::component;
 %ignore Foam::dimensioned< Foam::scalar >::replace;
@@ -49,7 +52,7 @@ PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(Foam::dimensioned, Foam::scala
 
 %typemap( out ) Foam::dimensioned< Foam::scalar >
 {
-    $result = SWIG_NewPointerObj( ( new $1_type( *&$1 ) ), $&1_descriptor, SWIG_POINTER_OWN |  0 );
+  $result = SWIG_NewPointerObj( ( new $1_type( *&$1 ) ), $&1_descriptor, SWIG_POINTER_OWN |  0 );
 }
 
 %template( dimensionedScalar ) Foam::dimensioned< Foam::scalar >; 
@@ -70,11 +73,11 @@ DIMENSIONEDTYPE_ADDONS( Foam::scalar )
 {
   Foam::dimensioned< Foam::scalar > sqrt()
   {
-     return Foam::sqrt( *self );
+    return Foam::sqrt( *self );
   }
   Foam::dimensioned< Foam::vector > __rmul__( const Foam::vector& ds )
   {
-      return ds * *self;
+    return ds * *self;
   }
 }
 
