@@ -25,15 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/strings/string.cxx"
-
+%module "Foam.src.OpenFOAM.db.Time.clock";
 %{
-    #include "clock.H"
+  #include "src/OpenFOAM/db/Time/clock.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/primitives/strings/string.cxx"
 
 %typemap( out ) time_t
 {
-    $result = PyInt_FromLong( $1 );
+  $result = PyInt_FromLong( $1 );
 }
 
 %include "clock.H"

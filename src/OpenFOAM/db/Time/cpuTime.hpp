@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef cpuTime_cxx
-#define cpuTime_cxx
+#ifndef cpuTime_hpp
+#define cpuTime_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.Time.cpuTime";
-%{
-  #include "src/OpenFOAM/db/Time/cpuTime.hpp"
-%}
+#include "src/OpenFOAM/primitives/scalar.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/scalar.cxx"
-
-%include "cpuTime.H"
+#include <cpuTime.H>
 
 
 //---------------------------------------------------------------------------
