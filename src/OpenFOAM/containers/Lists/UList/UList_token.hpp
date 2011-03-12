@@ -20,36 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef UList_token_cxx
-#define UList_token_cxx
+#ifndef UList_token_hpp
+#define UList_token_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_token";
-%{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_token.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/UList/UList.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
-
-%import "src/OpenFOAM/db/IOstreams/token.cxx"
-
-%ignore Foam::UList< Foam::token >::operator >;
-%ignore Foam::UList< Foam::token >::operator <;
-
-%ignore Foam::UList< Foam::token >::operator >=;
-%ignore Foam::UList< Foam::token >::operator <=;
-
-%ignore Foam::UList< Foam::token >::operator ==;
-%ignore Foam::UList< Foam::token >::operator !=;
-
-%ignore Foam::UList< Foam::token >::writeEntry;
-
-%template( UList_token ) Foam::UList< Foam::token >; 
-
-ULISTBASED_ADDONS( Foam::token );
+#include "src/OpenFOAM/db/IOstreams/token.hpp"
 
 
 //---------------------------------------------------------------------------
