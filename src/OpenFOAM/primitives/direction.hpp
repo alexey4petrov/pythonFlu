@@ -20,49 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef direction_cxx
-#define direction_cxx
+#ifndef direction_hpp
+#define direction_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.direction";
-%{
-  #include "src/OpenFOAM/primitives/direction.hpp"
-%}
+#include "src/common.hpp"
 
-
-//---------------------------------------------------------------------------
-%include <direction.H>
-
-
-//---------------------------------------------------------------------------
-%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::direction &
-{
-  void *ptr;
-  if ( SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 ) == -1 ) {
-    $1 = PyInt_Check( $input );
-  } else {
-    $1 = true;
-  }
-}
-
-
-%typemap( in ) const Foam::direction &
-{
-  void *ptr;
-  if ( SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 ) == -1 ) {
-    Foam::scalar aValue = PyInt_AsLong( $input );
-    $1 = new $1_basetype( aValue );
-  } else {
-    $1 = reinterpret_cast< $1_ltype >( ptr );
-  }
-}
-
-
-%typemap( out ) Foam::direction 
-{
-  $result = PyInt_FromLong( *&$1 );
-}
+#include <direction.H>
 
 
 //---------------------------------------------------------------------------
