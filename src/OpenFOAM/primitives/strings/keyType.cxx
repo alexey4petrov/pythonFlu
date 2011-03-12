@@ -20,6 +20,13 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.primitives.strings.keyType";
+%{
+  #include "src/OpenFOAM/primitives/strings/keyType.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
 %include "src/common.hxx"
 #if FOAM_VERSION( <, 010600 )
 #define keyType_cxx
@@ -32,13 +39,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
-
-%include "src/OpenFOAM/primitives/strings/word.cxx"
-
-%{
-    #include "keyType.H"
-%}
+%import "src/OpenFOAM/primitives/strings/word.cxx"
 
 %include "keyType.H"
 

@@ -20,35 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fileName_cxx
-#define fileName_cxx
+#ifndef fileName_hpp
+#define fileName_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.strings.fileName";
-%{
-  #include "src/OpenFOAM/primitives/strings/fileName.hpp"
-%}
+#include "src/OpenFOAM/primitives/strings/string.hpp"
 
+#include "src/OpenFOAM/primitives/Lists/wordList.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/Lists/wordList.cxx"
-
-%include <fileName.H>
-
-
-//---------------------------------------------------------------------------
-%extend Foam::fileName
-{
-  Foam::fileName __div__( const Foam::fileName& the_fileName )
-  {
-    return *self / the_fileName;
-  }   
-}
-
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
-
-%extend Foam::fileName OSTREAM_EXTENDS;
+#include <fileName.H>
 
 
 //---------------------------------------------------------------------------

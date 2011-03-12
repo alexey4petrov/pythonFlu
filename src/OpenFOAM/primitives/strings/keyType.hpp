@@ -20,35 +20,21 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fileName_cxx
-#define fileName_cxx
+#include "src/common.hpp"
+#if FOAM_VERSION( <, 010600 )
+#define keyType_cxx
+#endif
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.strings.fileName";
-%{
-  #include "src/OpenFOAM/primitives/strings/fileName.hpp"
-%}
+#ifndef keyType_hpp
+#define keyType_hpp
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/Lists/wordList.cxx"
+#include "src/OpenFOAM/primitives/strings/word.hpp"
 
-%include <fileName.H>
-
-
-//---------------------------------------------------------------------------
-%extend Foam::fileName
-{
-  Foam::fileName __div__( const Foam::fileName& the_fileName )
-  {
-    return *self / the_fileName;
-  }   
-}
-
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
-
-%extend Foam::fileName OSTREAM_EXTENDS;
+#include <keyType.H>
 
 
 //---------------------------------------------------------------------------
