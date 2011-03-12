@@ -25,7 +25,10 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.UList.UList_word";
+%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_word";
+%{
+   #include "src/OpenFOAM/containers/Lists/UList/UList_word.hpp"
+%}
 
 
 //---------------------------------------------------------------------------

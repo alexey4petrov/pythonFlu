@@ -20,29 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef UList_string_cxx
-#define UList_string_cxx
+#ifndef UList_string_hpp
+#define UList_string_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_string";
-%{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_string.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/UList/UList.hpp"
 
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
-
-%import "src/OpenFOAM/primitives/strings/string.cxx"
-
-%ignore Foam::UList< Foam::string >::writeEntry;
-
-%template( UList_string ) Foam::UList< Foam::string >; 
-
-%template( TContainer_string_iterator ) Foam::TContainer_iterator<  Foam::UList< Foam::string > >;
-
-ULISTBASED_ADDONS( Foam::string )
+#include "src/OpenFOAM/primitives/strings/string.hpp"
 
 
 //---------------------------------------------------------------------------
