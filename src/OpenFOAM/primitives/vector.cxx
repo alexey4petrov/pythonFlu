@@ -25,13 +25,10 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.vector";
-
+%module "Foam.src.OpenFOAM.primitives.vector";
 %{
   #include "src/OpenFOAM/primitives/vector.hpp"
 %}
-
-%include "src/common.hxx"
 
 
 //---------------------------------------------------------------------------
@@ -47,20 +44,20 @@
 //---------------------------------------------------------------------------
 %extend Foam::VectorSpace< Foam::Vector< Foam::scalar >, Foam::scalar, 3 >
 {
-    int __len__()
-    {
-        return self->size();
-    }
-    
-    Foam::scalar __getitem__( const Foam::direction theIndex )
-    {
-            return self->operator[]( theIndex );
-    }
-
-    void __setitem__( const Foam::direction theIndex, const Foam::scalar& theValue )
-    {
-        self->operator[]( theIndex ) = theValue;
-    }
+  int __len__()
+  {
+    return self->size();
+  }
+  
+  Foam::scalar __getitem__( const Foam::direction theIndex )
+  {
+    return self->operator[]( theIndex );
+  }
+  
+  void __setitem__( const Foam::direction theIndex, const Foam::scalar& theValue )
+  {
+    self->operator[]( theIndex ) = theValue;
+  }
 }
 
 
@@ -83,24 +80,24 @@
 {
   Foam::Tensor< Foam::scalar > sqr()
   {
-     return Foam::sqr( *self );
+    return Foam::sqr( *self );
   }
   Foam::Vector< Foam::scalar > __neg__()
   {
-     return - *self;
+    return - *self;
   }
   Foam::scalar __and__( const Foam::Vector< Foam::scalar >& theArg )
   {
-     return  *self & theArg;
+    return  *self & theArg;
   }
   
   Foam::Vector< Foam::scalar > __div__( const Foam::scalar& theArg )
   {
-     return  *self / theArg;
+    return  *self / theArg;
   }
   Foam::scalar mag()
   {
-     return  Foam::mag( *self );
+    return  Foam::mag( *self );
   }  
 }
 

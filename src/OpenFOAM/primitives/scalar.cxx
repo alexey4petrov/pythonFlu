@@ -25,15 +25,13 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.scalar";
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.primitives.scalar";
+%{
+  #include "src/OpenFOAM/primitives/scalar.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "doubleScalar.H"
-%}
-
 %include "doubleScalar.H"
 
 
@@ -46,60 +44,54 @@
 
 %typemap( in ) Foam::scalar
 {
-    Foam::scalar aValue = PyFloat_AsDouble( $input );
-    $1 = $1_basetype( aValue );
+  Foam::scalar aValue = PyFloat_AsDouble( $input );
+  $1 = $1_basetype( aValue );
 }
 
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::scalar&
 {
-   $1 = PyFloat_Check( $input );
+  $1 = PyFloat_Check( $input );
 }
 
 
 %typemap( in ) const Foam::scalar&
 {
-    Foam::scalar aValue = PyFloat_AsDouble( $input );
-    $1 = new $*1_ltype( aValue );
-
+  Foam::scalar aValue = PyFloat_AsDouble( $input );
+  $1 = new $*1_ltype( aValue );
 }
 
 
 //----------------------------------------------
 %typemap( out ) Foam::scalar
 {
-    $result = PyFloat_FromDouble( $1 );
+  $result = PyFloat_FromDouble( $1 );
 }
 
 %typemap( out ) Foam::scalar*
 {
-    Foam::scalar aValue = *$1;
-    $result = PyFloat_FromDouble( aValue );
+  Foam::scalar aValue = *$1;
+  $result = PyFloat_FromDouble( aValue );
 }
 
 
 %typemap( out ) const Foam::scalar &
 {
-    $result = PyFloat_FromDouble( *$1 );
+  $result = PyFloat_FromDouble( *$1 );
 }
 
 %typemap( out ) Foam::scalar &
 {
-    $result = PyFloat_FromDouble( *$1 );
+  $result = PyFloat_FromDouble( *$1 );
 }
 
 
 //---------------------------------------------------------------------------
 namespace Foam
 { 
-   struct scalar{};
+  struct scalar{};
 }
 
-%{
-    #include "scalar.H"
-%}
-
 %include "scalar.H"
-
 
 
 //---------------------------------------------------------------------------
