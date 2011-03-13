@@ -27,8 +27,6 @@
 //---------------------------------------------------------------------------
 #include "src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.hpp"
 
-#include "src/OpenFOAM/db/typeInfo/className.hxx"
-
 #include "src/OpenFOAM/primitives/strings/word.hpp"
 
 #include "src/OpenFOAM/primitives/Lists/tokenList.hpp"
