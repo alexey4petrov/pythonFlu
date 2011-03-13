@@ -20,26 +20,13 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef entryIDLList_cxx
-#define entryIDLList_cxx
+#ifndef entryIDLList_hpp
+#define entryIDLList_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.LinkedLists.user.IDLList.entryIDLList";
-%{
-   #include "src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.hpp"
-%}
-
-
-//---------------------------------------------------------------------------
-%ignore Foam::IDLList< Foam::entry >::IDLList( Istream& );
-%ignore Foam::IDLList< Foam::entry >::IDLList( const Foam::entry& );
-
-%import "src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.cxx"
-
-%import "src/OpenFOAM/db/dictionary/entry.cxx"
-
-%template( entryIDLList ) Foam::IDLList< Foam::entry >; 
+#include "src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.hpp"
+#include "src/OpenFOAM/db/dictionary/entry.hpp"
 
 
 //---------------------------------------------------------------------------

@@ -25,13 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
-
-%include "IDLList.H"
-
+%module "Foam.src.OpenFOAM.containers.LinkedLists.user.IDLList.IDLList";
 %{
-    #include "IDLList.H"
+   #include "src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
+%include <IDLList.H>
 
 
 //---------------------------------------------------------------------------
