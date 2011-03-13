@@ -21,6 +21,14 @@
 
 from Foam.src.OpenFOAM.global_.argList import *
 
+from Foam.src.OpenFOAM.db.error.messageStream import *
+from Foam.src.OpenFOAM.db.IOstreams.IOstreams.Ostream import *
+
+from Foam.src.OpenFOAM.db.Time.Time import *
+from Foam.src.OpenFOAM.db.IOobject import *
+from Foam.src.OpenFOAM.primitives.strings.fileName import *
+
+
 # #---------------------------------------------------------------------------
 # from Foam import get_module_initializtion_command
 # exec get_module_initializtion_command( "OpenFOAM_" ) 
