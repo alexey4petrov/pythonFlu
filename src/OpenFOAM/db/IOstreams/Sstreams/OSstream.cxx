@@ -25,15 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
-
-%include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
-
+%module "Foam.src.OpenFOAM.db.IOstreams.Sstreams.OSstream";
 %{
-    #include "OSstream.H"
+   #include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.hpp"
 %}
 
-%include "OSstream.H"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+
+%include <OSstream.H>
 
 
 //---------------------------------------------------------------------------

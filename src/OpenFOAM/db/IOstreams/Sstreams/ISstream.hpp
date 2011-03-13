@@ -20,21 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef ISstream_cxx
-#define ISstream_cxx
+#ifndef ISstream_hpp
+#define ISstream_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.IOstreams.Sstreams.ISstream";
-%{
-   #include "src/OpenFOAM/db/IOstreams/Sstreams/ISstream.hpp"
-%}
+#include "src/common.hpp"
 
+#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
-
-%include <ISstream.H>
+#include <ISstream.H>
 
 
 //---------------------------------------------------------------------------
