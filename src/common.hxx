@@ -57,7 +57,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/isinstance.hxx"
+%import "src/isinstance.hxx"
 
 %include "src/compound_operator.hxx"
 

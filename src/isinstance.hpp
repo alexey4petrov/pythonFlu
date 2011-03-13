@@ -20,40 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef isinstance_hxx
-#define isinstance_hxx
+#ifndef isinstance_hpp
+#define isinstance_hpp
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "src/isinstance.hpp"
-%}
-
-
-//---------------------------------------------------------------------------
-//It is assistant function for check argument's.
-
-%define ISINSTANCE_EXTEND( Type )
-  static void ext_isinstance( const Type& theArg ) throw( Python::TypeError ){ }
-%enddef
-
-
-//----------------------------------------------------------------------------
-%define ISINSTANCE_TEMPLATE_1_EXTEND( Template, Type1 )
-  static void ext_isinstance( const Foam::Template< Type1 >& theArg ) throw( Python::TypeError ) {}
-%enddef
-
-
-//----------------------------------------------------------------------------
-%define ISINSTANCE_TEMPLATE_2_EXTEND( Template, Type1, Type2 ) 
-  static void ext_isinstance( const Foam::Template< Type1, Type2 >& theArg )  throw( Python::TypeError ) {}
-%enddef
-
-
-//----------------------------------------------------------------------------
-%define ISINSTANCE_TEMPLATE_3_EXTEND( Template, Type1, Type2, Type3 )
-  static void ext_isinstance( const Foam::Template< Type1, Type2, Type3 >& theArg ) throw( Python::TypeError ) {}
-%enddef
+namespace Python
+{
+  struct TypeError
+  {};
+}
 
 
 //---------------------------------------------------------------------------
