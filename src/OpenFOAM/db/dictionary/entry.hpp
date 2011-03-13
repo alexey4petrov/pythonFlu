@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef entry_cxx
-#define entry_cxx
+#ifndef entry_hpp
+#define entry_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.dictionary.entry";
-%{
-   #include "src/OpenFOAM/db/dictionary/entry.hpp"
-%}
+#include "src/common.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
-
-%include <entry.H>
+#include <entry.H>
 
 
 //---------------------------------------------------------------------------

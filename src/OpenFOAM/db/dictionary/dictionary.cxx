@@ -25,34 +25,33 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.cxx"
-
-%include "src/OpenFOAM/db/typeInfo/className.hxx"
-
-%include "src/OpenFOAM/primitives/strings/word.cxx"
-
-%include "src/OpenFOAM/primitives/Lists/tokenList.cxx"
-
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-
-%include "src/OpenFOAM/primitives/strings/string.cxx"
-
-%include "src/OpenFOAM/primitives/scalar.cxx"
-
-%include "src/OpenFOAM/db/Switch.cxx"
-
+%module "Foam.src.OpenFOAM.db.dictionary.dictionary";
 %{
-    #include "dictionary.H"
-
-#if FOAM_VERSION( >=, 010600 )
-    #include "SHA1Digest.H"
-#endif
+   #include "src/OpenFOAM/db/dictionary/dictionary.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.cxx"
+
+%import "src/OpenFOAM/db/typeInfo/className.hxx"
+
+%import "src/OpenFOAM/primitives/strings/word.cxx"
+
+%import "src/OpenFOAM/primitives/Lists/tokenList.cxx"
+
+%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+
+%import "src/OpenFOAM/primitives/strings/string.cxx"
+
+%import "src/OpenFOAM/primitives/scalar.cxx"
+
+%import "src/OpenFOAM/db/Switch.cxx"
 
 // To use as input / output value for readIfPresent function
 %apply double& INOUT { double& val }; 
 
-%include "dictionary.H"
+%include <dictionary.H>
 
 %extend Foam::dictionary COMMON_EXTENDS;
 
