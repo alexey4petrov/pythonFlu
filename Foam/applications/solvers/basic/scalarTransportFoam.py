@@ -59,11 +59,11 @@ if FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
          test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases','propogated', 'r1.6', 'basic', 'scalarTransportFoam', 'pitzDaily' )
          argv = [ __file__, "-case", test_dir ]
          pass
-      from Foam.applications.solvers.basic.r1_6_ext.scalarTransportFoam import main_standalone
+      from Foam.applications.solvers.basic.r1_6_dev.scalarTransportFoam import main_standalone
       os._exit( main_standalone( len( argv ), argv ) )
       pass
    else:
-      from Foam.applications.solvers.basic.r1_6_ext.scalarTransportFoam import *
+      from Foam.applications.solvers.basic.r1_6_dev.scalarTransportFoam import *
       pass
    pass
    

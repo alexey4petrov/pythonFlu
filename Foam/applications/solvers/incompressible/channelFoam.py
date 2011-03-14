@@ -58,10 +58,10 @@ if FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6', 'incompressible', 'channelFoam', 'channel395' )
         argv = [ __file__, "-case", test_dir ]  
         pass
-     from Foam.applications.solvers.incompressible.r1_6_ext.channelFoam import main_standalone
+     from Foam.applications.solvers.incompressible.r1_6_dev.channelFoam import main_standalone
      os._exit( main_standalone( len( argv ), argv ) )
      pass
    else:
-     from Foam.applications.solvers.incompressible.r1_6_ext.channelFoam import main_standalone
+     from Foam.applications.solvers.incompressible.r1_6_dev.channelFoam import main_standalone
      pass
 

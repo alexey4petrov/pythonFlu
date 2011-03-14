@@ -59,11 +59,11 @@ if FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6', 'incompressible', 'nonNewtonianIcoFoam', 'offsetCylinder' )
         argv = [ __file__, "-case", test_dir ]
         pass
-     from Foam.applications.solvers.incompressible.r1_6_ext.nonNewtonianIcoFoam import main_standalone
+     from Foam.applications.solvers.incompressible.r1_6_dev.nonNewtonianIcoFoam import main_standalone
      os._exit( main_standalone( len( argv ), argv ) )
      pass
    else:
-     from Foam.applications.solvers.incompressible.r1_6_ext.nonNewtonianIcoFoam import *
+     from Foam.applications.solvers.incompressible.r1_6_dev.nonNewtonianIcoFoam import *
      pass
    pass
   
