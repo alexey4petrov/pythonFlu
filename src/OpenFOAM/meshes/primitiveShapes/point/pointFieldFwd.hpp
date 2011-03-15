@@ -20,23 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef pointFieldFwd_cxx
-#define pointFieldFwd_cxx
+#ifndef pointFieldFwd_hpp
+#define pointFieldFwd_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.meshes.primitiveShapes.point.pointFieldFwd";
-%{
-   #include "src/OpenFOAM/meshes/primitiveShapes/point/pointFieldFwd.hpp"
-%}
+#include "src/OpenFOAM/meshes/primitiveShapes/point/point.hpp"
 
+#include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/meshes/primitiveShapes/point/point.cxx"
-
-%import "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx"
-
-%include <pointFieldFwd.H>
+#include <pointFieldFwd.H>
 
 
 //---------------------------------------------------------------------------
