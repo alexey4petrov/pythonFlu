@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef labelList_cxx
-#define labelList_cxx
+#ifndef labelList_hpp
+#define labelList_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.Lists.labelList";
-%{
-   #include "src/OpenFOAM/primitives/Lists/labelList.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/List/List_label.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_label.cxx"
-
-%include <labelList.H>
+#include <labelList.H>
 
 
 //---------------------------------------------------------------------------
