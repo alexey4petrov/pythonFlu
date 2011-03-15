@@ -25,45 +25,24 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/refCount.cxx"
-
-%include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
-
-%include "src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
-
-%include "ext/common/ext_tmp.hxx"
-
+%module "Foam.src.OpenFOAM.fields.tmp.tmp";
 %{
-    #include "tmp.H"
+  #include "src/OpenFOAM/fields/tmp/tmp.hpp"
 %}
-
-%include "tmp.H"
 
 
 //---------------------------------------------------------------------------
-%{
-    namespace Foam
-    {
-      template<class T>
-      T& get_ref( T* theArg )
-      {
-        return *theArg;
-      }
-    
-      template<class T>
-      T& get_ref( tmp< T >* theArg )
-      {
-        return (*theArg)();
-      }
-      
-      template<class T>
-      T& get_ref( ext_tmp< T >* theArg )
-      {
-        return (*theArg)();
-      }
-      
-   }
-%}
+%import "src/OpenFOAM/fields/tmp/refCount.cxx"
+
+%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+
+%import "src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
+
+%import "ext/common/ext_tmp.hxx"
+
+%include <tmp.H>
+
+
 //---------------------------------------------------------------------------
 %define TMP_TYPEMAP( Type )
 

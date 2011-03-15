@@ -20,32 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef smartPtr_extend_hxx
-#define smartPtr_extend_hxx
+#ifndef refCount_hpp
+#define refCount_hpp
 
 
 //---------------------------------------------------------------------------
-//For using tmp<T> & autoPtr<T> as T
-%define SMARTPTR_PYAPPEND_GETATTR( Type ) __getattr__
-%{
-    name = args[ 0 ]
-    try:
-        return _swig_getattr( self, Type, name )
-    except AttributeError:
-        if self.valid() :
-            attr = None
-            exec "attr = self.__call__().%s" % name
-            return attr
-        pass
-    raise AttributeError()
-%}
-%enddef
+#include "src/common.hpp"
 
-
-//---------------------------------------------------------------------------
-%define SMARTPTR_EXTEND_ATTR( Type )
-    void __getattr__( const char* name ){} // dummy function
-%enddef
+#include <refCount.H>
 
 
 //---------------------------------------------------------------------------

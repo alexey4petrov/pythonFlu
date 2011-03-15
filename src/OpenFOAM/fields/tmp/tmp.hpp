@@ -20,32 +20,40 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef smartPtr_extend_hxx
-#define smartPtr_extend_hxx
+#ifndef tmp_hpp
+#define tmp_hpp
 
 
 //---------------------------------------------------------------------------
-//For using tmp<T> & autoPtr<T> as T
-%define SMARTPTR_PYAPPEND_GETATTR( Type ) __getattr__
-%{
-    name = args[ 0 ]
-    try:
-        return _swig_getattr( self, Type, name )
-    except AttributeError:
-        if self.valid() :
-            attr = None
-            exec "attr = self.__call__().%s" % name
-            return attr
-        pass
-    raise AttributeError()
-%}
-%enddef
+#include "src/OpenFOAM/fields/tmp/refCount.hpp"
+
+#include "ext/common/ext_tmp.hpp"
+
+#include <tmp.H>
 
 
 //---------------------------------------------------------------------------
-%define SMARTPTR_EXTEND_ATTR( Type )
-    void __getattr__( const char* name ){} // dummy function
-%enddef
+namespace Foam
+{
+  template< class T >
+  T& get_ref( T* theArg )
+  {
+    return *theArg;
+  }
+  
+  template< class T >
+  T& get_ref( tmp< T >* theArg )
+  {
+    return (*theArg)();
+  }
+  
+  template< class T >
+  T& get_ref( ext_tmp< T >* theArg )
+  {
+    return (*theArg)();
+  }
+  
+}
 
 
 //---------------------------------------------------------------------------
