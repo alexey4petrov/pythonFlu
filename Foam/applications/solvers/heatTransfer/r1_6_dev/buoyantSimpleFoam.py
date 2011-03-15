@@ -90,7 +90,7 @@ def initConvergenceCheck( simple ):
 #--------------------------------------------------------------------------------------
 def Ueqn( mesh, phi, U, rho, p, g, turbulence, eqnResidual, maxResidual ):
     from Foam import fvm, fvc
-    UEqn = fvm.div( phi, U ) - fvm.Sp( fvc.div( phi ), U ) + turbulence.divDevRhoReff( U )
+    UEqn = fvm.div( phi, U ) + turbulence.divDevRhoReff( U )
     UEqn.relax()
     
     from Foam.finiteVolume import solve
@@ -144,7 +144,7 @@ def pEqn( runTime, mesh, p, phi, psi, U, UEqn, g, rho, thermo, initialMass, eqnR
     for nonOrth in range( nNonOrthCorr + 1): 
         pEqn = fvm.laplacian( rhorUAf, p ) == fvc.div( phi )
 
-        pEqn.setReference( pRefCell, p[ pRefCell ] )
+        pEqn.setReference( pRefCell, pRefValue )
 
         # retain the residual from the first iteration
         if nonOrth == 0:
@@ -257,14 +257,14 @@ def main_standalone( argc, argv ):
 
 
 #--------------------------------------------------------------------------------------
-from Foam import FOAM_REF_VERSION
+from Foam import FOAM_BRANCH_VERSION
 import sys, os
-if FOAM_REF_VERSION( "==", "010600" ):
+if FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'local', 'r1.6', 'heatTransfer', 'buoyantSimpleFoam', 'hotRoom' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6-dev', 'heatTransfer', 'buoyantSimpleFoam', 'hotRoom' )
          argv = [ __file__, "-case", test_dir ]
          pass
       os._exit( main_standalone( len( argv ), argv ) )
