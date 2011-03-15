@@ -20,25 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef UList_label_cxx
-#define UList_label_cxx
+#ifndef UList_label_hpp
+#define UList_label_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_label";
-%{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_label.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/UList/UList.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
-
-%import "src/OpenFOAM/primitives/label.cxx"
-
-%template( UList_label ) Foam::UList< Foam::label >; 
-
-ULISTBASED_ADDONS( Foam::label );
+#include "src/OpenFOAM/primitives/label.hpp"
 
 
 //---------------------------------------------------------------------------
