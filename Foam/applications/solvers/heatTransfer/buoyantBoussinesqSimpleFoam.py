@@ -24,7 +24,7 @@
 
 
 #---------------------------------------------------------------------------   
-from Foam import FOAM_VERSION
+from Foam import FOAM_VERSION, FOAM_REF_VERSION, FOAM_BRANCH_VERSION
 import sys, os
 if FOAM_VERSION( "<", "010600" ):
     from Foam.OpenFOAM import ext_Info
@@ -33,7 +33,7 @@ if FOAM_VERSION( "<", "010600" ):
 
 
 #----------------------------------------------------------------------------------------------
-if FOAM_VERSION( "==", "010600" ):
+if FOAM_REF_VERSION( "==", "010600" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
@@ -51,7 +51,25 @@ if FOAM_VERSION( "==", "010600" ):
 
 
 #--------------------------------------------------------------------------------------
-if FOAM_VERSION( "==", "010700" ):
+if FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
+   if __name__ == "__main__" :
+      argv = sys.argv
+      if len( argv ) > 1 and argv[ 1 ] == "-test":
+         argv = None
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6-dev', 'heatTransfer', 'buoyantBoussinesqSimpleFoam', 'iglooWithFridges' )
+         argv = [ __file__, "-case", test_dir ]
+         pass
+      from Foam.applications.solvers.heatTransfer.r1_6_dev.buoyantBoussinesqSimpleFoam import main_standalone
+      os._exit( main_standalone( len( argv ), argv ) )
+      pass
+   else:
+      from Foam.applications.solvers.heatTransfer.r1_6_dev.buoyantBoussinesqSimpleFoam import *
+      pass
+   pass
+
+
+#--------------------------------------------------------------------------------------
+if FOAM_REF_VERSION( "==", "010700" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
@@ -69,7 +87,7 @@ if FOAM_VERSION( "==", "010700" ):
 
 
 #--------------------------------------------------------------------------------------
-if FOAM_VERSION( ">=", "010701" ):
+if FOAM_REF_VERSION( ">=", "010701" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":

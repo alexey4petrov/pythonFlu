@@ -304,9 +304,9 @@ def main_standalone( argc, argv ):
 
 
 #--------------------------------------------------------------------------------------
-from Foam import FOAM_VERSION
+from Foam import FOAM_REF_VERSION
 import sys, os
-if FOAM_VERSION( "==", "010700" ):
+if FOAM_REF_VERSION( "==", "010700" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
