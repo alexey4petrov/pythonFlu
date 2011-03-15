@@ -25,22 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.symmTensor";
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.primitives.symmTensor";
+%{
+  #include "src/OpenFOAM/primitives/s_ymmTensor.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "VectorSpace.H"
-%}
-
 %import "src/OpenFOAM/primitives/vector.cxx"
 
 %import "src/OpenFOAM/primitives/scalar.cxx"
-
-%{
-    #include "SymmTensor.H"
-%}
 
 %import "src/OpenFOAM/primitives/SymmTensor.cxx"
 
@@ -48,30 +42,27 @@
 
 %template( VectorSpace_symmTensor ) Foam::VectorSpace< Foam::SymmTensor< Foam::scalar >, Foam::scalar, 6 >;
 
+
 //---------------------------------------------------------------------------
 %extend Foam::VectorSpace< Foam::SymmTensor< Foam::scalar >, Foam::scalar, 6 >
 {
-    int __len__()
-    {
-        return self->size();
-    }
-    
-    Foam::scalar __getitem__( const Foam::direction theIndex )
-    {
-            return self->operator[]( theIndex );
-    }
-
-    void __setitem__( const Foam::direction theIndex, const Foam::scalar& theValue )
-    {
-        self->operator[]( theIndex ) = theValue;
-    }
+  int __len__()
+  {
+    return self->size();
+  }
+  
+  Foam::scalar __getitem__( const Foam::direction theIndex )
+  {
+    return self->operator[]( theIndex );
+  }
+  
+  void __setitem__( const Foam::direction theIndex, const Foam::scalar& theValue )
+  {
+    self->operator[]( theIndex ) = theValue;
+  }
 }
 
-%{
-    #include "symmTensor.H"
-%}
-
-%include "symmTensor.H"
+%include <symmTensor.H>
 
 %template ( symmTensor ) Foam::SymmTensor< Foam::scalar >;
 

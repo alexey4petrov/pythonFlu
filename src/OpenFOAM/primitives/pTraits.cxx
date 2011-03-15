@@ -25,13 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
-
+%module "Foam.src.OpenFOAM.primitives.pTraits";
 %{
-    #include "pTraits.H"
+  #include "src/OpenFOAM/primitives/pTraits.hpp"
 %}
 
-%include "pTraits.H"
+
+//---------------------------------------------------------------------------
+%include "src/common.hxx"
+
+%include <pTraits.H>
 
 
 //---------------------------------------------------------------------------

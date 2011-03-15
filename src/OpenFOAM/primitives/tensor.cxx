@@ -25,8 +25,10 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.tensor";
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.primitives.tensor";
+%{
+  #include "src/OpenFOAM/primitives/tensor.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
@@ -34,12 +36,7 @@
 
 %import "src/OpenFOAM/primitives/direction.cxx"
 
-%{
-    #include "VectorSpace.H"
-    #include "Tensor.H"
-%}
-
-%include "VectorSpace.H"
+%include <VectorSpace.H>
 
 %template( VectorSpace_Tensor ) Foam::VectorSpace< Foam::Tensor< Foam::scalar >, Foam::scalar, 9 >;
 
@@ -47,42 +44,33 @@
 //---------------------------------------------------------------------------
 %extend Foam::VectorSpace< Foam::Tensor< Foam::scalar >, Foam::scalar, 9 >
 {
-    int __len__()
-    {
-        return self->size();
-    }
-    
-    Foam::scalar __getitem__( const Foam::direction theIndex )
-    {
-            return self->operator[]( theIndex );
-    }
-
-    void __setitem__( const Foam::direction theIndex, const Foam::scalar& theValue )
-    {
-        self->operator[]( theIndex ) = theValue;
-    }
+  int __len__()
+  {
+    return self->size();
+  }
+  
+  Foam::scalar __getitem__( const Foam::direction theIndex )
+  {
+    return self->operator[]( theIndex );
+  }
+  
+  void __setitem__( const Foam::direction theIndex, const Foam::scalar& theValue )
+  {
+    self->operator[]( theIndex ) = theValue;
+  }
 }
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "Tensor.H"
-%}
-
-%include "Tensor.H"
+%include <Tensor.H>
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/s_phericalTensor.cxx"
-%include "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+%import "src/OpenFOAM/primitives/s_phericalTensor.cxx"
 
-%include "tensor.H"
+%import "src/OpenFOAM/primitives/s_ymmTensor.cxx"
 
-%{
-    #include "tensor.H"
-%}
-
-%template( tensor ) Foam::Tensor< Foam::scalar >;
+%include <tensor.H>
 
 
 //---------------------------------------------------------------------------

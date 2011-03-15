@@ -20,23 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef SymmTensor_cxx
-#define SymmTensor_cxx
+#ifndef pTraits_hpp
+#define pTraits_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.SymmTensor";
-%{
-  #include "src/OpenFOAM/primitives/SymmTensor.hpp"
-%}
+#include "src/common.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
-
-%import "src/OpenFOAM/primitives/SphericalTensor.cxx"
-
-%include <SymmTensor.H>
+#include <pTraits.H>
 
 
 //---------------------------------------------------------------------------

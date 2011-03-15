@@ -25,16 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.contiguous";
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.primitives.contiguous";
+%{
+  #include "src/OpenFOAM/primitives/contiguous.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "contiguous.H"
-%}
+%import "src/common.hxx"
 
-%include "contiguous.H"
+%include <contiguous.H>
 
 
 //---------------------------------------------------------------------------

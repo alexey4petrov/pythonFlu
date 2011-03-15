@@ -20,24 +20,25 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef SymmTensor_cxx
-#define SymmTensor_cxx
+#ifndef symmTensor_hpp
+#define symmTensor_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.SymmTensor";
-%{
-  #include "src/OpenFOAM/primitives/SymmTensor.hpp"
-%}
+#include <VectorSpace.H>
+
+#include "src/OpenFOAM/primitives/vector.hpp"
+
+#include "src/OpenFOAM/primitives/scalar.hpp"
+
+#include <SymmTensor.H>
+
+#include "src/OpenFOAM/primitives/SymmTensor.hpp"
+
+#include "src/OpenFOAM/primitives/contiguous.hpp"
+
+#include <symmTensor.H>
 
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
-
-%import "src/OpenFOAM/primitives/SphericalTensor.cxx"
-
-%include <SymmTensor.H>
-
-
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 #endif

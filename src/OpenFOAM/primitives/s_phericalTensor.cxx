@@ -25,16 +25,13 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.primitives.sphericalTensor";
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.primitives.sphericalTensor";
+%{
+  #include "src/OpenFOAM/primitives/s_phericalTensor.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "VectorSpace.H"
-    #include "SphericalTensor.H"
-%}
-
 %import "src/OpenFOAM/primitives/vector.cxx"
 
 %import "src/OpenFOAM/primitives/scalar.cxx"
@@ -47,27 +44,23 @@
 
 %extend Foam::VectorSpace< Foam::SphericalTensor< Foam::scalar >, Foam::scalar, 1 >
 {
-    int __len__()
-    {
-        return self->size();
-    }
-    
-    Foam::scalar __getitem__( const Foam::direction theIndex )
-    {
-            return self->operator[]( theIndex );
-    }
-
-    void __setitem__( const Foam::direction theIndex, const Foam::scalar& theValue )
-    {
-        self->operator[]( theIndex ) = theValue;
-    }
+  int __len__()
+  {
+    return self->size();
+  }
+  
+  Foam::scalar __getitem__( const Foam::direction theIndex )
+  {
+    return self->operator[]( theIndex );
+  }
+  
+  void __setitem__( const Foam::direction theIndex, const Foam::scalar& theValue )
+  {
+    self->operator[]( theIndex ) = theValue;
+  }
 }
 
-%{
-    #include "sphericalTensor.H"
-%}
-
-%include "sphericalTensor.H"
+%include <sphericalTensor.H>
 
 %template ( sphericalTensor ) Foam::SphericalTensor< Foam::scalar >;
 
