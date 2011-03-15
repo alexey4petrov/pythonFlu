@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef point_cxx
-#define point_cxx
+#ifndef point_hpp
+#define point_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.meshes.primitiveShapes.point.point";
-%{
-   #include "src/OpenFOAM/meshes/primitiveShapes/point/point.hpp"
-%}
+#include "src/common.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
-
-%include <point.H>
+#include <point.H>
 
 
 //---------------------------------------------------------------------------
