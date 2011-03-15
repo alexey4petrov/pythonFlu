@@ -20,27 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef primitiveFields_cxx
-#define primitiveFields_cxx
+#ifndef primitiveFields_hpp
+#define primitiveFields_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.Fields.primitiveFields";
-%{
-  #include "src/OpenFOAM/fields/Fields/primitiveFields.hpp"
-%}
+#include "src/OpenFOAM/fields/Fields/scalarField.hpp"
 
+#include "src/OpenFOAM/fields/Fields/vectorField.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+#include "src/OpenFOAM/fields/Fields/tensorField.hpp"
 
-%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
+#include "src/OpenFOAM/fields/Fields/symmTensorField.hpp"
 
-%import "src/OpenFOAM/fields/Fields/tensorField.cxx"
-
-%import "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
-
-%import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
+#include "src/OpenFOAM/fields/Fields/sphericalTensorField.hpp"
 
 
 //---------------------------------------------------------------------------
