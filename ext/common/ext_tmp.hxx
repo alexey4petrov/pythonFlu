@@ -26,78 +26,11 @@
 
 //---------------------------------------------------------------------------
 %{
-#include "tmp.H"
-#include "autoPtr.H" 
+  #include "ext/common/ext_tmp.hpp"
 %}
 
+#include "ext/common/ext_tmp.hpp"
 
-//---------------------------------------------------------------------------
-%inline
-{
- namespace Foam
- {
-    //---------------------------------------------------------------------------
-    template< class T >
-    struct ext_tmp
-    {
-        autoPtr< tmp< T > > engine;
-
-        explicit ext_tmp( T* tPtr = 0 )
-            : engine( new tmp< T >( tPtr ) )
-        {}
-
-        ext_tmp( const T& tRef )
-            : engine( new tmp< T >( tRef ) )
-        {}
-
-        ext_tmp( const tmp< T >& t )
-            : engine( new tmp< T >( t ) )
-        {}
-
-        ext_tmp( const ext_tmp< T >& at )
-            : engine( new tmp< T >( at.engine ) )
-        {}
-
-        void operator=( T* tPtr )
-        {
-            this->engine.reset( new tmp< T >( tPtr ) );
-        }
-
-        void operator=( const T& tRef )
-        {
-            this->engine.reset( new tmp< T >( tRef ) );
-        }
-
-        void operator=( const tmp< T >& t )
-        {
-            this->engine.reset( new tmp< T >( t ) );
-        }
-
-        void operator=( const ext_tmp< T >& at )
-        {
-            this->engine.reset( new tmp< T >( at.engine ) );
-        }
-
-        T* operator->()
-        {
-            return this->engine->operator -> ();
-        }
-
-        const T* operator->() const
-        {
-            return this->engine->operator -> ();
-        }
-
-        T& operator()()
-        {
-            return this->engine->operator () ();
-        }
-   };
-
-
-    //---------------------------------------------------------------------------
- }
-}
 
 //---------------------------------------------------------------------------
 #endif
