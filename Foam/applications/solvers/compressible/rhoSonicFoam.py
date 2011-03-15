@@ -180,15 +180,15 @@ def main_standalone( argc, argv ):
 
 #--------------------------------------------------------------------------------------
 import sys, os
-from Foam import FOAM_VERSION
-if FOAM_VERSION( "<", "010600" ) or FOAM_VERSION( ">", "010700" ):
+from Foam import FOAM_REF_VERSION, FOAM_BRANCH_VERSION
+if FOAM_REF_VERSION( "<", "010600" ) or FOAM_REF_VERSION( ">", "010700" ):
    from Foam.OpenFOAM import ext_Info
    ext_Info() << "\n\n To use this solver it is necessary to SWIG OpenFOAM-1.6 or 1.7.0\n"
    pass
 
 
 #--------------------------------------------------------------------------------------
-if FOAM_VERSION( "==", "010600" ) or FOAM_VERSION( "==", "010700" ):
+if FOAM_REF_VERSION( "==", "010600" ) or FOAM_REF_VERSION( "==", "010700" ) or FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len(argv) > 1 and argv[ 1 ] == "-test":
