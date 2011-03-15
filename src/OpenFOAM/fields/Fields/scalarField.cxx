@@ -25,16 +25,14 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.fields.Fields.scalarField";
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.fields.Fields.scalarField";
+%{
+  #include "src/OpenFOAM/fields/Fields/scalarField.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/Field.cxx"
-
-%{
-    #include "scalarField.H"
-%}
+%import "src/OpenFOAM/fields/Fields/Field.cxx"
 
 %import "src/OpenFOAM/primitives/Lists/scalarList.cxx"
 

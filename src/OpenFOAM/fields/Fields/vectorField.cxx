@@ -25,12 +25,14 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.fields.Fields.vectorField";
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.fields.Fields.vectorField";
+%{
+  #include "src/OpenFOAM/fields/Fields/vectorField.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/Field.cxx"
+%import "src/OpenFOAM/fields/Fields/Field.cxx"
 
 %import "src/OpenFOAM/primitives/vector.cxx"
 
@@ -42,12 +44,7 @@
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "tensor.H"
-    #include "vectorField.H"
-%}
-
-%include "vectorField.H"
+%include <vectorField.H>
 
 %ignore Foam::Field< Foam::vector >::typeName;
 %ignore Foam::Field< Foam::vector >::Field;

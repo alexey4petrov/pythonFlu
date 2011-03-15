@@ -25,15 +25,22 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/scalar.cxx"
+%module "Foam.src.OpenFOAM.fields.Fields.fieldTypes";
+%{
+  #include "src/OpenFOAM/fields/Fields/fieldTypes.hpp"
+%}
 
-%include "src/OpenFOAM/primitives/vector.cxx"
 
-%include "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/primitives/scalar.cxx"
 
-%include "src/OpenFOAM/primitives/s_phericalTensor.cxx"
+%import "src/OpenFOAM/primitives/vector.cxx"
 
-%include "src/OpenFOAM/primitives/tensor.cxx"
+%import "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+
+%import "src/OpenFOAM/primitives/s_phericalTensor.cxx"
+
+%import "src/OpenFOAM/primitives/tensor.cxx"
 
 
 //---------------------------------------------------------------------------

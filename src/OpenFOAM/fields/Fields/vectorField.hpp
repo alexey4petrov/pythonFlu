@@ -20,21 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef primitiveFieldsFwd_cxx
-#define primitiveFieldsFwd_cxx
+#ifndef vectorField_hpp
+#define vectorField_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.Fields.primitiveFieldsFwd";
-%{
-  #include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hpp"
-%}
+#include "src/OpenFOAM/fields/Fields/Field.hpp"
 
+#include "src/OpenFOAM/primitives/vector.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+#include "src/OpenFOAM/primitives/Lists/vectorList.hpp"
 
-%include <primitiveFieldsFwd.H>
+#include "src/OpenFOAM/primitives/tensor.hpp"
+
+#include "src/OpenFOAM/primitives/pTraits_vector.hpp"
+
+#include <vectorField.H>
 
 
 //---------------------------------------------------------------------------

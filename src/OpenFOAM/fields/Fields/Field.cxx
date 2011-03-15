@@ -25,19 +25,22 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/List/List.cxx"
+%module "Foam.src.OpenFOAM.fields.Fields.Field";
+%{
+  #include "src/OpenFOAM/fields/Fields/Field.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/Lists/List/List.cxx"
 
 %import "src/OpenFOAM/fields/tmp/refCount.cxx"
 
-%{
-    #include "Field.H"
-%}
+%include <Field.H>
 
-%include "Field.H"
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
-
-%include "ext/common/ext_tmp.hxx"
+%import "ext/common/ext_tmp.hxx"
 
 
 //---------------------------------------------------------------------------
@@ -45,11 +48,11 @@
 
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::Field_Type& 
 {
-    void *ptr;
-    int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::Field_Type * ), 0 );
-    int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::Field_Type > * ), 0 );
-    int res_ext_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::ext_tmp< Foam::Field_Type > * ), 0 );
-    $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( res_ext_tmpT );
+  void *ptr;
+  int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::Field_Type * ), 0 );
+  int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::Field_Type > * ), 0 );
+  int res_ext_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::ext_tmp< Foam::Field_Type > * ), 0 );
+  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( res_ext_tmpT );
 }
 
 %typemap( in ) const Foam::Field_Type& 
@@ -72,7 +75,7 @@
       $1 = tmp_res->operator->();
       } else {
         %argument_fail( res, "$type", $symname, $argnum );
-        }
+      }
     }
  }
 }    

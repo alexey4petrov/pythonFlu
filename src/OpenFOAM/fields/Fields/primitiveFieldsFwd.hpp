@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef primitiveFieldsFwd_cxx
-#define primitiveFieldsFwd_cxx
+#ifndef primitiveFieldsFwd_hpp
+#define primitiveFieldsFwd_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.Fields.primitiveFieldsFwd";
-%{
-  #include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hpp"
-%}
+#include "src/OpenFOAM/fields/Fields/fieldTypes.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
-
-%include <primitiveFieldsFwd.H>
+#include <primitiveFieldsFwd.H>
 
 
 //---------------------------------------------------------------------------
