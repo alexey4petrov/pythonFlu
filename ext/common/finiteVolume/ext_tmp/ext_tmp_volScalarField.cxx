@@ -40,6 +40,11 @@
         Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->operator->() );
         return *aSelf == theArg;
     }
+    Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh > > __div__( const Foam::dimensioned< Foam::scalar >& theArg )
+    {
+        return get_ref( self ) / theArg;
+    }
+
 }
 
 //---------------------------------------------------------------------------
