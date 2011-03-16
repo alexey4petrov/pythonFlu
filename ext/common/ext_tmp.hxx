@@ -29,7 +29,7 @@
   #include "ext/common/ext_tmp.hpp"
 %}
 
-#include "ext/common/ext_tmp.hpp"
+%include "ext/common/ext_tmp.hpp"
 
 
 //---------------------------------------------------------------------------
