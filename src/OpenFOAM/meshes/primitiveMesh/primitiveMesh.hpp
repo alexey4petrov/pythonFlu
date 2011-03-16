@@ -20,27 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef primitiveMesh_cxx
-#define primitiveMesh_cxx
+#ifndef primitiveMesh_hpp
+#define primitiveMesh_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.meshes.primitiveMesh.primitiveMesh"
-%{
-  #include "src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.hpp"
-%}
+#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
 
+#include "src/OpenFOAM/meshes/meshShapes/face/faceList.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
+#include "src/OpenFOAM/meshes/meshShapes/cell/cellList.hpp"
 
-%import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
-
-%import "src/OpenFOAM/meshes/meshShapes/face/faceList.cxx"
-
-%import "src/OpenFOAM/meshes/meshShapes/cell/cellList.cxx"
-
-%include <primitiveMesh.H>
+#include "primitiveMesh.H"
 
 
 //---------------------------------------------------------------------------
