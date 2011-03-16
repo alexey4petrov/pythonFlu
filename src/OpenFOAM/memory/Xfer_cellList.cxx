@@ -44,9 +44,9 @@
 
 %import "src/OpenFOAM/meshes/meshShapes/cell/cellList.cxx"
 
-%template( Xfer_cellList ) Foam::Xfer< Foam::cellList >;
-
 XFER_ADDONS( Foam::cellList );
+
+%template( Xfer_cellList ) Foam::Xfer< Foam::cellList >;
 
 
 //---------------------------------------------------------------------------
