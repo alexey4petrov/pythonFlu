@@ -20,38 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef PtrList_fvPatch_cxx
-#define PtrList_fvPatch_cxx
+#ifndef PtrList_fvPatch_hpp
+#define PtrList_fvPatch_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_fvPatch";
-%{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hpp"
 
+#include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
-
-%import "src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx"
-
-%ignore Foam::PtrList< Foam::fvPatch >::PtrList;
-%ignore Foam::PtrList< Foam::fvPatch >::begin;
-%ignore Foam::PtrList< Foam::fvPatch >::end;
-%ignore Foam::PtrList< Foam::fvPatch >::set;
-
-#if FOAM_VERSION( >=, 010600 )
-  %ignore Foam::PtrList< Foam::fvPatch >::xfer;
-#endif
-
-%include <fvPatchList.H>
-
-%template( PtrList_fvPatch ) Foam::PtrList< Foam::fvPatch >; 
-
-%typedef Foam::PtrList< Foam::fvPatch > PtrList_fvPatch;
-
-%extend Foam::PtrList< Foam::fvPatch > PTRLISTBASED_ADDONS( Foam::fvPatch )
+#include <fvPatchList.H>
 
 
 //---------------------------------------------------------------------------
