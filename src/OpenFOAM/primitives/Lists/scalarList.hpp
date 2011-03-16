@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/UList/UList_scalar.hpp"
+#include "src/OpenFOAM/containers/Lists/List/List_scalar.hpp"
 
 #include <scalarList.H>
 
