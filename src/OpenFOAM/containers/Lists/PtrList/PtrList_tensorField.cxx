@@ -25,13 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/tensorField.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_tensorField";
+%{
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.hpp"
+%}
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_tensorField.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp_tensorField.cxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/Fields/tensorField.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_tensorField.cxx"
+
+%import "src/OpenFOAM/fields/tmp/tmp_tensorField.cxx"
+
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::tensorField >::PtrList;
 

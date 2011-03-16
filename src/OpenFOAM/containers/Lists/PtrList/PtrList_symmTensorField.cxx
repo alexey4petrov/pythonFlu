@@ -25,13 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_symmTensorField";
+%{
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.hpp"
+%}
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp_symmTensorField.cxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.cxx"
+
+%import "src/OpenFOAM/fields/tmp/tmp_symmTensorField.cxx"
+
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::symmTensorField >::PtrList;
 

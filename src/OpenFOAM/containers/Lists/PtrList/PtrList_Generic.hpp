@@ -20,46 +20,17 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef PtrList_scalarField_cxx
-#define PtrList_scalarField_cxx
+#ifndef PtrList_Generic_hpp
+#define PtrList_Generic_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_scalarField";
-%{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hpp"
 
+#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
-
-%import "src/OpenFOAM/fields/tmp/tmp_scalarField.cxx"
-
-%import "src/OpenFOAM/fields/tmp/autoPtr_scalarField.cxx"
-
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
-
-%ignore Foam::PtrList< Foam::scalarField >::PtrList;
-%ignore Foam::PtrList< Foam::scalarField >::set;
-%ignore Foam::PtrList< Foam::scalarField >::begin;
-%ignore Foam::PtrList< Foam::scalarField >::end;
-
-%template( PtrList_scalarField ) Foam::PtrList< Foam::scalarField >;
-
-
-//---------------------------------------------------------------------------
-%extend Foam::PtrList< Foam::scalarField >
-{
-  Foam::PtrList< Foam::scalarField >( const Foam::label s )
-  {
-    return new Foam::PtrList< Foam::scalarField >( s );
-  }
-}
-
-%extend Foam::PtrList< Foam::scalarField > PTRLISTBASED_ADDONS( Foam::scalarField )
+#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hpp"
 
 
 //---------------------------------------------------------------------------
 #endif
-    

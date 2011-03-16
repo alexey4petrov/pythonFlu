@@ -25,13 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_sphericalTensorField";
+%{
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.hpp"
+%}
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_sphericalTensorField.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.cxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_sphericalTensorField.cxx"
+
+%import "src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.cxx"
+
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::sphericalTensorField >::PtrList;
 
