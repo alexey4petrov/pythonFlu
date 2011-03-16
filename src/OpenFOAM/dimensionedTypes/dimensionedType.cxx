@@ -40,7 +40,7 @@
 
 %import "src/OpenFOAM/db/IOstreams/ITstream.cxx"
 
-%import <dimensionedType.H>
+%include <dimensionedType.H>
 
 
 //---------------------------------------------------------------------------
