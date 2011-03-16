@@ -25,26 +25,24 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.FieldFields.FieldField_fvPatchField_symmTensor";
+%{
+  #include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_symmTensor.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
+%import "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.cxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.cxx"
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::symmTensor >::FieldField;
-
-%inline
-%{
-    typedef Foam::FieldField< Foam::fvPatchField, Foam::symmTensor > FieldField_fvPatchField_symmTensor;
-%}
 
 %template( FieldField_fvPatchField_symmTensor ) Foam::FieldField< Foam::fvPatchField, Foam::symmTensor >;
 
@@ -54,8 +52,9 @@
 
 %extend Foam::FieldField< Foam::fvPatchField, Foam::symmTensor >
 {
-    REDIRECT2BASE_EXTEND_ATTR( FieldField_fvPatchField_symmTensor )
+  REDIRECT2BASE_EXTEND_ATTR( FieldField_fvPatchField_symmTensor )
 }
+
 FIELDFIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::symmTensor );
 
 

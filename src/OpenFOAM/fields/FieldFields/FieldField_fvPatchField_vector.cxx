@@ -25,19 +25,22 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.FieldFields.FieldField_fvPatchField_vector";
+%{
+  #include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
+%import "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.cxx"
 
 NO_TMP_TYPEMAP_FIELDFIELD( Foam::fvPatchField, Foam::Vector<Foam::scalar> )
 
@@ -46,18 +49,13 @@ NO_TMP_TYPEMAP_FIELDFIELD( Foam::fvPatchField, Foam::Vector<Foam::scalar> )
 
 %template( FieldField_fvPatchField_vector ) Foam::FieldField< Foam::fvPatchField, Foam::vector >;
 
-%inline
-%{
-    typedef Foam::FieldField< Foam::fvPatchField, Foam::vector > FieldField_fvPatchField_vector;
-%}
-
 
 //---------------------------------------------------------------------------
 %feature( "pythonappend" ) Foam::FieldField< Foam::fvPatchField, Foam::vector >::REDIRECT2BASE_PYAPPEND_GETATTR( FieldField_fvPatchField_vector );
 
 %extend Foam::FieldField< Foam::fvPatchField, Foam::vector >
 {
-    REDIRECT2BASE_EXTEND_ATTR( FieldField_fvPatchField_vector )
+  REDIRECT2BASE_EXTEND_ATTR( FieldField_fvPatchField_vector )
 }
 
 FIELDFIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::vector );

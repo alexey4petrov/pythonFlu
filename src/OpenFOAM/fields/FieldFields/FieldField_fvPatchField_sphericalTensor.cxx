@@ -25,26 +25,24 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.FieldFields.FieldField_fvPatchField_sphericalTensor";
+%{
+  #include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_sphericalTensor.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
+%import "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_sphericalTensor.cxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_sphericalTensor.cxx"
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::sphericalTensor >::FieldField;
-
-%inline
-%{
-    typedef Foam::FieldField< Foam::fvPatchField, Foam::sphericalTensor > FieldField_fvPatchField_sphericalTensor;
-%}
 
 %template( FieldField_fvPatchField_sphericalTensor ) Foam::FieldField< Foam::fvPatchField, Foam::sphericalTensor >;
 
@@ -54,7 +52,7 @@
 
 %extend Foam::FieldField< Foam::fvPatchField, Foam::sphericalTensor >
 {
-    REDIRECT2BASE_EXTEND_ATTR( FieldField_fvPatchField_sphericalTensor )
+  REDIRECT2BASE_EXTEND_ATTR( FieldField_fvPatchField_sphericalTensor )
 }
 
 FIELDFIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::sphericalTensor );
