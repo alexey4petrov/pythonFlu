@@ -20,36 +20,17 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef polyPatchList_cxx
-#define polyPatchList_cxx
+#ifndef PtrList_polyPatch_hpp
+#define PtrList_polyPatch_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
+#include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hpp"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hpp"
 
-%ignore Foam::PtrList< Foam::polyPatch >::PtrList;
-%ignore Foam::PtrList< Foam::polyPatch >::begin;
-%ignore Foam::PtrList< Foam::polyPatch >::end;
-%ignore Foam::PtrList< Foam::polyPatch >::set;
+#include <polyPatchList.H>
 
-#if FOAM_VERSION( >=, 010600 )
-
-%ignore Foam::PtrList< Foam::polyPatch >::xfer;
-
-#endif
-
-
-%{
-    #include "polyPatchList.H"
-%}
-
-%template (polyPatchList) Foam::PtrList< Foam::polyPatch >;
-
-%extend Foam::PtrList< Foam::polyPatch > PTRLISTBASED_ADDONS( Foam::polyPatch )
-
-%include "polyPatchList.H"
 
 //---------------------------------------------------------------------------
 #endif

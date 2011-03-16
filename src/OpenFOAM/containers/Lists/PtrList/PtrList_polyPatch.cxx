@@ -20,66 +20,37 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef PtrList_cxx
-#define PtrList_cxx
+#ifndef PtrList_polyPatch_cxx
+#define PtrList_polyPatch_cxx
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList";
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_polyPatch";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+%import "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
 
-%include <PtrList.H>
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
+%ignore Foam::PtrList< Foam::polyPatch >::PtrList;
+%ignore Foam::PtrList< Foam::polyPatch >::begin;
+%ignore Foam::PtrList< Foam::polyPatch >::end;
+%ignore Foam::PtrList< Foam::polyPatch >::set;
 
-//---------------------------------------------------------------------------
-%define __PTRLISTBASED_AUTOPTR_SET_ADDONS__( TItem )
-Foam::autoPtr< TItem > ext_set( const Foam::label i, const Foam::autoPtr< TItem > & ptr )
-{
-  return self->set( i, ptr );
-}
-%enddef
+#if FOAM_VERSION( >=, 010600 )
+  %ignore Foam::PtrList< Foam::polyPatch >::xfer;
+#endif
 
-%define __PTRLISTBASED_TMP_SET_ADDONS__( TItem )
-Foam::autoPtr< TItem > ext_set( const Foam::label i, const Foam::tmp< TItem > & ptr )
-{
-  return self->set( i, ptr );
-}
-%enddef
+%template (polyPatchList) Foam::PtrList< Foam::polyPatch >;
 
-%define PTRLISTBASED_SET_ADDONS( TItem )
-{
-  __PTRLISTBASED_TMP_SET_ADDONS__( TItem )
-}
-%enddef
+%extend Foam::PtrList< Foam::polyPatch > PTRLISTBASED_ADDONS( Foam::polyPatch )
 
-
-//---------------------------------------------------------------------------
-%define __PTRLISTBASED_ADDONS__( TItem )
-int __len__()
-{
-  return self->size();
-}
-  
-TItem& __getitem__( const Foam::label theIndex )
-{
-  return self->operator[]( theIndex );
-}
-%enddef
-
-%define PTRLISTBASED_ADDONS( TItem )
-{
-  __PTRLISTBASED_ADDONS__( TItem )
-  __PTRLISTBASED_AUTOPTR_SET_ADDONS__( TItem )
-}
-%enddef
+%include <polyPatchList.H>
 
 
 //---------------------------------------------------------------------------
 #endif
-
