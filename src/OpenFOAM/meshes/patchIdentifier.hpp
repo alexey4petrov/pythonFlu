@@ -20,23 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef patchIdentifier_cxx
-#define patchIdentifier_cxx
+#ifndef patchIdentifier_hpp
+#define patchIdentifier_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.meshes.patchIdentifier"
-%{
-  #include "src/OpenFOAM/meshes/patchIdentifier.hpp"
-%}
+#include "src/OpenFOAM/primitives/strings/word.hpp"
 
+#include "src/OpenFOAM/primitives/label.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/strings/word.cxx"
-
-%import "src/OpenFOAM/primitives/label.cxx"
-
-%include <patchIdentifier.H>
+#include <patchIdentifier.H>
 
 
 //---------------------------------------------------------------------------
