@@ -20,37 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_FieldField_fvPatchField_vector_cxx
-#define tmp_FieldField_fvPatchField_vector_cxx
+#ifndef tmp_FieldField_fvPatchField_vector_hpp
+#define tmp_FieldField_fvPatchField_vector_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_FieldField_fvPatchField_vector"
-%{
-  #include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_vector.hpp"
-%}
-
 // Keep on corresponding "director" includes at the top of SWIG defintion file
+
 %include "src/OpenFOAM/directors.hxx"
+
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+#include "src/OpenFOAM/fields/tmp/tmp.hpp"
 
-%import "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.cxx"
-
-
-//-----------------------------------------------------------------------------
-%template( tmp_FieldField_fvPatchField_vector ) Foam::tmp< Foam::FieldField< Foam::fvPatchField, Foam::vector > >;
-
-%feature( "pythonappend" ) Foam::tmp< Foam::FieldField< Foam::fvPatchField, Foam::vector > >::SMARTPTR_PYAPPEND_GETATTR( tmp_FieldField_fvPatchField_vector );
-
-%extend Foam::tmp< Foam::FieldField< Foam::fvPatchField, Foam::vector > >
-{
-  SMARTPTR_EXTEND_ATTR( tmp_FieldField_fvPatchField_vector )
-  
-}
+#include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.hpp"
 
 
 //---------------------------------------------------------------------------

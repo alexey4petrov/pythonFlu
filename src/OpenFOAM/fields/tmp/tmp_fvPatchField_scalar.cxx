@@ -36,9 +36,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
 
 TMP_TYPEMAP( Foam::fvPatchField< Foam::scalar > )
 

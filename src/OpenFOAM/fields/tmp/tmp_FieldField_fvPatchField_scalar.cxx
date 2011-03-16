@@ -25,37 +25,30 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_FieldField_fvPatchField_scalar"
+%{
+  #include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_scalar.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.cxx"
+%import "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.cxx"
+
 
 //-----------------------------------------------------------------------------
 %template( tmp_FieldField_fvPatchField_scalar ) Foam::tmp< Foam::FieldField< Foam::fvPatchField, Foam::scalar > >;
 
-%inline
-{
-  namespace Foam
-  {
-    typedef tmp< FieldField< fvPatchField, scalar > > tmp_FieldField_fvPatchField_scalar;
-  }
-}
-
-
-//------------------------------------------------------------------------------
 %feature( "pythonappend" ) Foam::tmp< Foam::FieldField< Foam::fvPatchField, Foam::scalar > >::SMARTPTR_PYAPPEND_GETATTR( tmp_FieldField_fvPatchField_scalar );
 
 %extend Foam::tmp< Foam::FieldField< Foam::fvPatchField, Foam::scalar > >
 {
   SMARTPTR_EXTEND_ATTR( tmp_FieldField_fvPatchField_scalar )
-  
 }
 
 
