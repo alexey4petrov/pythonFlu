@@ -44,9 +44,9 @@
 
 %import "src/OpenFOAM/meshes/meshShapes/face/faceList.cxx"
 
-%template( Xfer_faceList ) Foam::Xfer< Foam::faceList >;
-
 XFER_ADDONS( Foam::faceList );
+
+%template( Xfer_faceList ) Foam::Xfer< Foam::faceList >;
 
 
 //---------------------------------------------------------------------------

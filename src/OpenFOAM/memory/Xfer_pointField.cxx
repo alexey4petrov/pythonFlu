@@ -44,9 +44,9 @@
 
 %import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
 
-%template( Xfer_pointField ) Foam::Xfer< Foam::pointField >;
-
 XFER_ADDONS( Foam::pointField );
+
+%template( Xfer_pointField ) Foam::Xfer< Foam::pointField >;
 
 
 //---------------------------------------------------------------------------

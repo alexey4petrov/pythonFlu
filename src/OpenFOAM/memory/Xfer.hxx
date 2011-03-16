@@ -42,6 +42,8 @@
 //---------------------------------------------------------------------------
 %define XFER_ADDONS( Type )
 
+%ignore Foam::Xfer< Type >::operator->;
+
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::Xfer< Type > &
 {
   void *ptr;
