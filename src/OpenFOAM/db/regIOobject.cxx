@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.regIOobject";
 %{
-   #include "src/OpenFOAM/db/regIOobject.hpp"
+  #include "src/OpenFOAM/db/regIOobject.hpp"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file
