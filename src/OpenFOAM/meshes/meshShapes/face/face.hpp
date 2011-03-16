@@ -20,33 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef face_cxx
-#define face_cxx
+#ifndef face_hpp
+#define face_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_bool";
-%{
-   #include "src/OpenFOAM/eshes/meshShapes/face/face.hpp"
-%}
+#include "src/OpenFOAM/primitives/Lists/labelList.hpp"
 
+#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
+#include "src/OpenFOAM/fields/Fields/vectorField.hpp"
 
-%import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
-
-%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
-
-%ignore Foam::face::ray;
-%ignore Foam::face::intersection;
-%ignore Foam::face::nearestPoint;
-
-#if FOAM_BRANCH_VERSION( dev, ==, 010500 )
-  %ignore Foam::face::fastIntersection;
-#endif
-
-%import <face.H>
+#include <face.H>
 
 
 //---------------------------------------------------------------------------
