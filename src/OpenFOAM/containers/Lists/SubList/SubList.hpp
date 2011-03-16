@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef SubList_cxx
-#define SubList_cxx
+#ifndef SubList_hpp
+#define SubList_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.SubList.SubList";
-%{
-  #include "src/OpenFOAM/containers/Lists/SubList/SubList.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/UList/UList.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
-
-%import <SubList.H>
+#include <SubList.H>
 
 
 //---------------------------------------------------------------------------

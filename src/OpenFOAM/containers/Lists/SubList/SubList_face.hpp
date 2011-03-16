@@ -20,21 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef SubList_cxx
-#define SubList_cxx
+#ifndef SubList_face_hpp
+#define SubList_face_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.SubList.SubList";
-%{
-  #include "src/OpenFOAM/containers/Lists/SubList/SubList.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/UList/UList_face.hpp"
 
+#include "src/OpenFOAM/containers/Lists/SubList/SubList.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
-
-%import <SubList.H>
+#include "src/OpenFOAM/meshes/meshShapes/face/face.hpp"
 
 
 //---------------------------------------------------------------------------
