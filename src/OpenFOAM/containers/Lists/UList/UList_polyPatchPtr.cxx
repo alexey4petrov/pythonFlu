@@ -20,25 +20,29 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef UList_label_cxx
-#define UList_label_cxx
+#ifndef UList_polyPatchPtr_cxx
+#define UList_polyPatchPtr_cxx
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_label";
+%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_polyPatchPtr";
 %{
-  #include "src/OpenFOAM/containers/Lists/UList/UList_label.hpp"
+  #include "src/OpenFOAM/containers/Lists/UList/UList_polyPatchPtr.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
 
-%template( UList_label ) Foam::UList< Foam::label >; 
+%import "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
 
-ULISTBASED_ADDONS( Foam::label );
+%ignore Foam::UList< Foam::polyPatch* >::writeEntry;
+
+%template( UList_polyPatchPtr ) Foam::UList< Foam::polyPatch* >;
+
+ULISTBASED_ADDONS( Foam::polyPatch* );
 
 
 //---------------------------------------------------------------------------

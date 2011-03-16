@@ -20,22 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef UList_pPolyPatch_cxx
-#define UList_pPolyPatch_cxx
+#ifndef UList_polyPatchPtr_hpp
+#define UList_polyPatchPtr_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+#include "src/OpenFOAM/containers/Lists/UList/UList.hpp"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
+#include "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.hpp"
 
-%include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
-
-%ignore Foam::UList< Foam::polyPatch* >::writeEntry;
-
-%template( UList_pPolyPatch ) Foam::UList< Foam::polyPatch* >;
-
-ULISTBASED_ADDONS( Foam::polyPatch* );
+#include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hpp"
 
 
 //---------------------------------------------------------------------------
