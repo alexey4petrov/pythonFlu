@@ -20,23 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_polyPatch_cxx
-#define autoPtr_polyPatch_cxx
+#ifndef autoPtr_polyPatch_hpp
+#define autoPtr_polyPatch_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_polyPatch"
-%{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.hpp"
-%}
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%import "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
-
-%template( autoPtr_polyPatch ) Foam::autoPtr< Foam::polyPatch >;
+#include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hpp"
 
 
 //---------------------------------------------------------------------------
