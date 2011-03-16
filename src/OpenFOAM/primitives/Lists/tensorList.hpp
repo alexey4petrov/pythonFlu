@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tensorList_cxx
-#define tensorList_cxx
+#ifndef tensorList_hpp
+#define tensorList_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.Lists.tensorList";
-%{
-   #include "src/OpenFOAM/primitives/Lists/tensorList.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/List/List_tensor.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_tensor.cxx"
-
-%include <tensorList.H>
+#include <tensorList.H>
 
 
 //---------------------------------------------------------------------------

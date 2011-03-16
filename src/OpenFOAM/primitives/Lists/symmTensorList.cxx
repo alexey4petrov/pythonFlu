@@ -25,11 +25,14 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/List/List_symmTensor.cxx"
-
+%module "Foam.src.OpenFOAM.primitives.Lists.symmTensorList";
 %{
-    #include "symmTensorList.H"
+   #include "src/OpenFOAM/primitives/Lists/symmTensorList.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/Lists/List/List_symmTensor.cxx"
 
 %include "symmTensorList.H"
 
