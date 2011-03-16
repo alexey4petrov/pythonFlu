@@ -25,21 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_symmTensorField"
+%{
+  #include "src/OpenFOAM/fields/tmp/tmp_symmTensorField.hpp"
+%}
 
-%include "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+
+%import "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
 
 
 //----------------------------------------------------------------------------
 %template( tmp_symmTensorField ) Foam::tmp< Foam::Field< Foam::symmTensor > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< Field< symmTensor > > tmp_symmTensorField;
-    }
-}
 
 
 //-----------------------------------------------------------------------------
@@ -47,7 +46,7 @@
 
 %extend Foam::tmp< Foam::Field< Foam::symmTensor > >
 {
-    SMARTPTR_EXTEND_ATTR( tmp_symmTensorField )
+  SMARTPTR_EXTEND_ATTR( tmp_symmTensorField )
 }
 
 

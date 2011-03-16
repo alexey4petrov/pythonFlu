@@ -20,24 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_tensorField_cxx
-#define autoPtr_tensorField_cxx
+#ifndef tmp_sphericalTensorField_hpp
+#define tmp_sphericalTensorField_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_tensorField"
-%{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_tensorField.hpp"
-%}
+#include "src/OpenFOAM/fields/tmp/tmp.hpp"
+
+#include "src/OpenFOAM/fields/Fields/sphericalTensorField.hpp"
 
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%import "src/OpenFOAM/fields/Fields/tensorField.cxx"
-
-%template( autoPtr_tensorField ) Foam::autoPtr< Foam::Field< Foam::tensor > >;
-
-
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 #endif

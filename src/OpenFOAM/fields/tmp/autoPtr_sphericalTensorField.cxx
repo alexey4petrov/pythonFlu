@@ -25,19 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_sphericalTensorField"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_sphericalTensorField.hpp"
+%}
 
-%include "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+
+%import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
 
 %template( autoPtr_sphericalTensorField ) Foam::autoPtr< Foam::Field< Foam::sphericalTensor > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef autoPtr< Field< sphericalTensor > > autoPtr_sphericalTensorField;
-    }
-}
 
 
 //---------------------------------------------------------------------------

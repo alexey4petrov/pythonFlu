@@ -25,21 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_sphericalTensorField"
+%{
+  #include "src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.hpp"
+%}
 
-%include "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+
+%import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
 
 
 //---------------------------------------------------------------------------
 %template( tmp_sphericalTensorField ) Foam::tmp< Foam::Field< Foam::sphericalTensor > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< Field< sphericalTensor > > tmp_sphericalTensorField;
-    }
-}
 
 
 //---------------------------------------------------------------------------
@@ -47,7 +46,7 @@
 
 %extend Foam::tmp< Foam::Field< Foam::sphericalTensor > >
 {
-    SMARTPTR_EXTEND_ATTR( tmp_sphericalTensorField )
+  SMARTPTR_EXTEND_ATTR( tmp_sphericalTensorField )
 }
 
 

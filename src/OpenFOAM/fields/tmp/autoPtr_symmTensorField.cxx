@@ -25,19 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_symmTensorField"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.hpp"
+%}
 
-%include "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+
+%import "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
 
 %template( autoPtr_symmTensorField ) Foam::autoPtr< Foam::Field< Foam::symmTensor > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef autoPtr< Field< symmTensor > > autoPtr_symmTensorField;
-    }
-}
 
 
 //---------------------------------------------------------------------------

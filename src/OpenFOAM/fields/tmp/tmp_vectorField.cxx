@@ -25,21 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_vectorField"
+%{
+  #include "src/OpenFOAM/fields/tmp/tmp_vectorField.hpp"
+%}
 
-%include "src/OpenFOAM/fields/Fields/vectorField.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+
+%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
 
 
 //---------------------------------------------------------------------------
 %template( tmp_vectorField ) Foam::tmp< Foam::Field< Foam::vector > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< Field< vector > > tmp_vectorField;
-    }
-}
 
 
 //---------------------------------------------------------------------------
@@ -47,7 +46,7 @@
 
 %extend Foam::tmp< Foam::Field< Foam::vector > >
 {
-    SMARTPTR_EXTEND_ATTR( tmp_vectorField )
+  SMARTPTR_EXTEND_ATTR( tmp_vectorField )
 }
 
 

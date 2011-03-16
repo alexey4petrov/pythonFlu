@@ -25,21 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_tensorField"
+%{
+  #include "src/OpenFOAM/fields/tmp/tmp_tensorField.hpp"
+%}
 
-%include "src/OpenFOAM/fields/Fields/tensorField.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+
+%import "src/OpenFOAM/fields/Fields/tensorField.cxx"
 
 
 //----------------------------------------------------------------------------
 %template( tmp_tensorField ) Foam::tmp< Foam::Field< Foam::tensor > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< Field< tensor > > tmp_tensorField;
-    }
-}
 
 
 //---------------------------------------------------------------------------
@@ -47,7 +46,7 @@
 
 %extend Foam::tmp< Foam::Field< Foam::tensor > >
 {
-    SMARTPTR_EXTEND_ATTR( tmp_tensorField )
+  SMARTPTR_EXTEND_ATTR( tmp_tensorField )
 }
 
 //---------------------------------------------------------------------------
