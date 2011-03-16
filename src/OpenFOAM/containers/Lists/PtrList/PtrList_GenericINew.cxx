@@ -25,36 +25,34 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericINew";
+%{
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.cxx"
 
 
 //---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.cxx"
+
 %feature( "director" ) PtrList_INewBase;
 %feature( "director" ) PtrList_INewHolder;
 
-
-//---------------------------------------------------------------------------
-%{
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.H"
-%}
-
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.H" 
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hpp" 
 
 
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::PtrList_INewHolder&
 {
-    void *ptr;
-    int check = 0;
-    int check1 = 0;
-    check = SWIG_ConvertPtr( $input, &ptr, $descriptor( Foam::PtrList_INewHolder* ), 0 );
-    check1 = SWIG_ConvertPtr( $input, &ptr, $descriptor( Foam::PtrList_INewBase* ), 0 );
-    $1 = SWIG_IsOK( check ) || SWIG_IsOK( check1 ); 
+  void *ptr;
+  int check = 0;
+  int check1 = 0;
+  check = SWIG_ConvertPtr( $input, &ptr, $descriptor( Foam::PtrList_INewHolder* ), 0 );
+  check1 = SWIG_ConvertPtr( $input, &ptr, $descriptor( Foam::PtrList_INewBase* ), 0 );
+  $1 = SWIG_IsOK( check ) || SWIG_IsOK( check1 ); 
 }
 
 %typemap( in ) const Foam::PtrList_INewHolder&
@@ -70,12 +68,11 @@
     if ( SWIG_IsOK( res ) && argp ) {
       Foam::PtrList_INewBase* tmp =%reinterpret_cast( argp, Foam::PtrList_INewBase * );
       $1 = new Foam::PtrList_INewHolder( tmp );
-      } else {
-        %argument_fail( res, "$type", $symname, $argnum );
-        }
+    } else {
+      %argument_fail( res, "$type", $symname, $argnum );
     }
+  }
 } 
-
 
 
 //---------------------------------------------------------------------------

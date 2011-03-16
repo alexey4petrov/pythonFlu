@@ -25,17 +25,26 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericType";
+%{
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hpp"
+%}
 
+// Keep on corresponding "director" includes at the top of SWIG defintion file
 %include "src/OpenFOAM/directors.hxx"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/OpenFOAM/primitives/direction.cxx"
-%include "src/OpenFOAM/primitives/label.cxx"
-%include "src/OpenFOAM/primitives/scalar.cxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+
+%import "src/OpenFOAM/primitives/direction.cxx"
+
+%import "src/OpenFOAM/primitives/label.cxx"
+
+%import "src/OpenFOAM/primitives/scalar.cxx"
 
 %include "src/redirect2base.hxx"
+
 
 //---------------------------------------------------------------------------
 %feature( "director" ) PtrList_TypeBase;
@@ -43,14 +52,7 @@
 
 BAREPTR_TYPEMAP( Foam::PtrList_TypeBase );
 
-
-//---------------------------------------------------------------------------
-%{
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.H"
-%}
-
-
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.H"
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hpp"
 
 
 //---------------------------------------------------------------------------
@@ -58,21 +60,20 @@ BAREPTR_TYPEMAP( Foam::PtrList_TypeBase );
 
 %extend Foam::PtrList_TypeHolder
 {
-   REDIRECT2BASE_EXTEND_ATTR( PtrList_TypeHolder );
+  REDIRECT2BASE_EXTEND_ATTR( PtrList_TypeHolder );
 }
-
 
 
 //---------------------------------------------------------------------------
 %typecheck( SWIG_TYPECHECK_POINTER ) Foam::PtrList_TypeHolder * 
 {
-    void *ptr;
-    int check = 0;
-    int check1 = 0;
-    check = SWIG_ConvertPtr( $input, &ptr, $descriptor( Foam::PtrList_TypeHolder * ), 0 );
-    check1 = SWIG_ConvertPtr( $input, &ptr, $descriptor( Foam::PtrList_TypeBase * ), 0 );
-    
-    $1 = SWIG_IsOK( check ) || SWIG_IsOK( check1 ); 
+  void *ptr;
+  int check = 0;
+  int check1 = 0;
+  check = SWIG_ConvertPtr( $input, &ptr, $descriptor( Foam::PtrList_TypeHolder * ), 0 );
+  check1 = SWIG_ConvertPtr( $input, &ptr, $descriptor( Foam::PtrList_TypeBase * ), 0 );
+  
+  $1 = SWIG_IsOK( check ) || SWIG_IsOK( check1 ); 
 }
 
 %typemap( in ) Foam::PtrList_TypeHolder* ( void  *argp = 0, int check = 0, Foam::PtrList_TypeHolder* result ) 
@@ -85,14 +86,13 @@ BAREPTR_TYPEMAP( Foam::PtrList_TypeBase );
       PyObject_CallMethod( director->swig_get_self(), (char *) "__disown__", NULL );
     }
   } else {
-   check = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::PtrList_TypeBase * ), SWIG_POINTER_DISOWN | %convertptr_flags );
-   if ( SWIG_IsOK( check ) && argp ) {
-     Foam::PtrList_TypeBase * tmp = %reinterpret_cast( argp, Foam::PtrList_TypeBase * );
-     if ( Swig::Director *director = SWIG_DIRECTOR_CAST( tmp ) ) {
-      PyObject_CallMethod( director->swig_get_self(), (char *) "__disown__", NULL );
-    }
-     result = new Foam::PtrList_TypeHolder( tmp );
-     
+    check = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::PtrList_TypeBase * ), SWIG_POINTER_DISOWN | %convertptr_flags );
+    if ( SWIG_IsOK( check ) && argp ) {
+      Foam::PtrList_TypeBase * tmp = %reinterpret_cast( argp, Foam::PtrList_TypeBase * );
+      if ( Swig::Director *director = SWIG_DIRECTOR_CAST( tmp ) ) {
+	PyObject_CallMethod( director->swig_get_self(), (char *) "__disown__", NULL );
+      }
+      result = new Foam::PtrList_TypeHolder( tmp );
     }
   }
   $1 = result;

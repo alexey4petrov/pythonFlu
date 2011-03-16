@@ -20,40 +20,51 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef PtrList_GenericINew_H
-#define PtrList_GenericINew_H
+#ifndef PtrList_GenericType_hpp
+#define PtrList_GenericType_hpp
 
 
 //---------------------------------------------------------------------------
-#include "PtrList_GenericType.H"
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
+
+#include <Istream.H>
+#include <refCount.H>
+#include <direction.H>
+#include <scalar.H>
 
 namespace Foam
 {
-  struct PtrList_INewBase
+  struct PtrList_TypeHolder;
+  struct PtrList_TypeBase    
   {
-     PtrList_INewBase() {}
-     virtual autoPtr<PtrList_TypeHolder> operator()( Istream & is ) const  = 0;
-     virtual ~PtrList_INewBase(){}
+    PtrList_TypeBase() {}
+    virtual autoPtr< PtrList_TypeHolder >  clone() = 0;
+    virtual ~PtrList_TypeBase() {}
   };
 
-  struct PtrList_INewHolder: PtrList_INewBase
+  struct PtrList_TypeHolder : PtrList_TypeBase
   {
-     PtrList_INewHolder( PtrList_INewBase* the_PtrList_INewBase ): m_engine( the_PtrList_INewBase ){};
-     PtrList_INewHolder(){};
-     virtual autoPtr< PtrList_TypeHolder > operator()( Istream& is ) const
-     {
-        return this->m_engine->operator()( is );
-     };
-     PtrList_INewBase* operator->() 
-     {
-        return this->m_engine;
-     }
-     private :
-        PtrList_INewBase* m_engine;
-  }; 
+    PtrList_TypeHolder( PtrList_TypeBase* the_PtrList_TypeBase ): m_engine( the_PtrList_TypeBase )
+    {};
+    PtrList_TypeHolder(){}
+    
+    virtual autoPtr< PtrList_TypeHolder > clone()
+    {
+      return this->m_engine->clone() ;
+    }       
+    PtrList_TypeBase* operator->() 
+    {
+      return this->m_engine;
+    }
+    PtrList_TypeBase* base() 
+    {
+      return this->m_engine;
+    }
+  private :
+    PtrList_TypeBase* m_engine;
+  };
 }
 
 
 //---------------------------------------------------------------------------
 #endif
-

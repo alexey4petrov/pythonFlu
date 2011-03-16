@@ -25,9 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.cxx"
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_Generic";
+%{
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_Generic.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.cxx"
+
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.cxx"
 
 %ignore Foam::PtrList< Foam::PtrList_TypeHolder >::begin;
 %ignore Foam::PtrList< Foam::PtrList_TypeHolder >::end;
@@ -49,7 +58,7 @@
     return new Foam::PtrList< Foam::PtrList_TypeHolder >( s );
   }
   
-  Foam::PtrList< Foam::PtrList_TypeHolder >( Istream& is, const Foam::PtrList_INewHolder& inewt)
+  Foam::PtrList< Foam::PtrList_TypeHolder >( Istream& is, const Foam::PtrList_INewHolder& inewt )
   {
     return new Foam::PtrList< Foam::PtrList_TypeHolder >( is, inewt );
   }
