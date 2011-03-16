@@ -20,41 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IOdictionary_cxx
-#define IOdictionary_cxx
+#ifndef IOdictionary_hpp
+#define IOdictionary_hpp
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.IOdictionary";
-%{
-  #include "src/OpenFOAM/db/IOdictionary.hpp"
-%}
+#include "src/OpenFOAM/db/regIOobject.hpp"
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
+#include "src/OpenFOAM/db/dictionary/dictionary.hpp"
 
+#include "src/OpenFOAM/db/objectRegistry.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/regIOobject.cxx"
-
-%import "src/OpenFOAM/db/dictionary/dictionary.cxx"
-
-%import "src/OpenFOAM/db/objectRegistry.cxx"
-
-
-//---------------------------------------------------------------------------
-%feature( "director" ) IOdictionary;
-
-DIRECTOR_PRE_EXTENDS( IOdictionary );
-
-%include <IOdictionary.H>
-
-%extend Foam::IOdictionary
-{
-  DIRECTOR_EXTENDS( IOdictionary );
-}
-
-BAREPTR_TYPEMAP( Foam::IOdictionary );
+#include <IOdictionary.H>
 
 
 //---------------------------------------------------------------------------
