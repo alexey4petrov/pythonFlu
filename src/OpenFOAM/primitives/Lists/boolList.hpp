@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef boolList_cxx
-#define boolList_cxx
+#ifndef boolList_hpp
+#define boolList_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.Lists.boolList";
-%{
-  #include "src/OpenFOAM/primitives/Lists/boolList.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/List/List_bool.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_bool.cxx"
-
-%include <boolList.H>
+#include <boolList.H>
 
 
 //---------------------------------------------------------------------------
