@@ -20,23 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef pTraits_symmTensor_cxx
-#define pTraits_symmTensor_cxx
+#ifndef pTraits_symmTensor_hpp
+#define pTraits_symmTensor_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.pTraits_symmTensor";
-%{
-  #include "src/OpenFOAM/primitives/pTraits_symmTensor.hpp"
-%}
+#include "src/OpenFOAM/primitives/s_ymmTensor.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/pTraits.cxx"
-
-%import "src/OpenFOAM/primitives/s_ymmTensor.cxx"
-
-%template ( pTraits_symmTensor ) Foam::pTraits<Foam::symmTensor>;
+#include "src/OpenFOAM/primitives/pTraits.hpp"
 
 
 //---------------------------------------------------------------------------
