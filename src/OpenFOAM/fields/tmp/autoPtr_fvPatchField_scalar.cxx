@@ -25,19 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_fvPatchField_scalar"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_scalar.hpp"
+%}
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
 
 %template( autoPtr_fvPatchField_scalar ) Foam::autoPtr< Foam::fvPatchField< Foam::scalar > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef autoPtr< fvPatchField< scalar > > autoPtr_fvPatchField_scalar;
-    }
-}
 
 
 //---------------------------------------------------------------------------
@@ -52,7 +51,6 @@
     Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
     return *aSelf == theArg;
   }
-
 }
 
 

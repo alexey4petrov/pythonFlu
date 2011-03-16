@@ -20,38 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_fvPatchField_vector_cxx
-#define autoPtr_fvPatchField_vector_cxx
+#ifndef autoPtr_fvPatchField_scalar_hpp
+#define autoPtr_fvPatchField_scalar_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_fvPatchField_vector"
-%{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_vector.hpp"
-%}
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
-
-%template( autoPtr_fvPatchField_vector ) Foam::autoPtr< Foam::fvPatchField< Foam::vector > >;
-
-
-//---------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::fvPatchField< Foam::vector > >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_fvPatchField_vector );
-
-%extend Foam::autoPtr< Foam::fvPatchField< Foam::vector > >
-{
-  SMARTPTR_EXTEND_ATTR( autoPtr_fvPatchField_vector )
-  
-  bool operator==( const Foam::UList< Foam::vector >& theArg )
-  {
-    Foam::UList< Foam::vector >* aSelf = static_cast< Foam::UList< Foam::vector >* >( self->ptr() );
-    return *aSelf == theArg;
-  }
-}
+#include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.hpp"
 
 
 //---------------------------------------------------------------------------

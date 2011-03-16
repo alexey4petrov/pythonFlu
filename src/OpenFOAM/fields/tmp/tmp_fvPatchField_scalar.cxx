@@ -25,10 +25,13 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_fvPatchField_scalar"
+%{
+  #include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_scalar.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
@@ -43,17 +46,7 @@ TMP_TYPEMAP( Foam::fvPatchField< Foam::scalar > )
 //----------------------------------------------------------------------------
 %ignore Foam::tmp< Foam::fvPatchField< Foam::scalar > >::tmp;
 
-
-//-----------------------------------------------------------------------------
 %template( tmp_fvPatchField_scalar ) Foam::tmp< Foam::fvPatchField< Foam::scalar > >;
-
-%inline
-{
-  namespace Foam
-  {
-    typedef tmp< fvPatchField< scalar > > tmp_fvPatchField_scalar;
-  }
-}
 
 
 //------------------------------------------------------------------------------
