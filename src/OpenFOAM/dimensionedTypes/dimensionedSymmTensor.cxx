@@ -25,17 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx"
+%module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedSymmTensor";
+%{
+  #include "src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx"
 
 %typedef Foam::dimensioned< Foam::symmTensor > dimensionedSymmTensor;
 
 %template( dimensionedSymmTensor ) Foam::dimensioned< Foam::symmTensor >; 
 
-%include "dimensionedSymmTensor.H"
-
-%{
-    #include "dimensionedSymmTensor.H"
-%}
+%include <dimensionedSymmTensor.H>
 
 DIMENSIONEDTYPE_ADDONS( Foam::symmTensor )
 

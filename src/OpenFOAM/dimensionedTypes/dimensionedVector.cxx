@@ -25,15 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
-
-%include "src/OpenFOAM/primitives/vector.cxx"
-
-%include "src/OpenFOAM/primitives/tensor.cxx"
-
+%module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedVector";
 %{
-    #include "dimensionedVector.H"
+  #include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
+
+%import "src/OpenFOAM/primitives/vector.cxx"
+
+%import "src/OpenFOAM/primitives/tensor.cxx"
 
 %ignore Foam::dimensioned< Foam::vector >::component;
 %ignore Foam::dimensioned< Foam::vector >::replace;
@@ -43,7 +46,7 @@
 
 %typemap( out ) Foam::dimensioned< Foam::vector >
 {
-    $result = SWIG_NewPointerObj( ( new $1_type( *&$1 ) ), $&1_descriptor, SWIG_POINTER_OWN |  0 );
+  $result = SWIG_NewPointerObj( ( new $1_type( *&$1 ) ), $&1_descriptor, SWIG_POINTER_OWN |  0 );
 }
 
 
@@ -54,7 +57,7 @@ PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(Foam::dimensioned, Foam::vecto
 //-----------------------------------------------------------------------
 %template( dimensionedVector ) Foam::dimensioned< Foam::vector >; 
 
-%include "dimensionedVector.H"
+%include <dimensionedVector.H>
 
 
 //------------------------------------------------------------------------
@@ -70,11 +73,11 @@ DIMENSIONEDTYPE_ADDONS( Foam::vector )
 {
   Foam::dimensioned< Foam::scalar > __and__( const Foam::dimensioned< Foam::vector >& ds )
   {
-     return *self & ds;
+    return *self & ds;
   }
   Foam::dimensioned< Foam::vector > __rand__( const Foam::tensor& ds )
   {
-     return *self & ds;
+    return *self & ds;
   }
 }
 

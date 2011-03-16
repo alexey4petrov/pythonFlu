@@ -20,29 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef dimensionedTensor_cxx
-#define dimensionedTensor_cxx
+#ifndef dimensionedTensor_hpp
+#define dimensionedTensor_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedTensor";
-%{
-  #include "src/OpenFOAM/dimensionedTypes/dimensionedTensor.hpp"
-%}
+#include "src/OpenFOAM/dimensionedTypes/dimensionedTypes.hpp"
 
+#include "src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx"
-
-%import "src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.cxx"
-
-%include <dimensionedTensor.H>
-
-typedef Foam::dimensioned< Foam::tensor > dimensionedTensor;
-
-%template( dimensionedTensor ) Foam::dimensioned< Foam::tensor >; 
-
-DIMENSIONEDTYPE_ADDONS( Foam::tensor )
+#include <dimensionedTensor.H>
 
 
 //---------------------------------------------------------------------------
