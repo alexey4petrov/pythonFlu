@@ -25,22 +25,14 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.fields.tmp.autoPtr_vectorField";
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_vectorField";
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_vectorField.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%{
-    #include "List.H"
-#if FOAM_VERSION( >=, 010600 )
-    #include "SortableList.H"
-#endif
-%}
-
-%{
-    #include "vectorField.H"
-%}
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
 %import "src/OpenFOAM/fields/Fields/vectorField.cxx"
 

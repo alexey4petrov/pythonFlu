@@ -20,33 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_scalarField_cxx
-#define tmp_scalarField_cxx
+#ifndef autoPtr_vectorField_hpp
+#define autoPtr_vectorField_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_scalarField"
-%{
-  #include "src/OpenFOAM/fields/tmp/tmp_scalarField.hpp"
-%}
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
+#include <List.H>
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+#if FOAM_VERSION( >=, 010600 )
+  #include <SortableList.H>
+#endif
 
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+#include <vectorField.H>
 
-
-//----------------------------------------------------------------------------
-%template( tmp_scalarField ) Foam::tmp< Foam::Field< Foam::scalar > >;
-
-%feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::scalar > >::SMARTPTR_PYAPPEND_GETATTR( tmp_scalarField );
-
-%extend Foam::tmp< Foam::Field< Foam::scalar > >
-{
-  SMARTPTR_EXTEND_ATTR( tmp_scalarField )
-}
-
+#include "src/OpenFOAM/fields/Fields/vectorField.hpp"
 
 
 //---------------------------------------------------------------------------

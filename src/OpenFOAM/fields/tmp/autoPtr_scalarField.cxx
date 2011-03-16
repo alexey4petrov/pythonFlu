@@ -25,11 +25,14 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_scalarField"
 %{
-    #include "scalarField.H"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_scalarField.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
 %import "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
