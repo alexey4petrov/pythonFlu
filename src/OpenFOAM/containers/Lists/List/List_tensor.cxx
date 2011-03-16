@@ -25,9 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/List/List.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.List.List_tensor";
+%{
+   #include "src/OpenFOAM/containers/Lists/List/List_tensor.hpp"
+%}
 
-%include "src/OpenFOAM/containers/Lists/UList/UList_tensor.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+
+%import "src/OpenFOAM/containers/Lists/UList/UList_tensor.cxx"
 
 %template( List_tensor ) Foam::List< Foam::tensor >; 
 

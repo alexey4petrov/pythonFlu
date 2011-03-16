@@ -25,9 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/List/List.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.List.List_symmTensor";
+%{
+   #include "src/OpenFOAM/containers/Lists/List/List_symmTensor.hpp"
+%}
 
-%include "src/OpenFOAM/containers/Lists/UList/UList_symmTensor.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+
+%import "src/OpenFOAM/containers/Lists/UList/UList_symmTensor.cxx"
 
 %template( List_symmTensor ) Foam::List< Foam::symmTensor >; 
 

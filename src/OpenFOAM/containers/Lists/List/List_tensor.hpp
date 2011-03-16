@@ -20,25 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef List_sphericalTensor_cxx
-#define List_sphericalTensor_cxx
+#ifndef List_tensor_hpp
+#define List_tensor_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.List.List_sphericalTensor";
-%{
-   #include "src/OpenFOAM/containers/Lists/List/List_sphericalTensor.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/List/List.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
-
-%import "src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.cxx"
-
-%template( List_sphericalTensor ) Foam::List< Foam::sphericalTensor >; 
-
-%extend Foam::List< Foam::sphericalTensor > COMMON_EXTENDS;
+#include "src/OpenFOAM/containers/Lists/UList/UList_tensor.hpp"
 
 
 //---------------------------------------------------------------------------
