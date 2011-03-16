@@ -20,39 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef symmTensorField_cxx
-#define symmTensorField_cxx
+#ifndef sphericalTensorField_hpp
+#define sphericalTensorField_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.Fields.symmTensorField";
-%{
-  #include "src/OpenFOAM/fields/Fields/symmTensorField.hpp"
-%}
+#include "src/OpenFOAM/fields/Fields/Field.hpp"
 
+#include "src/OpenFOAM/primitives/s_phericalTensor.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/Field.cxx"
+#include "src/OpenFOAM/primitives/Lists/sphericalTensorList.hpp"
 
-%import "src/OpenFOAM/primitives/s_ymmTensor.cxx"
-
-%import "src/OpenFOAM/primitives/pTraits_symmTensor.cxx"
-
-%import "src/OpenFOAM/primitives/Lists/symmTensorList.cxx"
-
-%import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
-
-
-//---------------------------------------------------------------------------
-%ignore Foam::Field< Foam::symmTensor >::Field;
-%ignore Foam::Field< Foam::symmTensor >::typeName;
-%ignore Foam::sqr;
-
-%template( symmTensorField ) Foam::Field< Foam::symmTensor >; 
-
-%typedef Foam::Field< Foam::symmTensor > symmTensorField;
-
-FIELD_TEMPLATE_FUNC( symmTensor )
+#include <sphericalTensorField.H>
 
 
 //---------------------------------------------------------------------------

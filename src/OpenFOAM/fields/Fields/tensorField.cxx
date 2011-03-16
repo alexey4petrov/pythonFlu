@@ -25,22 +25,25 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/Field.cxx"
-
-%include "src/OpenFOAM/primitives/tensor.cxx"
-
-%include "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
-
-%include "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
-
-%include "src/OpenFOAM/primitives/Lists/tensorList.cxx"
+%module "Foam.src.OpenFOAM.fields.Fields.tensorField";
+%{
+  #include "src/OpenFOAM/fields/Fields/tensorField.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "tensorField.H"
-%}
+%import "src/OpenFOAM/fields/Fields/Field.cxx"
 
+%import "src/OpenFOAM/primitives/tensor.cxx"
+
+%import "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
+
+%import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
+
+%import "src/OpenFOAM/primitives/Lists/tensorList.cxx"
+
+
+//---------------------------------------------------------------------------
 %ignore Foam::Field< Foam::tensor >::typeName;
 %ignore Foam::Field< Foam::tensor >::Field;
 %ignore Foam::Field< Foam::tensor >::T;
