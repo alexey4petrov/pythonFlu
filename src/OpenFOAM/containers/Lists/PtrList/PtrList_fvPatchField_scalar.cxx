@@ -25,13 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_fvPatchField_scalar";
+%{
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_scalar.hpp"
+%}
 
-%include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_scalar.cxx"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_scalar.cxx"
+//---------------------------------------------------------------------------
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_fvPatchField_scalar.cxx"
+
+%import "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_scalar.cxx"
+
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -42,14 +49,6 @@
 %template( PtrList_fvPatchField_scalar ) Foam::PtrList< Foam::fvPatchField< Foam::scalar > >;
 
 %template( TPtrContainer_iterator_PtrList_fvPatchField_scalar ) Foam::TPtrContainer_iterator< Foam::PtrList< Foam::fvPatchField< Foam::scalar > > >;
-
-%inline
-%{
-   namespace Foam
-   {
-    typedef PtrList< fvPatchField< scalar > > PtrList_fvPatchField_scalar;
-   }
-%}
 
 
 //---------------------------------------------------------------------------
@@ -72,4 +71,3 @@
 
 //---------------------------------------------------------------------------
 #endif
-    

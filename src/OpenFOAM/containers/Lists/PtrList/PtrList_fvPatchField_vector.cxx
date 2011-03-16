@@ -25,27 +25,26 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_fvPatchField_vector";
+%{
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.hpp"
+%}
 
-%include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_vector.cxx"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_vector.cxx"
+//---------------------------------------------------------------------------
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_fvPatchField_vector.cxx"
+
+%import "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_vector.cxx"
+
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 
 //---------------------------------------------------------------------------
 %ignore Foam::PtrList< Foam::fvPatchField< Foam::vector > >::PtrList;
 
 %template( PtrList_fvPatchField_vector ) Foam::PtrList< Foam::fvPatchField< Foam::vector > >;
-
-%inline
-%{
-   namespace Foam
-   {
-    typedef PtrList< fvPatchField< vector > > PtrList_fvPatchField_vector;
-   }
-%}
 
 
 //---------------------------------------------------------------------------
