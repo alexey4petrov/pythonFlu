@@ -24,9 +24,10 @@
 #define redirect2base_hxx
 
 
-//this trick allows to access to the base class's ( member's of the nested class or if inheritance not correctly wrapped )
-//the class(the struct which redirect call to the nested class) 
-//should be extended by base() function( return baseClass& )
+// This trick allows to access to the base class's 
+// ( member's of the nested class or if inheritance not correctly wrapped )
+// the class(the struct which redirect call to the nested class) 
+// should be extended by base() function( return baseClass& )
 %define REDIRECT2BASE_PYAPPEND_GETATTR( Type ) __getattr__
 %{
     name = args[ 0 ]
