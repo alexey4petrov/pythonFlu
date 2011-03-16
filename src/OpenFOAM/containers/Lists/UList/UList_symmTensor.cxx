@@ -25,9 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_symmTensor";
+%{
+   #include "src/OpenFOAM/containers/Lists/UList/UList_symmTensor.hpp"
+%}
 
-%include "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+
+%import "src/OpenFOAM/primitives/s_ymmTensor.cxx"
 
 #if FOAM_VERSION( <, 010500 )
 

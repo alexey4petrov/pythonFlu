@@ -20,31 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef UList_tensor_cxx
-#define UList_tensor_cxx
+#ifndef UList_tensor_hpp
+#define UList_tensor_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_tensor";
-%{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_tensor.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/UList/UList.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
-
-%import "src/OpenFOAM/primitives/tensor.cxx"
-
-%ignore Foam::UList< Foam::tensor >::operator <;
-%ignore Foam::UList< Foam::tensor >::operator >;
-
-%ignore Foam::UList< Foam::tensor >::operator <=;
-%ignore Foam::UList< Foam::tensor >::operator >=;
-
-%template( UList_tensor ) Foam::UList< Foam::tensor >; 
-
-ULISTBASED_ADDONS( Foam::tensor );
+#include "src/OpenFOAM/primitives/tensor.hpp"
 
 
 //---------------------------------------------------------------------------
