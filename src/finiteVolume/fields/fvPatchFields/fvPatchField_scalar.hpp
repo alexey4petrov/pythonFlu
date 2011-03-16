@@ -20,29 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvPatchField_tensor_cxx
-#define fvPatchField_tensor_cxx
+#ifndef fvPatchField_scalar_hpp
+#define fvPatchField_scalar_hpp
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField_tensor";
-%{
-  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.hpp"
-%}
+#include "src/OpenFOAM/fields/Fields/scalarField.hpp"
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
+#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/tensorField.cxx"
-
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
-
-%template( fvPatchField_tensor ) Foam::fvPatchField< Foam::tensor >;
-
-FVPATCHFIELD_ADDONS( tensor );
+#include "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.hpp"
 
 
 //---------------------------------------------------------------------------

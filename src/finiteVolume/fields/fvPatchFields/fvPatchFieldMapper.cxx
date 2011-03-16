@@ -24,11 +24,14 @@
 #define fvPatchFieldMapper_cxx
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/FieldMapper.cxx"
-
+%module "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchFieldMapper";
 %{
-    #include "fvPatchFieldMapper.H"
+  #include "src/finiteVolume/fields/fvPatchFields/fvPatchFieldMapper.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/Fields/FieldMapper.cxx"
 
 %include "fvPatchFieldMapper.H"
 
@@ -37,6 +40,6 @@
   ISINSTANCE_EXTEND( Foam::fvPatchFieldMapper )
 }
 
-//---------------------------------------------------------------------------
 
+//---------------------------------------------------------------------------
 #endif

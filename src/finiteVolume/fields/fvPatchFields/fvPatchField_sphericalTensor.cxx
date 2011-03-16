@@ -25,17 +25,20 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField_sphericalTensor";
+%{
+  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_sphericalTensor.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
+%import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 
 %template( fvPatchField_sphericalTensor ) Foam::fvPatchField< Foam::sphericalTensor >;
 

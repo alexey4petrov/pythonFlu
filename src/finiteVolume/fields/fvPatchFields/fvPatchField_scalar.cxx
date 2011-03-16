@@ -23,44 +23,38 @@
 #ifndef fvPatchField_scalar_cxx
 #define fvPatchField_scalar_cxx
 
+
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField_scalar";
+%{
+  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 
-%include "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.cxx"
+%import "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.cxx"
 
 %ignore Foam::fvPatchField< Foam::scalar >::typeName;
 %ignore Foam::fvPatchField< Foam::scalar >::debug;
 %ignore Foam::fvPatchField< Foam::scalar >::snGrad;
 
 #if FOAM_VERSION( >=, 010500 )
-%ignore Foam::fvPatchField< Foam::scalar >::disallowGenericFvPatchField;
-
+  %ignore Foam::fvPatchField< Foam::scalar >::disallowGenericFvPatchField;
 #else
-%ignore Foam::fvPatchField< Foam::scalar >::disallowDefaultFvPatchField;
-
+  %ignore Foam::fvPatchField< Foam::scalar >::disallowDefaultFvPatchField;
 #endif
 
 FVPATCHFIELD_ADDONS( scalar );
 
 %template( fvPatchField_scalar ) Foam::fvPatchField< Foam::scalar >;
-
-%inline
-{
-  namespace Foam 
-  {
-    typedef fvPatchField< scalar > fvPatchScalarField;
-  }
-}
 
 
 //---------------------------------------------------------------------------

@@ -23,18 +23,22 @@
 #ifndef fvPatchField_vector_cxx
 #define fvPatchField_vector_cxx
 
+
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField_vector";
+%{
+  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/vectorField.cxx"
+%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 
 %ignore Foam::fvPatchField< Foam::vector >::typeName;
 %ignore Foam::fvPatchField< Foam::vector >::debug;
@@ -43,13 +47,9 @@
 
 //--------------------------------------------------------------------------
 #if FOAM_VERSION( >=, 010500 )
-
-%ignore Foam::fvPatchField< Foam::vector >::disallowGenericFvPatchField;
-
+  %ignore Foam::fvPatchField< Foam::vector >::disallowGenericFvPatchField;
 #else
-
-%ignore Foam::fvPatchField< Foam::vector >::disallowDefaultFvPatchField;
-
+  %ignore Foam::fvPatchField< Foam::vector >::disallowDefaultFvPatchField;
 #endif
 
 
@@ -57,15 +57,6 @@
 FVPATCHFIELD_ADDONS( vector );
 
 %template( fvPatchField_vector ) Foam::fvPatchField< Foam::vector >;
-
-%inline
-{
-  namespace Foam 
-  {
-    typedef fvPatchField< vector > fvPatchVectorField;
-  }
-}
-
 
 
 //---------------------------------------------------------------------------

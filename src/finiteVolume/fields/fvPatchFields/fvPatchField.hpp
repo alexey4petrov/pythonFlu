@@ -20,29 +20,26 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvPatchField_tensor_cxx
-#define fvPatchField_tensor_cxx
+#ifndef fvPatchField_hpp
+#define fvPatchField_hpp
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField_tensor";
-%{
-  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.hpp"
-%}
+#include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hpp"
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
+#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.hpp"
 
+#include "src/OpenFOAM/fields/tmp/tmp.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/tensorField.cxx"
+#include <fvPatchField.H>
 
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+#include <volMesh.H>
 
-%template( fvPatchField_tensor ) Foam::fvPatchField< Foam::tensor >;
+#include <fvPatchField.H>
 
-FVPATCHFIELD_ADDONS( tensor );
+#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hpp"
+
+#include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hpp"
 
 
 //---------------------------------------------------------------------------

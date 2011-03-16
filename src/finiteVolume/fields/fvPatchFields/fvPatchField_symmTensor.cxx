@@ -25,17 +25,20 @@
 
 
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField_symmTensor";
+%{
+  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
+%import "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 
 %template( fvPatchField_symmTensor ) Foam::fvPatchField< Foam::symmTensor >;
 

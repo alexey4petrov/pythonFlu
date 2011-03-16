@@ -23,21 +23,24 @@
 #ifndef fvPatchField_cxx
 #define fvPatchField_cxx
 
+
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx"
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
-
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
-
+%module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField";
 %{
-    #include "fvPatchField.H"
-
-    #include "volMesh.H"
+  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx"
+
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
+
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
 %feature( "director" ) fvPatchField;
 
-%include "fvPatchField.H"
+%include <fvPatchField.H>
 
 //---------------------------------------------------------------------------
 %define FVPATCHFIELD_VIRTUAL_EXTENDS( Type )
@@ -62,7 +65,6 @@
 
 
 //---------------------------------------------------------------------------
-
 %define FVPATCHFIELD_EXTENDS( Type )
 
 %feature( "director" ) fvPatchField_##Type;
@@ -77,7 +79,7 @@ NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::tensor > );
 
 %extend Foam::fvPatchField< Foam::Type > FVPATCHFIELD_VIRTUAL_EXTENDS( Type );
 
-%include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::fvPatchField< Foam::Type > OSTREAM_EXTENDS;
 
@@ -85,13 +87,9 @@ NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::tensor > );
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hxx"
-%}
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hpp"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hxx"
-
-%feature("director") fvPatchFieldConstructorToTableBase;
+%feature( "director" ) fvPatchFieldConstructorToTableBase;
 
 
 //---------------------------------------------------------------------------
