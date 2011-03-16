@@ -20,24 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef FieldMapper_cxx
-#define FieldMapper_cxx
+#ifndef FieldMapper_hpp
+#define FieldMapper_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.Fields.FieldMapper";
-%{
-  #include "src/OpenFOAM/fields/Fields/FieldMapper.hpp"
-%}
+#include "src/OpenFOAM/primitives/label.hpp"
 
+#include "src/OpenFOAM/primitives/Lists/labelList.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/label.cxx"
-%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
-%import "src/OpenFOAM/primitives/Lists/scalarList.cxx"
-%import "src/OpenFOAM/fields/Fields/Field.cxx"
+#include "src/OpenFOAM/primitives/Lists/scalarList.hpp"
 
-%include <FieldMapper.H>
+#include "src/OpenFOAM/fields/Fields/Field.hpp"
+
+#include <FieldMapper.H>
 
 
 //---------------------------------------------------------------------------
