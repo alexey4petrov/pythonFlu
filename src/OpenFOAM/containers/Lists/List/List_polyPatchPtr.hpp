@@ -20,47 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef List_pPolyPatch_cxx
-#define List_pPolyPatch_cxx
+#ifndef List_polyPatchPtr_hpp
+#define List_polyPatchPtr_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/UList/UList_pPolyPatch.cxx"
+#include "src/OpenFOAM/containers/Lists/UList/UList_polyPatchPtr.hpp"
 
-%include "src/OpenFOAM/containers/Lists/List/List.cxx"
-
-%ignore Foam::List< Foam::polyPatch* >::List( Istream& );
-
-%template( List_pPolyPatch ) Foam::List< Foam::polyPatch* >;
-
-%extend Foam::List< Foam::polyPatch* > COMMON_EXTENDS;
-
-
-//---------------------------------------------------------------------------
-%extend Foam::List< Foam::polyPatch* >
-{
-    Foam::autoPtr< Foam::polyPatch > set( Foam::label i, Foam::autoPtr< Foam::polyPatch > p)
-    {
-        Foam::polyPatch *pRet = self->operator[](i);
-        self->operator[](i) = p.ptr();
-        return Foam::autoPtr<Foam::polyPatch>(pRet);
-    }
-
-    void __del__()
-    {
-        if (self->size() > 0)
-        {
-            for(register int i = 0; i < self->size(); i++)
-            {
-                if (self->operator[](i) != NULL)
-                {
-                    delete self->operator[](i);
-                    self->operator[](i) = NULL;
-                }
-            }
-        }
-    }
-}
+#include "src/OpenFOAM/containers/Lists/List/List.hpp"
 
 
 //---------------------------------------------------------------------------
