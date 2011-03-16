@@ -20,27 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef ext_tmp_scalarField_cxx
-#define ext_tmp_scalarField_cxx
+#ifndef ext_tmp_scalarField_hpp
+#define ext_tmp_scalarField_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.ext.common.OpenFOAM.ext_tmp.ext_tmp_scalarField";
-%{
-  #include "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.hpp"
-%}
+#include "ext/common/ext_tmp.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
-
-%import "ext/common/ext_tmp.hxx"
-
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
-
-%ignore Foam::ext_tmp< Foam::Field< Foam::scalar > >::operator=;
-
-%template ( ext_tmp_scalarField ) Foam::ext_tmp< Foam::Field< Foam::scalar > >;
+#include "src/OpenFOAM/fields/Fields/scalarField.hpp"
 
 
 //---------------------------------------------------------------------------
