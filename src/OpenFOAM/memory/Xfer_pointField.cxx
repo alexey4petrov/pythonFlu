@@ -20,7 +20,15 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.memory.Xfer_pointField"
+%{
+  #include "src/OpenFOAM/memory/Xfer_pointField.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
 %include "src/common.hxx"
+
 #if FOAM_VERSION( <, 010600 )
 #define Xfer_pointField_cxx
 #endif
@@ -32,9 +40,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/memory/Xfer.hxx"
+%import "src/OpenFOAM/memory/Xfer.hxx"
 
-%include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
+%import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
 
 %template( Xfer_pointField ) Foam::Xfer< Foam::pointField >;
 

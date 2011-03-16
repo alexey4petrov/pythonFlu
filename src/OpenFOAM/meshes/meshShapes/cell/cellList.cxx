@@ -25,15 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/UList/UList_cell.cxx"
-
-%include "src/OpenFOAM/containers/Lists/List/List_cell.cxx"
-
+%module "Foam.src.OpenFOAM.meshes.meshShapes.cell.cellList";
 %{
-    #include "cellList.H"
+  #include "src/OpenFOAM/meshes/meshShapes/cell/cellList.hpp"
 %}
 
-%include "cellList.H"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/Lists/List/List_cell.cxx"
+
+%include <cellList.H>
 
 
 //---------------------------------------------------------------------------

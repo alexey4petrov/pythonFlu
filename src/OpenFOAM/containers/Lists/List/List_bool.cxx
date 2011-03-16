@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_bool";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_bool.hpp"
+  #include "src/OpenFOAM/containers/Lists/List/List_bool.hpp"
 %}
 
 

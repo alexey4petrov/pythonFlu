@@ -25,9 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/List/List.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.List.List_cell";
+%{
+  #include "src/OpenFOAM/containers/Lists/List/List_cell.hpp"
+%}
 
-%include "src/OpenFOAM/containers/Lists/UList/UList_cell.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+
+%import "src/OpenFOAM/containers/Lists/UList/UList_cell.cxx"
 
 %template( List_cell ) Foam::List< Foam::cell >; 
 

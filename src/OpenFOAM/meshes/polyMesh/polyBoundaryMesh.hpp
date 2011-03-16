@@ -20,56 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
-
-#if FOAM_VERSION( <, 010600 )
-#define Xfer_hxx
-#endif
+#ifndef polyBoundaryMesh_hpp
+#define polyBoundaryMesh_hpp
 
 
 //---------------------------------------------------------------------------
-#ifndef Xfer_hxx
-#define Xfer_hxx
+#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.hpp"
 
-//---------------------------------------------------------------------------
-%{
-  #include "src/OpenFOAM/memory/Xfer.hpp"
-%}
+#include "src/OpenFOAM/db/regIOobject.hpp"
 
-%include <Xfer.H>
-
-
-//---------------------------------------------------------------------------
-%define XFER_ADDONS( Type )
-
-%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::Xfer< Type > &
-{
-  void *ptr;
-  if ( SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 ) == -1 ) {
-    if ( SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Type* ), 0 ) == -1 ) {
-      $1 = false;
-    } else {
-      $1 = true;
-    }
-  } else {
-    $1 = true;
-  }
-}
-
-
-%typemap( in ) const Foam::Xfer< Type > &
-{
-  void *ptr;
-  if ( SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 ) == -1 ) {
-    SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Type* ), 0 );
-    Type* aValue = reinterpret_cast< Type* >( ptr );
-    $1 = new Foam::Xfer< Type >( aValue );
-  } else {
-    $1 = reinterpret_cast< $1_ltype >( ptr );
-  }
-}
-
-%enddef
+#include <polyBoundaryMesh.H>
 
 
 //---------------------------------------------------------------------------

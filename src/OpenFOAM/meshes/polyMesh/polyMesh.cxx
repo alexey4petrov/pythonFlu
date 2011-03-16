@@ -23,35 +23,36 @@
 #ifndef polyMesh_cxx
 #define polyMesh_cxx
 
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.meshes.polyMesh.polyMesh.cxx"
+
+//---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.meshes.polyMesh.polyMesh"
+%{
+  #include "src/OpenFOAM/meshes/polyMesh/polyMesh.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%include "src/OpenFOAM/db/objectRegistry.cxx"
+%import "src/OpenFOAM/db/objectRegistry.cxx"
 
-%include "src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx"
+%import "src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx"
 
-%include "src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx"
+%import "src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx"
 
 
 //---------------------------------------------------------------------------
 #if FOAM_VERSION( >=, 010600 )
-%include "src/OpenFOAM/memory/Xfer_pointField.cxx"
+  %import "src/OpenFOAM/memory/Xfer_pointField.cxx"
 
-%include "src/OpenFOAM/memory/Xfer_faceList.cxx"
+  %import "src/OpenFOAM/memory/Xfer_faceList.cxx"
 
-%include "src/OpenFOAM/memory/Xfer_cellList.cxx"
+  %import "src/OpenFOAM/memory/Xfer_cellList.cxx"
 #endif
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "polyMesh.H"
-%}
-
-%include "polyMesh.H"
+%include <polyMesh.H>
 
 
 //---------------------------------------------------------------------------

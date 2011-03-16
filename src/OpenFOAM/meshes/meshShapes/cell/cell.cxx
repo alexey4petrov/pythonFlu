@@ -25,15 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/Lists/labelList.cxx"
-
-%include "src/OpenFOAM/meshes/meshShapes/face/oppositeFace.cxx"
-
+%module "Foam.src.OpenFOAM.meshes.meshShapes.cell.cell";
 %{
-    #include "cell.H"
+  #include "src/OpenFOAM/meshes/meshShapes/cell/cell.hpp"
 %}
 
-%include "cell.H"
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
+%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
+
+%import "src/OpenFOAM/meshes/meshShapes/face/oppositeFace.cxx"
+
+%include <cell.H>
 
 
 //---------------------------------------------------------------------------

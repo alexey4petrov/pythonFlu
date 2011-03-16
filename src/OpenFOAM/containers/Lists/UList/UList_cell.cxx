@@ -25,9 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_cell";
+%{
+  #include "src/OpenFOAM/containers/Lists/UList/UList_cell.hpp"
+%}
 
-%include "src/OpenFOAM/meshes/meshShapes/cell/cell.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+
+%import "src/OpenFOAM/meshes/meshShapes/cell/cell.cxx"
 
 %ignore Foam::UList< Foam::cell >::writeEntry;
 

@@ -25,9 +25,9 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_bool";
+%module "Foam.src.OpenFOAM.meshes.meshShapes.face.face";
 %{
-   #include "src/OpenFOAM/eshes/meshShapes/face/face.hpp"
+   #include "src/OpenFOAM/meshes/meshShapes/face/face.hpp"
 %}
 
 

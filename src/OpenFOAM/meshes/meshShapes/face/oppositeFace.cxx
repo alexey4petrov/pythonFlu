@@ -25,11 +25,14 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/meshShapes/face/face.cxx"
-
+%module "Foam.src.OpenFOAM.meshes.meshShapes.face.oppositeFace";
 %{
-    #include "oppositeFace.H"
+   #include "src/OpenFOAM/meshes/meshShapes/face/oppositeFace.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/meshes/meshShapes/face/face.cxx"
 
 %include "oppositeFace.H"
 

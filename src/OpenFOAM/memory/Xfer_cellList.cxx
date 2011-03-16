@@ -20,7 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.memory.Xfer_cellList"
+%{
+  #include "src/OpenFOAM/memory/Xfer_cellList.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 #if FOAM_VERSION( <, 010600 )
 #define Xfer_cellList_cxx
 #endif
@@ -32,9 +40,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/memory/Xfer.hxx"
+%import "src/OpenFOAM/memory/Xfer.hxx"
 
-%include "src/OpenFOAM/meshes/meshShapes/cell/cellList.cxx"
+%import "src/OpenFOAM/meshes/meshShapes/cell/cellList.cxx"
 
 %template( Xfer_cellList ) Foam::Xfer< Foam::cellList >;
 

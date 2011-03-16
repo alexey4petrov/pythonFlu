@@ -20,56 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+#include "src/common.hpp"
 
 #if FOAM_VERSION( <, 010600 )
-#define Xfer_hxx
+#define Xfer_faceList_hpp
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef Xfer_hxx
-#define Xfer_hxx
-
-//---------------------------------------------------------------------------
-%{
-  #include "src/OpenFOAM/memory/Xfer.hpp"
-%}
-
-%include <Xfer.H>
+#ifndef Xfer_faceList_hpp
+#define Xfer_faceList_hpp
 
 
 //---------------------------------------------------------------------------
-%define XFER_ADDONS( Type )
+#include "src/OpenFOAM/memory/Xfer.hpp"
 
-%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::Xfer< Type > &
-{
-  void *ptr;
-  if ( SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 ) == -1 ) {
-    if ( SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Type* ), 0 ) == -1 ) {
-      $1 = false;
-    } else {
-      $1 = true;
-    }
-  } else {
-    $1 = true;
-  }
-}
-
-
-%typemap( in ) const Foam::Xfer< Type > &
-{
-  void *ptr;
-  if ( SWIG_ConvertPtr( $input, (void **) &ptr, $1_descriptor, 0 ) == -1 ) {
-    SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Type* ), 0 );
-    Type* aValue = reinterpret_cast< Type* >( ptr );
-    $1 = new Foam::Xfer< Type >( aValue );
-  } else {
-    $1 = reinterpret_cast< $1_ltype >( ptr );
-  }
-}
-
-%enddef
+#include "src/OpenFOAM/meshes/meshShapes/face/faceList.hpp"
 
 
 //---------------------------------------------------------------------------
