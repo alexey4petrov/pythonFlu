@@ -25,19 +25,28 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/Lists/boolList.cxx"
-%include "src/OpenFOAM/primitives/Lists/labelList.cxx"
-//#include "edgeList.H"
-%include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
-%include "src/OpenFOAM/fields/Fields/vectorField.cxx"
-//#include "intersection.H"
-//#include "labelHashSet.H"
-
+%module "Foam.src.OpenFOAM.meshes.PrimitivePatch.PrimitivePatch"
 %{
-    #include "PrimitivePatch.H"
+  #include "src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.hpp"
 %}
 
-%include "PrimitivePatch.H"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/primitives/Lists/boolList.cxx"
+
+%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
+
+//#import "edgeList.H"
+
+%import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
+
+%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
+
+//#import <intersection.H>
+
+//#import <labelHashSet.H>
+
+%import <PrimitivePatch.H>
 
 
 //---------------------------------------------------------------------------

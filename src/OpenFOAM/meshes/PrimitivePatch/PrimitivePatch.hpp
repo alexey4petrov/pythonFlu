@@ -20,40 +20,26 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef primitivePatch_cxx
-#define primitivePatch_cxx
+#ifndef PrimitivePatch_hpp
+#define PrimitivePatch_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.meshes.PrimitivePatch.p_rimitivePatch"
-%{
-  #include "src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.hpp"
-%}
+#include "src/OpenFOAM/primitives/Lists/boolList.hpp"
 
+#include "src/OpenFOAM/primitives/Lists/labelList.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/SubList/SubList_face.cxx"
+//#include <edgeList.H>
 
-%import "src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.cxx"
+#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
 
-%ignore Foam::PrimitivePatch< face, SubList, const pointField& >::PrimitivePatch;
+#include "src/OpenFOAM/fields/Fields/vectorField.hpp"
 
-#if FOAM_BRANCH_VERSION( dev, ==, 010500 )
-  %ignore Foam::PrimitivePatch< face, SubList, const pointField& >::writeVTK;
-  %ignore Foam::PrimitivePatch< face, SubList, const pointField& >::writeVTKNormals;
-#endif
+//#include <intersection.H>
 
-%template ( primitivePatch ) Foam::PrimitivePatch< face, SubList, const pointField& >;
+//#include <labelHashSet.H>
 
-%import <primitivePatch.H>
-
-%extend Foam::PrimitivePatch< face, SubList, const pointField& >
-{ 
-  Foam::label ext_size()
-  {
-    return self->size();
-  }
-}
+#include <PrimitivePatch.H>
 
 
 //---------------------------------------------------------------------------
