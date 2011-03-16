@@ -25,17 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
-
-%include "src/redirect2base.hxx"
-
-%include "FieldField.H"
-
-%include "src/OpenFOAM/fields/Fields/scalarField.cxx"
-
+%module "Foam.src.OpenFOAM.fields.FieldFields.FieldField";
 %{
-    #include "FieldField.H"
+  #include "src/OpenFOAM/fields/FieldFields/FieldField.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
+%import "src/redirect2base.hxx"
+
+%include <FieldField.H>
+
+%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -56,13 +59,14 @@
       Foam::tmp<Foam::FieldField< TPatchField, Type > >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::FieldField< TPatchField, Type  > > * );
       $1 = tmp_res->operator->();
       } else {
-        %argument_fail( res, "$type", $symname, $argnum );
-        }
+      %argument_fail( res, "$type", $symname, $argnum );
     }
- 
+  }
 }    
 
 %enddef
+
+
 //------------------------------------------------------------------------------
 %define BASECLASS_FUNC( TPatchField, Type )
 {
@@ -72,19 +76,18 @@
   }
   int __len__()
   {
-     return self->size();
+    return self->size();
   }
     
   TPatchField< Type >& __getitem__( const Foam::label theIndex )
   {
-     return self->operator[]( theIndex );
+    return self->operator[]( theIndex );
   }
 
   void __setitem__( const Foam::label theIndex, const TPatchField< Type >& theValue )
   {
-     self->operator[]( theIndex ) = theValue;
+    self->operator[]( theIndex ) = theValue;
   }
-  
 }
 %enddef
 
@@ -94,12 +97,12 @@
 {  
   Foam::tmp< Foam::FieldField< TPatchField, Foam::scalar > > magSqr()
   {
-     return Foam::magSqr( *self );
+    return Foam::magSqr( *self );
   }
   
-  Foam::tmp< Foam::FieldField< TPatchField, Type > > __rmul__( const  Foam::scalar& theArg)
+  Foam::tmp< Foam::FieldField< TPatchField, Type > > __rmul__( const  Foam::scalar& theArg )
   {
-     return theArg * *self;
+    return theArg * *self;
   }
 }
 %enddef
@@ -117,4 +120,5 @@
 %enddef
 
 
+//-------------------------------------------------------------------------------
 #endif

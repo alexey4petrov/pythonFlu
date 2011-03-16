@@ -25,10 +25,13 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.FieldFields.FieldField_fvPatchField_scalar";
+%{
+  #include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
@@ -44,11 +47,6 @@ NO_TMP_TYPEMAP_FIELDFIELD(  Foam::fvPatchField, Foam::scalar )
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::scalar >::FieldField;
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::scalar >::T;
 
-%inline
-%{
-    typedef Foam::FieldField< Foam::fvPatchField, Foam::scalar > FieldField_fvPatchField_scalar;
-%}
-
 %template( FieldField_fvPatchField_scalar ) Foam::FieldField< Foam::fvPatchField, Foam::scalar >;
 
 
@@ -57,8 +55,9 @@ NO_TMP_TYPEMAP_FIELDFIELD(  Foam::fvPatchField, Foam::scalar )
 
 %extend Foam::FieldField< Foam::fvPatchField, Foam::scalar >
 {
-    REDIRECT2BASE_EXTEND_ATTR( FieldField_fvPatchField_scalar )
+  REDIRECT2BASE_EXTEND_ATTR( FieldField_fvPatchField_scalar )
 }
+
 FIELDFIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::scalar );
 
 
