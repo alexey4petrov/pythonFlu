@@ -20,39 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef polyPatch_cxx
-#define polyPatch_cxx
+#ifndef polyPatch_hpp
+#define polyPatch_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.meshes.polyMesh.polyPatches.polyPatch"
-%{
-  #include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hpp"
-%}
+#include "src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.hpp"
 
+#include "src/OpenFOAM/meshes/patchIdentifier.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+#include <polyPatch.H>
 
-%import "src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.cxx"
-
-%import "src/OpenFOAM/meshes/patchIdentifier.cxx"
-
-%ignore Foam::polyPatch::faceCentres() const;
-%ignore Foam::polyPatch::faceAreas() const;
-%ignore Foam::polyPatch::faceCellCentres() const;
-
-%include <polyPatch.H>
-
-%extend Foam::polyPatch COMMON_EXTENDS;
-
-%extend Foam::polyPatch
-{
-  static Foam::polyPatch* nullPtr()
-  {
-    return (Foam::polyPatch*) NULL;
-  }
-}
+#include <polyBoundaryMesh.H>
 
 
 //---------------------------------------------------------------------------
