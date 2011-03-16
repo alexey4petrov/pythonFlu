@@ -25,21 +25,24 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/regIOobject.cxx"
-
-%include "src/OpenFOAM/fields/Fields/Field.cxx"
-
-%include "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
-
+%module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField";
 %{
-    #include "DimensionedField.H"
+  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.hpp"
 %}
-
-%include "DimensionedField.H"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "src/OpenFOAM/db/regIOobject.cxx"
+
+%import "src/OpenFOAM/fields/Fields/Field.cxx"
+
+%import "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
+
+%include <DimensionedField.H>
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
 %define DIMENSIONED_FIELD_VIRTUAL_EXTENDS( Type, TMesh )
 {
@@ -47,7 +50,6 @@
   {
     *dynamic_cast< Foam::DimensionedField< Foam::Type, Foam::TMesh >* >( self ) = theSource;
   }
-  
 }
 %enddef
 
@@ -57,10 +59,10 @@
 
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::DimensionedField< Type, TMesh >& 
 {
-    void *ptr;
-    int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::DimensionedField< Type, TMesh > * ), 0 );
-    int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::DimensionedField< Type, TMesh > > * ), 0 );
-    $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 );
+  void *ptr;
+  int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::DimensionedField< Type, TMesh > * ), 0 );
+  int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::DimensionedField< Type, TMesh > > * ), 0 );
+  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 );
 }
 
 %typemap( in ) const Foam::DimensionedField< Type, TMesh >& 
@@ -77,17 +79,16 @@
     if ( SWIG_IsOK( res ) && argp ) {
       Foam::tmp<Foam::DimensionedField< Type, TMesh > >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::DimensionedField< Type, TMesh > > * );
       $1 = tmp_res->operator->();
-      } else {
-        %argument_fail( res, "$type", $symname, $argnum );
-        }
+    } else {
+      %argument_fail( res, "$type", $symname, $argnum );
     }
- 
+  }
 }    
 %enddef
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/objectRegistry.cxx"
+%import "src/OpenFOAM/db/objectRegistry.cxx"
 
 %define DIMENSIONED_FIELD_TEMPLATE_FUNC( Type, TMesh )
 
@@ -114,10 +115,9 @@ NO_TMP_TYPEMAP_DIMENSIONED_FIELD( Foam::Type, Foam::TMesh );
   }
   
   ISINSTANCE_TEMPLATE_2_EXTEND( DimensionedField, Foam::Type, Foam::TMesh )
-  
 }
 
-%include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::DimensionedField< Foam::Type, Foam::TMesh > OSTREAM_EXTENDS;
 
@@ -127,10 +127,10 @@ NO_TMP_TYPEMAP_DIMENSIONED_FIELD( Foam::Type, Foam::TMesh );
 //--------------------------------------------------------------------------------
 %define __VECTOR_DIMENSIONED_FIELD_OPERATORS( TMesh )
 {
-   Foam::tmp< Foam::DimensionedField< Foam::vector, TMesh > > __div__( const Foam::DimensionedField< Foam::scalar, TMesh >& theArg )
-   {
-      return *self / theArg;
-   }
+  Foam::tmp< Foam::DimensionedField< Foam::vector, TMesh > > __div__( const Foam::DimensionedField< Foam::scalar, TMesh >& theArg )
+  {
+    return *self / theArg;
+  }
 }
 %enddef
 
