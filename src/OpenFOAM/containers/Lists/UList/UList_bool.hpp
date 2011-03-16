@@ -20,23 +20,12 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef UList_bool_cxx
-#define UList_bool_cxx
+#ifndef UList_bool_hpp
+#define UList_bool_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_bool";
-%{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_bool.hpp"
-%}
-
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
-
-%template( UList_bool ) Foam::UList< bool >; 
-
-ULISTBASED_ADDONS( bool );
+#include "src/OpenFOAM/containers/Lists/UList/UList.hpp"
 
 
 //---------------------------------------------------------------------------
