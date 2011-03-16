@@ -20,25 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef List_face_cxx
-#define List_face_cxx
+#ifndef List_face_hpp
+#define List_face_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.List.List_face";
-%{
-   #include "src/OpenFOAM/containers/Lists/List/List_face.hpp"
-%}
+#include "src/OpenFOAM/containers/Lists/List/List.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
-
-%import "src/OpenFOAM/containers/Lists/UList/UList_face.cxx"
-
-%template( List_face ) Foam::List< Foam::face >; 
-
-%extend Foam::List< Foam::face > COMMON_EXTENDS;
+#include "src/OpenFOAM/containers/Lists/UList/UList_face.hpp"
 
 
 //---------------------------------------------------------------------------
