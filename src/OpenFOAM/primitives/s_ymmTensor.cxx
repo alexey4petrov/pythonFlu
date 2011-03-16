@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.symmTensor";
+%module "Foam.src.OpenFOAM.primitives.s_ymmTensor";
 %{
   #include "src/OpenFOAM/primitives/s_ymmTensor.hpp"
 %}
