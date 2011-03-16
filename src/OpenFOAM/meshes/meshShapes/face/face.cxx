@@ -46,7 +46,7 @@
   %ignore Foam::face::fastIntersection;
 #endif
 
-%import <face.H>
+%include <face.H>
 
 
 //---------------------------------------------------------------------------
