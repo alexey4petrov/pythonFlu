@@ -25,15 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/primitiveShapes/point/pointFieldFwd.cxx"
-
-%include "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
-
+%module "Foam.src.OpenFOAM.meshes.primitiveShapes.point.pointField";
 %{
-    #include "pointField.H"
+   #include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
 %}
 
-%include "pointField.H"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/meshes/primitiveShapes/point/pointFieldFwd.cxx"
+
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+
+%include <pointField.H>
 
 
 //---------------------------------------------------------------------------
