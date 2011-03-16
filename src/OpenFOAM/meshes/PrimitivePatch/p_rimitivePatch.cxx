@@ -43,9 +43,9 @@
   %ignore Foam::PrimitivePatch< face, SubList, const pointField& >::writeVTKNormals;
 #endif
 
-%template ( primitivePatch ) Foam::PrimitivePatch< face, SubList, const pointField& >;
+%include <primitivePatch.H>
 
-%import <primitivePatch.H>
+%template( primitivePatch ) Foam::PrimitivePatch< face, SubList, const pointField& >;
 
 %extend Foam::PrimitivePatch< face, SubList, const pointField& >
 { 
