@@ -20,37 +20,23 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.UniformDimensionedFields.UniformDimensionedField";
-%{
-  #include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.hpp"
-%}
-
-
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
+#include "src/common.hpp"
 
 #if FOAM_VERSION( <, 010600 )
-#define UniformDimensionedField_cxx
+#define UniformDimensionedVectorField_hpp
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef UniformDimensionedField_cxx
-#define UniformDimensionedField_cxx
+#ifndef UniformDimensionedVectorField_hpp
+#define UniformDimensionedVectorField_hpp
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/regIOobject.cxx"
+#include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.hpp"
 
-%import "src/OpenFOAM/fields/Fields/Field.cxx"
-
-%import "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
-
-%ignore Foam::UniformDimensionedField::UniformDimensionedField;
-
-%include <UniformDimensionedField.H>
+#include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hpp"
 
 
 //---------------------------------------------------------------------------
 #endif
-
