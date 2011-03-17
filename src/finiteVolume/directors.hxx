@@ -30,11 +30,11 @@
 %include "src/OpenFOAM/directors.hxx"
 
 %{
-   #include "fvPatchField.H"
-   #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hxx"
-   #include "mixedFvPatchField.H"
-   #include "fixedGradientFvPatchField.H"
-   #include "fixedValueFvPatchField.H"   
+   #include <fvPatchField.H>
+   #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hpp"
+   #include <mixedFvPatchField.H>
+   #include <fixedGradientFvPatchField.H>
+   #include <fixedValueFvPatchField.H>
 %}
 
 //---------------------------------------------------------------------------
