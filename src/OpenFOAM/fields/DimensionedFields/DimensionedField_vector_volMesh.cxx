@@ -25,18 +25,21 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField_vector_volMesh";
+%{
+  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
 
-%include "src/OpenFOAM/primitives/vector.cxx"
-%include "src/finiteVolume/volMesh.hxx"
+%import "src/OpenFOAM/primitives/vector.cxx"
+%import "src/finiteVolume/volMesh.hxx"
 
 %ignore Foam::DimensionedField< Foam::vector, Foam::volMesh >::debug;
 %ignore Foam::DimensionedField< Foam::vector, Foam::volMesh >::typeName;
@@ -44,8 +47,6 @@
 
 VECTOR_DIMENSIONED_FIELD_TEMPLATE_FUNC( volMesh )
 
-
-//---------------------------------------------------------------------------
 %template( DimensionedField_vector_volMesh ) Foam::DimensionedField< Foam::vector, Foam::volMesh >;
 
 

@@ -25,14 +25,15 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/GeoMesh.hxx"
-
-%include "src/finiteVolume/fvMesh/fvMesh.hxx"
-
 %{
-    #include "volMesh.H"
-    #include "surfaceMesh.H"
+  #include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/meshes/GeoMesh.hxx"
+
+%import "src/finiteVolume/fvMesh/fvMesh.hxx"
 
 
 //---------------------------------------------------------------------------

@@ -25,13 +25,15 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/objectRegistry.cxx"
-
 %{
-    #include "GeoMesh.H"
+  #include "src/OpenFOAM/meshes/GeoMesh.hpp"
 %}
 
-%include "GeoMesh.H"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/db/objectRegistry.cxx"
+
+%include <GeoMesh.H>
 
 
 //---------------------------------------------------------------------------

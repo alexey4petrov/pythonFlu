@@ -25,13 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/matrices/solution.cxx"
-
+%module "Foam.src.finiteVolume.finiteVolume.fvSolution";
 %{
-    #include "fvSolution.H"
+  #include "src/finiteVolume/finiteVolume/fvSolution.hpp"
 %}
 
-%include "fvSolution.H"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/matrices/solution.cxx"
+
+%include <fvSolution.H>
 
 
 //---------------------------------------------------------------------------

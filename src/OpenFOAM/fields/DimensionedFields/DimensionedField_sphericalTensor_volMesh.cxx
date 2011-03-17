@@ -25,26 +25,27 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField_sphericalTensor_volMesh";
+%{
+  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_sphericalTensor_volMesh.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
 
-%include "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
-%include "src/finiteVolume/volMesh.hxx"
+%import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
+%import "src/finiteVolume/volMesh.hxx"
 
 %ignore Foam::DimensionedField< Foam::sphericalTensor, Foam::volMesh >::debug;
 %ignore Foam::DimensionedField< Foam::sphericalTensor, Foam::volMesh >::typeName;
 
 DIMENSIONED_FIELD_TEMPLATE_FUNC( sphericalTensor, volMesh )
 
-
-//---------------------------------------------------------------------------
 %template( DimensionedField_sphericalTensor_volMesh ) Foam::DimensionedField< Foam::sphericalTensor, Foam::volMesh >;
 
 

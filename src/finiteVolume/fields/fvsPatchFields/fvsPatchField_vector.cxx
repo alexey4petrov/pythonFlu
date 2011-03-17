@@ -25,19 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/vectorField.cxx"
+%module "Foam.src.finiteVolume.fields.fvsPatchFields.fvsPatchField_vector";
+%{
+  #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.hpp"
+%}
 
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
+
+%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
 
 %template( fvsPatchField_vector ) Foam::fvsPatchField< Foam::vector >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef fvsPatchField< vector > fvsPatchField_vector;
-    }
-}
 
 
 //---------------------------------------------------------------------------

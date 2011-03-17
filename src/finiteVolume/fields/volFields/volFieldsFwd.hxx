@@ -20,28 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volFieldsFwd_cxx
-#define volFieldsFwd_cxx
+#ifndef volFieldsFwd_hxx
+#define volFieldsFwd_hxx
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "volFieldsFwd.H"
-%}
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
+%import "src/finiteVolume/volMesh.hxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
-%include "src/finiteVolume/volMesh.hxx"
-
-%inline
-{
-    namespace Foam
-    {
-        typedef GeometricField< scalar, fvPatchField, volMesh > volScalarField;
-        typedef GeometricField< vector, fvPatchField, volMesh > volVectorField;
-    }
-
-}
+%include <volFieldsFwd.H>
 
 
 //---------------------------------------------------------------------------

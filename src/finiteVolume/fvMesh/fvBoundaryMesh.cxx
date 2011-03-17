@@ -23,22 +23,22 @@
 #ifndef fvBoundaryMesh_cxx
 #define fvBoundaryMesh_cxx
 
+
 //---------------------------------------------------------------------------
+%module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.fvMesh.fvBoundaryMesh";
+%{
+  #include "src/finiteVolume/fvMesh/fvBoundaryMesh.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMesh/fvPatches/fvPatchList.cxx"
+%import "src/finiteVolume/fvMesh/fvPatches/fvPatchList.cxx"
 
-%{
-    #include "fvBoundaryMesh.H"
-%}
-
-%include "fvBoundaryMesh.H"
+%include <fvBoundaryMesh.H>
 
 //%extend Foam::fvBoundaryMesh COMMON_EXTENDS;
 

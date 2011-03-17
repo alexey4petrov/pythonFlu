@@ -25,6 +25,13 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.matrices.lduMatrix.lduAddressing.lduSchedule"
+%{
+  #include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
 %ignore Foam::UList< Foam::lduScheduleEntry >::writeEntry;
                                                  
 %ignore Foam::UList< Foam::lduScheduleEntry >::operator>;
@@ -34,33 +41,21 @@
 %ignore Foam::UList< Foam::lduScheduleEntry >::operator==;
 %ignore Foam::UList< Foam::lduScheduleEntry >::operator!=;
 
-%include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/List/List.cxx"
+%import "src/OpenFOAM/containers/Lists/List/List.cxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/label.cxx"
+%import "src/OpenFOAM/primitives/label.cxx"
 
-%include "lduSchedule.H"
+%include <lduSchedule.H>
 
 %template( lduScheduleBase ) Foam::UList< Foam::lduScheduleEntry >; 
 
 %template( lduSchedule ) Foam::List< Foam::lduScheduleEntry >; 
-
-%{
-    #include "lduSchedule.H"
-
-    namespace Foam
-    {
-        Istream& operator>>( Istream& theStream, lduScheduleEntry& )
-        {
-            return theStream;
-        }
-    }
-%}
 
 
 //---------------------------------------------------------------------------

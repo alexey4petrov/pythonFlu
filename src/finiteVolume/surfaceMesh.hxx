@@ -25,11 +25,13 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hxx"
-
 %{
-    #include "surfaceMesh.H"
+  #include "src/finiteVolume/surfaceMesh.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/meshes/GeoMesh_fvMesh.hxx"
 
 
 //---------------------------------------------------------------------------

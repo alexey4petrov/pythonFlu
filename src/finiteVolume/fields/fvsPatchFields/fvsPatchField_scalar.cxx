@@ -25,19 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%module "Foam.src.finiteVolume.fields.fvsPatchFields.fvsPatchField_scalar";
+%{
+  #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.hpp"
+%}
 
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+
+%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
 
 %template( fvsPatchField_scalar ) Foam::fvsPatchField< Foam::scalar >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef fvsPatchField< scalar > fvsPatchField_scalar;
-    }
-}
 
 
 //---------------------------------------------------------------------------

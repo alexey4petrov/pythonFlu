@@ -23,7 +23,12 @@
 #ifndef fvSchemes_cxx
 #define fvSchemes_cxx
 
-%module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.finiteVolume.fvSchemes";
+
+//---------------------------------------------------------------------------
+%module "Foam.src.finiteVolume.finiteVolume.fvSchemes";
+%{
+  #include "src/finiteVolume/finiteVolume/fvSchemes.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
@@ -31,11 +36,7 @@
 
 %import "src/OpenFOAM/db/IOdictionary.cxx"
 
-%{
-    #include "fvSchemes.H"
-%}
-
-%include "fvSchemes.H"
+%include <fvSchemes.H>
 
 
 //---------------------------------------------------------------------------

@@ -25,13 +25,19 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField_scalar_fvMesh";
+%{
+  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_fvMesh.hpp"
+%}
 
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
 
-%include "src/OpenFOAM/fields/Fields/scalarField.cxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
-%ignore Foam::T( Foam::Field< Foam::scalar >&, const Foam::UList< Foam::scalar >&);
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
+%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+
+%ignore Foam::T( Foam::Field< Foam::scalar >&, const Foam::UList< Foam::scalar >& );
 
 %ignore Foam::DimensionedField< Foam::scalar, Foam::fvMesh >::DimensionedField;
 %ignore Foam::DimensionedField< Foam::scalar, Foam::fvMesh >::readField;
@@ -44,21 +50,7 @@
 
 DIMENSIONED_FIELD_TEMPLATE_FUNC( scalar, fvMesh )
 
-%{
-    #include "Time.H"
-
-    #include "volMesh.H"
-
-    #include "surfaceMesh.H"
-
-    template<> const Foam::word Foam::DimensionedField< Foam::scalar, Foam::fvMesh >::typeName = "";
-%}
-
 %template( DimensionedField_scalar_fvMesh ) Foam::DimensionedField< Foam::scalar, Foam::fvMesh >; 
-
-
-//---------------------------------------------------------------------------
-
 
 
 //---------------------------------------------------------------------------

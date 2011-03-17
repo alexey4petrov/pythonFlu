@@ -25,14 +25,17 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx"
-%include "src/OpenFOAM/primitives/Lists/labelList.cxx"
-
-%include "lduAddressing.H"
-
+%module "Foam.src.OpenFOAM.matrices.lduMatrix.lduAddressing.lduAddressing"
 %{
-    #include "lduAddressing.H"
+  #include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx"
+%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
+
+%include <lduAddressing.H>
 
 
 //---------------------------------------------------------------------------

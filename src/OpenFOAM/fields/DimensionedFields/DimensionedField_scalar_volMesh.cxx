@@ -25,18 +25,21 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField_scalar_volMesh";
+%{
+  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //----------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
 
-%include "src/OpenFOAM/fields/Fields/scalarField.cxx"
-%include "src/finiteVolume/volMesh.hxx"
+%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%import "src/finiteVolume/volMesh.hxx"
 
 %ignore Foam::DimensionedField< Foam::scalar, Foam::volMesh >::typeName;
 %ignore Foam::DimensionedField< Foam::scalar, Foam::volMesh >::debug;
@@ -44,8 +47,6 @@
 
 DIMENSIONED_FIELD_TEMPLATE_FUNC( scalar, volMesh )
 
-
-//---------------------------------------------------------------------------
 %template( DimensionedField_scalar_volMesh ) Foam::DimensionedField< Foam::scalar, Foam::volMesh >;
 
 

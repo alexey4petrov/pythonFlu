@@ -25,19 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/Field.cxx"
-
-%include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx"
-
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
-
+%module "Foam.src.finiteVolume.fields.fvsPatchFields.fvsPatchField";
 %{
-    #include "fvsPatchField.H"
-
-    #include "surfaceMesh.H"
+  #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hpp"
 %}
 
-%include "fvsPatchField.H"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/Fields/Field.cxx"
+
+%import "src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx"
+
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
+
+%include <fvsPatchField.H>
 
 
 //---------------------------------------------------------------------------

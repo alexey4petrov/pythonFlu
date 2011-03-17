@@ -20,27 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef surfaceFieldsFwd_cxx
-#define surfaceFieldsFwd_cxx
+#ifndef surfaceFieldsFwd_hxx
+#define surfaceFieldsFwd_hxx
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "surfaceFieldsFwd.H"
-%}
+%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.cxx"
+%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.cxx"
+%import "src/finiteVolume/surfaceMesh.hxx"
 
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.cxx"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.cxx"
-%include "src/finiteVolume/surfaceMesh.hxx"
-
-%inline
-{
-    namespace Foam
-    {
-        typedef GeometricField< scalar, fvsPatchField, surfaceMesh > surfaceScalarField;
-        typedef GeometricField< vector, fvsPatchField, surfaceMesh > surfaceVectorField;
-    }
-}
+%include <surfaceFieldsFwd.H>
 
 
 //---------------------------------------------------------------------------

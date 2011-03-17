@@ -25,30 +25,31 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/polyMesh/polyMesh.cxx"
-
-%include "src/OpenFOAM/containers/Lists/List/List_pPolyPatch.cxx"
-
-%include "src/OpenFOAM/db/Time/Time.cxx"
-
-%include "src/OpenFOAM/db/objectRegistry.cxx"
-
-%include "src/OpenFOAM/meshes/lduMesh.cxx"
-
-%include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
-
-%include "src/finiteVolume/fvMesh/fvBoundaryMesh.cxx"
-
-%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cxx"
-
-%include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
-
-%include "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hxx"
-
 %{
-    #include "fvMesh.H"
-    #include "volMesh.H"
+  #include "src/finiteVolume/fvMesh/fvMesh.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/meshes/polyMesh/polyMesh.cxx"
+
+%import "src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.cxx"
+
+%import "src/OpenFOAM/db/Time/Time.cxx"
+
+%import "src/OpenFOAM/db/objectRegistry.cxx"
+
+%import "src/OpenFOAM/meshes/lduMesh.cxx"
+
+%import "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
+
+%import "src/finiteVolume/fvMesh/fvBoundaryMesh.cxx"
+
+%import "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cxx"
+
+%import "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+
+%import "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hxx"
 
 
 //---------------------------------------------------------------------------

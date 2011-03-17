@@ -25,17 +25,20 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.meshes.GeoMesh_fvMesh"
+%{
+  #include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hxx"
+%import "src/OpenFOAM/meshes/GeoMesh_fvMesh.hxx"
 
-%include "src/finiteVolume/fvMesh/fvMesh.cxx"
+%import "src/finiteVolume/fvMesh/fvMesh.cxx"
 
 %template( GeoMesh_fvMesh ) Foam::GeoMesh< Foam::fvMesh >; 
 

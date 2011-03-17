@@ -25,13 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/IOdictionary.cxx"
-
+%module "Foam.src.OpenFOAM.matrices.solution"
 %{
-    #include "solution.H"
+  #include "src/OpenFOAM/matrices/solution.hpp"
 %}
 
-%include "solution.H"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/db/IOdictionary.cxx"
+
+%include <solution.H>
 
 
 //---------------------------------------------------------------------------

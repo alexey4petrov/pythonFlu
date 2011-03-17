@@ -25,19 +25,21 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField_vector_surfaceMesh";
+%{
+  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_surfaceMesh.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
 
-%include "src/OpenFOAM/fields/Fields/vectorField.cxx"
-
-%include "src/finiteVolume/surfaceMesh.hxx"
+%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
+%import "src/finiteVolume/surfaceMesh.hxx"
 
 %ignore Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >::typeName;
 %ignore Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >::debug;
@@ -45,8 +47,6 @@
 
 VECTOR_DIMENSIONED_FIELD_TEMPLATE_FUNC( surfaceMesh )
 
-
-//---------------------------------------------------------------------------
 %template( DimensionedField_vector_surfaceMesh ) Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >;
 
 
