@@ -35,7 +35,7 @@ class solver( object ):
         from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
         self.cumulativeContErr = initContinuityErrs()
         
-        self.runTime += self.runTime.deltaT()
+        self.runTime.increment()
         pass
 
     def step( self, getPISOControls ):
@@ -90,7 +90,7 @@ class solver( object ):
         ext_Info() << "ExecutionTime = " << self.runTime.elapsedCpuTime() << " s" << \
               "  ClockTime = " << self.runTime.elapsedClockTime() << " s" << nl << nl
 
-        self.runTime += self.runTime.deltaT()
+        self.runTime.increment()
         
         return self.runTime.value()
 
@@ -193,7 +193,7 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "\nStarting time loop\n"
 
-    runTime += runTime.deltaT()
+    runTime.increment()
     while not runTime.end() :
         ext_Info() << "Time = " <<  runTime.timeName() << nl << nl
 
@@ -246,7 +246,7 @@ def main_standalone( argc, argv ):
         ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
                       "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
 
-        runTime += runTime.deltaT()
+        runTime.increment()
         pass
 
     ext_Info() << "End\n"
