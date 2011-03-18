@@ -27,13 +27,43 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/meshes/GeoMesh_fvMesh.hxx"
 
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_fvMesh.cxx"
-
 %import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 %import "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
 %import "src/OpenFOAM/dimensionSet.cxx"
+
+%import <volMesh.H>
+
+
+//---------------------------------------------------------------------------
+%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::volMesh::Mesh &
+{
+  void *ptr;
+  int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::volMesh::Mesh * ), 0 );
+  int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::fvMesh * ), 0 );
+  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 );
+}
+
+
+//---------------------------------------------------------------------------
+%typemap( in ) const Foam::volMesh::Mesh & 
+{
+  void  *argp = 0;
+  int res = 0;
+  
+  res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::volMesh::Mesh * ), %convertptr_flags );
+  if ( SWIG_IsOK( res )&& argp  ){
+    $1 = %reinterpret_cast( argp, Foam::volMesh::Mesh * );;
+  } else {
+    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::fvMesh * ), %convertptr_flags );
+    if ( SWIG_IsOK( res ) && argp ) {
+      $1 = %reinterpret_cast( argp, fvMesh * );
+    } else {
+      %argument_fail( res, "$type", $symname, $argnum );
+    }
+  }
+}
 
 
 //---------------------------------------------------------------------------

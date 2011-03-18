@@ -42,8 +42,6 @@
 
 %import "src/finiteVolume/fvMesh/fvMesh.cxx"
 
-%import <volMesh.H>
-
 
 //---------------------------------------------------------------------------
 #endif

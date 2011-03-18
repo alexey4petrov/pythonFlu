@@ -44,8 +44,6 @@
 
 %ignore Foam::fvMesh::writeObjects;
 
-%include <fvMesh.H>
-
 //%extend Foam::fvMesh COMMON_EXTENDS;
 
 %extend Foam::fvMesh
