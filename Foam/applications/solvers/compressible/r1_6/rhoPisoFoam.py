@@ -197,7 +197,7 @@ def main_standalone( argc, argv ):
         from Foam.finiteVolume.cfdTools.general.include import setDeltaT
         runTime = setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
         
-        runTime.step()
+        runTime.increment()
         ext_Info() << "Time = " << runTime.timeName() << nl << nl
         
         from Foam.finiteVolume.cfdTools.compressible import rhoEqn  

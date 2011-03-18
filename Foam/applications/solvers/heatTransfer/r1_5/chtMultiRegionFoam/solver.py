@@ -78,7 +78,7 @@ def main_standalone( argc, argv ):
           runTime = setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
           pass
        
-       runTime.step()
+       runTime.increment()
        ext_Info()<< "Time = " << runTime.timeName() << nl << nl
        
        for i in range( fluidRegions.size() ):

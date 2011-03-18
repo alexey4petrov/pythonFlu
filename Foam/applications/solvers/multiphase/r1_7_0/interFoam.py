@@ -393,7 +393,7 @@ def main_standalone( argc, argv ):
         maxAlphaCo, alphaCoNum, meanAlphaCoNum = alphaCourantNo( runTime, mesh, alpha1, phi )
         runTime = setDeltaT(  runTime, adjustTimeStep, maxCo, CoNum, maxAlphaCo, alphaCoNum, maxDeltaT )
         
-        runTime.step()
+        runTime.increment()
         ext_Info() << "Time = " << runTime.timeName() << nl << nl
         
         twoPhaseProperties.correct()

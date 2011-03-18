@@ -140,7 +140,7 @@ def main_standalone( argc, argv ):
            
         runTime, CoNum, DiNum = setMultiRegionDeltaT( adjustTimeStep, runTime, CoNum, DiNum, maxCo, maxDi, maxDeltaT )
                 
-        runTime.step()
+        runTime.increment()
         
         ext_Info()<< "Time = " << runTime.timeName() << nl << nl;      
                 
