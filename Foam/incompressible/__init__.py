@@ -26,7 +26,7 @@ exec get_module_initializtion_command( "incompressible_" )
 
 
 #---------------------------------------------------------------------------
-from Foam import FOAM_VERSION, FOAM_BRANCH_VERSION
+from Foam import FOAM_VERSION, FOAM_BRANCH_VERSION, FOAM_REF_VERSION
 if FOAM_VERSION( "<=", "010401" ):
    turbulenceModel = incompressible_turbulenceModel
    autoPtr_turbulenceModel = autoPtr_incompressible_turbulenceModel
