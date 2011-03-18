@@ -20,20 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volMesh_hxx
-#define volMesh_hxx
+#ifndef volScalarField_hpp
+#define volScalarField_hpp
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/meshes/GeoMesh_fvMesh.hxx"
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hpp"
 
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_fvMesh.cxx"
+#include "src/OpenFOAM/fields/tmp/autoPtr_volScalarField.hpp"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hpp"
 
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
-
-%import "src/OpenFOAM/dimensionSet.cxx"
+#include "src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.hpp"
 
 
 //---------------------------------------------------------------------------

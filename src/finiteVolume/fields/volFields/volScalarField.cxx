@@ -25,21 +25,24 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.finiteVolume.fields.volFields.volScalarField";
+%{
+  #include "src/finiteVolume/fields/volFields/volScalarField.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_volScalarField.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_volScalarField.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
 
-%include "src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.cxx"
+%import "src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.cxx"
 
 
 //---------------------------------------------------------------------------

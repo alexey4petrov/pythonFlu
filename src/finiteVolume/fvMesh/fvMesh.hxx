@@ -25,12 +25,6 @@
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "src/finiteVolume/fvMesh/fvMesh.hpp"
-%}
-
-
-//---------------------------------------------------------------------------
 %import "src/OpenFOAM/meshes/polyMesh/polyMesh.cxx"
 
 %import "src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.cxx"

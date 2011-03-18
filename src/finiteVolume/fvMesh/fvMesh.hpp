@@ -41,6 +41,10 @@
 
 #include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.hpp"
 
+#include "src/finiteVolume/fields/volFields/volFields.hpp"
+
+#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hpp"
+
 #include <fvMesh.H>
 #include <volMesh.H>
 

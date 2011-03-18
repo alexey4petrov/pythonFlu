@@ -20,20 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volMesh_hxx
-#define volMesh_hxx
+#ifndef volSphericalTensorField_hpp
+#define volSphericalTensorField_hpp
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/meshes/GeoMesh_fvMesh.hxx"
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_SphericalTensor_fvPatchField_volMesh.hpp"
 
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_fvMesh.cxx"
+#include "src/OpenFOAM/fields/tmp/autoPtr_volSphericalTensorField.hpp"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
-
-%import "src/OpenFOAM/dimensionSet.cxx"
+#include "src/OpenFOAM/fields/tmp/tmp_volSphericalTensorField.hpp"
 
 
 //---------------------------------------------------------------------------
