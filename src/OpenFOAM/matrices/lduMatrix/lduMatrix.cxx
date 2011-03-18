@@ -29,6 +29,7 @@
 %{
   #include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hpp"
 %}
+%include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hpp"
 
 
 //---------------------------------------------------------------------------
@@ -124,14 +125,6 @@ namespace Foam
 
 //---------------------------------------------------------------------------
 // This trick intends to publish nested class into SWIG domain
-%inline
-%{
-  namespace Foam
-  {
-    typedef lduMatrix::solverPerformance lduSolverPerformance;
-  }
-%}
-
 %typemap( out ) Foam::lduMatrix::solverPerformance
 {
   $result = SWIG_NewPointerObj( ( new $1_type( *&$1 ) ), $descriptor( Foam::lduSolverPerformance* ), SWIG_POINTER_OWN |  0 );

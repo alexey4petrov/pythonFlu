@@ -35,6 +35,12 @@
 
 #include <lduMatrix.H>
 
+// This trick intends to publish nested class into SWIG domain
+namespace Foam
+{
+  typedef lduMatrix::solverPerformance lduSolverPerformance;
+}
+
 
 //---------------------------------------------------------------------------
 #endif
