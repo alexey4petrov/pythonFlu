@@ -97,7 +97,6 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
         self.refValue().ext_assign( 0.0 )
         self.refGrad().ext_assign( 0.0 )
         self.valueFraction().ext_assign( 1.0 )
-        self.fixesValue_ = True
         
         return self
         
@@ -142,13 +141,11 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
             self.refValue().ext_assign( scalarField( word( "refValue" ), dict_, p.size() ) )
             self.refGrad().ext_assign( scalarField( word( "refGradient" ), dict_, p.size() ) )
             self.valueFraction().ext_assign( scalarField( word( "valueFraction" ), dict_, p.size() ) )
-            self.fixesValue_ = readBool( dict_.lookup( word( "fixesValue" ) ) )
         else:
             # Start from user entered data. Assume fixedValue.
             self.refValue().ext_assign( self )
             self.refGrad().ext_assign( 0.0 )
             self.valueFraction().ext_assign( 1.0 )
-            self.fixesValue_ = True
             pass
 
         return self
@@ -175,7 +172,6 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
 
         self.neighbourFieldName_ = wtcsf.neighbourFieldName_ 
         self.KName_ = wtcsf.KName_
-        self.fixesValue_ = wtcsf.fixesValue_
         
         return self
         
@@ -184,17 +180,11 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
         mixedFvPatchScalarField.write( self, os )
 
         from Foam.OpenFOAM import keyType, word, token
-        os.writeKeyword( keyType( "neighbourFieldName" ) ) << self.neighbourFieldName_ << token( token.END_STATEMENT ) << nl
-        os.writeKeyword( keyType( "K" ) ) << self.KName_ << token( token.END_STATEMENT ) << nl
-
-        os.writeKeyword( keyType( "fixesValue" ) ) << self.fixesValue_ << token( token.END_STATEMENT ) << nl
-        
+        os.writeKeyword( keyType( word( "neighbourFieldName" ) ) ) << self.neighbourFieldName_ << token( token.END_STATEMENT ) << nl
+        os.writeKeyword( keyType( word( "K" ) ) ) << self.KName_ << token( token.END_STATEMENT ) << nl
         pass
 
-    #------------------------------------------------------------------------------------
-    def fixesValue( self ) :
-        return self.fixesValue_
-    
+
     #------------------------------------------------------------------------------------
     def clone( self, *args ) :
         try:
@@ -246,46 +236,6 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
         return tmp_fvPatchField_scalar( obj )
         
     #------------------------------------------------------------------------------------
-    def interfaceOwner( self, nbrRegion ) :
-        myRegion = self.patch().boundaryMesh().mesh()
-
-        from Foam.OpenFOAM import word
-        from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam import regionProperties
-        props = regionProperties.ext_lookupObject( myRegion.parent(), word( "regionProperties" ) )
-
-        myIndex = props.fluidRegionNames.ext_findIndex( myRegion.name() )
- 
-        if myIndex == -1 : 
-            i = props.solidRegionNames.ext_findIndex( myRegion.name() )
-            if i == -1 :
-                print "FATAL ERROR: solidWallMixedTemperatureCoupledFvPatchScalarField", "::interfaceOwner(const polyMesh&) const\n", \
-                      "Cannot find region -", myRegion.name(), " neither in fluids:", props.fluidRegionNames,\
-                      "\n nor in solids:", props.solidRegionNames
-                import os
-                os._exit( 0 )
-                pass
-            
-            myIndex = props.fluidRegionNames.size() + i
-            pass
-        
-        nbrIndex = props.fluidRegionNames.ext_findIndex( nbrRegion.name() )
-        
-        if nbrIndex == -1 :
-            i = props.solidRegionNames.ext_findIndex( nbrRegion.name() )
-            if i == -1 :
-                print "FATAL ERROR: coupleManager::interfaceOwner(const polyMesh&) const\n", "Cannot find region ", nbrRegion.name(), \
-                      " neither in fluids ", props.fluidRegionNames, " nor in solids ", props.solidRegionNames
-                import os
-                os._exit( 0 )
-                pass
-            
-            nbrIndex = props.fluidRegionNames.size() + i
-            pass
-        
-        return myIndex < nbrIndex
-    
-    
-    #------------------------------------------------------------------------------------
     def K( self ) :
       from Foam.finiteVolume import volScalarField
       return volScalarField.ext_lookupPatchField( self.patch(), self.KName_ )
@@ -301,105 +251,72 @@ class solidWallMixedTemperatureCoupledFvPatchScalarField( mixedFvPatchScalarFiel
             mpp = directMappedPatchBase.ext_refCast( self.patch().patch() )
             
             nbrMesh = mpp.sampleMesh()
+
+            from Foam.finiteVolume import fvMesh
+            nbrPatch = fvMesh.ext_refCast( nbrMesh ).boundary()[ mpp.samplePolyPatch().index() ]
+            
+            # Force recalculation of mapping and schedule
+            distMap = mpp.map()
+            
             intFld = self.patchInternalField()
             
-            if self.interfaceOwner( nbrMesh ):
-               # Note: other side information could be cached - it only needs
-               # to be updated the first time round the iteration (i.e. when
-               # switching regions) but unfortunately we don't have this information.
-               distMap = mpp.map()
-               from Foam.finiteVolume import fvMesh
-               nbrPatch = fvMesh.ext_refCast( nbrMesh ).boundary()[ mpp.samplePolyPatch().index() ]
-               
-               # Calculate the temperature by harmonic averaging
-               # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-               from Foam.finiteVolume import volScalarField
-               nbrField = solidWallMixedTemperatureCoupledFvPatchScalarField.ext_refCast( volScalarField.ext_lookupPatchField( nbrPatch, self.neighbourFieldName_ ) )
-               
-               #Swap to obtain full local values of neighbour internal field
-               nbrIntFld = nbrField.patchInternalField()
-               
-               from Foam.OpenFOAM import mapDistribute, Pstream
-               mapDistribute.distribute( Pstream.defaultCommsType.fget(), 
-                                         distMap.schedule(), 
-                                         distMap.constructSize(), 
-                                         distMap.subMap(),       #what to send
-                                         distMap.constructMap(), #what to receive
-                                         nbrIntFld() ) 
-               
-               # Swap to obtain full local values of neighbour K*delta
-               nbrKDelta = nbrField.K()*nbrPatch.deltaCoeffs()
-              
-               mapDistribute.distribute( Pstream.defaultCommsType.fget(), 
-                                         distMap.schedule(), 
-                                         distMap.constructSize(), 
-                                         distMap.subMap(),       #what to send
-                                         distMap.constructMap(), #what to receive
-                                         nbrKDelta() ) 
-               
-               myKDelta = self.K()*self.patch().deltaCoeffs()
-               
-               # Calculate common wall temperature. Reuse *this to store common value.
-                              
-               Twall = ( myKDelta*intFld +  nbrKDelta*nbrIntFld ) / ( myKDelta + nbrKDelta )
-
-               # Assign to me
-               from Foam.finiteVolume import fvPatchScalarField
-               fvPatchScalarField.ext_assign( self, Twall )
-               mapDistribute.distribute( Pstream.defaultCommsType.fget(),
-                                         distMap.schedule(),
-                                         nbrField.size(),
-                                         distMap.constructMap(),     # reverse : what to send
-                                         distMap.subMap(),
-                                         Twall() )
-               
-               fvPatchScalarField.ext_assign( nbrField, Twall )
-               pass
-               
-            # Switch between fixed value (of harmonic avg) or gradient
-            # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            nFixed = 0
-               
-            #Like snGrad but bypass switching on refValue/refGrad.
-            normalGradient = ( self-intFld )*self.patch().deltaCoeffs()
+            from Foam.finiteVolume import volScalarField
+            nbrField = solidWallMixedTemperatureCoupledFvPatchScalarField.ext_refCast( volScalarField.ext_lookupPatchField( nbrPatch, self.neighbourFieldName_ ) )
             
-            if self.debug: 
-              Q = ( self.K() * self.patch().magSf() * normalGradient() ).gSum()
-              ext_Info ()<< "solidWallMixedTemperatureCoupledFvPatchScalarField::" << "updateCoeffs() :"\
-                         << " patch:" << self.patch().name()<< " heatFlux:" << Q << " walltemperature "\
-                         << " min:" << self.gMin() << " max:" << self.gMax() << " avg:" << self.gAverage() << nl
-              pass           
-
-            for i in range( self.size() ):
-               # if outgoing flux use fixed value.
-               if normalGradient()[i] < 0.0:
-                  self.refValue()[i] = self[i] 
-                  self.refGrad()[i] = 0.0  # not used
-                  self.valueFraction()[i] = 1.0 
-                  nFixed+=1
-                  pass
-               else:
-                  self.refValue()[i]=  0.0  # not used
-                  self.refGrad()[i] = normalGradient()[i] 
-                  self.valueFraction()[i] =  0.0 
-                  pass
-              
-                        
-            from Foam.OpenFOAM import ext_reduce, sumOp_label
-                        
-            nFixed = ext_reduce( nFixed, sumOp_label() )
-            self.fixesValue_ = ( nFixed > 0 )
+            #Swap to obtain full local values of neighbour internal field
+            nbrIntFld = nbrField.patchInternalField()
             
-            if (self.debug):
-               from Foam.OpenFOAM import returnReduce
-               nTotSize = returnReduce(self.size(), sumOp_label())
-               ext_Info() << "solidWallMixedTemperatureCoupledFvPatchScalarField::" << "updateCoeffs() :" \
-                          << " patch:" << self.patch().name() << " out of:" << nTotSize << " fixedBC:" << nFixed \
-                          << " gradient:" << nTotSize-nFixed << nl
-               pass                 
+            from Foam.OpenFOAM import mapDistribute, Pstream
+            mapDistribute.distribute( Pstream.defaultCommsType.fget(), 
+                                      distMap.schedule(), 
+                                      distMap.constructSize(), 
+                                      distMap.subMap(),       #what to send
+                                      distMap.constructMap(), #what to receive
+                                      nbrIntFld() )
+            
+            # Swap to obtain full local values of neighbour K*delta
+            nbrKDelta = nbrField.K()*nbrPatch.deltaCoeffs()
+            mapDistribute.distribute( Pstream.defaultCommsType.fget(), 
+                                      distMap.schedule(), 
+                                      distMap.constructSize(), 
+                                      distMap.subMap(),       #what to send
+                                      distMap.constructMap(), #what to receive
+                                      nbrKDelta() ) 
+            
+            myKDelta = self.K()*self.patch().deltaCoeffs()
+            
+            # Both sides agree on
+            # - temperature : (myKDelta*fld + nbrKDelta*nbrFld)/(myKDelta+nbrKDelta)
+            # - gradient    : (temperature-fld)*delta
+            # We've got a degree of freedom in how to implement this in a mixed bc.
+            # (what gradient, what fixedValue and mixing coefficient)
+            # Two reasonable choices:
+            # 1. specify above temperature on one side (preferentially the high side)
+            #    and above gradient on the other. So this will switch between pure
+            #    fixedvalue and pure fixedgradient
+            # 2. specify gradient and temperature such that the equations are the
+            #    same on both sides. This leads to the choice of
+            #    - refGradient = zero gradient
+            #    - refValue = neighbour value
+            #    - mixFraction = nbrKDelta / (nbrKDelta + myKDelta())
+            
+            self.refValue().ext_assign( nbrIntFld )
+            self.refGrad().ext_assign( 0.0 )
+            self.valueFraction().ext_assign( nbrKDelta / ( nbrKDelta + myKDelta() ) )
             
             mixedFvPatchScalarField.updateCoeffs( self )
-            
+
+
+            if self.debug: 
+              Q = ( self.K() * self.patch().magSf() * self.snGrad() ).gSum()
+
+
+              ext_Info ()<< patch().boundaryMesh().mesh().name()  << ":" \
+                         << patch().name() << ':' << self.dimensionedInternalField().name() << " <- " \
+                         << nbrMesh.name() << ':' << nbrPatch.name() << ':' << self.dimensionedInternalField().name() << " :" \
+                         << " heat[W]:"  << Q << " walltemperature "\
+                         << " min:" << self.gMin() << " max:" << self.gMax() << " avg:" << self.gAverage() << nl
+              pass           
             pass
         except Exception, exc:
             import sys, traceback

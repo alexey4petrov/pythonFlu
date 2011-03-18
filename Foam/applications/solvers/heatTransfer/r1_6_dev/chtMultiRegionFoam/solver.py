@@ -26,7 +26,7 @@
 #------------------------------------------------------------------------------------
 # To import corresponding plugin first
 #from Foam.applications.solvers.heatTransfer.chtMultiRegionFoam import plugin
-from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam import derivedFvPatchFields
+from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam import derivedFvPatchFields
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -43,6 +43,46 @@ def readPIMPLEControls( runTime ):
 
 
 #--------------------------------------------------------------------------------------
+def setInitialMultiRegionDeltaT( adjustTimeStep, runTime, CoNum, DiNum, maxCo, maxDi, maxDeltaT ):
+    if adjustTimeStep:
+       from Foam.OpenFOAM import GREAT, SMALL
+       if runTime.timeIndex() == 0 and ( CoNum > SMALL or DiNum > SMALL ) :
+          if CoNum == -GREAT:
+             CoNum = SMALL
+             pass
+          if DiNum == -GREAT:
+             DiNum = SMALL
+             pass
+          runTime.setDeltaT( min( min( maxCo / CoNum, maxDi / DiNum ) * runTime.deltaT().value(), maxDeltaT ) )
+          from Foam.OpenFOAM import ext_Info, nl
+          ext_Info() << "deltaT = " <<  runTime.deltaT().value() << nl
+          pass
+    return runTime, CoNum, DiNum
+
+
+#--------------------------------------------------------------------------------------
+def setMultiRegionDeltaT( adjustTimeStep, runTime, CoNum, DiNum, maxCo, maxDi, maxDeltaT ):
+    if adjustTimeStep:
+       from Foam.OpenFOAM import GREAT, SMALL
+       if CoNum == -GREAT:
+          CoNum = SMALL
+          pass
+       if DiNum == -GREAT:
+          DiNum = SMALL
+          pass
+       
+       maxDeltaTFluid = maxCo / ( CoNum + SMALL )
+       maxDeltaTSolid = maxDi / ( DiNum + SMALL )
+       
+       deltaTFluid = min( min( maxDeltaTFluid, 1.0 + 0.1 * maxDeltaTFluid ), 1.2 );
+       runTime.setDeltaT( min( min( deltaTFluid, maxDeltaTSolid ) * runTime.deltaT().value(), maxDeltaT ) )
+       from Foam.OpenFOAM import ext_Info, nl
+       ext_Info() << "deltaT = " <<  runTime.deltaT().value() << nl
+       pass
+    return runTime, CoNum, DiNum
+
+
+#--------------------------------------------------------------------------------------
 def main_standalone( argc, argv ):
 
     from Foam.OpenFOAM.include import setRootCase
@@ -51,62 +91,68 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM.include import createTime
     runTime = createTime( args )
     
-    from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam import regionProperties
+    from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam import regionProperties
     rp = regionProperties( runTime )
     
-    from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.fluid import createFluidMeshes
+    from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.fluid import createFluidMeshes
     fluidRegions = createFluidMeshes( rp, runTime )
 
-    from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.solid import createSolidMeshes,createSolidField
+    from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.solid import createSolidMeshes,createSolidField
     solidRegions=createSolidMeshes( rp,runTime )
 
-    from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.fluid import createFluidFields
+    from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.fluid import createFluidFields
 
     thermoFluid, rhoFluid, KFluid, UFluid, phiFluid, gFluid, turbulence, DpDtFluid, initialMassFluid = createFluidFields( fluidRegions, runTime )
 
-    from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.solid import createSolidField
+    from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.solid import createSolidField
     rhos, cps, rhosCps, Ks, Ts = createSolidField( solidRegions, runTime )
     
-    from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.fluid import initContinuityErrs
+    from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.fluid import initContinuityErrs
     cumulativeContErr = initContinuityErrs( fluidRegions.size() )
     
     from Foam.finiteVolume.cfdTools.general.include import readTimeControls
     adjustTimeStep, maxCo, maxDeltaT = readTimeControls( runTime )
     
+    from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.solid import readSolidTimeControls
+    maxDi= readSolidTimeControls( runTime )
+    
     from Foam.OpenFOAM import ext_Info, nl
 
-    if fluidRegions.size() :
-        from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.fluid import compressubibleMultiRegionCourantNo
-        CoNum = compressubibleMultiRegionCourantNo( fluidRegions, runTime, rhoFluid, phiFluid )
+    from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.fluid import compressubibleMultiRegionCourantNo
+    CoNum = compressubibleMultiRegionCourantNo( fluidRegions, runTime, rhoFluid, phiFluid )
                 
-        from Foam.finiteVolume.cfdTools.general.include import setInitialDeltaT
-        runTime = setInitialDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
-        pass
+    from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.solid import solidRegionDiffusionNo
+    DiNum = solidRegionDiffusionNo( solidRegions, runTime, rhosCps, Ks )
     
+    runTime, CoNum, DiNum = setInitialMultiRegionDeltaT( adjustTimeStep, runTime, CoNum, DiNum, maxCo, maxDi, maxDeltaT )
+
     while runTime.run() :
+
         adjustTimeStep, maxCo, maxDeltaT = readTimeControls(runTime)
+
+        maxDi= readSolidTimeControls( runTime )
 
         nOuterCorr = readPIMPLEControls( runTime )
         
-        if fluidRegions.size() :
-            from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.fluid import compressubibleMultiRegionCourantNo
-            CoNum = compressubibleMultiRegionCourantNo( fluidRegions, runTime, rhoFluid, phiFluid )
+        from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.fluid import compressubibleMultiRegionCourantNo
+        CoNum = compressubibleMultiRegionCourantNo( fluidRegions, runTime, rhoFluid, phiFluid )
 
-            from Foam.finiteVolume.cfdTools.general.include import setDeltaT   
-            runTime = setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
-            pass
-        
-        runTime += runTime.deltaT()
-        ext_Info()<< "Time = " << runTime.timeName() << nl << nl      
+        DiNum = solidRegionDiffusionNo( solidRegions, runTime, rhosCps, Ks )
+           
+        runTime, CoNum, DiNum = setMultiRegionDeltaT( adjustTimeStep, runTime, CoNum, DiNum, maxCo, maxDi, maxDeltaT )
+
+        runTime.increment()
                 
+        ext_Info()<< "Time = " << runTime.timeName() << nl << nl
+        
         if nOuterCorr != 1 :
             for i in range( fluidRegions.size() ):
-                from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.fluid import setRegionFluidFields
+                from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.fluid import setRegionFluidFields
                 mesh, thermo, rho, K, U, phi, g, turb, DpDt, p, psi, h, massIni = \
                       setRegionFluidFields( i, fluidRegions, thermoFluid, rhoFluid, KFluid, UFluid, \
                                             phiFluid, gFluid, turbulence, DpDtFluid, initialMassFluid )
                 
-                from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.fluid import storeOldFluidFields
+                from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.fluid import storeOldFluidFields
                 storeOldFluidFields( p, rho )
                 pass
             pass
@@ -116,30 +162,30 @@ def main_standalone( argc, argv ):
             for i in range( fluidRegions.size() ):
                 ext_Info() << "\nSolving for fluid region " << fluidRegions[ i ].name() << nl
 
-                from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.fluid import setRegionFluidFields
+                from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.fluid import setRegionFluidFields
                 mesh, thermo, rho, K, U, phi, g, turb, DpDt, p, psi, h, massIni = \
                       setRegionFluidFields( i, fluidRegions, thermoFluid, rhoFluid, KFluid, UFluid, \
                                             phiFluid, gFluid, turbulence, DpDtFluid, initialMassFluid )
                 
-                from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.fluid import readFluidMultiRegionPIMPLEControls
+                from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.fluid import readFluidMultiRegionPIMPLEControls
                 pimple, nCorr, nNonOrthCorr, momentumPredictor = readFluidMultiRegionPIMPLEControls( mesh ) 
-                
-                from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.fluid import solveFluid
+
+                from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.fluid import solveFluid
                 cumulativeContErr = solveFluid( i, mesh, thermo, thermoFluid, rho, K, U, phi, g, h, turb, DpDt, p, psi, \
                                                 massIni, oCorr, nCorr, nOuterCorr, nNonOrthCorr, momentumPredictor, cumulativeContErr )
-                
+
                 pass
                 
             for i in range( solidRegions.size() ):
                ext_Info() << "\nSolving for solid region " << solidRegions[ i ].name() << nl
                
-               from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.solid import setRegionSolidFields
+               from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.solid import setRegionSolidFields
                mesh, rho, cp, K, T = setRegionSolidFields( i, solidRegions, rhos, cps, Ks, Ts )
                
-               from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.solid import readSolidMultiRegionPIMPLEControls
+               from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.solid import readSolidMultiRegionPIMPLEControls
                pimple, nNonOrthCorr = readSolidMultiRegionPIMPLEControls( mesh )
                
-               from Foam.applications.solvers.heatTransfer.r1_6.chtMultiRegionFoam.solid import solveSolid
+               from Foam.applications.solvers.heatTransfer.r1_6_dev.chtMultiRegionFoam.solid import solveSolid
                solveSolid( mesh, rho, cp, K, T, nNonOrthCorr )
                pass                
             pass
@@ -149,7 +195,7 @@ def main_standalone( argc, argv ):
         ext_Info()<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s" \
             << "  ClockTime = " << runTime.elapsedClockTime() << " s" \
             << nl << nl    
-
+        
     ext_Info() << "End\n"
     
     import os
@@ -159,14 +205,14 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 argv = None
 import sys, os
-from Foam import FOAM_VERSION
-if FOAM_VERSION( "==", "010600" ):
+from Foam import FOAM_BRANCH_VERSION
+if FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
     if __name__ == "__main__" :
         argv = sys.argv
         
         if len(argv) > 1 and argv[ 1 ] == "-test":
            argv = None
-           test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'local', 'r1.6', 'heatTransfer', 'chtMultiRegionFoam', 'multiRegionHeater' )
+           test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6-dev', 'heatTransfer', 'chtMultiRegionFoam', 'multiRegionHeater' )
            argv = [ __file__, "-case", test_dir ]
            pass
         

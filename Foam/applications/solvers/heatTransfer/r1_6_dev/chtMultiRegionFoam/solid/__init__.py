@@ -111,6 +111,45 @@ def readSolidMultiRegionPIMPLEControls( mesh ):
 
 
 #-------------------------------------------------------------------------------------------------------
+def readSolidTimeControls( runTime ):
+    from Foam.OpenFOAM import word 
+    maxDi = runTime.controlDict().lookupOrDefault( word( "maxDi" ) , 10.0 )
+    
+    return maxDi
+
+
+#-------------------------------------------------------------------------------------------------------
+def solidRegionDiffNo( mesh, runTime, Cprho, K ):
+    DiNum = 0.0
+    meanDiNum = 0.0
+
+    #- Can have fluid domains with 0 cells so do not test.
+    if mesh.nInternalFaces():
+       from Foam import fvc
+       KrhoCpbyDelta = mesh.deltaCoeffs() * fvc.interpolate( K ) / fvc.interpolate(Cprho);
+       DiNum = KrhoCpbyDelta.internalField().max() * runTime.deltaT().value()
+       meanDiNum = KrhoCpbyDelta.average().value() * runTime.deltaT().value()
+       pass
+    
+    from Foam.OpenFOAM import ext_Info, nl
+    ext_Info() << "Region: " << mesh.name() << " Diffusion Number mean: " << meanDiNum << " max: " << DiNum << nl
+
+    return DiNum
+
+
+#-------------------------------------------------------------------------------------------------------
+def solidRegionDiffusionNo( solidRegions, runTime, rhosCps, Ks ):
+    from Foam.OpenFOAM import GREAT
+    DiNum = -GREAT
+    
+    for regionI in range( solidRegions.size() ):
+        DiNum = max( solidRegionDiffNo( solidRegions[ regionI ], runTime, rhosCps[ regionI ], Ks[ regionI ] ), DiNum )
+        pass
+    
+    return DiNum
+
+
+#-------------------------------------------------------------------------------------------------------
 def setRegionSolidFields( i, solidRegions, rhos, cps, Ks, Ts ):
     mesh = solidRegions[ i ]
     rho = rhos[ i ]
