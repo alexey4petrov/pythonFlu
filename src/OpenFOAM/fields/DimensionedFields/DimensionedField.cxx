@@ -72,12 +72,12 @@
   
   res = SWIG_ConvertPtr( $input, &argp, $descriptor(  Foam::DimensionedField< Type, TMesh > * ), %convertptr_flags );
   if ( SWIG_IsOK( res )&& argp  ){
-    Foam::DimensionedField< Type, TMesh > * res =  %reinterpret_cast( argp, Foam::DimensionedField< Type, TMesh >* );
+    Foam::DimensionedField< Type, TMesh > * res = %reinterpret_cast( argp, Foam::DimensionedField< Type, TMesh >* );
     $1 = res;
   } else {
     res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::DimensionedField< Type, TMesh > >* ), %convertptr_flags );
     if ( SWIG_IsOK( res ) && argp ) {
-      Foam::tmp<Foam::DimensionedField< Type, TMesh > >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::DimensionedField< Type, TMesh > > * );
+      Foam::tmp<Foam::DimensionedField< Type, TMesh > >* tmp_res = %reinterpret_cast( argp, Foam::tmp< Foam::DimensionedField< Type, TMesh > > * );
       $1 = tmp_res->operator->();
     } else {
       %argument_fail( res, "$type", $symname, $argnum );

@@ -52,6 +52,11 @@ DIMENSIONED_FIELD_TEMPLATE_FUNC( scalar, fvMesh )
 
 %template( DimensionedField_scalar_fvMesh ) Foam::DimensionedField< Foam::scalar, Foam::fvMesh >; 
 
+%{
+  typedef Foam::DimensionedField< Foam::scalar, Foam::fvMesh > DimensionedField_scalar_fvMesh;
+  defineTemplateTypeNameAndDebug( DimensionedField_scalar_fvMesh, 0 );
+%}
+
 
 //---------------------------------------------------------------------------
 #endif
