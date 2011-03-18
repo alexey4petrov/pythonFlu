@@ -25,6 +25,13 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.matrices.lduMatrix.lduMatrix"
+%{
+  #include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
 %include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
 
 %include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx"
@@ -42,96 +49,92 @@
 
 namespace Foam
 {
-    struct lduSolverPerformance
-    {
-        // Constructors
+  struct lduSolverPerformance
+  {
+    // Constructors
     
-        lduSolverPerformance();
+    lduSolverPerformance();
+    
+    lduSolverPerformance
+    (
+     const word&  solverName,
+     const word&  fieldName,
+     const scalar iRes = 0,
+     const scalar fRes = 0,
+     const label  nIter = 0,
+     const bool   converged = false,
+     const bool   singular = false
+     );
 
-        lduSolverPerformance
-        (
-            const word&  solverName,
-            const word&  fieldName,
-            const scalar iRes = 0,
-            const scalar fRes = 0,
-            const label  nIter = 0,
-            const bool   converged = false,
-            const bool   singular = false
-        );
-
-        // Member functions
-        
-        //- Return solver name
-        const word& solverName() const;
-
-        //- Return initial residual
-        scalar initialResidual() const;
-
-        //- Return initial residual
-        scalar& initialResidual();
-
-        //- Return final residual
-        scalar finalResidual() const;
-
-        //- Return final residual
-        scalar& finalResidual();
-
-        //- Return number of iterations
-        label nIterations() const;
-
-        //- Return number of iterations
-        label& nIterations();
-
-        //- Has the solver converged?
-        bool converged() const;
-
-        //- Is the matrix singular?
-        bool singular() const;
-
-        //- Convergence test
-        bool checkConvergence
-        (
-            const scalar tolerance,
-            const scalar relTolerance
-        );
-
-        //- Singularity test
-        bool checkSingularity(const scalar residual);
-
-        //- Print summary of solver performance
-        void print() const;
-    };
+    // Member functions
+    
+    //- Return solver name
+    const word& solverName() const;
+    
+    //- Return initial residual
+    scalar initialResidual() const;
+    
+    //- Return initial residual
+    scalar& initialResidual();
+    
+    //- Return final residual
+    scalar finalResidual() const;
+    
+    //- Return final residual
+    scalar& finalResidual();
+    
+    //- Return number of iterations
+    label nIterations() const;
+    
+    //- Return number of iterations
+    label& nIterations();
+    
+    //- Has the solver converged?
+    bool converged() const;
+    
+    //- Is the matrix singular?
+    bool singular() const;
+    
+    //- Convergence test
+    bool checkConvergence
+    (
+     const scalar tolerance,
+     const scalar relTolerance
+     );
+    
+    //- Singularity test
+    bool checkSingularity(const scalar residual);
+    
+    //- Print summary of solver performance
+    void print() const;
+  };
 }
 
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/db/typeInfo/className.hxx"
 
-%{
-    #include "lduMatrix.H"
-%}
-
 #if FOAM_BRANCH_VERSION( dev, ==, 010500 )
 %ignore Foam::lduMatrix::bufferedUpdateMatrixInterfaces;
 %ignore Foam::lduMatrix::bufferedInitMatrixInterfaces;
 #endif
 
-%include "lduMatrix.H"
+%include <lduMatrix.H>
 
 
 //---------------------------------------------------------------------------
 // This trick intends to publish nested class into SWIG domain
 %inline
 %{
-    namespace Foam
-    {
-        typedef lduMatrix::solverPerformance lduSolverPerformance;
-    }
+  namespace Foam
+  {
+    typedef lduMatrix::solverPerformance lduSolverPerformance;
+  }
 %}
 
 %typemap( out ) Foam::lduMatrix::solverPerformance
 {
-    $result = SWIG_NewPointerObj( ( new $1_type( *&$1 ) ), $descriptor( Foam::lduSolverPerformance* ), SWIG_POINTER_OWN |  0 );
+  $result = SWIG_NewPointerObj( ( new $1_type( *&$1 ) ), $descriptor( Foam::lduSolverPerformance* ), SWIG_POINTER_OWN |  0 );
 }
 
 
