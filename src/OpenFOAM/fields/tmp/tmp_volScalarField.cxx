@@ -25,31 +25,26 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_surfaceVectorField"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_surfaceVectorField.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_scalarField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_scalarField.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
 
 
 //---------------------------------------------------------------------------
 %template( tmp_volScalarField ) Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< GeometricField< scalar, fvPatchField, volMesh > > tmp_volScalarField;
-    }
-}
 
 
 //---------------------------------------------------------------------------
@@ -57,15 +52,14 @@
 
 %extend Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh > >
 {
-    SMARTPTR_EXTEND_ATTR( tmp_volScalarField )
+  SMARTPTR_EXTEND_ATTR( tmp_volScalarField );
     
-    bool operator==( const Foam::UList< Foam::scalar >& theArg )
-    {
-        Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
-        return *aSelf == theArg;
-    }
+  bool operator==( const Foam::UList< Foam::scalar >& theArg )
+  {
+    Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
+    return *aSelf == theArg;
+  }
 }
-
 
 
 //---------------------------------------------------------------------------

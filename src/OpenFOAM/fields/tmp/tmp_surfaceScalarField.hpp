@@ -20,38 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_volScalarField_cxx
-#define autoPtr_volScalarField_cxx
+#ifndef tmp_surfaceScalarField_hpp
+#define tmp_surfaceScalarField_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_volScalarField"
-%{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_volScalarField.hpp"
-%}
+#include "src/OpenFOAM/fields/tmp/tmp_scalarField.hpp"
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
-
-AUTOPTR_TYPEMAP( Foam::volScalarField )
-
-%template( autoPtr_volScalarField ) Foam::autoPtr< Foam::volScalarField >;
-
-%extend Foam::autoPtr< Foam::volScalarField >
-{
-  bool operator==( const Foam::UList< Foam::scalar >& theArg )
-  {
-    Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
-    return *aSelf == theArg;
-  }
-}
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.hpp"
 
 
 //---------------------------------------------------------------------------

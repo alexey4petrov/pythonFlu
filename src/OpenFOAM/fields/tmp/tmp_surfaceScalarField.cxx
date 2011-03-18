@@ -25,29 +25,24 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_surfaceScalarField"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_surfaceScalarField.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_scalarField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_scalarField.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cxx"
 
 
 //---------------------------------------------------------------------------
 %template( tmp_surfaceScalarField ) Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< GeometricField< scalar, fvsPatchField, surfaceMesh > > tmp_surfaceScalarField;
-    }
-}
 
 
 //----------------------------------------------------------------------------
@@ -55,14 +50,15 @@
 
 %extend Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > >
 {
-    SMARTPTR_EXTEND_ATTR( tmp_surfaceScalarField )
+  SMARTPTR_EXTEND_ATTR( tmp_surfaceScalarField );
     
-    bool operator==( const Foam::UList< Foam::scalar >& theArg )
-    {
-        Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
-        return *aSelf == theArg;
-    }
+  bool operator==( const Foam::UList< Foam::scalar >& theArg )
+  {
+    Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
+    return *aSelf == theArg;
+  }
 }
+
 
 //---------------------------------------------------------------------------
 #endif

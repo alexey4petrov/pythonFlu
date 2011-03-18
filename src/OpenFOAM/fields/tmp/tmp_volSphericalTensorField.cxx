@@ -25,29 +25,24 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_volSphericalTensorField"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_volSphericalTensorField.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_SphericalTensor_fvPatchField_volMesh.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField_SphericalTensor_fvPatchField_volMesh.cxx"
 
 
 //---------------------------------------------------------------------------
 %template( tmp_volSphericalTensorField ) Foam::tmp< Foam::GeometricField< Foam::sphericalTensor, Foam::fvPatchField, Foam::volMesh > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< GeometricField< sphericalTensor, fvPatchField, volMesh > > tmp_volSphericalTensorField;
-    }
-}
 
 
 //----------------------------------------------------------------------------
@@ -55,13 +50,13 @@
 
 %extend Foam::tmp< Foam::GeometricField< Foam::sphericalTensor, Foam::fvPatchField, Foam::volMesh > >
 {
-    SMARTPTR_EXTEND_ATTR( tmp_volSphericalTensorField )
+  SMARTPTR_EXTEND_ATTR( tmp_volSphericalTensorField );
     
-    bool operator==( const Foam::UList< Foam::sphericalTensor >& theArg )
-    {
-        Foam::UList< Foam::sphericalTensor >* aSelf = static_cast< Foam::UList< Foam::sphericalTensor >* >( self->ptr() );
-        return *aSelf == theArg;
-    }
+  bool operator==( const Foam::UList< Foam::sphericalTensor >& theArg )
+  {
+    Foam::UList< Foam::sphericalTensor >* aSelf = static_cast< Foam::UList< Foam::sphericalTensor >* >( self->ptr() );
+    return *aSelf == theArg;
+  }
 }
 
 

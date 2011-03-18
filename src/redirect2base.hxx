@@ -24,6 +24,7 @@
 #define redirect2base_hxx
 
 
+//---------------------------------------------------------------------------
 // This trick allows to access to the base class's 
 // ( member's of the nested class or if inheritance not correctly wrapped )
 // the class(the struct which redirect call to the nested class) 

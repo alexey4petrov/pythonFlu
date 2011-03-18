@@ -25,10 +25,13 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_volSphericalTensorField"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_volSphericalTensorField.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
@@ -43,19 +46,11 @@ AUTOPTR_TYPEMAP( Foam::volSymmTensorField )
 
 %extend Foam::autoPtr< Foam::volSymmTensorField >
 {
-    bool operator==( const Foam::UList< Foam::symmTensor >& theArg )
-    {
-        Foam::UList< Foam::symmTensor >* aSelf = static_cast< Foam::UList< Foam::symmTensor >* >( self->ptr() );
-        return *aSelf == theArg;
-    }
-}
-
-%inline
-{
-    namespace Foam
-    {
-        typedef autoPtr< volSymmTensorField > autoPtr_volSymmTensorField;
-    }
+  bool operator==( const Foam::UList< Foam::symmTensor >& theArg )
+  {
+    Foam::UList< Foam::symmTensor >* aSelf = static_cast< Foam::UList< Foam::symmTensor >* >( self->ptr() );
+    return *aSelf == theArg;
+  }
 }
 
 

@@ -25,45 +25,40 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_surfaceTensorField"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_surfaceTensorField.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_tensorField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_tensorField.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvsPatchField_surfaceMesh.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvsPatchField_surfaceMesh.cxx"
 
 
 //----------------------------------------------------------------------------
 %template( tmp_surfaceTensorField ) Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh > >;
 
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< GeometricField< tensor, fvsPatchField, surfaceMesh > > tmp_surfaceTensorField;
-    }
-}
-
 
 //-----------------------------------------------------------------------------
 %feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh > >::SMARTPTR_PYAPPEND_GETATTR( tmp_surfaceTensorField );
 
-
 %extend Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh > >
 {
-    SMARTPTR_EXTEND_ATTR( tmp_surfaceTensorField )
+  SMARTPTR_EXTEND_ATTR( tmp_surfaceTensorField );
 
-    bool operator==( const Foam::UList< Foam::tensor >& theArg )
-    {
-        Foam::UList< Foam::tensor >* aSelf = static_cast< Foam::UList< Foam::tensor >* >( self->ptr() );
-        return *aSelf == theArg;
-    }
+  bool operator==( const Foam::UList< Foam::tensor >& theArg )
+  {
+    Foam::UList< Foam::tensor >* aSelf = static_cast< Foam::UList< Foam::tensor >* >( self->ptr() );
+    return *aSelf == theArg;
+  }
 }
+
 
 //---------------------------------------------------------------------------
 #endif

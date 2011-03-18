@@ -25,38 +25,33 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_surfaceScalarField"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_surfaceScalarField.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cxx"
 
 AUTOPTR_TYPEMAP( Foam::surfaceScalarField )
 
 %extend Foam::autoPtr< Foam::surfaceScalarField >
 {
-    bool operator==( const Foam::UList< Foam::scalar >& theArg )
-    {
-        Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
-        return *aSelf == theArg;
-    }
+  bool operator==( const Foam::UList< Foam::scalar >& theArg )
+  {
+    Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
+    return *aSelf == theArg;
+  }
 }
 
 %template( autoPtr_surfaceScalarField ) Foam::autoPtr< Foam::surfaceScalarField >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef autoPtr< surfaceScalarField > autoPtr_surfaceScalarField;
-    }
-}
 
 
 //---------------------------------------------------------------------------

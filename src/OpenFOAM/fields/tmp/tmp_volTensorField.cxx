@@ -20,34 +20,29 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_volTensorrField_cxx
+#ifndef tmp_volTensorField_cxx
 #define tmp_volTensorField_cxx
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_volTensorrField"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_volTensorrField.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_tensorField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_tensorField.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvPatchField_volMesh.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvPatchField_volMesh.cxx"
 
 
 //--------------------------------------------------------------------------
 %template( tmp_volTensorField ) Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< GeometricField< tensor, fvPatchField, volMesh > > tmp_volTensorField;
-    }
-}
 
 
 //--------------------------------------------------------------------------
@@ -55,15 +50,14 @@
 
 %extend Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh > >
 {
-    SMARTPTR_EXTEND_ATTR( tmp_volTensorField )
+  SMARTPTR_EXTEND_ATTR( tmp_volTensorField );
     
-    bool operator==( const Foam::UList< Foam::tensor >& theArg )
-    {
-        Foam::UList< Foam::tensor >* aSelf = static_cast< Foam::UList< Foam::tensor >* >( self->ptr() );
-        return *aSelf == theArg;
-    }
+  bool operator==( const Foam::UList< Foam::tensor >& theArg )
+  {
+    Foam::UList< Foam::tensor >* aSelf = static_cast< Foam::UList< Foam::tensor >* >( self->ptr() );
+    return *aSelf == theArg;
+  }
 }
-
 
 
 //---------------------------------------------------------------------------

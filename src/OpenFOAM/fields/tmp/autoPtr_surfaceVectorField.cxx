@@ -25,27 +25,22 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_surfaceVectorField"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_surfaceVectorField.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cxx"
 
 %template( autoPtr_surfaceVectorField ) Foam::autoPtr< Foam::surfaceVectorField >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef autoPtr< surfaceVectorField > autoPtr_surfaceVectorField;
-    }
-}
 
 
 //---------------------------------------------------------------------------

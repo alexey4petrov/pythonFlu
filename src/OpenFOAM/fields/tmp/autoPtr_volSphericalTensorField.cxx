@@ -25,17 +25,20 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_volSphericalTensorField"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_volSphericalTensorField.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_SphericalTensor_fvPatchField_volMesh.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField_SphericalTensor_fvPatchField_volMesh.cxx"
 
 AUTOPTR_TYPEMAP( Foam::volSphericalTensorField )
 
@@ -43,19 +46,11 @@ AUTOPTR_TYPEMAP( Foam::volSphericalTensorField )
 
 %extend Foam::autoPtr< Foam::volSphericalTensorField >
 {
-    bool operator==( const Foam::UList< Foam::sphericalTensor >& theArg )
-    {
-        Foam::UList< Foam::sphericalTensor >* aSelf = static_cast< Foam::UList< Foam::sphericalTensor >* >( self->ptr() );
-        return *aSelf == theArg;
-    }
-}
-
-%inline
-{
-    namespace Foam
-    {
-        typedef autoPtr< volSphericalTensorField > autoPtr_volSphericalTensorField;
-    }
+  bool operator==( const Foam::UList< Foam::sphericalTensor >& theArg )
+  {
+    Foam::UList< Foam::sphericalTensor >* aSelf = static_cast< Foam::UList< Foam::sphericalTensor >* >( self->ptr() );
+    return *aSelf == theArg;
+  }
 }
 
 

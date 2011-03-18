@@ -25,12 +25,6 @@
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "src/OpenFOAM/meshes/GeoMesh.hpp"
-%}
-
-
-//---------------------------------------------------------------------------
 %import "src/OpenFOAM/db/objectRegistry.cxx"
 
 %include <GeoMesh.H>

@@ -25,42 +25,31 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_fvVectorMatrix"
+%{
+  #include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "src/finiteVolume/fvMatrices/fvVectorMatrix.cxx"
+%import "src/finiteVolume/fvMatrices/fvVectorMatrix.cxx"
 
 
 //---------------------------------------------------------------------------
 %template( tmp_fvVectorMatrix ) Foam::tmp< Foam::fvMatrix< Foam::vector > >;
 
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< fvMatrix< vector > > tmp_fvVectorMatrix;
-    }
-}
-
-
-//---------------------------------------------------------------------------
 %feature( "pythonappend" ) Foam::tmp< Foam::fvMatrix< Foam::vector > >::SMARTPTR_PYAPPEND_GETATTR( tmp_fvVectorMatrix );
 
 %extend Foam::tmp< Foam::fvMatrix< Foam::vector > >
 {
-    SMARTPTR_EXTEND_ATTR( tmp_fvVectorMatrix )
+  SMARTPTR_EXTEND_ATTR( tmp_fvVectorMatrix );
 }
-
-
-//---------------------------------------------------------------------------
-
 
 
 //---------------------------------------------------------------------------

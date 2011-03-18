@@ -25,39 +25,34 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_surfaceVectorField"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_surfaceVectorField.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_vectorField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_vectorField.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cxx"
 
 
 //----------------------------------------------------------------------------
 %template( tmp_surfaceVectorField ) Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh > >;
 
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< GeometricField< vector, fvsPatchField, surfaceMesh > > tmp_surfaceVectorField;
-    }
-}
-
 
 //-----------------------------------------------------------------------------
 %feature( "pythonappend" ) Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh > >::SMARTPTR_PYAPPEND_GETATTR( tmp_surfaceVectorField );
 
-
 %extend Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh > >
 {
-    SMARTPTR_EXTEND_ATTR( tmp_surfaceVectorField )    
+  SMARTPTR_EXTEND_ATTR( tmp_surfaceVectorField );
 }
+
 
 //---------------------------------------------------------------------------
 #endif
