@@ -25,23 +25,22 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.finiteVolume.fvMatrices.fvScalarMatrix";
+%{
+  #include "src/finiteVolume/fvMatrices/fvScalarMatrix.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
+
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMatrices/fvMatrix.cxx"
+%import "src/finiteVolume/fvMatrices/fvMatrix.cxx"
 
-%include "src/OpenFOAM/primitives/scalar.cxx"
+%import "src/OpenFOAM/primitives/scalar.cxx"
 
-%include "src/OpenFOAM/dimensionSet.cxx"
-
-
-%{
-    #include "fvScalarMatrix.H"
-%}
+%import "src/OpenFOAM/dimensionSet.cxx"
 
 %ignore Foam::fvMatrix< Foam::scalar >::debug;
 %ignore Foam::fvMatrix< Foam::scalar >::typeName;
@@ -53,16 +52,6 @@
 SCALAR_FVMATRIX_TEMPLATE_FUNC;
 
 %template( fvScalarMatrix ) Foam::fvMatrix< Foam::scalar >;
-
-%inline 
-{
-    namespace Foam
-    {
-        typedef fvMatrix< scalar > fvScalarMatrix;
-    }
-}
-
-
 
 
 //---------------------------------------------------------------------------

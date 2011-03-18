@@ -20,41 +20,28 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvVectorMatrix_cxx
-#define fvVectorMatrix_cxx
+#ifndef fvMatrix_hpp
+#define fvMatrix_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fvMatrices.fvVectorMatrix";
-%{
-  #include "src/finiteVolume/fvMatrices/fvVectorMatrix.hpp"
-%}
+#include "src/OpenFOAM/fields/tmp/refCount.hpp"
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
+#include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hpp"
 
-
- //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMatrices/fvMatrix.cxx"
-
-%import "src/OpenFOAM/primitives/vector.cxx"
-
-%import "src/OpenFOAM/dimensionSet.cxx"
-
-%ignore Foam::fvMatrix< Foam::vector >::debug;
-%ignore Foam::fvMatrix< Foam::vector >::typeName;
-
-%ignore Foam::fvMatrix< Foam::vector >::addBoundaryDiag;
-%ignore Foam::fvMatrix< Foam::vector >::addCmptAvBoundaryDiag;
-%ignore Foam::fvMatrix< Foam::vector >::addBoundarySource;
-
-%ignore Foam::fvMatrix< Foam::vector >::solver;
-
-FVMATRIX_TEMPLATE_FUNC( Foam::vector );
-
-%template( fvVectorMatrix ) Foam::fvMatrix< Foam::vector >;
+#include <fvMatrix.H>
 
 
 //---------------------------------------------------------------------------
+#include "src/finiteVolume/fields/volFields/volFieldsFwd.hpp"
+
+#include "src/OpenFOAM/fields/tmp/tmp.hpp"
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hpp"
+#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hpp"
+
+
+//----------------------------------------------------------------------------
 #endif

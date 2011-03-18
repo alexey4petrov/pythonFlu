@@ -25,30 +25,30 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/refCount.cxx"
-
-%include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx"
-
-%include "src/OpenFOAM/db/typeInfo/className.hxx"
-
+%module "Foam.src.finiteVolume.fvMatrices.fvMatrix";
 %{
-    #include "fvMatrix.H"
+  #include "src/finiteVolume/fvMatrices/fvMatrix.hpp"
 %}
 
-%include "fvMatrix.H"
+// Keep on corresponding "director" includes at the top of SWIG defintion file
+%include "src/OpenFOAM/directors.hxx"
+%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+%import "src/OpenFOAM/fields/tmp/refCount.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx"
+
+%import "src/OpenFOAM/db/typeInfo/className.hxx"
+
+%import "fvMatrix.H"
+
+
+//---------------------------------------------------------------------------
+%import "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -56,10 +56,10 @@
 
 %typecheck( SWIG_TYPECHECK_POINTER ) Foam::fvMatrix< Type >& 
 {
-    void *ptr;
-    int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::fvMatrix< Type > * ), 0 );
-    int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::fvMatrix< Type > > * ), 0 );
-    $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 );
+  void *ptr;
+  int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::fvMatrix< Type > * ), 0 );
+  int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::fvMatrix< Type > > * ), 0 );
+  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 );
 }
 
 %typemap( in ) Foam::fvMatrix< Type >& 
@@ -76,11 +76,10 @@
     if ( SWIG_IsOK( res ) && argp ) {
       Foam::tmp<Foam::fvMatrix< Type > >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::fvMatrix< Type > > * );
       $1 = tmp_res->operator->();
-      } else {
-        %argument_fail( res, "$type", $symname, $argnum );
-        }
+    } else {
+      %argument_fail( res, "$type", $symname, $argnum );
     }
- 
+  }
 }    
 %enddef
 
@@ -88,54 +87,54 @@
 
 %define __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type )
 {
-    Foam::tmp< Foam::fvMatrix< Type > > __neg__()
-    {
-        return -get_ref( self );
-    }
+  Foam::tmp< Foam::fvMatrix< Type > > __neg__()
+  {
+    return -get_ref( self );
+  }
+  
+  Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::fvMatrix< Type >& theArg )
+  {
+    return get_ref( self ) + theArg;
+  }
+  
+  Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::dimensioned< Type >& theArg )
+  {
+    return get_ref( self ) + theArg;
+  }
 
-    Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::fvMatrix< Type >& theArg )
-    {
-        return get_ref( self ) + theArg;
-    }
+  Foam::tmp< Foam::fvMatrix< Type > > __sub__( const Foam::fvMatrix< Type >& theArg )
+  {
+    return get_ref( self ) - theArg;
+  }
 
-    Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::dimensioned< Type >& theArg )
-    {
-        return get_ref( self ) + theArg;
-    }
+  Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
+  {
+    return get_ref( self ) + theArg;
+  }
 
-    Foam::tmp< Foam::fvMatrix< Type > > __sub__( const Foam::fvMatrix< Type >& theArg )
-    {
-        return get_ref( self ) - theArg;
-    }
+  Foam::tmp< Foam::fvMatrix< Type > > __radd__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
+  {
+    return theArg + get_ref( self )  ;
+  }
+  
+  Foam::tmp< Foam::fvMatrix< Type > > __sub__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
+  {
+    return get_ref( self ) - theArg;
+  }
 
-    Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
-    {
-        return get_ref( self ) + theArg;
-    }
-
-    Foam::tmp< Foam::fvMatrix< Type > > __radd__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
-    {
-        return theArg + get_ref( self )  ;
-    }
-    
-    Foam::tmp< Foam::fvMatrix< Type > > __sub__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
-    {
-        return get_ref( self ) - theArg;
-    }
-
-    Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::fvMatrix< Type >& theArg )
-    {
-        return get_ref( self ) == theArg;
-    }
-    Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
-    {
-        return get_ref( self ) == theArg;
-    }
-    
-    Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::dimensioned< Type >& theArg )
-    {
-        return get_ref( self ) == theArg;
-    }
+  Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::fvMatrix< Type >& theArg )
+  {
+    return get_ref( self ) == theArg;
+  }
+  Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
+  {
+    return get_ref( self ) == theArg;
+  }
+  
+  Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::dimensioned< Type >& theArg )
+  {
+    return get_ref( self ) == theArg;
+  }
 }
 %enddef
 
@@ -143,7 +142,7 @@
 //---------------------------------------------------------------------------
 %define FVMATRIX_TEMPLATE_FUNC( Type )
 
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
 NO_TMP_TYPEMAP_FVMATRIX( Type );
 
@@ -157,57 +156,55 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
 %extend Foam::tmp< Foam::fvMatrix< Type > > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type )
 
 
-%include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx"
-%include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
+%import "src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx"
+%import "src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
 
 %inline
 %{
-    Foam::lduSolverPerformance solve( Foam::fvMatrix< Type >& fvm, Foam::Istream& solverControls )
-    {
-        return Foam::solve( fvm, solverControls );
-    }
+  Foam::lduSolverPerformance solve( Foam::fvMatrix< Type >& fvm, Foam::Istream& solverControls )
+  {
+    return Foam::solve( fvm, solverControls );
+  }
 #if FOAM_VERSION( >=, 010600 )
-    Foam::lduSolverPerformance solve( Foam::fvMatrix< Type >& fvm, Foam::dictionary& solverControls )
-    {
-        return Foam::solve( fvm, solverControls );
-    }
+  Foam::lduSolverPerformance solve( Foam::fvMatrix< Type >& fvm, Foam::dictionary& solverControls )
+  {
+    return Foam::solve( fvm, solverControls );
+  }
 #endif    
-    Foam::lduSolverPerformance solve( Foam::fvMatrix< Type >& fvm )
-    {
-        return Foam::solve( fvm );
-    }
-
+  Foam::lduSolverPerformance solve( Foam::fvMatrix< Type >& fvm )
+  {
+    return Foam::solve( fvm );
+  }
 %}
 
-
 %inline
 %{
-    void checkMethod( const Foam::fvMatrix< Type >& fvm1, const Foam::fvMatrix< Type >& fvm2, const char* op )
-    {
-        return checkMethod< Type >( fvm1, fvm2, op );
-    }
+  void checkMethod( const Foam::fvMatrix< Type >& fvm1, const Foam::fvMatrix< Type >& fvm2, const char* op )
+  {
+    return checkMethod< Type >( fvm1, fvm2, op );
+  }
 
 #if FOAM_VERSION( <, 010600 )
-    void checkMethod( const Foam::fvMatrix< Type >& fvm, const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& gf, const char* op )
-    {
-        return checkMethod< Type >( fvm, gf, op );
-    }
+  void checkMethod( const Foam::fvMatrix< Type >& fvm, const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& gf, const char* op )
+  {
+    return checkMethod< Type >( fvm, gf, op );
+  }
 #else
-    void checkMethod( const Foam::fvMatrix< Type >& fvm, const Foam::DimensionedField< Type, Foam::volMesh >& df, const char* op )
-    {
-        return checkMethod< Type >( fvm, df, op );
-    }
+  void checkMethod( const Foam::fvMatrix< Type >& fvm, const Foam::DimensionedField< Type, Foam::volMesh >& df, const char* op )
+  {
+    return checkMethod< Type >( fvm, df, op );
+  }
 #endif
 
-    void checkMethod( const Foam::fvMatrix< Type >& fvm, const Foam::dimensioned< Type >& dt, const char* op)
-    {
-        return checkMethod< Type >( fvm, dt, op );
-    }
+  void checkMethod( const Foam::fvMatrix< Type >& fvm, const Foam::dimensioned< Type >& dt, const char* op)
+  {
+    return checkMethod< Type >( fvm, dt, op );
+  }
 #if FOAM_VERSION( >=, 010600 )
-    Foam::tmp< Foam::fvMatrix< Type > > correction(const Foam::fvMatrix< Type >& fvm)
-    {
-      return correction< Type >( fvm );
-    }
+  Foam::tmp< Foam::fvMatrix< Type > > correction(const Foam::fvMatrix< Type >& fvm)
+  {
+    return correction< Type >( fvm );
+  }
 #endif    
 %}
 
@@ -217,10 +214,10 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
 //---------------------------------------------------------------------------
 %define __SCALAR_FVMATRIX_TEMPLATE_OPERATORS
 {
-    Foam::tmp< Foam::fvMatrix< Foam::scalar > > __rmul__( const Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& theArg )
-    {
-        return theArg * get_ref( self )  ;
-    }
+  Foam::tmp< Foam::fvMatrix< Foam::scalar > > __rmul__( const Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& theArg )
+  {
+    return theArg * get_ref( self )  ;
+  }
 }
 %enddef
 
@@ -234,7 +231,8 @@ FVMATRIX_TEMPLATE_FUNC( Foam::scalar );
 
 %extend Foam::tmp< Foam::fvMatrix< Foam::scalar > > __SCALAR_FVMATRIX_TEMPLATE_OPERATORS;
 
-
 %enddef
+
+
 //----------------------------------------------------------------------------
 #endif

@@ -25,21 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.OpenFOAM.algorithms.subCycle.subCycle_volScalarField"
+%{
+  #include "src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/algorithms/subCycle/subCycle.cxx"
+%import "src/OpenFOAM/algorithms/subCycle/subCycle.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
 
 %template ( subCycle_volScalarField ) Foam::subCycle< Foam::volScalarField >;
 
-%template ( subCycleIterator_volScalarField) Foam::subCycleIterator< Foam::subCycle< Foam::volScalarField > >;
+%template ( subCycleIterator_volScalarField ) Foam::subCycleIterator< Foam::subCycle< Foam::volScalarField > >;
 
 
 //---------------------------------------------------------------------------

@@ -20,41 +20,48 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvVectorMatrix_cxx
-#define fvVectorMatrix_cxx
+#ifndef subCycle_hpp
+#define subCycle_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fvMatrices.fvVectorMatrix";
-%{
-  #include "src/finiteVolume/fvMatrices/fvVectorMatrix.hpp"
-%}
+#include "src/OpenFOAM/db/Time/subCycleTime.hpp"
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
-
- //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMatrices/fvMatrix.cxx"
-
-%import "src/OpenFOAM/primitives/vector.cxx"
-
-%import "src/OpenFOAM/dimensionSet.cxx"
-
-%ignore Foam::fvMatrix< Foam::vector >::debug;
-%ignore Foam::fvMatrix< Foam::vector >::typeName;
-
-%ignore Foam::fvMatrix< Foam::vector >::addBoundaryDiag;
-%ignore Foam::fvMatrix< Foam::vector >::addCmptAvBoundaryDiag;
-%ignore Foam::fvMatrix< Foam::vector >::addBoundarySource;
-
-%ignore Foam::fvMatrix< Foam::vector >::solver;
-
-FVMATRIX_TEMPLATE_FUNC( Foam::vector );
-
-%template( fvVectorMatrix ) Foam::fvMatrix< Foam::vector >;
+#include <subCycle.H>
 
 
 //---------------------------------------------------------------------------
+// To support native Python of iteration over subCycle
+namespace Foam
+{
+  template< class TsubCycle >
+  struct subCycleIterator
+  {
+    subCycleIterator( TsubCycle& the_subCycle )
+      : m_subCycle( the_subCycle )
+    {}
+    
+    subCycleTime& __iter__()
+    {
+      return this->m_subCycle++;
+    }
+    
+    subCycleTime& next() throw( const TStopIterationException& )
+    {
+      
+      this->__iter__();
+      
+      if ( this->m_subCycle.end() )
+	throw TStopIterationException();
+      
+      return this->m_subCycle;
+    }
+    
+  private :
+    TsubCycle& m_subCycle;
+  }; 
+}
+
+
+//----------------------------------------------------------------------------
 #endif

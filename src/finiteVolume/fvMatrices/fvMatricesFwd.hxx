@@ -20,18 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvMatricesFwd_cxx
-#define fvMatricesFwd_cxx
+#ifndef fvMatricesFwd_hxx
+#define fvMatricesFwd_hxx
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
 
-%{
-    #include "fvMatricesFwd.H"
-%}
-
-%include "fvMatricesFwd.H"
+%include <fvMatricesFwd.H>
 
 
 //---------------------------------------------------------------------------

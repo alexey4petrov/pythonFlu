@@ -25,17 +25,20 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.finiteVolume.fvMatrices.fvMatrices";
+%{
+  #include "src/finiteVolume/fvMatrices/fvMatrices.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMatrices/fvScalarMatrix.cxx"
+%import "src/finiteVolume/fvMatrices/fvScalarMatrix.cxx"
 
-%include "src/finiteVolume/fvMatrices/fvVectorMatrix.cxx"
+%import "src/finiteVolume/fvMatrices/fvVectorMatrix.cxx"
 
 
 //---------------------------------------------------------------------------

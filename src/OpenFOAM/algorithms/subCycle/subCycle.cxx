@@ -25,49 +25,17 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/Time/subCycleTime.cxx"
-
+%module "Foam.src.OpenFOAM.algorithms.subCycle.subCycle"
 %{
-    #include "subCycle.H"
+  #include "src/OpenFOAM/algorithms/subCycle/subCycle.hpp"
 %}
-
-%include "subCycle.H"
+%include "src/OpenFOAM/algorithms/subCycle/subCycle.hpp"
 
 
 //---------------------------------------------------------------------------
-// To support native Python of iteration over subCycle
-%inline
-%{
-  namespace Foam
-  {
-    template< class TsubCycle >
-    struct subCycleIterator
-    {
-     subCycleIterator( TsubCycle& the_subCycle )
-        : m_subCycle( the_subCycle )
-      {}
+%import "src/OpenFOAM/db/Time/subCycleTime.cxx"
 
-      subCycleTime& __iter__()
-      {
-        return this->m_subCycle++;
-      }
-
-      subCycleTime& next() throw( const TStopIterationException& )
-      {
-        
-        this->__iter__();
-        
-        if ( this->m_subCycle.end() )
-            throw TStopIterationException();
-        
-        return this->m_subCycle;
-      }
-
-    private :
-      TsubCycle& m_subCycle;
-    }; 
-  }
-%}
+%include <subCycle.H>
 
 
 //---------------------------------------------------------------------------
