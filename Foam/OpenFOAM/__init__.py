@@ -28,6 +28,9 @@ from Foam.src.OpenFOAM.db.Time.Time import *
 from Foam.src.OpenFOAM.db.IOobject import *
 from Foam.src.OpenFOAM.primitives.strings.fileName import *
 
+from Foam.src.OpenFOAM.db.IOdictionary import *
+from Foam.src.OpenFOAM.primitives.strings.word import *
+
 
 # #---------------------------------------------------------------------------
 # from Foam import get_module_initializtion_command
