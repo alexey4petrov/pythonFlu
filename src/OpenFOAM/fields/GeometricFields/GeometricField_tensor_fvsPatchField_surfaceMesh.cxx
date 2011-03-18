@@ -25,21 +25,24 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_tensor_fvsPatchField_surfaceMesh";
+%{
+  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvsPatchField_surfaceMesh.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_tensor_surfaceMesh.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
+%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_tensor_surfaceMesh.cxx"
 
 
 //----------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_tensor.cxx"
+%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_tensor.cxx"
 
 %template ( TGeometricBoundaryField_tensor_fvsPatchField_surfaceMesh ) Foam::TGeometricBoundaryField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >;
 
@@ -47,8 +50,8 @@
 
 %extend Foam::TGeometricBoundaryField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >
 {
-    NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_tensor_fvsPatchField_surfaceMesh )
-    TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvsPatchField_tensor )
+  NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_tensor_fvsPatchField_surfaceMesh );
+  TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvsPatchField_tensor );
 }
 
 
@@ -62,19 +65,12 @@
 %ignore Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >::min;
 %ignore Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >::max;
 
-%include "src/OpenFOAM/dimensionedTypes/dimensionedTensor.cxx"
+%import "src/OpenFOAM/dimensionedTypes/dimensionedTensor.cxx"
 
 
 //---------------------------------------------------------------------------
 %template( GeometricField_tensor_fvsPatchField_surfaceMesh ) Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >;
 
-%inline
-{
-    namespace Foam
-    {
-        typedef GeometricField< tensor, fvsPatchField, surfaceMesh > surfaceensorField;
-    }
-}
 
 //---------------------------------------------------------------------------
 #endif

@@ -20,29 +20,26 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_DimensionedField_vector_volMesh_cxx
-#define tmp_DimensionedField_vector_volMesh_cxx
+#ifndef GeometricField_SymmTensor_fvPatchField_volMesh_hpp
+#define GeometricField_SymmTensor_fvPatchField_volMesh_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_DimensionedField_vector_volMesh"
-%{
-  #include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.hpp"
-%}
+#include "src/OpenFOAM/fields/FieldFields/FieldField.hpp"
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
+#include "src/OpenFOAM/fields/tmp/refCount.hpp"
 
+#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
-
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cxx"
+#include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_symmTensor.hpp"
 
 
 //---------------------------------------------------------------------------
-%template( tmp_DimensionedField_vector_volMesh ) Foam::tmp< Foam::DimensionedField< Foam::vector, Foam::volMesh > >;
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField.hpp"
+
+#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_symmTensor_volMesh.hpp"
+
+#include <GeometricSymmTensorField.H>
 
 
 //---------------------------------------------------------------------------

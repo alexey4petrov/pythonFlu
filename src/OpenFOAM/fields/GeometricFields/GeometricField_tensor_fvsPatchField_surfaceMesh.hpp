@@ -20,29 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_DimensionedField_vector_volMesh_cxx
-#define tmp_DimensionedField_vector_volMesh_cxx
+#ifndef GeometricField_tensor_fvsPatchField_surfaceMesh_hpp
+#define GeometricField_tensor_fvsPatchField_surfaceMesh_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_DimensionedField_vector_volMesh"
-%{
-  #include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.hpp"
-%}
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField.hpp"
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
+#include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hpp"
+
+#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_tensor_surfaceMesh.hpp"
 
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+//----------------------------------------------------------------------------
+#include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_tensor.hpp"
 
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cxx"
-
-
-//---------------------------------------------------------------------------
-%template( tmp_DimensionedField_vector_volMesh ) Foam::tmp< Foam::DimensionedField< Foam::vector, Foam::volMesh > >;
+#include "src/OpenFOAM/dimensionedTypes/dimensionedTensor.hpp"
 
 
 //---------------------------------------------------------------------------

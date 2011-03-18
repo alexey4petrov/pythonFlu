@@ -23,32 +23,32 @@
 #ifndef GeometricField_SymmTensor_fvPatchField_volMesh_cxx
 #define GeometricField_SymmTensor_fvPatchField_volMesh_cxx
 
+
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_SymmTensor_fvPatchField_volMesh";
+%{
+  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_SymmTensor_fvPatchField_volMesh.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
+%import "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
 
-%include "src/OpenFOAM/fields/tmp/refCount.cxx"
+%import "src/OpenFOAM/fields/tmp/refCount.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.cxx"
 
-%include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_symmTensor.cxx"
+%import "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_symmTensor.cxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
 
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_symmTensor_volMesh.cxx"
-
-%{
-  #include "GeometricSymmTensorField.H"
-%}
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_symmTensor_volMesh.cxx"
 
 %ignore Foam::GeometricField< Foam::symmTensor, Foam::fvPatchField, Foam::volMesh >::debug;
 %ignore Foam::GeometricField< Foam::symmTensor, Foam::fvPatchField, Foam::volMesh >::typeName;
@@ -60,14 +60,6 @@
 SYMMTENSOR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::volMesh );
 
 %template( GeometricField_symmTensor_fvPatchField_volMesh ) Foam::GeometricField< Foam::symmTensor, Foam::fvPatchField, Foam::volMesh >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef GeometricField< symmTensor, fvPatchField, volMesh > volSymmTensorField;
-    }
-}
 
 
 //---------------------------------------------------------------------------

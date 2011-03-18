@@ -25,17 +25,20 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_scalar_fvsPatchField_surfaceMesh";
+%{
+  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_surfaceMesh.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
+%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_surfaceMesh.cxx"
 
 
 //----------------------------------------------------------------------------
@@ -45,8 +48,8 @@
 
 %extend Foam::TGeometricBoundaryField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >
 {
-    NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_scalar_fvsPatchField_surfaceMesh )
-    TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvsPatchField_scalar )
+  NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_scalar_fvsPatchField_surfaceMesh );
+  TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvsPatchField_scalar );
 }
 
 
@@ -60,22 +63,13 @@
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >::min;
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >::max;
 
-
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvsPatchField, Foam::surfaceMesh );
 
 
 //---------------------------------------------------------------------------
 %template( GeometricField_scalar_fvsPatchField_surfaceMesh ) Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef GeometricField< scalar, fvsPatchField, surfaceMesh > surfaceScalarField;
-    }
-}
 
 
 //---------------------------------------------------------------------------

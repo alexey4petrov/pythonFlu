@@ -20,16 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef no_tmp_typemap_GeometricFields_cxx
-#define no_tmp_typemap_GeometricFields_cxx
+#ifndef no_tmp_typemap_GeometricFields_hxx
+#define no_tmp_typemap_GeometricFields_hxx
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "ext/common/ext_tmp.hxx"
+%import "ext/common/ext_tmp.hxx"
 
 
 //---------------------------------------------------------------------------
@@ -37,11 +37,11 @@
 
 %typecheck( SWIG_TYPECHECK_POINTER ) Foam::GeometricField< Type, TPatchField, TMesh >& 
 {
-    void *ptr;
-    int res_T = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::GeometricField< Type, TPatchField, TMesh > * ), 0 );
-    int res_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
-    int res_ext_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
-    $1 = SWIG_CheckState( res_T ) || SWIG_CheckState( res_tmpT ) || SWIG_CheckState( res_ext_tmpT );
+  void *ptr;
+  int res_T = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::GeometricField< Type, TPatchField, TMesh > * ), 0 );
+  int res_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
+  int res_ext_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
+  $1 = SWIG_CheckState( res_T ) || SWIG_CheckState( res_tmpT ) || SWIG_CheckState( res_ext_tmpT );
 }
 
 %typemap( in ) Foam::GeometricField< Type, TPatchField, TMesh >& 
@@ -58,79 +58,79 @@
     if ( SWIG_IsOK( res ) && argp ) {
       Foam::tmp<Foam::GeometricField< Type, TPatchField, TMesh> >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
       $1 = tmp_res->operator->();
-      } else {
-    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > >* ), %convertptr_flags );
-    if ( SWIG_IsOK( res ) && argp ) {
-      Foam::ext_tmp<Foam::GeometricField< Type, TPatchField, TMesh> >* tmp_res =%reinterpret_cast( argp, Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
-      $1 = tmp_res->operator->();
+    } else {
+      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > >* ), %convertptr_flags );
+      if ( SWIG_IsOK( res ) && argp ) {
+        Foam::ext_tmp<Foam::GeometricField< Type, TPatchField, TMesh> >* tmp_res =%reinterpret_cast( argp, Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
+        $1 = tmp_res->operator->();
       } else {
         %argument_fail( res, "$type", $symname, $argnum );
-        }
+      }
     }
-   }
+  }
 }    
 %enddef
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/scalar.cxx"
-%include "src/finiteVolume/volMesh.hxx"
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "src/finiteVolume/volMesh.hxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::scalar, Foam::fvPatchField, Foam::volMesh );
 
 
 //----------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/vector.cxx"
-%include "src/finiteVolume/volMesh.hxx"
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%import "src/OpenFOAM/primitives/vector.cxx"
+%import "src/finiteVolume/volMesh.hxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::Vector< Foam::scalar >, Foam::fvPatchField, Foam::volMesh );
 
 
 //----------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/tensor.cxx"
-%include "src/finiteVolume/volMesh.hxx"
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%import "src/OpenFOAM/primitives/tensor.cxx"
+%import "src/finiteVolume/volMesh.hxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::Tensor< Foam::scalar >, Foam::fvPatchField, Foam::volMesh );
 
 
 //-----------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/s_ymmTensor.cxx"
-%include "src/finiteVolume/volMesh.hxx"
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%import "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+%import "src/finiteVolume/volMesh.hxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::SymmTensor< Foam::scalar >, Foam::fvPatchField, Foam::volMesh );
 
 
 //------------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/s_phericalTensor.cxx"
-%include "src/finiteVolume/volMesh.hxx"
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%import "src/OpenFOAM/primitives/s_phericalTensor.cxx"
+%import "src/finiteVolume/volMesh.hxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::SphericalTensor< Foam::scalar >, Foam::fvPatchField, Foam::volMesh );
 
 
 //------------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/scalar.cxx"
-%include "src/finiteVolume/surfaceMesh.hxx"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "src/finiteVolume/surfaceMesh.hxx"
+%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
 
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh );
 
 
 //-------------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/vector.cxx"
-%include "src/finiteVolume/surfaceMesh.hxx"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%import "src/OpenFOAM/primitives/vector.cxx"
+%import "src/finiteVolume/surfaceMesh.hxx"
+%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
 
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::Vector< Foam::scalar >, Foam::fvsPatchField, Foam::surfaceMesh );
 
 
 //-------------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/tensor.cxx"
-%include "src/finiteVolume/surfaceMesh.hxx"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%import "src/OpenFOAM/primitives/tensor.cxx"
+%import "src/finiteVolume/surfaceMesh.hxx"
+%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
 
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::Tensor< Foam::scalar >, Foam::fvsPatchField, Foam::surfaceMesh );
 

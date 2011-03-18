@@ -20,30 +20,40 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_DimensionedField_vector_volMesh_cxx
-#define tmp_DimensionedField_vector_volMesh_cxx
+#ifndef GeometricField_hpp
+#define GeometricField_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_DimensionedField_vector_volMesh"
-%{
-  #include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.hpp"
-%}
-
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
+#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.hpp"
+#include <GeometricField.H>
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
-
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cxx"
-
-
-//---------------------------------------------------------------------------
-%template( tmp_DimensionedField_vector_volMesh ) Foam::tmp< Foam::DimensionedField< Foam::vector, Foam::volMesh > >;
+#include "src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hpp"
+#include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hpp"
 
 
 //---------------------------------------------------------------------------
+#include "src/OpenFOAM/fields/tmp/tmp.hpp"
+#include "src/OpenFOAM/db/objectRegistry.hpp"
+#include "src/OpenFOAM/primitives/label.hpp"
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/primitives/scalar.hpp"
+#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hpp"
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/primitives/tensor.hpp"
+#include "src/OpenFOAM/primitives/s_phericalTensor.hpp"
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hpp"
+#include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hpp"
+
+
+//-------------------------------------------------------------------------------
 #endif

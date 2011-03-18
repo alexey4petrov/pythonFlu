@@ -25,35 +25,38 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_scalar_fvPatchField_volMesh";
+%{
+  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
+%import "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
 
-%include "src/OpenFOAM/fields/tmp/refCount.cxx"
+%import "src/OpenFOAM/fields/tmp/refCount.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.cxx"
 
-%include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.cxx"
+%import "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_scalar.cxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
-
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.cxx"
-
-%include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_scalar.cxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
+
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.cxx"
+
+%import "src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.cxx"
+
+
+//---------------------------------------------------------------------------
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
 
 %template ( TGeometricBoundaryField_scalar_fvPatchField_volMesh ) Foam::TGeometricBoundaryField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >;
 
@@ -61,11 +64,11 @@
 
 %extend Foam::TGeometricBoundaryField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >
 {
-    NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_scalar_fvPatchField_volMesh )
-    TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvPatchScalarField )
-    TGEOM_BOUND_FIELD_FVPATCHFIELD_EXTENDS()
-    
-    TGEOM_BOUND_FIELD_SCALAR_OPERATORS( Foam::fvPatchField, Foam::volMesh )
+  NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_scalar_fvPatchField_volMesh );
+  TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvPatchScalarField );
+  TGEOM_BOUND_FIELD_FVPATCHFIELD_EXTENDS();
+  
+  TGEOM_BOUND_FIELD_SCALAR_OPERATORS( Foam::fvPatchField, Foam::volMesh );
 }
 
 
@@ -78,21 +81,13 @@
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >::max;
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >::T;
 
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 
 //---------------------------------------------------------------------------
 %template( GeometricField_scalar_fvPatchField_volMesh ) Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >;
 
 SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::volMesh );
-
-%inline
-{
-    namespace Foam
-    {
-        typedef GeometricField< scalar, fvPatchField, volMesh > volScalarField;
-    }
-}
 
 
 //---------------------------------------------------------------------------

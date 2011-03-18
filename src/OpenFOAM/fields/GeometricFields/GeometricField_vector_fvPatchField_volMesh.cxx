@@ -23,34 +23,38 @@
 #ifndef GeometricField_vector_fvPatchField_volMesh_cxx
 #define GeometricField_vector_fvPatchField_volMesh_cxx
 
+
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_vector_fvPatchField_volMesh";
+%{
+  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
+%import "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
 
-%include "src/OpenFOAM/fields/tmp/refCount.cxx"
+%import "src/OpenFOAM/fields/tmp/refCount.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.cxx"
 
-%include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.cxx"
+%import "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_vector.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_vector.cxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
 
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cxx"
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.cxx"
 
-%include "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
+%import "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
 
 
 //----------------------------------------------------------------------------
@@ -60,9 +64,9 @@
 
 %extend Foam::TGeometricBoundaryField< Foam::vector, Foam::fvPatchField, Foam::volMesh >
 {
-    NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_vector_fvPatchField_volMesh )
-    TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvPatchVectorField )
-    TGEOM_BOUND_FIELD_FVPATCHFIELD_EXTENDS()
+  NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_vector_fvPatchField_volMesh );
+  TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvPatchVectorField );
+  TGEOM_BOUND_FIELD_FVPATCHFIELD_EXTENDS();
 }
 
 
@@ -79,15 +83,6 @@
 
 VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::volMesh );
 
-%inline
-{
-    namespace Foam
-    {
-        typedef GeometricField< vector, fvPatchField, volMesh > volVectorField;
-    }
-}
-
 
 //---------------------------------------------------------------------------
-
 #endif
