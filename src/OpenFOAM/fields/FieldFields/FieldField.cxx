@@ -49,16 +49,16 @@
   void  *argp = 0;
   int res = 0;
   
-  res = SWIG_ConvertPtr( $input, &argp, $descriptor(  Foam::FieldField< TPatchField, Type  > * ), %convertptr_flags );
+  res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::FieldField< TPatchField, Type > * ), %convertptr_flags );
   if ( SWIG_IsOK( res )&& argp  ){
-    Foam::FieldField< TPatchField, Type  > * res =  %reinterpret_cast( argp, Foam::FieldField< TPatchField, Type  >* );
+    Foam::FieldField< TPatchField, Type > * res = %reinterpret_cast( argp, Foam::FieldField< TPatchField, Type > * );
     $1 = res;
   } else {
-    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::FieldField< TPatchField, Type  > >* ), %convertptr_flags );
+    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::FieldField< TPatchField, Type > > * ), %convertptr_flags );
     if ( SWIG_IsOK( res ) && argp ) {
-      Foam::tmp<Foam::FieldField< TPatchField, Type > >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::FieldField< TPatchField, Type  > > * );
+      Foam::tmp< Foam::FieldField< TPatchField, Type > > * tmp_res = %reinterpret_cast( argp, Foam::tmp< Foam::FieldField< TPatchField, Type > > * );
       $1 = tmp_res->operator->();
-      } else {
+    } else {
       %argument_fail( res, "$type", $symname, $argnum );
     }
   }

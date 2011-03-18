@@ -64,7 +64,7 @@
   ext_lookupPatchField(const Foam::fvPatch& thePatch, const word& theName )
   {
     return thePatch.lookupPatchField< Foam::GeometricField< Type, TPatchField, TMesh >, Type >( theName );
-    }
+  }
 
   void ext_assign( const Foam::GeometricField< Type, TPatchField, TMesh >& theArg )
   {
