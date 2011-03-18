@@ -144,7 +144,7 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() <<  "\nStarting time loop\n" << nl
 
-    runTime += runTime.deltaT()
+    runTime.increment()
     while not runTime.end() :
         ext_Info() << "Time = " << runTime.timeName() << nl << nl
         
@@ -182,7 +182,7 @@ def main_standalone( argc, argv ):
                       "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
               
         
-        runTime += runTime.deltaT()
+        runTime.increment()
         
 
     ext_Info() << "End\n"
