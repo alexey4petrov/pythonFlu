@@ -44,7 +44,7 @@
   static const Foam::Typename&
   ext_lookupObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
   {
-    return theRegistry.lookupObject< Foam::Typename >( theName )theRegistry.lookupObject< Foam::Typename >( theName );
+    return theRegistry.lookupObject< Foam::Typename >( theName );
   }
   
   static bool ext_foundObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
@@ -74,8 +74,7 @@
   static const Foam::Template< Type1, Type2, Type3 >&
   ext_lookupObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
   {
-    const Foam::Template< Type1, Type2, Type3 >& res = theRegistry.lookupObject< Foam::Template< Type1, Type2, Type3 > >( theName );
-    return res;
+    return theRegistry.lookupObject< Foam::Template< Type1, Type2, Type3 > >( theName );
   }
   
   static bool ext_foundObject( const Foam::objectRegistry& theRegistry, const Foam::word& theName )
