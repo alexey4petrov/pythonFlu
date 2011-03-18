@@ -20,47 +20,52 @@
 ##
 
 
-#---------------------------------------------------------------------------
-from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "finiteVolume_" ) 
+from Foam.src.finiteVolume.fvMesh.fvMesh import *
+from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_scalar_fvPatchField_volMesh import *
+from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_scalar_fvPatchField_volMesh import *
 
 
+# #---------------------------------------------------------------------------
+# from Foam import get_module_initializtion_command
+# exec get_module_initializtion_command( "finiteVolume_" ) 
+# 
+# 
 #---------------------------------------------------------------------------
 volScalarField = GeometricField_scalar_fvPatchField_volMesh
 
-volVectorField = GeometricField_vector_fvPatchField_volMesh
-
-volTensorField = GeometricField_tensor_fvPatchField_volMesh
-
-volSymmTensorField = GeometricField_symmTensor_fvPatchField_volMesh
-
-surfaceScalarField = GeometricField_scalar_fvsPatchField_surfaceMesh
-
-surfaceVectorField = GeometricField_vector_fvsPatchField_surfaceMesh
-
-
-#---------------------------------------------------------------------------
-fvPatchScalarField = fvPatchField_scalar
-
-fvPatchVectorField = fvPatchField_vector
-
-fvPatchTensorField = fvPatchField_tensor
-
-
-#----------------------------------------------------------------------------
-calculatedFvsPatchScalarField = calculatedFvsPatchField_scalar
+# volVectorField = GeometricField_vector_fvPatchField_volMesh
+# 
+# volTensorField = GeometricField_tensor_fvPatchField_volMesh
+# 
+# volSymmTensorField = GeometricField_symmTensor_fvPatchField_volMesh
+# 
+# surfaceScalarField = GeometricField_scalar_fvsPatchField_surfaceMesh
+# 
+# surfaceVectorField = GeometricField_vector_fvsPatchField_surfaceMesh
 
 
 #---------------------------------------------------------------------------
-calculatedFvPatchScalarField = calculatedFvPatchField_scalar
+# fvPatchScalarField = fvPatchField_scalar
+# 
+# fvPatchVectorField = fvPatchField_vector
+# 
+# fvPatchTensorField = fvPatchField_tensor
 
 
-#---------------------------------------------------------------------------
-zeroGradientFvPatchScalarField = zeroGradientFvPatchField_scalar
-
-zeroGradientFvPatchVectorField = zeroGradientFvPatchField_vector
-
-zeroGradientFvPatchTensorField = zeroGradientFvPatchField_tensor
+# #----------------------------------------------------------------------------
+# calculatedFvsPatchScalarField = calculatedFvsPatchField_scalar
+# 
+# 
+# #---------------------------------------------------------------------------
+# calculatedFvPatchScalarField = calculatedFvPatchField_scalar
+# 
+# 
+# #---------------------------------------------------------------------------
+# zeroGradientFvPatchScalarField = zeroGradientFvPatchField_scalar
+# 
+# zeroGradientFvPatchVectorField = zeroGradientFvPatchField_vector
+# 
+# zeroGradientFvPatchTensorField = zeroGradientFvPatchField_tensor
 
 
 #----------------------------------------------------------------------------
