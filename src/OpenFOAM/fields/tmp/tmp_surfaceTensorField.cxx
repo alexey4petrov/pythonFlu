@@ -51,12 +51,7 @@
 %extend Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh > >
 {
   SMARTPTR_EXTEND_ATTR( tmp_surfaceTensorField );
-
-  bool operator==( const Foam::UList< Foam::tensor >& theArg )
-  {
-    Foam::UList< Foam::tensor >* aSelf = static_cast< Foam::UList< Foam::tensor >* >( self->ptr() );
-    return *aSelf == theArg;
-  }
+  SMARTPTR_EXTEND_OPERATOR_EQ( Foam::tensor );
 }
 
 

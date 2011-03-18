@@ -20,14 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_volSymmTensorrField_cxx
+#ifndef tmp_volSymmTensorField_cxx
 #define tmp_volSymmTensorField_cxx
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_volSymmTensorrField"
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_volSymmTensorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_volSymmTensorrField.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_volSymmTensorField.hpp"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file
@@ -49,12 +49,7 @@
 %extend Foam::tmp< Foam::GeometricField< Foam::symmTensor, Foam::fvPatchField, Foam::volMesh > >
 {
   SMARTPTR_EXTEND_ATTR( tmp_volSymmTensorField );
-    
-  bool operator==( const Foam::UList< Foam::symmTensor >& theArg )
-  {
-    Foam::UList< Foam::symmTensor >* aSelf = static_cast< Foam::UList< Foam::symmTensor >* >( self->ptr() );
-    return *aSelf == theArg;
-  }
+  SMARTPTR_EXTEND_OPERATOR_EQ( Foam::symmTensor );
 }
 
 

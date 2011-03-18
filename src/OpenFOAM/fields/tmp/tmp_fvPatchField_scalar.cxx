@@ -61,11 +61,7 @@ TMP_TYPEMAP( Foam::fvPatchField< Foam::scalar > )
     return new Foam::tmp< Foam::fvPatchField< Foam::scalar > >( theArg );
   }
   
-  bool operator==( const Foam::UList< Foam::scalar >& theArg )
-  {
-    Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
-    return *aSelf == theArg;
-  }
+  SMARTPTR_EXTEND_OPERATOR_EQ( Foam::scalar );
 }
 
 

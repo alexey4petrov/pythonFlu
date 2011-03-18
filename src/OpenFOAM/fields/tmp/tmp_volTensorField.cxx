@@ -25,9 +25,9 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_volTensorrField"
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_volTensorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_volTensorrField.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_volTensorField.hpp"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file
@@ -51,12 +51,7 @@
 %extend Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh > >
 {
   SMARTPTR_EXTEND_ATTR( tmp_volTensorField );
-    
-  bool operator==( const Foam::UList< Foam::tensor >& theArg )
-  {
-    Foam::UList< Foam::tensor >* aSelf = static_cast< Foam::UList< Foam::tensor >* >( self->ptr() );
-    return *aSelf == theArg;
-  }
+  SMARTPTR_EXTEND_OPERATOR_EQ( Foam::tensor );
 }
 
 

@@ -44,13 +44,9 @@ AUTOPTR_TYPEMAP( Foam::volSymmTensorField )
 
 %template( autoPtr_volSymmTensorField ) Foam::autoPtr< Foam::volSymmTensorField >;
 
-%extend Foam::autoPtr< Foam::volSymmTensorField >
+%extend Foam::autoPtr< Foam::volSymmTensorField > 
 {
-  bool operator==( const Foam::UList< Foam::symmTensor >& theArg )
-  {
-    Foam::UList< Foam::symmTensor >* aSelf = static_cast< Foam::UList< Foam::symmTensor >* >( self->ptr() );
-    return *aSelf == theArg;
-  }
+  SMARTPTR_EXTEND_OPERATOR_EQ( Foam::symmTensor );
 }
 
 

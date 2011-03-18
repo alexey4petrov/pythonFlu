@@ -46,11 +46,7 @@ AUTOPTR_TYPEMAP( Foam::volSphericalTensorField )
 
 %extend Foam::autoPtr< Foam::volSphericalTensorField >
 {
-  bool operator==( const Foam::UList< Foam::sphericalTensor >& theArg )
-  {
-    Foam::UList< Foam::sphericalTensor >* aSelf = static_cast< Foam::UList< Foam::sphericalTensor >* >( self->ptr() );
-    return *aSelf == theArg;
-  }
+  SMARTPTR_EXTEND_OPERATOR_EQ( Foam::sphericalTensor );
 }
 
 

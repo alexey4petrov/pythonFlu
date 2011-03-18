@@ -46,11 +46,7 @@ AUTOPTR_TYPEMAP( Foam::volTensorField )
 
 %extend Foam::autoPtr< Foam::volTensorField >
 {
-  bool operator==( const Foam::UList< Foam::tensor >& theArg )
-  {
-    Foam::UList< Foam::tensor >* aSelf = static_cast< Foam::UList< Foam::tensor >* >( self->ptr() );
-    return *aSelf == theArg;
-  }
+  SMARTPTR_EXTEND_OPERATOR_EQ( Foam::tensor );
 }
 
 

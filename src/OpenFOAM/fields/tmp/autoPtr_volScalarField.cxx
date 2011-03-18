@@ -46,11 +46,7 @@ AUTOPTR_TYPEMAP( Foam::volScalarField )
 
 %extend Foam::autoPtr< Foam::volScalarField >
 {
-  bool operator==( const Foam::UList< Foam::scalar >& theArg )
-  {
-    Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->ptr() );
-    return *aSelf == theArg;
-  }
+  SMARTPTR_EXTEND_OPERATOR_EQ( Foam::scalar );
 }
 
 

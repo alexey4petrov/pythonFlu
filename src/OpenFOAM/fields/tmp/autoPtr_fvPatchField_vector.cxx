@@ -45,12 +45,7 @@
 %extend Foam::autoPtr< Foam::fvPatchField< Foam::vector > >
 {
   SMARTPTR_EXTEND_ATTR( autoPtr_fvPatchField_vector )
-  
-  bool operator==( const Foam::UList< Foam::vector >& theArg )
-  {
-    Foam::UList< Foam::vector >* aSelf = static_cast< Foam::UList< Foam::vector >* >( self->ptr() );
-    return *aSelf == theArg;
-  }
+  SMARTPTR_EXTEND_OPERATOR_EQ( Foam::vector );
 }
 
 
