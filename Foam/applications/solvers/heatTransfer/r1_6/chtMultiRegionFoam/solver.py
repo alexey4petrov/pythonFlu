@@ -96,7 +96,7 @@ def main_standalone( argc, argv ):
             runTime = setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
             pass
         
-        runTime += runTime.deltaT()
+        runTime.increment()
         ext_Info()<< "Time = " << runTime.timeName() << nl << nl      
                 
         if nOuterCorr != 1 :
