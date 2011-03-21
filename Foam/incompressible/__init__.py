@@ -21,8 +21,13 @@
 
 
 #---------------------------------------------------------------------------
-from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "incompressible_" ) 
+from Foam.src.turbulenceModels.incompressible.turbulenceModel import *
+from Foam.src.turbulenceModels.incompressible.RAS.RASModel import *
+
+
+# #---------------------------------------------------------------------------
+# from Foam import get_module_initializtion_command
+# exec get_module_initializtion_command( "incompressible_" ) 
 
 
 #---------------------------------------------------------------------------
@@ -46,12 +51,12 @@ if FOAM_VERSION( "==", "010500" ) or FOAM_BRANCH_VERSION( "dev", ">=", "010500" 
 #----------------------------------------------------------------------------
 if FOAM_VERSION( ">=", "010600" ):
    RASModel = incompressible_RASModel
-   autoPtr_RASModel = autoPtr_incompressible_RASModel
+   # autoPtr_RASModel = autoPtr_incompressible_RASModel
 
-   LESModel = incompressible_LESModel
-   autoPtr_LESModel = autoPtr_incompressible_LESModel
+   # LESModel = incompressible_LESModel
+   # autoPtr_LESModel = autoPtr_incompressible_LESModel
    
    turbulenceModel = incompressible_turbulenceModel
-   autoPtr_turbulenceModel = autoPtr_incompressible_turbulenceModel
+   # autoPtr_turbulenceModel = autoPtr_incompressible_turbulenceModel
    pass
 

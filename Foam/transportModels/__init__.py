@@ -21,8 +21,12 @@
 
 
 #---------------------------------------------------------------------------
-from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "transportModels_" ) 
+from Foam.src.transportModels.incompressible.singlePhaseTransportModel import *
 
 
+# #---------------------------------------------------------------------------
+# from Foam import get_module_initializtion_command
+# exec get_module_initializtion_command( "transportModels_" ) 
+# 
+# 
 #---------------------------------------------------------------------------
