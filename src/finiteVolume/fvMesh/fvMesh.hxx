@@ -45,8 +45,6 @@
 
 %import "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hxx"
 
-%include <fvMesh.H>
-
 
 //---------------------------------------------------------------------------
 #endif

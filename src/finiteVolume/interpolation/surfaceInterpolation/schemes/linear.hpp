@@ -20,29 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volMesh_cxx
-#define volMesh_cxx
+#ifndef linear_hpp
+#define linear_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.volMesh";
-%{
-  #include "src/finiteVolume/volMesh.hpp"
-%}
+#include "src/OpenFOAM/fields/tmp/tmp.hpp"
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
+#include "src/finiteVolume/fields/volFields/volFields.hpp"
 
+#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/volMesh.hxx"
-
-%import "src/OpenFOAM/meshes/GeoMesh_fvMesh.cxx"
-
-%import "src/finiteVolume/fvMesh/fvMesh.cxx"
-
-%include <volMesh.H>
+#include <linear.H>
 
 
 //---------------------------------------------------------------------------

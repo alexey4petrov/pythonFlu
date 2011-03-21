@@ -33,8 +33,6 @@
 
 %import "src/OpenFOAM/dimensionSet.cxx"
 
-%import <volMesh.H>
-
 
 //---------------------------------------------------------------------------
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::volMesh::Mesh &

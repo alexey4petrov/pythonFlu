@@ -44,7 +44,7 @@
 
 %ignore Foam::fvMesh::writeObjects;
 
-//%extend Foam::fvMesh COMMON_EXTENDS;
+%include <fvMesh.H>
 
 %extend Foam::fvMesh
 {
@@ -52,7 +52,6 @@
   OBJECTREGISTRY_EXTENDS( fvMesh );
   ISINSTANCE_EXTEND( Foam::fvMesh );
 }
-
 
 
 //---------------------------------------------------------------------------
