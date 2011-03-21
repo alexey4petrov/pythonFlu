@@ -22,7 +22,13 @@
 
 from Foam.src.finiteVolume.fvMesh.fvMesh import *
 from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_scalar_fvPatchField_volMesh import *
-from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_scalar_fvPatchField_volMesh import *
+from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_vector_fvPatchField_volMesh import *
+from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_tensor_fvPatchField_volMesh import *
+from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_SymmTensor_fvPatchField_volMesh import *
+from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_scalar_fvsPatchField_surfaceMesh import *
+from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_vector_fvsPatchField_surfaceMesh import *
+
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.linear import *
 
 
 # #---------------------------------------------------------------------------
@@ -33,15 +39,15 @@ from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_scalar_fvPatchField
 #---------------------------------------------------------------------------
 volScalarField = GeometricField_scalar_fvPatchField_volMesh
 
-# volVectorField = GeometricField_vector_fvPatchField_volMesh
-# 
-# volTensorField = GeometricField_tensor_fvPatchField_volMesh
-# 
-# volSymmTensorField = GeometricField_symmTensor_fvPatchField_volMesh
-# 
-# surfaceScalarField = GeometricField_scalar_fvsPatchField_surfaceMesh
-# 
-# surfaceVectorField = GeometricField_vector_fvsPatchField_surfaceMesh
+volVectorField = GeometricField_vector_fvPatchField_volMesh
+
+volTensorField = GeometricField_tensor_fvPatchField_volMesh
+
+volSymmTensorField = GeometricField_symmTensor_fvPatchField_volMesh
+
+surfaceScalarField = GeometricField_scalar_fvsPatchField_surfaceMesh
+
+surfaceVectorField = GeometricField_vector_fvsPatchField_surfaceMesh
 
 
 #---------------------------------------------------------------------------
