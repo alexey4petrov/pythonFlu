@@ -20,7 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_RASModel"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_incompressible_RASModel.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 #if FOAM_VERSION( ==, 010500 )   
 #define autoPtr_incompressible_turbulenceModel_cxx
 #endif
@@ -30,23 +38,15 @@
 #ifndef autoPtr_incompressible_turbulenceModel_cxx
 #define autoPtr_incompressible_turbulenceModel_cxx
 
-//---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/turbulenceModels/incompressible/turbulenceModel.cxx"
+%import "src/turbulenceModels/incompressible/turbulenceModel.cxx"
 
 
 //----------------------------------------------------------------------------
-//There is no namespace "incompressible" in OpenFOAM-1.4.1-dev
-
+// There is no namespace "incompressible" in OpenFOAM-1.4.1-dev
 #if FOAM_VERSION( <, 010500 )                                                 
 AUTOPTR_TYPEMAP( Foam::turbulenceModel )
 
@@ -54,16 +54,6 @@ AUTOPTR_TYPEMAP( Foam::turbulenceModel )
 
 %template( autoPtr_incompressible_turbulenceModel ) Foam::autoPtr< Foam::turbulenceModel >;
 
-%inline
-{
-  namespace Foam
-  {
-    typedef autoPtr< turbulenceModel > autoPtr_incompressible_turbulenceModel;
-  }
-}
-
-
-//-----------------------------------------------
 %feature( "pythonappend" ) Foam::autoPtr< Foam::turbulenceModel >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_incompressible_turbulenceModel );
 
 %extend Foam::autoPtr< Foam::turbulenceModel >
@@ -75,33 +65,18 @@ AUTOPTR_TYPEMAP( Foam::turbulenceModel )
 
 //-------------------------------------------------------------------------------------------------
 #if FOAM_VERSION( >=, 010600 )
-
-
 AUTOPTR_TYPEMAP( Foam::incompressible::turbulenceModel )
 
 %template( autoPtr_incompressible_turbulenceModel ) Foam::autoPtr< Foam::incompressible::turbulenceModel >;
 
-%inline
-{
-  namespace Foam
-  {
-    typedef autoPtr< incompressible::turbulenceModel > autoPtr_incompressible_turbulenceModel;
-  }
-}
-
-
-//----------------------------------------------
 %feature( "pythonappend" ) Foam::autoPtr< Foam::incompressible::turbulenceModel >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_incompressible_turbulenceModel );
 
 %extend Foam::autoPtr< Foam::incompressible::turbulenceModel >
 {
-   SMARTPTR_EXTEND_ATTR( autoPtr_incompressible_turbulenceModel )
+  SMARTPTR_EXTEND_ATTR( autoPtr_incompressible_turbulenceModel )
 }
-
-
 #endif
 
+
 //----------------------------------------------------------------------------
-
-
 #endif

@@ -20,42 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef smartPtr_extend_hxx
-#define smartPtr_extend_hxx
+#include "src/common.hpp"
+
+#if FOAM_VERSION( <, 010500 )
+#define autoPtr_incompressible_RASModel_hpp
+#endif
+
+
+//-----------------------------------------------------------------------------
+#ifndef autoPtr_incompressible_RASModel_hpp
+#define autoPtr_incompressible_RASModel_hpp
 
 
 //---------------------------------------------------------------------------
-//For using tmp<T> & autoPtr<T> as T
-%define SMARTPTR_PYAPPEND_GETATTR( Type ) __getattr__
-%{
-    name = args[ 0 ]
-    try:
-        return _swig_getattr( self, Type, name )
-    except AttributeError:
-        if self.valid() :
-            attr = None
-            exec "attr = self.__call__().%s" % name
-            return attr
-        pass
-    raise AttributeError()
-%}
-%enddef
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
-
-//---------------------------------------------------------------------------
-%define SMARTPTR_EXTEND_ATTR( Type )
-    void __getattr__( const char* name ){} // dummy function
-%enddef
-
-
-//---------------------------------------------------------------------------
-%define SMARTPTR_EXTEND_OPERATOR_EQ( UList_Type )
-  bool operator==( const Foam::UList< UList_Type >& theArg )
-  {
-    const Foam::UList< UList_Type > * aSelf = static_cast< const Foam::UList< UList_Type > * >( self->ptr() );
-    return *aSelf == theArg;
-  }
-%enddef
+#include "src/turbulenceModels/incompressible/RAS/RASModel.hpp"
 
 
 //---------------------------------------------------------------------------

@@ -20,7 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_RASModel"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_incompressible_RASModel.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 #if FOAM_VERSION( <, 010500 )
 #define autoPtr_incompressible_RASModel_cxx
 #endif
@@ -32,17 +40,9 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%include "src/turbulenceModels/incompressible/RAS/RASModel.cxx"
+%import "src/turbulenceModels/incompressible/RAS/RASModel.cxx"
 
 
 //----------------------------------------------------------------------------
@@ -51,14 +51,6 @@ AUTOPTR_TYPEMAP( Foam::incompressible::RASModel )
 %ignore Foam::autoPtr< Foam::incompressible::RASModel >::operator->;
 
 %template( autoPtr_incompressible_RASModel ) Foam::autoPtr< Foam::incompressible::RASModel >;
-
-%inline
-{
-  namespace Foam
-  {
-    typedef autoPtr< incompressible::RASModel > autoPtr_incompressible_RASModel;
-  }
-}
 
 
 //------------------------------------------------------------------------------
