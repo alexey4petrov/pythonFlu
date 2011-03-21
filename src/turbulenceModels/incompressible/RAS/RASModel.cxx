@@ -20,7 +20,19 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.turbulenceModels.incompressible.RAS.RASModel";
+%{
+  #include "src/turbulenceModels/incompressible/RAS/RASModel.hpp"
+%}
+
+// Keep on corresponding "director" includes at the top of SWIG defintion file
+%include "src/OpenFOAM/directors.hxx"
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
 %include "src/common.hxx"
+
 #if FOAM_VERSION( <, 010500 )
 #define incompressibleRASModel_cxx
 #endif
@@ -31,51 +43,24 @@
 #define incompressibleRASModel_cxx
 
 
-//---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
 //----------------------------------------------------------------------------
-%include "src/turbulenceModels/incompressible/turbulenceModel.cxx"
+%import "src/turbulenceModels/incompressible/turbulenceModel.cxx"
 
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
+%import "src/finiteVolume/fields/volFields/volFields.cxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
 
-//#include "nearWallDist.H"
-//#include "fvm.H"
-//#include "fvc.H"
+%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%include "src/finiteVolume/fvMatrices/fvMatrices.cxx"
+%import "src/transportModels/incompressible/transportModel.cxx"
 
-%include "src/transportModels/incompressible/transportModel.cxx"
+%import "src/OpenFOAM/db/IOdictionary.cxx"
 
-%include "src/OpenFOAM/db/IOdictionary.cxx"
+%import "src/OpenFOAM/db/Switch.cxx"
 
-%include "src/OpenFOAM/db/Switch.cxx"
+%import "src/finiteVolume/cfdTools/general/bound.cxx"
 
-%include "src/finiteVolume/cfdTools/general/bound.cxx"
-
-//#include "autoPtr.H"
-//#include "runTimeSelectionTables.H"
-
-
-//----------------------------------------------------------------------------
-#if FOAM_VERSION( ==, 010500 )
-%{
-    #include "RAS/incompressible/RASModel/RASModel.H"
-%}
-#endif
-
-#if FOAM_VERSION( >=, 010600 )
-%{
-    #include "incompressible/RAS/RASModel/RASModel.H"
-%}
-#endif
+%import "src/OpenFOAM/fields/tmp/autoPtr_incompressible_RASModel.cxx"
 
 
 //----------------------------------------------------------------------------
@@ -87,7 +72,7 @@
 
 %rename( incompressible_RASModel ) Foam::incompressible::RASModel;
 
-%include "incompressible/RASModel.H"
+%include <incompressible/RASModel.H>
 
 
 //---------------------------------------------------------------------------
@@ -107,4 +92,6 @@
   }
 }
 
+
+//---------------------------------------------------------------------------
 #endif

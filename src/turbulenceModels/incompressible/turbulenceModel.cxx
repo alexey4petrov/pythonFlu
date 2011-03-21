@@ -20,7 +20,19 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.turbulenceModels.incompressible.turbulenceModel";
+%{
+  #include "src/turbulenceModels/incompressible/turbulenceModel.hpp"
+%}
+
+// Keep on corresponding "director" includes at the top of SWIG defintion file
+%include "src/OpenFOAM/directors.hxx"
+%include "src/finiteVolume/directors.hxx"
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 #if FOAM_VERSION( ==, 010500 )   
 #define incompressibleturbulenceModel_cxx
 #endif
@@ -31,76 +43,59 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%include "src/OpenFOAM/directors.hxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/finiteVolume/directors.hxx"
+%import "src/finiteVolume/fields/volFields/volFields.cxx"
 
+%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
 
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
+%import "src/transportModels/incompressible/transportModel.cxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+%import "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.cxx"
 
-%include "src/finiteVolume/fvMatrices/fvMatrices.cxx"
-
-%include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
-
-%include "src/transportModels/incompressible/transportModel.cxx"
-
-%include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.cxx"
-
-%{
-    #include "incompressible/turbulenceModel/turbulenceModel.H"
-%}
+%import "src/OpenFOAM/fields/tmp/autoPtr_incompressible_turbulenceModel.cxx"
 
 
 //------------------------------------------------------------------------
 //There is no namespace "incompressible" in OpenFOAM-1.4.1-dev
-
 #if FOAM_VERSION( <, 010500 )   
-   %rename( incompressible_turbulenceModel ) Foam::turbulenceModel;
+%rename( incompressible_turbulenceModel ) Foam::turbulenceModel;
 
-   %ignore Foam::turbulenceModel::nut;
+%ignore Foam::turbulenceModel::nut;
 
-
-    //--------------------------------------------------------
-    %include "incompressible/turbulenceModel.H"
+%include <incompressible/turbulenceModel.H>
     
-    %extend Foam::turbulenceModel  
-    {
-      Foam::ext_tmp< Foam::volScalarField > ext_nut()
-      {
-          return self->nut();
-      }
-    }
-    
+%extend Foam::turbulenceModel  
+{
+  Foam::ext_tmp< Foam::volScalarField > ext_nut()
+  {
+    return self->nut();
+  }
+}
 #endif
 
 
 //-------------------------------------------------------------------------
 #if FOAM_VERSION( >=, 010600 )
-
-    %rename( incompressible_turbulenceModel ) Foam::incompressible::turbulenceModel;
+%rename( incompressible_turbulenceModel ) Foam::incompressible::turbulenceModel;
     
-    %ignore Foam::incompressible::turbulenceModel::nut;
+%ignore Foam::incompressible::turbulenceModel::nut;
 
-    //--------------------------------------------------------
-    %include "incompressible/turbulenceModel.H"
-    
-    %extend Foam::incompressible::turbulenceModel  
-    {
-      Foam::ext_tmp< Foam::volScalarField > ext_nut()
-      {
-          return self->nut();
-      }
-    }
-
+%include <incompressible/turbulenceModel.H>
+   
+%extend Foam::incompressible::turbulenceModel  
+{
+  Foam::ext_tmp< Foam::volScalarField > ext_nut()
+  {
+    return self->nut();
+  }
+}
 #endif
 
 
