@@ -20,29 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef transportModel_cxx
-#define transportModel_cxx
+#ifndef viscosityModel_hpp
+#define viscosityModel_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.transportModels.incompressible.transportModel";
-%{
-  #include "src/transportModels/incompressible/transportModel.hpp"
-%}
+#include "src/finiteVolume/fields/volFields/volFields.hpp"
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
+#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hpp"
 
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOdictionary.cxx"
-
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
-
-%include <transportModel.H>
+#include <viscosityModel.H>
 
 
 //---------------------------------------------------------------------------

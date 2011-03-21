@@ -25,29 +25,26 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.transportModels.incompressible.viscosityModels.viscosityModel";
+%{
+  #include "src/transportModels/incompressible/viscosityModels/viscosityModel.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-//%include "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
+%import "src/finiteVolume/fields/volFields/volFields.cxx"
 
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
+%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-
-%{
-    #include "viscosityModel.H"
-%}
-
-%include "viscosityModel.H"
+%include <viscosityModel.H>
 
 
 //---------------------------------------------------------------------------

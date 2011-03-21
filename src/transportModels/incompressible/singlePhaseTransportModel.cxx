@@ -25,44 +25,40 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.transportModels.incompressible.singlePhaseTransportModel";
+%{
+  #include "src/transportModels/incompressible/singlePhaseTransportModel.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/transportModels/incompressible/transportModel.cxx"
+%import "src/transportModels/incompressible/transportModel.cxx"
 
-%include "src/transportModels/incompressible/viscosityModels/viscosityModel.cxx"
-
-%{
-    #include "singlePhaseTransportModel.H"
-%}
+%import "src/transportModels/incompressible/viscosityModels/viscosityModel.cxx"
 
 %ignore Foam::singlePhaseTransportModel::nu;
 
-%include "singlePhaseTransportModel.H"
+%include <singlePhaseTransportModel.H>
 
 
 //--------------------------------------------------------------------------
 %extend Foam::singlePhaseTransportModel
 {
-  
-  #if FOAM_BRANCH_VERSION( dev, ==, 010500 )
+#if FOAM_BRANCH_VERSION( dev, ==, 010500 )
   const Foam::volScalarField& ext_nu() const 
   {
     return self->nu();
   }
-
-  #else
+#else
   Foam::volScalarField& ext_nu() const
   {
     return self->nu()();
   }
-  #endif
-
+#endif
 }
 
 

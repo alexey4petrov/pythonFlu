@@ -20,29 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef transportModel_cxx
-#define transportModel_cxx
+#ifndef twoPhaseMixture_hpp
+#define twoPhaseMixture_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.transportModels.incompressible.transportModel";
-%{
-  #include "src/transportModels/incompressible/transportModel.hpp"
-%}
+#include "src/transportModels/incompressible/transportModel.hpp"
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
+#include "src/transportModels/incompressible/viscosityModels/viscosityModel.hpp"
 
+#include "src/finiteVolume/fields/volFields/volFields.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOdictionary.cxx"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
 
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
-
-%include <transportModel.H>
+#include <twoPhaseMixture.H>
 
 
 //---------------------------------------------------------------------------
