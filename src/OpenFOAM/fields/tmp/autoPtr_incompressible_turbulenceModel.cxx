@@ -20,9 +20,9 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_RASModel"
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_turbulenceModel"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_incompressible_RASModel.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_incompressible_turbulenceModel.hpp"
 %}
 
 
