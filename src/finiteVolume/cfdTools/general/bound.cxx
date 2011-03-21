@@ -25,22 +25,21 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.finiteVolume.cfdTools.general.bound";
+%{
+  #include "src/finiteVolume/cfdTools/general/bound.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-%include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
 
-%{
-    #include "bound.H"
-%}
-
-%include "bound.H"
+%include <bound.H>
 
 
 //---------------------------------------------------------------------------

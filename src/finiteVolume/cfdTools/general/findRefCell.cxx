@@ -25,23 +25,20 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.finiteVolume.cfdTools.general.findRefCell";
+%{
+  #include "src/finiteVolume/cfdTools/general/findRefCell.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //-------------------------------------------------------------------------------------
-%include "src/common.hxx"
-
-%include "src/OpenFOAM/primitives/label.cxx"
-%include "src/OpenFOAM/primitives/scalar.cxx"
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%{
-    #include "findRefCell.H"
-%}
+%import "src/OpenFOAM/primitives/label.cxx"
+%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "src/finiteVolume/fields/volFields/volFields.cxx"
 
 
 //--------------------------------------------------------------------------------------
@@ -53,8 +50,9 @@
     {
       label m_refCelli;
       scalar m_refValue;
-      t_setRefCell( label the_refCelli, scalar the_refValue ): m_refCelli( the_refCelli ),
-                                                               m_refValue( the_refValue )
+      t_setRefCell( label the_refCelli, scalar the_refValue )
+        : m_refCelli( the_refCelli )
+        , m_refValue( the_refValue )
       {}
     };
   }
@@ -72,8 +70,8 @@
                                      Foam::label refCelli,
                                      Foam::scalar refValue )
   {
-     Foam::setRefCell( field, dict, refCelli, refValue );
-     return t_setRefCell( refCelli, refValue );
+    Foam::setRefCell( field, dict, refCelli, refValue );
+    return t_setRefCell( refCelli, refValue );
   }                    
 #endif
 
@@ -85,8 +83,8 @@
                                      Foam::scalar refValue,
                                      const bool forceReference = false )
   {
-     Foam::setRefCell( field, dict, refCelli, refValue, forceReference);
-     return t_setRefCell( refCelli, refValue );
+    Foam::setRefCell( field, dict, refCelli, refValue, forceReference);
+    return t_setRefCell( refCelli, refValue );
   }
 #endif
 
@@ -100,8 +98,8 @@
                                      Foam::scalar refValue,
                                      const bool forceReference=false )
   {
-     Foam::setRefCell( field, fieldRef, dict, refCelli, refValue, forceReference );
-     return t_setRefCell( refCelli, refValue );
+    Foam::setRefCell( field, fieldRef, dict, refCelli, refValue, forceReference );
+    return t_setRefCell( refCelli, refValue );
   }
 #endif
 }
@@ -109,11 +107,7 @@
 
 //---------------------------------------------------------------------------
 #if  FOAM_VERSION( >=, 010600 ) || FOAM_BRANCH_VERSION( dev, >=, 010500 )
-Foam::scalar getRefCellValue
-(
-    const Foam::volScalarField& field,
-    const Foam::label refCelli
-);
+  Foam::scalar getRefCellValue( const Foam::volScalarField& field, const Foam::label refCelli );
 #endif
 
 

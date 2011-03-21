@@ -20,26 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef adjustPhi_cxx
-#define adjustPhi_cxx
+#ifndef findRefCell_hpp
+#define findRefCell_hpp
 
 
-//---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.cfdTools.general.adjustPhi";
-%{
-  #include "src/finiteVolume/cfdTools/general/adjustPhi.hpp"
-%}
+//-------------------------------------------------------------------------------------
+#include "src/OpenFOAM/primitives/label.hpp"
+#include "src/OpenFOAM/primitives/scalar.hpp"
+#include "src/finiteVolume/fields/volFields/volFields.hpp"
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%include <adjustPhi.H>
+#include <findRefCell.H>
 
 
 //---------------------------------------------------------------------------
