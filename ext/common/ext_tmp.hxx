@@ -20,18 +20,17 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef ext_tmp_H
-#define ext_tmp_H
+#ifndef ext_tmp_hxx
+#define ext_tmp_hxx
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "ext/common/ext_tmp.hpp"
-%}
+%import "src/common.hxx"
 
 %include "ext/common/ext_tmp.hpp"
+
+%import "src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
 
 
 //---------------------------------------------------------------------------
 #endif
-

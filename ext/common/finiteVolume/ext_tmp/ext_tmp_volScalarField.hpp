@@ -20,30 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef ext_tmp_volScalarField_cxx
-#define ext_tmp_volScalarField_cxx
+#ifndef ext_tmp_volScalarField_hpp
+#define ext_tmp_volScalarField_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.ext.common.finiteVolume.ext_tmp.ext_tmp_volScalarField";
-%{
-  #include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hpp"
-%}
+#include "ext/common/ext_tmp.hpp"
 
+#include "src/finiteVolume/fields/volFields/volScalarField.hpp"
 
-//---------------------------------------------------------------------------
-%import "ext/common/ext_tmp.hxx"
-
-%import "src/finiteVolume/fields/volFields/volScalarField.cxx"
-
-
-//---------------------------------------------------------------------------
-%template ( ext_tmp_volScalarField ) Foam::ext_tmp< Foam::volScalarField >;
-
-%extend Foam::ext_tmp< Foam::volScalarField >
-{
-  SMARTPTR_EXTEND_OPERATOR_EQ( Foam::scalar );
-}
 
 //---------------------------------------------------------------------------
 #endif

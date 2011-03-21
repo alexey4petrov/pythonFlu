@@ -85,6 +85,11 @@ namespace Foam
       return this->engine->operator -> ();
     }
     
+    const T* ptr() const
+    {
+      return this->engine->operator -> ();
+    }
+    
     T& operator()()
     {
       return this->engine->operator () ();
