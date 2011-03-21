@@ -24,19 +24,19 @@
 
 
 #----------------------------------------------------------------------------
-def _createFields( runTime, mesh ):
+def _createFields( runTime, mesh, g ):
     from Foam.OpenFOAM import ext_Info, nl
     from Foam.OpenFOAM import IOdictionary, IOobject, word, fileName
     from Foam.finiteVolume import volScalarField
         
-    ext_Info() << "Reading field p\n" << nl
-    p = volScalarField( IOobject( word( "p" ),
+    ext_Info() << "Reading field pd\n" << nl
+    pd = volScalarField( IOobject( word( "pd" ),
                                   fileName( runTime.timeName() ),
                                   mesh,
                                   IOobject.MUST_READ,
                                   IOobject.AUTO_WRITE ),
                         mesh )
-    
+
     ext_Info() << "Reading field alpha1\n" << nl
     alpha1 = volScalarField( IOobject( word( "alpha1" ),
                                   fileName( runTime.timeName() ),
@@ -60,7 +60,7 @@ def _createFields( runTime, mesh ):
     
     ext_Info() << "Reading transportProperties\n" << nl
     from Foam.transportModels import twoPhaseMixture
-    twoPhaseProperties = twoPhaseMixture(U, phi)
+    twoPhaseProperties = twoPhaseMixture(U, phi, word( "alpha1" ) )
     
     rho1 = twoPhaseProperties.rho1()
     rho2 = twoPhaseProperties.rho2()
@@ -85,11 +85,32 @@ def _createFields( runTime, mesh ):
                                            IOobject.NO_WRITE ),
                                  rho1 * phi )
                                  
-    pRefCell = 0
-    pRefValue = 0.0
+    ext_Info() << "Calculating field g.h\n" << nl
+    gh = volScalarField( word( "gh" ) , g & mesh.C() )
+    ghf = surfaceScalarField( word( "gh" ), g & mesh.Cf() )
+
+    p = volScalarField( IOobject( word( "p" ),
+                                      fileName( runTime.timeName() ),
+                                      mesh,
+                                      IOobject.NO_READ,
+                                      IOobject.AUTO_WRITE ),
+                             pd + rho * gh )
+    
+    
+    pdRefCell = 0
+    pdRefValue = 0.0
     
     from Foam.finiteVolume import setRefCell
-    pRefCell, pRefValue = setRefCell( p, mesh.solutionDict().subDict( word( "PISO" ) ), pRefCell, pRefValue )
+    pdRefCell, pdRefValue = setRefCell( pd, mesh.solutionDict().subDict( word( "PISO" ) ), pdRefCell, pdRefValue )
+    
+    pRefValue = 0.0
+    
+    if pd.needReference():
+       from Foam.OpenFOAM import readScalar, dimensionedScalar
+       from Foam.finiteVolume import getRefCellValue
+       pRefValue = readScalar( mesh.solutionDict().subDict( word( "PISO" ) ).lookup( word( "pRefValue" ) ) )
+       p.ext_assign( p + dimensionedScalar( word( "p" ), p.dimensions(), pRefValue - getRefCellValue(p, pdRefCell) ) )
+       pass
     
     # Construct interface from alpha1 distribution
     from Foam.transportModels import interfaceProperties
@@ -100,22 +121,23 @@ def _createFields( runTime, mesh ):
     from Foam import incompressible
     turbulence = incompressible.turbulenceModel.New( U, phi, twoPhaseProperties ) 
 
-    return p, alpha1, U, phi, rho1, rho2, rho, rhoPhi, twoPhaseProperties, pRefCell, pRefValue, interface, turbulence
+    return p, pd, gh, ghf, alpha1, U, phi, rho1, rho2, rho, rhoPhi, twoPhaseProperties, pdRefCell, pdRefValue, pRefValue, interface, turbulence
     
 
 
 #--------------------------------------------------------------------------------------
-def correctPhi( runTime, mesh, phi, p, rho, U, cumulativeContErr, nNonOrthCorr, pRefCell, pRefValue ):
+def correctPhi( runTime, mesh, phi, pd, rho, U, cumulativeContErr, nNonOrthCorr, pdRefCell, pdRefValue ):
     
     from Foam.finiteVolume.cfdTools.incompressible import continuityErrs
     cumulativeContErr = continuityErrs( mesh, phi, runTime, cumulativeContErr )
+    
     from Foam.OpenFOAM import wordList
     from Foam.finiteVolume import zeroGradientFvPatchScalarField
-    pcorrTypes = wordList( p.ext_boundaryField().size(), zeroGradientFvPatchScalarField.typeName )
-    
+    pcorrTypes = wordList( pd.ext_boundaryField().size(), zeroGradientFvPatchScalarField.typeName )
+
     from Foam.finiteVolume import fixedValueFvPatchScalarField
-    for i in range( p.ext_boundaryField().size() ):
-       if p.ext_boundaryField()[i].fixesValue():
+    for i in range( pd.ext_boundaryField().size() ):
+       if pd.ext_boundaryField()[i].fixesValue():
           pcorrTypes[i] = fixedValueFvPatchScalarField.typeName
           pass
        pass
@@ -128,7 +150,7 @@ def correctPhi( runTime, mesh, phi, p, rho, U, cumulativeContErr, nNonOrthCorr, 
                                       IOobject.NO_READ,
                                       IOobject.NO_WRITE ),
                             mesh,
-                            dimensionedScalar( word( "pcorr" ), p.dimensions(), 0.0 ),
+                            dimensionedScalar( word( "pcorr" ), pd.dimensions(), 0.0 ),
                             pcorrTypes  )
     
     from Foam.OpenFOAM import dimTime
@@ -141,7 +163,7 @@ def correctPhi( runTime, mesh, phi, p, rho, U, cumulativeContErr, nNonOrthCorr, 
     for nonOrth in range( nNonOrthCorr + 1 ):
         pcorrEqn = fvm.laplacian( rUAf, pcorr ) == fvc.div( phi )
 
-        pcorrEqn.setReference(pRefCell, pRefValue)
+        pcorrEqn.setReference(pdRefCell, pdRefValue)
         pcorrEqn.solve()
 
         if nonOrth == nNonOrthCorr:
@@ -216,7 +238,7 @@ def alphaEqnSubCycle( runTime, piso, mesh, phi, alpha1, rho, rhoPhi, rho1, rho2,
 
 
 #--------------------------------------------------------------------------------------
-def _UEqn( mesh, alpha1, U, p, rho, rhoPhi, turbulence, g, twoPhaseProperties, interface, momentumPredictor ):
+def _UEqn( mesh, alpha1, U, pd, rho, rhoPhi, turbulence, ghf, twoPhaseProperties, interface, momentumPredictor ):
     from Foam.OpenFOAM import word
     from Foam.finiteVolume import surfaceScalarField
     from Foam import fvc
@@ -231,15 +253,14 @@ def _UEqn( mesh, alpha1, U, p, rho, rhoPhi, turbulence, g, twoPhaseProperties, i
     if momentumPredictor:
        from Foam.finiteVolume import solve
        solve( UEqn == \
-                   fvc.reconstruct( fvc.interpolate( rho ) * ( g & mesh.Sf() ) + \
-                                    ( fvc.interpolate( interface.sigmaK() ) * fvc.snGrad( alpha1 ) - fvc.snGrad( p ) ) * mesh.magSf() ) )
+                   fvc.reconstruct( ( fvc.interpolate( interface.sigmaK() ) * fvc.snGrad( alpha1 ) - ghf * fvc.snGrad( rho ) - fvc.snGrad( pd ) ) * mesh.magSf() ) )
        pass
     
     return UEqn
 
 
 #--------------------------------------------------------------------------------------
-def _pEqn( mesh, UEqn, U, p, phi, alpha1, rho, g, interface, corr, nCorr, nNonOrthCorr, pRefCell, pRefValue ):
+def _pEqn( mesh, UEqn, U, p, pd, phi, alpha1, rho, ghf, interface, corr, nCorr, nNonOrthCorr, pdRefCell, pdRefValue ):
     rUA = 1.0/UEqn.A()
      
     from Foam import fvc
@@ -255,21 +276,21 @@ def _pEqn( mesh, UEqn, U, p, phi, alpha1, rho, g, interface, corr, nCorr, nNonOr
     from Foam.finiteVolume import adjustPhi
     adjustPhi(phiU, U, p)
     
-    phi.ext_assign( phiU + ( fvc.interpolate( interface.sigmaK() ) * fvc.snGrad( alpha1 ) * mesh.magSf() + fvc.interpolate( rho ) * ( g & mesh.Sf() ) )*rUAf )
+    phi.ext_assign( phiU + ( fvc.interpolate( interface.sigmaK() ) * fvc.snGrad( alpha1 ) - ghf * fvc.snGrad( rho ) ) * rUAf * mesh.magSf() )
 
     from Foam import fvm
     for nonOrth in range( nNonOrthCorr + 1 ):
-        pEqn = fvm.laplacian( rUAf, p ) == fvc.div( phi ) 
-        pEqn.setReference( pRefCell, pRefValue )
+        pdEqn = fvm.laplacian( rUAf, pd ) == fvc.div( phi ) 
+        pdEqn.setReference( pdRefCell, pdRefValue )
 
         if corr == nCorr-1 and nonOrth == nNonOrthCorr:
-           pEqn.solve( mesh.solver( word( str( p.name() ) + "Final" ) ) )
+           pdEqn.solve( mesh.solver( word( str( pd.name() ) + "Final" ) ) )
            pass
         else:
-           pEqn.solve( mesh.solver( p.name() ) )
+           pdEqn.solve( mesh.solver( pd.name() ) )
            pass
         if nonOrth == nNonOrthCorr:
-           phi.ext_assign( phi - pEqn.flux() )
+           phi.ext_assign( phi - pdEqn.flux() )
            pass
         pass
     
@@ -300,15 +321,16 @@ def main_standalone( argc, argv ):
     from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
     cumulativeContErr = initContinuityErrs()
     
-    p, alpha1, U, phi, rho1, rho2, rho, rhoPhi, twoPhaseProperties, pRefCell, pRefValue, interface, turbulence = _createFields( runTime, mesh )
+    p, pd, gh, ghf, alpha1, U, phi, rho1, rho2, rho, rhoPhi,\
+    twoPhaseProperties, pdRefCell, pdRefValue, pRefValue, interface, turbulence = _createFields( runTime, mesh, g )
 
     from Foam.finiteVolume.cfdTools.general.include import readTimeControls
     adjustTimeStep, maxCo, maxDeltaT = readTimeControls( runTime )
     
-    correctPhi( runTime, mesh, phi, p, rho, U, cumulativeContErr, nNonOrthCorr, pRefCell, pRefValue )
+    correctPhi( runTime, mesh, phi, pd, rho, U, cumulativeContErr, nNonOrthCorr, pdRefCell, pdRefValue )
     
     from Foam.finiteVolume.cfdTools.incompressible import CourantNo
-    CoNum, meanCoNum = CourantNo( mesh, phi, runTime )
+    CoNum, meanCoNum, velMag = CourantNo( mesh, phi, runTime )
     
     from Foam.finiteVolume.cfdTools.general.include import setInitialDeltaT
     runTime = setInitialDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
@@ -320,7 +342,7 @@ def main_standalone( argc, argv ):
                 
         piso, nCorr, nNonOrthCorr, momentumPredictor, transonic, nOuterCorr = readPISOControls( mesh )
         adjustTimeStep, maxCo, maxDeltaT = readTimeControls( runTime )
-        CoNum, meanCoNum = CourantNo( mesh, phi, runTime )        
+        CoNum, meanCoNum, velMag = CourantNo( mesh, phi, runTime )        
         
         from Foam.finiteVolume.cfdTools.general.include import setDeltaT
         runTime = setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
@@ -332,17 +354,24 @@ def main_standalone( argc, argv ):
      
         alphaEqnSubCycle( runTime, piso, mesh, phi, alpha1, rho, rhoPhi, rho1, rho2, interface )
         
-        UEqn = _UEqn( mesh, alpha1, U, p, rho, rhoPhi, turbulence, g, twoPhaseProperties, interface, momentumPredictor )
+        UEqn = _UEqn( mesh, alpha1, U, pd, rho, rhoPhi, turbulence, ghf, twoPhaseProperties, interface, momentumPredictor )
 
         # --- PISO loop
         for corr in range( nCorr ):
-            _pEqn( mesh, UEqn, U, p, phi, alpha1, rho, g, interface, corr, nCorr, nNonOrthCorr, pRefCell, pRefValue )
+            _pEqn( mesh, UEqn, U, p, pd, phi, alpha1, rho, ghf, interface, corr, nCorr, nNonOrthCorr, pdRefCell, pdRefValue )
             pass
         
         from Foam.finiteVolume.cfdTools.incompressible import continuityErrs
         cumulativeContErr = continuityErrs( mesh, phi, runTime, cumulativeContErr )
 
-        turbulence.correct()
+        p.ext_assign( pd + rho * gh )
+
+        if pd.needReference():
+           from Foam.OpenFOAM import dimensionedScalar
+           from Foam.finiteVolume import getRefCellValue
+       
+           p.ext_assign( p + dimensionedScalar( word( "p" ), p.dimensions(), pRefValue - getRefCellValue(p, pdRefCell) ) )
+           pass
 
         runTime.write()
 
@@ -359,13 +388,13 @@ def main_standalone( argc, argv ):
 
 #--------------------------------------------------------------------------------------
 import sys, os
-from Foam import FOAM_REF_VERSION
-if FOAM_REF_VERSION( "==", "010600" ):
+from Foam import FOAM_BRANCH_VERSION
+if FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'local', 'r1.6', 'multiphase','interFoam', 'laminar', 'damBreak' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6-dev', 'multiphase','interFoam', 'laminar', 'damBreak' )
          argv = [ __file__, "-case", test_dir ]
          pass
       os._exit( main_standalone( len( argv ), argv ) )
