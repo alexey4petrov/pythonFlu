@@ -25,9 +25,9 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_volSphericalTensorField"
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_volSphericalTensorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_volSphericalTensorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_volSphericalTensorField.hpp"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file

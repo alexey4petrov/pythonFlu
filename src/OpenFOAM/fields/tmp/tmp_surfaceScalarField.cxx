@@ -25,9 +25,9 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_surfaceScalarField"
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_surfaceScalarField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_surfaceScalarField.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hpp"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file

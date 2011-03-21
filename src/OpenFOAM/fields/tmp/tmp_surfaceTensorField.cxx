@@ -25,9 +25,9 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_surfaceTensorField"
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_surfaceTensorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_surfaceTensorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_surfaceTensorField.hpp"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file

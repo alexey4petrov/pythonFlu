@@ -25,9 +25,9 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_volVectorField"
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_volVectorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_volVectorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_volVectorField.hpp"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file
