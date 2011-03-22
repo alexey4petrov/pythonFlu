@@ -19,10 +19,22 @@
 ## Author : Alexey PETROV
 ##
 
-
 #---------------------------------------------------------------------------
-from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "fvc_" ) 
+from src.finiteVolume.finiteVolume.fvc.fvcDdt import *
+from src.finiteVolume.finiteVolume.fvc.fvcD_Dt import *
+from src.finiteVolume.finiteVolume.fvc.fvcGrad import *
+from src.finiteVolume.finiteVolume.fvc.fvcDiv import *
+from src.finiteVolume.finiteVolume.fvc.fvcFlux import *
+from src.finiteVolume.finiteVolume.fvc.fvcVolumeIntegrate import *
+from src.finiteVolume.finiteVolume.fvc.fvcSnGrad import *
+from src.finiteVolume.finiteVolume.fvc.fvcReconstruct import *
+from src.finiteVolume.finiteVolume.fvc.fvcMeshPhi import *
+from src.finiteVolume.finiteVolume.fvc.fvcLaplacian import *
+
+
+# #---------------------------------------------------------------------------
+# from Foam import get_module_initializtion_command
+# exec get_module_initializtion_command( "fvc_" ) 
 
 
 #---------------------------------------------------------------------------

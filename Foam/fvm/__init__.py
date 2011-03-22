@@ -21,8 +21,16 @@
 
 
 #---------------------------------------------------------------------------
-from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "fvm_" ) 
+from src.finiteVolume.finiteVolume.fvm.fvmDdt import *
+from src.finiteVolume.finiteVolume.fvm.fvmD2dt2 import *
+from src.finiteVolume.finiteVolume.fvm.fvmDiv import *
+from src.finiteVolume.finiteVolume.fvm.fvmSup import *
+from src.finiteVolume.finiteVolume.fvm.fvmLaplacian import *
+
+
+#---------------------------------------------------------------------------
+# from Foam import get_module_initializtion_command
+# exec get_module_initializtion_command( "fvm_" ) 
 
 
 #---------------------------------------------------------------------------
