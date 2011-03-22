@@ -25,8 +25,6 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
-
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
 %import "ext/common/ext_tmp.hxx"
