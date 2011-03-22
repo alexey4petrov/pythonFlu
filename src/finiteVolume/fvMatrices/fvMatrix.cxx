@@ -140,21 +140,7 @@
 
 
 //---------------------------------------------------------------------------
-%define FVMATRIX_TEMPLATE_FUNC( Type )
-
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
-
-NO_TMP_TYPEMAP_FVMATRIX( Type );
-
-%extend Foam::fvMatrix< Type > COMMON_EXTENDS;
-
-%extend Foam::tmp< Foam::fvMatrix< Type > > COMMON_EXTENDS;
-
-
-%extend Foam::fvMatrix< Type > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type )
-
-%extend Foam::tmp< Foam::fvMatrix< Type > > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type )
-
+%define FVMATRIX_TEMPLATE_GLOBAL_FUNC( Type )
 
 %import "src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx"
 %import "src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
@@ -207,6 +193,24 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
   }
 #endif    
 %}
+
+%enddef
+
+
+//---------------------------------------------------------------------------
+%define FVMATRIX_TEMPLATE_FUNC( Type )
+
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+
+NO_TMP_TYPEMAP_FVMATRIX( Type );
+
+%extend Foam::fvMatrix< Type > COMMON_EXTENDS;
+
+%extend Foam::tmp< Foam::fvMatrix< Type > > COMMON_EXTENDS;
+
+%extend Foam::fvMatrix< Type > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type )
+
+%extend Foam::tmp< Foam::fvMatrix< Type > > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type )
 
 %enddef
 

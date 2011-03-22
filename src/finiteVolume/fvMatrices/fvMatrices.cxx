@@ -32,13 +32,21 @@
 
 
 //---------------------------------------------------------------------------
+%import "src/finiteVolume/fvMatrices/fvMatricesFwd.hxx"
+
+
+//---------------------------------------------------------------------------
 %import "src/finiteVolume/fvMatrices/fvScalarMatrix.cxx"
 %import "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx"
 
+FVMATRIX_TEMPLATE_GLOBAL_FUNC( Foam::scalar );
+
+
+//---------------------------------------------------------------------------
 %import "src/finiteVolume/fvMatrices/fvVectorMatrix.cxx"
 %import "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx"
 
-%include <fvMatricesFwd.H>
+FVMATRIX_TEMPLATE_GLOBAL_FUNC( Foam::vector );
 
 
 //---------------------------------------------------------------------------

@@ -25,6 +25,8 @@
 
 
 //---------------------------------------------------------------------------
+#include "src/finiteVolume/fvMatrices/fvMatricesFwd.hpp"
+
 #include "src/finiteVolume/fvMatrices/fvScalarMatrix.hpp"
 
 #include "src/finiteVolume/fvMatrices/fvVectorMatrix.hpp"
