@@ -30,12 +30,10 @@
   #include "src/finiteVolume/fields/volFields/volFields.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
+// %import "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+
 %import "src/finiteVolume/fields/volFields/volScalarField.cxx"
 
 %import "src/finiteVolume/fields/volFields/volVectorField.cxx"
