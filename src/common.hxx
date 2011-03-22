@@ -45,14 +45,7 @@
 
 //---------------------------------------------------------------------------
 %define COMMON_EXTENDS
-{
-  char* __str__()
-  {
-    Foam::OStringStream aStream;
-    aStream << "\n" << *self;
-    return strdup( aStream.str().c_str() );
-  }
-}
+{}
 %enddef
 
 
