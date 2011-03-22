@@ -25,17 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_tensor";
+%{
+  #include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_tensor.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.cxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField.cxx"
+%import "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField.cxx"
 
 %template( zeroGradientFvPatchField_tensor ) Foam::zeroGradientFvPatchField< Foam::tensor >;
 

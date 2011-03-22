@@ -25,13 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
-
+%module "Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField";
 %{
-    #include "zeroGradientFvPatchField.H"
+  #include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField.hpp"
 %}
 
-%include "zeroGradientFvPatchField.H"
+
+//---------------------------------------------------------------------------
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+
+%include <zeroGradientFvPatchField.H>
 
 
 //---------------------------------------------------------------------------

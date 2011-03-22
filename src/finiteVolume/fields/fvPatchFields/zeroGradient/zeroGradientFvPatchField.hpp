@@ -20,23 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef zeroGradientFvPatchField_scalar_cxx
-#define zeroGradientFvPatchField_scalar_cxx
+#ifndef zeroGradientFvPatchField_hpp
+#define zeroGradientFvPatchField_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_scalar";
-%{
-  #include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_scalar.hpp"
-%}
+#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
-
-%import "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField.cxx"
-
-%template( zeroGradientFvPatchField_scalar ) Foam::zeroGradientFvPatchField< Foam::scalar >;
+#include <zeroGradientFvPatchField.H>
 
 
 //---------------------------------------------------------------------------
