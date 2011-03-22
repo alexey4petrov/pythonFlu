@@ -29,6 +29,10 @@
 %import "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
 %import "src/finiteVolume/volMesh.hxx"
 
+%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+
+%import "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
+
 %include <volFieldsFwd.H>
 
 
