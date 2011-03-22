@@ -61,7 +61,7 @@
   ISINSTANCE_TEMPLATE_3_EXTEND( GeometricField, Type, TPatchField, TMesh );
     
   static const TPatchField< Type >&
-  ext_lookupPatchField(const Foam::fvPatch& thePatch, const word& theName )
+  ext_lookupPatchField( const Foam::fvPatch& thePatch, const word& theName )
   {
     return thePatch.lookupPatchField< Foam::GeometricField< Type, TPatchField, TMesh >, Type >( theName );
   }
@@ -136,22 +136,22 @@
     return Foam::max( get_ref( self ) );
   }
   
-  Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_max(const Foam::GeometricField< Type, TPatchField, TMesh >& theArg)
+  Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_max( const Foam::GeometricField< Type, TPatchField, TMesh >& theArg )
   {
     return Foam::max( get_ref( self ), theArg );
   }
   
-  Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_min(const Foam::GeometricField< Type, TPatchField, TMesh >& theArg)
+  Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_min( const Foam::GeometricField< Type, TPatchField, TMesh >& theArg )
   {
     return Foam::min( get_ref( self ), theArg );
   }
   
-  Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_max(const Foam::dimensioned< Type >& theArg)
+  Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_max( const Foam::dimensioned< Type >& theArg )
   {
     return Foam::max( get_ref( self ), theArg );
   }
   
-  Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_min(const Foam::dimensioned< Type >& theArg)
+  Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_min( const Foam::dimensioned< Type >& theArg )
   {
     return Foam::min( get_ref( self ), theArg );
   }
