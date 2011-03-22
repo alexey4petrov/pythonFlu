@@ -29,7 +29,6 @@
 %{
   #include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hpp"
 %}
-%include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hpp"
 
 
 //---------------------------------------------------------------------------
@@ -124,6 +123,8 @@ namespace Foam
 
 
 //---------------------------------------------------------------------------
+%include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hpp"
+
 // This trick intends to publish nested class into SWIG domain
 %typemap( out ) Foam::lduMatrix::solverPerformance
 {
