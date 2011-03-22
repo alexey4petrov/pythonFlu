@@ -30,15 +30,15 @@
   #include "src/finiteVolume/fvMatrices/fvMatrices.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
 %import "src/finiteVolume/fvMatrices/fvScalarMatrix.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx"
 
 %import "src/finiteVolume/fvMatrices/fvVectorMatrix.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx"
+
+%include <fvMatricesFwd.H>
 
 
 //---------------------------------------------------------------------------
