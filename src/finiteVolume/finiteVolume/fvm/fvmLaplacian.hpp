@@ -20,67 +20,39 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvmDiv_cxx
-#define fvmDiv_cxx
+#ifndef fvmLaplacian_hpp
+#define fvmLaplacian_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.finiteVolume.fvm.fvmDiv";
-%{
-  #include "src/finiteVolume/finiteVolume/fvm/fvmDiv.hpp"
-%}
+#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hpp"
+
+#include <fvmLaplacian.H>
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+#include "src/finiteVolume/fields/volFields/volScalarField.hpp"
+#include "src/finiteVolume/fields/volFields/volTensorField.hpp"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
-%import "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cxx"
+#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hpp"
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hpp"
 
 
 //---------------------------------------------------------------------------
-%define FVM_DIV_TEMPLATE_FUNC( Type )
-%{
-  Foam::tmp< Foam::fvMatrix< Type > > 
-  fvm_div( const Foam::surfaceScalarField& flux,
-           Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf,
-           const Foam::word& name )
-  {
-    return Foam::fvm::div( flux, vf, name );
-  }
-
-  Foam::tmp< Foam::fvMatrix< Type > > 
-  fvm_div( const Foam::surfaceScalarField& flux,
-           Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
-  {
-    return Foam::fvm::div( flux, vf );
-  }
-%}
-%enddef
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hpp"
+#include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hpp"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
-%import "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx"
-
-%inline FVM_DIV_TEMPLATE_FUNC( Foam::scalar );
+#include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hpp"
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hpp"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx"
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.cxx"
-
-%inline FVM_DIV_TEMPLATE_FUNC( Foam::vector );
-
-
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/volMesh.cxx"
-
-
-//---------------------------------------------------------------------------
-%include <fvmDiv.H>
+#include "src/finiteVolume/volMesh.hpp"
 
 
 //---------------------------------------------------------------------------

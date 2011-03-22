@@ -25,97 +25,98 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
-
+%module "Foam.src.finiteVolume.finiteVolume.fvm.fvmSup";
 %{
-    #include "fvmSup.H"
+  #include "src/finiteVolume/finiteVolume/fvm/fvmSup.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.cxx"
-%include "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
-%include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.cxx"
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.cxx"
+%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 
 //---------------------------------------------------------------------------
 %define FVM_SUP_TEMPLATE_FUNC( Type )
 %{
-    #if FOAM_VERSION( <, 010500 )
-    Foam::tmp<Foam::fvMatrix<Type> > fvm_Sp( const Foam::volScalarField& sp, 
-                                               Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf)
-    {
-      return Foam::fvm::Sp( sp, vf );
-    }
-    //The zero is not implemented yet
-    /*Foam::zero  Sp( const zero&, GeometricField<Type, fvPatchField, volMesh>& )
-    {
-      return zero();
-    }*/
-    #endif
+#if FOAM_VERSION( <, 010500 )
+  Foam::tmp<Foam::fvMatrix<Type> > 
+  fvm_Sp( const Foam::volScalarField& sp, 
+          Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf )
+  {
+    return Foam::fvm::Sp( sp, vf );
+  }
+
+  /* The zero is not implemented yet
+  Foam::zero
+  Sp( const zero&, GeometricField<Type, fvPatchField, volMesh>& )
+  {
+  return zero();
+  }
+  */
+#endif
     
-    
-    #if FOAM_VERSION( >=, 010500 )
-    Foam::tmp<Foam::fvMatrix<Type> > fvm_Sp( const Foam::DimensionedField<scalar, volMesh>& sp, 
-                                               Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf )
-    {
-      return Foam::fvm::Sp( sp, vf );
-    }
-    
-    //The zeroField is not implemented yet
-    /*Foam::zeroField  Sp( const zeroField&, GeometricField<Type, fvPatchField, volMesh>& )
-    {
-      return zeroField();
-    }*/
-    #endif
+#if FOAM_VERSION( >=, 010500 )
+  Foam::tmp<Foam::fvMatrix<Type> > 
+   fvm_Sp( const Foam::DimensionedField<scalar, volMesh>& sp, 
+           Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf )
+  {
+    return Foam::fvm::Sp( sp, vf );
+  }
+
+  /* The zeroField is not implemented yet
+  Foam::zeroField 
+  Sp( const zeroField&, GeometricField<Type, fvPatchField, volMesh>& )
+  {
+  return zeroField();
+  }
+  */
+#endif
    
-   
-    Foam::tmp<Foam::fvMatrix<Type> > fvm_Sp( const Foam::tmp<volScalarField>& tsp, 
-                                               Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf )
-    {
-      return Foam::fvm::Sp( tsp, vf );
-    }
+  Foam::tmp<Foam::fvMatrix<Type> > 
+  fvm_Sp( const Foam::tmp<volScalarField>& tsp, 
+          Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf )
+  {
+    return Foam::fvm::Sp( tsp, vf );
+  }
     
-    Foam::tmp<Foam::fvMatrix<Type> > fvm_Sp( const Foam::dimensionedScalar& sp, 
-                                               Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf )
-    {
-      return Foam::fvm::Sp( sp, vf );
-    }
-    
-    
+  Foam::tmp<Foam::fvMatrix<Type> > 
+  fvm_Sp( const Foam::dimensionedScalar& sp, 
+          Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf )
+  {
+    return Foam::fvm::Sp( sp, vf );
+  }
 %}
 %enddef
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx"
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
 
-%inline FVM_SUP_TEMPLATE_FUNC( Foam::scalar )
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx"
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.cxx"
-
-%inline FVM_SUP_TEMPLATE_FUNC( Foam::vector )
-
-//---------------------------------------------------------------------------
-%include "src/finiteVolume/volMesh.cxx"
+%inline FVM_SUP_TEMPLATE_FUNC( Foam::scalar );
 
 
 //---------------------------------------------------------------------------
-%include "fvmSup.H"
+%import "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx"
+%import "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.cxx"
+
+%inline FVM_SUP_TEMPLATE_FUNC( Foam::vector );
+
+
+//---------------------------------------------------------------------------
+%import "src/finiteVolume/volMesh.cxx"
+
+
+//---------------------------------------------------------------------------
+%include <fvmSup.H>
 
 
 //---------------------------------------------------------------------------
