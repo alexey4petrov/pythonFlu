@@ -25,14 +25,10 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField_vector";
+%module "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField_vector";
 %{
   #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.hpp"
 %}
-
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------

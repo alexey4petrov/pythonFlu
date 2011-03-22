@@ -42,6 +42,7 @@
 
 %include <fvPatchField.H>
 
+
 //---------------------------------------------------------------------------
 %define FVPATCHFIELD_VIRTUAL_EXTENDS( Type )
 {
