@@ -25,63 +25,47 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
+%module "Foam.src.finiteVolume.finiteVolume.fvc.fvcDdt";
 %{
-    #include "fvMesh.H"
-
-    #include "fvcDdt.H"
+  #include "src/finiteVolume/finiteVolume/fvc/fvcDdt.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-%include "src/finiteVolume/fields/volFields/volScalarField.cxx"
+%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "src/finiteVolume/fields/volFields/volScalarField.cxx"
 
 
 //---------------------------------------------------------------------------
 %define FVC_DDT_TEMPLATE_FUNC( Type )
 %{
-    Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh> > fvc_ddt
-    (
-        const Foam::dimensioned< Type > dt,
-        const Foam::fvMesh& mesh
-    )
-    {
-        return Foam::fvc::ddt( dt, mesh );
-    }
+  Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh> > 
+  fvc_ddt( const Foam::dimensioned< Type > dt, 
+           const Foam::fvMesh& mesh )
+  {
+    return Foam::fvc::ddt( dt, mesh );
+  }
 
-    Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh> > fvc_ddt
-    ( 
-        Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf 
-    )
-    {
-        return Foam::fvc::ddt( vf );
-    }
+  Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh> > 
+  fvc_ddt( Foam::GeometricField< Type, 
+           Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvc::ddt( vf );
+  }
 
-    Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh> > fvc_ddt
-    ( 
-        const Foam::dimensionedScalar& rho,
-        Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf 
-    )
-    {
-        return Foam::fvc::ddt( rho, vf );
-    }
+  Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh> > 
+  fvc_ddt( const Foam::dimensionedScalar& rho, 
+           Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvc::ddt( rho, vf );
+  }
 
-    Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh> > fvc_ddt
-    ( 
-        const Foam::volScalarField& rho,
-        Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf 
-    )
-    {
-        return Foam::fvc::ddt( rho, vf );
-    }
+  Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh> > 
+  fvc_ddt( const Foam::volScalarField& rho, 
+           Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvc::ddt( rho, vf );
+  }
 %}
 %enddef
 
@@ -91,9 +75,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
-%include "src/finiteVolume/fields/volFields/volVectorField.cxx"
-%include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
+%import "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
+%import "src/finiteVolume/fields/volFields/volVectorField.cxx"
+%import "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
 
 %inline FVC_DDT_TEMPLATE_FUNC( Foam::vector )
 
@@ -101,35 +85,31 @@
 //---------------------------------------------------------------------------
 %inline
 {
-    Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > > fvc_ddtPhiCorr
-    (
-        const Foam::volScalarField& rA,
-        const Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >& U,
-        const Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >& phi
-    )
-    {
-        return Foam::fvc::ddtPhiCorr( rA, U, phi );
-    }
+  Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > > 
+  fvc_ddtPhiCorr( const Foam::volScalarField& rA,
+                  const Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >& U,
+                  const Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >& phi )
+  {
+    return Foam::fvc::ddtPhiCorr( rA, U, phi );
+  }
 
-    Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > > fvc_ddtPhiCorr
-    (
-        const Foam::volScalarField& rA,
-        const Foam::volScalarField& rho,
-        const Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >& U,
-        const Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >& phi
-    )
-    {
-        return Foam::fvc::ddtPhiCorr( rA, rho, U, phi );
-    }
+  Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > > 
+  fvc_ddtPhiCorr( const Foam::volScalarField& rA,
+                  const Foam::volScalarField& rho,
+                  const Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >& U,
+                  const Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >& phi )
+  {
+    return Foam::fvc::ddtPhiCorr( rA, rho, U, phi );
+  }
 }
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/volMesh.cxx"
+%import "src/finiteVolume/volMesh.cxx"
 
 
 //---------------------------------------------------------------------------
-%include "fvcDdt.H"
+%include <fvcDdt.H>
 
 
 //---------------------------------------------------------------------------

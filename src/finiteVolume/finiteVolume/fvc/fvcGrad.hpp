@@ -20,55 +20,30 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvcReconstruct_cxx
-#define fvcReconstruct_cxx
+#ifndef fvcGrad_hpp
+#define fvcGrad_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.finiteVolume.fvc.fvcReconstruct";
-%{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcReconstruct.hpp"
-%}
-
-
-//----------------------------------------------------------------------------
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
-%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+#include <Field.H>
+#include <fvcGrad.H>
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.cxx"
-
-%inline
-{
-  Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh > > 
-  fvc_reconstruct( const Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >& ssf )
-  {
-    return Foam::fvc::reconstruct( ssf );
-  }
-}
+#include "src/OpenFOAM/fields/tmp/tmp_volVectorField.hpp"
+#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hpp"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cxx"
-
-%inline
-{
-  Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > > 
-  fvc_reconstruct( const Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >& ssf )
-  {
-    return Foam::fvc::reconstruct( ssf );
-  }
-}
+#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hpp"
+#include "src/finiteVolume/fields/volFields/volScalarField.hpp"
+#include "src/OpenFOAM/fields/tmp/tmp_volTensorField.hpp"
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMesh.cxx"
-%import "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.cxx"
+#include "src/finiteVolume/surfaceMesh.hpp"
 
-
-%include <fvcReconstruct.H>
-
+#include "src/finiteVolume/volMesh.hpp"
 
 
 //---------------------------------------------------------------------------

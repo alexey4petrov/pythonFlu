@@ -25,91 +25,75 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.finiteVolume.fvc.fvcMeshPhi";
+%{
+  #include "src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volScalarField.cxx"
+%import "src/finiteVolume/fields/volFields/volScalarField.cxx"
 
-%include "src/finiteVolume/fields/volFields/volVectorField.cxx"
+%import "src/finiteVolume/fields/volFields/volVectorField.cxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
+%import "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
 
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-
-%{
-    #include "fvcMeshPhi.H"
-%}
+%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 
 //---------------------------------------------------------------------------
 %inline
 {
-    void fvc_makeRelative
-    (
-      Foam::surfaceScalarField& phi,
-      const Foam::volVectorField& U
-    )
-    {
-       Foam::fvc::makeRelative( phi, U);
-    }
+  void 
+  fvc_makeRelative( Foam::surfaceScalarField& phi,
+                    const Foam::volVectorField& U )
+  {
+    Foam::fvc::makeRelative( phi, U);
+  }
     
-    void fvc_makeRelative
-    (
-       Foam::surfaceScalarField& phi,
-       const Foam::dimensionedScalar& rho,
-       const Foam::volVectorField& U    
-    )
-    {
-       Foam::fvc::makeRelative( phi, rho, U );
-    }
-    void fvc_makeRelative
-    (
-       Foam::surfaceScalarField& phi,
-       const Foam::volScalarField& rho,
-       const Foam::volVectorField& U
-    )
-    { 
-       Foam::fvc::makeRelative( phi, rho, U );
-    }
+  void 
+  fvc_makeRelative( Foam::surfaceScalarField& phi,
+                    const Foam::dimensionedScalar& rho,
+                    const Foam::volVectorField& U )
+  {
+    Foam::fvc::makeRelative( phi, rho, U );
+  }
+  
+  void 
+  fvc_makeRelative( Foam::surfaceScalarField& phi,
+                    const Foam::volScalarField& rho,
+                    const Foam::volVectorField& U )
+  { 
+    Foam::fvc::makeRelative( phi, rho, U );
+  }
     
-    void fvc_makeAbsolute
-    (
-        Foam::surfaceScalarField& phi,
-        const Foam::volVectorField& U
-    )
-    {
-       Foam::fvc::makeAbsolute( phi, U );
-    }
+  void
+  fvc_makeAbsolute( Foam::surfaceScalarField& phi,
+                    const Foam::volVectorField& U )
+  {
+    Foam::fvc::makeAbsolute( phi, U );
+  }
     
-    void fvc_makeAbsolute
-    (
-        Foam::surfaceScalarField& phi,
-        const Foam::dimensionedScalar& rho,
-        const Foam::volVectorField& U
-    )
-    {
-       Foam::fvc::makeAbsolute( phi, rho, U );
-    }
+  void
+  fvc_makeAbsolute( Foam::surfaceScalarField& phi,
+                    const Foam::dimensionedScalar& rho,
+                    const Foam::volVectorField& U )
+  {
+    Foam::fvc::makeAbsolute( phi, rho, U );
+  }
     
-    void fvc_makeAbsolute
-    (
-        Foam::surfaceScalarField& phi,
-        const Foam::volScalarField& rho,
-        const Foam::volVectorField& U
-    )
-    {
-       Foam::fvc::makeAbsolute( phi, rho, U );
-    }
+  void
+  fvc_makeAbsolute( Foam::surfaceScalarField& phi,
+                    const Foam::volScalarField& rho,
+                    const Foam::volVectorField& U )
+  {
+    Foam::fvc::makeAbsolute( phi, rho, U );
+  }
 }
 
 
 //---------------------------------------------------------------------------
-%include "fvcMeshPhi.H"
+%include <fvcMeshPhi.H>
 
 
 //---------------------------------------------------------------------------

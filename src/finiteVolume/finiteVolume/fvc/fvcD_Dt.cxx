@@ -20,41 +20,31 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvcDDt_cxx
-#define fvcDDt_cxx
+#ifndef fvcD_Dt_cxx
+#define fvcD_Dt_cxx
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
-%include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cxx"
-
+%module "Foam.src.finiteVolume.finiteVolume.fvc.fvcD_Dt";
 %{
-    #include "fvcDdt.H"
-
-    #include "fvcDDt.H"
+  #include "src/finiteVolume/finiteVolume/fvc/fvcD_Dt.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cxx"
 
 
 //---------------------------------------------------------------------------
 %define FVC_SDDT_TEMPLATE_FUNC( Type )
 %{
-    Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh> > fvc_DDt
-    (
-        const Foam::surfaceScalarField& dt,
-        const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh>& mesh
-    )
-    {
-        return Foam::fvc::DDt( dt, mesh );
-    }
-
+  Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh> > 
+  fvc_DDt( const Foam::surfaceScalarField& dt,
+           const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh>& mesh )
+  {
+    return Foam::fvc::DDt( dt, mesh );
+  }
 %}
 %enddef
 
@@ -62,11 +52,11 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/volMesh.cxx"
+%import "src/finiteVolume/volMesh.cxx"
 
 
 //---------------------------------------------------------------------------
-%include "fvcDDt.H"
+%include <fvcDDt.H>
 
 
 //---------------------------------------------------------------------------

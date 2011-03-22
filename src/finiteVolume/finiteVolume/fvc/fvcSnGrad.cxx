@@ -25,20 +25,15 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.finiteVolume.fvc.fvcSnGrad";
+%{
+  #include "src/finiteVolume/finiteVolume/fvc/fvcSnGrad.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
-
-%{
-    #include "fvcSnGrad.H"
-%}
+%import "src/finiteVolume/fields/volFields/volFields.cxx"
+%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -46,38 +41,36 @@
 
 %inline
 {
-  Foam::tmp< Foam::GeometricField< Type, Foam::fvsPatchField, Foam::surfaceMesh > > fvc_snGrad
-  ( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf,
-    const Foam::word& name
-  )
+  Foam::tmp< Foam::GeometricField< Type, Foam::fvsPatchField, Foam::surfaceMesh > > 
+  fvc_snGrad( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+              const Foam::word& name )
   {
     return Foam::fvc::snGrad( vf, name) ;
   }
   
-  Foam::tmp< Foam::GeometricField< Type, Foam::fvsPatchField, Foam::surfaceMesh > > fvc_snGrad
-  ( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  Foam::tmp< Foam::GeometricField< Type, Foam::fvsPatchField, Foam::surfaceMesh > > 
+  fvc_snGrad( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
   {
     return Foam::fvc::snGrad(vf);
   }
-  
 }
 %enddef
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_volVectorField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_volVectorField.cxx"
 
-FVC_SNGRAD_ADDONS( Foam::vector )
+FVC_SNGRAD_ADDONS( Foam::vector );
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
 
-FVC_SNGRAD_ADDONS( Foam::scalar )
+FVC_SNGRAD_ADDONS( Foam::scalar );
 
 
 //----------------------------------------------------------------------------
-%include "fvcGrad.H"
+%include <fvcGrad.H>
 
 
 //---------------------------------------------------------------------------

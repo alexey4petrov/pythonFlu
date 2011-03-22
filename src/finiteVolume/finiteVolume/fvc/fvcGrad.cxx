@@ -25,69 +25,54 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
+%module "Foam.src.finiteVolume.finiteVolume.fvc.fvcGrad";
 %{
-    #include "Field.H"
-
-    #include "fvcGrad.H"
+  #include "src/finiteVolume/finiteVolume/fvc/fvcGrad.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_volVectorField.cxx"
-%include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_volVectorField.cxx"
+%import "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
 
 %inline
 {
-    Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > > fvc_grad
-    ( 
-        const Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >& vf 
-    )
-    {
-        return Foam::fvc::grad( vf );
-    }
+  Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > > 
+  fvc_grad( const Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >& vf )
+  {
+    return Foam::fvc::grad( vf );
+  }
 }
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
-%include "src/finiteVolume/fields/volFields/volScalarField.cxx"
-%include "src/OpenFOAM/fields/tmp/tmp_volTensorField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
+%import "src/finiteVolume/fields/volFields/volScalarField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_volTensorField.cxx"
 
 %inline
 %{
-    Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > > fvc_grad
-    ( 
-        const Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& vf 
-    )
-    {
-        return Foam::fvc::grad( vf );
-    }
-    Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh > > fvc_grad
-    ( 
-        const Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >& vf 
-    )
-    {
-        return Foam::fvc::grad( vf );
-    }
+  Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > > 
+  fvc_grad( const Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvc::grad( vf );
+  }
+  Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh > > 
+  fvc_grad( const Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvc::grad( vf );
+  }
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/surfaceMesh.cxx"
+%import "src/finiteVolume/surfaceMesh.cxx"
 
-%include "src/finiteVolume/volMesh.cxx"
+%import "src/finiteVolume/volMesh.cxx"
 
 
 //---------------------------------------------------------------------------
-%include "fvcGrad.H"
+%include <fvcGrad.H>
 
 
 //---------------------------------------------------------------------------

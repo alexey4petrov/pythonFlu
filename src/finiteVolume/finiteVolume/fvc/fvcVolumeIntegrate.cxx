@@ -25,23 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.finiteVolume.fvc.fvcVolumeIntegrate";
+%{
+  #include "src/finiteVolume/finiteVolume/fvc/fvcVolumeIntegrate.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
+%import "src/finiteVolume/fields/volFields/volFields.cxx"
 
-%include "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%include "src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx"
-
-%{
-    #include "fvcVolumeIntegrate.H"
-%}
+%import "src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -49,43 +44,39 @@
 
 %inline
 {
-    Foam::tmp< Foam::Field< Type > > fvc_volumeIntegrate
-    ( 
-        const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf 
-    )
-    {
-        return Foam::fvc::volumeIntegrate( vf );
-    }
+  Foam::tmp< Foam::Field< Type > > 
+  fvc_volumeIntegrate( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvc::volumeIntegrate( vf );
+  }
 }
 
 %inline
 {
-    Foam::dimensioned< Type > fvc_domainIntegrate
-    ( 
-        const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf 
-    )
-    {
-        return Foam::fvc::domainIntegrate( vf );
-    }
+  Foam::dimensioned< Type > 
+  fvc_domainIntegrate( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvc::domainIntegrate( vf );
+  }
 }
 
 %enddef
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_volVectorField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_volVectorField.cxx"
 
-FVC_VOLUME_INTEGRATE_ADDONS( Foam::vector )
-
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
-
-FVC_VOLUME_INTEGRATE_ADDONS( Foam::scalar )
+FVC_VOLUME_INTEGRATE_ADDONS( Foam::vector );
 
 
 //---------------------------------------------------------------------------
-%include "fvcVolumeIntegrate.H"
+%import "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
+
+FVC_VOLUME_INTEGRATE_ADDONS( Foam::scalar );
+
+
+//---------------------------------------------------------------------------
+%include <fvcVolumeIntegrate.H>
 
 
 //---------------------------------------------------------------------------

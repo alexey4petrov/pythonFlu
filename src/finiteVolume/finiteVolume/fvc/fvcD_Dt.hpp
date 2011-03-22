@@ -20,40 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvcLaplacian_cxx
-#define fvcLaplacian_cxx
+#ifndef fvcDDt_hpp
+#define fvcDDt_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.finiteVolume.fvc.fvcLaplacian";
-%{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcLaplacian.hpp"
-%}
+#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hpp"
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hpp"
+
+#include <fvcDdt.H>
+#include <fvcDDt.H>
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
-
-
-//---------------------------------------------------------------------------
-%define FVC_LAPLACIAN_TEMPLATE_FUNC( Type1, Type2 )
-%{
-  Foam::tmp< Foam::GeometricField< Type1, Foam::fvPatchField, Foam::volMesh> > 
-  fvc_laplacian( const Foam::GeometricField< Type2, Foam::fvPatchField, Foam::volMesh>& gamma,
-                 const Foam::GeometricField< Type1, Foam::fvPatchField, Foam::volMesh>& vf )
-  {
-    return Foam::fvc::laplacian( gamma, vf );
-  }
-%}
-%enddef 
-
-
-//---------------------------------------------------------------------------
-%inline FVC_LAPLACIAN_TEMPLATE_FUNC( Foam::scalar, Foam::scalar );
-
-
-//---------------------------------------------------------------------------
-%include <fvcLaplacian.H>
+#include "src/finiteVolume/volMesh.hpp"
 
 
 //---------------------------------------------------------------------------

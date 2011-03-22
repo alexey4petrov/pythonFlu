@@ -25,97 +25,81 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
-
+%module "Foam.src.finiteVolume.finiteVolume.fvc.fvcDiv";
 %{
-    #include "fvcDiv.H"
+  #include "src/finiteVolume/finiteVolume/fvc/fvcDiv.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
-%include "src/OpenFOAM/fields/tmp/tmp_volVectorField.cxx"
-%include "src/OpenFOAM/fields/tmp/tmp_volTensorField.cxx"
+%import "src/finiteVolume/fields/volFields/volFields.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cxx"
-%include "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.cxx"
+%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_volVectorField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_volTensorField.cxx"
+
+%import "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.cxx"
 
 
 //---------------------------------------------------------------------------
 %define FVC_DIV_TEMPLATE_FUNC( Type )
 %{
-    Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > > fvc_div
-    (
-     const Foam::GeometricField< Type, Foam::fvsPatchField, Foam::surfaceMesh >& ssf
-    )
-    {
-        return Foam::fvc::div( ssf );
-    }
+  Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > > 
+  fvc_div( const Foam::GeometricField< Type, Foam::fvsPatchField, Foam::surfaceMesh >& ssf )
+  {
+    return Foam::fvc::div( ssf );
+  }
     
-    Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > > fvc_div
-    (
-     const Foam::surfaceScalarField& flux,
-     const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf
-    )
-    {
-        return Foam::fvc::div( flux, vf );
-    }
+  Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > > 
+  fvc_div( const Foam::surfaceScalarField& flux,
+           const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvc::div( flux, vf );
+  }
     
-    Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > > fvc_div
-    (
-     const Foam::surfaceScalarField& flux,
-     const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf,
-     const Foam::word& name
-    )
-    {
-        return Foam::fvc::div( flux, vf, name );
-    }
+  Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > > 
+  fvc_div( const Foam::surfaceScalarField& flux,
+           const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+           const Foam::word& name )
+  {
+    return Foam::fvc::div( flux, vf, name );
+  }
 %}
 %enddef
 
 
 //---------------------------------------------------------------------------
-%inline FVC_DIV_TEMPLATE_FUNC( Foam::scalar )
+%inline FVC_DIV_TEMPLATE_FUNC( Foam::scalar );
 
-%inline FVC_DIV_TEMPLATE_FUNC( Foam::vector )
+%inline FVC_DIV_TEMPLATE_FUNC( Foam::vector );
 
-%inline FVC_DIV_TEMPLATE_FUNC( Foam::tensor )
+%inline FVC_DIV_TEMPLATE_FUNC( Foam::tensor );
 
 
 //---------------------------------------------------------------------------
 %inline 
 %{
-  Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > > fvc_div
-    (
-     const Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh >& ssf,
-     const Foam::word& name
-    )
-    {
-        return Foam::fvc::div( ssf, name );
-    }
-    Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > > fvc_div
-    (
-     const Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh >& vf
-    )
-    {
-        return Foam::fvc::div( vf );
-    }
-  
+  Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > > 
+  fvc_div( const Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh >& ssf,
+           const Foam::word& name )
+  {
+    return Foam::fvc::div( ssf, name );
+  }
+  Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > > 
+  fvc_div( const Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvc::div( vf );
+  }
 %}
 
 
 //---------------------------------------------------------------------------
-%include "fvcDiv.H"
+%include <fvcDiv.H>
 
 
 //---------------------------------------------------------------------------
