@@ -58,7 +58,7 @@ AUTOPTR_TYPEMAP( Foam::incompressible::RASModel )
 
 %extend Foam::autoPtr< Foam::incompressible::RASModel >
 {
-  SMARTPTR_EXTEND_ATTR( autoPtr_incompressible_RASModel )
+  SMARTPTR_EXTEND_ATTR( autoPtr_incompressible_RASModel );
 }
 
 //---------------------------------------------------------------------------

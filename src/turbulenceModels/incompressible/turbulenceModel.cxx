@@ -25,10 +25,6 @@
   #include "src/turbulenceModels/incompressible/turbulenceModel.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
 %import "src/common.hxx"
@@ -50,6 +46,8 @@
 %import "src/finiteVolume/fields/volFields/volFields.cxx"
 
 %import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+
+%include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx"
 
 %import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
