@@ -32,6 +32,8 @@ from Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.linear imp
 
 from Foam.src.finiteVolume.cfdTools.general.findRefCell import *
 
+from Foam.src.finiteVolume.fvMatrices.fvMatrices import *
+
 
 # #---------------------------------------------------------------------------
 # from Foam import get_module_initializtion_command
