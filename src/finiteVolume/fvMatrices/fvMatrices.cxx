@@ -32,10 +32,6 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMatrices/fvMatricesFwd.hxx"
-
-
-//---------------------------------------------------------------------------
 %import "src/finiteVolume/fvMatrices/fvScalarMatrix.cxx"
 %import "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx"
 

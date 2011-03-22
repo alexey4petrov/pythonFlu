@@ -30,10 +30,6 @@
   #include "src/finiteVolume/fvMatrices/fvMatrix.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/refCount.cxx"
@@ -42,13 +38,11 @@
 
 %import "src/OpenFOAM/db/typeInfo/className.hxx"
 
-%import "fvMatrix.H"
-
-
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+%import "src/finiteVolume/fields/volFields/volFields.cxx"
 
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
+
+%include <fvMatrix.H>
 
 
 //---------------------------------------------------------------------------
@@ -69,12 +63,12 @@
   
   res = SWIG_ConvertPtr( $input, &argp, $descriptor(  Foam::fvMatrix< Type > * ), %convertptr_flags );
   if ( SWIG_IsOK( res )&& argp  ){
-    Foam::fvMatrix< Type > * res =  %reinterpret_cast( argp, Foam::fvMatrix< Type >* );
+    Foam::fvMatrix< Type > * res = %reinterpret_cast( argp, Foam::fvMatrix< Type >* );
     $1 = res;
   } else {
     res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::fvMatrix< Type > >* ), %convertptr_flags );
     if ( SWIG_IsOK( res ) && argp ) {
-      Foam::tmp<Foam::fvMatrix< Type > >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::fvMatrix< Type > > * );
+      Foam::tmp< Foam::fvMatrix< Type > >* tmp_res = %reinterpret_cast( argp, Foam::tmp< Foam::fvMatrix< Type > > * );
       $1 = tmp_res->operator->();
     } else {
       %argument_fail( res, "$type", $symname, $argnum );
@@ -147,17 +141,17 @@
 
 %inline
 %{
-  Foam::lduSolverPerformance solve( Foam::fvMatrix< Type >& fvm, Foam::Istream& solverControls )
+  Foam::lduMatrix::solverPerformance solve( Foam::fvMatrix< Type >& fvm, Foam::Istream& solverControls )
   {
     return Foam::solve( fvm, solverControls );
   }
 #if FOAM_VERSION( >=, 010600 )
-  Foam::lduSolverPerformance solve( Foam::fvMatrix< Type >& fvm, Foam::dictionary& solverControls )
+  Foam::lduMatrix::solverPerformance solve( Foam::fvMatrix< Type >& fvm, Foam::dictionary& solverControls )
   {
     return Foam::solve( fvm, solverControls );
   }
 #endif    
-  Foam::lduSolverPerformance solve( Foam::fvMatrix< Type >& fvm )
+  Foam::lduMatrix::solverPerformance solve( Foam::fvMatrix< Type >& fvm )
   {
     return Foam::solve( fvm );
   }
