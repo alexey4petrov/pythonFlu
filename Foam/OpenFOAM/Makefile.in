@@ -33,7 +33,11 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/label.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/scalar.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/direction.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/vector.cxx
+	@abs_top_builddir@/src/OpenFOAM/primitives/vector.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/SphericalTensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/s_phericalTensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/tensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/contiguous.cxx
 
 
 #--------------------------------------------------------------------------------------
@@ -55,7 +59,7 @@ tests = $(patsubst %.py,%.pyc,$(wildcard test_*.py))
 
 #--------------------------------------------------------------------------------------
 all: $(libs) $(apps)
-	@echo $(patsubst @abs_top_builddir@/%,%,$(libso)) : $(patsubst @abs_top_builddir@/%,%,$(sources))
+	@echo output : $(patsubst @abs_top_builddir@/%,%,$(pyths))
 
 %.exe : %.o
 	gcc $< $(__APP_FLAGS__) -o $@
