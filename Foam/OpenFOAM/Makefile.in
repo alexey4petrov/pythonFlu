@@ -92,14 +92,15 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/tensorList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/tensorField.cxx \
 	\
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_sphericalTensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/sphericalTensorList.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/Fields/sphericalTensorField.cxx \
+	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_symmTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_symmTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/symmTensorList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/symmTensorField.cxx \
-	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_sphericalTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/sphericalTensorList.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_token.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_token.cxx \
