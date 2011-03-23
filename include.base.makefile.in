@@ -87,15 +87,6 @@ endif
 
 
 #--------------------------------------------------------------------------------------
-apps = $(patsubst %.cxx, %.exe, $(sources))
-libs = $(patsubst %.cxx, _%.so, $(sources))
-objs = $(patsubst %.cxx, %.o, $(sources))
-stubs = $(patsubst %.cxx, %.cpp, $(sources))
-pyths = $(patsubst %.cxx, %.py, $(sources))
-tests = $(patsubst %.py, %.pyc, $(wildcard test_*.py))
-
-
-#--------------------------------------------------------------------------------------
 __HEADER_PATH_SUFFIXES__ := @HEADER_PATHS@
 
 __HEADER_PATHS__ := $(foreach path,$(__HEADER_PATH_SUFFIXES__),$(addprefix -I$(pyfoam_root_dir),$(path)))

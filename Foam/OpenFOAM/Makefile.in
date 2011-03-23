@@ -117,7 +117,9 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_face.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/SubList/SubList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/SubList/SubList_face.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/patchIdentifier.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_polyPatchPtr.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.cxx \
@@ -144,15 +146,17 @@ tests = $(patsubst %.py,%.pyc,$(wildcard test_*.py))
 
 
 #--------------------------------------------------------------------------------------
-all: $(libs) $(apps)
+all: $(libs)
 	@echo output : $(patsubst @abs_top_builddir@/%,%,$(pyths))
+
+test : $(apps)
 
 %.exe : %.o
 	gcc $< $(__APP_FLAGS__) -o $@
 	(cd $(dir $@) && python $(notdir $(patsubst %.exe,%.py,$@)))
 
 clean :
-	rm -fr $(libso) $(stubs) $(objs) $(pyths) $(apps) $(deps) $(heads) $(pycs)
+	rm -fr $(libs) $(stubs) $(objs) $(pyths) $(apps) $(deps) $(heads) $(pycs)
 
 
 #--------------------------------------------------------------------------------------
