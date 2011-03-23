@@ -393,7 +393,7 @@ def main_standalone( argc, argv ):
         maxAlphaCo, alphaCoNum, meanAlphaCoNum = alphaCourantNo( runTime, mesh, alpha1, phi )
         runTime = setDeltaT(  runTime, adjustTimeStep, maxCo, CoNum, maxAlphaCo, alphaCoNum, maxDeltaT )
         
-        runTime.step()
+        runTime.increment()
         ext_Info() << "Time = " << runTime.timeName() << nl << nl
         
         twoPhaseProperties.correct()
@@ -427,8 +427,8 @@ def main_standalone( argc, argv ):
 
 #--------------------------------------------------------------------------------------
 import sys, os
-from Foam import FOAM_VERSION
-if FOAM_VERSION( ">=", "010700" ):
+from Foam import FOAM_REF_VERSION
+if FOAM_REF_VERSION( ">=", "010700" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":

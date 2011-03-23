@@ -23,128 +23,9 @@
 ##
 
 
-#----------------------------------------------------------------------------
-def _createFields( runTime, mesh ):
-    from Foam.OpenFOAM import ext_Info, nl
-    from Foam.OpenFOAM import IOdictionary, IOobject, word, fileName
-    from Foam.finiteVolume import volScalarField
-        
-    ext_Info() << "Reading field p\n" << nl
-    p = volScalarField( IOobject( word( "p" ),
-                                  fileName( runTime.timeName() ),
-                                  mesh,
-                                  IOobject.MUST_READ,
-                                  IOobject.AUTO_WRITE ),
-                        mesh )
-    
-    ext_Info() << "Reading field U\n" << nl
-    from Foam.finiteVolume import volVectorField
-    U = volVectorField( IOobject( word( "U" ),
-                                  fileName( runTime.timeName() ),
-                                  mesh,
-                                  IOobject.MUST_READ,
-                                  IOobject.AUTO_WRITE ),
-                        mesh )
-    
-    from Foam.finiteVolume.cfdTools.incompressible import createPhi
-    phi = createPhi( runTime, mesh, U )
-    
-    from Foam.transportModels import singlePhaseTransportModel
-    fluid = singlePhaseTransportModel( U, phi )
-    
-    pRefCell = 0
-    pRefValue = 0.0
-    
-    from Foam.finiteVolume import setRefCell
-    pRefCell, pRefValue = setRefCell( p, mesh.solutionDict().subDict( word( "PISO" ) ), pRefCell, pRefValue )
-
-        
-    return p, U, phi, fluid, pRefCell, pRefValue
-
-
-#--------------------------------------------------------------------------------------
-def main_standalone( argc, argv ):
-
-    from Foam.OpenFOAM.include import setRootCase
-    args = setRootCase( argc, argv )
-
-    from Foam.OpenFOAM.include import createTime
-    runTime = createTime( args )
-
-    from Foam.OpenFOAM.include import createMeshNoClear
-    mesh = createMeshNoClear( runTime )
-    
-    p, U, phi, fluid, pRefCell, pRefValue = _createFields( runTime, mesh )
-    
-    from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
-    cumulativeContErr = initContinuityErrs()
-    
-    from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() << "\nStarting time loop\n" << nl 
-    
-    while runTime.loop() :
-        ext_Info() << "Time = " << runTime.timeName() << nl << nl
-        
-        from Foam.finiteVolume.cfdTools.general.include import readPISOControls
-        piso, nCorr, nNonOrthCorr, momentumPredictor, transonic, nOuterCorr = readPISOControls( mesh ) 
-        
-        from Foam.finiteVolume.cfdTools.incompressible import CourantNo
-        CoNum, meanCoNum = CourantNo( mesh, phi, runTime )
-        
-        fluid.correct()
-        from Foam import fvm, fvc
-        
-        UEqn = fvm.ddt( U ) + fvm.div( phi, U ) - fvm.laplacian( fluid.ext_nu(), U )
-        
-        from Foam.finiteVolume import solve
-        solve( UEqn == -fvc.grad( p ) )
-        
-        # --- PISO loop
-
-        for corr in range( nCorr ):
-            rUA = 1.0 / UEqn.A()
-            U.ext_assign( rUA * UEqn.H() )
-            phi.ext_assign( ( fvc.interpolate( U ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, U, phi ) )
-            
-            from Foam.finiteVolume import adjustPhi
-            adjustPhi(phi, U, p)
-            
-            for nonOrth in range( nNonOrthCorr + 1): 
-                
-                pEqn = ( fvm.laplacian( rUA, p ) == fvc.div( phi ) )
-                
-                pEqn.setReference( pRefCell, pRefValue )
-                pEqn.solve()
-
-                if nonOrth == nNonOrthCorr:
-                   phi.ext_assign( phi - pEqn.flux() )
-                   pass
-                
-                pass
-                
-            from Foam.finiteVolume.cfdTools.incompressible import continuityErrs
-            cumulativeContErr = continuityErrs( mesh, phi, runTime, cumulativeContErr )     
-               
-            U.ext_assign( U - rUA * fvc.grad( p ) )
-            U.correctBoundaryConditions()
-            pass
-        
-        runTime.write()
-        
-        ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
-              "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
-        
-        pass
-
-    ext_Info() << "End\n" << nl 
-
-    import os
-    return os.EX_OK
-
-
 #--------------------------------------------------------------------------------------
 import sys, os
-from Foam import FOAM_VERSION
+from Foam import FOAM_VERSION, FOAM_REF_VERSION, FOAM_BRANCH_VERSION
 if FOAM_VERSION( "<", "010600" ):
    from Foam.OpenFOAM import ext_Info
    ext_Info() << "\n\n To use this solver it is necessary to SWIG OpenFOAM-1.6 or higher\n"
@@ -152,7 +33,7 @@ if FOAM_VERSION( "<", "010600" ):
 
 
 #--------------------------------------------------------------------------------------
-if FOAM_VERSION( ">=", "010600" ):
+if FOAM_REF_VERSION( ">=", "010600" ):
    if __name__ == "__main__" :
      argv = sys.argv
      if len( argv ) >1 and argv[ 1 ]=="-test":
@@ -160,6 +41,31 @@ if FOAM_VERSION( ">=", "010600" ):
         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6', 'incompressible', 'nonNewtonianIcoFoam', 'offsetCylinder' )
         argv = [ __file__, "-case", test_dir ]
         pass
+     from Foam.applications.solvers.incompressible.r1_6.nonNewtonianIcoFoam import main_standalone
      os._exit( main_standalone( len( argv ), argv ) )
      pass
+   else:
+     from Foam.applications.solvers.incompressible.r1_6.nonNewtonianIcoFoam import *
+     pass
    pass
+   
+   
+#--------------------------------------------------------------------------------------
+if FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
+   if __name__ == "__main__" :
+     argv = sys.argv
+     if len( argv ) >1 and argv[ 1 ]=="-test":
+        argv = None
+        test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6', 'incompressible', 'nonNewtonianIcoFoam', 'offsetCylinder' )
+        argv = [ __file__, "-case", test_dir ]
+        pass
+     from Foam.applications.solvers.incompressible.r1_6_dev.nonNewtonianIcoFoam import main_standalone
+     os._exit( main_standalone( len( argv ), argv ) )
+     pass
+   else:
+     from Foam.applications.solvers.incompressible.r1_6_dev.nonNewtonianIcoFoam import *
+     pass
+   pass
+  
+
+#--------------------------------------------------------------------------------------

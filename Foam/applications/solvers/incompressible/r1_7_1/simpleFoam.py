@@ -60,7 +60,6 @@ def _createFields( runTime, mesh ):
     
 
     from Foam import incompressible
-    from Foam import FOAM_VERSION
     turbulence = incompressible.RASModel.New( U, phi, laminarTransport )
            
     return p, U, phi, turbulence, pRefCell, pRefValue, laminarTransport
@@ -87,7 +86,7 @@ def Ueqn( phi, U, p, turbulence, eqnResidual, maxResidual ):
     UEqn.relax()
     
     from Foam.finiteVolume import solve
-    eqnResidual = solve( UEqn == -fvc.grad(p) ).initialResidual()
+    eqnResidual = solve( UEqn == -fvc.grad( p ) ).initialResidual()
     maxResidual = max(eqnResidual, maxResidual)
        
     return UEqn, eqnResidual, maxResidual
@@ -134,10 +133,10 @@ def pEqn( runTime, mesh, p, phi, U, UEqn, eqnResidual, maxResidual, nNonOrthCorr
     from Foam.finiteVolume.cfdTools.incompressible import continuityErrs
     cumulativeContErr = continuityErrs( mesh, phi, runTime, cumulativeContErr )
     
-    #Explicitly relax pressure for momentum corrector
+    # Explicitly relax pressure for momentum corrector
     p.relax()
 
-    #Momentum corrector
+    # Momentum corrector
     U.ext_assign( U - fvc.grad( p ) / AU )
     U.correctBoundaryConditions()
 
@@ -176,9 +175,7 @@ def main_standalone( argc, argv ):
         from Foam.OpenFOAM import ext_Info, nl
         ext_Info() << "\nStarting time loop\n" <<nl
         
-        runTime += runTime.deltaT()
-        
-        while not runTime.end():
+        while runTime.loop():
             ext_Info() << "Time = " << runTime.timeName() << nl << nl
 
             from Foam.finiteVolume.cfdTools.general.include import readSIMPLEControls
@@ -202,7 +199,6 @@ def main_standalone( argc, argv ):
         
             convergenceCheck( maxResidual, convergenceCriterion ) 
         
-            runTime +=runTime.deltaT()
             pass
         
         
@@ -219,8 +215,8 @@ def main_standalone( argc, argv ):
 
 #--------------------------------------------------------------------------------------
 import os, sys
-from Foam import FOAM_VERSION
-if FOAM_VERSION( ">=", "010701" ):
+from Foam import FOAM_REF_VERSION
+if FOAM_REF_VERSION( ">=", "010701" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":

@@ -61,6 +61,8 @@ SYS_LIBS           =
 
 PROJECT_INC        = -I$(LIB_SRC)/$(WM_PROJECT)/lnInclude
 
+PROJECT_INC        += -I$(LIB_SRC)
+
 ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 PROJECT_INC        += -I$(LIB_SRC)/OSspecific/$(WM_OS)/lnInclude
 endif
@@ -181,8 +183,6 @@ $(RECURSIVE_CLEAN_TARGETS):
 
 
 #--------------------------------------------------------------------------------------
-__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/local/r$(WM_PROJECT_VERSION)
-
 __HEADER_PATH_SUFFIXES__ := @HEADER_PATHS@
 
 __HEADER_PATHS__ := $(foreach path,$(__HEADER_PATH_SUFFIXES__),$(addprefix -I$(pyfoam_root_dir),$(path)))
@@ -190,11 +190,21 @@ __HEADER_PATHS__ := $(foreach path,$(__HEADER_PATH_SUFFIXES__),$(addprefix -I$(p
 __SWIG_INCLUDES__ += $(__HEADER_PATHS__)
 
 
-
 #--------------------------------------------------------------------------------------------
 __SWIG_INCLUDES__ += $(__CPPFLAGS__)
 
-__SWIG_FLAGS__ = -python -c++ -MD -D__restrict__ -D__CINT__ $(GFLAGS) $(__SWIG_INCLUDES__)
+__SWIG_FLAGS__ += -python -c++ -MD
+
+__SWIG_FLAGS__ += -D__restrict__ # GCC type qualifier (a non-standard GCC entention) - to avoid SWIG parsing errors
+
+# CINT is an interpreter for C and C++ code (its parsing requirements are very close to SWIG)
+# to use existing adoption of OpenFOAM code to simplify SWIG wrapping
+# (http://root.cern.ch/drupal/content/cint)
+ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+__SWIG_FLAGS__ += -D__CINT__ 
+endif
+
+__SWIG_FLAGS__ +=  $(GFLAGS) $(__SWIG_INCLUDES__)
 
 __SWIG_FLAGS__+=-w508 # Declaration of 'XXX' shadows declaration accessible via 'YYY"
 __SWIG_FLAGS__+=-w317 # Specialization of non-template 'XXX'

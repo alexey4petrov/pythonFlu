@@ -43,6 +43,11 @@
 %extend Foam::ext_tmp< Foam::volScalarField >
 {
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::scalar );
+    Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh > > __div__( const Foam::dimensioned< Foam::scalar >& theArg )
+    {
+        return get_ref( self ) / theArg;
+    }
+
 }
 
 //---------------------------------------------------------------------------

@@ -35,7 +35,7 @@ if FOAM_VERSION( "<=", "010401" ):
 
 
 #---------------------------------------------------------------------------
-if FOAM_VERSION( "==", "010500" ) or FOAM_BRANCH_VERSION( "dev", ">=", "010500" ):
+if FOAM_REF_VERSION( "==", "010500" ) or FOAM_BRANCH_VERSION( "dev", "==", "010500" ):
    RASModel = compressible_RASModel
    autoPtr_RASModel = autoPtr_compressible_RASModel
    
@@ -43,7 +43,7 @@ if FOAM_VERSION( "==", "010500" ) or FOAM_BRANCH_VERSION( "dev", ">=", "010500" 
 
 
 #----------------------------------------------------------------------------
-if FOAM_VERSION(  ">=", "010600" ):
+if FOAM_REF_VERSION(  ">=", "010600" ) or FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
    turbulenceModel = compressible_turbulenceModel
    autoPtr_turbulenceModel = autoPtr_compressible_turbulenceModel
 

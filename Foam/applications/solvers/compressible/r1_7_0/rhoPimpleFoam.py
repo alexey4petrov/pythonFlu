@@ -244,7 +244,7 @@ def main_standalone( argc, argv ):
         from Foam.finiteVolume.cfdTools.general.include import setDeltaT
         runTime = setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
         
-        runTime.step()
+        runTime.increment()
         ext_Info() << "Time = " << runTime.timeName() << nl << nl
         
         if nOuterCorr != 1:
@@ -286,8 +286,8 @@ def main_standalone( argc, argv ):
 
 #--------------------------------------------------------------------------------------
 import sys, os
-from Foam import FOAM_VERSION
-if FOAM_VERSION( ">=", "010700" ):
+from Foam import FOAM_REF_VERSION
+if FOAM_REF_VERSION( ">=", "010700" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len(argv) > 1 and argv[ 1 ] == "-test":

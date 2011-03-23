@@ -46,26 +46,12 @@ def compressibleCreatePhi( runTime, mesh, rho, U ):
 
 #---------------------------------------------------------------------------
 def compressibleCourantNo( mesh, phi, rho, runTime ):
-    from Foam.OpenFOAM import Time
-    from Foam.finiteVolume import fvMesh
-    from Foam.finiteVolume import surfaceScalarField
-
-    CoNum = 0.0;
-    meanCoNum = 0.0;
-
-    if mesh.nInternalFaces() :
-        from Foam import fvc
-        SfUfbyDelta = mesh.deltaCoeffs() * phi.mag() / fvc.interpolate( rho )
-
-        CoNum = ( SfUfbyDelta / mesh.magSf() ).ext_max().value() * runTime.deltaT().value()
-        meanCoNum = ( SfUfbyDelta.sum() / mesh.magSf().sum() ).value() * runTime.deltaT().value();
-        pass
-
-    from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() << "Courant Number mean: " << meanCoNum << " max: " << CoNum << nl 
-
-    return CoNum, meanCoNum
-
+    from Foam import get_proper_function
+    fun = get_proper_function( "Foam.finiteVolume.cfdTools.compressible.compressibleCourantNo_impl",
+                               "compressibleCourantNo" )
+    
+    return fun( mesh, phi, rho, runTime )
+    
 
 #---------------------------------------------------------------------------
 def compressibleContinuityErrs( rho, thermo, cumulativeContErr ):

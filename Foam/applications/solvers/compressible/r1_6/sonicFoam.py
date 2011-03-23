@@ -146,8 +146,7 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "\nStarting time loop\n" << nl
     
-    runTime += runTime.deltaT()
-    while not runTime.end() :
+    while runTime.loop() :
         ext_Info() << "Time = " << runTime.timeName() << nl << nl
 
         from Foam.finiteVolume.cfdTools.general.include import readPISOControls
@@ -178,7 +177,6 @@ def main_standalone( argc, argv ):
         ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
               "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
         
-        runTime += runTime.deltaT()
         pass
 
     ext_Info() << "End\n"
@@ -189,8 +187,8 @@ def main_standalone( argc, argv ):
 
 #--------------------------------------------------------------------------------------
 import sys, os
-from Foam import FOAM_VERSION
-if FOAM_VERSION( ">=", "010600" ):
+from Foam import FOAM_REF_VERSION
+if FOAM_REF_VERSION( ">=", "010600" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len(argv) > 1 and argv[ 1 ] == "-test":

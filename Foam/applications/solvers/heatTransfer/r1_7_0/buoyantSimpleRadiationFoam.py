@@ -285,8 +285,8 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 argv = None
 import sys, os
-from Foam import FOAM_VERSION
-if FOAM_VERSION( ">=", "010700" ):
+from Foam import FOAM_REF_VERSION
+if FOAM_REF_VERSION( ">=", "010700" ):
     if __name__ == "__main__" :
         argv = sys.argv
         if len(argv) > 1 and argv[ 1 ] == "-test":

@@ -140,7 +140,7 @@ def main_standalone( argc, argv ):
            
         runTime, CoNum, DiNum = setMultiRegionDeltaT( adjustTimeStep, runTime, CoNum, DiNum, maxCo, maxDi, maxDeltaT )
                 
-        runTime.step()
+        runTime.increment()
         
         ext_Info()<< "Time = " << runTime.timeName() << nl << nl;      
                 
@@ -204,8 +204,8 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 argv = None
 import sys, os
-from Foam import FOAM_VERSION
-if FOAM_VERSION( ">=", "010700" ):
+from Foam import FOAM_REF_VERSION
+if FOAM_REF_VERSION( "==", "010700" ):
     if __name__ == "__main__" :
         argv = sys.argv
         
@@ -219,7 +219,7 @@ if FOAM_VERSION( ">=", "010700" ):
         pass
 else:
     from Foam.OpenFOAM import ext_Info
-    ext_Info() << "\n\n To use this solver, it is necessary to SWIG OpenFOAM-1.7 or higher \n"    
+    ext_Info() << "\n\n To use this solver, it is necessary to SWIG OpenFOAM-1.7.0 \n"    
     pass
 
 

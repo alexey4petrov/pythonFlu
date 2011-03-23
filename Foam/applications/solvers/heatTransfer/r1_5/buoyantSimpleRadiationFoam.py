@@ -234,7 +234,7 @@ def main_standalone( argc, argv ):
     
         ext_Info() << "\nStarting time loop\n" << nl;
     
-        runTime +=runTime.deltaT()
+        runTime.increment()
     
         while not runTime.end():
            ext_Info()<< "Time = " << runTime.timeName() << nl << nl
@@ -264,7 +264,7 @@ def main_standalone( argc, argv ):
                  
            convergenceCheck( runTime, maxResidual, convergenceCriterion)          
        
-           runTime +=runTime.deltaT()
+           runTime.increment()
            pass
     #-----------------------------------------------------------------------------   
     runSeparateNamespace( runTime, mesh )
@@ -277,8 +277,8 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 argv = None
 import sys, os
-from Foam import FOAM_VERSION, FOAM_BRANCH_VERSION
-if FOAM_VERSION( "==", "010500" ) or FOAM_BRANCH_VERSION( "dev", ">=", "010500" ):
+from Foam import FOAM_VERSION
+if FOAM_VERSION( "==", "010500" ):
     if __name__ == "__main__" :
         argv = sys.argv
         if len(argv) > 1 and argv[ 1 ] == "-test":

@@ -266,7 +266,7 @@ def main_standalone( argc, argv ):
         from Foam.finiteVolume.cfdTools.general.include import setDeltaT
         runTime = setDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum )
         
-        runTime.step()
+        runTime.increment()
         
         ext_Info() << "Time = " << runTime.timeName() << nl << nl
         phi = None
@@ -346,8 +346,8 @@ def main_standalone( argc, argv ):
 
 #--------------------------------------------------------------------------------------
 import sys, os
-from Foam import FOAM_VERSION
-if FOAM_VERSION( ">=", "010700" ):
+from Foam import FOAM_REF_VERSION, FOAM_BRANCH_VERSION
+if FOAM_REF_VERSION( ">=", "010700" ) or FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len(argv) > 1 and argv[ 1 ] == "-test":
@@ -360,7 +360,7 @@ if FOAM_VERSION( ">=", "010700" ):
    pass   
 else:
    from Foam.OpenFOAM import ext_Info
-   ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.7.0 or higher \n "
+   ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.7.0 or 1.6-ext or higher \n "
     
 #--------------------------------------------------------------------------------------
 

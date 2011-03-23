@@ -41,9 +41,25 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 
 #--------------------------------------------------------------------------------------
+sources = $(pyfoam_root_dir)/src/OpenFOAM/primitives/label.cxx
 
 
-include $(pyfoam_root_dir)/include.makefile
+#--------------------------------------------------------------------------------------
+apps = $(patsubst %.cxx, %.exe, $(sources))
+libs = $(patsubst %.cxx, _%.so, $(sources))
+objs = $(patsubst %.cxx, %.o, $(sources))
+stubs = $(patsubst %.cxx, %.cpp, $(sources))
+pyths = $(patsubst %.cxx, %.py, $(sources))
+tests = $(patsubst %.py, %.pyc, $(wildcard test_*.py))
+
+
+#--------------------------------------------------------------------------------------
+all: $(libs) $(apps) $(objs) $(stubs) $(tests)
+	@echo output : $(sources) $(pyths) $(tests)
+
+
+#--------------------------------------------------------------------------------------
+include $(pyfoam_root_dir)/include.makefile.base
 
 
 #--------------------------------------------------------------------------------------

@@ -140,7 +140,7 @@ def main_standalone( argc, argv ):
            
         runTime, CoNum, DiNum = setMultiRegionDeltaT( adjustTimeStep, runTime, CoNum, DiNum, maxCo, maxDi, maxDeltaT )
                 
-        runTime.step()
+        runTime.increment()
         
         ext_Info()<< "Time = " << runTime.timeName() << nl << nl;      
                 
@@ -204,8 +204,8 @@ def main_standalone( argc, argv ):
 #--------------------------------------------------------------------------------------
 argv = None
 import sys, os
-from Foam import FOAM_VERSION
-if FOAM_VERSION( ">=", "010701" ):
+from Foam import FOAM_REF_VERSION
+if FOAM_REF_VERSION( ">=", "010701" ):
     if __name__ == "__main__" :
         argv = sys.argv
         

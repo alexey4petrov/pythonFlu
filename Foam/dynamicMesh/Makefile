@@ -31,6 +31,11 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/meshTools/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/dynamicMesh/lnInclude 
+ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010600 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+	ifeq "x$(__FOAM_BRANCH__)" "xdev" 
+                __CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/dynamicMesh/dynamicMesh/lnInclude
+        endif
+endif	
 
 
 #--------------------------------------------------------------------------------------

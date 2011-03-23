@@ -174,9 +174,7 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "\nStarting time loop\n" <<nl
     
-    runTime += runTime.deltaT()    
-    
-    while not runTime.end():
+    while runTime.loop():
         ext_Info() << "Time = " << runTime.timeName() << nl << nl
 
         from Foam.finiteVolume.cfdTools.general.include import readSIMPLEControls
@@ -201,8 +199,6 @@ def main_standalone( argc, argv ):
         
         convergenceCheck( maxResidual, convergenceCriterion ) 
 
-        
-        runTime +=runTime.deltaT()
         pass
         
     ext_Info() << "End\n" << nl 
@@ -213,8 +209,8 @@ def main_standalone( argc, argv ):
 
 #--------------------------------------------------------------------------------------
 import os, sys
-from Foam import FOAM_VERSION
-if FOAM_VERSION( ">=", "010600" ):
+from Foam import FOAM_REF_VERSION, FOAM_BRANCH_VERSION
+if FOAM_REF_VERSION( "==", "010600" ) or FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
