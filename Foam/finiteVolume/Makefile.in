@@ -47,20 +47,27 @@ sources = @abs_top_builddir@/src/OpenFOAM/primitives/label.cxx
 #--------------------------------------------------------------------------------------
 libso = @abs_top_builddir@/Foam/finiteVolume/_finiteVolume.so
 
-.INTERMEDIATE : $(patsubst %.cxx, %.cpp, $(sources))
-
-apps = $(patsubst %.cxx, %.exe, $(sources))
-
+stubs = $(patsubst %.cxx, %.cpp, $(sources))
+deps = $(patsubst %.cxx, %.d, $(sources))
+heads = $(patsubst %.cxx, %.h, $(sources))
+objs = $(patsubst %.cxx, %.o, $(sources))
 pyths = $(patsubst %.cxx, %.py, $(sources))
+apps = $(patsubst %.cxx, %.exe, $(sources))
+pycs = $(patsubst %.cxx, %.pyc, $(sources))
 tests = $(patsubst %.py, %.pyc, $(wildcard test_*.py))
+
+.INTERMEDIATE : $(stubs)
 
 
 #--------------------------------------------------------------------------------------
 all: $(libso)
-	@echo output : $(sources) $(pyths) $(tests)
+	@echo $(patsubst @abs_top_builddir@/%, %, $(libso)) : $(patsubst @abs_top_builddir@/%, %, $(sources))
 
 $(libso) : $(patsubst %.cxx, %.o, $(sources))
 	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@
+
+clean:
+	rm -fr $(libso) $(stubs) $(objs) $(pyths) $(apps) $(deps) $(heads) $(pycs)
 
 
 #--------------------------------------------------------------------------------------
