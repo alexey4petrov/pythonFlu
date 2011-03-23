@@ -36,7 +36,7 @@
 
 %import "src/OpenFOAM/primitives/scalar.cxx"
 
-%include "dimensionSet.H"
+%include <dimensionSet.H>
 
 %typemap( out ) Foam::dimensionSet
 {

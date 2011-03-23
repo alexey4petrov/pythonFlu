@@ -23,24 +23,19 @@
 #include "src/common.hpp"
 
 #if FOAM_VERSION( <, 010600 )
-#define UniformDimensionedVectorField_hpp
+#define autoPtr_UniformDimensionedVectorField_hpp
 #endif
 
 
-//---------------------------------------------------------------------------
-#ifndef UniformDimensionedVectorField_hpp
-#define UniformDimensionedVectorField_hpp
+//----------------------------------------------------------------------------
+#ifndef autoPtr_UniformDimensionedVectorField_hpp
+#define autoPtr_UniformDimensionedVectorField_hpp
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.hpp"
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hpp"
-
-namespace Foam
-{
-  typedef UniformDimensionedField< vector > UniformDimensionedVectorField;
-}
+#include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hpp"
 
 
 //---------------------------------------------------------------------------

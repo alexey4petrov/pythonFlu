@@ -27,7 +27,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%import "src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define UniformDimensionedVectorField_cxx
@@ -48,6 +48,8 @@
 %ignore Foam::UniformDimensionedField< Foam::vector >::debug;
 
 %template( UniformDimensionedVectorField ) Foam::UniformDimensionedField< Foam::vector >;
+
+%include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hpp"
 
 
 //--------------------------------------------------------------------------

@@ -37,27 +37,34 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/pTraits.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/pTraits_vector.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/SphericalTensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/contiguous.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/s_phericalTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/tensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/contiguous.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/SymmTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/s_ymmTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/pTraits_symmTensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/tensor.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/primitives/strings/string.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/strings/word.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/strings/keyType.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList.cxx \
+	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_word.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_word.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/wordList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/strings/fileName.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/primitives/strings/keyType.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/strings/fileName.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_string.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_string.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/stringList.cxx \
+	\
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/token.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/primitives/ops/ops.cxx \
@@ -87,11 +94,6 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/vectorList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/vectorField.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_tensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_tensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/tensorList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/Fields/tensorField.cxx \
-	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_sphericalTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/sphericalTensorList.cxx \
@@ -102,12 +104,18 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/symmTensorList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/symmTensorField.cxx \
 	\
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_tensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_tensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/tensorList.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/Fields/tensorField.cxx \
+	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_token.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_token.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/tokenList.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_word_word_string_hash.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveShapes/point/point.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/primitiveFields.cxx \
@@ -122,19 +130,28 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/SubList/SubList_face.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_TList_face.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_TList_face.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/meshShapes/face/faceList.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/meshes/meshShapes/cell/cell.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_cell.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_cell.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/meshShapes/cell/cellList.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_entry.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_Generic.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/patchIdentifier.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_polyPatchPtr.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/db/IOobject.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/IOobjectList.cxx \
@@ -146,16 +163,16 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/db/regIOobject.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/objectRegistry.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOdictionary.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/db/dictionary/entry.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/ITstream.cxx \
-	@abs_top_builddir@/src/OpenFOAM/dimensionSet.cxx \
-	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedType.cxx \
-	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.cxx \
+	@abs_top_builddir@/src/OpenFOAM/dimensionSet.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/ITstream.cxx \
+	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedType.cxx \
+	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/dictionary/dictionary.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOdictionary.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Sstreams/ISstream.cxx \
@@ -171,6 +188,19 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/db/Time/TimePaths.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/Time/TimeState.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/Time/Time.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/memory/Xfer_pointField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/memory/Xfer_faceList.cxx \
+	@abs_top_builddir@/src/OpenFOAM/memory/Xfer_cellList.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/zones/ZoneID/polyPatchID.cxx \
+	@abs_top_builddir@/src/OpenFOAM/global/argList.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_UniformDimensionedVectorField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_UniformDimensionedVectorField.cxx \
 
 
 #--------------------------------------------------------------------------------------
@@ -192,7 +222,7 @@ tests = $(patsubst %.py,%.pyc,$(wildcard test_*.py))
 
 #--------------------------------------------------------------------------------------
 all: $(libs)
-	@echo output : $(patsubst @abs_top_builddir@/%,%,$(pyths))
+	@echo output : $(notdir $(pyths))
 
 test : $(apps) $(pycs)
 
