@@ -1,0 +1,172 @@
+## VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
+## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
+## 
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+## 
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+## 
+## See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
+##
+## Author : Alexey PETROV
+##
+
+
+#--------------------------------------------------------------------------------------
+__FOAM_VERSION__ := @FOAM_VERSION@
+
+__FOAM_BRANCH__ := @FOAM_BRANCH@
+
+__FOAM_PATCH__:=$(subst 1.4.1-dev,1.4.1,$(WM_PROJECT_VERSION))
+
+
+#------------------------------------------------------------------------------
+# set compilation and dependency building rules
+#------------------------------------------------------------------------------
+GENERAL_RULES = $(WM_DIR)/rules/General
+RULES         = $(WM_DIR)/rules/$(WM_ARCH)$(WM_COMPILER)
+BIN           = $(WM_DIR)/bin/$(WM_ARCH)$(WM_COMPILER)
+
+include $(GENERAL_RULES)/general
+include $(RULES)/general
+include $(RULES)/$(WM_LINK_LANGUAGE)
+
+c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-Wold-style-cast %%g")
+c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-Wall %%g")
+c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-Wextra %%g")
+c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-O3 %-ggdb3 -DFULLDEBUG %g")
+
+
+#------------------------------------------------------------------------------
+# declare default paths
+#------------------------------------------------------------------------------
+LIB_SRC            = $(WM_PROJECT_DIR)/src
+LIB_DIR            = $(WM_PROJECT_DIR)/lib
+LIB_WM_OPTIONS_DIR = $(LIB_DIR)/$(WM_OPTIONS)
+LIB_WM_OPTIONS_DIR_BINARY_INSTALL = $(LIB_DIR)
+
+OBJECTS_DIR        = $(MAKE_DIR)/$(WM_OPTIONS)
+CLASSES_DIR        = $(MAKE_DIR)/classes
+
+SYS_INC            =
+SYS_LIBS           =
+
+PROJECT_INC        = -I$(LIB_SRC)/$(WM_PROJECT)/lnInclude
+
+PROJECT_INC        += -I$(LIB_SRC)
+
+ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+PROJECT_INC        += -I$(LIB_SRC)/OSspecific/$(WM_OS)/lnInclude
+endif
+
+ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010600 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+PROJECT_INC        += -I$(LIB_SRC)/OSspecific/$(WM_OSTYPE)/lnInclude
+endif
+
+PROJECT_LIBS       = -l$(WM_PROJECT)
+
+
+#--------------------------------------------------------------------------------------
+__CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I$(pyfoam_root_dir) -I/usr/include -I/usr/include/c++ 
+
+
+#--------------------------------------------------------------------------------------
+__LDFLAGS__:=$(__LDFLAGS__) @PYTHON_LDFLAGS@ -lstdc++
+
+ifdef WM_PROJECT_VERSION
+	__LDFLAGS__:=-L$(LIB_WM_OPTIONS_DIR) -L$(LIB_WM_OPTIONS_DIR_BINARY_INSTALL) $(PROJECT_LIBS) $(__LDFLAGS__) -lpthread -ldl -lm
+endif
+
+
+#--------------------------------------------------------------------------------------
+apps = $(patsubst %.cxx, %.exe, $(sources))
+libs = $(patsubst %.cxx, _%.so, $(sources))
+objs = $(patsubst %.cxx, %.o, $(sources))
+stubs = $(patsubst %.cxx, %.cpp, $(sources))
+pyths = $(patsubst %.cxx, %.py, $(sources))
+tests = $(patsubst %.py, %.pyc, $(wildcard test_*.py))
+
+
+#--------------------------------------------------------------------------------------
+__HEADER_PATH_SUFFIXES__ := @HEADER_PATHS@
+
+__HEADER_PATHS__ := $(foreach path,$(__HEADER_PATH_SUFFIXES__),$(addprefix -I$(pyfoam_root_dir),$(path)))
+
+__SWIG_INCLUDES__ += $(__HEADER_PATHS__)
+
+
+#--------------------------------------------------------------------------------------------
+__SWIG_INCLUDES__ += $(__CPPFLAGS__)
+
+__SWIG_FLAGS__ += -python -c++ -MD
+
+__SWIG_FLAGS__ += -D__restrict__ # GCC type qualifier (a non-standard GCC entention) - to avoid SWIG parsing errors
+
+# CINT is an interpreter for C and C++ code (its parsing requirements are very close to SWIG)
+# to use existing adoption of OpenFOAM code to simplify SWIG wrapping
+# (http://root.cern.ch/drupal/content/cint)
+ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+__SWIG_FLAGS__ += -D__CINT__ 
+endif
+
+__SWIG_FLAGS__ +=  $(GFLAGS) $(__SWIG_INCLUDES__)
+
+__SWIG_FLAGS__+=-w508 # Declaration of 'XXX' shadows declaration accessible via 'YYY"
+__SWIG_FLAGS__+=-w317 # Specialization of non-template 'XXX'
+__SWIG_FLAGS__+=-w312 # Nested class not currently supported (ignored)
+__SWIG_FLAGS__+=-w509 # Overloaded method 'XXX' is shadowed by 'YYY'
+__SWIG_FLAGS__+=-w503 # Can't wrap 'XXX' unless renamed to a valid identifier
+__SWIG_FLAGS__+=-w462 # Unable to set dimensionless array variable
+__SWIG_FLAGS__+=-w473 # Returning a pointer or reference in a director method is not recommended
+
+ifeq "$(shell if [ x${__FOAM_BRANCH__} != x ]; then echo 'true'; else echo 'false'; fi )" "true" 
+__SWIG_FLAGS__+=-D__FOAM_BRANCH__=${__FOAM_BRANCH__}
+endif
+
+ifdef WM_PROJECT_VERSION
+	__SWIG_FLAGS__+=-D__FOAM_VERSION__=$(__FOAM_VERSION__)
+	__SWIG_FLAGS__+=$(shell if [ ${__FOAM_VERSION__} -lt 010600 ]; then echo -DINT_MAX=2147483647; fi )
+endif
+
+#-debug-top 4 -directors -dirprot
+
+
+#--------------------------------------------------------------------------------------
+%.cpp : %.cxx
+	@SWIG@ $(__SWIG_FLAGS__) -module $(patsubst %.cxx,%,$<) -o $@ $<
+
+__CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(__CPPFLAGS__)
+
+%.o : %.cpp
+	gcc $(__CXXFLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cpp,%.h,$<)>" -c $< -o $@
+
+
+PACKAGE_DEPENDENCIES = $(wildcard *.d)
+ifneq "$(PACKAGE_DEPENDENCIES)" "" # To avoid "include's" warning in case of empty folder
+	include $(PACKAGE_DEPENDENCIES)
+endif
+
+
+_%.so : %.o
+	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@
+
+__APP_FLAGS__ = $(__LDFLAGS__)
+
+%.exe : %.o
+	gcc $< $(__APP_FLAGS__) -o $@
+	python `basename $@ exe`py
+
+%.pyc : %.py
+	@python -c "import py_compile; py_compile.compile('$<')"
+	@python ./$@
+
+
+#--------------------------------------------------------------------------------------

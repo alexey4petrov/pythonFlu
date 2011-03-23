@@ -41,25 +41,30 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 
 #--------------------------------------------------------------------------------------
-sources = $(pyfoam_root_dir)/src/OpenFOAM/primitives/label.cxx
+sources = @abs_top_builddir@/src/OpenFOAM/primitives/label.cxx
 
 
 #--------------------------------------------------------------------------------------
+libso = @abs_top_builddir@/Foam/finiteVolume/_finiteVolume.so
+
+.INTERMEDIATE : $(patsubst %.cxx, %.cpp, $(sources))
+
 apps = $(patsubst %.cxx, %.exe, $(sources))
-libs = $(patsubst %.cxx, _%.so, $(sources))
-objs = $(patsubst %.cxx, %.o, $(sources))
-stubs = $(patsubst %.cxx, %.cpp, $(sources))
+
 pyths = $(patsubst %.cxx, %.py, $(sources))
 tests = $(patsubst %.py, %.pyc, $(wildcard test_*.py))
 
 
 #--------------------------------------------------------------------------------------
-all: $(libs) $(apps) $(objs) $(stubs) $(tests)
+all: $(libso)
 	@echo output : $(sources) $(pyths) $(tests)
+
+$(libso) : $(patsubst %.cxx, %.o, $(sources))
+	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@
 
 
 #--------------------------------------------------------------------------------------
-include $(pyfoam_root_dir)/include.makefile.base
+include $(pyfoam_root_dir)/include.base.makefile
 
 
 #--------------------------------------------------------------------------------------
