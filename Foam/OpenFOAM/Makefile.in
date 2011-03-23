@@ -113,10 +113,20 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/primitiveFields.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveShapes/point/pointFieldFwd.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx \
+	\
 	@abs_top_builddir@/src/OpenFOAM/meshes/meshShapes/face/face.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/meshShapes/face/oppositeFace.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_face.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_face.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/SubList/SubList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/SubList/SubList_face.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_TList_face.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_TList_face.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/meshes/meshShapes/cell/cell.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_cell.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_cell.cxx \
+	\
 	@abs_top_builddir@/src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/patchIdentifier.cxx \
@@ -125,7 +135,8 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx \
-
+	\
+	@abs_top_builddir@/src/OpenFOAM/db/Switch.cxx \
 
 
 #--------------------------------------------------------------------------------------
