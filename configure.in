@@ -105,6 +105,7 @@ AC_OUTPUT( [ bashrc \
 	     Foam/__init__.py \
 	     Foam/pyfoam.cxx \
 	     Foam/Makefile \
+	     Foam/OpenFOAM/Makefile \
 	     Foam/finiteVolume/Makefile \
 	     Foam/applications/utilities/postProcessing/graphics/Makefile \
 	     Foam/applications/utilities/mesh/conversion/Makefile \
