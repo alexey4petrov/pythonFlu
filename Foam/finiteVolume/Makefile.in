@@ -41,7 +41,10 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 
 #--------------------------------------------------------------------------------------
-sources = @abs_top_builddir@/src/OpenFOAM/primitives/label.cxx
+sources = \
+	@abs_top_builddir@/src/OpenFOAM/primitives/bool.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/int.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/label.cxx
 
 
 #--------------------------------------------------------------------------------------
