@@ -142,6 +142,35 @@ sources = \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_IOobject_word_string_hash.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/regIOobject.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/objectRegistry.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOdictionary.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/db/dictionary/entry.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/ITstream.cxx \
+	@abs_top_builddir@/src/OpenFOAM/dimensionSet.cxx \
+	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedType.cxx \
+	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/dictionary/dictionary.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Sstreams/ISstream.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Fstreams/OFstream.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Fstreams/IFstream.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/StringStreams/IStringStream.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/StringStreams/OStringStream.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Pstreams/Pstream.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/error/messageStream.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/db/db/Time/Time.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/db/Time/clock.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/db/Time/cpuTime.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/db/Time/TimePaths.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/db/Time/TimeState.cxx \
 
 
 #--------------------------------------------------------------------------------------
@@ -165,14 +194,21 @@ tests = $(patsubst %.py,%.pyc,$(wildcard test_*.py))
 all: $(libs)
 	@echo output : $(patsubst @abs_top_builddir@/%,%,$(pyths))
 
-test : $(apps)
+test : $(apps) $(pycs)
 
 %.exe : %.o
 	gcc $< $(__APP_FLAGS__) -o $@
-	(cd $(dir $@) && python $(notdir $(patsubst %.exe,%.py,$@)))
 
-clean :
-	rm -fr $(libs) $(stubs) $(objs) $(pyths) $(apps) $(deps) $(heads) $(pycs)
+%.pyc : %.o
+	engine=$(notdir $(patsubst %.o,%,$<)) && \
+	py_compile_string="import py_compile; py_compile.compile( \"$${engine}.py\" )" && \
+	(cd $(dir $<) && python -c "$${py_compile_string}" || rm -f $${engine}.pyc)
+
+clean_pyc :
+	rm -fr $(pycs)
+
+clean : clean_test
+	rm -fr $(libs) $(stubs) $(objs) $(pyths) $(apps) $(deps) $(heads)
 
 
 #--------------------------------------------------------------------------------------
