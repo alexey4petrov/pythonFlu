@@ -40,6 +40,9 @@ include $(RULES)/general
 include $(RULES)/$(WM_LINK_LANGUAGE)
 
 c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-Wold-style-cast %%g")
+c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-Wall %%g")
+c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-Wextra %%g")
+c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-O3 %-ggdb3 -DFULLDEBUG %g")
 
 
 #------------------------------------------------------------------------------
