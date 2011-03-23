@@ -29,33 +29,39 @@ include $(pyfoam_root_dir)/foam.version.makefile
 #--------------------------------------------------------------------------------------
 sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/bool.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/int.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/label.cxx
+	@abs_top_builddir@/src/OpenFOAM/primitives/int_.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/label.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/scalar.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/direction.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/vector.cxx
 
 
 #--------------------------------------------------------------------------------------
-libso = @abs_top_builddir@/Foam/OpenFOAM/_OpenFOAM.so
+dirs = $(dir $(sources))
+names = $(patsubst %.cxx,_%.so,$(notdir $(sources)))
+libs = $(join $(dirs),$(names))
 
-stubs = $(patsubst %.cxx, %.cpp, $(sources))
-deps = $(patsubst %.cxx, %.d, $(sources))
-heads = $(patsubst %.cxx, %.h, $(sources))
-objs = $(patsubst %.cxx, %.o, $(sources))
-pyths = $(patsubst %.cxx, %.py, $(sources))
-apps = $(patsubst %.cxx, %.exe, $(sources))
-pycs = $(patsubst %.cxx, %.pyc, $(sources))
-tests = $(patsubst %.py, %.pyc, $(wildcard test_*.py))
+stubs = $(patsubst %.cxx,%.cpp,$(sources))
+deps = $(patsubst %.cxx,%.d,$(sources))
+heads = $(patsubst %.cxx,%.h,$(sources))
+objs = $(patsubst %.cxx,%.o,$(sources))
+pyths = $(patsubst %.cxx,%.py,$(sources))
+apps = $(patsubst %.cxx,%.exe,$(sources))
+pycs = $(patsubst %.cxx,%.pyc,$(sources))
+tests = $(patsubst %.py,%.pyc,$(wildcard test_*.py))
 
 .INTERMEDIATE : $(stubs) $(objs)
 
 
 #--------------------------------------------------------------------------------------
-all: $(libso)
-	@echo $(patsubst @abs_top_builddir@/%, %, $(libso)) : $(patsubst @abs_top_builddir@/%, %, $(sources))
+all: $(libs) $(apps)
+	@echo $(patsubst @abs_top_builddir@/%,%,$(libso)) : $(patsubst @abs_top_builddir@/%,%,$(sources))
 
-$(libso) : $(patsubst %.cxx, %.o, $(sources))
-	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@
+%.exe : %.o
+	gcc $< $(__APP_FLAGS__) -o $@
+	(cd $(dir $@) && python $(notdir $(patsubst %.exe,%.py,$@)))
 
-clean:
+clean :
 	rm -fr $(libso) $(stubs) $(objs) $(pyths) $(apps) $(deps) $(heads) $(pycs)
 
 

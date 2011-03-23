@@ -25,14 +25,14 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.int";
+%module "Foam.src.OpenFOAM.primitives.int_";
 %{
-  #include "src/OpenFOAM/primitives/int.hpp"
+  #include "src/OpenFOAM/primitives/int_.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "int.H"
+%include <int.H>
 
  
 //---------------------------------------------------------------------------

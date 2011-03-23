@@ -34,9 +34,9 @@
 //---------------------------------------------------------------------------
 %import "usr/include/c++/climits.cxx"
 
-%import "src/OpenFOAM/primitives/int.cxx"
+%import "src/OpenFOAM/primitives/int_.cxx"
 
-%include "label.H"
+%include <label.H>
 
 typedef int label;
 

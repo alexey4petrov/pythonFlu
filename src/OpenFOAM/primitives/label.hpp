@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/int.hpp"
+#include "src/OpenFOAM/primitives/int_.hpp"
 
 #include <label.H>
 
