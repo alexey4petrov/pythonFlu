@@ -32,11 +32,13 @@
 
 
 //---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 %import "src/OpenFOAM/primitives/scalar.cxx"
 
 %import "src/OpenFOAM/primitives/direction.cxx"
 
-%include "VectorSpace.H"
+%include <VectorSpace.H>
 
 %template( VectorSpace_Vector ) Foam::VectorSpace< Foam::Vector< Foam::scalar >, Foam::scalar, 3 >;
 
@@ -62,11 +64,11 @@
 
 
 //---------------------------------------------------------------------------
-%include "Vector.H"
+%include <Vector.H>
 
 
 //---------------------------------------------------------------------------
-%include "vector.H"
+%include <vector.H>
 
 %template( vector ) Foam::Vector< Foam::scalar >;
 
