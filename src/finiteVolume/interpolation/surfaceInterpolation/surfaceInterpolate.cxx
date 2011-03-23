@@ -25,57 +25,43 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolate";
+%{
+  #include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
+%import "src/finiteVolume/fields/volFields/volFields.cxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
 
-
-
-%{
-    #include "surfaceInterpolate.H"
-%}
-
-%include "surfaceInterpolate.H"
+%include <surfaceInterpolate.H>
 
 
 //---------------------------------------------------------------------------
 %define FVC_INTERPOLATE_TEMPLATE_FUNC( Type )
 %{
-    Foam::tmp< Foam::GeometricField< Type, Foam::fvsPatchField, Foam::surfaceMesh > > interpolate
-    (
-        const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf
-    )
-    {
-        return Foam::fvc::interpolate( vf );
-    }
+  Foam::tmp< Foam::GeometricField< Type, Foam::fvsPatchField, Foam::surfaceMesh > > 
+  interpolate( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvc::interpolate( vf );
+  }
 
-    Foam::tmp< GeometricField< Type, Foam::fvsPatchField, Foam::surfaceMesh> > interpolate
-    (
-        const Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& tvf,
-        const Foam::word& name
-    )
-    {
-        return Foam::fvc::interpolate( tvf, name );
-    }
+  Foam::tmp< GeometricField< Type, Foam::fvsPatchField, Foam::surfaceMesh> > 
+  interpolate( const Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& tvf,
+	       const Foam::word& name )
+  {
+    return Foam::fvc::interpolate( tvf, name );
+  }
 
-    Foam::tmp< GeometricField< Type, Foam::fvsPatchField, Foam::surfaceMesh> > interpolate
-    (
-        const Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& tvf,
-        const Foam::surfaceScalarField& faceFlux,
-        const Foam::word& name
-    )
-    {
-        return Foam::fvc::interpolate( tvf, faceFlux, name );
-    }
-    
+  Foam::tmp< GeometricField< Type, Foam::fvsPatchField, Foam::surfaceMesh> > 
+  interpolate( const Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& tvf,
+	       const Foam::surfaceScalarField& faceFlux,
+	       const Foam::word& name )
+  {
+    return Foam::fvc::interpolate( tvf, faceFlux, name );
+  }
 %}
 %enddef
 
