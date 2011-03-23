@@ -136,7 +136,12 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx \
 	\
+	@abs_top_builddir@/src/OpenFOAM/db/IOobject.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOobjectList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/Switch.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.cxx \
 
 
 #--------------------------------------------------------------------------------------
