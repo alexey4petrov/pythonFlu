@@ -166,11 +166,11 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Pstreams/Pstream.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/error/messageStream.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/db/db/Time/Time.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/db/Time/clock.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/db/Time/cpuTime.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/db/Time/TimePaths.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/db/Time/TimeState.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/Time/clock.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/Time/cpuTime.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/Time/TimePaths.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/Time/TimeState.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/Time/Time.cxx \
 
 
 #--------------------------------------------------------------------------------------
@@ -196,18 +196,12 @@ all: $(libs)
 
 test : $(apps) $(pycs)
 
-%.exe : %.o
-	gcc $< $(__APP_FLAGS__) -o $@
+_%.so : %.o
+	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@; \
+	gcc $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<); \
+	cd $(dir $<); python $(patsubst %.o,%.py,$<) || (rm $@ && exit 1)
 
-%.pyc : %.o
-	engine=$(notdir $(patsubst %.o,%,$<)) && \
-	py_compile_string="import py_compile; py_compile.compile( \"$${engine}.py\" )" && \
-	(cd $(dir $<) && python -c "$${py_compile_string}" || rm -f $${engine}.pyc)
-
-clean_pyc :
-	rm -fr $(pycs)
-
-clean : clean_test
+clean :
 	rm -fr $(libs) $(stubs) $(objs) $(pyths) $(apps) $(deps) $(heads)
 
 
