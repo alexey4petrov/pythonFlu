@@ -31,6 +31,7 @@ from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_vector_fvsPatchFiel
 from Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.linear import *
 
 from Foam.src.finiteVolume.cfdTools.general.findRefCell import *
+from Foam.src.finiteVolume.cfdTools.general.adjustPhi import *
 
 from Foam.src.finiteVolume.fvMatrices.fvMatrices import *
 

@@ -20,16 +20,18 @@
 ##
 
 #---------------------------------------------------------------------------
-from src.finiteVolume.finiteVolume.fvc.fvcDdt import *
-from src.finiteVolume.finiteVolume.fvc.fvcD_Dt import *
-from src.finiteVolume.finiteVolume.fvc.fvcGrad import *
-from src.finiteVolume.finiteVolume.fvc.fvcDiv import *
-from src.finiteVolume.finiteVolume.fvc.fvcFlux import *
-from src.finiteVolume.finiteVolume.fvc.fvcVolumeIntegrate import *
-from src.finiteVolume.finiteVolume.fvc.fvcSnGrad import *
-from src.finiteVolume.finiteVolume.fvc.fvcReconstruct import *
-from src.finiteVolume.finiteVolume.fvc.fvcMeshPhi import *
-from src.finiteVolume.finiteVolume.fvc.fvcLaplacian import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcDdt import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcD_Dt import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcGrad import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcDiv import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcFlux import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcVolumeIntegrate import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcSnGrad import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcReconstruct import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcMeshPhi import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcLaplacian import *
+
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolate import *
 
 
 # #---------------------------------------------------------------------------
