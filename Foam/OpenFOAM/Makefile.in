@@ -169,8 +169,14 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/dimensionSet.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/ITstream.cxx \
+	\
 	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedType.cxx \
 	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx \
+	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx \
+	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx \
+	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedTensor.cxx \
+	\
 	@abs_top_builddir@/src/OpenFOAM/db/dictionary/dictionary.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/IOdictionary.cxx \
 	\
@@ -197,10 +203,19 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/global/argList.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_UniformDimensionedVectorField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_UniformDimensionedVectorField.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx \
+	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx \
+	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx \
+	@abs_top_builddir@/src/OpenFOAM/matrices/solution.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/meshes/lduMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyMesh.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Pair/Pair.cxx \
@@ -209,8 +224,7 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/uLabel.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/uint.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/ulong.cxx
-
+	@abs_top_builddir@/src/OpenFOAM/primitives/ulong.cxx \
 
 
 #--------------------------------------------------------------------------------------

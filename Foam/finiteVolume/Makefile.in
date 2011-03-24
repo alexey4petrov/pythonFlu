@@ -42,42 +42,53 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx \
-	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/lduMesh.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyMesh.cxx \
 	@abs_top_builddir@/src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.cxx \
 	@abs_top_builddir@/src/finiteVolume/fvMesh/fvPatches/fvPatchList.cxx \
 	@abs_top_builddir@/src/finiteVolume/fvMesh/fvBoundaryMesh.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvSchemes.cxx \
-	@abs_top_builddir@/src/OpenFOAM/matrices/solution.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvSolution.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx \
 	@abs_top_builddir@/ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.cxx \
+	\
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx \
+	\
 	@abs_top_builddir@/src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/fvsPatchFields/fvsPatchField_tensor.cxx \
 	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_surfaceMesh.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_scalarField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_vectorField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_tensorField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_scalarField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_vectorField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_tensorField.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_surfaceMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_surfaceScalarField.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_surfaceMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_vectorField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_surfaceVectorField.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/surfaceFields/surfaceVectorField.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_tensor_surfaceMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvsPatchField_surfaceMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_surfaceTensorField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_surfaceTensorField.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/surfaceFields/surfaceTensorField.cxx \
+	\
+	@abs_top_builddir@/src/finiteVolume/fields/surfaceFields/surfaceFields.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.cxx \
@@ -86,7 +97,6 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_scalar.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_scalar.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_scalarField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx \
@@ -99,11 +109,10 @@ sources = \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_vectorField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_fvPatchField_vector.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_vector.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_vector.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.cxx \
@@ -112,8 +121,6 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/fields/volFields/volVectorField.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_tensor_volMesh.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_tensorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_tensorField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_tensor.cxx \
@@ -121,6 +128,17 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_volTensorField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_volTensorField.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/volFields/volTensorField.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_sphericalTensor_volMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_sphericalTensorField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/fvPatchField_sphericalTensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_sphericalTensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField_SphericalTensor_fvPatchField_volMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_volSphericalTensorField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_volSphericalTensorField.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/volFields/volSphericalTensorField.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_symmTensor_volMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.cxx \
@@ -134,7 +152,19 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/fields/volFields/volSymmTensorField.cxx \
 	\
 	@abs_top_builddir@/src/finiteVolume/fields/volFields/volFields.cxx \
+	\
 	@abs_top_builddir@/src/finiteVolume/fvMesh/fvMesh.cxx \
+	\
+	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvMatrix.cxx \
+	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvScalarMatrix.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx \
+	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvVectorMatrix.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx \
+	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvMatrices.cxx \
+	\
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/schemes/linear.cxx \
+	@abs_top_builddir@/src/finiteVolume/cfdTools/general/findRefCell.cxx \
+	@abs_top_builddir@/src/finiteVolume/cfdTools/general/adjustPhi.cxx \
 
 
 #--------------------------------------------------------------------------------------
