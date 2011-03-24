@@ -45,8 +45,6 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx \
 	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/lduMesh.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_surfaceMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyMesh.cxx \
@@ -65,6 +63,8 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.cxx \
 	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_surfaceMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_scalarField.cxx \
@@ -76,10 +76,8 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_vectorField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.cxx \
-	\
-	@abs_top_builddir@/src/OpenFOAM/db/Time/subCycleTime.cxx \
-	@abs_top_builddir@/src/OpenFOAM/algorithms/subCycle/subCycle.cxx \
-	@abs_top_builddir@/src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_surfaceVectorField.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/surfaceFields/surfaceVectorField.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.cxx \
@@ -94,6 +92,12 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_volScalarField.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/volFields/volScalarField.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/db/Time/subCycleTime.cxx \
+	@abs_top_builddir@/src/OpenFOAM/algorithms/subCycle/subCycle.cxx \
+	@abs_top_builddir@/src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.cxx \
+	\
+	@abs_top_builddir@/src/finiteVolume/fields/volFields/volVectorField.cxx \
 
 
 #--------------------------------------------------------------------------------------
