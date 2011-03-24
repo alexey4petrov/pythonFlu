@@ -24,6 +24,9 @@
 from Foam.src.turbulenceModels.incompressible.turbulenceModel import *
 from Foam.src.turbulenceModels.incompressible.RAS.RASModel import *
 
+from Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_turbulenceModel import *
+from Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_RASModel import *
+
 
 #---------------------------------------------------------------------------
 from Foam import FOAM_VERSION, FOAM_BRANCH_VERSION, FOAM_REF_VERSION
