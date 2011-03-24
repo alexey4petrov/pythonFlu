@@ -29,8 +29,6 @@
 
 #include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hpp"
 
-#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.hpp"
-
 #include <fvsPatchField.H>
 
 #include <surfaceMesh.H>

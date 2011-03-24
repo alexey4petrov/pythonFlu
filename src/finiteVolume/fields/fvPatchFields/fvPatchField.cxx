@@ -34,8 +34,6 @@
 //---------------------------------------------------------------------------
 %import "src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx"
 
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
-
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
 %feature( "director" ) fvPatchField;

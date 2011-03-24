@@ -38,8 +38,6 @@
 
 %import "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
 
-// %import "src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.cxx"
-
 
 //---------------------------------------------------------------------------
 #endif

@@ -27,8 +27,6 @@
 //---------------------------------------------------------------------------
 #include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hpp"
 
-#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.hpp"
-
 #include "src/OpenFOAM/fields/tmp/tmp.hpp"
 
 #include <fvPatchField.H>

@@ -36,8 +36,6 @@
 
 %import "src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx"
 
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
-
 %include <fvsPatchField.H>
 
 

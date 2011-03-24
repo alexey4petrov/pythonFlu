@@ -31,8 +31,6 @@
 
 #include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hpp"
 
-#include "src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.hpp"
-
 
 //---------------------------------------------------------------------------
 #endif
