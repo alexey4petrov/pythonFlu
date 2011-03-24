@@ -214,15 +214,7 @@ sources = \
 
 
 #--------------------------------------------------------------------------------------
-include $(pyfoam_root_dir)/include.base.makefile
-
-
-#--------------------------------------------------------------------------------------
-all : $(libs)
-	@echo output : $(notdir $(pyths))
-
-clean :
-	rm -fr $(libs) $(stubs) $(objs) $(pyths) $(deps) $(heads) $(apps) $(pycs) $(tmps)
+include $(pyfoam_root_dir)/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------

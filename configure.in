@@ -101,6 +101,7 @@ AC_OUTPUT( [ bashrc \
 	     Makefile \
 	     include.makefile \
 	     include.base.makefile \
+	     include.foam.makefile \
 	     foam.version.makefile \
 	     Foam/__init__.py \
 	     Foam/pyfoam.cxx \
