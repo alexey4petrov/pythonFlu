@@ -46,7 +46,7 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/lduMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_fvMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_surfaceMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyMesh.cxx \
@@ -67,6 +67,9 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_scalarField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_surfaceScalarField.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx \
 	\
 
