@@ -154,6 +154,9 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/fields/volFields/volFields.cxx \
 	\
 	@abs_top_builddir@/src/finiteVolume/fvMesh/fvMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/GeoMesh_fvMesh.cxx \
+	@abs_top_builddir@/src/finiteVolume/volMesh.cxx \
+	@abs_top_builddir@/src/finiteVolume/surfaceMesh.cxx \
 	\
 	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvMatrix.cxx \
 	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvScalarMatrix.cxx \
@@ -165,6 +168,9 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/schemes/linear.cxx \
 	@abs_top_builddir@/src/finiteVolume/cfdTools/general/findRefCell.cxx \
 	@abs_top_builddir@/src/finiteVolume/cfdTools/general/adjustPhi.cxx \
+	\
+	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_scalar.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.cxx \
 
 
 #--------------------------------------------------------------------------------------

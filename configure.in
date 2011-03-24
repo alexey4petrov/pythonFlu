@@ -108,6 +108,7 @@ AC_OUTPUT( [ bashrc \
 	     Foam/Makefile \
 	     Foam/OpenFOAM/Makefile \
 	     Foam/finiteVolume/Makefile \
+	     Foam/fvc/Makefile \
 	     Foam/applications/utilities/postProcessing/graphics/Makefile \
 	     Foam/applications/utilities/mesh/conversion/Makefile \
 	     EFoam/pbmr/diffusion/Makefile \
