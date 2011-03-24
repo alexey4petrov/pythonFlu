@@ -214,39 +214,15 @@ sources = \
 
 
 #--------------------------------------------------------------------------------------
-dirs = $(dir $(sources))
-names = $(patsubst %.cxx,_%.so,$(notdir $(sources)))
-libs = $(join $(dirs),$(names))
-
-stubs = $(patsubst %.cxx,%.cpp,$(sources))
-deps = $(patsubst %.cxx,%.d,$(sources))
-heads = $(patsubst %.cxx,%.h,$(sources))
-objs = $(patsubst %.cxx,%.o,$(sources))
-pyths = $(patsubst %.cxx,%.py,$(sources))
-apps = $(patsubst %.cxx,%.exe,$(sources))
-pycs = $(patsubst %.cxx,%.pyc,$(sources))
-tests = $(patsubst %.py,%.pyc,$(wildcard test_*.py))
-
-.INTERMEDIATE : $(stubs) $(objs)
+include $(pyfoam_root_dir)/include.base.makefile
 
 
 #--------------------------------------------------------------------------------------
-all: $(libs)
+all : $(libs)
 	@echo output : $(notdir $(pyths))
 
-test : $(apps) $(pycs)
-
-_%.so : %.o
-	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@; \
-	gcc $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<); \
-	cd $(dir $<); python $(patsubst %.o,%.py,$<) || (rm $@ && exit 1)
-
 clean :
-	rm -fr $(libs) $(stubs) $(objs) $(pyths) $(apps) $(deps) $(heads)
-
-
-#--------------------------------------------------------------------------------------
-include $(pyfoam_root_dir)/include.base.makefile
+	rm -fr $(libs) $(stubs) $(objs) $(pyths) $(deps) $(heads) $(apps) $(pycs) $(tmps)
 
 
 #--------------------------------------------------------------------------------------

@@ -131,6 +131,24 @@ endif
 
 
 #--------------------------------------------------------------------------------------
+dirs = $(dir $(sources))
+names = $(patsubst %.cxx,_%.so,$(notdir $(sources)))
+libs = $(join $(dirs),$(names))
+
+stubs = $(patsubst %.cxx,%.cpp,$(sources))
+deps = $(patsubst %.cxx,%.d,$(sources))
+heads = $(patsubst %.cxx,%.h,$(sources))
+objs = $(patsubst %.cxx,%.o,$(sources))
+pyths = $(patsubst %.cxx,%.py,$(sources))
+apps = $(patsubst %.cxx,%.exe,$(sources))
+pycs = $(patsubst %.cxx,%.pyc,$(sources))
+tmps = $(addsuffix *~,$(dirs))
+tests = $(patsubst %.py,%.pyc,$(wildcard test_*.py))
+
+.INTERMEDIATE : $(stubs) $(objs)
+
+
+#--------------------------------------------------------------------------------------
 %.cpp : %.cxx
 	@SWIG@ $(__SWIG_FLAGS__) -module $(notdir $(patsubst %.cxx,%,$<)) -o $@ $<
 
@@ -140,20 +158,14 @@ __CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION_
 	gcc $(__CXXFLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cpp,%.h,$<)>" -c $< -o $@
 
 
-PACKAGE_DEPENDENCIES = $(wildcard *.d)
-ifneq "$(PACKAGE_DEPENDENCIES)" "" # To avoid "include's" warning in case of empty folder
-	include $(PACKAGE_DEPENDENCIES)
-endif
-
-
-_%.so : %.o
-	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@
+-include $(PACKAGE_DEPENDENCIES) dummy
 
 __APP_FLAGS__ = $(__LDFLAGS__)
 
-%.pyc : %.py
-	@python -c "import py_compile; py_compile.compile('$<')"
-	@python ./$@
+_%.so : %.o
+	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@; \
+	gcc $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<); \
+	cd $(dir $<); python $(patsubst %.o,%.py,$<) || (rm $@ && exit 1)
 
 
 #--------------------------------------------------------------------------------------
