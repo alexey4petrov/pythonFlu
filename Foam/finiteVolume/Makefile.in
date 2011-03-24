@@ -169,7 +169,10 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/cfdTools/general/findRefCell.cxx \
 	@abs_top_builddir@/src/finiteVolume/cfdTools/general/adjustPhi.cxx \
 	\
+	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_scalar.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_vector.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_tensor.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.cxx \
 
 
