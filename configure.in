@@ -104,12 +104,13 @@ AC_OUTPUT( [ bashrc \
 	     include.foam.makefile \
 	     foam.version.makefile \
 	     Foam/__init__.py \
-	     Foam/pyfoam.cxx \
 	     Foam/Makefile \
 	     Foam/OpenFOAM/Makefile \
 	     Foam/finiteVolume/Makefile \
 	     Foam/fvc/Makefile \
 	     Foam/fvm/Makefile \
+	     Foam/incompressible/Makefile \
+	     Foam/transportModels/Makefile \
 	     Foam/applications/utilities/postProcessing/graphics/Makefile \
 	     Foam/applications/utilities/mesh/conversion/Makefile \
 	     EFoam/pbmr/diffusion/Makefile \
