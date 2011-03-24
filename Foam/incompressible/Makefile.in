@@ -46,7 +46,7 @@ endif
 __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTransportModels
-	
+
 ifeq "$(shell if [ ${__FOAM_VERSION__} -le 010401 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTurbulenceModels
 endif
@@ -63,8 +63,17 @@ ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010600 ]; then echo 'true'; else echo
 	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleRASModels		
 endif
 
+
 #--------------------------------------------------------------------------------------
-include $(pyfoam_root_dir)/include.makefile
+sources = \
+	@abs_top_builddir@/src/turbulenceModels/incompressible/turbulenceModel.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_incompressible_turbulenceModel.cxx \
+	@abs_top_builddir@/src/turbulenceModels/incompressible/RAS/RASModel.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_incompressible_RASModel.cxx \
+
+
+#--------------------------------------------------------------------------------------
+include $(pyfoam_root_dir)/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------

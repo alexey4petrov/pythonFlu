@@ -19,6 +19,8 @@
 ## Author : Alexey PETROV
 ##
 
+
+#--------------------------------------------------------------------------
 from Foam.src.OpenFOAM.global_.argList import *
 
 from Foam.src.OpenFOAM.db.error.messageStream import *
@@ -34,51 +36,52 @@ from Foam.src.OpenFOAM.primitives.strings.word import *
 from Foam.src.OpenFOAM.db.Switch import *
 
 
-# #---------------------------------------------------------------------------
-# from Foam import get_module_initializtion_command
-# exec get_module_initializtion_command( "OpenFOAM_" ) 
-# 
-# 
-# #---------------------------------------------------------------------------
-# scalar = float
-# 
-# string = str
-# 
-# 
-# #---------------------------------------------------------------------------
-# boolList = List_bool
-# 
-# labelList = List_label
-# 
-# scalarList = List_scalar
-# 
-# scalarList = List_string
-# 
-# scalarList = List_scalar
-# 
-# tensorList = List_tensor
-# 
-# tokenList = List_token
-# 
-# vectorList = List_vector
-# 
-# wordList = List_word
-# 
-# 
-# #---------------------------------------------------------------------------
-# wordList = List_word
-# 
-# cellList = List_cell
-# 
-# faceList = List_face
-# 
-# pPolyPatchList = List_pPolyPatch
-# 
-# wordHashTable = HashTable_word_word_string_hash
-# 
-# 
-# #---------------------------------------------------------------------------
-# I = sphericalTensor.I
-#
-#
-# #---------------------------------------------------------------------------
+#---------------------------------------------------------------------------
+scalar = float
+
+string = str
+
+
+#---------------------------------------------------------------------------
+from Foam.src.OpenFOAM.containers.Lists.List.List_bool import *
+boolList = List_bool
+
+from Foam.src.OpenFOAM.containers.Lists.List.List_label import *
+labelList = List_label
+
+from Foam.src.OpenFOAM.containers.Lists.List.List_scalar import *
+scalarList = List_scalar
+
+from Foam.src.OpenFOAM.containers.Lists.List.List_tensor import *
+tensorList = List_tensor
+
+from Foam.src.OpenFOAM.containers.Lists.List.List_token import *
+tokenList = List_token
+
+from Foam.src.OpenFOAM.containers.Lists.List.List_vector import *
+vectorList = List_vector
+
+from Foam.src.OpenFOAM.containers.Lists.List.List_word import *
+wordList = List_word
+
+
+#---------------------------------------------------------------------------
+from Foam.src.OpenFOAM.containers.Lists.List.List_cell import *
+cellList = List_cell
+
+from Foam.src.OpenFOAM.containers.Lists.List.List_face import *
+faceList = List_face
+
+from Foam.src.OpenFOAM.containers.Lists.List.List_polyPatchPtr import *
+polyPatchListPtr = List_polyPatchPtr
+
+from Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable_word_word_string_hash import *
+wordHashTable = HashTable_word_word_string_hash
+
+
+#---------------------------------------------------------------------------
+from Foam.src.OpenFOAM.primitives.s_phericalTensor import *
+I = sphericalTensor.I
+
+
+#---------------------------------------------------------------------------

@@ -47,7 +47,14 @@ endif
 
 
 #--------------------------------------------------------------------------------------
-include $(pyfoam_root_dir)/include.makefile
+sources = \
+	@abs_top_builddir@/src/transportModels/incompressible/transportModel.cxx \
+	@abs_top_builddir@/src/transportModels/incompressible/viscosityModels/viscosityModel.cxx \
+	@abs_top_builddir@/src/transportModels/incompressible/singlePhaseTransportModel.cxx \
+
+
+#--------------------------------------------------------------------------------------
+include $(pyfoam_root_dir)/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------
