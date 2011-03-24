@@ -34,11 +34,6 @@ from Foam.src.finiteVolume.finiteVolume.fvc.fvcLaplacian import *
 from Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolate import *
 
 
-# #---------------------------------------------------------------------------
-# from Foam import get_module_initializtion_command
-# exec get_module_initializtion_command( "fvc_" ) 
-
-
 #---------------------------------------------------------------------------
 ddt = fvc_ddt
 

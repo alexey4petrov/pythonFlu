@@ -21,18 +21,32 @@
 
 
 #--------------------------------------------------------------------------------------
+pyfoam_root_dir:=../..
+
+include $(pyfoam_root_dir)/foam.version.makefile
+
+
+#--------------------------------------------------------------------------------------
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude
 
 
-#-----------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume
 
 
 #--------------------------------------------------------------------------------------
-pyfoam_root_dir:=../..
+sources = \
+	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvm/fvmDdt.cxx \
+	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvm/fvmD2dt2.cxx \
+	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvm/fvmDiv.cxx \
+	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvm/fvmSup.cxx \
+	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvm/fvmLaplacian.cxx \
 
-include $(pyfoam_root_dir)/include.makefile
+
+#--------------------------------------------------------------------------------------
+include $(pyfoam_root_dir)/include.foam.makefile
 
 
+#--------------------------------------------------------------------------------------

@@ -29,11 +29,6 @@ from src.finiteVolume.finiteVolume.fvm.fvmLaplacian import *
 
 
 #---------------------------------------------------------------------------
-# from Foam import get_module_initializtion_command
-# exec get_module_initializtion_command( "fvm_" ) 
-
-
-#---------------------------------------------------------------------------
 ddt = fvm_ddt
 
 d2dt2 = fvm_d2dt2

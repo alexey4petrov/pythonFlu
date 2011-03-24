@@ -36,11 +36,6 @@ from Foam.src.finiteVolume.cfdTools.general.adjustPhi import *
 from Foam.src.finiteVolume.fvMatrices.fvMatrices import *
 
 
-# #---------------------------------------------------------------------------
-# from Foam import get_module_initializtion_command
-# exec get_module_initializtion_command( "finiteVolume_" ) 
-# 
-# 
 #---------------------------------------------------------------------------
 volScalarField = GeometricField_scalar_fvPatchField_volMesh
 
@@ -56,11 +51,11 @@ surfaceVectorField = GeometricField_vector_fvsPatchField_surfaceMesh
 
 
 #---------------------------------------------------------------------------
-# fvPatchScalarField = fvPatchField_scalar
-# 
-# fvPatchVectorField = fvPatchField_vector
-# 
-# fvPatchTensorField = fvPatchField_tensor
+fvPatchScalarField = fvPatchField_scalar
+
+fvPatchVectorField = fvPatchField_vector
+
+fvPatchTensorField = fvPatchField_tensor
 
 
 # #----------------------------------------------------------------------------
@@ -71,12 +66,12 @@ surfaceVectorField = GeometricField_vector_fvsPatchField_surfaceMesh
 # calculatedFvPatchScalarField = calculatedFvPatchField_scalar
 # 
 # 
-# #---------------------------------------------------------------------------
-# zeroGradientFvPatchScalarField = zeroGradientFvPatchField_scalar
-# 
-# zeroGradientFvPatchVectorField = zeroGradientFvPatchField_vector
-# 
-# zeroGradientFvPatchTensorField = zeroGradientFvPatchField_tensor
+#---------------------------------------------------------------------------
+zeroGradientFvPatchScalarField = zeroGradientFvPatchField_scalar
+
+zeroGradientFvPatchVectorField = zeroGradientFvPatchField_vector
+
+zeroGradientFvPatchTensorField = zeroGradientFvPatchField_tensor
 
 
 #----------------------------------------------------------------------------
