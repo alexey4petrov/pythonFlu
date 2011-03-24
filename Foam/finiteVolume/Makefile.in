@@ -42,9 +42,33 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/OpenFOAM/primitives/bool.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/int.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/label.cxx
+	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx \
+	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/lduMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_fvMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyMesh.cxx \
+	@abs_top_builddir@/src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.cxx \
+	@abs_top_builddir@/src/finiteVolume/fvMesh/fvPatches/fvPatchList.cxx \
+	@abs_top_builddir@/src/finiteVolume/fvMesh/fvBoundaryMesh.cxx \
+	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvSchemes.cxx \
+	@abs_top_builddir@/src/OpenFOAM/matrices/solution.cxx \
+	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvSolution.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx \
+	@abs_top_builddir@/ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.cxx \
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx \
+	\
 
 
 #--------------------------------------------------------------------------------------
