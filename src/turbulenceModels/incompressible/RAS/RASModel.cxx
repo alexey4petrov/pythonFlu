@@ -60,8 +60,6 @@
 
 %import "src/finiteVolume/cfdTools/general/bound.cxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_incompressible_RASModel.cxx"
-
 
 //----------------------------------------------------------------------------
 %ignore Foam::incompressible::RASModel::k;

@@ -57,8 +57,6 @@
 
 %import "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.cxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_incompressible_turbulenceModel.cxx"
-
 
 //------------------------------------------------------------------------
 //There is no namespace "incompressible" in OpenFOAM-1.4.1-dev
