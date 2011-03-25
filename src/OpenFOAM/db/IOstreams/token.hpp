@@ -26,7 +26,9 @@
 
 //---------------------------------------------------------------------------
 #include "src/OpenFOAM/primitives/strings/word.hpp"
+
 #include "src/OpenFOAM/primitives/strings/string.hpp"
+
 #include "src/OpenFOAM/primitives/label.hpp"
 
 #include <token.H>

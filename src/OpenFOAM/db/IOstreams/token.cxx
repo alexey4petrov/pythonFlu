@@ -35,7 +35,9 @@
 %include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
 %import "src/OpenFOAM/primitives/strings/word.cxx"
+
 %import "src/OpenFOAM/primitives/strings/string.cxx"
+
 %import "src/OpenFOAM/primitives/label.cxx"
 
 %ignore Foam::token::transferCompoundToken();
@@ -44,11 +46,7 @@
 %ignore *::operator >>;
 %ignore *::operator <<;
 
-%include "token.H"
-
-%{
-    #include "token.H"
-%}
+%include <token.H>
 
 
 //---------------------------------------------------------------------------

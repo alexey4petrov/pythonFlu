@@ -43,7 +43,7 @@
 
 %rename( ext_print ) Foam::ITstream::print;
 
-%include "ITstream.H"
+%include <ITstream.H>
 
 
 //---------------------------------------------------------------------------
