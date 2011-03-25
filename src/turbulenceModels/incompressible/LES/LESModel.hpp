@@ -20,51 +20,48 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.turbulenceModels.incompressible.LES.LESModel";
-%{
-  #include "src/turbulenceModels/incompressible/LES/LESModel.hpp"
-%}
-
-
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
+#include "src/common.hpp"
 
 #if FOAM_VERSION( <, 010500 )
-#define incompressibleLESModel_cxx
+#define incompressibleLESModel_hpp
 #endif
 
 
 //-----------------------------------------------------------------------------
-#ifndef incompressibleLESModel_cxx
-#define incompressibleLESModel_cxx
+#ifndef incompressibleLESModel_hpp
+#define incompressibleLESModel_hpp
 
 
 //----------------------------------------------------------------------------
-%import "src/turbulenceModels/incompressible/turbulenceModel.cxx"
+#include "src/turbulenceModels/incompressible/turbulenceModel.hpp"
 
 // #include "LESdelta.H"
 // #include "fvm.H"
 // #include "fvc.H"
 
-%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
+#include "src/finiteVolume/fvMatrices/fvMatrices.hpp"
 
-%import "src/transportModels/incompressible/transportModel.cxx"
+#include "src/transportModels/incompressible/transportModel.hpp"
 
 // #include "wallFvPatch.H"
 
-%import "src/finiteVolume/cfdTools/general/bound.cxx"
+#include "src/finiteVolume/cfdTools/general/bound.hpp"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
 // #include "runTimeSelectionTables.H"
 
-%import "src/OpenFOAM/db/IOdictionary.cxx"
+#include "src/OpenFOAM/db/IOdictionary.hpp"
 
 
 //----------------------------------------------------------------------------
-%rename( incompressible_LESModel ) Foam::incompressible::LESModel;
+#if FOAM_VERSION( ==, 010500 )
+  #include <LES/incompressible/LESModel/LESModel.H>
+#endif
 
-%include <incompressible/LESModel.H>
+#if FOAM_VERSION( >=, 010600 )
+  #include <incompressible/LES/LESModel/LESModel.H>
+#endif
 
 
 //---------------------------------------------------------------------------
