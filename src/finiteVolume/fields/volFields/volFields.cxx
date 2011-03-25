@@ -32,8 +32,6 @@
 
 
 //---------------------------------------------------------------------------
-// %import "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
-
 %import "src/finiteVolume/fields/volFields/volScalarField.cxx"
 
 %import "src/finiteVolume/fields/volFields/volVectorField.cxx"
@@ -43,6 +41,8 @@
 %import "src/finiteVolume/fields/volFields/volSymmTensorField.cxx"
 
 %import "src/finiteVolume/fields/volFields/volSphericalTensorField.cxx"
+
+%import "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
 
 
 //---------------------------------------------------------------------------
