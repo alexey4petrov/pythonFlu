@@ -20,25 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef OStringStream_cxx
-#define OStringStream_cxx
+#ifndef OStringStream_hpp
+#define OStringStream_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.IOstreams.StringStreams.OStringStream";
-%{
-  #include "src/OpenFOAM/db/IOstreams/StringStreams/OStringStream.hpp"
-%}
+#include "src/common.hpp"
 
+#include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
-
-%import "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx"
-
-%rename( ext_print ) Foam::OStringStream::print;
-
-%include <OStringStream.H>
+#include <OStringStream.H>
 
 
 //---------------------------------------------------------------------------

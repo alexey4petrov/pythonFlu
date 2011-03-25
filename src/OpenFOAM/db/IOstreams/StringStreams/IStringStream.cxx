@@ -25,17 +25,20 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
-
-%include "src/OpenFOAM/db/IOstreams/Sstreams/ISstream.cxx"
-
+%module "Foam.src.OpenFOAM.db.IOstreams.StringStreams.IStringStream";
 %{
-    #include "IStringStream.H"
+  #include "src/OpenFOAM/db/IOstreams/StringStreams/IStringStream.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
+%import "src/OpenFOAM/db/IOstreams/Sstreams/ISstream.cxx"
 
 %rename( ext_print ) Foam::IStringStream::print;
 
-%include "IStringStream.H"
+%include <IStringStream.H>
 
 
 //---------------------------------------------------------------------------
