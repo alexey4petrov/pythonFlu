@@ -31,9 +31,21 @@ from Foam.src.OpenFOAM.db.IOobject import *
 from Foam.src.OpenFOAM.primitives.strings.fileName import *
 
 from Foam.src.OpenFOAM.db.IOdictionary import *
+from Foam.src.OpenFOAM.db.dictionary.dictionary import *
 from Foam.src.OpenFOAM.primitives.strings.word import *
 
 from Foam.src.OpenFOAM.db.Switch import *
+
+from Foam.src.OpenFOAM.dimensionedTypes.dimensionedScalar import *
+from Foam.src.OpenFOAM.dimensionedTypes.dimensionedVector import *
+from Foam.src.OpenFOAM.dimensionedTypes.dimensionedSymmTensor import *
+from Foam.src.OpenFOAM.dimensionedTypes.dimensionedTensor import *
+
+from Foam.src.OpenFOAM.dimensionSet import *
+from Foam.src.OpenFOAM.dimensionSets import *
+
+from Foam.src.OpenFOAM.primitives.vector import *
+from Foam.src.OpenFOAM.primitives.int_ import *
 
 
 #---------------------------------------------------------------------------

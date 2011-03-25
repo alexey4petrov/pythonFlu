@@ -80,7 +80,6 @@ def initConvergenceCheck( simple ):
 #--------------------------------------------------------------------------------------
 def Ueqn( phi, U, p, turbulence, eqnResidual, maxResidual ):
     from Foam import fvm, fvc
-    from Foam import FOAM_VERSION
     UEqn = fvm.div( phi, U ) + turbulence.divDevReff( U ) 
 
     UEqn.relax()

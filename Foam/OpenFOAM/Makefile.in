@@ -168,6 +168,7 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/dimensionSet.cxx \
+	@abs_top_builddir@/src/OpenFOAM/dimensionSets.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/ITstream.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedType.cxx \
