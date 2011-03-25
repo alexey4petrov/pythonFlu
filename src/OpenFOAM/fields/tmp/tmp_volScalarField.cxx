@@ -25,9 +25,9 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_surfaceVectorField"
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_volScalarField"
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hpp"
 %}
 
 
