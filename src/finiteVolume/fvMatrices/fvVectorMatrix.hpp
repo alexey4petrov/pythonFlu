@@ -31,6 +31,11 @@
 
 #include "src/OpenFOAM/dimensionSet.hpp"
 
+namespace Foam
+{
+  typedef Foam::fvMatrix< Foam::vector > fvVectorMatrix;
+}
+
 
 //---------------------------------------------------------------------------
 #endif

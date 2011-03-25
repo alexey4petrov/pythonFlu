@@ -47,7 +47,7 @@
 
 %import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx"
 
 %import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 

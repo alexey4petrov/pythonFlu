@@ -51,6 +51,8 @@ FVMATRIX_TEMPLATE_FUNC( Foam::vector );
 
 %template( fvVectorMatrix ) Foam::fvMatrix< Foam::vector >;
 
+%include "src/finiteVolume/fvMatrices/fvVectorMatrix.hpp"
+
 
 //---------------------------------------------------------------------------
 #endif
