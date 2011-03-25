@@ -20,27 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IFstream_cxx
-#define IFstream_cxx
+#ifndef IFstream_hpp
+#define IFstream_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.IOstreams.Fstreams.IFstream";
-%{
-   #include "src/OpenFOAM/db/IOstreams/Fstreams/IFstream.hpp"
-%}
+#include "src/common.hpp"
 
+#include "src/OpenFOAM/primitives/strings/fileName.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
+#include "src/OpenFOAM/db/IOstreams/Sstreams/ISstream.hpp"
 
-%import "src/OpenFOAM/primitives/strings/fileName.cxx"
-
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
-
-%import "src/OpenFOAM/db/IOstreams/Sstreams/ISstream.cxx"
-
-%include <IFstream.H>
+#include <IFstream.H>
 
 
 //---------------------------------------------------------------------------

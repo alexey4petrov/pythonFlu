@@ -25,21 +25,24 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
-
-%include "src/OpenFOAM/primitives/strings/fileName.cxx"
-
-%include "src/OpenFOAM/db/typeInfo/className.hxx"
-
-%include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx"
-
+%module "Foam.src.OpenFOAM.db.IOstreams.Fstreams.OFstream";
 %{
-    #include "OFstream.H"
+   #include "src/OpenFOAM/db/IOstreams/Fstreams/OFstream.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
+%import "src/OpenFOAM/primitives/strings/fileName.cxx"
+
+%import "src/OpenFOAM/db/typeInfo/className.hxx"
+
+%import "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx"
 
 %ignore Foam::Snull;
 
-%include "OFstream.H"
+%include <OFstream.H>
 
 
 //---------------------------------------------------------------------------
