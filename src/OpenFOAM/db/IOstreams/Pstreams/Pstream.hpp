@@ -20,53 +20,28 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef Pstream_cxx
-#define Pstream_cxx
+#ifndef Pstream_hpp
+#define Pstream_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.IOstreams.Pstreams.Pstream";
-%{
-   #include "src/OpenFOAM/db/IOstreams/Pstreams/Pstream.hpp"
-%}
+#include "src/common.hpp"
 
+#include "src/OpenFOAM/primitives/label.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
-
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
-
-%import "src/OpenFOAM/primitives/label.cxx"
-
-%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
+#include "src/OpenFOAM/primitives/Lists/labelList.hpp"
 
 // #include "DynamicList.H"
 // #include "HashTable.H"
 
-%import "src/OpenFOAM/primitives/strings/string.cxx"
+#include "src/OpenFOAM/primitives/strings/string.hpp"
 
 // #include "NamedEnum.H"
 
-%import "src/OpenFOAM/primitives/ops/ops_label.cxx"
+#include "src/OpenFOAM/primitives/ops/ops_label.hpp"
 
-%include <Pstream.H>
-
-
-//---------------------------------------------------------------------------
-%inline
-{
-  int ext_reduce( int theValue, const Foam::sumOp<Foam::label>& theBop )
-  {
-    Foam::reduce( theValue, theBop );
-    return theValue;
-  }
-
-  Foam::label returnReduce( const Foam::label& theValue, 
-			    const Foam::sumOp< Foam::label >& theBop )
-  {
-    return Foam::returnReduce( theValue, theBop );
-  }
-}
+#include <Pstream.H>
+#include <PstreamReduceOps.H>
 
 
 //---------------------------------------------------------------------------
