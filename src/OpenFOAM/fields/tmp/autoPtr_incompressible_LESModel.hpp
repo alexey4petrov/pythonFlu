@@ -20,46 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_LESModel"
-%{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_incompressible_LESModel.hpp"
-%}
-
-
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
+#include "src/common.hpp"
 
 #if FOAM_VERSION( <, 010500 )
-#define autoPtr_incompressible_LESModel_cxx
+#define autoPtr_incompressible_LESModel_hpp
 #endif
 
 
 //-----------------------------------------------------------------------------
-#ifndef autoPtr_incompressible_LESModel_cxx
-#define autoPtr_incompressible_LESModel_cxx
+#ifndef autoPtr_incompressible_LESModel_hpp
+#define autoPtr_incompressible_LESModel_hpp
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
-%import "src/turbulenceModels/incompressible/LES/LESModel.cxx"
-
-
-//----------------------------------------------------------------------------
-AUTOPTR_TYPEMAP( Foam::incompressible::LESModel )
-
-%ignore Foam::autoPtr< Foam::incompressible::LESModel >::operator->;
-
-%template( autoPtr_incompressible_LESModel ) Foam::autoPtr< Foam::incompressible::LESModel >;
-
-
-//------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::incompressible::LESModel >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_incompressible_LESModel );
-
-%extend Foam::autoPtr< Foam::incompressible::LESModel >
-{
-  SMARTPTR_EXTEND_ATTR( autoPtr_incompressible_LESModel );
-}
+#include "src/turbulenceModels/incompressible/LES/LESModel.hpp"
 
 
 //---------------------------------------------------------------------------
