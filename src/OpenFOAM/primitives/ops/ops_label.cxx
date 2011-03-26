@@ -23,32 +23,43 @@
 #ifndef ops_label_cxx
 #define ops_label_cxx
 
+
+//---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.primitives.ops.ops";
+%{
+   #include "src/OpenFOAM/primitives/ops/ops.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
 %include "src/OpenFOAM/primitives/ops/ops.cxx"
+
 %include "src/OpenFOAM/primitives/label.cxx"
 
 
 //---------------------------------------------------------------------------
-%template (eqOp_label) Foam::eqOp<Foam::label>;
-%template (plusEqOp_label) Foam::plusEqOp<Foam::label>;
-%template (minusEqOp_label) Foam::minusEqOp<Foam::label>;
-%template (multiplyEqOp_label) Foam::multiplyEqOp<Foam::label>;
-%template (divideEqOp_label) Foam::divideEqOp<Foam::label>;
-%template (eqMagOp_label) Foam::eqMagOp<Foam::label>;
-%template (maxEqOp_label) Foam::maxEqOp<Foam::label>;
-%template (minEqOp_label) Foam::minEqOp<Foam::label>;
-%template (andEqOp_label) Foam::andEqOp<Foam::label>;
-%template (orEqOp_label) Foam::orEqOp<Foam::label>;
-%template (eqMinusOp_label) Foam::eqMinusOp<Foam::label>;
+%template( eqOp_label ) Foam::eqOp< Foam::label >;
+%template( plusEqOp_label ) Foam::plusEqOp< Foam::label >;
+%template(minusEqOp_label ) Foam::minusEqOp< Foam::label >;
+%template( multiplyEqOp_label ) Foam::multiplyEqOp< Foam::label >;
+%template( divideEqOp_label ) Foam::divideEqOp< Foam::label >;
+%template( eqMagOp_label ) Foam::eqMagOp< Foam::label >;
+%template( maxEqOp_label ) Foam::maxEqOp< Foam::label >;
+%template( minEqOp_label ) Foam::minEqOp< Foam::label >;
+%template( andEqOp_label ) Foam::andEqOp< Foam::label >;
+%template( orEqOp_label ) Foam::orEqOp< Foam::label >;
+%template( eqMinusOp_label ) Foam::eqMinusOp< Foam::label >;
 
 
-%template (sumOp_label) Foam::sumOp<Foam::label>;
-%template (plusOp_label) Foam::plusOp<Foam::label>;
-%template (minusOp_label) Foam::minusOp<Foam::label>;
-%template (multiplyOp_label) Foam::multiplyOp<Foam::label>;
-%template (divideOp_label) Foam::divideOp<Foam::label>;
-%template (maxOp_label) Foam::maxOp<Foam::label>;
-%template (minOp_label) Foam::minOp<Foam::label>;
-%template (andOp_label) Foam::andOp<Foam::label>;
+//---------------------------------------------------------------------------
+%template( sumOp_label ) Foam::sumOp< Foam::label >;
+%template( plusOp_label ) Foam::plusOp< Foam::label >;
+%template( minusOp_label ) Foam::minusOp< Foam::label >;
+%template( multiplyOp_label ) Foam::multiplyOp< Foam::label >;
+%template( divideOp_label ) Foam::divideOp< Foam::label >;
+%template( maxOp_label ) Foam::maxOp< Foam::label >;
+%template( minOp_label ) Foam::minOp< Foam::label >;
+%template( andOp_label ) Foam::andOp< Foam::label >;
 
 
 //---------------------------------------------------------------------------

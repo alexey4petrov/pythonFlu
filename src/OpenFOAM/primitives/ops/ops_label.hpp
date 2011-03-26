@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef ops_cxx
-#define ops_cxx
+#ifndef ops_label_hpp
+#define ops_label_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.ops.ops";
-%{
-   #include "src/OpenFOAM/primitives/ops/ops.hpp"
-%}
+#include "src/OpenFOAM/primitives/ops/ops.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
-
-%include <ops.H>
+#include "src/OpenFOAM/primitives/label.hpp"
 
 
 //---------------------------------------------------------------------------
