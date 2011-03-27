@@ -75,7 +75,7 @@ PROJECT_LIBS       = -l$(WM_PROJECT)
 
 
 #--------------------------------------------------------------------------------------
-__CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I$(pyfoam_root_dir) -I/usr/include -I/usr/include/c++ 
+__CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I@abs_top_builddir@ -I/usr/include -I/usr/include/c++ 
 
 
 #--------------------------------------------------------------------------------------
@@ -135,13 +135,13 @@ dirs = $(dir $(sources))
 names = $(patsubst %.cxx,_%.so,$(notdir $(sources)))
 libs = $(join $(dirs),$(names))
 
-stubs = $(patsubst %.cxx,%.cpp,$(sources))
+stubs = $(patsubst %.cxx,%.cc,$(sources))
 deps = $(patsubst %.cxx,%.d,$(sources))
 heads = $(patsubst %.cxx,%.h,$(sources))
 objs = $(patsubst %.cxx,%.o,$(sources))
 pyths = $(patsubst %.cxx,%.py,$(sources))
 apps = $(patsubst %.cxx,%.exe,$(sources))
-pycs = $(patsubst %.cxx,%.pyc,$(sources))
+pycs = $(addsuffix *.pyc,$(dirs))
 tmps = $(addsuffix *~,$(dirs))
 tests = $(patsubst %.py,%.pyc,$(wildcard test_*.py))
 
@@ -149,12 +149,12 @@ tests = $(patsubst %.py,%.pyc,$(wildcard test_*.py))
 
 
 #--------------------------------------------------------------------------------------
-%.cpp : %.cxx
+%.cc : %.cxx
 	@SWIG@ $(__SWIG_FLAGS__) -module $(notdir $(patsubst %.cxx,%,$<)) -o $@ $<
 
 __CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(__CPPFLAGS__)
 
-%.o : %.cpp
+%.o : %.cc
 	gcc $(__CXXFLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cpp,%.h,$<)>" -c $< -o $@
 
 -include $(deps) dummy
