@@ -25,18 +25,19 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.volFields.volScalarField";
 %{
   #include "src/finiteVolume/fields/volFields/volScalarField.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cpp"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_volScalarField.cxx"
+%include "src/OpenFOAM/fields/tmp/autoPtr_volScalarField.cpp"
 
-%import "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
+%include "src/OpenFOAM/fields/tmp/tmp_volScalarField.cpp"
+
+%include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.cpp"
 
 
 //---------------------------------------------------------------------------

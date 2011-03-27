@@ -25,20 +25,15 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField_scalar";
 %{
   #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.hpp"
 %}
-
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 
 %import "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.cxx"
 

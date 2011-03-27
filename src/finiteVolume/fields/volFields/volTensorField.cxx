@@ -25,22 +25,17 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.volFields.volTensorField";
 %{
   #include "src/finiteVolume/fields/volFields/volTensorField.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvPatchField_volMesh.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvPatchField_volMesh.cpp"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_volTensorField.cxx"
+%include "src/OpenFOAM/fields/tmp/autoPtr_volTensorField.cpp"
 
-%import "src/OpenFOAM/fields/tmp/tmp_volTensorField.cxx"
+%include "src/OpenFOAM/fields/tmp/tmp_volTensorField.cpp"
 
 
 //---------------------------------------------------------------------------

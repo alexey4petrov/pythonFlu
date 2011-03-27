@@ -25,22 +25,17 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fvMesh.fvMesh";
 %{
   #include "src/finiteVolume/fvMesh/fvMesh.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
+%include "src/finiteVolume/fields/volFields/volFields.cxx"
 
-%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMesh.hxx"
+%include "src/finiteVolume/fvMesh/fvMesh.hxx"
 
 %ignore Foam::fvMesh::writeObjects;
 

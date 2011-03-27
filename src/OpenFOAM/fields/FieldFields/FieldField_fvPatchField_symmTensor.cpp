@@ -20,27 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef FieldField_fvPatchField_symmTensor_cxx
-#define FieldField_fvPatchField_symmTensor_cxx
+#ifndef FieldField_fvPatchField_symmTensor_cpp
+#define FieldField_fvPatchField_symmTensor_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.FieldFields.FieldField_fvPatchField_symmTensor";
 %{
   #include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_symmTensor.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
+%include "src/OpenFOAM/fields/FieldFields/FieldField.cpp"
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.cxx"
 
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.cxx"
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::symmTensor >::FieldField;
 

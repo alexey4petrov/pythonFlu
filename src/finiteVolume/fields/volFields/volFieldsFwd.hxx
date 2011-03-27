@@ -25,13 +25,15 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
-%import "src/finiteVolume/volMesh.hxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
 
-%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
 
-%import "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
+%include "src/finiteVolume/volMesh.hxx"
+
+%include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+
+%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
 
 %include <volFieldsFwd.H>
 

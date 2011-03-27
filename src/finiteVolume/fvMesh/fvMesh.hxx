@@ -37,13 +37,13 @@
 
 %import "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
 
-%import "src/finiteVolume/fvMesh/fvBoundaryMesh.cxx"
+%include "src/finiteVolume/fvMesh/fvBoundaryMesh.cxx"
 
-%import "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cxx"
+%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cxx"
 
-%import "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+%include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
 
-%import "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hxx"
+%include "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hxx"
 
 
 //---------------------------------------------------------------------------

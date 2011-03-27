@@ -20,12 +20,11 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_volScalarField_cxx
-#define tmp_volScalarField_cxx
+#ifndef tmp_volScalarField_cpp
+#define tmp_volScalarField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_volScalarField"
 %{
   #include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hpp"
 %}
@@ -34,7 +33,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/tmp_scalarField.cxx"
 
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cpp"
 
 
 //---------------------------------------------------------------------------

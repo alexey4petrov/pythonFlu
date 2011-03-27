@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef DimensionedField_tensor_surfaceMesh_cxx
-#define DimensionedField_tensor_surfaceMesh_cxx
+#ifndef DimensionedField_tensor_surfaceMesh_cpp
+#define DimensionedField_tensor_surfaceMesh_cpp
 
 
 //---------------------------------------------------------------------------
@@ -36,7 +36,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
 
 %import "src/OpenFOAM/fields/Fields/tensorField.cxx"
 %import "src/finiteVolume/surfaceMesh.hxx"

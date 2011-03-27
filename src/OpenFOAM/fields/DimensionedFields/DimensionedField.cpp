@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef DimensionedField_cxx
-#define DimensionedField_cxx
+#ifndef DimensionedField_cpp
+#define DimensionedField_cpp
 
 
 //---------------------------------------------------------------------------

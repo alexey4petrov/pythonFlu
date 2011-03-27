@@ -20,12 +20,11 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_volVectorField_cxx
-#define tmp_volVectorField_cxx
+#ifndef tmp_volVectorField_cpp
+#define tmp_volVectorField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_volVectorField"
 %{
   #include "src/OpenFOAM/fields/tmp/tmp_volVectorField.hpp"
 %}
@@ -34,7 +33,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/tmp_vectorField.cxx"
 
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.cpp"
 
 
 //---------------------------------------------------------------------------

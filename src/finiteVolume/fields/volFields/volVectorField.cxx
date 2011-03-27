@@ -25,18 +25,17 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.volFields.volVectorField";
 %{
   #include "src/finiteVolume/fields/volFields/volVectorField.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.cpp"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_volVectorField.cxx"
+%include "src/OpenFOAM/fields/tmp/autoPtr_volVectorField.cpp"
 
-%import "src/OpenFOAM/fields/tmp/tmp_volVectorField.cxx"
+%include "src/OpenFOAM/fields/tmp/tmp_volVectorField.cpp"
 
 
 //---------------------------------------------------------------------------

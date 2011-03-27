@@ -20,25 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_surfaceVectorField_cxx
-#define autoPtr_surfaceVectorField_cxx
+#ifndef autoPtr_surfaceVectorField_cpp
+#define autoPtr_surfaceVectorField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_surfaceVectorField"
 %{
   #include "src/OpenFOAM/fields/tmp/autoPtr_surfaceVectorField.hpp"
 %}
-
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cpp"
 
 %template( autoPtr_surfaceVectorField ) Foam::autoPtr< Foam::surfaceVectorField >;
 

@@ -20,29 +20,24 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef FieldField_fvPatchField_vector_cxx
-#define FieldField_fvPatchField_vector_cxx
+#ifndef FieldField_fvPatchField_vector_cpp
+#define FieldField_fvPatchField_vector_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.FieldFields.FieldField_fvPatchField_vector";
 %{
   #include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
+%include "src/OpenFOAM/fields/FieldFields/FieldField.cpp"
 
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.cxx"
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.cxx"
 
-NO_TMP_TYPEMAP_FIELDFIELD( Foam::fvPatchField, Foam::Vector<Foam::scalar> )
+NO_TMP_TYPEMAP_FIELDFIELD( Foam::fvPatchField, Foam::Vector< Foam::scalar > )
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::vector >::FieldField;
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::vector >::T;

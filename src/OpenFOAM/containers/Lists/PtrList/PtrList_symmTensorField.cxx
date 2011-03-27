@@ -36,8 +36,6 @@
 
 %import "src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.cxx"
 
-%import "src/OpenFOAM/fields/tmp/tmp_symmTensorField.cxx"
-
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::symmTensorField >::PtrList;

@@ -20,25 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_FieldField_fvPatchField_scalar_cxx
-#define tmp_FieldField_fvPatchField_scalar_cxx
+#ifndef tmp_FieldField_fvPatchField_scalar_cpp
+#define tmp_FieldField_fvPatchField_scalar_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_FieldField_fvPatchField_scalar"
 %{
   #include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_scalar.hpp"
 %}
-
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.cxx"
+%include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.cpp"
 
 
 //-----------------------------------------------------------------------------

@@ -20,25 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_surfaceScalarField_cxx
-#define tmp_surfaceScalarField_cxx
+#ifndef tmp_surfaceScalarField_cpp
+#define tmp_surfaceScalarField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_surfaceScalarField"
 %{
   #include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hpp"
 %}
-
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/tmp_scalarField.cxx"
 
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cpp"
 
 
 //---------------------------------------------------------------------------

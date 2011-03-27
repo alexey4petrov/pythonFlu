@@ -25,9 +25,11 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.cxx"
-%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.cxx"
-%import "src/finiteVolume/surfaceMesh.hxx"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.cxx"
+
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.cxx"
+
+%include "src/finiteVolume/surfaceMesh.hxx"
 
 %include <surfaceFieldsFwd.H>
 

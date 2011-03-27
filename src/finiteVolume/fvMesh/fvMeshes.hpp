@@ -27,9 +27,9 @@
 //---------------------------------------------------------------------------
 #include "src/finiteVolume/fvMesh/fvMesh.hpp"
 
-#include "src/finiteVolume/surfaceMesh.cxx"
+#include "src/finiteVolume/surfaceMesh.hpp"
 
-#include "src/finiteVolume/volMesh.cxx"
+#include "src/finiteVolume/volMesh.hpp"
 
 
 //---------------------------------------------------------------------------

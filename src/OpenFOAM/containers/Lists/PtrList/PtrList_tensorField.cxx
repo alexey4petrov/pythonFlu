@@ -36,8 +36,6 @@
 
 %import "src/OpenFOAM/fields/tmp/autoPtr_tensorField.cxx"
 
-%import "src/OpenFOAM/fields/tmp/tmp_tensorField.cxx"
-
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::tensorField >::PtrList;

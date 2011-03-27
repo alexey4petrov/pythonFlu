@@ -25,7 +25,6 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.fvsPatchFields.fvsPatchField_vector";
 %{
   #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.hpp"
 %}
@@ -34,7 +33,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/Fields/vectorField.cxx"
 
-%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
 
 %template( fvsPatchField_vector ) Foam::fvsPatchField< Foam::vector >;
 

@@ -25,22 +25,17 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.surfaceFields.surfaceFields";
 %{
   #include "src/finiteVolume/fields/surfaceFields/surfaceFields.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
+%include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
 
-%import "src/finiteVolume/fields/surfaceFields/surfaceVectorField.cxx"
+%include "src/finiteVolume/fields/surfaceFields/surfaceVectorField.cxx"
 
-%import "src/finiteVolume/fields/surfaceFields/surfaceTensorField.cxx"
+%include "src/finiteVolume/fields/surfaceFields/surfaceTensorField.cxx"
 
 
 //---------------------------------------------------------------------------

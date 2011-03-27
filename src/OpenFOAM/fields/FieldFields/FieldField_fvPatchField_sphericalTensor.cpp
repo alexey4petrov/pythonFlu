@@ -20,27 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef FieldField_fvPatchField_sphericalTensor_cxx
-#define FieldField_fvPatchField_sphericalTensor_cxx
+#ifndef FieldField_fvPatchField_sphericalTensor_cpp
+#define FieldField_fvPatchField_sphericalTensor_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.FieldFields.FieldField_fvPatchField_sphericalTensor";
 %{
   #include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_sphericalTensor.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
+%include "src/OpenFOAM/fields/FieldFields/FieldField.cpp"
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.cxx"
 
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_sphericalTensor.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_sphericalTensor.cxx"
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::sphericalTensor >::FieldField;
 

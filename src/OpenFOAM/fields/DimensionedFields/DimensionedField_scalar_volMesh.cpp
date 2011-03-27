@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef DimensionedField_scalar_volMesh_cxx
-#define DimensionedField_scalar_volMesh_cxx
+#ifndef DimensionedField_scalar_volMesh_cpp
+#define DimensionedField_scalar_volMesh_cpp
 
 
 //---------------------------------------------------------------------------
@@ -36,7 +36,7 @@
 
 
 //----------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
+%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
 
 %import "src/OpenFOAM/fields/Fields/scalarField.cxx"
 %import "src/finiteVolume/volMesh.hxx"

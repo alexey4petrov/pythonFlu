@@ -25,7 +25,6 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_fvPatchField_scalar"
 %{
   #include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_scalar.hpp"
 %}
@@ -34,7 +33,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
 
 %template( autoPtr_fvPatchField_scalar ) Foam::autoPtr< Foam::fvPatchField< Foam::scalar > >;
 
@@ -44,7 +43,7 @@
 
 %extend Foam::autoPtr< Foam::fvPatchField< Foam::scalar > >
 {
-  SMARTPTR_EXTEND_ATTR( autoPtr_fvPatchField_scalar )
+  SMARTPTR_EXTEND_ATTR( autoPtr_fvPatchField_scalar );
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::scalar );
 }
 

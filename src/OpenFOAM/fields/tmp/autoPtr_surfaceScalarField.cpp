@@ -20,25 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_surfaceScalarField_cxx
-#define autoPtr_surfaceScalarField_cxx
+#ifndef autoPtr_surfaceScalarField_cpp
+#define autoPtr_surfaceScalarField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_surfaceScalarField"
 %{
   #include "src/OpenFOAM/fields/tmp/autoPtr_surfaceScalarField.hpp"
 %}
-
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cpp"
 
 AUTOPTR_TYPEMAP( Foam::surfaceScalarField )
 

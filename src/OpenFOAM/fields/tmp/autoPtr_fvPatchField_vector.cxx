@@ -25,7 +25,6 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_fvPatchField_vector"
 %{
   #include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_vector.hpp"
 %}
@@ -34,7 +33,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
 
 %template( autoPtr_fvPatchField_vector ) Foam::autoPtr< Foam::fvPatchField< Foam::vector > >;
 

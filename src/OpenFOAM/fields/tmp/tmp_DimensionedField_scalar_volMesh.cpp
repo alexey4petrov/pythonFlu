@@ -20,25 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_DimensionedField_scalar_volMesh_cxx
-#define tmp_DimensionedField_scalar_volMesh_cxx
+#ifndef tmp_DimensionedField_scalar_volMesh_cpp
+#define tmp_DimensionedField_scalar_volMesh_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_DimensionedField_scalar_volMesh"
 %{
   #include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.hpp"
 %}
-
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.cxx"
+%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.cpp"
 
 
 //---------------------------------------------------------------------------

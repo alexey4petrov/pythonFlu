@@ -31,6 +31,8 @@
 
 #include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hpp"
 
+#include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hpp"
+
 
 //---------------------------------------------------------------------------
 #endif

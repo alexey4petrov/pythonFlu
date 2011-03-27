@@ -20,31 +20,26 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeometricField_cxx
-#define GeometricField_cxx
+#ifndef GeometricField_cpp
+#define GeometricField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.GeometricFields.GeometricField";
 %{
   #include "src/OpenFOAM/fields/GeometricFields/GeometricField.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cxx"
+%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
 
 %include <GeometricField.H>
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hxx"
+%include "src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hxx"
 
-%import "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
+%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
 
 
 //---------------------------------------------------------------------------

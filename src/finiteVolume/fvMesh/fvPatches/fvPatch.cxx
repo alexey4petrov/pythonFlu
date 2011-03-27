@@ -25,7 +25,6 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fvMesh.fvPatches.fvPatch";
 %{
   #include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hpp"
 %}
@@ -38,11 +37,9 @@
 
 %include <fvPatch.H>
 
-//%extend Foam::fvPatch COMMON_EXTENDS;
-
 %extend Foam::fvPatch 
 {
-  ISINSTANCE_EXTEND( Foam::fvPatch ) 
+  ISINSTANCE_EXTEND( Foam::fvPatch );
 }
 
 

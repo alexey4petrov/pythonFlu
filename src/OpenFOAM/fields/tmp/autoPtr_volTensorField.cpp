@@ -20,25 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_volTensorField_cxx
-#define autoPtr_volTensorField_cxx
+#ifndef autoPtr_volTensorField_cpp
+#define autoPtr_volTensorField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_volTensorField"
 %{
   #include "src/OpenFOAM/fields/tmp/autoPtr_volTensorField.hpp"
 %}
-
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvPatchField_volMesh.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvPatchField_volMesh.cpp"
 
 AUTOPTR_TYPEMAP( Foam::volTensorField )
 

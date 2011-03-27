@@ -20,25 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeometricField_vector_fvsPatchField_surfaceMesh_cxx
-#define GeometricField_vector_fvsPatchField_surfaceMesh_cxx
+#ifndef GeometricField_vector_fvsPatchField_surfaceMesh_cpp
+#define GeometricField_vector_fvsPatchField_surfaceMesh_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_vector_fvsPatchField_surfaceMesh";
 %{
   #include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
-%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_surfaceMesh.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_surfaceMesh.cpp"
 
 
 //----------------------------------------------------------------------------

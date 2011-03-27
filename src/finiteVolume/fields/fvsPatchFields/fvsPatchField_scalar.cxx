@@ -25,7 +25,6 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.fvsPatchFields.fvsPatchField_scalar";
 %{
   #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.hpp"
 %}
@@ -34,7 +33,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
-%import "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
 
 %template( fvsPatchField_scalar ) Foam::fvsPatchField< Foam::scalar >;
 

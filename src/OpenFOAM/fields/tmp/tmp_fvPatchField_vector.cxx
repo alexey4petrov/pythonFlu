@@ -25,20 +25,15 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_fvPatchField_vector"
 %{
   #include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_vector.hpp"
 %}
-
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
 
 TMP_TYPEMAP( Foam::fvPatchField< Foam::vector > )
 

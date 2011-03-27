@@ -20,25 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_surfaceVectorField_cxx
-#define tmp_surfaceVectorField_cxx
+#ifndef tmp_surfaceVectorField_cpp
+#define tmp_surfaceVectorField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_surfaceVectorField"
 %{
   #include "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.hpp"
 %}
-
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/tmp_vectorField.cxx"
 
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cpp"
 
 
 //----------------------------------------------------------------------------

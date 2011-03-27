@@ -25,14 +25,13 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fvMesh.fvPatches.fvPatchList";
 %{
   #include "src/finiteVolume/fvMesh/fvPatches/fvPatchList.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.cxx"
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.cxx"
 
 
 //---------------------------------------------------------------------------

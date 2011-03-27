@@ -25,22 +25,17 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.surfaceFields.surfaceScalarField";
 %{
   #include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cpp"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_surfaceScalarField.cxx"
+%include "src/OpenFOAM/fields/tmp/autoPtr_surfaceScalarField.cpp"
 
-%import "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cxx"
+%include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cpp"
 
 
 //---------------------------------------------------------------------------

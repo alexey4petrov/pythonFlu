@@ -33,7 +33,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/Fields/FieldMapper.cxx"
 
-%include "fvPatchFieldMapper.H"
+%include <fvPatchFieldMapper.H>
 
 %extend Foam::fvPatchFieldMapper
 {

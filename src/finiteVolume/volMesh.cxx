@@ -30,17 +30,13 @@
   #include "src/finiteVolume/volMesh.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/volMesh.hxx"
+%include "src/finiteVolume/volMesh.hxx"
 
-%import "src/OpenFOAM/meshes/GeoMesh_fvMesh.cxx"
+%include "src/OpenFOAM/meshes/GeoMesh_fvMesh.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMesh.cxx"
+%include "src/finiteVolume/fvMesh/fvMesh.cxx"
 
 %include <volMesh.H>
 

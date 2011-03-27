@@ -20,12 +20,11 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef FieldField_cxx
-#define FieldField_cxx
+#ifndef FieldField_cpp
+#define FieldField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.FieldFields.FieldField";
 %{
   #include "src/OpenFOAM/fields/FieldFields/FieldField.hpp"
 %}

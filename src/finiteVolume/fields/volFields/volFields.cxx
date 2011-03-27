@@ -25,24 +25,23 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.volFields.volFields";
 %{
   #include "src/finiteVolume/fields/volFields/volFields.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/volFields/volScalarField.cxx"
+%include "src/finiteVolume/fields/volFields/volScalarField.cxx"
 
-%import "src/finiteVolume/fields/volFields/volVectorField.cxx"
+%include "src/finiteVolume/fields/volFields/volVectorField.cxx"
 
-%import "src/finiteVolume/fields/volFields/volTensorField.cxx"
+%include "src/finiteVolume/fields/volFields/volTensorField.cxx"
 
-%import "src/finiteVolume/fields/volFields/volSymmTensorField.cxx"
+%include "src/finiteVolume/fields/volFields/volSymmTensorField.cxx"
 
-%import "src/finiteVolume/fields/volFields/volSphericalTensorField.cxx"
+%include "src/finiteVolume/fields/volFields/volSphericalTensorField.cxx"
 
-%import "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+%include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
 
 
 //---------------------------------------------------------------------------

@@ -25,20 +25,15 @@
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField_tensor";
 %{
   #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.hpp"
 %}
-
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/Fields/tensorField.cxx"
 
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 
 %template( fvPatchField_tensor ) Foam::fvPatchField< Foam::tensor >;
 

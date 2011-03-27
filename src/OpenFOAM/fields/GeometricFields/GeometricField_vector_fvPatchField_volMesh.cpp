@@ -20,39 +20,34 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeometricField_vector_fvPatchField_volMesh_cxx
-#define GeometricField_vector_fvPatchField_volMesh_cxx
+#ifndef GeometricField_vector_fvPatchField_volMesh_cpp
+#define GeometricField_vector_fvPatchField_volMesh_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_vector_fvPatchField_volMesh";
 %{
   #include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
+%include "src/OpenFOAM/fields/FieldFields/FieldField.cpp"
 
 %import "src/OpenFOAM/fields/tmp/refCount.cxx"
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.cxx"
 
-%import "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.cxx"
+%include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.cpp"
 
-%import "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_vector.cxx"
+%include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_vector.cpp"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
 
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cxx"
+%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cpp"
 
-%import "src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.cxx"
+%include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.cpp"
 
 %import "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
 

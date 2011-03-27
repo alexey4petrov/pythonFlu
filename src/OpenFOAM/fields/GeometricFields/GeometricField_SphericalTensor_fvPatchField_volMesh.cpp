@@ -20,35 +20,30 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeometricField_SphericalTensor_fvPatchField_volMesh_cxx
-#define GeometricField_SphericalTensor_fvPatchField_volMesh_cxx
+#ifndef GeometricField_SphericalTensor_fvPatchField_volMesh_cpp
+#define GeometricField_SphericalTensor_fvPatchField_volMesh_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_SphericalTensor_fvPatchField_volMesh";
 %{
   #include "src/OpenFOAM/fields/GeometricFields/GeometricField_SphericalTensor_fvPatchField_volMesh.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/FieldFields/FieldField.cxx"
+%include "src/OpenFOAM/fields/FieldFields/FieldField.cpp"
 
 %import "src/OpenFOAM/fields/tmp/refCount.cxx"
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.cxx"
 
-%import "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_sphericalTensor.cxx"
+%include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_sphericalTensor.cpp"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField.cxx"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
 
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_sphericalTensor_volMesh.cxx"
+%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_sphericalTensor_volMesh.cpp"
 
 %ignore Foam::GeometricField< Foam::sphericalTensor, Foam::fvPatchField, Foam::volMesh >::debug;
 %ignore Foam::GeometricField< Foam::sphericalTensor, Foam::fvPatchField, Foam::volMesh >::typeName;
