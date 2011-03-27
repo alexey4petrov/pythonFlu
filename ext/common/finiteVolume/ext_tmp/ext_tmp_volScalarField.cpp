@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef ext_tmp_volScalarField_cxx
-#define ext_tmp_volScalarField_cxx
+#ifndef ext_tmp_volScalarField_cpp
+#define ext_tmp_volScalarField_cpp
 
 
 //---------------------------------------------------------------------------
