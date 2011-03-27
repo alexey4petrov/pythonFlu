@@ -47,6 +47,8 @@ from Foam.src.OpenFOAM.dimensionSets import *
 from Foam.src.OpenFOAM.primitives.vector import *
 from Foam.src.OpenFOAM.primitives.int_ import *
 
+from Foam.src.OpenFOAM.db.IOstreams.Fstreams.IFstream import *
+
 
 #---------------------------------------------------------------------------
 scalar = float

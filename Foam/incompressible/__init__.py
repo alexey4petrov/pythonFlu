@@ -22,10 +22,13 @@
 
 #---------------------------------------------------------------------------
 from Foam.src.turbulenceModels.incompressible.turbulenceModel import *
-from Foam.src.turbulenceModels.incompressible.RAS.RASModel import *
-
 from Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_turbulenceModel import *
+
+from Foam.src.turbulenceModels.incompressible.RAS.RASModel import *
 from Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_RASModel import *
+
+from Foam.src.turbulenceModels.incompressible.LES.LESModel import *
+from Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_LESModel import *
 
 
 #---------------------------------------------------------------------------
@@ -51,8 +54,8 @@ if FOAM_REF_VERSION( ">=", "010600" ) or FOAM_BRANCH_VERSION( "dev", ">=", "0106
    RASModel = incompressible_RASModel
    autoPtr_RASModel = autoPtr_incompressible_RASModel
 
-   # LESModel = incompressible_LESModel
-   # autoPtr_LESModel = autoPtr_incompressible_LESModel
+   LESModel = incompressible_LESModel
+   autoPtr_LESModel = autoPtr_incompressible_LESModel
    
    turbulenceModel = incompressible_turbulenceModel
    autoPtr_turbulenceModel = autoPtr_incompressible_turbulenceModel
