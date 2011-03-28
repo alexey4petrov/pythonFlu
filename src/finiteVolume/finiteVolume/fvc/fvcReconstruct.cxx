@@ -32,13 +32,10 @@
 
 
 //----------------------------------------------------------------------------
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
-%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.cxx"
-
 %inline
 {
   Foam::tmp< Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh > > 
@@ -50,8 +47,6 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cxx"
-
 %inline
 {
   Foam::tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > > 
@@ -63,12 +58,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMesh.cxx"
 %import "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.cxx"
 
-
 %include <fvcReconstruct.H>
-
 
 
 //---------------------------------------------------------------------------

@@ -32,8 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
-%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -58,13 +57,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_volVectorField.cxx"
-
 FVC_SNGRAD_ADDONS( Foam::vector );
-
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
 
 FVC_SNGRAD_ADDONS( Foam::scalar );
 

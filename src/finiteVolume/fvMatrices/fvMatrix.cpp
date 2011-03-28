@@ -38,7 +38,7 @@
 
 %import "src/OpenFOAM/db/typeInfo/className.hxx"
 
-%import "src/finiteVolume/fields/volFields/volFields.cpp"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 

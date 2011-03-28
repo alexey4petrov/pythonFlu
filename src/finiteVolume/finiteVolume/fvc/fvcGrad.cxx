@@ -32,8 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_volVectorField.cxx"
-%import "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %inline
 {
@@ -46,9 +45,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
-%import "src/finiteVolume/fields/volFields/volScalarField.cxx"
-%import "src/OpenFOAM/fields/tmp/tmp_volTensorField.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %inline
 %{
@@ -63,12 +60,6 @@
     return Foam::fvc::grad( vf );
   }
 %}
-
-
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/surfaceMesh.cxx"
-
-%import "src/finiteVolume/volMesh.cxx"
 
 
 //---------------------------------------------------------------------------

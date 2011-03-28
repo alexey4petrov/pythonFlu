@@ -32,11 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/volFields/volScalarField.cxx"
-
-%import "src/finiteVolume/fields/volFields/volVectorField.cxx"
-
-%import "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 

@@ -30,14 +30,10 @@
   #include "src/finiteVolume/cfdTools/general/bound.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-%import "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <bound.H>
 

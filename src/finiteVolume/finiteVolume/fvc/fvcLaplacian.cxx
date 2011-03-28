@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 
 //---------------------------------------------------------------------------

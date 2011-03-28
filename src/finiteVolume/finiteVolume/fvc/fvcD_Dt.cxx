@@ -32,8 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
-%import "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -49,10 +48,6 @@
 %enddef
 
 %inline FVC_SDDT_TEMPLATE_FUNC( Foam::scalar )
-
-
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/volMesh.cxx"
 
 
 //---------------------------------------------------------------------------

@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
@@ -64,13 +64,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_volVectorField.cxx"
-
 FVC_VOLUME_INTEGRATE_ADDONS( Foam::vector );
-
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
 
 FVC_VOLUME_INTEGRATE_ADDONS( Foam::scalar );
 
