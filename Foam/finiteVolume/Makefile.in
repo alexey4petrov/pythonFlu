@@ -137,22 +137,24 @@ fvMeshes_sources = \
 	@abs_top_builddir@/src/finiteVolume/volMesh.cxx \
 	@abs_top_builddir@/src/finiteVolume/surfaceMesh.cxx
 
+fvMatrices_sources = \
+	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvMatrix.cxx \
+	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvScalarMatrix.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx \
+	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvVectorMatrix.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx \
+
 sources = \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvSchemes.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvSolution.cxx \
 	\
 	@abs_top_builddir@/src/finiteVolume/fvMesh/fvMeshes.cxx \
 	\
+	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvMatrices.cxx \
+	\
 	@abs_top_builddir@/src/OpenFOAM/db/Time/subCycleTime.cxx \
 	@abs_top_builddir@/src/OpenFOAM/algorithms/subCycle/subCycle.cxx \
 	@abs_top_builddir@/src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.cxx \
-	\
-	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvMatrix.cxx \
-	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvScalarMatrix.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx \
-	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvVectorMatrix.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx \
-	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvMatrices.cxx \
 	\
 	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/schemes/linear.cxx \
 	@abs_top_builddir@/src/finiteVolume/cfdTools/general/findRefCell.cxx \

@@ -32,15 +32,15 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMatrices/fvScalarMatrix.cxx"
-%import "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx"
+%include "src/finiteVolume/fvMatrices/fvScalarMatrix.cpp"
+%include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cpp"
 
 FVMATRIX_TEMPLATE_GLOBAL_FUNC( Foam::scalar );
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMatrices/fvVectorMatrix.cxx"
-%import "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx"
+%include "src/finiteVolume/fvMatrices/fvVectorMatrix.cpp"
+%include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cpp"
 
 FVMATRIX_TEMPLATE_GLOBAL_FUNC( Foam::vector );
 

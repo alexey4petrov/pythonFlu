@@ -23,42 +23,33 @@
 #---------------------------------------------------------------------------
 from Foam.src.finiteVolume.fvMesh.fvMesh import *
 
+from Foam.src.finiteVolume.fvMatrices.fvMatrices import *
+
 from Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.linear import *
 
 from Foam.src.finiteVolume.cfdTools.general.findRefCell import *
 from Foam.src.finiteVolume.cfdTools.general.adjustPhi import *
 
-from Foam.src.finiteVolume.fvMatrices.fvMatrices import *
-
 
 #---------------------------------------------------------------------------
-from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_scalar_fvPatchField_volMesh import *
 volScalarField = GeometricField_scalar_fvPatchField_volMesh
 
-from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_vector_fvPatchField_volMesh import *
 volVectorField = GeometricField_vector_fvPatchField_volMesh
 
-from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_tensor_fvPatchField_volMesh import *
 volTensorField = GeometricField_tensor_fvPatchField_volMesh
 
-from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_SymmTensor_fvPatchField_volMesh import *
 volSymmTensorField = GeometricField_symmTensor_fvPatchField_volMesh
 
-from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_scalar_fvsPatchField_surfaceMesh import *
 surfaceScalarField = GeometricField_scalar_fvsPatchField_surfaceMesh
 
-from Foam.src.OpenFOAM.fields.GeometricFields.GeometricField_vector_fvsPatchField_surfaceMesh import *
 surfaceVectorField = GeometricField_vector_fvsPatchField_surfaceMesh
 
 
 #---------------------------------------------------------------------------
-from Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField_scalar import *
 fvPatchScalarField = fvPatchField_scalar
 
-from Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField_vector import *
 fvPatchVectorField = fvPatchField_vector
 
-from Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField_tensor import *
 fvPatchTensorField = fvPatchField_tensor
 
 
@@ -71,13 +62,10 @@ fvPatchTensorField = fvPatchField_tensor
 # 
 # 
 #---------------------------------------------------------------------------
-from Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_scalar import *
 zeroGradientFvPatchScalarField = zeroGradientFvPatchField_scalar
 
-from Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_vector import *
 zeroGradientFvPatchVectorField = zeroGradientFvPatchField_vector
 
-from Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_tensor import *
 zeroGradientFvPatchTensorField = zeroGradientFvPatchField_tensor
 
 

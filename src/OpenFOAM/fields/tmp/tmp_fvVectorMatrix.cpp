@@ -20,31 +20,31 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_fvScalarMatrix_cxx
-#define tmp_fvScalarMatrix_cxx
+#ifndef tmp_fvVectorMatrix_cpp
+#define tmp_fvVectorMatrix_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_fvScalarMatrix"
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_fvVectorMatrix"
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/finiteVolume/fvMatrices/fvScalarMatrix.cxx"
+%import "src/finiteVolume/fvMatrices/fvVectorMatrix.cpp"
 
 
 //---------------------------------------------------------------------------
-%template( tmp_fvScalarMatrix ) Foam::tmp< Foam::fvMatrix< Foam::scalar > >;
+%template( tmp_fvVectorMatrix ) Foam::tmp< Foam::fvMatrix< Foam::vector > >;
 
-%feature( "pythonappend" ) Foam::tmp< Foam::fvMatrix< Foam::scalar > >::SMARTPTR_PYAPPEND_GETATTR( tmp_fvScalarMatrix );
+%feature( "pythonappend" ) Foam::tmp< Foam::fvMatrix< Foam::vector > >::SMARTPTR_PYAPPEND_GETATTR( tmp_fvVectorMatrix );
 
-%extend Foam::tmp< Foam::fvMatrix< Foam::scalar > >
+%extend Foam::tmp< Foam::fvMatrix< Foam::vector > >
 {
-  SMARTPTR_EXTEND_ATTR( tmp_fvScalarMatrix );
+  SMARTPTR_EXTEND_ATTR( tmp_fvVectorMatrix );
 }
 
 

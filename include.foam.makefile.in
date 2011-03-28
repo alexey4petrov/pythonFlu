@@ -37,6 +37,10 @@ tests = $(patsubst %.py,%.pyc,$(wildcard test_*.py))
 
 .INTERMEDIATE : $(stubs) $(objs)
 
+.SUFFIXES : .o
+
+%.o : %.cpp
+
 
 #--------------------------------------------------------------------------------------
 all : $(libs)

@@ -20,34 +20,38 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvScalarMatrix_cxx
-#define fvScalarMatrix_cxx
+#ifndef fvVectorMatrix_cpp
+#define fvVectorMatrix_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fvMatrices.fvScalarMatrix";
+%module "Foam.src.finiteVolume.fvMatrices.fvVectorMatrix";
 %{
-  #include "src/finiteVolume/fvMatrices/fvScalarMatrix.hpp"
+  #include "src/finiteVolume/fvMatrices/fvVectorMatrix.hpp"
 %}
 
 
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMatrices/fvMatrix.cxx"
+ //---------------------------------------------------------------------------
+%include "src/finiteVolume/fvMatrices/fvMatrix.cpp"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "src/OpenFOAM/primitives/vector.cxx"
 
 %import "src/OpenFOAM/dimensionSet.cxx"
 
-%ignore Foam::fvMatrix< Foam::scalar >::debug;
-%ignore Foam::fvMatrix< Foam::scalar >::typeName;
+%ignore Foam::fvMatrix< Foam::vector >::debug;
+%ignore Foam::fvMatrix< Foam::vector >::typeName;
 
-%ignore Foam::fvMatrix< Foam::scalar >::addBoundaryDiag;
-%ignore Foam::fvMatrix< Foam::scalar >::addCmptAvBoundaryDiag;
-%ignore Foam::fvMatrix< Foam::scalar >::addBoundarySource;
+%ignore Foam::fvMatrix< Foam::vector >::addBoundaryDiag;
+%ignore Foam::fvMatrix< Foam::vector >::addCmptAvBoundaryDiag;
+%ignore Foam::fvMatrix< Foam::vector >::addBoundarySource;
 
-SCALAR_FVMATRIX_TEMPLATE_FUNC;
+%ignore Foam::fvMatrix< Foam::vector >::solver;
 
-%template( fvScalarMatrix ) Foam::fvMatrix< Foam::scalar >;
+FVMATRIX_TEMPLATE_FUNC( Foam::vector );
+
+%template( fvVectorMatrix ) Foam::fvMatrix< Foam::vector >;
+
+%include "src/finiteVolume/fvMatrices/fvVectorMatrix.hpp"
 
 
 //---------------------------------------------------------------------------
