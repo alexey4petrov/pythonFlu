@@ -21,7 +21,21 @@
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/include.base.makefile
+dirs = $(dir $(sources))
+names = $(patsubst %.cxx,_%.so,$(notdir $(sources)))
+libs = $(join $(dirs),$(names))
+
+stubs = $(patsubst %.cxx,%.cc,$(sources))
+deps = $(patsubst %.cxx,%.d,$(sources))
+heads = $(patsubst %.cxx,%.h,$(sources))
+objs = $(patsubst %.cxx,%.o,$(sources))
+pyths = $(patsubst %.cxx,%.py,$(sources))
+apps = $(patsubst %.cxx,%.exe,$(sources))
+pycs = $(addsuffix *.pyc,$(dirs))
+tmps = $(addsuffix *~,$(dirs))
+tests = $(patsubst %.py,%.pyc,$(wildcard test_*.py))
+
+.INTERMEDIATE : $(stubs) $(objs)
 
 
 #--------------------------------------------------------------------------------------
@@ -30,6 +44,10 @@ all : $(libs)
 
 clean :
 	rm -fr $(libs) $(stubs) $(objs) $(pyths) $(deps) $(heads) $(apps) $(pycs) $(tmps)
+
+
+#--------------------------------------------------------------------------------------
+include @abs_top_builddir@/include.base.makefile
 
 
 #--------------------------------------------------------------------------------------

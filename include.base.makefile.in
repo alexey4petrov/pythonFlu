@@ -131,31 +131,13 @@ endif
 
 
 #--------------------------------------------------------------------------------------
-dirs = $(dir $(sources))
-names = $(patsubst %.cxx,_%.so,$(notdir $(sources)))
-libs = $(join $(dirs),$(names))
-
-stubs = $(patsubst %.cxx,%.cc,$(sources))
-deps = $(patsubst %.cxx,%.d,$(sources))
-heads = $(patsubst %.cxx,%.h,$(sources))
-objs = $(patsubst %.cxx,%.o,$(sources))
-pyths = $(patsubst %.cxx,%.py,$(sources))
-apps = $(patsubst %.cxx,%.exe,$(sources))
-pycs = $(addsuffix *.pyc,$(dirs))
-tmps = $(addsuffix *~,$(dirs))
-tests = $(patsubst %.py,%.pyc,$(wildcard test_*.py))
-
-.INTERMEDIATE : $(stubs) $(objs)
-
-
-#--------------------------------------------------------------------------------------
 %.cc : %.cxx
 	@SWIG@ $(__SWIG_FLAGS__) -module $(notdir $(patsubst %.cxx,%,$<)) -o $@ $<
 
 __CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(__CPPFLAGS__)
 
 %.o : %.cc
-	gcc $(__CXXFLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cpp,%.h,$<)>" -c $< -o $@
+	gcc $(__CXXFLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
 
 -include $(deps) dummy
 

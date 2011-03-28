@@ -107,7 +107,7 @@ endif
 apps = $(patsubst %.cxx, %.exe, $(sources))
 libs = $(patsubst %.cxx, _%.so, $(sources))
 objs = $(patsubst %.cxx, %.o, $(sources))
-stubs = $(patsubst %.cxx, %.cpp, $(sources))
+stubs = $(patsubst %.cxx, %.cc, $(sources))
 pyths = $(patsubst %.cxx, %.py, $(sources))
 tests = $(patsubst %.py, %.pyc, $(wildcard test_*.py))
 
@@ -227,13 +227,15 @@ endif
 
 
 #--------------------------------------------------------------------------------------
-%.cpp : %.cxx
+%.cc : %.cxx
 	@SWIG@ $(__SWIG_FLAGS__) -module $(patsubst %.cxx,%,$<) -o $@ $<
 
 __CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(__CPPFLAGS__)
 
 %.o : %.cpp
-	gcc $(__CXXFLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cpp,%.h,$<)>" -c $< -o $@
+
+%.o : %.cc
+	gcc $(__CXXFLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
 
 
 PACKAGE_DEPENDENCIES = $(wildcard *.d)
