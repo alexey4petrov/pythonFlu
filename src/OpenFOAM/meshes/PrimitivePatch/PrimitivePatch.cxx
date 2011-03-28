@@ -36,15 +36,15 @@
 
 %import "src/OpenFOAM/primitives/Lists/labelList.cxx"
 
-//#include <edgeList.H>
+// #include <edgeList.H>
 
 %import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
 
 %import "src/OpenFOAM/fields/Fields/vectorField.cxx"
 
-//#include <intersection.H>
+// #include <intersection.H>
 
-//#include <labelHashSet.H>
+// #include <labelHashSet.H>
 
 %include <PrimitivePatch.H>
 

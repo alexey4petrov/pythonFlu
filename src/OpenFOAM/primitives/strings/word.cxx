@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/primitives/strings/string.cxx"
 
-%include "word.H"
+%include <word.H>
 
 //STRINGBASED_ADDONS( Foam::word )
 

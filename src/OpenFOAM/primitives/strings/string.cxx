@@ -32,6 +32,10 @@
 
 
 //---------------------------------------------------------------------------
+%include "src/common.hxx"
+
+
+//---------------------------------------------------------------------------
 // This trick intends to publish nested class into SWIG domain
 namespace Foam
 {
@@ -72,7 +76,7 @@ namespace Foam
 //---------------------------------------------------------------------------
 %include "std_string.i"
 
-%include "string.H"
+%include <string.H>
 
 %extend Foam::string
 {

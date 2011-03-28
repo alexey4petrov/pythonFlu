@@ -32,6 +32,10 @@
 
 
 //---------------------------------------------------------------------------
+%import "src/common.hxx"
+
+
+//---------------------------------------------------------------------------
 // Workaround for the nested class wrapping
 %feature( "valuewrapper" ) Foam::IOstream::versionNumber; // Don't use default constructor
 namespace Foam
@@ -46,7 +50,7 @@ namespace Foam
 //---------------------------------------------------------------------------
 %rename( ext_print ) Foam::IOstream::print;
 
-%include "IOstream.H"
+%include <IOstream.H>
 
 
 //---------------------------------------------------------------------------
