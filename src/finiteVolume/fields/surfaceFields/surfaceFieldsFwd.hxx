@@ -25,9 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.cxx"
-
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.cxx"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
 
 %include "src/finiteVolume/surfaceMesh.hxx"
 

@@ -20,22 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvsPatchField_scalar_cxx
-#define fvsPatchField_scalar_cxx
+#ifndef fvsPatchField_cpp
+#define fvsPatchField_cpp
 
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.hpp"
+  #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%import "src/OpenFOAM/fields/Fields/Field.cxx"
 
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx"
 
-%template( fvsPatchField_scalar ) Foam::fvsPatchField< Foam::scalar >;
+%include <fvsPatchField.H>
 
 
 //---------------------------------------------------------------------------

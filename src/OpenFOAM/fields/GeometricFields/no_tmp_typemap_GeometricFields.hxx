@@ -112,7 +112,7 @@ NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::SphericalTensor< Foam::scalar >, Foam::fvP
 //------------------------------------------------------------------------------
 %import "src/OpenFOAM/primitives/scalar.cxx"
 %include "src/finiteVolume/surfaceMesh.hxx"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
 
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh );
 
@@ -120,7 +120,7 @@ NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::scalar, Foam::fvsPatchField, Foam::surface
 //-------------------------------------------------------------------------------
 %import "src/OpenFOAM/primitives/vector.cxx"
 %include "src/finiteVolume/surfaceMesh.hxx"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
 
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::Vector< Foam::scalar >, Foam::fvsPatchField, Foam::surfaceMesh );
 
@@ -128,7 +128,7 @@ NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::Vector< Foam::scalar >, Foam::fvsPatchFiel
 //-------------------------------------------------------------------------------
 %import "src/OpenFOAM/primitives/tensor.cxx"
 %include "src/finiteVolume/surfaceMesh.hxx"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
 
 NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::Tensor< Foam::scalar >, Foam::fvsPatchField, Foam::surfaceMesh );
 

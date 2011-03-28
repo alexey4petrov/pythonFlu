@@ -32,7 +32,7 @@
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
 %include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_surfaceMesh.cpp"
 
 

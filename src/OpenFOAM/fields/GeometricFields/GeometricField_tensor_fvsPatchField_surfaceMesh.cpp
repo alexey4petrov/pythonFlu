@@ -32,12 +32,12 @@
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
 %include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_tensor_surfaceMesh.cpp"
 
 
 //----------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_tensor.cxx"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_tensor.cpp"
 
 %template ( TGeometricBoundaryField_tensor_fvsPatchField_surfaceMesh ) Foam::TGeometricBoundaryField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >;
 
