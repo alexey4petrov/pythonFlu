@@ -34,8 +34,6 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
-%import "src/OpenFOAM/fields/tmp/tmp_scalarField.cxx"
-
 %import "src/OpenFOAM/fields/tmp/autoPtr_scalarField.cxx"
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
