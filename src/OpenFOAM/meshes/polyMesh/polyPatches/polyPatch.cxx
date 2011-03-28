@@ -38,6 +38,8 @@
 
 %import "src/OpenFOAM/meshes/patchIdentifier.cxx"
 
+%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
+
 %ignore Foam::polyPatch::faceCentres() const;
 %ignore Foam::polyPatch::faceAreas() const;
 %ignore Foam::polyPatch::faceCellCentres() const;

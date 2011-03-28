@@ -29,6 +29,8 @@
 
 #include "src/OpenFOAM/meshes/patchIdentifier.hpp"
 
+#include "src/OpenFOAM/fields/Fields/vectorField.hpp"
+
 #include <polyPatch.H>
 
 #include <polyBoundaryMesh.H>
