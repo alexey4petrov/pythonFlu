@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %import "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField.cxx"
 

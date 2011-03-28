@@ -27,6 +27,8 @@
 //---------------------------------------------------------------------------
 #include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hpp"
 
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+
 #include <zeroGradientFvPatchField.H>
 
 

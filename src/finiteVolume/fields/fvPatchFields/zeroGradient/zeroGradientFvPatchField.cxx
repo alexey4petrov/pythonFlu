@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <zeroGradientFvPatchField.H>
 

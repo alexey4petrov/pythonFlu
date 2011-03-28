@@ -25,15 +25,11 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
-
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
 
 %include "src/finiteVolume/volMesh.hxx"
 
 %include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
-
-%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
 
 %include <volFieldsFwd.H>
 
