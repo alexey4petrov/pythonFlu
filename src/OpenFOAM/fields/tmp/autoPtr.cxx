@@ -56,7 +56,7 @@
       Type* arg = %reinterpret_cast( argp, Type * );
       // "Director" derived classes need special care
       if ( Swig::Director *director = SWIG_DIRECTOR_CAST( arg ) ) {
-	PyObject_CallMethod( director->swig_get_self(), (char *) "__disown__", NULL );
+        PyObject_CallMethod( director->swig_get_self(), (char *) "__disown__", NULL );
       }
       result.reset( arg );
     } else {

@@ -57,10 +57,10 @@
   {
     if (self->size() > 0) {
       for ( register int i = 0; i < self->size(); i++ ) {
-	if ( self->operator[](i) != NULL ) {
-	  delete self->operator[](i);
-	  self->operator[](i) = NULL;
-	}
+        if ( self->operator[](i) != NULL ) {
+          delete self->operator[](i);
+          self->operator[](i) = NULL;
+        }
       }
     }
   }

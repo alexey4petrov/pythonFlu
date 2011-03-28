@@ -64,42 +64,42 @@ namespace Foam
   {
     //----------------------------------------------------------------------------------------
     static tmp< fvPatchField< Type > > New_patch( const fvPatch& p, 
-						  const DimensionedField< Type, volMesh >& iF ) 
+                                                  const DimensionedField< Type, volMesh >& iF ) 
     { 
       return engine->new_patch( p, iF ); 
     }
     
     virtual tmp< fvPatchField< Type > > new_patch( const fvPatch& p, 
-						   const DimensionedField< Type, volMesh >& iF ) = 0;
+                                                   const DimensionedField< Type, volMesh >& iF ) = 0;
     
     
     //----------------------------------------------------------------------------------------
     static tmp< fvPatchField< Type > > New_patchMapper( const fvPatchField< Type >& ptf,
-							const fvPatch& p, 
-							const DimensionedField< Type, volMesh >& iF,
-							const fvPatchFieldMapper& m ) 
+                                                        const fvPatch& p, 
+                                                        const DimensionedField< Type, volMesh >& iF,
+                                                        const fvPatchFieldMapper& m ) 
     { 
       return engine->new_patchMapper( ptf, p, iF, m ); 
     }
     
     
     virtual tmp< fvPatchField< Type > > new_patchMapper( const fvPatchField< Type >& ptf,
-							 const fvPatch& p, 
-							 const DimensionedField< Type, volMesh >& iF,
-							 const fvPatchFieldMapper& m ) = 0;
+                                                         const fvPatch& p, 
+                                                         const DimensionedField< Type, volMesh >& iF,
+                                                         const fvPatchFieldMapper& m ) = 0;
     
     
     //----------------------------------------------------------------------------------------
     static tmp< fvPatchField< Type > > New_dictionary( const fvPatch& p, 
-						       const DimensionedField< Type, volMesh >& iF, 
-						       const dictionary& dict ) 
+                                                       const DimensionedField< Type, volMesh >& iF, 
+                                                       const dictionary& dict ) 
     { 
       return engine->new_dictionary( p, iF, dict ); 
     }
     
     virtual tmp< fvPatchField< Type > > new_dictionary( const fvPatch& p, 
-							const DimensionedField< Type, volMesh >& iF, 
-							const dictionary& dict ) = 0;
+                                                        const DimensionedField< Type, volMesh >& iF, 
+                                                        const dictionary& dict ) = 0;
     
     
     //----------------------------------------------------------------------------------------

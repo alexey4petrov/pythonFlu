@@ -90,7 +90,7 @@ BAREPTR_TYPEMAP( Foam::PtrList_TypeBase );
     if ( SWIG_IsOK( check ) && argp ) {
       Foam::PtrList_TypeBase * tmp = %reinterpret_cast( argp, Foam::PtrList_TypeBase * );
       if ( Swig::Director *director = SWIG_DIRECTOR_CAST( tmp ) ) {
-	PyObject_CallMethod( director->swig_get_self(), (char *) "__disown__", NULL );
+        PyObject_CallMethod( director->swig_get_self(), (char *) "__disown__", NULL );
       }
       result = new Foam::PtrList_TypeHolder( tmp );
     }

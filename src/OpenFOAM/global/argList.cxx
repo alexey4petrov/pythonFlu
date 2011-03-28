@@ -66,8 +66,8 @@
     for ( int anId = 0; anId < aListSize; anId++ ) {
       PyObject * anItem = PyList_GetItem( $input, anId );
       if( PyString_Check( anItem ) ) {
-	$1 = SWIG_TypeError;
-	break;
+        $1 = SWIG_TypeError;
+        break;
       }
     }
   }

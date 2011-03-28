@@ -52,7 +52,7 @@ namespace Foam
       this->__iter__();
       
       if ( this->m_subCycle.end() )
-	throw TStopIterationException();
+        throw TStopIterationException();
       
       return this->m_subCycle;
     }

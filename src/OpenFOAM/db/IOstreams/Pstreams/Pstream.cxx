@@ -62,7 +62,7 @@
   }
 
   Foam::label returnReduce( const Foam::label& theValue, 
-			    const Foam::sumOp< Foam::label >& theBop )
+                            const Foam::sumOp< Foam::label >& theBop )
   {
     return Foam::returnReduce( theValue, theBop );
   }

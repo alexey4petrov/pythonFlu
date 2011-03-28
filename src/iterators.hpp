@@ -49,7 +49,7 @@ namespace Foam
     TReturnType next() throw( const TStopIterationException& )
     {
       if ( this->m_iter != m_container.end() )
-	return this->__iter__();
+        return this->__iter__();
       
       throw TStopIterationException();
     }
@@ -78,7 +78,7 @@ namespace Foam
     TReturnType next() throw( const TStopIterationException& )
     {
       if ( this->m_iter != m_container.end() )
-	return this->__iter__();
+        return this->__iter__();
       
       throw TStopIterationException();
     }
