@@ -239,7 +239,7 @@ private:
 public:
 
     // Constructors
-
+#ifndef SWIG
         //- Construct from components
         PrimitivePatch
         (
@@ -254,7 +254,7 @@ public:
             Field<PointType>& points,
             const bool reUse
         );
-
+#endif
         //- Construct as copy
         PrimitivePatch
         (
