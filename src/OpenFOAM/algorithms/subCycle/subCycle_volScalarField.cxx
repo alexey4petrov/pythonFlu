@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/algorithms/subCycle/subCycle.cxx"
 
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %template ( subCycle_volScalarField ) Foam::subCycle< Foam::volScalarField >;
 

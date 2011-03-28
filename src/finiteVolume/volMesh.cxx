@@ -25,16 +25,15 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.volMesh";
 %{
   #include "src/finiteVolume/volMesh.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/volMesh.hxx"
-
 %include "src/OpenFOAM/meshes/GeoMesh_fvMesh.cxx"
+
+%include "src/finiteVolume/volMesh.hxx"
 
 %include "src/finiteVolume/fvMesh/fvMesh.cxx"
 
