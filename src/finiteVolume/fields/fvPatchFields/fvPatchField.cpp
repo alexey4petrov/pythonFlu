@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx"
+%include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cpp"
 
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 

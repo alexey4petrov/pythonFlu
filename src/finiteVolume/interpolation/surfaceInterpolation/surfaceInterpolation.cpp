@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef surfaceInterpolation_cxx
-#define surfaceInterpolation_cxx
+#ifndef surfaceInterpolation_cpp
+#define surfaceInterpolation_cpp
 
 
 //---------------------------------------------------------------------------
@@ -38,8 +38,8 @@
 %import "src/finiteVolume/finiteVolume/fvSchemes.cxx"
 %import "src/finiteVolume/finiteVolume/fvSolution.cxx"
 
-%import "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
-%import "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hxx"
+%include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+%include "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hxx"
 
 %include <surfaceInterpolation.H>
 

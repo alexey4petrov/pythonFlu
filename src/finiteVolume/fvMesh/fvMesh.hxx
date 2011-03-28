@@ -39,7 +39,7 @@
 
 %include "src/finiteVolume/fvMesh/fvBoundaryMesh.cxx"
 
-%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cxx"
+%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cpp"
 
 %include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
 

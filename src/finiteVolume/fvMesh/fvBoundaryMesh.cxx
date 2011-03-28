@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMesh/fvPatches/fvPatchList.cxx"
+%include "src/finiteVolume/fvMesh/fvPatches/fvPatchList.cpp"
 
 %include <fvBoundaryMesh.H>
 

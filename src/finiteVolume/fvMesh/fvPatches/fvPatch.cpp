@@ -20,18 +20,27 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvPatchList_cxx
-#define fvPatchList_cxx
+#ifndef fvPatch_cpp
+#define fvPatch_cpp
 
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fvMesh/fvPatches/fvPatchList.hpp"
+  #include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.cxx"
+%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+
+%import "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
+
+%include <fvPatch.H>
+
+%extend Foam::fvPatch 
+{
+  ISINSTANCE_EXTEND( Foam::fvPatch );
+}
 
 
 //---------------------------------------------------------------------------
