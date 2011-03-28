@@ -30,15 +30,13 @@
   #include "src/finiteVolume/cfdTools/general/findRefCell.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //-------------------------------------------------------------------------------------
 %import "src/OpenFOAM/primitives/label.cxx"
+
 %import "src/OpenFOAM/primitives/scalar.cxx"
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
+
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 
 //--------------------------------------------------------------------------------------

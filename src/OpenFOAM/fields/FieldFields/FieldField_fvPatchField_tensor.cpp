@@ -35,7 +35,7 @@
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.cpp"
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::tensor >::FieldField;
 

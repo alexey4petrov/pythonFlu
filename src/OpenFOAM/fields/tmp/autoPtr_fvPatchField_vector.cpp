@@ -20,22 +20,32 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volFieldsFwd_hxx
-#define volFieldsFwd_hxx
+#ifndef autoPtr_fvPatchField_vector_cpp
+#define autoPtr_fvPatchField_vector_cpp
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_vector.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
 
-%include "src/finiteVolume/volMesh.hxx"
+%template( autoPtr_fvPatchField_vector ) Foam::autoPtr< Foam::fvPatchField< Foam::vector > >;
 
-%include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::autoPtr< Foam::fvPatchField< Foam::vector > >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_fvPatchField_vector );
 
-%include <volFieldsFwd.H>
+%extend Foam::autoPtr< Foam::fvPatchField< Foam::vector > >
+{
+  SMARTPTR_EXTEND_ATTR( autoPtr_fvPatchField_vector )
+  SMARTPTR_EXTEND_OPERATOR_EQ( Foam::vector );
+}
 
 
 //---------------------------------------------------------------------------

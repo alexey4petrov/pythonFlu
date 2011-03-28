@@ -35,7 +35,7 @@
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_sphericalTensor.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_sphericalTensor.cpp"
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::sphericalTensor >::FieldField;
 

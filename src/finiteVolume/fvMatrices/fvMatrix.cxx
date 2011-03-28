@@ -38,7 +38,7 @@
 
 %import "src/OpenFOAM/db/typeInfo/className.hxx"
 
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
+%import "src/finiteVolume/fields/volFields/volFields.cpp"
 
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
@@ -202,9 +202,9 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
 
 %extend Foam::tmp< Foam::fvMatrix< Type > > COMMON_EXTENDS;
 
-%extend Foam::fvMatrix< Type > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type )
+%extend Foam::fvMatrix< Type > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type );
 
-%extend Foam::tmp< Foam::fvMatrix< Type > > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type )
+%extend Foam::tmp< Foam::fvMatrix< Type > > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type );
 
 %enddef
 
@@ -214,7 +214,7 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
 {
   Foam::tmp< Foam::fvMatrix< Foam::scalar > > __rmul__( const Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& theArg )
   {
-    return theArg * get_ref( self )  ;
+    return theArg * get_ref( self );
   }
 }
 %enddef

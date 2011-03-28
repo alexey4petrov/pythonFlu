@@ -20,22 +20,24 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volFieldsFwd_hxx
-#define volFieldsFwd_hxx
+#ifndef fvPatchField_tensor_cpp
+#define fvPatchField_tensor_cpp
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
+%{
+  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.hpp"
+%}
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
 
-%include "src/finiteVolume/volMesh.hxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/Fields/tensorField.cxx"
 
-%include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
 
-%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
+%template( fvPatchField_tensor ) Foam::fvPatchField< Foam::tensor >;
 
-%include <volFieldsFwd.H>
+FVPATCHFIELD_ADDONS( tensor );
 
 
 //---------------------------------------------------------------------------

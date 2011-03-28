@@ -31,9 +31,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
+%include "src/finiteVolume/fields/volFields/volFields.cpp"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cpp"
 
 %include "src/finiteVolume/fvMesh/fvMesh.hxx"
 

@@ -33,9 +33,9 @@
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/FieldFields/FieldField.cpp"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.cxx"
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.cpp"
 
 NO_TMP_TYPEMAP_FIELDFIELD( Foam::fvPatchField, Foam::Vector< Foam::scalar > )
 

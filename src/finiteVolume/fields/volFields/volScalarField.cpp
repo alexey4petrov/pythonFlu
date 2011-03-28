@@ -20,22 +20,24 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volFieldsFwd_hxx
-#define volFieldsFwd_hxx
+#ifndef volScalarField_cpp
+#define volScalarField_cpp
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
+%{
+  #include "src/finiteVolume/fields/volFields/volScalarField.hpp"
+%}
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
 
-%include "src/finiteVolume/volMesh.hxx"
+//---------------------------------------------------------------------------
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cpp"
 
-%include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%include "src/OpenFOAM/fields/tmp/autoPtr_volScalarField.cpp"
 
-%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
+%include "src/OpenFOAM/fields/tmp/tmp_volScalarField.cpp"
 
-%include <volFieldsFwd.H>
+%include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.cpp"
 
 
 //---------------------------------------------------------------------------

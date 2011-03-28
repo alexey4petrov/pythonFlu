@@ -35,7 +35,7 @@
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.cpp"
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::symmTensor >::FieldField;
 

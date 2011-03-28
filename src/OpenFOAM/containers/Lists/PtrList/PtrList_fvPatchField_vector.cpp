@@ -20,23 +20,44 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volFieldsFwd_hxx
-#define volFieldsFwd_hxx
+#ifndef PtrList_fvPatchField_vector_cpp
+#define PtrList_fvPatchField_vector_cpp
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
+%{
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.hpp"
+%}
 
+
+//---------------------------------------------------------------------------
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
 
-%include "src/finiteVolume/volMesh.hxx"
+%include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_vector.cpp"
 
-%include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_vector.cpp"
 
-%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
-%include <volFieldsFwd.H>
+
+//---------------------------------------------------------------------------
+%ignore Foam::PtrList< Foam::fvPatchField< Foam::vector > >::PtrList;
+
+%template( PtrList_fvPatchField_vector ) Foam::PtrList< Foam::fvPatchField< Foam::vector > >;
+
+
+//---------------------------------------------------------------------------
+%extend Foam::PtrList< Foam::fvPatchField< Foam::vector > >
+{
+  Foam::PtrList< Foam::fvPatchField< Foam::vector > >( const Foam::label s )
+  {
+    return new Foam::PtrList< Foam::fvPatchField< Foam::vector > >( s );
+  }
+}
+
+%extend Foam::PtrList< Foam::fvPatchField< Foam::vector > > PTRLISTBASED_ADDONS( Foam::fvPatchField< Foam::vector > )
 
 
 //---------------------------------------------------------------------------
 #endif
+    

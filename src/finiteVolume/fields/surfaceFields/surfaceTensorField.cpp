@@ -20,22 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volFieldsFwd_hxx
-#define volFieldsFwd_hxx
+#ifndef surfaceTensorField_cpp
+#define surfaceTensorField_cpp
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
+%{
+  #include "src/finiteVolume/fields/surfaceFields/surfaceTensorField.hpp"
+%}
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
+%include "src/OpenFOAM/fields/tmp/autoPtr_surfaceTensorField.cpp"
 
-%include "src/finiteVolume/volMesh.hxx"
-
-%include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
-
-%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
-
-%include <volFieldsFwd.H>
+%include "src/OpenFOAM/fields/tmp/tmp_surfaceTensorField.cpp"
 
 
 //---------------------------------------------------------------------------

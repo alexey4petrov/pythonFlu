@@ -20,22 +20,36 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volFieldsFwd_hxx
-#define volFieldsFwd_hxx
+#ifndef fvPatchField_scalar_cpp
+#define fvPatchField_scalar_cpp
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
+%{
+  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.hpp"
+%}
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
 
-%include "src/finiteVolume/volMesh.hxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
-%include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
 
-%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
+%import "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.cxx"
 
-%include <volFieldsFwd.H>
+%ignore Foam::fvPatchField< Foam::scalar >::typeName;
+%ignore Foam::fvPatchField< Foam::scalar >::debug;
+%ignore Foam::fvPatchField< Foam::scalar >::snGrad;
+
+#if FOAM_VERSION( >=, 010500 )
+  %ignore Foam::fvPatchField< Foam::scalar >::disallowGenericFvPatchField;
+#else
+  %ignore Foam::fvPatchField< Foam::scalar >::disallowDefaultFvPatchField;
+#endif
+
+FVPATCHFIELD_ADDONS( scalar );
+
+%template( fvPatchField_scalar ) Foam::fvPatchField< Foam::scalar >;
 
 
 //---------------------------------------------------------------------------

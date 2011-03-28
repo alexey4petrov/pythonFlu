@@ -20,22 +20,42 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volFieldsFwd_hxx
-#define volFieldsFwd_hxx
+#ifndef tmp_fvPatchField_vector_cpp
+#define tmp_fvPatchField_vector_cpp
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
+%{
+  #include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_vector.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
 
-%include "src/finiteVolume/volMesh.hxx"
+TMP_TYPEMAP( Foam::fvPatchField< Foam::vector > )
 
-%include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%ignore Foam::tmp< Foam::fvPatchField< Foam::vector > >::tmp;
 
-%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
+%template( tmp_fvPatchField_vector ) Foam::tmp< Foam::fvPatchField< Foam::vector > >;
 
-%include <volFieldsFwd.H>
+
+//----------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::fvPatchField< Foam::vector > >::SMARTPTR_PYAPPEND_GETATTR( tmp_fvPatchField_vector );
+
+%extend Foam::tmp< Foam::fvPatchField< Foam::vector > >
+{
+  SMARTPTR_EXTEND_ATTR( tmp_fvPatchField_vector )
+  
+  Foam::tmp< Foam::fvPatchField< Foam::vector > >( const  Foam::tmp< Foam::fvPatchField< Foam::vector > >&  theArg ) 
+  {
+    return new Foam::tmp< Foam::fvPatchField< Foam::vector > >( theArg );
+  }
+  
+  SMARTPTR_EXTEND_OPERATOR_EQ( Foam::vector );
+}
 
 
 //---------------------------------------------------------------------------

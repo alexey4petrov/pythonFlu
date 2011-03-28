@@ -20,22 +20,24 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volFieldsFwd_hxx
-#define volFieldsFwd_hxx
+#ifndef fvPatchField_sphericalTensor_cpp
+#define fvPatchField_sphericalTensor_cpp
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
+%{
+  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_sphericalTensor.hpp"
+%}
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
 
-%include "src/finiteVolume/volMesh.hxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
 
-%include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
 
-%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
+%template( fvPatchField_sphericalTensor ) Foam::fvPatchField< Foam::sphericalTensor >;
 
-%include <volFieldsFwd.H>
+FVPATCHFIELD_ADDONS( sphericalTensor );
 
 
 //---------------------------------------------------------------------------

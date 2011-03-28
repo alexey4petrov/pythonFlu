@@ -51,7 +51,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
 
 %template ( TGeometricBoundaryField_scalar_fvPatchField_volMesh ) Foam::TGeometricBoundaryField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >;
 
