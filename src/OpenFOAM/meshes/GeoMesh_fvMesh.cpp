@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeoMesh_fvMesh_cxx
-#define GeoMesh_fvMesh_cxx
+#ifndef GeoMesh_fvMesh_cpp
+#define GeoMesh_fvMesh_cpp
 
 
 //---------------------------------------------------------------------------
@@ -33,7 +33,7 @@
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hxx"
 
-%include "src/finiteVolume/fvMesh/fvMesh.cxx"
+%include "src/finiteVolume/fvMesh/fvMesh.cpp"
 
 %template( GeoMesh_fvMesh ) Foam::GeoMesh< Foam::fvMesh >; 
 

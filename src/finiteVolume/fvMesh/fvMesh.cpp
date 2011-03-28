@@ -20,24 +20,33 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volMesh_cxx
-#define volMesh_cxx
+#ifndef fvMesh_cpp
+#define fvMesh_cpp
 
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/volMesh.hpp"
+  #include "src/finiteVolume/fvMesh/fvMesh.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/GeoMesh_fvMesh.cxx"
+%include "src/finiteVolume/fields/volFields/volFields.cpp"
 
-%include "src/finiteVolume/volMesh.hxx"
+%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cpp"
 
-%include "src/finiteVolume/fvMesh/fvMesh.cxx"
+%include "src/finiteVolume/fvMesh/fvMesh.hxx"
 
-%include <volMesh.H>
+%ignore Foam::fvMesh::writeObjects;
+
+%include <fvMesh.H>
+
+%extend Foam::fvMesh
+{
+  TYPEINFO_EXTENDS( polyMesh, fvMesh );
+  OBJECTREGISTRY_EXTENDS( fvMesh );
+  ISINSTANCE_EXTEND( Foam::fvMesh );
+}
 
 
 //---------------------------------------------------------------------------

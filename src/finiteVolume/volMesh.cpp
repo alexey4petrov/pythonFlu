@@ -20,24 +20,24 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef surfaceMesh_cxx
-#define surfaceMesh_cxx
+#ifndef volMesh_cpp
+#define volMesh_cpp
 
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/surfaceMesh.hpp"
+  #include "src/finiteVolume/volMesh.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/GeoMesh_fvMesh.cxx"
+%include "src/OpenFOAM/meshes/GeoMesh_fvMesh.cpp"
 
-%include "src/finiteVolume/surfaceMesh.hxx"
+%include "src/finiteVolume/volMesh.hxx"
 
-%include "src/finiteVolume/fvMesh/fvMesh.cxx"
+%include "src/finiteVolume/fvMesh/fvMesh.cpp"
 
-%include <surfaceMesh.H>
+%include <volMesh.H>
 
 
 //---------------------------------------------------------------------------

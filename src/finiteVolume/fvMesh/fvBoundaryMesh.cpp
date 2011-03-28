@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvBoundaryMesh_cxx
-#define fvBoundaryMesh_cxx
+#ifndef fvBoundaryMesh_cpp
+#define fvBoundaryMesh_cpp
 
 
 //---------------------------------------------------------------------------

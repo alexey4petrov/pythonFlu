@@ -137,7 +137,7 @@ endif
 __CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(__CPPFLAGS__)
 
 %.o : %.cc
-	gcc $(__CXXFLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
+	gcc $(__CXXFLAGS__)  "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
 
 -include $(deps) dummy
 

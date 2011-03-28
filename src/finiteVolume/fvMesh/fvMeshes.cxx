@@ -36,11 +36,11 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMesh/fvMesh.cxx"
+%include "src/finiteVolume/fvMesh/fvMesh.cpp"
 
-%include "src/finiteVolume/surfaceMesh.cxx"
+%include "src/finiteVolume/surfaceMesh.cpp"
 
-%include "src/finiteVolume/volMesh.cxx"
+%include "src/finiteVolume/volMesh.cpp"
 
 
 //---------------------------------------------------------------------------

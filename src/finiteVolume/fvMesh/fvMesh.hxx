@@ -37,7 +37,7 @@
 
 %import "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
 
-%include "src/finiteVolume/fvMesh/fvBoundaryMesh.cxx"
+%include "src/finiteVolume/fvMesh/fvBoundaryMesh.cpp"
 
 %include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cpp"
 
