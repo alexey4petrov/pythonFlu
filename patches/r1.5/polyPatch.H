@@ -312,10 +312,10 @@ public:
 
 
         // Geometric data; point list required
-
+#ifndef SWIG
             //- Return face centres
             const vectorField::subField faceCentres() const;
-
+#endif
             //- Return face normals
             const vectorField::subField faceAreas() const;
 

@@ -32,12 +32,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
-%import "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cxx"
+%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -62,21 +59,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
-%import "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx"
-
 %inline FVM_DIV_TEMPLATE_FUNC( Foam::scalar );
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx"
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.cxx"
-
 %inline FVM_DIV_TEMPLATE_FUNC( Foam::vector );
-
-
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/volMesh.cxx"
 
 
 //---------------------------------------------------------------------------

@@ -32,14 +32,10 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
+%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.cxx"
-%import "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
-%import "src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.cxx"
 %import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 
@@ -98,21 +94,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cxx"
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cxx"
-
 %inline FVM_SUP_TEMPLATE_FUNC( Foam::scalar );
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx"
-%import "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.cxx"
-
 %inline FVM_SUP_TEMPLATE_FUNC( Foam::vector );
-
-
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/volMesh.cxx"
 
 
 //---------------------------------------------------------------------------

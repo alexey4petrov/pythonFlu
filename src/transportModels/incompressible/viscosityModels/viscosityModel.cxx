@@ -30,17 +30,11 @@
   #include "src/transportModels/incompressible/viscosityModels/viscosityModel.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 

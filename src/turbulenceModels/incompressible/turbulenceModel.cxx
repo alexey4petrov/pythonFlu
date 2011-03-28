@@ -43,19 +43,13 @@
 
 %import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%import "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
-
-%import "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
 %import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
 %import "src/transportModels/incompressible/transportModel.cxx"
-
-%import "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.cxx"
 
 
 //------------------------------------------------------------------------
