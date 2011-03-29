@@ -21,15 +21,13 @@
 
 
 #--------------------------------------------------------------------------------------
-pyfoam_root_dir:=..
-
-include $(pyfoam_root_dir)/foam.version.makefile
+include @abs_top_builddir@/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
-include $(pyfoam_root_dir)/include.makefile
+include @abs_top_builddir@/include.makefile
 
-SUBDIRS = OpenFOAM finiteVolume fvc fvm transportModels incompressible thermophysicalModels
+SUBDIRS = OpenFOAM finiteVolume fvc fvm transportModels incompressible compressible thermophysicalModels
 
 # SUBDIRS = OpenFOAM meshTools finiteVolume fv fvc fvm MULES sampling dynamicMesh dynamicFvMesh thermophysicalModels transportModels radiation incompressible compressible applications
 
