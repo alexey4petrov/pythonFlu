@@ -20,7 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.turbulenceModels.compressible.turbulenceModel";
+%{
+  #include "src/turbulenceModels/compressible/turbulenceModel.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 #if FOAM_VERSION( ==, 010500 )   
 #define compressibleturbulenceModel_cxx
 #endif
@@ -32,33 +40,19 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%include "src/OpenFOAM/directors.hxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%include "src/finiteVolume/directors.hxx"
+%import "src/thermophysicalModels/basic/basicThermo.cxx"
 
+%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
-
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
-
-%include "src/thermophysicalModels/basic/basicThermo.cxx"
-
-%include "src/finiteVolume/fvMatrices/fvMatrices.cxx"
-
-%include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
-
-%{
-    #include "compressible/turbulenceModel/turbulenceModel.H"
-%}
+%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
 %rename( compressible_turbulenceModel ) Foam::compressible::turbulenceModel;
 
-%include "compressible/turbulenceModel.H"
+%include <compressible/turbulenceModel.H>
 
 
 //---------------------------------------------------------------------------

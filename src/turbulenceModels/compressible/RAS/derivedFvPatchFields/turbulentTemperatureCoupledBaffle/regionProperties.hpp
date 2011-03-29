@@ -20,40 +20,27 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.turbulenceModels.compressible.RAS.RASModel";
-%{
-  #include "src/turbulenceModels/compressible/RAS/RASModel.hpp"
-%}
+#include "src/common.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
-
-#if FOAM_VERSION( <, 010500 )
-#define compressibleRASModel_cxx
+#if FOAM_VERSION( <, 010700 )
+#define regionProperties_hpp
 #endif
 
 
 //-----------------------------------------------------------------------------
-#ifndef compressibleRASModel_cxx
-#define compressibleRASModel_cxx
+#ifndef regionProperties_hpp
+#define regionProperties_hpp
 
 
 //----------------------------------------------------------------------------
-%import "src/turbulenceModels/compressible/turbulenceModel.cxx"
+#include "src/OpenFOAM/db/IOdictionary.hpp"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
-
-%import "src/thermophysicalModels/basic/basicThermo.cxx"
+#include "src/OpenFOAM/db/Time/Time.hpp"
 
 
 //-----------------------------------------------------------------------------
-%rename( compressible_RASModel ) Foam::compressible::RASModel;
-
-%include <compressible/RASModel.H>
+#include <regionProperties.H>
 
 
-//-----------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 #endif

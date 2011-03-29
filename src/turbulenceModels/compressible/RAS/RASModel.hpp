@@ -20,40 +20,37 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.turbulenceModels.compressible.RAS.RASModel";
-%{
-  #include "src/turbulenceModels/compressible/RAS/RASModel.hpp"
-%}
-
-
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
+#include "src/common.hpp"
 
 #if FOAM_VERSION( <, 010500 )
-#define compressibleRASModel_cxx
+#define compressibleRASModel_hpp
 #endif
 
 
 //-----------------------------------------------------------------------------
-#ifndef compressibleRASModel_cxx
-#define compressibleRASModel_cxx
+#ifndef compressibleRASModel_hpp
+#define compressibleRASModel_hpp
 
 
 //----------------------------------------------------------------------------
-%import "src/turbulenceModels/compressible/turbulenceModel.cxx"
+#include "src/turbulenceModels/compressible/turbulenceModel.hpp"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
-%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
+#include "src/finiteVolume/fvMatrices/fvMatrices.hpp"
 
-%import "src/thermophysicalModels/basic/basicThermo.cxx"
-
-
-//-----------------------------------------------------------------------------
-%rename( compressible_RASModel ) Foam::compressible::RASModel;
-
-%include <compressible/RASModel.H>
+#include "src/thermophysicalModels/basic/basicThermo.hpp"
 
 
-//-----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+#if FOAM_VERSION( ==, 010500 )
+  #include "RAS/compressible/RASModel/RASModel.H"
+#endif
+
+#if FOAM_VERSION( >=, 010600 )
+  #include "compressible/RAS/RASModel/RASModel.H"
+#endif
+
+
+//---------------------------------------------------------------------------
 #endif

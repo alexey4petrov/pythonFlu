@@ -20,7 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.turbulenceModels.compressible.RAS.derivedFvPatchFields.turbulentTemperatureCoupledBaffle.regionProperties";
+%{
+  #include "src/turbulenceModels/compressible/RAS/derivedFvPatchFields/turbulentTemperatureCoupledBaffle/regionProperties.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 #if FOAM_VERSION( <, 010700 )
 #define regionProperties_cxx
 #endif
@@ -30,29 +38,15 @@
 #ifndef regionProperties_cxx
 #define regionProperties_cxx
 
-//---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
 
 //----------------------------------------------------------------------------
-%include "src/OpenFOAM/db/IOdictionary.cxx"
+%import "src/OpenFOAM/db/IOdictionary.cxx"
 
-%include "src/OpenFOAM/db/Time/Time.cxx"
-
-
-//---------------------------------------------------------------------------
-%{
-    #include "regionProperties.H"
-%}
-
+%import "src/OpenFOAM/db/Time/Time.cxx"
 
 
 //-----------------------------------------------------------------------------
-%include "regionProperties.H"
+%include <regionProperties.H>
 
 
 //---------------------------------------------------------------------------
