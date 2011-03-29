@@ -57,6 +57,8 @@ from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericType import *
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericINew import *
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_Generic import *
 
+from Foam.src.OpenFOAM.fields.UniformDimensionedFields.UniformDimensionedVectorField import *
+
 
 #---------------------------------------------------------------------------
 scalar = float
