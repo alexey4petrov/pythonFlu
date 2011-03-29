@@ -109,6 +109,7 @@ AC_OUTPUT( [ bashrc \
 	     Foam/finiteVolume/Makefile \
 	     Foam/fvc/Makefile \
 	     Foam/fvm/Makefile \
+	     Foam/compressible/Makefile \
 	     Foam/incompressible/Makefile \
 	     Foam/transportModels/Makefile \
 	     Foam/thermophysicalModels/Makefile \

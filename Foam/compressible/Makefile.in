@@ -21,9 +21,7 @@
 
 
 #--------------------------------------------------------------------------------------
-pyfoam_root_dir:=../..
-
-include $(pyfoam_root_dir)/foam.version.makefile
+include @abs_top_builddir@/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
@@ -61,7 +59,20 @@ endif
 
 
 #--------------------------------------------------------------------------------------
-include $(pyfoam_root_dir)/include.makefile
+sources = \
+	@abs_top_builddir@/src/turbulenceModels/compressible/turbulenceModel.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_turbulenceModel.cxx \
+	\
+	@abs_top_builddir@/src/turbulenceModels/compressible/RAS/RASModel.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_compressible_RASModel.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_RASModel.cxx \
+	\
+	@abs_top_builddir@/src/turbulenceModels/compressible/RAS/derivedFvPatchFields/turbulentTemperatureCoupledBaffle/regionProperties.cxx \
+
+
+#--------------------------------------------------------------------------------------
+include @abs_top_builddir@/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------
