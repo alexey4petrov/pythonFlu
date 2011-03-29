@@ -20,7 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_basicPsiThermo"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 #if FOAM_VERSION( <, 010600 )
 #define autoPtr_basicPsiThermo_cxx
 #endif
@@ -32,17 +40,9 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx"
+%import "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -52,22 +52,15 @@ AUTOPTR_TYPEMAP( Foam::basicPsiThermo )
 
 %template( autoPtr_basicPsiThermo ) Foam::autoPtr< Foam::basicPsiThermo >;
 
-%inline
-{
-  namespace Foam
-  {
-    typedef autoPtr< basicPsiThermo > autoPtr_basicPsiThermo;
-  }
-}
-
 
 //------------------------------------------------------------------------------
 %feature( "pythonappend" ) Foam::autoPtr< Foam::basicPsiThermo >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_basicPsiThermo );
 
 %extend Foam::autoPtr< Foam::basicPsiThermo >
 {
-  SMARTPTR_EXTEND_ATTR( autoPtr_basicPsiThermo )
+  SMARTPTR_EXTEND_ATTR( autoPtr_basicPsiThermo );
 }
+
 
 //---------------------------------------------------------------------------
 #endif

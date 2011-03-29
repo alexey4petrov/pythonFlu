@@ -20,36 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_basicThermo_cxx
-#define autoPtr_basicThermo_cxx
+#ifndef autoPtr_basicThermo_hpp
+#define autoPtr_basicThermo_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_basicThermo"
-%{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.hpp"
-%}
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%import "src/thermophysicalModels/basic/basicThermo.cxx"
-
-
-//----------------------------------------------------------------------------
-%ignore Foam::autoPtr< Foam::basicThermo >::operator->;
-
-%template( autoPtr_basicThermo ) Foam::autoPtr< Foam::basicThermo >;
-
-
-//------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::basicThermo >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_basicThermo );
-
-%extend Foam::autoPtr< Foam::basicThermo >
-{
-  SMARTPTR_EXTEND_ATTR( autoPtr_basicThermo );
-}
+#include "src/thermophysicalModels/basic/basicThermo.hpp"
 
 
 //---------------------------------------------------------------------------

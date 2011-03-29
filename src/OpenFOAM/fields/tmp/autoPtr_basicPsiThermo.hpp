@@ -20,36 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_basicThermo_cxx
-#define autoPtr_basicThermo_cxx
+#include "src/common.hpp"
+
+#if FOAM_VERSION( <, 010600 )
+#define autoPtr_basicPsiThermo_hpp
+#endif
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_basicThermo"
-%{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.hpp"
-%}
+#ifndef autoPtr_basicPsiThermo_hpp
+#define autoPtr_basicPsiThermo_hpp
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
-%import "src/thermophysicalModels/basic/basicThermo.cxx"
-
-
-//----------------------------------------------------------------------------
-%ignore Foam::autoPtr< Foam::basicThermo >::operator->;
-
-%template( autoPtr_basicThermo ) Foam::autoPtr< Foam::basicThermo >;
-
-
-//------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::basicThermo >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_basicThermo );
-
-%extend Foam::autoPtr< Foam::basicThermo >
-{
-  SMARTPTR_EXTEND_ATTR( autoPtr_basicThermo );
-}
+#include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.hpp"
 
 
 //---------------------------------------------------------------------------
