@@ -34,7 +34,7 @@
 
 //-------------------------------------------------------------------------
 //the __getitem__, as  __and__,__sub__ and other's don't work with the __getattr__
-%include "src/OpenFOAM/primitives/label.cxx"
+%import "src/OpenFOAM/primitives/label.cxx"
 
 %define TGEOM_BOUND_FIELD_GETITEM_EXTEND( Type )
   Type& __getitem__( const Foam::label theIndex )

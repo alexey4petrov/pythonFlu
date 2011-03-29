@@ -32,16 +32,16 @@ def _rhoBoundaryTypes( p ):
     rhoBoundaryTypes = pbf.types()
     
     for patchi in range( rhoBoundaryTypes.size() ):
-        if str( rhoBoundaryTypes[patchi] ) == "waveTransmissive":
+        if str( rhoBoundaryTypes[ patchi ] ) == "waveTransmissive" :
            from Foam.finiteVolume import zeroGradientFvPatchScalarField
-           rhoBoundaryTypes[patchi] = zeroGradientFvPatchScalarField.typeName
+           rhoBoundaryTypes[ patchi ] = zeroGradientFvPatchScalarField.typeName
            pass
-        elif pbf[patchi].fixesValue():
+        elif pbf[ patchi ].fixesValue() :
            from Foam.applications.solvers.compressible.r1_7_0.rhoCentralFoam.BCs.rho import fixedRhoFvPatchScalarField
-           rhoBoundaryTypes[patchi] = fixedRhoFvPatchScalarField.typeName
+           rhoBoundaryTypes[ patchi ] = fixedRhoFvPatchScalarField.typeName
            pass
         pass
-    
+
     return pbf, rhoBoundaryTypes
 
 

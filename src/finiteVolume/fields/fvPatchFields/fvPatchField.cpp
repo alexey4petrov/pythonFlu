@@ -39,6 +39,7 @@
 %feature( "director" ) fvPatchField;
 
 %include <fvPatchField.H>
+%include <fvPatchFieldsFwd.H>
 
 
 //---------------------------------------------------------------------------
