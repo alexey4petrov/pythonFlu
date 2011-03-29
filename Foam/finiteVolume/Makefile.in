@@ -137,6 +137,8 @@ fvMeshes_sources = \
 	@abs_top_builddir@/src/finiteVolume/volMesh.cxx \
 	@abs_top_builddir@/src/finiteVolume/surfaceMesh.cxx
 
+
+#--------------------------------------------------------------------------------------
 fvMatrices_sources = \
 	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvMatrix.cxx \
 	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvScalarMatrix.cxx \
@@ -144,6 +146,8 @@ fvMatrices_sources = \
 	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvVectorMatrix.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx \
 
+
+#--------------------------------------------------------------------------------------
 sources = \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvSchemes.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvSolution.cxx \
@@ -166,6 +170,8 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_vector.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_tensor.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.cxx \
+	\
+	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField_scalar.cxx
 
 
 #--------------------------------------------------------------------------------------

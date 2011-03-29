@@ -20,38 +20,38 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef mixedFvPatchField_cxx
-#define mixedFvPatchField_cxx
+#ifndef mixedFvPatchField_hxx
+#define mixedFvPatchField_hxx
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
-
 %{
-    #include "mixedFvPatchField.H"
-
+  #include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField.hpp"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %feature( "director" ) mixedFvPatchField;
 
-%include "mixedFvPatchField.H"
+%include <mixedFvPatchField.H>
 
 
 //--------------------------------------------------------------------------------
 %define _MIXEDFVPATCHFIELD_TEMPLATE_OPERATORS( Type )
-
- Foam::tmp< Foam::Field< Foam::Type > > __sub__( const Foam::Field< Foam::Type >& theArg)
+  Foam::tmp< Foam::Field< Foam::Type > > __sub__( const Foam::Field< Foam::Type >& theArg )
   {
     return *self - theArg;
   }
-
 %enddef
+
 
 //---------------------------------------------------------------------------
 %define MIXEDFVPATCHFIELD_TEMPLATE_Func( Type )
-
-_MIXEDFVPATCHFIELD_TEMPLATE_OPERATORS( Type );
-
+  _MIXEDFVPATCHFIELD_TEMPLATE_OPERATORS( Type );
 %enddef
 
+
+//---------------------------------------------------------------------------
 #endif

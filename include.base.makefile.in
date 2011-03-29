@@ -97,7 +97,7 @@ __SWIG_INCLUDES__ += $(__HEADER_PATHS__)
 #--------------------------------------------------------------------------------------------
 __SWIG_INCLUDES__ += $(__CPPFLAGS__)
 
-__SWIG_FLAGS__ += -python -c++ -MD
+__SWIG_FLAGS__ += -python -c++ -MMD
 
 __SWIG_FLAGS__ += -D__restrict__ # GCC type qualifier (a non-standard GCC entention) - to avoid SWIG parsing errors
 

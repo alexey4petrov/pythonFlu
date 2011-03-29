@@ -20,33 +20,25 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef mixedfvPatchScalarField_cxx
-#define mixedfvPatchScalarField_cxx
+#ifndef mixedFvPatchField_scalar_cxx
+#define mixedFvPatchField_scalar_cxx
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.finiteVolume.fields.fvPatchFields.basic.mixed.mixedFvPatchField_scalar";
+%{
+  #include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField_scalar.hpp"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cxx"
-
-%include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField.cxx"
-
+%import "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField.hxx"
 
 %feature( "director" ) mixedFvPatchScalarField;
-
-%inline
-{
-  namespace Foam 
-  {
-    typedef mixedFvPatchField< scalar > mixedFvPatchScalarField;
-  }
-}
 
 
 //---------------------------------------------------------------------------
@@ -54,11 +46,13 @@ DIRECTOR_PRE_EXTENDS( mixedFvPatchScalarField );
 
 
 //---------------------------------------------------------------------------
+%include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField.hpp"
+
 %template( mixedFvPatchScalarField ) Foam::mixedFvPatchField< Foam::scalar >;
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/objectRegistry.cxx"
+%import "src/OpenFOAM/db/objectRegistry.cxx"
 
 %extend Foam::mixedFvPatchField< Foam::scalar >
 {
