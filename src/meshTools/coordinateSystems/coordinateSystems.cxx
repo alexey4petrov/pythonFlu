@@ -20,7 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.meshTools.coordinateSystems.coordinateSystems";
+%{
+  #include "src/meshTools/coordinateSystems/coordinateSystems.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 #if FOAM_VERSION( <, 010500 )
 #define coordinateSystems_cxx
 #endif
@@ -32,31 +40,19 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.cxx"
-
-%{
-    #include "coordinateSystems.H"
-%}
+%import "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.cxx"
 
 #if FOAM_VERSION( <, 010600 )
-
-%ignore Foam::coordinateSystems::dataType;
-
-%ignore Foam::coordinateSystems::coordinateSystems;
-
-%ignore Foam::coordinateSystems::writeData;
-
-%ignore Foam::coordinateSystems::rewriteDict;
-
-%ignore Foam::coordinateSystems::toc;
-
-%ignore Foam::coordinateSystems::found;
-
-%ignore Foam::coordinateSystems::find;
-
+  %ignore Foam::coordinateSystems::dataType;
+  %ignore Foam::coordinateSystems::coordinateSystems;
+  %ignore Foam::coordinateSystems::writeData;
+  %ignore Foam::coordinateSystems::rewriteDict;
+  %ignore Foam::coordinateSystems::toc;
+  %ignore Foam::coordinateSystems::found;
+  %ignore Foam::coordinateSystems::find;
 #endif
 
-%include "coordinateSystems.H"
+%include <coordinateSystems.H>
 
 
 //---------------------------------------------------------------------------

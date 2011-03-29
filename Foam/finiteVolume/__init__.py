@@ -29,9 +29,12 @@ from Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.linear imp
 
 from Foam.src.finiteVolume.cfdTools.general.findRefCell import *
 from Foam.src.finiteVolume.cfdTools.general.adjustPhi import *
+from Foam.src.finiteVolume.cfdTools.general.bound import *
 
 from Foam.src.finiteVolume.fields.fvPatchFields.basic.mixed.mixedFvPatchField_scalar import *
 from Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedValue.fixedValueFvPatchField_scalar import *
+
+from Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZones import *
 
 
 #---------------------------------------------------------------------------

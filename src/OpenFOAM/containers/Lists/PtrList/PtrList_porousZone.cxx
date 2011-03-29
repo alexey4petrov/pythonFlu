@@ -25,17 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_porousZone";
+%{
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_porousZone.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx"
+%import "src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::porousZone >::PtrList;
 %ignore Foam::PtrList< Foam::porousZone >::begin;
@@ -43,7 +42,7 @@
 %ignore Foam::PtrList< Foam::porousZone >::set;
 
 #if FOAM_VERSION( >=, 010600 )
-%ignore Foam::PtrList< Foam::porousZone >::xfer;
+  %ignore Foam::PtrList< Foam::porousZone >::xfer;
 #endif
 
 %template( PtrList_porousZone ) Foam::PtrList< Foam::porousZone >;
@@ -59,6 +58,7 @@
 }
 
 %extend Foam::PtrList< Foam::porousZone > PTRLISTBASED_ADDONS( Foam::porousZone )
+
 
 //---------------------------------------------------------------------------
 #endif

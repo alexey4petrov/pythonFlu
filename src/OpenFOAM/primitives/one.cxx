@@ -20,7 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.primitives.one";
+%{
+  #include "src/OpenFOAM/primitives/one.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 #if FOAM_VERSION( <, 010500 )
 #define one_cxx
 #endif
@@ -32,13 +40,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
-
-%{
-    #include "one.H"
-%}
-
-%include "one.H"
+%include <one.H>
 
 
 //---------------------------------------------------------------------------

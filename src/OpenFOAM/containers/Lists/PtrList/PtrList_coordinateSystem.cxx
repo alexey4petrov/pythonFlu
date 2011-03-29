@@ -25,9 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/meshTools/coordinateSystems/coordinateSystem.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_coordinateSystem";
+%{
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_coordinateSystem.hpp"
+%}
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/meshTools/coordinateSystems/coordinateSystem.cxx"
+
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::coordinateSystem >::begin;
 %ignore Foam::PtrList< Foam::coordinateSystem >::end;

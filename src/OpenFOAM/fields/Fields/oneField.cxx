@@ -20,36 +20,40 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
-#if FOAM_VERSION( <, 010500 )
 #ifndef oneField_cxx
 #define oneField_cxx
-
-%include "src/OpenFOAM/primitives/pTraits.cxx"
-
-%{
-    #include "OneField.H"
-%}
-
-%include "OneField.H"
-
-#endif
-#endif
 
 
 //---------------------------------------------------------------------------
-#ifndef oneField_cxx
-#define oneField_cxx
-
-%include "src/OpenFOAM/primitives/one.cxx"
-
-%include "src/OpenFOAM/primitives/scalar.cxx"
-
+%module "Foam.src.OpenFOAM.fields.Fields.oneField";
 %{
-    #include "oneField.H"
+  #include "src/OpenFOAM/fields/Fields/oneField.hpp"
 %}
 
-%include "oneField.H"
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
+
+//---------------------------------------------------------------------------
+#if FOAM_VERSION( <, 010500 )
+
+%import "src/OpenFOAM/primitives/pTraits.cxx"
+
+%include <OneField.H>
+
+//---------------------------------------------------------------------------
+#else
+//---------------------------------------------------------------------------
+
+%import "src/OpenFOAM/primitives/one.cxx"
+
+%import "src/OpenFOAM/primitives/scalar.cxx"
+
+%include <oneField.H>
+
+//---------------------------------------------------------------------------
+#endif
 
 
 //---------------------------------------------------------------------------

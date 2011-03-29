@@ -20,22 +20,25 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.meshTools.coordinateSystems.coordinateRotation.coordinateRotation";
+%{
+  #include "src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
 #ifndef coordinateRotation_cxx
 #define coordinateRotation_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/vector.cxx"
+%import "src/OpenFOAM/primitives/vector.cxx"
 
-%include "src/OpenFOAM/primitives/tensor.cxx"
+%import "src/OpenFOAM/primitives/tensor.cxx"
 
-%include "src/OpenFOAM/db/dictionary/dictionary.cxx"
+%import "src/OpenFOAM/db/dictionary/dictionary.cxx"
 
-%{
-    #include "coordinateRotation.H"
-%}
-
-%include "coordinateRotation.H"
+%include <coordinateRotation.H>
 
 
 //---------------------------------------------------------------------------

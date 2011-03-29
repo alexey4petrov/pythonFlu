@@ -170,7 +170,16 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.cxx \
 	\
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField_scalar.cxx \
-	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.cxx
+	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.cxx \
+	@abs_top_builddir@/src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.cxx \
+	@abs_top_builddir@/src/meshTools/coordinateSystems/coordinateSystem.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_coordinateSystem.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_porousZone.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.cxx \
+	@abs_top_builddir@/src/meshTools/coordinateSystems/coordinateSystems.cxx \
+	@abs_top_builddir@/src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx \
+	@abs_top_builddir@/src/finiteVolume/cfdTools/general/porousMedia/porousZones.cxx
 
 
 #--------------------------------------------------------------------------------------

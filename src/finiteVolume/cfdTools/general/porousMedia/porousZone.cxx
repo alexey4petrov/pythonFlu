@@ -25,41 +25,34 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZone";
+%{
+  #include "src/finiteVolume/cfdTools/general/porousMedia/porousZone.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/dictionary/dictionary.cxx"
+%import "src/OpenFOAM/db/dictionary/dictionary.cxx"
 
-%include "src/meshTools/coordinateSystems/coordinateSystem.cxx"
+%import "src/meshTools/coordinateSystems/coordinateSystem.cxx"
 
-%include "src/meshTools/coordinateSystems/coordinateSystems.cxx"
+%import "src/meshTools/coordinateSystems/coordinateSystems.cxx"
 
-%include "src/OpenFOAM/primitives/Lists/wordList.cxx"
+%import "src/OpenFOAM/primitives/Lists/wordList.cxx"
 
-%include "src/OpenFOAM/primitives/Lists/labelList.cxx"
+%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
 
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
-%include "src/OpenFOAM/dimensionedTypes/dimensionedTensor.cxx"
+%import "src/OpenFOAM/dimensionedTypes/dimensionedTensor.cxx"
 
-%include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx"
 
-%include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%include "src/finiteVolume/fvMatrices/fvMatricesFwd.hxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%include "src/finiteVolume/fvMesh/fvMesh.cxx"
-
-%{
-    #include "porousZone.H"
-%}
-
-%include "porousZone.H"
+%include <porousZone.H>
 
 
 //---------------------------------------------------------------------------

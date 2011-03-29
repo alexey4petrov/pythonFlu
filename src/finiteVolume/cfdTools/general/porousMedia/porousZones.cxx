@@ -25,35 +25,24 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZones";
+%{
+  #include "src/finiteVolume/cfdTools/general/porousMedia/porousZones.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx"
+%import "src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hxx"
 
-%include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%include "src/finiteVolume/fvMatrices/fvMatrix.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%include "src/finiteVolume/fvMatrices/fvVectorMatrix.cxx"
-
-%include "src/OpenFOAM/fields/Fields/oneField.cxx"
-
-%include "src/finiteVolume/fields/volFields/volTensorField.cxx"
-
-%{
-    #include "porousZones.H"
-%}
-
-%include "porousZones.H"
+%include <porousZones.H>
 
 
 //---------------------------------------------------------------------------

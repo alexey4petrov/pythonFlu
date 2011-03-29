@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_scalarField";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.hpp"
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.hpp"
 %}
 
 

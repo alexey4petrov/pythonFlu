@@ -20,49 +20,33 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef sphericalTensor_cxx
-#define sphericalTensor_cxx
+#ifndef oneField_hpp
+#define oneField_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.s_phericalTensor";
-%{
-  #include "src/OpenFOAM/primitives/s_phericalTensor.hpp"
-%}
+#include "src/common.hpp"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
+#if FOAM_VERSION( <, 010500 )
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+#include "src/OpenFOAM/primitives/pTraits.hpp"
 
-%import "src/OpenFOAM/primitives/SphericalTensor.cxx"
+#include <OneField.H>
 
-%import "src/OpenFOAM/primitives/contiguous.cxx"
+//---------------------------------------------------------------------------
+#else
+//---------------------------------------------------------------------------
 
-%template( VectorSpace_sphericalTensor ) Foam::VectorSpace< Foam::SphericalTensor< Foam::scalar >, Foam::scalar, 1 >;
+#include "src/OpenFOAM/primitives/one.hpp"
 
-%extend Foam::VectorSpace< Foam::SphericalTensor< Foam::scalar >, Foam::scalar, 1 >
-{
-  int __len__()
-  {
-    return self->size();
-  }
-  
-  Foam::scalar __getitem__( const Foam::direction theIndex )
-  {
-    return self->operator[]( theIndex );
-  }
-  
-  void __setitem__( const Foam::direction theIndex, const Foam::scalar& theValue )
-  {
-    self->operator[]( theIndex ) = theValue;
-  }
-}
+#include "src/OpenFOAM/primitives/scalar.hpp"
 
-%template ( sphericalTensor ) Foam::SphericalTensor< Foam::scalar >;
+#include <oneField.H>
 
-%include <sphericalTensor.H>
+//---------------------------------------------------------------------------
+#endif
 
 
 //---------------------------------------------------------------------------

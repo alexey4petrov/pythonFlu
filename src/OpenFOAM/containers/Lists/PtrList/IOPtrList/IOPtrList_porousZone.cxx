@@ -25,19 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_porousZone";
+%{
+  #include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx"
+%import "src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_porousZone.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_porousZone.cxx"
 
 %ignore Foam::IOPtrList< Foam::porousZone >::IOPtrList;
 

@@ -20,24 +20,29 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IOPtrList_cxx
-#define IOPtrList_cxx
+#ifndef coordinateSystem_hpp
+#define coordinateSystem_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+#include "src/OpenFOAM/primitives/vector.hpp"
 
-%include "src/OpenFOAM/db/regIOobject.cxx"
+#include "src/OpenFOAM/meshes/primitiveShapes/point/point.hpp"
 
-%{
-    #include "IOPtrList.H"
+#include "src/OpenFOAM/primitives/tensor.hpp"
 
-    template< class Type > const Foam::word Foam::IOPtrList< Type >::typeName = "";
-%}
+#include "src/OpenFOAM/fields/Fields/vectorField.hpp"
 
-%include "IOPtrList.H"
+#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
+
+#include "src/OpenFOAM/fields/tmp/tmp.hpp"
+
+#include "src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.hpp"
+
+#include "src/OpenFOAM/db/objectRegistry.hpp"
+
+#include <coordinateSystem.H>
 
 
 //---------------------------------------------------------------------------
 #endif
-

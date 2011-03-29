@@ -20,49 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef sphericalTensor_cxx
-#define sphericalTensor_cxx
+#ifndef PtrList_coordinateSystem_hpp
+#define PtrList_coordinateSystem_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.s_phericalTensor";
-%{
-  #include "src/OpenFOAM/primitives/s_phericalTensor.hpp"
-%}
+#include "src/meshTools/coordinateSystems/coordinateSystem.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
-
-%import "src/OpenFOAM/primitives/scalar.cxx"
-
-%import "src/OpenFOAM/primitives/SphericalTensor.cxx"
-
-%import "src/OpenFOAM/primitives/contiguous.cxx"
-
-%template( VectorSpace_sphericalTensor ) Foam::VectorSpace< Foam::SphericalTensor< Foam::scalar >, Foam::scalar, 1 >;
-
-%extend Foam::VectorSpace< Foam::SphericalTensor< Foam::scalar >, Foam::scalar, 1 >
-{
-  int __len__()
-  {
-    return self->size();
-  }
-  
-  Foam::scalar __getitem__( const Foam::direction theIndex )
-  {
-    return self->operator[]( theIndex );
-  }
-  
-  void __setitem__( const Foam::direction theIndex, const Foam::scalar& theValue )
-  {
-    self->operator[]( theIndex ) = theValue;
-  }
-}
-
-%template ( sphericalTensor ) Foam::SphericalTensor< Foam::scalar >;
-
-%include <sphericalTensor.H>
+#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hpp"
 
 
 //---------------------------------------------------------------------------

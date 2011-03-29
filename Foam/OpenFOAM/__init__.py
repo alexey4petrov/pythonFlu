@@ -44,9 +44,11 @@ from Foam.src.OpenFOAM.dimensionedTypes.dimensionedTensor import *
 from Foam.src.OpenFOAM.dimensionSet import *
 from Foam.src.OpenFOAM.dimensionSets import *
 
-from Foam.src.OpenFOAM.primitives.vector import *
 from Foam.src.OpenFOAM.primitives.scalar import *
 from Foam.src.OpenFOAM.primitives.int_ import *
+from Foam.src.OpenFOAM.primitives.vector import *
+from Foam.src.OpenFOAM.primitives.s_phericalTensor import *
+from Foam.src.OpenFOAM.primitives.tensor import *
 
 from Foam.src.OpenFOAM.db.IOstreams.Fstreams.IFstream import *
 

@@ -62,13 +62,13 @@
 
 
 //---------------------------------------------------------------------------
-%include <Tensor.H>
-
-
-//---------------------------------------------------------------------------
 %import "src/OpenFOAM/primitives/s_phericalTensor.cxx"
 
 %import "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+
+%include <Tensor.H>
+
+%template( tensor ) Foam::Tensor< Foam::scalar >;
 
 %include <tensor.H>
 

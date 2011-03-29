@@ -20,49 +20,32 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef sphericalTensor_cxx
-#define sphericalTensor_cxx
+#ifndef porousZone_hpp
+#define porousZone_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.s_phericalTensor";
-%{
-  #include "src/OpenFOAM/primitives/s_phericalTensor.hpp"
-%}
+#include "src/OpenFOAM/db/dictionary/dictionary.hpp"
 
+#include "src/meshTools/coordinateSystems/coordinateSystem.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
+#include "src/meshTools/coordinateSystems/coordinateSystems.hpp"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+#include "src/OpenFOAM/primitives/Lists/wordList.hpp"
 
-%import "src/OpenFOAM/primitives/SphericalTensor.cxx"
+#include "src/OpenFOAM/primitives/Lists/labelList.hpp"
 
-%import "src/OpenFOAM/primitives/contiguous.cxx"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
 
-%template( VectorSpace_sphericalTensor ) Foam::VectorSpace< Foam::SphericalTensor< Foam::scalar >, Foam::scalar, 1 >;
+#include "src/OpenFOAM/dimensionedTypes/dimensionedTensor.hpp"
 
-%extend Foam::VectorSpace< Foam::SphericalTensor< Foam::scalar >, Foam::scalar, 1 >
-{
-  int __len__()
-  {
-    return self->size();
-  }
-  
-  Foam::scalar __getitem__( const Foam::direction theIndex )
-  {
-    return self->operator[]( theIndex );
-  }
-  
-  void __setitem__( const Foam::direction theIndex, const Foam::scalar& theValue )
-  {
-    self->operator[]( theIndex ) = theValue;
-  }
-}
+#include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hpp"
 
-%template ( sphericalTensor ) Foam::SphericalTensor< Foam::scalar >;
+#include "src/finiteVolume/fvMatrices/fvMatrices.hpp"
 
-%include <sphericalTensor.H>
+#include "src/finiteVolume/fvMesh/fvMesh.hpp"
+
+#include <porousZone.H>
 
 
 //---------------------------------------------------------------------------

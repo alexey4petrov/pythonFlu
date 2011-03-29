@@ -126,7 +126,7 @@ def _UEqn( phi, U, p, turbulence, pZones, pressureImplicitPorosity, nUCorr, eqnR
     trAU = None
     trTU = None
     if pressureImplicitPorosity :
-        from Foam.finiteVolume import sphericalTensor, tensor
+        from Foam.OpenFOAM import sphericalTensor, tensor
         tTU = tensor( sphericalTensor.I ) * UEqn.A()
 
         pZones.addResistance( UEqn, tTU )
