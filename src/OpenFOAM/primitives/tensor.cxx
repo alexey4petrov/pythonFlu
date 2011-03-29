@@ -68,9 +68,9 @@
 
 %include <Tensor.H>
 
-%template( tensor ) Foam::Tensor< Foam::scalar >;
-
 %include <tensor.H>
+
+%template( tensor ) Foam::Tensor< Foam::scalar >;
 
 
 //---------------------------------------------------------------------------
