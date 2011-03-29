@@ -38,7 +38,7 @@
 
 %import "src/OpenFOAM/primitives/strings/keyType.cxx"
 
-%include "src/OpenFOAM/db/IOstreams/token.cxx"
+%import "src/OpenFOAM/db/IOstreams/token.cxx"
 
 // To avoid cyclic dependencies
 //%import "src/OpenFOAM/db/dictionary/dictionary.cxx"
