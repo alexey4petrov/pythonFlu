@@ -93,6 +93,8 @@ namespace Foam
   struct scalar{};
 }
 
+%import "src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
+
 %include <scalar.H>
 
 
