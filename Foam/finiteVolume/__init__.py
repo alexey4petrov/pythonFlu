@@ -64,14 +64,17 @@ fvPatchTensorField = fvPatchField_tensor
 # calculatedFvPatchScalarField = calculatedFvPatchField_scalar
 # 
 # 
-# #---------------------------------------------------------------------------
-# zeroGradientFvPatchScalarField = zeroGradientFvPatchField_scalar
-# 
-# zeroGradientFvPatchVectorField = zeroGradientFvPatchField_vector
-# 
-# zeroGradientFvPatchTensorField = zeroGradientFvPatchField_tensor
-# 
-# 
+#---------------------------------------------------------------------------
+from Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_scalar import *
+zeroGradientFvPatchScalarField = zeroGradientFvPatchField_scalar
+
+from Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_vector import *
+zeroGradientFvPatchVectorField = zeroGradientFvPatchField_vector
+
+from Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_scalar import *
+zeroGradientFvPatchTensorField = zeroGradientFvPatchField_vector
+
+
 #----------------------------------------------------------------------------
 def continuityErrs( mesh, phi, runTime, cumulativeContErr ):
     from Foam import fvm, fvc

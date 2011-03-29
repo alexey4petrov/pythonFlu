@@ -40,6 +40,7 @@
 
 %include <fvPatchField.H>
 %include <fvPatchFieldsFwd.H>
+%include <DimensionedField.H>
 
 
 //---------------------------------------------------------------------------
