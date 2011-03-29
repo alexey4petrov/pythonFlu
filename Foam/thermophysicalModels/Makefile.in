@@ -26,21 +26,26 @@ include @abs_top_builddir@/foam.version.makefile
 
 #--------------------------------------------------------------------------------------
 __CPPFLAGS__ := $(__CPPFLAGS__) \
-	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude
+	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
+	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/basic/lnInclude
 
 
 #--------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume
+	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
+	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lbasicThermophysicalModels \
+	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lspecie
 
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvm/fvmDdt.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvm/fvmD2dt2.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvm/fvmDiv.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvm/fvmSup.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvm/fvmLaplacian.cxx \
+	@abs_top_builddir@/src/thermophysicalModels/basic/basicThermo.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.cxx \
+	\
+	@abs_top_builddir@/src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.cxx \
 
 
 #--------------------------------------------------------------------------------------

@@ -89,7 +89,7 @@ endif
 #--------------------------------------------------------------------------------------
 __HEADER_PATH_SUFFIXES__ := @HEADER_PATHS@
 
-__HEADER_PATHS__ := $(foreach path,$(__HEADER_PATH_SUFFIXES__),$(addprefix -I$(pyfoam_root_dir),$(path)))
+__HEADER_PATHS__ := $(foreach path,$(__HEADER_PATH_SUFFIXES__),$(addprefix -I@abs_top_builddir@,$(path)))
 
 __SWIG_INCLUDES__ += $(__HEADER_PATHS__)
 

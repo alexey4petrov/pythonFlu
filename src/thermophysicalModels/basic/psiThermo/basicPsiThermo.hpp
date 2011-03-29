@@ -20,31 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.thermophysicalModels.basic.psiThermo.basicPsiThermo";
-%{
-  #include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.hpp"
-%}
-
-
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
+#include "src/common.hpp"
 
 #if FOAM_VERSION( <, 010600 )
-#define basicPsiThermo_cxx
+#define basicPsiThermo_hpp
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef basicPsiThermo_cxx
-#define basicPsiThermo_cxx
+#ifndef basicPsiThermo_hpp
+#define basicPsiThermo_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/thermophysicalModels/basic/basicThermo.cxx"
+#include "src/thermophysicalModels/basic/basicThermo.hpp"
 
-// %include "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
-
-%include <basicPsiThermo.H>
+#include <basicPsiThermo.H>
 
 
 //---------------------------------------------------------------------------

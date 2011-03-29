@@ -25,31 +25,24 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%include "src/finiteVolume/fvMesh/fvMesh.hxx"
-
-%include "src/OpenFOAM/db/IOdictionary.cxx"
-
-//%include "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
-
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
+%module "Foam.src.thermophysicalModels.basic.basicThermo";
 %{
-    #include "basicThermo.H"
+  #include "src/thermophysicalModels/basic/basicThermo.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "basicThermo.H"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+
+%import "src/OpenFOAM/db/IOdictionary.cxx"
+
+// %import "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
+
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+
+
+//---------------------------------------------------------------------------
+%include <basicThermo.H>
 
 
 //---------------------------------------------------------------------------
