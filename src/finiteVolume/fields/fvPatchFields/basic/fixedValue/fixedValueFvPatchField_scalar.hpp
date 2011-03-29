@@ -20,37 +20,23 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef mixedFvPatchField_hxx
-#define mixedFvPatchField_hxx
+#ifndef fixedValueFvPatchField_scalar_hpp
+#define fixedValueFvPatchField_scalar_hpp
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/mixedFvPatchField.hpp"
-%}
+#include "src/OpenFOAM/fields/Fields/scalarField.hpp"
 
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+#include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField.hpp"
 
-%feature( "director" ) mixedFvPatchField;
+#include "src/OpenFOAM/db/objectRegistry.hpp"
 
-%include <mixedFvPatchField.H>
-
-
-//--------------------------------------------------------------------------------
-%define _MIXEDFVPATCHFIELD_TEMPLATE_OPERATORS( Type )
-  Foam::tmp< Foam::Field< Foam::Type > > __sub__( const Foam::Field< Foam::Type >& theArg )
-  {
-    return *self - theArg;
-  }
-%enddef
-
-
-//---------------------------------------------------------------------------
-%define MIXEDFVPATCHFIELD_TEMPLATE_Func( Type )
-  _MIXEDFVPATCHFIELD_TEMPLATE_OPERATORS( Type );
-%enddef
+namespace Foam 
+{
+  typedef fixedValueFvPatchField< scalar > fixedValueFvPatchScalarField;
+}
 
 
 //---------------------------------------------------------------------------

@@ -20,43 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fixedValueFvPatchField_scalar_cxx
-#define fixedValueFvPatchField_scalar_cxx
+#ifndef fixedValueFvPatchField_hxx
+#define fixedValueFvPatchField_hxx
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedValue.fixedValueFvPatchField_scalar";
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.hpp"
+  #include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField.hpp"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField.hxx"
+%feature( "director" ) fixedValueFvPatchField;
 
-%feature( "director" ) fixedValueFvPatchScalarField;
-
-DIRECTOR_PRE_EXTENDS( fixedValueFvPatchScalarField );
-
-%template( fixedValueFvPatchScalarField ) Foam::fixedValueFvPatchField< Foam::scalar >;
-
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/objectRegistry.cxx"
-
-%extend Foam::fixedValueFvPatchField< Foam::scalar >
-{
-  DIRECTOR_EXTENDS( fixedValueFvPatchScalarField );
-  TYPEINFO_DIRECTOR_EXTENDS( fvPatchScalarField, fixedValueFvPatchScalarField );
-}
-
-%include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.hpp"
+%include <fixedValueFvPatchField.H>
 
 
 //---------------------------------------------------------------------------

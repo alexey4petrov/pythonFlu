@@ -20,23 +20,17 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fixedValueFvPatchField_cxx
-#define fixedValueFvPatchField_cxx
+#ifndef fixedValueFvPatchField_hpp
+#define fixedValueFvPatchField_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
+#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hpp"
 
-%{
-    #include "fixedValueFvPatchField.H"
-%}
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
-%feature( "director" ) fixedValueFvPatchField;
-
-%include "fixedValueFvPatchField.H"
+#include <fixedValueFvPatchField.H>
 
 
 //---------------------------------------------------------------------------
-
-
 #endif
