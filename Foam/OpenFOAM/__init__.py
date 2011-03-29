@@ -49,6 +49,11 @@ from Foam.src.OpenFOAM.primitives.int_ import *
 
 from Foam.src.OpenFOAM.db.IOstreams.Fstreams.IFstream import *
 
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_entry import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericType import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericINew import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_Generic import *
+
 
 #---------------------------------------------------------------------------
 scalar = float
