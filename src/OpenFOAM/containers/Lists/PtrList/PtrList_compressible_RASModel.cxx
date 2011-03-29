@@ -20,31 +20,31 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_compressible_RASModel";
+%{
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_RASModel.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 #if FOAM_VERSION( <, 010500 )   
-#define PtrList_ccompressible_RASModel_cxx
+#define PtrList_compressible_RASModel_cxx
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef PtrList_ccompressible_RASModel_cxx
+#ifndef PtrList_compressible_RASModel_cxx
 #define PtrList_compressible_RASModel_cxx
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+%import "src/turbulenceModels/compressible/RAS/RASModel.cxx"
 
-%include "src/OpenFOAM/directors.hxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_compressible_RASModel.cxx"
 
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/turbulenceModels/compressible/RAS/RASModel.cxx"
-
-%include "src/OpenFOAM/fields/tmp/autoPtr_compressible_RASModel.cxx"
-
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::compressible::RASModel >::PtrList;
 %ignore Foam::PtrList< Foam::compressible::RASModel >::begin;

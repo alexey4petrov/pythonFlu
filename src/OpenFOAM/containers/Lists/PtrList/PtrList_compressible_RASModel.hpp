@@ -20,46 +20,24 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_compressible_turbulenceModel"
-%{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.hpp"
-%}
+#include "src/common.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
-
-#if FOAM_VERSION( ==, 010500 )   
-#define autoPtr_compressible_turbulenceModel_cxx
+#if FOAM_VERSION( <, 010500 )   
+#define PtrList_ccompressible_RASModel_hpp
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_compressible_turbulenceModel_cxx
-#define autoPtr_compressible_turbulenceModel_cxx
+#ifndef PtrList_ccompressible_RASModel_hpp
+#define PtrList_compressible_RASModel_hpp
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+#include "src/turbulenceModels/compressible/RAS/RASModel.hpp"
 
-%import "src/turbulenceModels/compressible/turbulenceModel.cxx"
+#include "src/OpenFOAM/fields/tmp/autoPtr_compressible_RASModel.hpp"
 
-
-//----------------------------------------------------------------------------
-AUTOPTR_TYPEMAP( Foam::compressible::turbulenceModel )
-
-%ignore Foam::autoPtr< Foam::compressible::turbulenceModel >::operator->;
-
-%template( autoPtr_compressible_turbulenceModel ) Foam::autoPtr< Foam::compressible::turbulenceModel >;
-
-
-//------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::compressible::turbulenceModel >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_compressible_turbulenceModel );
-
-%extend Foam::autoPtr< Foam::compressible::turbulenceModel >
-{
-  SMARTPTR_EXTEND_ATTR( autoPtr_compressible_turbulenceModel );
-}
+#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hpp"
 
 
 //---------------------------------------------------------------------------
