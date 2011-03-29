@@ -28,7 +28,7 @@
 %feature( "director:except" ) 
 {
   if ( $error != NULL ) {
-    //PyErr_Print();
+    PyErr_Print();
     Foam::error::printStack( Foam::Info );
     Swig::DirectorMethodException::raise("Error detected when calling director's method");
   }
