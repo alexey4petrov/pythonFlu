@@ -20,7 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%import "src/common.hxx"
+
 #if FOAM_VERSION( <, 010600 )
 #define PtrList_basicPsiThermo_cxx
 #endif
@@ -32,19 +33,18 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicPsiThermo";
+%{
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx"
+%import "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::basicPsiThermo >::PtrList;
 %ignore Foam::PtrList< Foam::basicPsiThermo >::begin;
@@ -67,7 +67,7 @@
   }
 }
 
-%extend Foam::PtrList< Foam::basicPsiThermo > PTRLISTBASED_ADDONS( Foam::basicPsiThermo )
+%extend Foam::PtrList< Foam::basicPsiThermo > PTRLISTBASED_ADDONS( Foam::basicPsiThermo );
 
 
 //---------------------------------------------------------------------------

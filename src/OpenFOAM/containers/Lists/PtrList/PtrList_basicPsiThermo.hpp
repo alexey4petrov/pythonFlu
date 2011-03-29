@@ -20,46 +20,24 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef PtrList_basicThermo_cxx
-#define PtrList_basicThermo_cxx
+#include "src/common.hpp"
 
-
-//---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicThermo";
-%{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.hpp"
-%}
-
-
-//---------------------------------------------------------------------------
-%import "src/thermophysicalModels/basic/basicThermo.cxx"
-
-%import "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
-
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
-
-%ignore Foam::PtrList< Foam::basicThermo >::PtrList;
-%ignore Foam::PtrList< Foam::basicThermo >::begin;
-%ignore Foam::PtrList< Foam::basicThermo >::end;
-%ignore Foam::PtrList< Foam::basicThermo >::set;
-
-#if FOAM_VERSION( >=, 010600 )
-%ignore Foam::PtrList< Foam::basicThermo >::xfer;
+#if FOAM_VERSION( <, 010600 )
+#define PtrList_basicPsiThermo_hpp
 #endif
 
-%template( PtrList_basicThermo ) Foam::PtrList< Foam::basicThermo >;
+
+//---------------------------------------------------------------------------
+#ifndef PtrList_basicPsiThermo_hpp
+#define PtrList_basicPsiThermo_hpp
 
 
 //---------------------------------------------------------------------------
-%extend Foam::PtrList< Foam::basicThermo >
-{
-  Foam::PtrList< Foam::basicThermo >( const Foam::label s )
-  {
-    return new Foam::PtrList< Foam::basicThermo >( s );
-  }
-}
+#include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.hpp"
 
-%extend Foam::PtrList< Foam::basicThermo > PTRLISTBASED_ADDONS( Foam::basicThermo );
+#include "src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.hpp"
+
+#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hpp"
 
 
 //---------------------------------------------------------------------------
