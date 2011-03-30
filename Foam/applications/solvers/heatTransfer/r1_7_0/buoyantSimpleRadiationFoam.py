@@ -135,7 +135,7 @@ def fun_hEqn( turbulence, phi, h, rho, radiation, p, thermo, eqnResidual, maxRes
     
     from Foam import fvc, fvm    
     left_exp = fvm.div( phi, h ) - fvm.Sp( fvc.div( phi ), h ) - fvm.laplacian( turbulence.alphaEff(), h )
-    right_exp = fvc.div( phi/fvc.interpolate( rho )*fvc.interpolate( p ) ) - p*fvc.div( phi/fvc.interpolate( rho ) ) + radiation.Sh( thermo() )
+    right_exp = fvc.div( phi / fvc.interpolate( rho ) * fvc.interpolate( p ) ) - p * fvc.div( phi / fvc.interpolate( rho ) ) + radiation.Sh( thermo() )
     
     hEqn = (left_exp == right_exp )
 

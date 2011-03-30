@@ -29,6 +29,8 @@
 
 #include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hpp"
 
+#include "src/finiteVolume/fvMatrices/fvMatricesFwd.hpp"
+
 #include <fvMatrix.H>
 
 
