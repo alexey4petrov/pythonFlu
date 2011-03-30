@@ -20,38 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_dynamicFvMesh_cxx
-#define autoPtr_dynamicFvMesh_cxx
+#ifndef dynamicFvMesh_hpp
+#define dynamicFvMesh_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_dynamicFvMesh"
-%{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_dynamicFvMesh.hpp"
-%}
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%include "src/dynamicFvMesh/dynamicFvMesh.cpp"
-
-
-//---------------------------------------------------------------------------
-AUTOPTR_TYPEMAP( Foam::dynamicFvMesh )
-
-%ignore Foam::autoPtr< Foam::dynamicFvMesh >::operator->;
-
-%template( autoPtr_dynamicFvMesh ) Foam::autoPtr< Foam::dynamicFvMesh >;
-
-
-//------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::dynamicFvMesh >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_dynamicFvMesh );
-
-%extend Foam::autoPtr< Foam::dynamicFvMesh >
-{
-  SMARTPTR_EXTEND_ATTR( autoPtr_dynamicFevMesh );
-}
+#include <dynamicFvMesh.H>
 
 
 //---------------------------------------------------------------------------

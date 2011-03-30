@@ -20,28 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef dynamicFvMesh_cxx
-#define dynamicFvMesh_cxx
+#ifndef autoPtr_dynamicFvMesh_hpp
+#define autoPtr_dynamicFvMesh_hpp
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
-
-%include "src/finiteVolume/fvMesh/fvMesh.cxx"
-
-%{
-  #include "dynamicFvMesh.H"
-%}
-
-%include "dynamicFvMesh.H"
+#include "src/dynamicFvMesh/dynamicFvMesh.hpp"
 
 
 //---------------------------------------------------------------------------

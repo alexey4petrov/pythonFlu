@@ -21,8 +21,7 @@
 
 
 #---------------------------------------------------------------------------
-from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "dynamicFvMesh_" ) 
+from Foam.src.OpenFOAM.fields.tmp.autoPtr_dynamicFvMesh import *
 
 
 #---------------------------------------------------------------------------
@@ -46,7 +45,7 @@ def meshCourantNo( runTime, mesh, phi ):
     
     if mesh.nInternalFaces():
        SfUfbyDelta = mesh.deltaCoeffs() * mesh.phi().mag()
-       meshCoNum = (SfUfbyDelta/mesh.magSf()).ext_max().value() * runTime.deltaT().value()
+       meshCoNum = ( SfUfbyDelta / mesh.magSf() ).ext_max().value() * runTime.deltaT().value()
        meanMeshCoNum = ( SfUfbyDelta.sum() / mesh.magSf().sum() ).value() * runTime.deltaT().value()
        pass
     
