@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef MULES_cxx
-#define MULES_cxx
+#ifndef MULES_hpp
+#define MULES_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fvMatrices.solvers.MULES.MULES";
-%{
-  #include "src/finiteVolume/fvMatrices/solvers/MULES/MULES.hpp"
-%}
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
-
-//---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-%include <MULES.H>
+#include <MULES.H>
 
 
 //----------------------------------------------------------------------------

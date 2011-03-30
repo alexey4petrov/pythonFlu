@@ -52,6 +52,7 @@ from Foam.src.OpenFOAM.primitives.s_phericalTensor import *
 from Foam.src.OpenFOAM.primitives.tensor import *
 
 from Foam.src.OpenFOAM.db.IOstreams.Fstreams.IFstream import *
+from Foam.src.OpenFOAM.db.IOstreams.Fstreams.OFstream import *
 
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_entry import *
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericType import *

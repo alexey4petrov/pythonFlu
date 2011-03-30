@@ -109,13 +109,14 @@ AC_OUTPUT( [ bashrc \
 	     Foam/finiteVolume/Makefile \
 	     Foam/fvc/Makefile \
 	     Foam/fvm/Makefile \
+	     Foam/MULES/Makefile \
 	     Foam/sampling/Makefile \
 	     Foam/dynamicFvMesh/Makefile \
+	     Foam/thermophysicalModels/Makefile \
 	     Foam/transportModels/Makefile \
 	     Foam/radiation/Makefile \
 	     Foam/incompressible/Makefile \
 	     Foam/compressible/Makefile \
-	     Foam/thermophysicalModels/Makefile \
 	     Foam/applications/utilities/postProcessing/graphics/Makefile \
 	     Foam/applications/utilities/mesh/conversion/Makefile \
 	     EFoam/pbmr/diffusion/Makefile \
