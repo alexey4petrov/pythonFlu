@@ -73,7 +73,7 @@ def _createFields( runTime, mesh ):
     patches = mesh.boundary()
     
     for patchi in range( mesh.boundary().size() ):
-        currPatch = patches[patchi]
+        currPatch = patches[ patchi ]
         
         from Foam.finiteVolume import wallFvPatch
         if wallFvPatch.ext_isA( currPatch ):
@@ -81,24 +81,22 @@ def _createFields( runTime, mesh ):
            for facei in range( currPatch.size() ):
                nWallFaces = nWallFaces +1
                
-               if nWallFaces == 1:
-                  wallNormal = - mesh.Sf().ext_boundaryField()[patchi][facei] / mesh.magSf().ext_boundaryField()[patchi][facei]
-                  pass
-               elif nWallFaces == 2:
-                  wallNormal2 = mesh.Sf().ext_boundaryField()[patchi][facei] / mesh.magSf().ext_boundaryField()[patchi][facei]
+               if nWallFaces == 1 :
+                   wallNormal = - mesh.Sf().ext_boundaryField()[ patchi ][ facei ] / mesh.magSf().ext_boundaryField()[ patchi ][ facei ]
+                   pass
+               elif nWallFaces == 2 :
+                   wallNormal2 = mesh.Sf().ext_boundaryField()[ patchi ][ facei ] / mesh.magSf().ext_boundaryField()[ patchi ][ facei ]
                   
-                  #- Check that wall faces are parallel
-                  from Foam.OpenFOAM import mag
-                  if mag(wallNormal & wallNormal2) > 1.01 or mag(wallNormal & wallNormal2) < 0.99:
-                     ext_Info() << "boundaryFoam: wall faces are not parallel" << nl
-                     import os
-                     os.abort()
-                     pass
-                  pass
+                   #- Check that wall faces are parallel
+                   from Foam.OpenFOAM import mag
+                   if mag( wallNormal & wallNormal2 ) > 1.01 or mag( wallNormal & wallNormal2 ) < 0.99 :
+                       ext_Info() << "boundaryFoam: wall faces are not parallel" << nl
+                       import os; os.abort()
+                       pass
+                   pass
                else:
                   ext_Info() << "boundaryFoam: number of wall faces > 2" << nl
-                  import os
-                  os.abort()
+                  import os; os.abort()
                pass
            pass
         pass
@@ -108,7 +106,7 @@ def _createFields( runTime, mesh ):
     from Foam.OpenFOAM import dimensionSet, vector, word
     gradP = dimensionedVector( word( "gradP" ),
                                dimensionSet( 0.0, 1.0, -2.0, 0.0, 0.0 ),
-                               vector( 0.0, 0.0, 0.0) )
+                               vector( 0.0, 0.0, 0.0 ) )
               
     return U, phi, laminarTransport, turbulence, Ubar, wallNormal, flowDirection, flowMask, y, gradP
 

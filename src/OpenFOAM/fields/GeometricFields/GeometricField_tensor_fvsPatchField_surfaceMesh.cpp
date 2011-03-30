@@ -46,7 +46,7 @@
 %extend Foam::TGeometricBoundaryField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >
 {
   NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_tensor_fvsPatchField_surfaceMesh );
-  TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvsPatchField_tensor );
+  TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvsPatchTensorField );
 }
 
 

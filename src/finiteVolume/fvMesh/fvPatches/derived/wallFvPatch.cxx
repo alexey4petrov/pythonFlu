@@ -25,22 +25,25 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
-
-%include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cxx"
-
+%module "src.finiteVolume.fvMesh.fvPatches.derived.wallFvPatch"
 %{
-    #include "wallFvPatch.H"
+  #include "src/finiteVolume/fvMesh/fvPatches/derived/wallFvPatch.hpp"
 %}
 
-%include "wallFvPatch.H"
 
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+
+%include <wallFvPatch.H>
 
 %extend Foam::wallFvPatch 
 {
- ISINSTANCE_EXTEND( Foam::fvPatch ) 
- _IS_EXTENDS( fvPatch, Foam::wallFvPatch ) 
+  ISINSTANCE_EXTEND( Foam::fvPatch );
+  _IS_EXTENDS( fvPatch, Foam::wallFvPatch );
 }
+
 
 //---------------------------------------------------------------------------
 #endif

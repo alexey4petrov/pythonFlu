@@ -20,18 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volFieldsFwd_hxx
-#define volFieldsFwd_hxx
+#ifndef wallFvPatch_hpp
+#define wallFvPatch_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
-%include "src/finiteVolume/volMesh.hxx"
-
-%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
-
-%include <volFieldsFwd.H>
+#include <wallFvPatch.H>
 
 
 //---------------------------------------------------------------------------

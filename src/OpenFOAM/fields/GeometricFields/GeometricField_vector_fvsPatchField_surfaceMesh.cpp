@@ -32,7 +32,7 @@
 
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
+%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.cpp"
 %include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_surfaceMesh.cpp"
 
 
@@ -44,7 +44,7 @@
 %extend Foam::TGeometricBoundaryField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >
 {
   NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_vector_fvsPatchField_surfaceMesh );
-  TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvsPatchField_vector );
+  TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvsPatchVectorField );
 }
 
 
