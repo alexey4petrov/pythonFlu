@@ -19,45 +19,23 @@
 //  Author : Alexey PETROV
 
 
-//--------------------------------------------------------------------------
-%include "src/common.hxx"
+//---------------------------------------------------------------------------
+#include "src/common.hpp"
 
 #if FOAM_VERSION( <, 010500 )
-#define radiationModel_cxx
+#define autoPtr_radiationModel_hpp
 #endif
 
 
-//---------------------------------------------------------------------------
-#ifndef radiationModel_cxx
-#define radiationModel_cxx
-
-//---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+//-----------------------------------------------------------------------------
+#ifndef autoPtr_radiationModel_hpp
+#define autoPtr_radiationModel_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/IOdictionary.cxx"
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
-//%include "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
-
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%include "src/thermophysicalModels/basic/basicThermo.cxx"
-
-%include "src/finiteVolume/fvMatrices/fvMatrices.cxx"
-
-// #include "blackBodyEmission.H"
-
-
-%{
-    #include "radiationModel.H"
-%}
-
-%include "radiationModel.H"
+#include "src/thermophysicalModels/radiation/radiationModel/radiationModel.hpp"
 
 
 //---------------------------------------------------------------------------

@@ -20,46 +20,38 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_radiationModel"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_radiationModel.hpp"
+  #include "src/thermophysicalModels/radiation/radiationModel/radiationModel.hpp"
 %}
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------
 %import "src/common.hxx"
 
 #if FOAM_VERSION( <, 010500 )
-#define autoPtr_radiationModel_cxx
+#define radiationModel_cpp
 #endif
 
 
-//-----------------------------------------------------------------------------
-#ifndef autoPtr_radiationModel_cxx
-#define autoPtr_radiationModel_cxx
+//---------------------------------------------------------------------------
+#ifndef radiationModel_cpp
+#define radiationModel_cpp
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "src/OpenFOAM/db/IOdictionary.cxx"
 
-%include "src/thermophysicalModels/radiation/radiationModel/radiationModel.cpp"
+// %import "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
 
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-//-----------------------------------------------------------------------------
-AUTOPTR_TYPEMAP( Foam::radiation::radiationModel )
+%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%ignore Foam::autoPtr< Foam::radiation::radiationModel >::operator->;
+%import "src/thermophysicalModels/basic/basicThermo.cxx"
 
-%template( autoPtr_radiationModel ) Foam::autoPtr< Foam::radiation::radiationModel >;
+// #include "blackBodyEmission.H"
 
-
-//------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::radiation::radiationModel >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_radiationModel );
-
-%extend Foam::autoPtr< Foam::radiation::radiationModel >
-{
-  SMARTPTR_EXTEND_ATTR( autoPtr_radiationModel );
-}
+%include <radiationModel.H>
 
 
 //---------------------------------------------------------------------------

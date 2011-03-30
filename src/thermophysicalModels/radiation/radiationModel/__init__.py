@@ -18,18 +18,3 @@
 ##
 ## Author : Alexey PETROV
 ##
-
-
-#---------------------------------------------------------------------------
-from Foam.src.OpenFOAM.fields.tmp.autoPtr_radiationModel import *
-
-
-#---------------------------------------------------------------------------
-def createRadiationModel( thermo ) :
-    from Foam import radiation
-    pRadiation = radiationModel.New( thermo.T() )
-    
-    return pRadiation
-
-
-#----------------------------------------------------------------------------
