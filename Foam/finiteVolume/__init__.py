@@ -22,6 +22,7 @@
 
 #---------------------------------------------------------------------------
 from Foam.src.finiteVolume.fvMesh.fvMeshes import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_fvMesh import *
 
 from Foam.src.finiteVolume.fvMatrices.fvMatrices import *
 

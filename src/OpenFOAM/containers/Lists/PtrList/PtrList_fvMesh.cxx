@@ -25,17 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_fvMesh";
+%{
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvMesh.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr_fvMesh.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_fvMesh.cxx"
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::fvMesh >::PtrList;
 %ignore Foam::PtrList< Foam::fvMesh >::begin;
@@ -43,7 +42,7 @@
 %ignore Foam::PtrList< Foam::fvMesh >::set;
 
 #if FOAM_VERSION( >=, 010600 )
-%ignore Foam::PtrList< Foam::fvMesh >::xfer;
+  %ignore Foam::PtrList< Foam::fvMesh >::xfer;
 #endif
 
 %template( PtrList_fvMesh ) Foam::PtrList< Foam::fvMesh >;
@@ -58,7 +57,7 @@
   }
 }
 
-%extend Foam::PtrList< Foam::fvMesh > PTRLISTBASED_ADDONS( Foam::fvMesh )
+%extend Foam::PtrList< Foam::fvMesh > PTRLISTBASED_ADDONS( Foam::fvMesh );
 
 
 //---------------------------------------------------------------------------

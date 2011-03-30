@@ -20,27 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_fvMesh_cxx
-#define autoPtr_fvMesh_cxx
+#ifndef autoPtr_fvMesh_hpp
+#define autoPtr_fvMesh_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_fvMesh"
-%{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_fvMesh.hpp"
-%}
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-AUTOPTR_TYPEMAP( Foam::fvMesh )
-
-%ignore Foam::autoPtr< Foam::fvMesh >::operator->;
-
-%template( autoPtr_fvMesh ) Foam::autoPtr< Foam::fvMesh >;
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
 
 //---------------------------------------------------------------------------
