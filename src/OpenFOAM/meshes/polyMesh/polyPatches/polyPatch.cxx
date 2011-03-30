@@ -46,8 +46,6 @@
 
 %include <polyPatch.H>
 
-%extend Foam::polyPatch COMMON_EXTENDS;
-
 %extend Foam::polyPatch
 {
   static Foam::polyPatch* nullPtr()

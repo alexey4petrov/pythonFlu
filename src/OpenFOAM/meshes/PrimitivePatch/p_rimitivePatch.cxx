@@ -36,18 +36,19 @@
 
 %import "src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.cxx"
 
-%ignore Foam::PrimitivePatch< face, SubList, const pointField& >::PrimitivePatch;
+%ignore Foam::PrimitivePatch< Foam::face, Foam::SubList, const Foam::pointField& >::PrimitivePatch;
+%ignore Foam::PrimitivePatch< Foam::face, Foam::SubList, const Foam::pointField& >::faceCentres;
 
 #if FOAM_BRANCH_VERSION( dev, >=, 010500 )
-  %ignore Foam::PrimitivePatch< face, SubList, const pointField& >::writeVTK;
-  %ignore Foam::PrimitivePatch< face, SubList, const pointField& >::writeVTKNormals;
+  %ignore Foam::PrimitivePatch< Foam::face, Foam::SubList, const Foam::pointField& >::writeVTK;
+  %ignore Foam::PrimitivePatch< Foam::face, Foam::SubList, const Foam::pointField& >::writeVTKNormals;
 #endif
-
-%template( primitivePatch ) Foam::PrimitivePatch< Foam::face, Foam::SubList, const Foam::pointField& >;
 
 %include <primitivePatch.H>
 
-%extend Foam::PrimitivePatch< face, SubList, const pointField& >
+%template( primitivePatch ) Foam::PrimitivePatch< Foam::face, Foam::SubList, const Foam::pointField& >;
+
+%extend Foam::PrimitivePatch< Foam::face, Foam::SubList, const Foam::pointField& >
 { 
   Foam::label ext_size()
   {

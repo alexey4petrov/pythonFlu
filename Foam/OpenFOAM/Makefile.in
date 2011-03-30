@@ -168,8 +168,8 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/patchIdentifier.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_polyPatchPtr.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.cxx \
 	\
