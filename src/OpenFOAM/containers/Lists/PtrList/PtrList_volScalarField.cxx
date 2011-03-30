@@ -25,27 +25,22 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_volScalarField";
+%{
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_volScalarField.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volScalarField.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_volScalarField.cxx"
-
-%include "src/OpenFOAM/fields/tmp/tmp_volScalarField.cxx"
-
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::volScalarField >::PtrList;
 %ignore Foam::PtrList< Foam::volScalarField >::set;
 
 #if FOAM_VERSION( >=, 010600 )
-%ignore Foam::PtrList< Foam::volScalarField >::xfer;
+  %ignore Foam::PtrList< Foam::volScalarField >::xfer;
 #endif
 
 %template( PtrList_volScalarField ) Foam::PtrList< Foam::volScalarField >;
@@ -60,7 +55,7 @@
   }
 }
 
-%extend Foam::PtrList< Foam::volScalarField > PTRLISTBASED_ADDONS( Foam::volScalarField )
+%extend Foam::PtrList< Foam::volScalarField > PTRLISTBASED_ADDONS( Foam::volScalarField );
 
 
 //---------------------------------------------------------------------------

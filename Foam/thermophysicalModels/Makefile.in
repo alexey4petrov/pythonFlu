@@ -46,6 +46,10 @@ sources = \
 	@abs_top_builddir@/src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.cxx \
+	\
+	@abs_top_builddir@/src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicRhoThermo.cxx \
 
 
 #--------------------------------------------------------------------------------------

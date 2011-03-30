@@ -47,7 +47,7 @@
 %ignore Foam::UniformDimensionedField< Foam::vector >::typeName;
 %ignore Foam::UniformDimensionedField< Foam::vector >::debug;
 
-%template( UniformDimensionedVectorField ) Foam::UniformDimensionedField< Foam::vector >;
+%template( uniformDimensionedVectorField ) Foam::UniformDimensionedField< Foam::vector >;
 
 %include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hpp"
 
@@ -55,7 +55,7 @@
 //--------------------------------------------------------------------------
 %import "src/try_reverse_operator.hxx"
 
-%feature ("pythonprepend") Foam::UniformDimensionedField< Foam::vector >::TRY_REVERSE_PYPREPEND( and )
+%feature ("pythonprepend") Foam::UniformDimensionedField< Foam::vector >::TRY_REVERSE_PYPREPEND( and );
 
 %extend Foam::UniformDimensionedField< Foam::vector >
 {
@@ -64,7 +64,7 @@
     return new Foam::UniformDimensionedField< Foam::vector >( io );
   }
   
-  TRY_REVERSE_EXTEND( and )
+  TRY_REVERSE_EXTEND( and );
 }
 
 

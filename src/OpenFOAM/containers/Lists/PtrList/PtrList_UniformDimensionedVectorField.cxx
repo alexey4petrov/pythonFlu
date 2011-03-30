@@ -46,25 +46,25 @@
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
-%ignore Foam::PtrList< Foam::UniformDimensionedVectorField >::PtrList;
-%ignore Foam::PtrList< Foam::UniformDimensionedVectorField >::begin;
-%ignore Foam::PtrList< Foam::UniformDimensionedVectorField >::end;
-%ignore Foam::PtrList< Foam::UniformDimensionedVectorField >::set;
-%ignore Foam::PtrList< Foam::UniformDimensionedVectorField >::xfer;
+%ignore Foam::PtrList< Foam::uniformDimensionedVectorField >::PtrList;
+%ignore Foam::PtrList< Foam::uniformDimensionedVectorField >::begin;
+%ignore Foam::PtrList< Foam::uniformDimensionedVectorField >::end;
+%ignore Foam::PtrList< Foam::uniformDimensionedVectorField >::set;
+%ignore Foam::PtrList< Foam::uniformDimensionedVectorField >::xfer;
 
-%template( PtrList_UniformDimensionedVectorField ) Foam::PtrList< Foam::UniformDimensionedVectorField >;
+%template( PtrList_uniformDimensionedVectorField ) Foam::PtrList< Foam::uniformDimensionedVectorField >;
 
 
 //---------------------------------------------------------------------------
-%extend Foam::PtrList< Foam::UniformDimensionedVectorField >
+%extend Foam::PtrList< Foam::uniformDimensionedVectorField >
 {
-  Foam::PtrList< Foam::UniformDimensionedVectorField >( const Foam::label s )
+  Foam::PtrList< Foam::uniformDimensionedVectorField >( const Foam::label s )
   {
-    return new Foam::PtrList< Foam::UniformDimensionedVectorField >( s );
+    return new Foam::PtrList< Foam::uniformDimensionedVectorField >( s );
   }
 }
 
-%extend Foam::PtrList< Foam::UniformDimensionedVectorField > PTRLISTBASED_ADDONS( Foam::UniformDimensionedVectorField )
+%extend Foam::PtrList< Foam::uniformDimensionedVectorField > PTRLISTBASED_ADDONS( Foam::uniformDimensionedVectorField )
 
 
 //---------------------------------------------------------------------------

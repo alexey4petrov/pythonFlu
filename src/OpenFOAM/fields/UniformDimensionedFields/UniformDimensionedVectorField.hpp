@@ -37,11 +37,6 @@
 
 #include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hpp"
 
-namespace Foam
-{
-  typedef UniformDimensionedField< vector > UniformDimensionedVectorField;
-}
-
 
 //---------------------------------------------------------------------------
 #endif

@@ -25,27 +25,22 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_surfaceScalarField";
+%{
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_surfaceScalarField.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_surfaceScalarField.cxx"
-
-%include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cxx"
-
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::surfaceScalarField >::PtrList;
 %ignore Foam::PtrList< Foam::surfaceScalarField >::set;
 
 #if FOAM_VERSION( >=, 010600 )
-%ignore Foam::PtrList< Foam::surfaceScalarField >::xfer;
+  %ignore Foam::PtrList< Foam::surfaceScalarField >::xfer;
 #endif
 
 %template( PtrList_surfaceScalarField ) Foam::PtrList< Foam::surfaceScalarField >;
@@ -60,7 +55,7 @@
   }
 }
 
-%extend Foam::PtrList< Foam::surfaceScalarField > PTRLISTBASED_ADDONS( Foam::surfaceScalarField )
+%extend Foam::PtrList< Foam::surfaceScalarField > PTRLISTBASED_ADDONS( Foam::surfaceScalarField );
 
 
 //---------------------------------------------------------------------------

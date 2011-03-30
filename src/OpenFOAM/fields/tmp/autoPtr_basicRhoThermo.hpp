@@ -20,41 +20,23 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.UniformDimensionedFields.UniformDimensionedField";
-%{
-  #include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.hpp"
-%}
-
-
-//---------------------------------------------------------------------------
-%import "src/common.hxx"
+#include "src/common.hpp"
 
 #if FOAM_VERSION( <, 010600 )
-#define UniformDimensionedField_cxx
+#define autoPtr_basicRhoThermo_hpp
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef UniformDimensionedField_cxx
-#define UniformDimensionedField_cxx
+#ifndef autoPtr_basicRhoThermo_hpp
+#define autoPtr_basicRhoThermo_hpp
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/regIOobject.cxx"
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
-%import "src/OpenFOAM/fields/Fields/Field.cxx"
-
-%import "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
-
-%ignore Foam::UniformDimensionedField::UniformDimensionedField;
-
-%include <UniformDimensionedField.H>
-
-%include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
-
-%include <uniformDimensionedFields.H>
+#include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.hpp"
 
 
 //---------------------------------------------------------------------------
 #endif
-

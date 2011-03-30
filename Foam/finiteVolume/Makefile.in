@@ -153,6 +153,9 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/fvMesh/fvMeshes.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_fvMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_fvMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_volScalarField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_volVectorField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_surfaceScalarField.cxx \
 	\
 	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvMatrices.cxx \
 	\

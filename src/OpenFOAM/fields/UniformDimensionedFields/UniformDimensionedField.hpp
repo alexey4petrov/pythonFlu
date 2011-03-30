@@ -39,6 +39,8 @@
 
 #include "src/OpenFOAM/dimensionedTypes/dimensionedType.hpp"
 
+#include <uniformDimensionedFields.H>
+
 #include <UniformDimensionedField.H>
 
 

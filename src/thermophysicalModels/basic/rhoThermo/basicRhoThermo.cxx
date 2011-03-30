@@ -20,7 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.thermophysicalModels.basic.rhoThermo.basicRhoThermo";
+%{
+  #include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define basicRhoThermo_cxx
@@ -33,25 +40,13 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+%import "src/thermophysicalModels/basic/basicThermo.cxx"
 
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/thermophysicalModels/basic/basicThermo.cxx"
-
-//%include "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
-
-%{
-    #include "basicRhoThermo.H"
-%}
+// %import "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
 
 %ignore Foam::basicRhoThermo::rho() const;
 
-%include "basicRhoThermo.H"
+%include <basicRhoThermo.H>
 
 
 //---------------------------------------------------------------------------

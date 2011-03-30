@@ -25,9 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/dictionary/entry.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_entry";
+%{
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_entry.hpp"
+%}
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/db/dictionary/entry.cxx"
+
+%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::entry >::begin;
 %ignore Foam::PtrList< Foam::entry >::end;
@@ -35,7 +42,7 @@
 
 %template( PtrList_entry ) Foam::PtrList< Foam::entry >;
 
-%extend Foam::PtrList< Foam::entry > PTRLISTBASED_ADDONS( Foam::entry )
+%extend Foam::PtrList< Foam::entry > PTRLISTBASED_ADDONS( Foam::entry );
 
 
 //---------------------------------------------------------------------------

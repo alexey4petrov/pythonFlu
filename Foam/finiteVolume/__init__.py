@@ -21,8 +21,15 @@
 
 
 #---------------------------------------------------------------------------
+from Foam.src.finiteVolume.finiteVolume.fvSchemes import *
+from Foam.src.finiteVolume.finiteVolume.fvSolution import *
+
 from Foam.src.finiteVolume.fvMesh.fvMeshes import *
+
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_fvMesh import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_volScalarField import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_volVectorField import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_surfaceScalarField import *
 
 from Foam.src.finiteVolume.fvMatrices.fvMatrices import *
 

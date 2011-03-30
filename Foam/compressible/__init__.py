@@ -23,9 +23,11 @@
 #---------------------------------------------------------------------------
 from Foam.src.turbulenceModels.compressible.turbulenceModel import *
 from Foam.src.OpenFOAM.fields.tmp.autoPtr_compressible_turbulenceModel import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_compressible_turbulenceModel import *
 
 from Foam.src.turbulenceModels.compressible.RAS.RASModel import *
 from Foam.src.OpenFOAM.fields.tmp.autoPtr_compressible_RASModel import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_compressible_RASModel import *
 
 from Foam.src.turbulenceModels.compressible.RAS.derivedFvPatchFields.turbulentTemperatureCoupledBaffle.regionProperties import *
 

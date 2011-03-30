@@ -44,9 +44,9 @@
 
 %import "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.cxx"
 
-AUTOPTR_TYPEMAP( Foam::UniformDimensionedVectorField )
+AUTOPTR_TYPEMAP( Foam::uniformDimensionedVectorField )
 
-%template( autoPtr_UniformDimensionedVectorField ) Foam::autoPtr< Foam::UniformDimensionedField< Foam::vector > >;
+%template( autoPtr_uniformDimensionedVectorField ) Foam::autoPtr< Foam::uniformDimensionedVectorField >;
 
 
 //---------------------------------------------------------------------------
