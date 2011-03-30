@@ -60,9 +60,11 @@
   }
 }
 
-%template ( sphericalTensor ) Foam::SphericalTensor< Foam::scalar >;
 
+//---------------------------------------------------------------------------
 %include <sphericalTensor.H>
+
+%template ( sphericalTensor ) Foam::SphericalTensor< Foam::scalar >;
 
 
 //---------------------------------------------------------------------------
