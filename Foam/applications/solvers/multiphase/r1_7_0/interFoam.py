@@ -247,7 +247,7 @@ def alphaEqn( mesh, phi, alpha1, rhoPhi, rho1, rho2, interface, nAlphaCorr ):
 
 #----------------------------------------------------------------------------------------
 def alphaEqnSubCycle( runTime, piso, mesh, phi, alpha1, rho, rhoPhi, rho1, rho2, interface ):
-    from Foam.OpenFOAM import word,readLabel
+    from Foam.OpenFOAM import word, readLabel
     nAlphaCorr = readLabel( piso.lookup( word( "nAlphaCorr" ) ) )
     nAlphaSubCycles = readLabel( piso.lookup( word( "nAlphaSubCycles" ) ) )
     if (nAlphaSubCycles > 1):

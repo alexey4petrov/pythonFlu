@@ -29,6 +29,14 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/bool.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/int_.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/label.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/primitives/strings/string.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/strings/word.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/strings/keyType.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx \
+	\
 	@abs_top_builddir@/src/OpenFOAM/primitives/scalar.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/direction.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/vector.cxx \
@@ -43,10 +51,6 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/pTraits_symmTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/tensor.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/primitives/strings/string.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/strings/word.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/strings/keyType.cxx \
-	\
 	@abs_top_builddir@/src/iterators.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList.cxx \
 	\
@@ -54,17 +58,14 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_word.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/wordList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/dictionary/entry.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/token.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx \
-	\
 	@abs_top_builddir@/src/OpenFOAM/primitives/strings/fileName.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_string.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_string.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/stringList.cxx \
-	\
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/token.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/primitives/ops/ops.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/ops/ops_label.cxx \
@@ -78,6 +79,7 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/Field.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_entry.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_bool.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_bool.cxx \
@@ -158,7 +160,6 @@ sources = \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_entry.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_Generic.cxx \
@@ -183,7 +184,6 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/objectRegistry.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/db/dictionary/entry.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/dimensionSet.cxx \

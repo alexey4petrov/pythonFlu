@@ -44,6 +44,7 @@ from Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedValue.fixedValueFvPat
 
 from Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZones import *
 from Foam.src.finiteVolume.fvMesh.fvPatches.derived.wallFvPatch import *
+from Foam.src.OpenFOAM.algorithms.subCycle.subCycle_volScalarField import *
 
 
 #---------------------------------------------------------------------------

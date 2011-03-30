@@ -20,28 +20,17 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef twoPhaseMixture_cxx
-#define twoPhaseMixture_cxx
+#ifndef interfaceProperties_hpp
+#define interfaceProperties_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.transportModels.incompressible.twoPhaseMixture";
-%{
-  #include "src/transportModels/incompressible/twoPhaseMixture.hpp"
-%}
+#include "src/OpenFOAM/db/IOdictionary.hpp"
+
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+
+#include <interfaceProperties.H>
 
 
-//---------------------------------------------------------------------------
-%import "src/transportModels/incompressible/transportModel.cxx"
-
-%import "src/transportModels/incompressible/viscosityModels/viscosityModel.cxx"
-
-%include "src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-
-%include <twoPhaseMixture.H>
-
-
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------
 #endif

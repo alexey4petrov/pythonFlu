@@ -21,7 +21,11 @@
 
 
 #---------------------------------------------------------------------------
+from Foam.src.transportModels.incompressible.transportModel import *
 from Foam.src.transportModels.incompressible.singlePhaseTransportModel import *
+from Foam.src.transportModels.incompressible.viscosityModels.viscosityModel import *
+from Foam.src.transportModels.incompressible.twoPhaseMixture import *
+from Foam.src.transportModels.interfaceProperties.interfaceProperties import *
 
 
 #---------------------------------------------------------------------------

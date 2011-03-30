@@ -29,7 +29,7 @@
 
 #include "src/transportModels/incompressible/viscosityModels/viscosityModel.hpp"
 
-#include "src/finiteVolume/fields/volFields/volFields.hpp"
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
 #include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
 

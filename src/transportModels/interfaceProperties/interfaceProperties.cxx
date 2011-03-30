@@ -25,27 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.transportModels.interfaceProperties.interfaceProperties";
+%{
+  #include "src/transportModels/interfaceProperties/interfaceProperties.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/IOdictionary.cxx"
+%import "src/OpenFOAM/db/IOdictionary.cxx"
 
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
+%include "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
-
-
-//----------------------------------------------------------------------------
-%{
-    #include "interfaceProperties.H"
-%}
-
-%include "interfaceProperties.H"
+%include <interfaceProperties.H>
 
 
 //--------------------------------------------------------------------------

@@ -21,9 +21,7 @@
 
 
 #--------------------------------------------------------------------------------------
-pyfoam_root_dir:=../..
-
-include $(pyfoam_root_dir)/foam.version.makefile
+include /home/alexey/pythonFlu/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
@@ -44,7 +42,12 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -ldynamicFvMesh
 
 #--------------------------------------------------------------------------------------
-include $(pyfoam_root_dir)/include.makefile
+sources = \
+	/home/alexey/pythonFlu/src/OpenFOAM/fields/tmp/autoPtr_dynamicFvMesh.cxx \
+
+
+#--------------------------------------------------------------------------------------
+include /home/alexey/pythonFlu/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------
