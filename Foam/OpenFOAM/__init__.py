@@ -58,6 +58,7 @@ from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericINew import *
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_Generic import *
 
 from Foam.src.OpenFOAM.fields.UniformDimensionedFields.UniformDimensionedVectorField import *
+from Foam.src.OpenFOAM.fields.Fields.vectorField import *
 
 
 #---------------------------------------------------------------------------
@@ -106,6 +107,10 @@ wordHashTable = HashTable_word_word_string_hash
 #---------------------------------------------------------------------------
 from Foam.src.OpenFOAM.primitives.s_phericalTensor import *
 I = sphericalTensor.I
+
+
+#---------------------------------------------------------------------------
+mag = abs
 
 
 #---------------------------------------------------------------------------

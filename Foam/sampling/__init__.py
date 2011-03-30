@@ -21,8 +21,8 @@
 
 
 #---------------------------------------------------------------------------
-from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "sampling" ) 
+from Foam.src.sampling.meshToMeshInterpolation.meshToMesh import *
+from Foam.src.sampling.graphField.makeGraph import *
 
 
 #---------------------------------------------------------------------------

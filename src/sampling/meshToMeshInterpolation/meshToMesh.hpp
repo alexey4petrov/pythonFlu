@@ -20,27 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef makeGraph_cxx
-#define makeGraph_cxx
+#ifndef meshToMesh_hpp
+#define meshToMesh_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.sampling.graphField.makeGraph";
-%{
-  #include "src/sampling/graphField/makeGraph.hpp"
-%}
+#include "src/common.hpp"
 
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+#include "src/OpenFOAM/primitives/Lists/wordList.hpp"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+#include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_word_word_string_hash.hpp"
 
-%import "src/OpenFOAM/primitives/strings/word.cxx"
-
-%import "src/OpenFOAM/primitives/strings/fileName.cxx"
-
-%include <makeGraph.H>
+#include <meshToMesh.H>
 
 
 //--------------------------------------------------------------------------------------

@@ -18,19 +18,3 @@
 ##
 ## Author : Alexey PETROV
 ##
-
-
-#--------------------------------------------------------------------------------------
-include @abs_top_builddir@/foam.version.makefile
-
-
-#--------------------------------------------------------------------------------------
-include @abs_top_builddir@/include.makefile
-
-SUBDIRS = OpenFOAM finiteVolume fvc fvm sampling transportModels incompressible compressible thermophysicalModels radiation
-
-# SUBDIRS = OpenFOAM meshTools finiteVolume fv fvc fvm MULES sampling dynamicMesh dynamicFvMesh thermophysicalModels transportModels radiation incompressible compressible applications
-
-
-#--------------------------------------------------------------------------------------
-

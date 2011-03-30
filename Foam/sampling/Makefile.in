@@ -25,12 +25,25 @@ include @abs_top_builddir@/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/include.makefile
-
-SUBDIRS = OpenFOAM finiteVolume fvc fvm sampling transportModels incompressible compressible thermophysicalModels radiation
-
-# SUBDIRS = OpenFOAM meshTools finiteVolume fv fvc fvm MULES sampling dynamicMesh dynamicFvMesh thermophysicalModels transportModels radiation incompressible compressible applications
+__CPPFLAGS__ := $(__CPPFLAGS__) \
+	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
+	-I$(WM_PROJECT_DIR)/src/sampling/lnInclude
 
 
 #--------------------------------------------------------------------------------------
+__LDFLAGS__ := $(__LDFLAGS__) \
+	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
+	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lsampling
 
+
+#--------------------------------------------------------------------------------------
+sources = \
+	@abs_top_builddir@/src/sampling/meshToMeshInterpolation/meshToMesh.cxx \
+	@abs_top_builddir@/src/sampling/graphField/makeGraph.cxx \
+
+
+#--------------------------------------------------------------------------------------
+include @abs_top_builddir@/include.foam.makefile
+
+
+#--------------------------------------------------------------------------------------

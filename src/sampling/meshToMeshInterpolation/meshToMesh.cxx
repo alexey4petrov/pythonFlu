@@ -25,103 +25,74 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.sampling.meshToMeshInterpolation.meshToMesh";
+%{
+  #include "src/sampling/meshToMeshInterpolation/meshToMesh.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%import "src/common.hxx"
 
-%include "src/finiteVolume/fvMesh/fvMesh.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%include "src/OpenFOAM/primitives/Lists/wordList.cxx"
+%import "src/OpenFOAM/primitives/Lists/wordList.cxx"
 
-%include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_word_word_string_hash.cxx"
+%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable_word_word_string_hash.cxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
-
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%{
-    #include "meshToMesh.H"
-%}
-
-%include "meshToMesh.H"
-
-//%extend Foam::meshToMesh COMMON_EXTENDS;
+%include <meshToMesh.H>
 
 %define MESHTOMESH_ADDONS( Type )
 {
-    //- Map field
-    void mapField
-    (
-        Field<Type>& toF,
-        const Field<Type>& fromVf,
-        const labelList& adr
-    ) const
-    {
-        self->mapField( toF, fromVf, adr );
-    }
+  //- Map field
+  void mapField( Field< Type >& toF,
+                 const Field< Type >& fromVf,
+                 const labelList& adr ) const
+  {
+    self->mapField( toF, fromVf, adr );
+  }
 
-    //- Interpolate field using inverse-distance weights
-    void interpolateField
-    (
-        Field<Type>& toF,
-        const GeometricField<Type, fvPatchField, volMesh>& fromVf,
-        const labelList& adr,
-        const scalarListList& weights
-    ) const
-    {
-        self->interpolateField( toF, fromVf, adr, weights );
-    }
+  //- Interpolate field using inverse-distance weights
+  void interpolateField( Field< Type >& toF,
+                         const GeometricField< Type, fvPatchField, volMesh >& fromVf,
+                         const labelList& adr,
+                         const scalarListList& weights ) const
+  {
+    self->interpolateField( toF, fromVf, adr, weights );
+  }
 
-    //- Interpolate field using cell-point interpolation
-    void interpolateField
-    (
-        Field<Type>& toF,
-        const GeometricField<Type, fvPatchField, volMesh>& fromVf,
-        const labelList& adr,
-        const vectorField& centres
-    ) const
-    {
-        self->interpolateField( toF, fromVf, adr, centres );
-    }
+  //- Interpolate field using cell-point interpolation
+  void interpolateField( Field< Type >& toF,
+                         const GeometricField< Type, fvPatchField, volMesh >& fromVf,
+                         const labelList& adr,
+                         const vectorField& centres ) const
+  {
+    self->interpolateField( toF, fromVf, adr, centres );
+  }
 
-    //- Interpolate internal volume field
-    void interpolateInternalField
-    (
-        Field<Type>& toF,
-        const GeometricField<Type, fvPatchField, volMesh>& fromVf,
-        meshToMesh::order ord = meshToMesh::INTERPOLATE
-    ) const
-    {
-        self->interpolateInternalField( toF, fromVf, ord );
-    }
+  //- Interpolate internal volume field
+  void interpolateInternalField( Field< Type >& toF,
+                                 const GeometricField< Type, fvPatchField, volMesh >& fromVf,
+                                 meshToMesh::order ord = meshToMesh::INTERPOLATE ) const
+  {
+    self->interpolateInternalField( toF, fromVf, ord );
+  }
 
-    //- Interpolate volume field
-    void interpolate
-    (
-        GeometricField<Type, fvPatchField, volMesh>& toF,
-        const GeometricField<Type, fvPatchField, volMesh>& fromVf,
-        meshToMesh::order ord = meshToMesh::INTERPOLATE
-    ) const
-    {
-        self->interpolate( toF, fromVf, ord );
-    }
+  //- Interpolate volume field
+  void interpolate( GeometricField< Type, fvPatchField, volMesh >& toF,
+                    const GeometricField< Type, fvPatchField, volMesh >& fromVf,
+                    meshToMesh::order ord = meshToMesh::INTERPOLATE ) const
+  {
+    self->interpolate( toF, fromVf, ord );
+  }
 
-    //- Interpolate volume field
-    tmp<GeometricField<Type, fvPatchField, volMesh> > interpolate
-    (
-        const GeometricField<Type, fvPatchField, volMesh>& fromVf,
-        meshToMesh::order ord = meshToMesh::INTERPOLATE
-    ) const
-    {
-        return self->interpolate( fromVf, ord );
-    }
-
+  //- Interpolate volume field
+  tmp< GeometricField< Type, fvPatchField, volMesh > > 
+  interpolate( const GeometricField< Type, fvPatchField, volMesh >& fromVf,
+               meshToMesh::order ord = meshToMesh::INTERPOLATE ) const
+  {
+    return self->interpolate( fromVf, ord );
+  }
 }
 %enddef
 

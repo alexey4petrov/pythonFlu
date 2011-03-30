@@ -114,6 +114,7 @@ AC_OUTPUT( [ bashrc \
 	     Foam/transportModels/Makefile \
 	     Foam/thermophysicalModels/Makefile \
 	     Foam/radiation/Makefile \
+	     Foam/sampling/Makefile \
 	     Foam/applications/utilities/postProcessing/graphics/Makefile \
 	     Foam/applications/utilities/mesh/conversion/Makefile \
 	     EFoam/pbmr/diffusion/Makefile \
