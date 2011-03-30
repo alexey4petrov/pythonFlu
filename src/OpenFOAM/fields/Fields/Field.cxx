@@ -36,11 +36,13 @@
 
 %import "src/OpenFOAM/fields/tmp/refCount.cxx"
 
-%include <Field.H>
-
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
 %import "ext/common/ext_tmp.hxx"
+
+%include <Field.H>
+
+%include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx"
 
 
 //---------------------------------------------------------------------------
