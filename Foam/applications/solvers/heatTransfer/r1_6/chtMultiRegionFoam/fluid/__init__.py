@@ -60,8 +60,8 @@ def createFluidFields( fluidRegions, runTime ) :
 
     DpDtFluid = PtrList_volScalarField( fluidRegions.size() )
      
-    from Foam.OpenFOAM import PtrList_UniformDimensionedVectorField
-    gFluid = PtrList_UniformDimensionedVectorField( fluidRegions.size() )
+    from Foam.OpenFOAM import PtrList_uniformDimensionedVectorField
+    gFluid = PtrList_uniformDimensionedVectorField( fluidRegions.size() )
  
     from Foam.compressible import PtrList_compressible_turbulenceModel
     turbulence = PtrList_compressible_turbulenceModel( fluidRegions.size() ) 
@@ -125,8 +125,8 @@ def createFluidFields( fluidRegions, runTime ) :
                                                      linearInterpolate( rhoFluid[ index ] * UFluid[ index ] ) & fluidRegions[ index ].Sf() ) )
         
         ext_Info()<< "    Adding to gFluid\n" << nl
-        from Foam.OpenFOAM import UniformDimensionedVectorField
-        gFluid.ext_set( index, UniformDimensionedVectorField( IOobject( word( "g" ),
+        from Foam.OpenFOAM import uniformDimensionedVectorField
+        gFluid.ext_set( index, uniformDimensionedVectorField( IOobject( word( "g" ),
                                                                         fileName( runTime.constant() ),
                                                                         fluidRegions[ index ],
                                                                         IOobject.MUST_READ,

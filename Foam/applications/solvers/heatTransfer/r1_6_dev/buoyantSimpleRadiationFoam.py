@@ -27,9 +27,9 @@ from Foam.OpenFOAM import ext_Info, nl
 def readGravitationalAcceleration( runTime, mesh ):
     ext_Info() << "\nReading g" << nl
     
-    from Foam.OpenFOAM import UniformDimensionedVectorField
+    from Foam.OpenFOAM import uniformDimensionedVectorField
     from Foam.OpenFOAM import word, IOobject,fileName
-    g= UniformDimensionedVectorField( IOobject( word("g"),
+    g= uniformDimensionedVectorField( IOobject( word("g"),
                                                 fileName( runTime.constant() ),
                                                 mesh,
                                                 IOobject.MUST_READ,
