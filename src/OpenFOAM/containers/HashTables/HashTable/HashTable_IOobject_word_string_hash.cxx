@@ -25,25 +25,32 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
+%module "Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable_IOobject_word_string_hash";
+%{
+   #include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_IOobject_word_string_hash.hpp"
+%}
 
-%include "src/OpenFOAM/primitives/Lists/wordList.cxx"
 
-%include "src/OpenFOAM/db/IOobject.cxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
+
+%import "src/OpenFOAM/primitives/Lists/wordList.cxx"
+
+%import "src/OpenFOAM/db/IOobject.cxx"
 
 %ignore Foam::HashTable< Foam::IOobject*, Foam::word, Foam::string_hash >::HashTable;
 %ignore Foam::HashTable< Foam::IOobject*, Foam::word, Foam::string_hash >::find;
 %ignore Foam::HashTable< Foam::IOobject*, Foam::word, Foam::string_hash >::begin;
 
 #if FOAM_VERSION( >=, 010600 )
-%ignore Foam::HashTable< Foam::IOobject*, Foam::word, Foam::string_hash >::cbegin;
+  %ignore Foam::HashTable< Foam::IOobject*, Foam::word, Foam::string_hash >::cbegin;
 #endif
 
 %template( HashTable_IOobject_word_string_hash ) Foam::HashTable< Foam::IOobject*, Foam::word, Foam::string_hash >; 
 
 %template( TContainer_word_IOobject ) Foam::TContainer_iterator< Foam::HashTable< Foam::IOobject*, Foam::word, Foam::string_hash > >;
 
-HASHTABLE_ADDONS( Foam::IOobject*, Foam::word, Foam::string_hash )
+HASHTABLE_ADDONS( Foam::IOobject*, Foam::word, Foam::string_hash );
 
 
 //---------------------------------------------------------------------------

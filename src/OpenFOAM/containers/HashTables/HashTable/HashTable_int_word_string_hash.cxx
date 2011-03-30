@@ -25,40 +25,46 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
+%module "Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable_int_word_string_hash";
+%{
+   #include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_int_word_string_hash.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
 
 %ignore Foam::HashTable< int, Foam::word, Foam::string_hash >::begin;
 %ignore Foam::HashTable< int, Foam::word, Foam::string_hash >::find;
 
 #if FOAM_VERSION( >=, 010600 )
-%ignore Foam::HashTable< int, Foam::word, Foam::string_hash >::cbegin;
+  %ignore Foam::HashTable< int, Foam::word, Foam::string_hash >::cbegin;
 #endif
 
 %template( HashTable_int_word_string_hash ) Foam::HashTable< int, Foam::word, Foam::string_hash >; 
 
-HASHTABLE_ADDONS( int, Foam::word, Foam::string_hash )
+HASHTABLE_ADDONS( int, Foam::word, Foam::string_hash );
 
 
 //---------------------------------------------------------------------------
 %typemap( typecheck ) const Foam::HashTable< int > &
 {
-    void *ptr;
-    int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::HashTable< int, Foam::word, Foam::string_hash >* ), 0 );
-    $1 = SWIG_CheckState( res );
+  void *ptr;
+  int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::HashTable< int, Foam::word, Foam::string_hash >* ), 0 );
+  $1 = SWIG_CheckState( res );
 }
 
 %typemap( in ) const Foam::HashTable< int > &
 {
-    void *ptr;
-    int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::HashTable< int, Foam::word, Foam::string_hash >* ), 0 );
-    if ( SWIG_IsOK( res ) ) {
-        $1 = reinterpret_cast< $1_ltype >( ptr );
-    } else {
-        %argument_fail( res, "$type", $symname, $argnum ); 
-    }
+  void *ptr;
+  int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::HashTable< int, Foam::word, Foam::string_hash >* ), 0 );
+  if ( SWIG_IsOK( res ) ) {
+    $1 = reinterpret_cast< $1_ltype >( ptr );
+  } else {
+    %argument_fail( res, "$type", $symname, $argnum ); 
+  }
 }
 
 
 //---------------------------------------------------------------------------
 #endif
-
