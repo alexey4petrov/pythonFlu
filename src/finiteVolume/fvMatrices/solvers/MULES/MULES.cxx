@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <MULES.H>
 
