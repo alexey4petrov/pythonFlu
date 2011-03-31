@@ -20,38 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_multivariateSurfaceInterpolationScheme_scalar_cxx
-#define tmp_multivariateSurfaceInterpolationScheme_scalar_cxx
+#ifndef tmp_multivariateSurfaceInterpolationScheme_scalar_hpp
+#define tmp_multivariateSurfaceInterpolationScheme_scalar_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+#include "src/OpenFOAM/fields/tmp/tmp.hpp"
 
-%include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_scalar.cxx"
-
-
-%ignore Foam::tmp< Foam::multivariateSurfaceInterpolationScheme< Foam::scalar > >::ptr;
-
-//----------------------------------------------------------------------------
-%template( tmp_multivariateSurfaceInterpolationScheme_scalar ) Foam::tmp< Foam::multivariateSurfaceInterpolationScheme< Foam::scalar > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< multivariateSurfaceInterpolationScheme< scalar > > tmp_multivariateSurfaceInterpolationScheme_scalar;
-    }
-}
-
-
-//----------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::tmp< Foam::multivariateSurfaceInterpolationScheme< Foam::scalar > >::SMARTPTR_PYAPPEND_GETATTR( tmp_multivariateSurfaceInterpolationScheme_scalar );
-
-%extend Foam::tmp< Foam::multivariateSurfaceInterpolationScheme< Foam::scalar > >
-{
-    SMARTPTR_EXTEND_ATTR( tmp_multivariateSurfaceInterpolationScheme_scalar )
-}
-
+#include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_scalar.hpp"
 
 
 //---------------------------------------------------------------------------

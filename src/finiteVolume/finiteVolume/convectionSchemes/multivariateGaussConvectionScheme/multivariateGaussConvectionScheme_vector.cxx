@@ -25,28 +25,26 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.finiteVolume.convectionSchemes.multivariateGaussConvectionScheme.multivariateGaussConvectionScheme_vector";
+%{
+  #include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme_vector.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.cxx"
-%include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.cxx"
+%import "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.cxx"
 
-%include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.cxx"
+%import "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.cxx"
+
+%import "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.cxx"
+
 
 //----------------------------------------------------------------------------
 %ignore Foam::fv::multivariateGaussConvectionScheme< Foam::vector >::multivariateGaussConvectionScheme;
 
 %template ( multivariateGaussConvectionScheme_vector ) Foam::fv::multivariateGaussConvectionScheme< Foam::vector >;
 
-
-
-//---------------------------------------------------------------------------
-%extend Foam::fv::multivariateGaussConvectionScheme< Foam::vector > MULTIVARIATEGAUSSCONVECTIONSCHEME_TEMPLATE_FUNC( vector )
+%extend Foam::fv::multivariateGaussConvectionScheme< Foam::vector > MULTIVARIATEGAUSSCONVECTIONSCHEME_TEMPLATE_FUNC( vector );
 
 
 //---------------------------------------------------------------------------

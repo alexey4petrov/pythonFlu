@@ -20,38 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_surfaceInterpolationScheme_scalar_cxx
-#define tmp_surfaceInterpolationScheme_scalar_cxx
+#ifndef tmp_surfaceInterpolationScheme_scalar_hpp
+#define tmp_surfaceInterpolationScheme_scalar_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+#include "src/OpenFOAM/fields/tmp/tmp.hpp"
 
-%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_scalar.cxx"
-
-
-%ignore Foam::tmp< Foam::surfaceInterpolationScheme< Foam::scalar > >::ptr;
-
-//----------------------------------------------------------------------------
-%template( tmp_surfaceInterpolationScheme_scalar ) Foam::tmp< Foam::surfaceInterpolationScheme< Foam::scalar > >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< surfaceInterpolationScheme< scalar > > tmp_surfaceInterpolationScheme_scalar;
-    }
-}
-
-
-//----------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::tmp< Foam::surfaceInterpolationScheme< Foam::scalar > >::SMARTPTR_PYAPPEND_GETATTR( tmp_surfaceInterpolationScheme_scalar );
-
-%extend Foam::tmp< Foam::surfaceInterpolationScheme< Foam::scalar > >
-{
-    SMARTPTR_EXTEND_ATTR( tmp_surfaceInterpolationScheme_scalar )
-}
-
+#include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_scalar.hpp"
 
 
 //---------------------------------------------------------------------------

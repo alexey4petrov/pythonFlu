@@ -20,37 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef surfaceInterpolationScheme_vector_cxx
-#define surfaceInterpolationScheme_vector_cxx
-
-//---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+#ifndef surfaceInterpolationScheme_vector_hpp
+#define surfaceInterpolationScheme_vector_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx"
-
-%ignore Foam::surfaceInterpolationScheme< Foam::vector >::typeName;
-%ignore Foam::surfaceInterpolationScheme< Foam::vector >::debug;
-%ignore Foam::surfaceInterpolationScheme< Foam::vector >::weights;
-
-
-//---------------------------------------------------------------------------
-%template ( surfaceInterpolationScheme_vector) Foam::surfaceInterpolationScheme< Foam::vector >;
-
-
-//---------------------------------------------------------------------------
-%extend Foam::surfaceInterpolationScheme< Foam::vector > SURFACEINTRPOLATIONSCHEME_TEMPLATE_FUNC( vector )
+#include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.hpp"
 
 
 //---------------------------------------------------------------------------

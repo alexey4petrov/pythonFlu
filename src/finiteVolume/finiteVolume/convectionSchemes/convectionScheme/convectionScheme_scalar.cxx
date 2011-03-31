@@ -25,21 +25,18 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.finiteVolume.convectionSchemes.convectionScheme.convectionScheme_scalar";
+%{
+  #include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.cxx"
+%import "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.cxx"
 
-%include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_scalar.cxx"
+%import "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_scalar.cxx"
 
-
-//----------------------------------------------------------------------------
-%template ( convectionScheme_scalar ) Foam::fv::convectionScheme< Foam::scalar >;
+%template( convectionScheme_scalar ) Foam::fv::convectionScheme< Foam::scalar >;
 
 
 //---------------------------------------------------------------------------

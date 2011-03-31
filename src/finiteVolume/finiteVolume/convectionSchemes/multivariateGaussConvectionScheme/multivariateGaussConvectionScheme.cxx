@@ -25,36 +25,29 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.finiteVolume.convectionSchemes.multivariateGaussConvectionScheme.multivariateGaussConvectionScheme";
+%{
+  #include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
 %include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.cxx"
 
-
-//----------------------------------------------------------------------------
-%{
-    #include "multivariateGaussConvectionScheme.H"
-%}
-
-%include "multivariateGaussConvectionScheme.H"
+%include <multivariateGaussConvectionScheme.H>
 
 
 //---------------------------------------------------------------------------
 %define MULTIVARIATEGAUSSCONVECTIONSCHEME_TEMPLATE_FUNC( Type )
 {
- Foam::fv::multivariateGaussConvectionScheme< Foam::Type>( const Foam::fvMesh& mesh,
-                                                           const Foam::TfieldTable< Foam::Type >& fields,
-                                                           const surfaceScalarField& faceFlux,
-                                                                 Istream& is)
- {
+  Foam::fv::multivariateGaussConvectionScheme< Foam::Type>( const Foam::fvMesh& mesh,
+                                                            const Foam::TfieldTable< Foam::Type >& fields,
+                                                            const surfaceScalarField& faceFlux,
+                                                            Istream& is )
+  {
     return new Foam::fv::multivariateGaussConvectionScheme< Foam::Type >( mesh, fields.get_self(), faceFlux, is );
- }
-}  
+  }
+}
 %enddef
 
 

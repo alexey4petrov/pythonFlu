@@ -20,28 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef gaussConvectionScheme_cxx
-#define gaussConvectionScheme_cxx
+#ifndef gaussConvectionScheme_hpp
+#define gaussConvectionScheme_hpp
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.hpp"
 
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.cxx"
-
-
-//----------------------------------------------------------------------------
-%{
-    #include "gaussConvectionScheme.H"
-%}
-
-%include "gaussConvectionScheme.H"
+#include <gaussConvectionScheme.H>
 
 
 //---------------------------------------------------------------------------

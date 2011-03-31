@@ -20,36 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef gaussConvectionScheme_vector_cxx
-#define gaussConvectionScheme_vector_cxx
+#ifndef gaussConvectionScheme_vector_hpp
+#define gaussConvectionScheme_vector_hpp
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+#include "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme.hpp"
 
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme.cxx"
-%include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.cxx"
+#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.hpp"
 
 
 //----------------------------------------------------------------------------
-%template ( gaussConvectionScheme_vector ) Foam::fv::gaussConvectionScheme< Foam::vector >;
-
-
-//---------------------------------------------------------------------------
-%extend Foam::fv::gaussConvectionScheme< Foam::vector >
-{
-  Foam::fv::gaussConvectionScheme< Foam::vector >( const Foam::fvMesh& mesh,
-                                                   const Foam::surfaceScalarField& faceFlux,
-                                                   const Foam::surfaceInterpolationScheme< Foam::vector >& scheme )
-  {
-     return new Foam::fv::gaussConvectionScheme< Foam::vector >( mesh, faceFlux, scheme );
-  }                                                 
-
-}
 #endif

@@ -23,28 +23,22 @@
 #ifndef multivariateSurfaceInterpolationScheme_cxx
 #define multivariateSurfaceInterpolationScheme_cxx
 
-//---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cxx"
-
-
-//---------------------------------------------------------------------------
+%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.multivariateSchemes.multivariateSurfaceInterpolationScheme.multivariateSurfaceInterpolationScheme";
 %{
-    #include "multivariateSurfaceInterpolationScheme.H"
+  #include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.hpp"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_TfieldTable.hxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%include "multivariateSurfaceInterpolationScheme.H"
+%import "src/nestedClass_extend.hxx"
+
+%include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.hpp"
+
+%include <multivariateSurfaceInterpolationScheme.H>
 
 
 //---------------------------------------------------------------------------

@@ -20,33 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef multivariateGaussConvectionScheme_scalar_cxx
-#define multivariateGaussConvectionScheme_scalar_cxx
+#ifndef multivariateGaussConvectionScheme_scalar_hpp
+#define multivariateGaussConvectionScheme_scalar_hpp
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+#include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.hpp"
 
-%include "src/OpenFOAM/directors.hxx"
+#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.hpp"
 
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.cxx"
-%include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.cxx"
-
-%include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.cxx"
-
-//----------------------------------------------------------------------------
-%ignore Foam::fv::multivariateGaussConvectionScheme< Foam::scalar >::multivariateGaussConvectionScheme;
-
-%template ( multivariateGaussConvectionScheme_scalar ) Foam::fv::multivariateGaussConvectionScheme< Foam::scalar >;
-
-
-
-//---------------------------------------------------------------------------
-%extend Foam::fv::multivariateGaussConvectionScheme< Foam::scalar > MULTIVARIATEGAUSSCONVECTIONSCHEME_TEMPLATE_FUNC( scalar )
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.hpp"
 
 
 //---------------------------------------------------------------------------

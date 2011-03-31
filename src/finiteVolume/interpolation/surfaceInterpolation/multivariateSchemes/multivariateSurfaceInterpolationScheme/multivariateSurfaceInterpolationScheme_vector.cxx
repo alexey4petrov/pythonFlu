@@ -23,30 +23,29 @@
 #ifndef multivariateSurfaceInterpolationScheme_vector_cxx
 #define multivariateSurfaceInterpolationScheme_vector_cxx
 
-//---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/vector.cxx"
+%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.multivariateSchemes.multivariateSurfaceInterpolationScheme.multivariateSurfaceInterpolationScheme_vector";
+%{
+  #include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_vector.hpp"
+%}
 
-%include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.cxx"
 
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/primitives/vector.cxx"
+
+%import "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.cxx"
+
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 
 //---------------------------------------------------------------------------
 %template (TfieldTable_vector) Foam::TfieldTable< Foam::vector >;
 
-//---------------------------------------------------------------------------
 %ignore Foam::multivariateSurfaceInterpolationScheme< Foam::vector >::New;
 %ignore Foam::multivariateSurfaceInterpolationScheme< Foam::vector >::fields;
 
-%template ( multivariateSurfaceInterpolationScheme_vector ) Foam::multivariateSurfaceInterpolationScheme< Foam::vector >;
+%template( multivariateSurfaceInterpolationScheme_vector ) Foam::multivariateSurfaceInterpolationScheme< Foam::vector >;
 
 
 //---------------------------------------------------------------------------

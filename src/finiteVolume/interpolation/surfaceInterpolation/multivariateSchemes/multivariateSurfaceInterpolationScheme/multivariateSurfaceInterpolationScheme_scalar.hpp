@@ -20,33 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef multivariateSurfaceInterpolationScheme_scalar_cxx
-#define multivariateSurfaceInterpolationScheme_scalar_cxx
-
-//---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+#ifndef multivariateSurfaceInterpolationScheme_scalar_hpp
+#define multivariateSurfaceInterpolationScheme_scalar_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/scalar.cxx"
+#include "src/OpenFOAM/primitives/scalar.hpp"
 
-%include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.cxx"
+#include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.hpp"
 
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
-
-
-//---------------------------------------------------------------------------
-%template (TfieldTable_scalar) Foam::TfieldTable< Foam::scalar >;
-
-//---------------------------------------------------------------------------
-%ignore Foam::multivariateSurfaceInterpolationScheme< Foam::scalar >::New;
-%ignore Foam::multivariateSurfaceInterpolationScheme< Foam::scalar >::fields;
-
-%template ( multivariateSurfaceInterpolationScheme_scalar ) Foam::multivariateSurfaceInterpolationScheme< Foam::scalar >;
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
 
 //---------------------------------------------------------------------------

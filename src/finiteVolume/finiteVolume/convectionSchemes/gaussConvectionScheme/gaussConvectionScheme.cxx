@@ -25,23 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.finiteVolume.convectionSchemes.gaussConvectionScheme.gaussConvectionScheme";
+%{
+  #include "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.cxx"
+%import "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.cxx"
 
-
-//----------------------------------------------------------------------------
-%{
-    #include "gaussConvectionScheme.H"
-%}
-
-%include "gaussConvectionScheme.H"
+%include <gaussConvectionScheme.H>
 
 
 //---------------------------------------------------------------------------

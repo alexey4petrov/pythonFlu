@@ -23,34 +23,26 @@
 #ifndef surfaceInterpolationScheme_vector_cxx
 #define surfaceInterpolationScheme_vector_cxx
 
-//---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
+%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolationScheme.surfaceInterpolationScheme_vector";
+%{
+  #include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.hpp"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+
+%import "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx"
 
 %ignore Foam::surfaceInterpolationScheme< Foam::vector >::typeName;
 %ignore Foam::surfaceInterpolationScheme< Foam::vector >::debug;
 %ignore Foam::surfaceInterpolationScheme< Foam::vector >::weights;
 
+%template( surfaceInterpolationScheme_vector) Foam::surfaceInterpolationScheme< Foam::vector >;
 
-//---------------------------------------------------------------------------
-%template ( surfaceInterpolationScheme_vector) Foam::surfaceInterpolationScheme< Foam::vector >;
-
-
-//---------------------------------------------------------------------------
-%extend Foam::surfaceInterpolationScheme< Foam::vector > SURFACEINTRPOLATIONSCHEME_TEMPLATE_FUNC( vector )
+%extend Foam::surfaceInterpolationScheme< Foam::vector > SURFACEINTRPOLATIONSCHEME_TEMPLATE_FUNC( vector );
 
 
 //---------------------------------------------------------------------------

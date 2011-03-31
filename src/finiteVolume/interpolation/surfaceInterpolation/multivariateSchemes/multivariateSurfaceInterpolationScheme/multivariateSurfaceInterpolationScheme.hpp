@@ -20,31 +20,48 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef multivariateSurfaceInterpolationScheme_cxx
-#define multivariateSurfaceInterpolationScheme_cxx
-
-//---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+#ifndef multivariateSurfaceInterpolationScheme_hpp
+#define multivariateSurfaceInterpolationScheme_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cxx"
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+
+#include <multivariateSurfaceInterpolationScheme.H>
 
 
 //---------------------------------------------------------------------------
-%{
-    #include "multivariateSurfaceInterpolationScheme.H"
-%}
-
-
-//---------------------------------------------------------------------------
-%include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_TfieldTable.hxx"
-
-%include "multivariateSurfaceInterpolationScheme.H"
+// This struct will redirect all call's to the "nested" class multivariateSurfaceInterpolationScheme::fieldTable
+namespace Foam
+{
+  template< class Type > 
+  struct TfieldTable
+  {
+  public:
+    typedef typename multivariateSurfaceInterpolationScheme< Type >::fieldTable TSelf;
+    
+  private:
+    TSelf engine;
+    
+  public:
+    TfieldTable(): engine()
+    {}
+    
+    void add( const GeometricField<Type, fvPatchField, volMesh>& f )
+    {
+      engine.add( f );
+    }
+    
+    TSelf& get_self()
+    {
+      return engine;
+    }
+    const TSelf& get_self() const
+    {
+      return engine;
+    }
+  };
+}
 
 
 //---------------------------------------------------------------------------

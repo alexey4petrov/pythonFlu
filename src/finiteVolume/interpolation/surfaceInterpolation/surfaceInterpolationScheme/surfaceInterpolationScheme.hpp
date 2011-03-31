@@ -20,57 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef surfaceInterpolationScheme_cxx
-#define surfaceInterpolationScheme_cxx
-
-//---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+#ifndef surfaceInterpolationScheme_hpp
+#define surfaceInterpolationScheme_hpp
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
-
-
-//---------------------------------------------------------------------------
-%{
-    #include "surfaceInterpolationScheme.H"
-%}
+#include <surfaceInterpolationScheme.H>
 
 
 //---------------------------------------------------------------------------
-%include "surfaceInterpolationScheme.H"
-
-
-//---------------------------------------------------------------------------
-%define SURFACEINTRPOLATIONSCHEME_TEMPLATE_FUNC( Type )
-{
-   Foam::surfaceScalarField& ext_weights( const Foam::GeometricField< Foam::Type, Foam::fvPatchField, Foam::volMesh >& theArg )
-   {
-      return self->weights( theArg )();
-   }
-   
-   static Foam::tmp<Foam::GeometricField< Foam::Type, Foam::fvsPatchField, Foam::surfaceMesh > >
-   ext_interpolate( 
-              const Foam::GeometricField< Foam::Type, fvPatchField, volMesh >& vf,
-              const Foam::tmp< Foam::surfaceScalarField >& tlambdas,
-              const Foam::tmp< Foam::surfaceScalarField >& tys )
-   {
-     return Foam::surfaceInterpolationScheme< Foam::Type >::interpolate( vf, tlambdas, tys );
-   }
-   
-   static Foam::tmp<Foam::GeometricField< Foam::Type, Foam::fvsPatchField, Foam::surfaceMesh > >
-   ext_interpolate( 
-              const Foam::GeometricField< Foam::Type, fvPatchField, volMesh >& vf,
-              const Foam::tmp< Foam::surfaceScalarField >& tlambdas )
-   {
-     return Foam::surfaceInterpolationScheme< Foam::Type >::interpolate( vf, tlambdas );
-   }
-}
-%enddef
 #endif

@@ -20,38 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef convectionScheme_cxx
-#define convectionScheme_cxx
+#ifndef convectionScheme_hpp
+#define convectionScheme_hpp
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+#include "src/OpenFOAM/fields/tmp/tmp.hpp"
 
-%include "src/OpenFOAM/directors.hxx"
+#include "src/OpenFOAM/fields/tmp/refCount.hpp"
 
-%include "src/finiteVolume/directors.hxx"
+#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
+#include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.hpp"
 
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
-
-%include "src/OpenFOAM/fields/tmp/refCount.cxx"
-
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
-
-%include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
-
-%include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.cxx"
-
-
-//----------------------------------------------------------------------------
-%{
-    #include "convectionScheme.H"
-%}
-
-%include "convectionScheme.H"
+#include <convectionScheme.H>
 
 
 //---------------------------------------------------------------------------

@@ -20,25 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef gaussConvectionScheme_scalar_cxx
-#define gaussConvectionScheme_scalar_cxx
+#ifndef gaussConvectionScheme_scalar_hpp
+#define gaussConvectionScheme_scalar_hpp
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+#include "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme.hpp"
 
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme.cxx"
-%include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.cxx"
-
-
-//----------------------------------------------------------------------------
-%template ( gaussConvectionScheme_scalar ) Foam::fv::gaussConvectionScheme< Foam::scalar >;
+#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.hpp"
 
 
 //---------------------------------------------------------------------------

@@ -25,33 +25,27 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_surfaceInterpolationScheme_vector"
+%{
+  #include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.hpp"
+%}
 
-%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.cxx"
 
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+
+%import "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.cxx"
 
 %ignore Foam::tmp< Foam::surfaceInterpolationScheme< Foam::vector > >::ptr;
 
-//----------------------------------------------------------------------------
 %template( tmp_surfaceInterpolationScheme_vector ) Foam::tmp< Foam::surfaceInterpolationScheme< Foam::vector > >;
 
-%inline
-{
-    namespace Foam
-    {
-        typedef tmp< surfaceInterpolationScheme< vector > > tmp_surfaceInterpolationScheme_vector;
-    }
-}
-
-
-//----------------------------------------------------------------------------
 %feature( "pythonappend" ) Foam::tmp< Foam::surfaceInterpolationScheme< Foam::vector > >::SMARTPTR_PYAPPEND_GETATTR( tmp_surfaceInterpolationScheme_vector );
 
 %extend Foam::tmp< Foam::surfaceInterpolationScheme< Foam::vector > >
 {
-    SMARTPTR_EXTEND_ATTR( tmp_surfaceInterpolationScheme_vector )
+  SMARTPTR_EXTEND_ATTR( tmp_surfaceInterpolationScheme_vector );
 }
-
 
 
 //---------------------------------------------------------------------------

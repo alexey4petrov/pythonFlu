@@ -23,30 +23,29 @@
 #ifndef multivariateSurfaceInterpolationScheme_scalar_cxx
 #define multivariateSurfaceInterpolationScheme_scalar_cxx
 
-//---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/scalar.cxx"
+%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.multivariateSchemes.multivariateSurfaceInterpolationScheme.multivariateSurfaceInterpolationScheme_scalar";
+%{
+  #include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_scalar.hpp"
+%}
 
-%include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.cxx"
 
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/primitives/scalar.cxx"
+
+%import "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.cxx"
+
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 
 //---------------------------------------------------------------------------
 %template (TfieldTable_scalar) Foam::TfieldTable< Foam::scalar >;
 
-//---------------------------------------------------------------------------
 %ignore Foam::multivariateSurfaceInterpolationScheme< Foam::scalar >::New;
 %ignore Foam::multivariateSurfaceInterpolationScheme< Foam::scalar >::fields;
 
-%template ( multivariateSurfaceInterpolationScheme_scalar ) Foam::multivariateSurfaceInterpolationScheme< Foam::scalar >;
+%template( multivariateSurfaceInterpolationScheme_scalar ) Foam::multivariateSurfaceInterpolationScheme< Foam::scalar >;
 
 
 //---------------------------------------------------------------------------
