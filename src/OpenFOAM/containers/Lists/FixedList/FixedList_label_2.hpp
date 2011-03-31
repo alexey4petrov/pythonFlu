@@ -20,29 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
-
-#if FOAM_VERSION( <, 010600 )
-#define directMappedPatchBase_hpp
-#endif
+#ifndef FixedList_label_2_hpp
+#define FixedList_label_2_hpp
 
 
 //---------------------------------------------------------------------------
-#ifndef directMappedPatchBase_hpp
-#define directMappedPatchBase_hpp
+#include "src/OpenFOAM/primitives/label.hpp"
 
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
-
-#include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hpp"
-
-// #include "Tuple2.H"
-// #include "pointIndexHit.H"
-
-#include "src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.hpp"
-
-#include <directMappedPatchBase.H>
+#include "src/OpenFOAM/containers/Lists/FixedList/FixedList.hpp"
 
 
 //---------------------------------------------------------------------------

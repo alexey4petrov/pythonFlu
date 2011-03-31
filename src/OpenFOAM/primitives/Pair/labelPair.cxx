@@ -25,19 +25,22 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/label.cxx"
-%include "src/OpenFOAM/primitives/Pair/Pair.cxx"
-%include "src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.cxx"
-
-%template (labelPair) Foam::Pair<Foam::label>;
-
+%module "Foam.src.OpenFOAM.primitives.Pair.labelPair"
 %{
- namespace Foam
-  {
-    typedef Pair<label> labelPair;
-  }
+  #include "src/OpenFOAM/primitives/Pair/labelPair.hpp"
 %}
 
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/primitives/label.cxx"
+
+%import "src/OpenFOAM/primitives/Pair/Pair.cxx"
+
+%import "src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.cxx"
+
+%include <labelPair.H>
+
+%template( labelPair ) Foam::Pair< Foam::label >;
 
 
 //---------------------------------------------------------------------------

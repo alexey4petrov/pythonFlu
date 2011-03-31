@@ -23,26 +23,25 @@
 #include "src/common.hpp"
 
 #if FOAM_VERSION( <, 010600 )
-#define directMappedPatchBase_hpp
+#define mapDistribute_hpp
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef directMappedPatchBase_hpp
-#define directMappedPatchBase_hpp
+#ifndef mapDistribute_hpp
+#define mapDistribute_hpp
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
+#include "src/OpenFOAM/primitives/Lists/labelList.hpp"
 
-#include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hpp"
+#include "src/OpenFOAM/primitives/Pair/labelPair.hpp"
 
-// #include "Tuple2.H"
-// #include "pointIndexHit.H"
+#include "src/OpenFOAM/db/IOstreams/Pstreams/Pstream.hpp"
 
-#include "src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.hpp"
+#include "src/OpenFOAM/primitives/Lists/boolList.hpp"
 
-#include <directMappedPatchBase.H>
+#include <mapDistribute.H>
 
 
 //---------------------------------------------------------------------------

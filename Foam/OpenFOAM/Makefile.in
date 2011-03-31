@@ -237,14 +237,14 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyMesh.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Pair/Pair.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Pair/labelPair.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/FixedList/FixedList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/uLabel.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/uint.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/ulong.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/uLabel.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/FixedList/FixedList.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/Pair/Pair.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/Pair/labelPair.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.cxx \
 
 
 #--------------------------------------------------------------------------------------

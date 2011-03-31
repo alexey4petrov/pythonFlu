@@ -25,13 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
-
+%module "Foam.src.OpenFOAM.primitives.uint";
 %{
-    #include "uint.H"
+  #include "src/OpenFOAM/primitives/uint.hpp"
 %}
 
-%include "uint.H"
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
+%include <uint.H>
 
  
 //---------------------------------------------------------------------------

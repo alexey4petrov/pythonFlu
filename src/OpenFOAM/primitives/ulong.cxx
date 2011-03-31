@@ -25,13 +25,16 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
-
+%module "Foam.src.OpenFOAM.primitives.ulong";
 %{
-    #include "ulong.H"
+  #include "src/OpenFOAM/primitives/ulong.hpp"
 %}
 
-%include "ulong.H"
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
+%include <ulong.H>
 
  
 //---------------------------------------------------------------------------

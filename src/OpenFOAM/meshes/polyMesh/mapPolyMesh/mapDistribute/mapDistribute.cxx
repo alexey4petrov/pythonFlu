@@ -18,8 +18,17 @@
 //
 //  Author : Alexey PETROV
 
+
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.meshes.polyMesh.mapPolyMesh.mapDistribute.mapDistribute"
+%{
+  #include "src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 #if FOAM_VERSION( <, 010600 )
 #define mapDistribute_cxx
 #endif
@@ -31,32 +40,36 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/Lists/labelList.cxx"
-%include "src/OpenFOAM/primitives/Pair/labelPair.cxx"
-%include "src/OpenFOAM/db/IOstreams/Pstreams/Pstream.cxx"
-%include "src/OpenFOAM/primitives/Lists/boolList.cxx"
+%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
 
+%import "src/OpenFOAM/primitives/Pair/labelPair.cxx"
 
-%{
-    #include "mapDistribute.H"
-%}
+%import "src/OpenFOAM/db/IOstreams/Pstreams/Pstream.cxx"
 
-%include "mapDistribute.H"
+%import "src/OpenFOAM/primitives/Lists/boolList.cxx"
+
+%include <mapDistribute.H>
 
 
 //---------------------------------------------------------------------------
-%extend  Foam::mapDistribute
+%extend Foam::mapDistribute
 {
-  static void distribute ( const Pstream::commsTypes commsType, 
-                           const List<labelPair>& schedule, 
-                           const label constructSize, 
-                           const labelListList& subMap,
-                           const labelListList& constructMap,
-                           List<scalar>& field )
-   {
-      return Foam::mapDistribute::distribute( commsType, schedule, constructSize, subMap, constructMap, field );
-   }
+  static void distribute( const Pstream::commsTypes commsType, 
+			  const List<labelPair>& schedule, 
+			  const label constructSize, 
+			  const labelListList& subMap,
+			  const labelListList& constructMap,
+			  List<scalar>& field )
+  {
+      return Foam::mapDistribute::distribute( commsType, 
+					      schedule, 
+					      constructSize, 
+					      subMap, 
+					      constructMap, 
+					      field );
+  }
 }
+
 
 //---------------------------------------------------------------------------
 #endif

@@ -20,29 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
-
-#if FOAM_VERSION( <, 010600 )
-#define directMappedPatchBase_hpp
-#endif
+#ifndef Pair_hpp
+#define Pair_hpp
 
 
 //---------------------------------------------------------------------------
-#ifndef directMappedPatchBase_hpp
-#define directMappedPatchBase_hpp
+#include "src/OpenFOAM/containers/Lists/FixedList/FixedList.hpp"
 
+#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hpp"
 
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
-
-#include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hpp"
-
-// #include "Tuple2.H"
-// #include "pointIndexHit.H"
-
-#include "src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.hpp"
-
-#include <directMappedPatchBase.H>
+#include <Pair.H>
 
 
 //---------------------------------------------------------------------------

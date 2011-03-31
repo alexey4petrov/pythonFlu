@@ -20,7 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.primitives.uLabel";
+%{
+  #include "src/OpenFOAM/primitives/uLabel.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 #if FOAM_VERSION( <, 010600 )
 #define uLabel_cxx
 #endif
@@ -32,16 +40,11 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%import "src/OpenFOAM/primitives/uint.cxx"
 
-%{
-    #include "uLabel.H"
-%}
+%import "src/OpenFOAM/primitives/ulong.cxx"
 
-%include "src/OpenFOAM/primitives/uint.cxx"
-%include "src/OpenFOAM/primitives/ulong.cxx"
-
-%include "uLabel.H"
+%include <uLabel.H>
 
 typedef unsigned int uLabel;
 

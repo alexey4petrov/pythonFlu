@@ -25,16 +25,22 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/bool.cxx"
-%include "src/OpenFOAM/primitives/label.cxx"
-%include "src/OpenFOAM/primitives/uLabel.cxx"
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
+%module "Foam.src.OpenFOAM.containers.Lists.FixedList.FixedList"
 %{
-    #include "FixedList.H"
+   #include "src/OpenFOAM/containers/Lists/FixedList/FixedList.hpp"
 %}
 
-%include "FixedList.H"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/primitives/bool.cxx"
+
+%import "src/OpenFOAM/primitives/label.cxx"
+
+%import "src/OpenFOAM/primitives/uLabel.cxx"
+
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+
+%include <FixedList.H>
 
 
 //---------------------------------------------------------------------------

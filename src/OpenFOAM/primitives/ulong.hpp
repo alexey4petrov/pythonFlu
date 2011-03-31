@@ -20,30 +20,15 @@
 
 
 //---------------------------------------------------------------------------
+#ifndef ulong_hpp
+#define ulong_hpp
+
+
+//---------------------------------------------------------------------------
 #include "src/common.hpp"
 
-#if FOAM_VERSION( <, 010600 )
-#define directMappedPatchBase_hpp
-#endif
+#include <ulong.H>
 
-
-//---------------------------------------------------------------------------
-#ifndef directMappedPatchBase_hpp
-#define directMappedPatchBase_hpp
-
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
-
-#include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hpp"
-
-// #include "Tuple2.H"
-// #include "pointIndexHit.H"
-
-#include "src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.hpp"
-
-#include <directMappedPatchBase.H>
-
-
+ 
 //---------------------------------------------------------------------------
 #endif

@@ -18,8 +18,17 @@
 //
 //  Author : Alexey PETROV
 
+
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.meshTools.directMapped.directMappedPolyPatch.directMappedPatchBase";
+%{
+  #include "src/meshTools/directMapped/directMappedPolyPatch/directMappedPatchBase.hpp"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/common.hxx"
+
 #if FOAM_VERSION( <, 010600 )
 #define directMappedPatchBase_cxx
 #endif
@@ -31,23 +40,22 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
-%include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
-//#include "Tuple2.H"
-//#include "pointIndexHit.H"
-%include "/src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.cxx"
+%import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
 
+%import "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
 
-%{
-    #include "directMappedPatchBase.H"
-%}
+// #include "Tuple2.H"
+// #include "pointIndexHit.H"
 
-%include "directMappedPatchBase.H"
+%import "src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.cxx"
+
+%include <directMappedPatchBase.H>
 
 %extend Foam::directMappedPatchBase
 {
   TYPEINFO_EXTENDS( polyPatch, directMappedPatchBase );
 }
+
 
 //---------------------------------------------------------------------------
 #endif
