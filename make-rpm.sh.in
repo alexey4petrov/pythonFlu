@@ -24,30 +24,7 @@
 
 #--------------------------------------------------------------------------------------
 # Prepare variables for substition in  control,changelog etc files
-export DEBEMAIL='alexey.petrov.nnov@gmail.com'
-export DEBFULLNAME="Alexey Petrov"
-
-
-#--------------------------------------------------------------------------------------
-silent_dh_make()
-{
-template_folder=$1
-package_name=$2
-
-expect  <<EOD
-spawn dh_make -s -createorig -c gpl --templates ${template_folder} -p ${package_name}
-expect "Hit <enter> to confirm:"
-send "\r"
-wait 10
-expect eof
-EOD
-}
-
-
-#--------------------------------------------------------------------------------------
-# read build option "launchpad"( key "-S" -source for "dpkg-buildpackage" ) or "deb"(key "-b" binary for "dpkg-buildpackage" ) 
-build_option=$1
-
+os_name="opensuse@SUSE_VERSION@"
 
 foam_package_suffix=@FOAM_PACKAGE_SUFFIX@
 pythonflu_version=@PACKAGE_VERSION@
@@ -60,9 +37,7 @@ package_version=${pythonflu_version}-${build_version}
 
 curr_folder=@abs_top_builddir@
 package_folder=${curr_folder}/${package_name}-${package_version}
-template_folder=${curr_folder}/deb-template
-
-pgp_key_id=@PGP_KEY_ID@
+template_folder=${curr_folder}/rpm-template
 
 
 #--------------------------------------------------------------------------------------
@@ -88,49 +63,76 @@ echo "--------------------------------------------------------------------------
 
 
 #--------------------------------------------------------------------------------------
-# create folder debian with control,changelog, etc files
-echo "create debian folder and all necessary files( control, changelog etc ) in it "
+#prepare to build rpm
+rpm_package_folder="/usr/src/packages"
+build_folder=${rpm_package_folder}/BUILD
+solvers_folder=${build_folder}/solvers
+
+echo "copy files to \"${build_folder}\""
 echo "--------------------------------------------------------------------------------"
-cp ${template_folder}/Makefile ${package_folder}
-cp ${curr_folder}/ChangeLog deb-template/changelog
-( cd ${package_folder} && silent_dh_make ${template_folder} ${package_name} )
+
+#copy solvers and libs to BUILD folder 
+cp ${template_folder}/Makefile ${package_folder} 
+( cd ${package_folder} && make preparation )
+cp ${template_folder}/Makefile ${build_folder}/ 
+
+
+#--------------------------------------------------------------------------------------
+# create files list 
+
+pythonflu_bin="/usr/local/bin"
+pythonflu_lib="/usr/local/lib/python2.6/site-packages"
+
+files_list="files.txt"
+( cd ${package_folder} && touch ${files_list} )
+
+solvers=`cd ${solvers_folder} && ls`
+for solver in ${solvers}; do
+   echo "${pythonflu_bin}/${solver}" >> ${package_folder}/${files_list}
+done
+
+lib_files=`( cd ${build_folder} && find Foam -type f )`
+for file in ${lib_files}; do
+   echo "${pythonflu_lib}/${file}" >> ${package_folder}/${files_list}
+done
+
 echo "--------------------------------------------------------------------------------"
 
 
 #--------------------------------------------------------------------------------------
-# replace readme and copyrights
-echo "copying readme and copyrights"
-cp -f ${curr_folder}/README ${package_folder}/debian/README.Debian
-cp -f ${curr_folder}/README ${package_folder}/debian/README.source
-cp -f ${curr_folder}/deb-template/copyright ${package_folder}/debian/
+specs_folder=${rpm_package_folder}/SPECS
+echo "copying ${package_name}.spec file to \"${specs_folder}\""
+
+cp rpm-template/rpm.spec ${specs_folder}/${package_name}.spec
+
+# to add to "spec" file files_list
+cat ${package_folder}/${files_list} >> ${specs_folder}/${package_name}.spec
+
 echo "--------------------------------------------------------------------------------"
 
 
 #---------------------------------------------------------------------------------------
-# create package
+# copying readme, news and add it's to spec file
+cp README INSTALL NEWS ${rpm_package_folder}/BUILD/
+echo "%doc README INSTALL NEWS" >> ${specs_folder}/${package_name}.spec
+
+
+#---------------------------------------------------------------------------------------
+# create package and move it to working folder
 echo "create package"
 echo "--------------------------------------------------------------------------------"
+rpmbuild -bb ${specs_folder}/${package_name}.spec
+a_package_file=${rpm_package_folder}/RPMS/@OS_ARCHITECTURE@/${package_name}-${package_version}.@OS_ARCHITECTURE@.rpm
+a_new_filename=${package_name}-${package_version}-${os_name}.@OS_ARCHITECTURE@.rpm
+mv ${a_package_file} ${a_new_filename}
 
-pgp_key_option="-k${pgp_key_id}"
-if [ "x${pgp_key_id}" = "x" ];then
-   pgp_key_option=""
-fi
 
-if [ "${build_option}" = "launchpad" ]; then 
-   ( cd ${package_folder} && dpkg-buildpackage -rfakeroot -S ${pgp_key_option} )
-   echo "--------------------------------------------------------------------------------"
-   echo "upload to launchpad"
-   echo "--------------------------------------------------------------------------------"
-   changes_file="${package_name}_${package_version}_source.changes"
-   dput ppa:flu-team/@OS_ARCHITECTURE@ ${changes_file}
-fi
-
-if [ "${build_option}" = "deb" ]; then 
-   ( cd ${package_folder} && dpkg-buildpackage -rfakeroot ${pgp_key_option} -b )
-   a_deb_filename=${package_name}_${package_version}_@OS_ARCHITECTURE@.deb
-   a_new_filename=${package_name}_${package_version}_@OS_CODENAME@_@OS_ARCHITECTURE@.deb
-   ( cd ${curr_folder} &&  mv -f ./${a_deb_filename} ./${a_new_filename} )
-fi
-
+#---------------------------------------------------------------------------------------
+# cleaning the building folder 
+echo "--------------------------------------------------------------------------------"
+echo "clean \"${rpm_package_folder}/BUILD\" folder"
+( cd ${rpm_package_folder}/BUILD && rm -rf Foam solvers Makefile README INSTALL NEWS )
+( cd ${specs_folder} && rm -f ${package_name}.spec )
+echo "--------------------------------------------------------------------------------"
 
 #---------------------------------------------------------------------------------------

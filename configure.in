@@ -23,7 +23,7 @@
 #--------------------------------------------------------------------------------------
 # Process this file with autoconf to produce a configure script
 #--------------------------------------------------------------------------------------
-AC_INIT([pyFoam Project], [7.3], [alexey.petrov.nnov@gmail.com], [pyfoam])
+AC_INIT([pyFoam Project], [8.0], [alexey.petrov.nnov@gmail.com], [pyfoam])
 
 # AC_CONFIG_AUX_DIR defines an alternative directory where to find the auxiliary
 # scripts such as config.guess, install-sh, ...
@@ -109,9 +109,11 @@ AC_OUTPUT( [ bashrc \
 	     EFoam/pbmr/diffusion/Makefile \
 	     EFoam/common/shared_ptr/Makefile \
 	     make-deb.sh \
+	     make-rpm.sh \
 	     deb-template/control \
+	     rpm-template/rpm.spec \
 	     ChangeLog ],
-	     [ chmod 755 make-deb.sh ] )
+	     [ chmod 755 make-deb.sh make-rpm.sh ] )
 
 
 echo "------------------------------------ OK -----------------------------------------"
