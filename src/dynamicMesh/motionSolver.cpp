@@ -21,30 +21,24 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef motionSolver_cxx
-#define motionSolver_cxx
+#ifndef motionSolver_cpp
+#define motionSolver_cpp
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/IOdictionary.cxx"
-
-%include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
-
-//#include "twoDPointCorrector.H"
-
 %{
-  #include "motionSolver.H"
+  #include "src/dynamicMesh/motionSolver.hpp"
 %}
 
-%include "motionSolver.H"
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/db/IOdictionary.cxx"
+
+%import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
+
+// #include "twoDPointCorrector.H"
+
+%include <motionSolver.H>
 
 
 //---------------------------------------------------------------------------

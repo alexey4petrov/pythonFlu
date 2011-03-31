@@ -44,7 +44,7 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_dynamicMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_motionSolver.cxx \
 
 
 #--------------------------------------------------------------------------------------

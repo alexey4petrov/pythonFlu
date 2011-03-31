@@ -21,36 +21,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_motionSolver_cxx
-#define autoPtr_motionSolver_cxx
+#ifndef autoPtr_motionSolver_hpp
+#define autoPtr_motionSolver_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_motionSolver"
-%{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_motionSolver.hpp"
-%}
+#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%include "src/dynamicMesh/motionSolver.cpp"
-
-
-//----------------------------------------------------------------------------
-%ignore Foam::autoPtr< Foam::motionSolver >::operator->;
-
-%template( autoPtr_motionSolver ) Foam::autoPtr< Foam::motionSolver >;
-
-
-//------------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::autoPtr< Foam::motionSolver >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_motionSolver );
-
-%extend Foam::autoPtr< Foam::motionSolver >
-{
-  SMARTPTR_EXTEND_ATTR( autoPtr_motionSolver );
-}
+#include "src/dynamicMesh/motionSolver.hpp"
 
 
 //---------------------------------------------------------------------------
