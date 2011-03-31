@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ < 010500 )   
 %include "src/common.hxx"
+#if FOAM_VERSION( <, 010500 )   
 #define PtrList_ccompressible_RASModel_cxx
 #endif
 
@@ -51,7 +51,7 @@
 %ignore Foam::PtrList< Foam::compressible::RASModel >::end;
 %ignore Foam::PtrList< Foam::compressible::RASModel >::set;
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
 %ignore Foam::PtrList< Foam::compressible::RASModel >::xfer;
 #endif
 

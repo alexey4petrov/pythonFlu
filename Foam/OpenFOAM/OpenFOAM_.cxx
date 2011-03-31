@@ -78,6 +78,8 @@
 %include "src/OpenFOAM/db/regIOobject.cxx"
 %include "src/OpenFOAM/db/Time/Time.cxx"
 
+%include "src/OpenFOAM/fields/tmp/autoPtr_IOdictionary.cxx"
+
 %include "src/OpenFOAM/dimensionSet.cxx"
 %include "src/OpenFOAM/dimensionSets.cxx"
 %include "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
@@ -114,6 +116,7 @@
 %include "src/OpenFOAM/fields/tmp/autoPtr_UniformDimensionedVectorField.cxx" 
 %include "src/OpenFOAM/containers/Lists/PtrList/PtrList_UniformDimensionedVectorField.cxx"
 %include "src/OpenFOAM/containers/Lists/PtrList/PtrList_entry.cxx"
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_Generic.cxx"
 
 %include "/src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.cxx"
 

@@ -23,6 +23,8 @@
 #--------------------------------------------------------------------------------------
 __FOAM_VERSION__ := @FOAM_VERSION@
 
+__FOAM_BRANCH__ := @FOAM_BRANCH@
+
 __FOAM_PATCH__:=$(subst 1.4.1-dev,1.4.1,$(WM_PROJECT_VERSION))
 
 
@@ -46,6 +48,8 @@ c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-Wold-style-cast %%g")
 LIB_SRC            = $(WM_PROJECT_DIR)/src
 LIB_DIR            = $(WM_PROJECT_DIR)/lib
 LIB_WM_OPTIONS_DIR = $(LIB_DIR)/$(WM_OPTIONS)
+LIB_WM_OPTIONS_DIR_BINARY_INSTALL = $(LIB_DIR)
+
 OBJECTS_DIR        = $(MAKE_DIR)/$(WM_OPTIONS)
 CLASSES_DIR        = $(MAKE_DIR)/classes
 
@@ -53,6 +57,8 @@ SYS_INC            =
 SYS_LIBS           =
 
 PROJECT_INC        = -I$(LIB_SRC)/$(WM_PROJECT)/lnInclude
+
+PROJECT_INC        += -I$(LIB_SRC)
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 PROJECT_INC        += -I$(LIB_SRC)/OSspecific/$(WM_OS)/lnInclude
@@ -73,7 +79,7 @@ __CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@
 __LDFLAGS__:=$(__LDFLAGS__) @PYTHON_LDFLAGS@ -lstdc++
 
 ifdef WM_PROJECT_VERSION
-	__LDFLAGS__:=-L$(LIB_WM_OPTIONS_DIR) $(PROJECT_LIBS) $(__LDFLAGS__) -lpthread -ldl -lm
+	__LDFLAGS__:=-L$(LIB_WM_OPTIONS_DIR) -L$(LIB_WM_OPTIONS_DIR_BINARY_INSTALL) $(PROJECT_LIBS) $(__LDFLAGS__) -lpthread -ldl -lm
 endif
 
 
@@ -174,27 +180,28 @@ $(RECURSIVE_CLEAN_TARGETS):
 
 
 #--------------------------------------------------------------------------------------
-__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/local/r$(__FOAM_PATCH__)
+__HEADER_PATH_SUFFIXES__ := @HEADER_PATHS@
 
-ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010700 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.7.0
-endif	
+__HEADER_PATHS__ := $(foreach path,$(__HEADER_PATH_SUFFIXES__),$(addprefix -I$(pyfoam_root_dir),$(path)))
 
-ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010600 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.6
-endif	
-
-ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.5
-endif	
-
-__SWIG_INCLUDES__ +=-I$(pyfoam_root_dir)/patches/propogated/r1.4.1
+__SWIG_INCLUDES__ += $(__HEADER_PATHS__)
 
 
 #--------------------------------------------------------------------------------------------
 __SWIG_INCLUDES__ += $(__CPPFLAGS__)
 
-__SWIG_FLAGS__ = -python -c++ -MD -D__restrict__ -D__CINT__ $(GFLAGS) $(__SWIG_INCLUDES__)
+__SWIG_FLAGS__ += -python -c++ -MD
+
+__SWIG_FLAGS__ += -D__restrict__ # GCC type qualifier (a non-standard GCC entention) - to avoid SWIG parsing errors
+
+# CINT is an interpreter for C and C++ code (its parsing requirements are very close to SWIG)
+# to use existing adoption of OpenFOAM code to simplify SWIG wrapping
+# (http://root.cern.ch/drupal/content/cint)
+ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+__SWIG_FLAGS__ += -D__CINT__ 
+endif
+
+__SWIG_FLAGS__ +=  $(GFLAGS) $(__SWIG_INCLUDES__)
 
 __SWIG_FLAGS__+=-w508 # Declaration of 'XXX' shadows declaration accessible via 'YYY"
 __SWIG_FLAGS__+=-w317 # Specialization of non-template 'XXX'
@@ -203,6 +210,10 @@ __SWIG_FLAGS__+=-w509 # Overloaded method 'XXX' is shadowed by 'YYY'
 __SWIG_FLAGS__+=-w503 # Can't wrap 'XXX' unless renamed to a valid identifier
 __SWIG_FLAGS__+=-w462 # Unable to set dimensionless array variable
 __SWIG_FLAGS__+=-w473 # Returning a pointer or reference in a director method is not recommended
+
+ifeq "$(shell if [ x${__FOAM_BRANCH__} != x ]; then echo 'true'; else echo 'false'; fi )" "true" 
+__SWIG_FLAGS__+=-D__FOAM_BRANCH__=${__FOAM_BRANCH__}
+endif
 
 ifdef WM_PROJECT_VERSION
 	__SWIG_FLAGS__+=-D__FOAM_VERSION__=$(__FOAM_VERSION__)
@@ -243,4 +254,11 @@ __APP_FLAGS__ = $(__LDFLAGS__)
 
 
 #--------------------------------------------------------------------------------------
+deb:
+	@./make-deb.sh -b
+	
+launchpad:
+	@./make-deb.sh -S
 
+
+#--------------------------------------------------------------------------------------

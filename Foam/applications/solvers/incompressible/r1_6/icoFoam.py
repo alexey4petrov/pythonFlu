@@ -193,8 +193,7 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "\nStarting time loop\n"
 
-    runTime += runTime.deltaT()
-    while not runTime.end() :
+    while runTime.loop() :
         ext_Info() << "Time = " <<  runTime.timeName() << nl << nl
 
         from Foam.finiteVolume.cfdTools.general.include import readPISOControls
@@ -246,7 +245,6 @@ def main_standalone( argc, argv ):
         ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
                       "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
 
-        runTime += runTime.deltaT()
         pass
 
     ext_Info() << "End\n"
@@ -257,13 +255,13 @@ def main_standalone( argc, argv ):
     
 #--------------------------------------------------------------------------------------
 import sys, os
-from Foam import WM_PROJECT_VERSION
-if WM_PROJECT_VERSION() >= "1.6" :
+from Foam import FOAM_REF_VERSION
+if FOAM_REF_VERSION( ">=", "010600" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.6', 'incompressible', 'icoFoam', 'cavity' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6', 'incompressible', 'icoFoam', 'cavity' )
          argv = [ __file__, "-case", test_dir ]
          pass
       os._exit( main_standalone( len( argv ), argv ) )

@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ == 010500 )   
 %include "src/common.hxx"
+#if FOAM_VERSION( ==, 010500 )   
 #define PtrList_ccompressible_turbulenceModel_cxx
 #endif
 
@@ -51,7 +51,7 @@
 %ignore Foam::PtrList< Foam::compressible::turbulenceModel >::end;
 %ignore Foam::PtrList< Foam::compressible::turbulenceModel >::set;
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
 %ignore Foam::PtrList< Foam::compressible::turbulenceModel >::xfer;
 #endif
 

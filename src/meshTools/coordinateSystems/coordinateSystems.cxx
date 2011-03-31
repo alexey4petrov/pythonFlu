@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ < 010500 )
 %include "src/common.hxx"
+#if FOAM_VERSION( <, 010500 )
 #define coordinateSystems_cxx
 #endif
 
@@ -38,7 +38,7 @@
     #include "coordinateSystems.H"
 %}
 
-#if ( __FOAM_VERSION__ < 010600 )
+#if FOAM_VERSION( <, 010600 )
 
 %ignore Foam::coordinateSystems::dataType;
 

@@ -30,7 +30,7 @@
 %ignore Foam::HashTable< int, Foam::word, Foam::string_hash >::begin;
 %ignore Foam::HashTable< int, Foam::word, Foam::string_hash >::find;
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
 %ignore Foam::HashTable< int, Foam::word, Foam::string_hash >::cbegin;
 #endif
 

@@ -44,7 +44,7 @@
 %ignore Foam::PtrList< Foam::basicThermo >::end;
 %ignore Foam::PtrList< Foam::basicThermo >::set;
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
 %ignore Foam::PtrList< Foam::basicThermo >::xfer;
 #endif
 

@@ -53,26 +53,11 @@ def readPISOControls( mesh ):
 
 #---------------------------------------------------------------------------
 def readTimeControls( runTime ):
-    from Foam.OpenFOAM import Switch, word, readScalar, GREAT
+    from Foam import get_proper_function
+    fun = get_proper_function( "Foam.finiteVolume.cfdTools.general.include.readTimeControls_impl",
+                               "readTimeControls" )
+    return fun( runTime )
     
-    adjustTimeStep = Switch( runTime.controlDict().lookup( word( "adjustTimeStep" ) ) )
-    maxCo = readScalar( runTime.controlDict().lookup( word( "maxCo" ) ) )
-    
-    from Foam import WM_PROJECT_VERSION
-    if WM_PROJECT_VERSION() <="1.5":
-       maxDeltaT = GREAT
-       if runTime.controlDict().found( word( "maxDeltaT" ) ):
-          maxDeltaT = readScalar( runTime.controlDict().lookup( word( "maxDeltaT" ) ) )
-          pass
-
-    if WM_PROJECT_VERSION() >="1.6":
-       maxDeltaT = runTime.controlDict().lookupOrDefault( word( "maxDeltaT" ), GREAT, 0, 1 )
-       pass
-    
-    
-    
-    return adjustTimeStep, maxCo, maxDeltaT
-
 
 #----------------------------------------------------------------------------
 def setInitialDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum ):
@@ -136,24 +121,10 @@ def readPIMPLEControls( mesh ):
 
 #---------------------------------------------------------------------------------------------
 def CourantNo( mesh, phi, runTime ):
-    from Foam.OpenFOAM import Time
-    from Foam.finiteVolume import fvMesh
-    from Foam.finiteVolume import surfaceScalarField
-
-    CoNum = 0.0;
-    meanCoNum = 0.0;
-
-    if mesh.nInternalFaces() :
-        from Foam import fvc
-        SfUfbyDelta = mesh.deltaCoeffs()*phi.mag()
-        CoNum =  ( SfUfbyDelta / mesh.magSf() ).ext_max().value() * runTime.deltaT().value()
-        meanCoNum = ( SfUfbyDelta.sum() / mesh.magSf().sum() ).value() * runTime.deltaT().value();
-        pass
-
-    from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() << "Courant Number mean: " << meanCoNum << " max: " << CoNum<< nl
-
-    return CoNum, meanCoNum
+    from Foam import get_proper_function
+    fun = get_proper_function( "Foam.finiteVolume.cfdTools.general.include.CourantNo_impl",
+                               "CourantNo" )
+    return fun( mesh, phi, runTime )
 
 
 #---------------------------------------------------------------------------------------------

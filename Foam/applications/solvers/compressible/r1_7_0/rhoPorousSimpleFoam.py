@@ -326,13 +326,13 @@ def main_standalone( argc, argv ):
 
 #--------------------------------------------------------------------------------------
 import sys, os
-from Foam import WM_PROJECT_VERSION
-if WM_PROJECT_VERSION() >= "1.7.0":
+from Foam import FOAM_REF_VERSION
+if FOAM_REF_VERSION( ">=", "010700" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len(argv) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.7.0', 'compressible', 'rhoPorousSimpleFoam', 'angledDuctExplicit' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.7.0', 'compressible', 'rhoPorousSimpleFoam', 'angledDuctExplicit' )
          argv = [ __file__, "-case", test_dir ]
          pass
       

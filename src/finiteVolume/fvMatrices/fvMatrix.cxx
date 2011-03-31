@@ -166,7 +166,7 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
     {
         return Foam::solve( fvm, solverControls );
     }
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
     Foam::lduSolverPerformance solve( Foam::fvMatrix< Type >& fvm, Foam::dictionary& solverControls )
     {
         return Foam::solve( fvm, solverControls );
@@ -187,7 +187,7 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
         return checkMethod< Type >( fvm1, fvm2, op );
     }
 
-#if ( __FOAM_VERSION__ < 010600 )
+#if FOAM_VERSION( <, 010600 )
     void checkMethod( const Foam::fvMatrix< Type >& fvm, const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& gf, const char* op )
     {
         return checkMethod< Type >( fvm, gf, op );
@@ -203,7 +203,7 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
     {
         return checkMethod< Type >( fvm, dt, op );
     }
-#if ( __FOAM_VERSION__ >= 010500 )    
+#if FOAM_VERSION( >=, 010600 )
     Foam::tmp< Foam::fvMatrix< Type > > correction(const Foam::fvMatrix< Type >& fvm)
     {
       return correction< Type >( fvm );

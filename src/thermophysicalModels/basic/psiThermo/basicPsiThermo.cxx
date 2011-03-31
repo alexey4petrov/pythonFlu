@@ -20,9 +20,9 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ < 010600 )
-#define basicPsiThermo_cxx
 %include "src/common.hxx"
+#if FOAM_VERSION( <, 010600 )
+#define basicPsiThermo_cxx
 #endif
 
 

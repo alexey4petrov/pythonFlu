@@ -1,0 +1,129 @@
+#!/bin/bash
+
+## VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
+## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
+## 
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+## 
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+## 
+## See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
+##
+## Author : Alexey PETROV
+##
+
+
+#--------------------------------------------------------------------------------------
+# Prepare variables for substition in  control,changelog etc files
+export DEBEMAIL='alexey.petrov.nnov@gmail.com'
+export DEBFULLNAME="Alexey Petrov"
+
+
+#--------------------------------------------------------------------------------------
+silent_dh_make()
+{
+template_folder=$1
+package_name=$2
+
+expect  <<EOD
+spawn dh_make -s -createorig -c gpl --templates ${template_folder} -p ${package_name}
+expect "Hit <enter> to confirm:"
+send "\r"
+wait 10
+expect eof
+EOD
+}
+
+
+#--------------------------------------------------------------------------------------
+# read build option "-S" -source, "-b" binary
+build_option=$1
+
+foam_package_suffix=`echo "@FOAM_PACKAGE_NAME@" | sed 's/openfoam//'`
+pythonflu_version=@PACKAGE_VERSION@
+
+package_name="pythonflu${foam_package_suffix}"
+
+build_version=@BUILD_VERSION@
+
+package_version=${pythonflu_version}-${build_version}
+
+curr_folder=@abs_top_builddir@
+package_folder=${curr_folder}/${package_name}-${package_version}
+template_folder=${curr_folder}/deb-template
+
+pgp_key_id=@PGP_KEY_ID@
+
+
+#--------------------------------------------------------------------------------------
+# Prepare folder for deb-packaging and copy folder "Foam" to it 
+# first cleaning package files, folders with the same name( ${package_name}-${package_version} ) from the last attempt
+rm -rf ${package_name}-${package_version}*
+rm -rf ${package_name}_${package_version}*
+
+install -d ${package_folder}
+echo "--------------------------------------------------------------------------------"
+echo "Copying \"Foam\" to ${package_folder}"
+echo "--------------------------------------------------------------------------------"
+cp -rf Foam ${package_folder}
+
+
+#--------------------------------------------------------------------------------------
+# remove all unnecessary from the ${package_folder}
+echo "cleaning cxx, h, o, etc..."
+echo "--------------------------------------------------------------------------------"
+(cd ${package_folder} && find \( -name "*.cxx" -o -name "*.h" -o -name "*.d" -o -name "pyfoam" -o -name "*.cpp" \) -delete)
+(cd ${package_folder} && find \( -name "*.h" -o -name "*_" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
+(cd ${package_folder} && find ./ -name ".svn" -exec rm -rf {} \; 2>/dev/null)
+
+
+#--------------------------------------------------------------------------------------
+# create folder debian with control,changelog, etc files
+echo "create debian folder and all necessary files( control, changelog etc ) in it "
+echo "--------------------------------------------------------------------------------"
+cp ${template_folder}/Makefile ${package_folder}
+cp ${curr_folder}/ChangeLog deb-template/changelog
+( cd ${package_folder} && silent_dh_make ${template_folder} ${package_name} )
+echo "--------------------------------------------------------------------------------"
+
+
+#--------------------------------------------------------------------------------------
+# replace readme and copyrights
+echo "copying readme and copyrights"
+cp -f ${curr_folder}/README ${package_folder}/debian/README.Debian
+cp -f ${curr_folder}/README ${package_folder}/debian/README.source
+cp -f ${curr_folder}/deb-template/copyright ${package_folder}/debian/
+echo "--------------------------------------------------------------------------------"
+
+
+#---------------------------------------------------------------------------------------
+# create package
+echo "create package"
+echo "--------------------------------------------------------------------------------"
+
+pgp_key_option="-k${pgp_key_id}"
+if [ "x${pgp_key_id}" = "x" ];then
+   pgp_key_option=""
+fi
+
+( cd ${package_folder} && dpkg-buildpackage -rfakeroot ${pgp_key_option} ${build_option} )
+
+if [ "${build_option}" = "-S" ]; then 
+   echo "--------------------------------------------------------------------------------"
+   echo "upload to launchpad"
+   echo "--------------------------------------------------------------------------------"
+   changes_file="${package_name}_${package_version}_source.changes"
+   dput ppa:flu-team/@OS_ARCHITECTURE@ ${changes_file}
+fi
+
+
+#---------------------------------------------------------------------------------------

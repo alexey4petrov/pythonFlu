@@ -51,7 +51,7 @@
 
 %extend Foam::Time
 {
-    void step()
+    void increment()
     {
         self->operator++();
     }

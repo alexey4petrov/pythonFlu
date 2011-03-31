@@ -52,8 +52,7 @@
 //---------------------------------------------------------------------------
 %define FVM_SUP_TEMPLATE_FUNC( Type )
 %{
-    #if ( __FOAM_VERSION__ < 010500 )
-    
+    #if FOAM_VERSION( <, 010500 )
     Foam::tmp<Foam::fvMatrix<Type> > fvm_Sp( const Foam::volScalarField& sp, 
                                                Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf)
     {
@@ -64,13 +63,10 @@
     {
       return zero();
     }*/
-    
     #endif
     
     
-    #if ( __FOAM_VERSION__ >= 010500 )
-   
-    
+    #if FOAM_VERSION( >=, 010500 )
     Foam::tmp<Foam::fvMatrix<Type> > fvm_Sp( const Foam::DimensionedField<scalar, volMesh>& sp, 
                                                Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf )
     {
@@ -82,8 +78,6 @@
     {
       return zeroField();
     }*/
-   
-    
     #endif
    
    
@@ -110,13 +104,11 @@
 
 %inline FVM_SUP_TEMPLATE_FUNC( Foam::scalar )
 
-
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cxx"
 %include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.cxx"
 
 %inline FVM_SUP_TEMPLATE_FUNC( Foam::vector )
-
 
 //---------------------------------------------------------------------------
 %include "src/finiteVolume/volMesh.cxx"

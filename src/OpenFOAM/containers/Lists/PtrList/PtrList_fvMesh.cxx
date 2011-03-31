@@ -42,7 +42,7 @@
 %ignore Foam::PtrList< Foam::fvMesh >::end;
 %ignore Foam::PtrList< Foam::fvMesh >::set;
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
 %ignore Foam::PtrList< Foam::fvMesh >::xfer;
 #endif
 

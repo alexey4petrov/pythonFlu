@@ -139,7 +139,7 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "\nStarting time loop\n" <<nl
     
-    runTime += runTime.deltaT()    
+    runTime.increment()
     
     while not runTime.end():
         ext_Info() << "Time = " << runTime.timeName() << nl << nl
@@ -160,7 +160,7 @@ def main_standalone( argc, argv ):
         ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
               "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
         
-        runTime +=runTime.deltaT()
+        runTime.increment()
         pass
         
     ext_Info() << "End\n" << nl 
@@ -171,16 +171,16 @@ def main_standalone( argc, argv ):
 
 #--------------------------------------------------------------------------------------
 import sys, os
-from Foam import WM_PROJECT_VERSION
-if WM_PROJECT_VERSION() <= "1.4.1-dev" :
+from Foam import FOAM_VERSION
+if FOAM_VERSION( "<=", "010401" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.4.1-dev', 'incompressible', 'simpleFoam' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'local', 'r1.4.1-dev', 'simpleFoam' )
          argv = [ __file__, test_dir, 'pitzDaily3Blocks' ]
          pass
-      os._exit( main_embedded( len( argv ), argv ) )
+      os._exit( main_standalone( len( argv ), argv ) )
    pass
 else:
    from Foam.OpenFOAM import ext_Info

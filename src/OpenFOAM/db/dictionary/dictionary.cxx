@@ -44,7 +44,7 @@
 %{
     #include "dictionary.H"
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
     #include "SHA1Digest.H"
 #endif
 %}
@@ -71,7 +71,7 @@
   
   ISINSTANCE_EXTEND( Foam::dictionary ) 
 
-#if ( __FOAM_VERSION__ == 010500 )
+#if FOAM_VERSION( ==, 010500 )
   void add( const Foam::word& keyword, const Foam::word& value, bool overwrite = false )
   {
     self->add( keyword, value, overwrite );
@@ -112,7 +112,7 @@
 
 
 //-----------------------------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ >= 010600 )  
+#if FOAM_VERSION( >=, 010600 )
   void add( const Foam::word& keyword, const Foam::word& value, bool overwrite = false )
   {
     self->add( keyword, value, overwrite );

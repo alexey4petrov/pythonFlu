@@ -31,6 +31,8 @@
 
 %include "src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
 
+%include "ext/common/ext_tmp.hxx"
+
 %{
     #include "tmp.H"
 %}
@@ -50,6 +52,12 @@
     
       template<class T>
       T& get_ref( tmp< T >* theArg )
+      {
+        return (*theArg)();
+      }
+      
+      template<class T>
+      T& get_ref( ext_tmp< T >* theArg )
       {
         return (*theArg)();
       }

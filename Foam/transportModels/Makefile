@@ -39,7 +39,12 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTransportModels \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -linterfaceProperties
-	
+
+#--------------------------------------------------------------------------------------
+ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010701 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -ltwoPhaseInterfaceProperties
+endif
+
 
 #--------------------------------------------------------------------------------------
 include $(pyfoam_root_dir)/include.makefile

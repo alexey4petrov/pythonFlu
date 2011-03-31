@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ < 010500 )
 %include "src/common.hxx"
+#if FOAM_VERSION( <, 010500 )
 #define one_cxx
 #endif
 

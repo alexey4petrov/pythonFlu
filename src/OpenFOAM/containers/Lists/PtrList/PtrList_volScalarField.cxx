@@ -44,7 +44,7 @@
 %ignore Foam::PtrList< Foam::volScalarField >::PtrList;
 %ignore Foam::PtrList< Foam::volScalarField >::set;
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
 %ignore Foam::PtrList< Foam::volScalarField >::xfer;
 #endif
 

@@ -31,7 +31,7 @@
 
 %include "src/OpenFOAM/containers/Lists/PtrList/PtrList_coordinateSystem.cxx"
 
-#if ( __FOAM_VERSION__ < 010500 )
+#if FOAM_VERSION( <, 010500 )
 
 %ignore Foam::IOPtrList< Foam::coordinateSystem >::debug;
 %ignore Foam::IOPtrList< Foam::coordinateSystem >::typeName;

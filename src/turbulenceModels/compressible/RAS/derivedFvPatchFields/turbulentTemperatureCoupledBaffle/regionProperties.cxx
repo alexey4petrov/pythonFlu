@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ < 010700 )
 %include "src/common.hxx"
+#if FOAM_VERSION( <, 010700 )
 #define regionProperties_cxx
 #endif
 

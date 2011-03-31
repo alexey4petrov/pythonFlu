@@ -54,10 +54,13 @@
 
       subCycleTime& next() throw( const TStopIterationException& )
       {
-        if ( !this->m_subCycle.end() )
-          return this->__iter__();
         
-        throw TStopIterationException();
+        this->__iter__();
+        
+        if ( this->m_subCycle.end() )
+            throw TStopIterationException();
+        
+        return this->m_subCycle;
       }
 
     private :

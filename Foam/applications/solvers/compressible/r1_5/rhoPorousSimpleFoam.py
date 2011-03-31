@@ -290,7 +290,7 @@ def main_standalone( argc, argv ):
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info()<< "\nStarting time loop\n" << nl
     
-    runTime +=runTime.deltaT()
+    runTime.increment()
     while not runTime.end():
         ext_Info() << "Time = " << runTime.timeName() << nl << nl
         
@@ -320,7 +320,7 @@ def main_standalone( argc, argv ):
                    << nl << nl
         
         convergenceCheck( runTime, maxResidual, convergenceCriterion)
-        runTime +=runTime.deltaT()
+        runTime.increment()
         pass
         
     ext_Info() << "End\n"
@@ -331,13 +331,13 @@ def main_standalone( argc, argv ):
 
 #--------------------------------------------------------------------------------------
 import sys, os
-from Foam import WM_PROJECT_VERSION
-if WM_PROJECT_VERSION() == "1.5":
+from Foam import FOAM_REF_VERSION, FOAM_BRANCH_VERSION
+if FOAM_REF_VERSION( "==", "010500" ) or FOAM_BRANCH_VERSION( "dev", "==", "010500" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len(argv) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.5', 'compressible', 'rhoPorousSimpleFoam', 'angledDuctExplicit' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'local', 'r1.5', 'rhoPorousSimpleFoam', 'angledDuctExplicit' )
          argv = [ __file__, "-case", test_dir ]
          pass
       

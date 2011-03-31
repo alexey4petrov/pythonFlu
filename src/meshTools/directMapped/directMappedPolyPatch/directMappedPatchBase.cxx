@@ -19,8 +19,8 @@
 //  Author : Alexey PETROV
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ < 010600 )
 %include "src/common.hxx"
+#if FOAM_VERSION( <, 010600 )
 #define directMappedPatchBase_cxx
 #endif
 

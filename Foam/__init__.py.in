@@ -35,25 +35,36 @@ def get_module_initializtion_command( the_module_name ) :
     return "from %s import *" % the_module_name
 
 
-#----------------------------------------------------------------------------
-def WM_PROJECT_VERSION():
-    import os
-    return os.environ[ "WM_PROJECT_VERSION" ]
-
-
 #-------------------------------------------------------------------------------
-def get_proper_function( module_path, function_name, default_version ="1.6" ):
-    try:
-       fun_name = function_name + "_" + WM_PROJECT_VERSION().replace( ".", "_" ).replace("-","_")
-       an_expr = "from %s import %s as fun" %( module_path, fun_name )
-       exec( an_expr )
-       return fun
-    except ImportError:
-       fun_name = function_name + "_" + default_version.replace( ".", "_" ).replace("-","_")
-       an_expr = "from %s import %s as fun" %( module_path, fun_name )
-       exec( an_expr )
-       return fun
+def get_proper_function( module_path, function_name ):
+    list_versions = [@LIST_VERSIONS@]
+    for vers in list_versions:
+        try:
+            fun_name = function_name + "_" + vers
+            an_expr = "from %s import %s as fun" %( module_path, fun_name )
+            exec( an_expr )
+            return fun
+        except ImportError:
+            if vers == "010401_dev":
+               raise ImportError
+               pass
+            else:
+               pass
+                            
+
+#--------------------------------------------------------------------------------
+def FOAM_VERSION( Cmp, Version):
+
+    return eval( "@FOAM_VERSION@" + Cmp + Version )
 
 
 #--------------------------------------------------------------------------------
-   
+def FOAM_REF_VERSION( Cmp, Version):
+
+    return eval( "@FOAM_VERSION@" + Cmp + Version ) and "@FOAM_BRANCH@x" == "x"
+
+
+#----------------------------------------------------------------------------
+def FOAM_BRANCH_VERSION( Name, Cmp, Version):
+
+    return eval( "@FOAM_VERSION@" + Cmp + Version ) and "@FOAM_BRANCH@x" == ( Name + "x" )

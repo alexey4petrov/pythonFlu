@@ -23,218 +23,64 @@
 ##
 
 #---------------------------------------------------------------------------
-def readThermodynamicProperties( runTime, mesh ):
-    from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() << "Reading thermodynamicProperties\n" << nl
-    
-    from Foam.OpenFOAM import IOdictionary, IOobject, word, fileName
-    thermodynamicProperties = IOdictionary( IOobject( word( "thermodynamicProperties" ),
-                                                      fileName( runTime.constant() ),
-                                                      mesh,
-                                                      IOobject.MUST_READ,
-                                                      IOobject.NO_WRITE ) )
-    
-    from Foam.OpenFOAM import dimensionedScalar
-    rho0 = dimensionedScalar( thermodynamicProperties.lookup( word( "rho0" ) ) )
-    
-    p0 = dimensionedScalar( thermodynamicProperties.lookup( word( "p0" ) ) )
-    
-    psi = dimensionedScalar( thermodynamicProperties.lookup( word( "psi" ) ) )
-
-    # Density offset, i.e. the constant part of the density
-    rhoO = dimensionedScalar( word( "rhoO" ), rho0 - psi*p0)
-
-    return thermodynamicProperties, rho0, p0, psi, rhoO
-
-
-#------------------------------------------------------------------------------------
-def readTransportProperties( runTime, mesh ):
-    from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() << "Reading transportProperties\n" << nl
-    
-    from Foam.OpenFOAM import IOdictionary, IOobject, word, fileName
-    transportProperties = IOdictionary( IOobject( word( "transportProperties" ),
-                                                      fileName( runTime.constant() ),
-                                                      mesh,
-                                                      IOobject.MUST_READ,
-    
-                                                      IOobject.NO_WRITE ) )
-    from Foam.OpenFOAM import dimensionedScalar
-    mu = dimensionedScalar( transportProperties.lookup( word( "mu" ) ) )
-    
-    return transportProperties, mu
-
-
-#-----------------------------------------------------------------------------------
-def _createFields( runTime, mesh, rhoO, psi ):
-    from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() << "Reading field p\n" << nl
-    
-    from Foam.finiteVolume import volScalarField
-    from Foam.OpenFOAM import IOdictionary, IOobject, word, fileName
-    p = volScalarField( IOobject( word( "p" ),
-                                  fileName( runTime.timeName() ),
-                                  mesh,
-                                  IOobject.MUST_READ,
-                                  IOobject.AUTO_WRITE ),
-                        mesh )
-
-    ext_Info() << "Reading field U\n" << nl
-    from Foam.finiteVolume import volVectorField
-    U = volVectorField( IOobject( word( "U" ),
-                                  fileName( runTime.timeName() ),
-                                  mesh,
-                                  IOobject.MUST_READ,
-                                  IOobject.AUTO_WRITE ),
-                        mesh )
-
-    rho = volScalarField( IOobject( word( "rho" ),
-                                    fileName( runTime.timeName() ),
-                                    mesh,
-                                    IOobject.NO_READ,
-                                    IOobject.AUTO_WRITE ),
-                          rhoO + psi * p )
-    
-    
-    from Foam.finiteVolume.cfdTools.compressible import compressibleCreatePhi
-    phi = compressibleCreatePhi( runTime, mesh, rho, U )
-    
-
-    return p, U, rho, phi
-
-
-#--------------------------------------------------------------------------------------
-def compressibleContinuityErrs( rho, phi, psi, rho0, p, p0, cumulativeContErr ):
-    from Foam.finiteVolume.cfdTools.compressible import rhoEqn
-    rhoEqn( rho, phi )
-    
-    sumLocalContErr = ( ( (rho - rho0 - psi * ( p - p0 ) ).mag() ).sum() / rho.sum() ).value()
-
-    globalContErr = ( (rho - rho0 - psi*(p - p0)).sum() / rho.sum() ).value()
-
-    cumulativeContErr += globalContErr
-    
-    from Foam.OpenFOAM import ext_Info, nl 
-    ext_Info() << "time step continuity errors : sum local = " << sumLocalContErr \
-               << ", global = " << globalContErr \
-               << ", cumulative = " << cumulativeContErr << nl
-    
-    return cumulativeContErr
-
-
-#--------------------------------------------------------------------------------------
-def main_standalone( argc, argv ):
-
-    from Foam.OpenFOAM.include import setRootCase
-    args = setRootCase( argc, argv )
-
-    from Foam.OpenFOAM.include import createTime
-    runTime = createTime( args )
-
-    from Foam.OpenFOAM.include import createMesh
-    mesh = createMesh( runTime )
-    
-    thermodynamicProperties, rho0, p0, psi, rhoO = readThermodynamicProperties( runTime, mesh )
-    
-    transportProperties, mu = readTransportProperties( runTime, mesh )
-
-    p, U, rho, phi = _createFields( runTime, mesh, rhoO, psi )
-    
-    from Foam.finiteVolume.cfdTools.general.include import initContinuityErrs
-    cumulativeContErr = initContinuityErrs()
-
-    from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() << "\nStarting time loop\n" << nl
-    
-    while runTime.loop() :
-        ext_Info() << "Time = " << runTime.timeName() << nl << nl
-        
-        from Foam.finiteVolume.cfdTools.general.include import readPISOControls
-        piso, nCorr, nNonOrthCorr, momentumPredictor, transonic, nOuterCorr = readPISOControls( mesh )
-
-        from Foam.finiteVolume.cfdTools.compressible import compressibleCourantNo
-        CoNum, meanCoNum = compressibleCourantNo( mesh, phi, rho, runTime )
-        
-        from Foam.finiteVolume.cfdTools.compressible import rhoEqn
-        rhoEqn( rho, phi )
-        
-        from Foam import fvm, fvc
-        from Foam.finiteVolume import solve
-        UEqn = fvm.ddt(rho, U) + fvm.div(phi, U) - fvm.laplacian(mu, U)
-
-        solve( UEqn == -fvc.grad( p ) )
-        
-        for corr in range( nCorr ): 
-            rUA = 1.0 / UEqn.A()
-            U.ext_assign( rUA * UEqn.H() )
-            
-            from Foam.OpenFOAM import word
-            from Foam.finiteVolume import surfaceScalarField
-
-            phid = surfaceScalarField( word( "phid" ), 
-                                       psi * ( ( fvc.interpolate( U ) & mesh.Sf() ) + fvc.ddtPhiCorr( rUA, rho, U, phi ) ) )
-            
-            phi.ext_assign( ( rhoO / psi ) * phid )
-
-            pEqn = fvm.ddt( psi, p ) + fvc.div( phi ) + fvm.div( phid, p ) - fvm.laplacian( rho * rUA, p ) 
-            
-            pEqn.solve()
-
-            phi.ext_assign( phi + pEqn.flux() )
-            
-            cumulativeContErr = compressibleContinuityErrs( rho, phi, psi, rho0, p, p0, cumulativeContErr )
-            
-            U.ext_assign( U - rUA * fvc.grad( p ) )
-            U.correctBoundaryConditions()
-            pass
-        rho.ext_assign( rhoO + psi*p )
-        
-        runTime.write()
-
-        ext_Info() << "ExecutionTime = " << runTime.elapsedCpuTime() << " s" << \
-              "  ClockTime = " << runTime.elapsedClockTime() << " s" << nl << nl
-        
-        pass
-
-    ext_Info() << "End\n"
-
-    import os
-    return os.EX_OK
-
-
-#--------------------------------------------------------------------------------------
 import sys, os
-from Foam import WM_PROJECT_VERSION
-if WM_PROJECT_VERSION() < "1.6" :
+from Foam import FOAM_VERSION, FOAM_REF_VERSION, FOAM_BRANCH_VERSION
+if FOAM_VERSION( "<", "010600" ):
    from Foam.OpenFOAM import ext_Info
    ext_Info() << "\n\n To use this solver it is necessary to SWIG OpenFOAM-1.6 or higher\n"
    pass
 
 
 #--------------------------------------------------------------------------------------
-if WM_PROJECT_VERSION() == "1.6":
+if FOAM_REF_VERSION( "==", "010600" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len(argv) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.6', 'compressible', 'sonicLiquidFoam', 'decompressionTank' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6', 'compressible', 'sonicLiquidFoam', 'decompressionTank' )
          argv = [ __file__, "-case", test_dir ]
          pass
+      from Foam.applications.solvers.compressible.r1_6.sonicLiquidFoam import main_standalone
       os._exit( main_standalone( len( argv ), argv ) )
+      pass
+   else:
+      from Foam.applications.solvers.compressible.r1_6.sonicLiquidFoam import *
       pass
    pass   
 
     
 #--------------------------------------------------------------------------------------
-if WM_PROJECT_VERSION() >= "1.7.0":
+if FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len(argv) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.7.0', 'compressible', 'sonicLiquidFoam', 'decompressionTank' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6', 'compressible', 'sonicLiquidFoam', 'decompressionTank' )
          argv = [ __file__, "-case", test_dir ]
          pass
+      from Foam.applications.solvers.compressible.r1_6_dev.sonicLiquidFoam import main_standalone
       os._exit( main_standalone( len( argv ), argv ) )
+      pass
+   else:
+      from Foam.applications.solvers.compressible.r1_6_dev.sonicLiquidFoam import *
+      pass
+   pass   
+
+    
+#--------------------------------------------------------------------------------------
+if FOAM_REF_VERSION( ">=", "010700" ):
+   if __name__ == "__main__" :
+      argv = sys.argv
+      if len(argv) > 1 and argv[ 1 ] == "-test":
+         argv = None
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6', 'compressible', 'sonicLiquidFoam', 'decompressionTank' )
+         argv = [ __file__, "-case", test_dir ]
+         pass
+      from Foam.applications.solvers.compressible.r1_6.sonicLiquidFoam import main_standalone
+      os._exit( main_standalone( len( argv ), argv ) )
+      pass
+   else:
+      from Foam.applications.solvers.compressible.r1_6.sonicLiquidFoam import *
       pass
    pass   
 

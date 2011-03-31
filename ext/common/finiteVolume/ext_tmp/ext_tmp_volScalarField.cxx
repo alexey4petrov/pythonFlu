@@ -14,9 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
-// See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka/thermalFoam
+//  See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
 //
-// Author : Carel Viljoen
 // Author : Alexey PETROV
 
 
@@ -41,6 +40,11 @@
         Foam::UList< Foam::scalar >* aSelf = static_cast< Foam::UList< Foam::scalar >* >( self->operator->() );
         return *aSelf == theArg;
     }
+    Foam::tmp< Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh > > __div__( const Foam::dimensioned< Foam::scalar >& theArg )
+    {
+        return get_ref( self ) / theArg;
+    }
+
 }
 
 //---------------------------------------------------------------------------

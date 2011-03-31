@@ -90,7 +90,7 @@
 %ignore Foam::argList::params;
 %ignore Foam::argList::additionalArgs;
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
 %ignore Foam::argList::optionLookup;
 #endif
 

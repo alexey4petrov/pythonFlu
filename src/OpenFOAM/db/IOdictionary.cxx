@@ -60,4 +60,6 @@ DIRECTOR_PRE_EXTENDS( IOdictionary );
 
 
 //---------------------------------------------------------------------------
+BAREPTR_TYPEMAP( Foam::IOdictionary );
+
 #endif

@@ -25,20 +25,20 @@
 
 #----------------------------------------------------------------------------
 import sys, os
-from Foam import WM_PROJECT_VERSION
-if WM_PROJECT_VERSION() < "1.6" :
+from Foam import FOAM_VERSION
+if FOAM_VERSION( " < ", "010600" ) :
    from Foam.OpenFOAM import ext_Info
    ext_Info()<< "\nTo use this solver, It is necessary to SWIG OpenFoam1.6 or higher\n "
    pass
    
 
 #----------------------------------------------------------------------------
-if WM_PROJECT_VERSION() == "1.6" :
+if FOAM_VERSION( " == ", "010600" ) :
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.6', 'basic', 'laplacianFoam', 'flange' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6', 'basic', 'laplacianFoam', 'flange' )
          argv = [ __file__, "-case", test_dir ]
          pass
       from Foam.applications.solvers.basic.r1_6.laplacianFoam import main_standalone
@@ -51,12 +51,12 @@ if WM_PROJECT_VERSION() == "1.6" :
 
 
 #--------------------------------------------------------------------------------------
-if WM_PROJECT_VERSION() >= "1.7.0" :
+if FOAM_VERSION( ">=", "010700" ):
    if __name__ == "__main__" :
       argv = sys.argv
       if len( argv ) > 1 and argv[ 1 ] == "-test":
          argv = None
-         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'r1.7.0', 'basic', 'laplacianFoam', 'flange' )
+         test_dir= os.path.join( os.environ[ "PYFOAM_TESTING_DIR" ],'cases', 'propogated', 'r1.6', 'basic', 'laplacianFoam', 'flange' )
          argv = [ __file__, "-case", test_dir ]
          pass
       from Foam.applications.solvers.basic.r1_7_0.laplacianFoam import main_standalone

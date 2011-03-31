@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ < 010600 )
 %include "src/common.hxx"
+#if FOAM_VERSION( <, 010600 )
 #define PtrList_basicPsiThermo_cxx
 #endif
 
@@ -51,7 +51,7 @@
 %ignore Foam::PtrList< Foam::basicPsiThermo >::end;
 %ignore Foam::PtrList< Foam::basicPsiThermo >::set;
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
 %ignore Foam::PtrList< Foam::basicPsiThermo >::xfer;
 #endif
 

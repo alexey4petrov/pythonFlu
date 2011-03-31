@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ == 010500 )   
 %include "src/common.hxx"
+#if FOAM_VERSION( ==, 010500 )   
 #define autoPtr_incompressible_turbulenceModel_cxx
 #endif
 
@@ -47,7 +47,7 @@
 //----------------------------------------------------------------------------
 //There is no namespace "incompressible" in OpenFOAM-1.4.1-dev
 
-#if ( __FOAM_VERSION__ < 010500 )                                                 
+#if FOAM_VERSION( <, 010500 )                                                 
 AUTOPTR_TYPEMAP( Foam::turbulenceModel )
 
 %ignore Foam::autoPtr< Foam::turbulenceModel >::operator->;
@@ -74,7 +74,7 @@ AUTOPTR_TYPEMAP( Foam::turbulenceModel )
 
 
 //-------------------------------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
 
 
 AUTOPTR_TYPEMAP( Foam::incompressible::turbulenceModel )

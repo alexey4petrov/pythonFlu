@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ < 010500 )
 %include "src/common.hxx"
+#if FOAM_VERSION( <, 010500 )
 #define compressibleRASModel_cxx
 #endif
 
@@ -51,13 +51,13 @@
 
 
 //----------------------------------------------------------------------------
-#if ( __FOAM_VERSION__ == 010500 )
+#if  FOAM_VERSION( ==, 010500 )
 %{
     #include "RAS/compressible/RASModel/RASModel.H"
 %}
 #endif
 
-#if ( __FOAM_VERSION__ >= 010600 )
+#if FOAM_VERSION( >=, 010600 )
 %{
     #include "compressible/RAS/RASModel/RASModel.H"
 %}

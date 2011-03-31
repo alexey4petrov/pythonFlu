@@ -57,7 +57,9 @@
 
 %define __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
 {
-    OBJECTREGISTRY_TEMPLATE_3_EXTENDS( GeometricField, Type, TPatchField, TMesh )
+    OBJECTREGISTRY_TEMPLATE_3_EXTENDS( GeometricField, Type, TPatchField, TMesh );
+    
+    ISINSTANCE_TEMPLATE_3_EXTEND( GeometricField, Type, TPatchField, TMesh );
     
     static const TPatchField< Type >&
     ext_lookupPatchField(const Foam::fvPatch& thePatch, const word& theName )
@@ -164,6 +166,7 @@
     {
         return Foam::sum( get_ref( self ) );
     }
+    
     Foam::dimensioned< Type > average() const
     {
         return Foam::average( get_ref( self ) );
@@ -204,7 +207,7 @@
 %include "src/OpenFOAM/primitives/tensor.cxx"
 %include "src/OpenFOAM/primitives/s_phericalTensor.cxx"
 
-%define __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
+%define __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( TPatchField, TMesh )
 {
     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > sqrt()
     {
@@ -266,6 +269,11 @@
         return  theArg - get_ref( self );
     }
     
+    Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __sub__( const Foam::scalar& theArg )
+    {
+        return  get_ref( self ) - theArg;
+    }
+    
     Foam::tmp< Foam::GeometricField< Foam::tensor, TPatchField, TMesh > > __rmul__( const Foam::tensor& theArg )
     {
         return  theArg * get_ref( self );
@@ -285,6 +293,10 @@
     {
         return get_ref( self ) * theArg;
     }
+    Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > pos() const
+    {
+        return Foam::pos( get_ref( self ) );
+    }
     
 }
 %enddef
@@ -297,13 +309,13 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::scalar, TPatchField, TMesh )
 
 PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ )
 
-%extend Foam::GeometricField< Foam::scalar, TPatchField, TMesh > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
+%extend Foam::GeometricField< Foam::scalar, TPatchField, TMesh > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( TPatchField, TMesh )
 
 CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ )
 
 PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ )
 
-%extend Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
+%extend Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( TPatchField, TMesh )
 
 CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ )
 
@@ -346,7 +358,7 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::Geomet
         return theArg & get_ref( self );
     }
     
-#if ( __FOAM_VERSION__ > 010500 )     
+#if FOAM_VERSION( >, 010500 )
     Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > >__rand__( const Foam::UniformDimensionedField< Foam::vector >& theArg )
     {
         return theArg & *self;
