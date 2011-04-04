@@ -2,7 +2,8 @@
 NEWS
 #--------------------------------------------------------------------------------------
 
-VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
+pythonFlu - Python wrapping for OpenFOAM C++ API
+Copyright (C) 2010- Alexey Petrov
 Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 
 This program is free software: you can redistribute it and/or modify
@@ -18,7 +19,32 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-See See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
+See http://sourceforge.net/projects/pythonflu
+
+
+---------------------------------------------------------------------------
+
+New Features and Important Changes, r8.0 vs r7.4
+
+Author(s) :  Alexey PETROV
+
+2011-04-04
+
+1. Porting to the latest OpenFOAM version 
+--------------------------------------------------------------------
+(OpenCFD 1.7.1 & Extended 1.6-ext)
+
+2. "Maturity" of the wrapping increased in 2 times and reached 41% 
+--------------------------------------------------------------------
+(it is possible to reproduce 26 of 63 referenced OpenFOAM solvers)
+
+3. Preparation of native Linux binary packages
+--------------------------------------------------------------------
+(for Ubuntu and SUSE Linux, i386 and amd64 architectures)
+
+4. Minor bug fixing
+--------------------------------------------------------------------
+(all Python solvers give the same output results as the referenced C++ ones)
 
 
 ---------------------------------------------------------------------------
@@ -29,9 +55,9 @@ Author(s) :  Alexey PETROV
 
 2010-04-04
 
-1. Adjusting to the "common configuration system" (confFoam package)
+1. Adjusting to the "common configuration system" (confFlu package)
 --------------------------------------------------------------------
-"confFoam" is a "common configuration package" for the realted OpenFOAM (Open
+"confFlu" is a "common configuration package" for the realted OpenFOAM (Open
 Source CFD Toolbox, see http://sourceforge.net/projects/foam/ ) developement. 
 The neccessity for defintion of such kind of functionality appears from the
 issue that OpenFOAM referece build system does not provide corresponding
@@ -39,7 +65,7 @@ capabilities. As result of lack of the configuration capabilties OpenFOAM
 users/developers strugle with compilation procidure trying to discover reasons
 for this or that failure.
 
-"confFoam" proposed implementation based on standard Linux/UNIX "GNU automake"
+"confFlu" proposed implementation based on standard Linux/UNIX "GNU automake"
 tools. This set of tools allow users adjust the environment they are going to
 use for compilation of sources and check, wheter everything is correct, before
 starting actual compilation. As result, users become aware of the all

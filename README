@@ -2,7 +2,8 @@
 README
 #--------------------------------------------------------------------------------------
 
-VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
+pythonFlu - Python wrapping for OpenFOAM C++ API
+Copyright (C) 2010- Alexey Petrov
 Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 
 This program is free software: you can redistribute it and/or modify
@@ -18,14 +19,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
+See http://sourceforge.net/projects/pythonflu
 
 
 #--------------------------------------------------------------------------------------
 Introduction
 #--------------------------------------------------------------------------------------
 
-pyFoam is a Python front-end to the OpenFOAM (Open Source CFD Toolbox). pyFoam
+pythonFlu is a Python front-end to the OpenFOAM (Open Source CFD Toolbox). pythonFlu
 intends to define a new level of flexibility and user interaction scenario for
 numerical simulation software; it brings innovative ideas to break the
 long-standing wall between the solver developers and the end-users. 
@@ -59,12 +60,12 @@ long-standing wall between the solver developers and the end-users.
       your team will obtain not just solver engines, but the general way to
       standardize your routines 
 
-    * applying the best software for every subtask you do; pyFoam will be able
+    * applying the best software for every subtask you do; pythonFlu will be able
       glue them all into one application / environment.
 
 
 #--------------------------------------------------------------------------------------
-Unique pyFoam calculation capabiltities 
+Unique pythonFlu calculation capabiltities 
 #--------------------------------------------------------------------------------------
   - Pure interactive behavior 
 
@@ -127,8 +128,8 @@ Why Python
 Why OpenFOAM 
 #--------------------------------------------------------------------------------------
 
-In principle, the technology pyFoamuses (SWIG) to deliver its functionality,
-can be applied to any library and solver framework. At the same time pyFoam
+In principle, the technology pythonFlu uses (SWIG) to deliver its functionality,
+can be applied to any library and solver framework. At the same time pythonFlu
 choose OpenFOAM as its source by the following reasons: 
 
   - OpenFOAM uses advanced, robust and proven numerical simulation engine 
@@ -151,23 +152,23 @@ choose OpenFOAM as its source by the following reasons:
 Installation
 #--------------------------------------------------------------------------------------
 
-See the INSTALL file for more information about building of "pyFoam" package.
+See the INSTALL file for more information about building of "pythonFlu" package.
 
 
 #--------------------------------------------------------------------------------------
 Usage
 #--------------------------------------------------------------------------------------
 
-Before start to use "pyFoam" it is necessary to source the generated "bashrc" file
+Before start to use "pythonFlu" it is necessary to source the generated "bashrc" file
 
-There are two main ways to use "pyFoam", namely:
+There are two main ways to use "pythonFlu", namely:
 
   - Use predefined set of solvers in the same way as referenced OpenFOAM ones
-    ( ${PYFOAM_ROOT_DIR}/Foam/applications/solvers/incompressible/icoFoam.py, for example )
+    ( ${PYTHONFLU_ROOT_DIR}/Foam/applications/solvers/incompressible/icoFoam.py, for example )
 
   - Write your own solver ( or modify existing one ) through usage of corresponding 
     Python OpenFOAM API
-    (see, ${PYFOAM_ROOT_DIR}/Foam/applications/solvers/incompressible/icoFoam.py, for example ) 
+    (see, ${PYTHONFLU_ROOT_DIR}/Foam/applications/solvers/incompressible/icoFoam.py, for example ) 
 
 
 #--------------------------------------------------------------------------------------
