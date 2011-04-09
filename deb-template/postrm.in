@@ -3,13 +3,9 @@
 #
 # see: dh_installdeb(1)
 
-dummy_package_name=Foam-1.0-py@PYTHON_VERSION@.egg
-install_path=`python -c "import Foam; print Foam" | sed -e "s/<module 'Foam' from '//g" | sed -e "s/\/Foam\/__init__.pyc'>//g"`
-sudo rm -rf ${install_path}/${dummy_package_name}
+install_path=`python -c "import Foam; print Foam.__file__" | sed -e "s/\/Foam\/__init__.pyc//g"`
+sudo easy_install -m Foam
+sudo rm -rf ${install_path}/Foam-*.egg*
 sudo rm -rf ${install_path}/Foam
-
-tmp_file="/tmp/tmp_easy-install.pth"
-cat ${install_path}/easy-install.pth | sed -e "s/\.\/${dummy_package_name}$//g" | sed '/./!d' > $tmp_file
-sudo mv -f ${tmp_file} ${install_path}/easy-install.pth
 
 exit 0
