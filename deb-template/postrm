@@ -3,7 +3,7 @@
 #
 # see: dh_installdeb(1)
 
-install_path=`python -c "import Foam; print Foam.__file__" | sed -e "s/\/Foam\/__init__.pyc//g"`
+install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`
 sudo easy_install -m Foam
 sudo rm -rf ${install_path}/Foam-*.egg*
 sudo rm -rf ${install_path}/Foam
