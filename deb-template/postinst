@@ -5,8 +5,6 @@
 
 set -e
 
-foam_path=`python -c "import Foam; print Foam.__file__" | sed -e "s/\/__init__.py//g"`
-
 sudo python -c "from setuptools import setup; setup(name='Foam')" install
 
 exit 0
