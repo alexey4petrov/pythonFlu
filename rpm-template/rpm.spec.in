@@ -49,7 +49,7 @@ sudo rm -rf ${install_path}/Foam
 
 dummy_package_name=Foam-0.0.0-py@PYTHON_VERSION@.egg
 tmp_file="/tmp/tmp_easy-install.pth"
-cat ${install_path}/easy-install.pth | sed -e "s/\.\/${dummy_package_name}$//g" | sed '/./!d' > $tmp_file
+cat ${install_path}/easy-install.pth | sed -e "s/\.\/${dummy_package_name}$//g" | sed '/./!d' > ${tmp_file}
 sudo mv -f ${tmp_file} ${install_path}/easy-install.pth
 
 %files
