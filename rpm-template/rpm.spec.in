@@ -18,7 +18,7 @@ Packager: Alexey Petrov <alexey.petrov.nnov@gmail.com>
 
 ExclusiveArch: @OS_ARCHITECTURE@
 
-Requires: openfoam171, python >= 2.6, python < 2.7
+Requires: openfoam171, python >= 2.6, python < 2.7, python-setuptools
 
 Buildroot: /tmp/%{name}-%{version}-root
 
@@ -38,7 +38,22 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %clean 
 rm -rf $RPM_BUILD_ROOT
 
+%post
+sudo python -c "from setuptools import setup; setup(name='Foam')" install
+
+%postun
+install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`
+sudo easy_install -m Foam
+sudo rm -rf ${install_path}/Foam-*.egg*
+sudo rm -rf ${install_path}/Foam
+
+dummy_package_name=Foam-0.0.0-py@PYTHON_VERSION@.egg
+tmp_file="/tmp/tmp_easy-install.pth"
+cat ${install_path}/easy-install.pth | sed -e "s/\.\/${dummy_package_name}$//g" | sed '/./!d' > ${tmp_file}
+sudo mv -f ${tmp_file} ${install_path}/easy-install.pth
+
 %files
 %defattr(-, root, root)
+
 
 
