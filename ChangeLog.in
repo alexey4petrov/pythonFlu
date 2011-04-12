@@ -1,4 +1,4 @@
-#PACKAGE# (#VERSION#) @OS_CODENAME@; urgency=high
+#PACKAGE# (#VERSION#) @UBUNTU_CODENAME@; urgency=high
 
   * Binary package preparation
 

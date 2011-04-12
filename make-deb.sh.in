@@ -128,7 +128,7 @@ fi
 if [ "${build_option}" = "deb" ]; then 
    ( cd ${package_folder} && dpkg-buildpackage -rfakeroot ${pgp_key_option} -b )
    a_deb_filename=${package_name}_${package_version}_@OS_ARCHITECTURE@.deb
-   a_new_filename=${package_name}_${package_version}_@OS_CODENAME@_@OS_ARCHITECTURE@.deb
+   a_new_filename=${package_name}_${package_version}_@UBUNTU_CODENAME@_@OS_ARCHITECTURE@.deb
    ( cd ${curr_folder} &&  mv -f ./${a_deb_filename} ./${a_new_filename} )
 fi
 

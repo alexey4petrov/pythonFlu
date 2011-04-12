@@ -43,13 +43,18 @@ rpm:
 #--------------------------------------------------------------------------------------
 DESTDIR=
 
-ifeq "$(shell if [ x@OS_CODENAME@ != x ]; then echo 'true'; else echo 'false'; fi )" "true" 
+ifeq "$(shell if [ @OS_NAME@ = Ubuntu ]; then echo 'true'; else echo 'false'; fi )" "true" 
 PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python2.6/dist-packages/
 endif
 
-ifeq "$(shell if [ x@SUSE_VERSION@ != x ]; then echo 'true'; else echo 'false'; fi )" "true" 
+ifeq "$(shell if [ @OS_NAME@ = openSUSE ]; then echo 'true'; else echo 'false'; fi )" "true" 
 PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python2.6/site-packages/
 endif
+
+ifeq "$(shell if [ x@OS_NAME@ = x ]; then echo 'true'; else echo 'false'; fi )" "true" 
+$(error Your OS is not supported)
+endif
+
 
 install:$(PYTHON_FLU_LIB)/Foam/_pyfoam.so
 
