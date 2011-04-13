@@ -44,11 +44,11 @@ rpm:
 DESTDIR=
 
 ifeq "$(shell if [ @OS_NAME@ = Ubuntu ]; then echo 'true'; else echo 'false'; fi )" "true" 
-PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python2.6/dist-packages/
+PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python2.6/dist-packages
 endif
 
 ifeq "$(shell if [ @OS_NAME@ = openSUSE ]; then echo 'true'; else echo 'false'; fi )" "true" 
-PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python2.6/site-packages/
+PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python2.6/site-packages
 endif
 
 ifeq "$(shell if [ x@OS_NAME@ = x ]; then echo 'true'; else echo 'false'; fi )" "true" 
