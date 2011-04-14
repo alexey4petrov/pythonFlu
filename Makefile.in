@@ -56,9 +56,7 @@ $(error Your OS is not supported)
 endif
 
 
-install:$(PYTHON_FLU_LIB)/Foam/_pyfoam.so
-
-$(PYTHON_FLU_LIB)/Foam/_pyfoam.so:
+install:
 	@ install -d $(PYTHON_FLU_LIB)
 	@ cp -rf Foam $(PYTHON_FLU_LIB)/
 	@ (cd $(PYTHON_FLU_LIB)/Foam && find \( -name "*.cxx" -o -name "*.h" -o -name "*.d" -o -name "pyfoam" -o -name "*.cpp" \) -delete)
