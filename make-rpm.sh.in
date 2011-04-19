@@ -66,7 +66,6 @@ echo "--------------------------------------------------------------------------
 #prepare to build rpm
 rpm_package_folder="/usr/src/packages"
 build_folder=${rpm_package_folder}/BUILD
-solvers_folder=${build_folder}/solvers
 
 echo "copy files to \"${build_folder}\""
 echo "--------------------------------------------------------------------------------"
@@ -80,16 +79,10 @@ cp ${template_folder}/Makefile ${build_folder}/
 #--------------------------------------------------------------------------------------
 # create files list 
 
-pythonflu_bin="/usr/local/bin"
 pythonflu_lib="/usr/local/lib/python2.6/site-packages"
 
 files_list="files.txt"
 ( cd ${package_folder} && touch ${files_list} )
-
-solvers=`cd ${solvers_folder} && ls`
-for solver in ${solvers}; do
-   echo "${pythonflu_bin}/${solver}" >> ${package_folder}/${files_list}
-done
 
 lib_files=`( cd ${build_folder} && find Foam -type f )`
 for file in ${lib_files}; do
