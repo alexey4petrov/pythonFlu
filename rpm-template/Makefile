@@ -22,44 +22,21 @@
 
 #--------------------------------------------------------------------------------------
 DESTDIR=
-PYTHON_FLU_BIN=$(DESTDIR)/usr/local/bin
 PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python2.6/site-packages/
 
 BUILD_DIR=/usr/src/packages/BUILD
-solvers_preparation_dir=$(BUILD_DIR)/solvers
 libs_preparation_dir=$(BUILD_DIR)
-
-files_list="list_installed_files"
-
-dirs := $(shell ls Foam/applications/solvers -F | grep / | sed 's/\///g')
-
-solvers_template :=  $(addsuffix /*Foam.py, $(addprefix Foam/applications/solvers/, $(dirs)))
-
-solvers := $(wildcard $(solvers_template) )
-
-solvers_in_lib := $(addprefix $(solvers_preparation_dir), $(solvers))
 
 preparation:$(libs_preparation_dir)/Foam
 
 $(libs_preparation_dir)/Foam:
 	@ cp -rf Foam $(libs_preparation_dir)/
-	@ install -d $(solvers_preparation_dir)
-	@ install -m 755 $(solvers) $(solvers_preparation_dir)
-	@ rm -f $(solvers_in_lib)
-	@ solvers_=`ls $(solvers_preparation_dir)/*Foam.py`; \
-	  for solver in $$solvers_; do \
-	      solver_file=`basename $$solver `; \
-	      solver_name=`basename $$solver .py `; \
-	      new_solver_name=`echo $$solver_name | sed 's/Foam/Flux/g'`;  \
-	      ( cd $(solvers_preparation_dir) && mv $$solver_file $$new_solver_name ); \
-	  done;
 
 install: $(PYTHON_FLU_LIB)/Foam
 
 $(PYTHON_FLU_LIB)/Foam: 
-	@ install -d $(PYTHON_FLU_LIB) $(PYTHON_FLU_BIN)
+	@ install -d $(PYTHON_FLU_LIB)
 	@ cp -rf $(libs_preparation_dir)/Foam $(PYTHON_FLU_LIB)/
-	@ cp $(solvers_preparation_dir)/* $(PYTHON_FLU_BIN)
 
 
 
