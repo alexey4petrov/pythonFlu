@@ -20,18 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef dimensionedScalar_hpp
-#define dimensionedScalar_hpp
+#ifndef dimensionedVector_hh
+#define dimensionedVector_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedType.hpp"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedType.hh"
 
-#include "src/OpenFOAM/primitives/scalar.hpp"
+#include "src/OpenFOAM/primitives/vector.hh"
 
-#include "src/OpenFOAM/primitives/vector.hpp"
+#include "src/OpenFOAM/primitives/tensor.hh"
 
-#include <dimensionedScalar.H>
+#include <dimensionedVector.H>
 
 
 //---------------------------------------------------------------------------

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedSymmTensor";
 %{
-  #include "src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.hpp"
+  #include "src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.hh"
 %}
 
 

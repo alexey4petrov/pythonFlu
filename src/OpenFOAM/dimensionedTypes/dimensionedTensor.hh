@@ -20,14 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef dimensionedTensor_hpp
-#define dimensionedTensor_hpp
+#ifndef dimensionedTensor_hh
+#define dimensionedTensor_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedTypes.hpp"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedTypes.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.hpp"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.hh"
 
 #include <dimensionedTensor.H>
 

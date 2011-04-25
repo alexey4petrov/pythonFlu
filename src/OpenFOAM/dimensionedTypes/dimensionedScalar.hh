@@ -20,14 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef dimensionedSymmTensor_hpp
-#define dimensionedSymmTensor_hpp
+#ifndef dimensionedScalar_hh
+#define dimensionedScalar_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedTypes.hpp"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedType.hh"
 
-#include <dimensionedSymmTensor.H>
+#include "src/OpenFOAM/primitives/scalar.hh"
+
+#include "src/OpenFOAM/primitives/vector.hh"
+
+#include <dimensionedScalar.H>
 
 
 //---------------------------------------------------------------------------

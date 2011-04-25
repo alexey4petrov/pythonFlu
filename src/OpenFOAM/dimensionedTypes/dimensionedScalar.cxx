@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedScalar";
 %{
-  #include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
+  #include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 %}
 
 

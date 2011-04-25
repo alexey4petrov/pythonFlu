@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedVector";
 %{
-  #include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hpp"
+  #include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
 %}
 
 

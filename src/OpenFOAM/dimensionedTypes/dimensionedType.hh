@@ -20,17 +20,24 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef dimensionedTypes_hpp
-#define dimensionedTypes_hpp
+#ifndef dimensionedType_hh
+#define dimensionedType_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
+#include "src/OpenFOAM/dimensionSet.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hpp"
+#include "src/OpenFOAM/primitives/direction.hh"
 
-#include <dimensionedTypes.H>
+#include "src/OpenFOAM/primitives/strings/word.hh"
+
+#include "src/OpenFOAM/db/IOstreams/ITstream.hh"
+
+#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
+
+#include <dimensionedType.H>
 
 
 //---------------------------------------------------------------------------
 #endif
+

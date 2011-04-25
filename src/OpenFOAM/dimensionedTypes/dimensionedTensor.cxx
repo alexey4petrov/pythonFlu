@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedTensor";
 %{
-  #include "src/OpenFOAM/dimensionedTypes/dimensionedTensor.hpp"
+  #include "src/OpenFOAM/dimensionedTypes/dimensionedTensor.hh"
 %}
 
 
