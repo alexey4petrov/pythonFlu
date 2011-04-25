@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %import "src/common.hxx"
 
-%include "ext/common/ext_tmp.hpp"
+%include "ext/common/ext_tmp.hh"
 
 %import "src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
 

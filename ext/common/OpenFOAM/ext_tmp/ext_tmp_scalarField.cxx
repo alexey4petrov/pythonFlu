@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.ext.common.OpenFOAM.ext_tmp.ext_tmp_scalarField";
 %{
-  #include "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.hpp"
+  #include "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.hh"
 %}
 
 

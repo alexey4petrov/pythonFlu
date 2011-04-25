@@ -20,14 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef ext_tmp_scalarField_hpp
-#define ext_tmp_scalarField_hpp
+#ifndef ext_tmp_volScalarField_hh
+#define ext_tmp_volScalarField_hh
 
 
 //---------------------------------------------------------------------------
-#include "ext/common/ext_tmp.hpp"
+#include "ext/common/ext_tmp.hh"
 
-#include "src/OpenFOAM/fields/Fields/scalarField.hpp"
+#include "src/finiteVolume/fields/volFields/volScalarField.hh"
 
 
 //---------------------------------------------------------------------------

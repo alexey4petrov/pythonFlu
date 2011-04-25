@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.ext.common.finiteVolume.ext_tmp.ext_tmp_volScalarField";
 %{
-  #include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hpp"
+  #include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hh"
 %}
 
 
