@@ -20,21 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef NVDTVD_cxx
-#define NVDTVD_cxx
+#ifndef LimitedScheme_vector_MUSCLLimiter_NVDTVD_limitFuncs_magSqr_hh
+#define LimitedScheme_vector_MUSCLLimiter_NVDTVD_limitFuncs_magSqr_hh
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.NVDTVD";
-%{
-    #include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/NVDTVD.hh"
-%}
+#include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/limitedSurfaceInterpolationScheme/limitedSurfaceInterpolationScheme_vector.hh"
+
+#include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/MUSCL/MUSCL_NVDTVD.hh"
+
+#include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/LimitFuncs.hh"
+
+#include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/LimitedScheme.hh"
 
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
-
-%include <NVDTVD.H>
-
-
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 #endif

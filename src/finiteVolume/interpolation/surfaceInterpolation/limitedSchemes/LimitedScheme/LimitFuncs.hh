@@ -20,20 +20,13 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef NVDTVD_cxx
-#define NVDTVD_cxx
+#ifndef LimitFuncs_hh
+#define LimitFuncs_hh
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.NVDTVD";
-%{
-    #include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/NVDTVD.hh"
-%}
+#include "src/finiteVolume/fields/volFields/volFields.hh"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
-
-%include <NVDTVD.H>
+#include <LimitFuncs.H>
 
 
 //---------------------------------------------------------------------------

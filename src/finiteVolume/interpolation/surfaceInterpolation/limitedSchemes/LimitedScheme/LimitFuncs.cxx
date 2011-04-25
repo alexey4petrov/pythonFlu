@@ -24,19 +24,14 @@
 #define LimitFuncs_cxx
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.LimitFuncs";
+%{
+    #include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/LimitFuncs.hh"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volFields.cxx"
-
-%{
-    #include <LimitFuncs.H>
-%}
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <LimitFuncs.H>
 
