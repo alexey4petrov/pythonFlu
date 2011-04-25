@@ -20,18 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef argList_hpp
-#define argList_hpp
+#ifndef argList_hh
+#define argList_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/Lists/stringList.hpp"
+#include "src/OpenFOAM/primitives/Lists/stringList.hh"
 
-#include "src/OpenFOAM/primitives/strings/word.hpp"
+#include "src/OpenFOAM/primitives/strings/word.hh"
 
-#include "src/OpenFOAM/primitives/strings/fileName.hpp"
+#include "src/OpenFOAM/primitives/strings/fileName.hh"
 
-#include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.hpp"
+#include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.hh"
 
 #include <argList.H>
 

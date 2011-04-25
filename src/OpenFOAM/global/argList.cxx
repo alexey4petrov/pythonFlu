@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.global.argList";
 %{
-   #include "src/OpenFOAM/global/argList.hpp"
+   #include "src/OpenFOAM/global/argList.hh"
 %}
 
 
