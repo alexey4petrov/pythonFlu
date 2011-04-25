@@ -25,7 +25,6 @@
 
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.weighted";
-
 %{
     #include "src/finiteVolume/interpolation/surfaceInterpolation/schemes/weighted/weighted.hh"
 %}
