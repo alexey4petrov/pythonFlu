@@ -20,18 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef lduMatrix_hpp
-#define lduMatrix_hpp
+#ifndef lduMatrix_hh
+#define lduMatrix_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hpp"
+#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hh"
 
-#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.hpp"
+#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.hh"
 
-#include "src/OpenFOAM/meshes/lduMesh.hpp"
+#include "src/OpenFOAM/meshes/lduMesh.hh"
 
-#include "src/OpenFOAM/fields/Fields/scalarField.hpp"
+#include "src/OpenFOAM/fields/Fields/scalarField.hh"
 
 #include <lduMatrix.H>
 

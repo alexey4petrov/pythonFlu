@@ -20,14 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef lduAddressing_hpp
-#define lduAddressing_hpp
+#ifndef lduAddressing_hh
+#define lduAddressing_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.hpp"
+#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.hh"
 
-#include "src/OpenFOAM/primitives/Lists/labelList.hpp"
+#include "src/OpenFOAM/primitives/Lists/labelList.hh"
 
 #include <lduAddressing.H>
 

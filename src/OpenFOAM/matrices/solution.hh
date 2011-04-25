@@ -20,26 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef lduSchedule_hpp
-#define lduSchedule_hpp
+#ifndef solution_hh
+#define solution_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/UList/UList.hpp"
+#include "src/OpenFOAM/db/IOdictionary.hh"
 
-#include "src/OpenFOAM/containers/Lists/List/List.hpp"
-
-#include "src/OpenFOAM/primitives/label.hpp"
-
-#include <lduSchedule.H>
-
-namespace Foam
-{
-  inline Istream& operator>>( Istream& theStream, lduScheduleEntry& )
-  {
-    return theStream;
-  }
-}
+#include <solution.H>
 
 
 //---------------------------------------------------------------------------

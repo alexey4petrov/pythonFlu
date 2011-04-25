@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.matrices.solution"
 %{
-  #include "src/OpenFOAM/matrices/solution.hpp"
+  #include "src/OpenFOAM/matrices/solution.hh"
 %}
 
 

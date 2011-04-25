@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.matrices.lduMatrix.lduAddressing.lduSchedule"
 %{
-  #include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.hpp"
+  #include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.hh"
 %}
 
 
