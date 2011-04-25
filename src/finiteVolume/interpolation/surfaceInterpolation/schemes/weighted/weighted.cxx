@@ -24,18 +24,15 @@
 #define weighted_cxx
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
+%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.weighted";
 
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%{
+    #include "src/finiteVolume/interpolation/surfaceInterpolation/schemes/weighted/weighted.hh"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx"
-%{
-    #include <weighted.H>
-%}
+%import "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx"
 
 %include <weighted.H>
 

@@ -20,22 +20,13 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef weighted_vector_cxx
-#define weighted_vector_cxx
+#ifndef weighted_vector_hh
+#define weighted_vector_hh
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.weighted_vector";
-%{
-   #include "src/finiteVolume/interpolation/surfaceInterpolation/schemes/weighted/weighted_vector.hh"
-%}
+#include "src/finiteVolume/interpolation/surfaceInterpolation/schemes/weighted/weighted.hh"
 
-
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/interpolation/surfaceInterpolation/schemes/weighted/weighted.cxx"
-
-%import "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.cxx"
-
-%template ( weighted_vector ) Foam::weighted< Foam::vector >;
+#include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.hh"
 
 
 //---------------------------------------------------------------------------
