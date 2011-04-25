@@ -27,7 +27,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/dynamicMesh/motionSolver.hpp"
+  #include "src/dynamicMesh/motionSolver.hh"
 %}
 
 

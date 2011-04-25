@@ -21,14 +21,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef motionSolver_hpp
-#define motionSolver_hpp
+#ifndef motionSolver_hh
+#define motionSolver_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOdictionary.hpp"
+#include "src/OpenFOAM/db/IOdictionary.hh"
 
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
+#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
 
 #include <motionSolver.H>
 
