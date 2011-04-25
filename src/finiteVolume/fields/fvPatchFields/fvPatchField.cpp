@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField";
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hpp"
+  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 %}
 
 
@@ -88,7 +88,7 @@ NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::tensor > );
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hpp"
+%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hh"
 
 %feature( "director" ) fvPatchFieldConstructorToTableBase;
 

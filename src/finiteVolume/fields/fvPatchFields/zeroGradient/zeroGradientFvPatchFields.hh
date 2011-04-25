@@ -20,24 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvPatchField_symmTensor_cpp
-#define fvPatchField_symmTensor_cpp
+#ifndef zeroGradientFvPatchFields_hh
+#define zeroGradientFvPatchFields_hh
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.hh"
-%}
-
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
-
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
-
-%template( fvPatchField_symmTensor ) Foam::fvPatchField< Foam::symmTensor >;
-
-FVPATCHFIELD_ADDONS( symmTensor );
+#include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_scalar.hh"
+#include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_vector.hh"
+#include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_tensor.hh"
 
 
 //---------------------------------------------------------------------------

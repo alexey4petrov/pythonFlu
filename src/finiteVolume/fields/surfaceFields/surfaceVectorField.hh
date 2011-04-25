@@ -20,24 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvPatchField_symmTensor_cpp
-#define fvPatchField_symmTensor_cpp
+#ifndef surfaceVectorField_hh
+#define surfaceVectorField_hh
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.hh"
-%}
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.hh"
 
+#include "src/OpenFOAM/fields/tmp/autoPtr_surfaceVectorField.hh"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
-
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
-
-%template( fvPatchField_symmTensor ) Foam::fvPatchField< Foam::symmTensor >;
-
-FVPATCHFIELD_ADDONS( symmTensor );
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.hh"
 
 
 //---------------------------------------------------------------------------

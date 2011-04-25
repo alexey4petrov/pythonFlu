@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/volFields/volFields.hpp"
+  #include "src/finiteVolume/fields/volFields/volFields.hh"
 %}
 
 

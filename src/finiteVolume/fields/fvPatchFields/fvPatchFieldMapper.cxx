@@ -26,7 +26,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchFieldMapper";
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/fvPatchFieldMapper.hpp"
+  #include "src/finiteVolume/fields/fvPatchFields/fvPatchFieldMapper.hh"
 %}
 
 

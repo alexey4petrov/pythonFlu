@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/surfaceFields/surfaceVectorField.hpp"
+  #include "src/finiteVolume/fields/surfaceFields/surfaceVectorField.hh"
 %}
 
 

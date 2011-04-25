@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/surfaceFields/surfaceTensorField.hpp"
+  #include "src/finiteVolume/fields/surfaceFields/surfaceTensorField.hh"
 %}
 
 %include "src/OpenFOAM/fields/tmp/autoPtr_surfaceTensorField.cpp"

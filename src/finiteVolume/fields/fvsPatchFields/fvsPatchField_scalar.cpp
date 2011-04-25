@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.hpp"
+  #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.hh"
 %}
 
 

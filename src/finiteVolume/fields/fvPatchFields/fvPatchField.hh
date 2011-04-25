@@ -20,24 +20,24 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvPatchField_symmTensor_cpp
-#define fvPatchField_symmTensor_cpp
+#ifndef fvPatchField_hh
+#define fvPatchField_hh
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.hh"
-%}
+#include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hh"
 
+#include "src/OpenFOAM/fields/tmp/tmp.hh"
 
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
+#include <fvPatchField.H>
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
+#include <volMesh.H>
 
-%template( fvPatchField_symmTensor ) Foam::fvPatchField< Foam::symmTensor >;
+#include <fvPatchField.H>
 
-FVPATCHFIELD_ADDONS( symmTensor );
+#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
+
+#include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hh"
 
 
 //---------------------------------------------------------------------------

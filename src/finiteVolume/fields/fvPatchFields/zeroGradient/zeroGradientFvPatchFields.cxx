@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchFields";
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.hpp"
+  #include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.hh"
 %}
 
 

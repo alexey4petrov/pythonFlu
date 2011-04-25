@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/volFields/volSymmTensorField.hpp"
+  #include "src/finiteVolume/fields/volFields/volSymmTensorField.hh"
 %}
 
 

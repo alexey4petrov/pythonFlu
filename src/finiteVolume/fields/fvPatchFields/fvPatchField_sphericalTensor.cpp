@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_sphericalTensor.hpp"
+  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_sphericalTensor.hh"
 %}
 
 

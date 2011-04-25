@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fields.fvPatchFields.basic.mixed.mixedFvPatchField_scalar";
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField_scalar.hpp"
+  #include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField_scalar.hh"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file
@@ -46,7 +46,7 @@ DIRECTOR_PRE_EXTENDS( mixedFvPatchScalarField );
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField.hpp"
+%include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField.hh"
 
 %template( mixedFvPatchScalarField ) Foam::mixedFvPatchField< Foam::scalar >;
 

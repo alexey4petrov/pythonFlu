@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.hpp"
+  #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.hh"
 %}
 
 

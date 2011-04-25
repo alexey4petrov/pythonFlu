@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/mixedFvPatchField.hpp"
+  #include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/mixedFvPatchField.hh"
 %}
 
 
