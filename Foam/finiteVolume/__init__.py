@@ -34,6 +34,7 @@ from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_surfaceScalarField impor
 from Foam.src.finiteVolume.fvMatrices.fvMatrices import *
 
 from Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.linear import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.weighted_vector import *
 
 from Foam.src.finiteVolume.cfdTools.general.findRefCell import *
 from Foam.src.finiteVolume.cfdTools.general.adjustPhi import *
