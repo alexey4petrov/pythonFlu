@@ -20,48 +20,26 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/common.hh"
 
-#if FOAM_VERSION( <, 010500 )
-#define incompressibleLESModel_hpp
+#if FOAM_VERSION( <, 010700 )
+#define regionProperties_hh
 #endif
 
 
 //-----------------------------------------------------------------------------
-#ifndef incompressibleLESModel_hpp
-#define incompressibleLESModel_hpp
+#ifndef regionProperties_hh
+#define regionProperties_hh
 
 
 //----------------------------------------------------------------------------
-#include "src/turbulenceModels/incompressible/turbulenceModel.hpp"
+#include "src/OpenFOAM/db/IOdictionary.hh"
 
-// #include "LESdelta.H"
-// #include "fvm.H"
-// #include "fvc.H"
-
-#include "src/finiteVolume/fvMatrices/fvMatrices.hpp"
-
-#include "src/transportModels/incompressible/transportModel.hpp"
-
-// #include "wallFvPatch.H"
-
-#include "src/finiteVolume/cfdTools/general/bound.hpp"
-
-#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
-
-// #include "runTimeSelectionTables.H"
-
-#include "src/OpenFOAM/db/IOdictionary.hpp"
+#include "src/OpenFOAM/db/Time/Time.hh"
 
 
-//----------------------------------------------------------------------------
-#if FOAM_VERSION( ==, 010500 )
-  #include <LES/incompressible/LESModel/LESModel.H>
-#endif
-
-#if FOAM_VERSION( >=, 010600 )
-  #include <incompressible/LES/LESModel/LESModel.H>
-#endif
+//-----------------------------------------------------------------------------
+#include <regionProperties.H>
 
 
 //---------------------------------------------------------------------------

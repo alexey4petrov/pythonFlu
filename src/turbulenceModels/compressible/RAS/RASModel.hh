@@ -20,26 +20,36 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/common.hh"
 
-#if FOAM_VERSION( <, 010700 )
-#define regionProperties_hpp
+#if FOAM_VERSION( <, 010500 )
+#define compressibleRASModel_hh
 #endif
 
 
 //-----------------------------------------------------------------------------
-#ifndef regionProperties_hpp
-#define regionProperties_hpp
+#ifndef compressibleRASModel_hh
+#define compressibleRASModel_hh
 
 
 //----------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOdictionary.hpp"
+#include "src/turbulenceModels/compressible/turbulenceModel.hh"
 
-#include "src/OpenFOAM/db/Time/Time.hpp"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+
+#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
+
+#include "src/thermophysicalModels/basic/basicThermo.hh"
 
 
-//-----------------------------------------------------------------------------
-#include <regionProperties.H>
+//----------------------------------------------------------------------------
+#if FOAM_VERSION( ==, 010500 )
+  #include "RAS/compressible/RASModel/RASModel.H"
+#endif
+
+#if FOAM_VERSION( >=, 010600 )
+  #include "compressible/RAS/RASModel/RASModel.H"
+#endif
 
 
 //---------------------------------------------------------------------------

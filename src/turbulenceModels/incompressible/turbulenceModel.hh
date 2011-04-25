@@ -20,31 +20,31 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/common.hh"
 
 #if FOAM_VERSION( ==, 010500 )   
-#define incompressibleturbulenceModel_hpp
+#define incompressibleturbulenceModel_hh
 #endif
 
 //---------------------------------------------------------------------------
-#ifndef incompressibleturbulenceModel_hpp
-#define incompressibleturbulenceModel_hpp
+#ifndef incompressibleturbulenceModel_hh
+#define incompressibleturbulenceModel_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hpp"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
+#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-#include "src/finiteVolume/fields/volFields/volFields.hpp"
+#include "src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hpp"
+#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
 
-#include "src/finiteVolume/fvMatrices/fvMatrices.hpp"
+#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
 
-#include "src/transportModels/incompressible/transportModel.hpp"
+#include "src/transportModels/incompressible/transportModel.hh"
 
-#include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hpp"
+#include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hh"
 
 
 //------------------------------------------------------------------------

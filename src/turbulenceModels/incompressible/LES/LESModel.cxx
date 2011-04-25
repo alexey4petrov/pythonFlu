@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.turbulenceModels.incompressible.LES.LESModel";
 %{
-  #include "src/turbulenceModels/incompressible/LES/LESModel.hpp"
+  #include "src/turbulenceModels/incompressible/LES/LESModel.hh"
 %}
 
 

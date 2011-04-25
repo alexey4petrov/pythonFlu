@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.turbulenceModels.compressible.RAS.RASModel";
 %{
-  #include "src/turbulenceModels/compressible/RAS/RASModel.hpp"
+  #include "src/turbulenceModels/compressible/RAS/RASModel.hh"
 %}
 
 

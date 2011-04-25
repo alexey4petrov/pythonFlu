@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.turbulenceModels.incompressible.turbulenceModel";
 %{
-  #include "src/turbulenceModels/incompressible/turbulenceModel.hpp"
+  #include "src/turbulenceModels/incompressible/turbulenceModel.hh"
 %}
 
 

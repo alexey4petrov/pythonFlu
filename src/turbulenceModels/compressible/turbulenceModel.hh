@@ -20,26 +20,26 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/common.hh"
 
 #if FOAM_VERSION( ==, 010500 )   
-#define compressibleturbulenceModel_hpp
+#define compressibleturbulenceModel_hh
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef compressibleturbulenceModel_hpp
-#define compressibleturbulenceModel_hpp
+#ifndef compressibleturbulenceModel_hh
+#define compressibleturbulenceModel_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hpp"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/finiteVolume/fvMatrices/fvMatrices.hpp"
+#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
 
-#include "src/thermophysicalModels/basic/basicThermo.hpp"
+#include "src/thermophysicalModels/basic/basicThermo.hh"
 
 #include <compressible/turbulenceModel/turbulenceModel.H>
 

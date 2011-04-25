@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.turbulenceModels.compressible.RAS.derivedFvPatchFields.turbulentTemperatureCoupledBaffle.regionProperties";
 %{
-  #include "src/turbulenceModels/compressible/RAS/derivedFvPatchFields/turbulentTemperatureCoupledBaffle/regionProperties.hpp"
+  #include "src/turbulenceModels/compressible/RAS/derivedFvPatchFields/turbulentTemperatureCoupledBaffle/regionProperties.hh"
 %}
 
 
