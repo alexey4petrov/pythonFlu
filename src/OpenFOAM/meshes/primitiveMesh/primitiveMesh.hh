@@ -31,7 +31,7 @@
 
 #include "src/OpenFOAM/meshes/meshShapes/cell/cellList.hh"
 
-#include "primitiveMesh.H"
+#include <primitiveMesh.H>
 
 
 //---------------------------------------------------------------------------

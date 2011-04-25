@@ -34,10 +34,10 @@
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/primitives/vector.cxx"
 %{
-    #include "NVDTVD.H"
+    #include <NVDTVD.H>
 %}
 
-%include "NVDTVD.H"
+%include <NVDTVD.H>
 
 
 //---------------------------------------------------------------------------

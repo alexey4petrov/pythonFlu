@@ -30,10 +30,10 @@
 %include "src/OpenFOAM/primitives/Lists/wordList.cxx"
 
 %{
-    #include "IOobjectList.H"
+    #include <IOobjectList.H>
 %}
 
-%include "IOobjectList.H"
+%include <IOobjectList.H>
 
 
 //---------------------------------------------------------------------------

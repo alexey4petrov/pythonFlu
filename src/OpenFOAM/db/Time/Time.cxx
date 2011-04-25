@@ -51,10 +51,10 @@
 %ignore Foam::Time::writeVersion;
 
 %{
-  #include "Time.H"
+  #include <Time.H>
 %}
 
-%include "Time.H"
+%include <Time.H>
 
 %extend Foam::Time
 {

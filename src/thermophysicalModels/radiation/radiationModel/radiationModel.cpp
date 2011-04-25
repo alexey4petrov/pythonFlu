@@ -49,7 +49,7 @@
 
 %import "src/thermophysicalModels/basic/basicThermo.cxx"
 
-// #include "blackBodyEmission.H"
+// #include <blackBodyEmission.H>
 
 %include <radiationModel.H>
 

@@ -57,7 +57,7 @@ PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(Foam::dimensioned, Foam::scala
 
 %template( dimensionedScalar ) Foam::dimensioned< Foam::scalar >; 
 
-%include "dimensionedScalar.H"
+%include <dimensionedScalar.H>
 
 
 //--------------------------------------------------

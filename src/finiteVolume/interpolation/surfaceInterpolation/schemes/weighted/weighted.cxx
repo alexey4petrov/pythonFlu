@@ -34,10 +34,10 @@
 //---------------------------------------------------------------------------
 %include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx"
 %{
-    #include "weighted.H"
+    #include <weighted.H>
 %}
 
-%include "weighted.H"
+%include <weighted.H>
 
 
 //---------------------------------------------------------------------------

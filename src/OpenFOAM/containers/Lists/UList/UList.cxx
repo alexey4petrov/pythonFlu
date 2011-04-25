@@ -35,7 +35,7 @@
 
 %import "src/OpenFOAM/primitives/label.cxx"
 
-%include "UList.H"
+%include <UList.H>
 
 
 //---------------------------------------------------------------------------

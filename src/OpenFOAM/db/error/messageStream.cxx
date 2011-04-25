@@ -36,7 +36,7 @@
 
 %import "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx"
 
-%include "messageStream.H"
+%include <messageStream.H>
 
 
 //---------------------------------------------------------------------------

@@ -28,10 +28,10 @@
 %include "src/OpenFOAM/meshes/meshShapes/face/face.cxx"
 
 %{
-    #include "faceListFwd.H"
+    #include <faceListFwd.H>
 %}
 
-%include "faceListFwd.H"
+%include <faceListFwd.H>
 
 
 //---------------------------------------------------------------------------

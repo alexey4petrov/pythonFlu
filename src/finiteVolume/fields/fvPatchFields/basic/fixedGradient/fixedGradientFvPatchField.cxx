@@ -30,13 +30,11 @@
 %feature( "director" ) fixedGradientFvPatchField;
 
 %{
-    #include "fixedGradientFvPatchField.H"
+    #include <fixedGradientFvPatchField.H>
 
 %}
 
-
-
-%include "fixedGradientFvPatchField.H"
+%include <fixedGradientFvPatchField.H>
 
 
 //---------------------------------------------------------------------------

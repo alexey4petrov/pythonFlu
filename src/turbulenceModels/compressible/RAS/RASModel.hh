@@ -44,11 +44,11 @@
 
 //----------------------------------------------------------------------------
 #if FOAM_VERSION( ==, 010500 )
-  #include "RAS/compressible/RASModel/RASModel.H"
+  #include <RAS/compressible/RASModel/RASModel.H>
 #endif
 
 #if FOAM_VERSION( >=, 010600 )
-  #include "compressible/RAS/RASModel/RASModel.H"
+  #include <compressible/RAS/RASModel/RASModel.H>
 #endif
 
 

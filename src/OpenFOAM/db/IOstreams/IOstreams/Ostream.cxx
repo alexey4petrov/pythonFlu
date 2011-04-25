@@ -45,7 +45,7 @@
 
 %rename( ext_print ) Foam::Ostream::print;
 
-%include "Ostream.H"
+%include <Ostream.H>
 
 
 //---------------------------------------------------------------------------

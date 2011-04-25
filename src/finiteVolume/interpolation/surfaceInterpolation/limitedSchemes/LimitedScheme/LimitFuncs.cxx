@@ -35,10 +35,10 @@
 %include "src/finiteVolume/fields/volFields/volFields.cxx"
 
 %{
-    #include "LimitFuncs.H"
+    #include <LimitFuncs.H>
 %}
 
-%include "LimitFuncs.H"
+%include <LimitFuncs.H>
 
 
 //---------------------------------------------------------------------------

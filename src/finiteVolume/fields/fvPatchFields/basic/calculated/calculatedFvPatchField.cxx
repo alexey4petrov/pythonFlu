@@ -36,10 +36,10 @@
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cxx"
 
 %{
-    #include "calculatedFvPatchField.H"
+    #include <calculatedFvPatchField.H>
 %}
 
-%include "calculatedFvPatchField.H"
+%include <calculatedFvPatchField.H>
 
 
 //---------------------------------------------------------------------------

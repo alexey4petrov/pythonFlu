@@ -24,8 +24,8 @@
 #define fvPatchField_ConstructorToTable_hh
 
 
-#include "fvPatchField.H"
-#include "volMesh.H"
+#include <fvPatchField.H>
+#include <volMesh.H>
 
 
 //---------------------------------------------------------------------------

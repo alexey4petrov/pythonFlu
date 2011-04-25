@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/meshes/meshShapes/face/face.cxx"
 
-%include "oppositeFace.H"
+%include <oppositeFace.H>
 
 
 //---------------------------------------------------------------------------

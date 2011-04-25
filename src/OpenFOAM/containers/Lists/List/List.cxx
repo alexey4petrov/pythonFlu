@@ -33,7 +33,7 @@
 
 %import "src/OpenFOAM/primitives/label.cxx"
 
-%include "List.H"
+%include <List.H>
 
 
 //---------------------------------------------------------------------------

@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/containers/Lists/List/List_vector.cxx"
 
-%include "vectorList.H"
+%include <vectorList.H>
 
 
 //---------------------------------------------------------------------------

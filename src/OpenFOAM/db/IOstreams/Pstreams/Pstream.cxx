@@ -40,12 +40,12 @@
 
 %import "src/OpenFOAM/primitives/Lists/labelList.cxx"
 
-// #include "DynamicList.H"
-// #include "HashTable.H"
+// #include <DynamicList.H>
+// #include <HashTable.H>
 
 %import "src/OpenFOAM/primitives/strings/string.cxx"
 
-// #include "NamedEnum.H"
+// #include <NamedEnum.H>
 
 %import "src/OpenFOAM/primitives/ops/ops_label.cxx"
 

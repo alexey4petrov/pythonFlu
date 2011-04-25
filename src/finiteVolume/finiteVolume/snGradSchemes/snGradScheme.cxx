@@ -46,10 +46,10 @@
 %include "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
 
 %{
-    #include "snGradScheme.H"
+    #include <snGradScheme.H>
 %}
 
-%include "snGradScheme.H"
+%include <snGradScheme.H>
 
 
 //---------------------------------------------------------------------------

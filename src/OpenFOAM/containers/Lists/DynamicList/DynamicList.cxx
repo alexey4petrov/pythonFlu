@@ -28,10 +28,10 @@
 %include "src/OpenFOAM/containers/Lists/List/List.cxx"
 
 %{
-    #include "DynamicList.H"
+    #include <DynamicList.H>
 %}
 
-%include "DynamicList.H"
+%include <DynamicList.H>
 
 
 //---------------------------------------------------------------------------

@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.cxx"
 
-%include "objectRegistry.H"
+%include <objectRegistry.H>
 
 %ignore Foam::objectRegistry::writeObject;
 

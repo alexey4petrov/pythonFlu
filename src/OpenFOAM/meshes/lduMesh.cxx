@@ -36,7 +36,7 @@
 
 %import "src/OpenFOAM/db/objectRegistry.cxx"
 
-%include "lduMesh.H"
+%include <lduMesh.H>
 
 
 //---------------------------------------------------------------------------

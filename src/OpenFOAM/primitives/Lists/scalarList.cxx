@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/containers/Lists/List/List_scalar.cxx"
 
-%include "scalarList.H"
+%include <scalarList.H>
 
 
 //---------------------------------------------------------------------------

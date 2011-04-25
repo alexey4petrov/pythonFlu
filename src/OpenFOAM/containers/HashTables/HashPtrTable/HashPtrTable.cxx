@@ -28,10 +28,10 @@
 %include "src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
 
 %{
-    #include "HashPtrTable.H"
+    #include <HashPtrTable.H>
 %}
 
-%include "HashPtrTable.H"
+%include <HashPtrTable.H>
 
 
 //---------------------------------------------------------------------------

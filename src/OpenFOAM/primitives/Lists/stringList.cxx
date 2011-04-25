@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/containers/Lists/List/List_string.cxx"
 
-%include "stringList.H"
+%include <stringList.H>
 
 
 //---------------------------------------------------------------------------

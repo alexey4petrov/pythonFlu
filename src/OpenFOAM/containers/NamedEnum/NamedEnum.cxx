@@ -28,11 +28,11 @@
 %include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_int_word_string_hash.cxx"
 
 %{
-    #include "NamedEnum.H"
+    #include <NamedEnum.H>
 
 %}
 
-%include "NamedEnum.H"
+%include <NamedEnum.H>
 
 
 //---------------------------------------------------------------------------

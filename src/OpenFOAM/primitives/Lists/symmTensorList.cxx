@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/containers/Lists/List/List_symmTensor.cxx"
 
-%include "symmTensorList.H"
+%include <symmTensorList.H>
 
 
 //---------------------------------------------------------------------------

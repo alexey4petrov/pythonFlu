@@ -35,10 +35,10 @@
 %include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx"
 
 %{
-    #include "limitedSurfaceInterpolationScheme.H"
+    #include <limitedSurfaceInterpolationScheme.H>
 %}
 
-%include "limitedSurfaceInterpolationScheme.H"
+%include <limitedSurfaceInterpolationScheme.H>
 
 
 //---------------------------------------------------------------------------

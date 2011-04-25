@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/containers/Lists/List/List_token.cxx"
 
-%include "tokenList.H"
+%include <tokenList.H>
 
 
 //---------------------------------------------------------------------------

@@ -38,7 +38,7 @@
 
 %include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%include "IOobject.H"
+%include <IOobject.H>
 
 %extend Foam::IOobject
 {

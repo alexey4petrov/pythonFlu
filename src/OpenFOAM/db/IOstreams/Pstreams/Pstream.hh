@@ -31,12 +31,12 @@
 
 #include "src/OpenFOAM/primitives/Lists/labelList.hh"
 
-// #include "DynamicList.H"
-// #include "HashTable.H"
+// #include <DynamicList.H>
+// #include <HashTable.H>
 
 #include "src/OpenFOAM/primitives/strings/string.hh"
 
-// #include "NamedEnum.H"
+// #include <NamedEnum.H>
 
 #include "src/OpenFOAM/primitives/ops/ops_label.hh"
 

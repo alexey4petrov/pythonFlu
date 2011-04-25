@@ -47,7 +47,7 @@ DIRECTOR_PRE_EXTENDS( regIOobject );
 //---------------------------------------------------------------------------
 %ignore Foam::regIOobject::writeObject;
 
-%include "regIOobject.H"
+%include <regIOobject.H>
 
 
 //---------------------------------------------------------------------------

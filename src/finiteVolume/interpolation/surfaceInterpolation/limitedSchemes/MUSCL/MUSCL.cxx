@@ -35,10 +35,10 @@
 %include "src/OpenFOAM/primitives/vector.cxx"
 
 %{
-    #include "MUSCL.H"
+    #include <MUSCL.H>
 %}
 
-%include "MUSCL.H"
+%include <MUSCL.H>
 
 
 //---------------------------------------------------------------------------

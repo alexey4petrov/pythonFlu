@@ -36,7 +36,7 @@
 
 %include "src/OpenFOAM/db/IOstreams/token.cxx"
 
-%include "Istream.H"
+%include <Istream.H>
 
 
 //---------------------------------------------------------------------------

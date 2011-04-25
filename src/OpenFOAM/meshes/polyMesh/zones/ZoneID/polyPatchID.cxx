@@ -28,10 +28,10 @@
 %include "src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx"
 
 %{
-    #include "polyPatchID.H"
+    #include <polyPatchID.H>
 %}
 
-%include "polyPatchID.H"
+%include <polyPatchID.H>
 
 
 //---------------------------------------------------------------------------

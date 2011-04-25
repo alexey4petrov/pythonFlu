@@ -36,7 +36,7 @@
 
 %import "src/OpenFOAM/dimensionSet.cxx"
 
-%include "dimensionSets.H"
+%include <dimensionSets.H>
 
 
 //---------------------------------------------------------------------------

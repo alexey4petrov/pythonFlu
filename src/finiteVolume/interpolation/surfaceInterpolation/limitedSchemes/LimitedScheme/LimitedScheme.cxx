@@ -39,10 +39,10 @@
 %include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/LimitFuncs.cxx"
 
 %{
-    #include "LimitedScheme.H"
+    #include <LimitedScheme.H>
 %}
 
-%include "LimitedScheme.H"
+%include <LimitedScheme.H>
 
 
 //---------------------------------------------------------------------------
