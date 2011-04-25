@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.transportModels.incompressible.viscosityModels.viscosityModel";
 %{
-  #include "src/transportModels/incompressible/viscosityModels/viscosityModel.hpp"
+  #include "src/transportModels/incompressible/viscosityModels/viscosityModel.hh"
 %}
 
 

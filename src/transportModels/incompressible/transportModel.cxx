@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.transportModels.incompressible.transportModel";
 %{
-  #include "src/transportModels/incompressible/transportModel.hpp"
+  #include "src/transportModels/incompressible/transportModel.hh"
 %}
 
 

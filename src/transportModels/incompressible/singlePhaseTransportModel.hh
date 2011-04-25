@@ -20,18 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef transportModel_hpp
-#define transportModel_hpp
+#ifndef singlePhaseTransportModel_hh
+#define singlePhaseTransportModel_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOdictionary.hpp"
+#include "src/transportModels/incompressible/transportModel.hh"
 
-#include "src/finiteVolume/fields/volFields/volFields.hpp"
+#include "src/transportModels/incompressible/viscosityModels/viscosityModel.hh"
 
-#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hpp"
-
-#include <transportModel.H>
+#include <singlePhaseTransportModel.H>
 
 
 //---------------------------------------------------------------------------

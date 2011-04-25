@@ -20,19 +20,17 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef viscosityModel_hpp
-#define viscosityModel_hpp
+#ifndef interfaceProperties_hh
+#define interfaceProperties_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volFields.hpp"
+#include "src/OpenFOAM/db/IOdictionary.hh"
 
-#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hpp"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
-
-#include <viscosityModel.H>
+#include <interfaceProperties.H>
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------
 #endif

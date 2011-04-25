@@ -20,17 +20,19 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef interfaceProperties_hpp
-#define interfaceProperties_hpp
+#ifndef transportModel_hh
+#define transportModel_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOdictionary.hpp"
+#include "src/OpenFOAM/db/IOdictionary.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+#include "src/finiteVolume/fields/volFields/volFields.hh"
 
-#include <interfaceProperties.H>
+#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+
+#include <transportModel.H>
 
 
-//--------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 #endif

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.transportModels.interfaceProperties.interfaceProperties";
 %{
-  #include "src/transportModels/interfaceProperties/interfaceProperties.hpp"
+  #include "src/transportModels/interfaceProperties/interfaceProperties.hh"
 %}
 
 

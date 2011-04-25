@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.transportModels.incompressible.twoPhaseMixture";
 %{
-  #include "src/transportModels/incompressible/twoPhaseMixture.hpp"
+  #include "src/transportModels/incompressible/twoPhaseMixture.hh"
 %}
 
 

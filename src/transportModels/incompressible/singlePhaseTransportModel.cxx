@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.transportModels.incompressible.singlePhaseTransportModel";
 %{
-  #include "src/transportModels/incompressible/singlePhaseTransportModel.hpp"
+  #include "src/transportModels/incompressible/singlePhaseTransportModel.hh"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file

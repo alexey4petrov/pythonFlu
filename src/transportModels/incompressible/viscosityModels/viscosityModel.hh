@@ -20,20 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef twoPhaseMixture_hpp
-#define twoPhaseMixture_hpp
+#ifndef viscosityModel_hh
+#define viscosityModel_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/transportModels/incompressible/transportModel.hpp"
+#include "src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/transportModels/incompressible/viscosityModels/viscosityModel.hpp"
+#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
-
-#include <twoPhaseMixture.H>
+#include <viscosityModel.H>
 
 
 //---------------------------------------------------------------------------
