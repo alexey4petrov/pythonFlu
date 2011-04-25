@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolation";
 %{
-  #include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.hpp"
+  #include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.hh"
 %}
 
 

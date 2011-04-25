@@ -20,14 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef surfaceInterpolationScheme_scalar_hpp
-#define surfaceInterpolationScheme_scalar_hpp
+#ifndef surfaceInterpolationScheme_vector_hh
+#define surfaceInterpolationScheme_vector_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.hpp"
+#include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.hh"
 
 
 //---------------------------------------------------------------------------

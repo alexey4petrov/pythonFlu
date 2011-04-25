@@ -20,14 +20,48 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef surfaceInterpolationScheme_vector_hpp
-#define surfaceInterpolationScheme_vector_hpp
+#ifndef multivariateSurfaceInterpolationScheme_hh
+#define multivariateSurfaceInterpolationScheme_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.hpp"
+#include <multivariateSurfaceInterpolationScheme.H>
+
+
+//---------------------------------------------------------------------------
+// This struct will redirect all call's to the "nested" class multivariateSurfaceInterpolationScheme::fieldTable
+namespace Foam
+{
+  template< class Type > 
+  struct TfieldTable
+  {
+  public:
+    typedef typename multivariateSurfaceInterpolationScheme< Type >::fieldTable TSelf;
+    
+  private:
+    TSelf engine;
+    
+  public:
+    TfieldTable(): engine()
+    {}
+    
+    void add( const GeometricField<Type, fvPatchField, volMesh>& f )
+    {
+      engine.add( f );
+    }
+    
+    TSelf& get_self()
+    {
+      return engine;
+    }
+    const TSelf& get_self() const
+    {
+      return engine;
+    }
+  };
+}
 
 
 //---------------------------------------------------------------------------

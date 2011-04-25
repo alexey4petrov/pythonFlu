@@ -20,16 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef multivariateSurfaceInterpolationScheme_scalar_hpp
-#define multivariateSurfaceInterpolationScheme_scalar_hpp
+#ifndef linear_hh
+#define linear_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/scalar.hpp"
+#include "src/OpenFOAM/fields/tmp/tmp.hh"
 
-#include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.hpp"
+#include "src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+
+#include <linear.H>
 
 
 //---------------------------------------------------------------------------
