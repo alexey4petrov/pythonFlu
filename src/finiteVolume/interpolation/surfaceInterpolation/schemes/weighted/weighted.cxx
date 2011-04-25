@@ -24,7 +24,7 @@
 #define weighted_cxx
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.weighted";
+%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.weighted.weighted";
 %{
     #include "src/finiteVolume/interpolation/surfaceInterpolation/schemes/weighted/weighted.hh"
 %}
