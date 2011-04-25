@@ -20,18 +20,44 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef isinstance_hpp
-#define isinstance_hpp
+#ifndef common_hh
+#define common_hh
 
 
 //---------------------------------------------------------------------------
-namespace Python
+namespace Foam
+{}
+  
+using namespace Foam;
+
+// To check "undefined symbols" we additionally compile a standlone executable
+int main() 
 {
-  struct TypeError
-  {};
-}
+  return 0;
+}  
+  
+// To process error within "director" classes
+#include <error.H>
+  
+// To simulate Info functionality with Python "__str__" method
+#include <OStringStream.H>
+#include <stdio.h>
+
+
+//---------------------------------------------------------------------------
+#define FOAM_VERSION( CMP, VERSION ) \
+  __FOAM_VERSION__ CMP VERSION 
+
+#define FOAM_BRANCH_VERSION( NAME, CMP, VERSION ) \
+  ( __FOAM_VERSION__ CMP VERSION  && defined( __FOAM_BRANCH__ ) && __FOAM_BRANCH__ == NAME )
+
+#define FOAM_REF_VERSION( CMP, VERSION )\
+  ( __FOAM_VERSION__ CMP VERSION && !defined( __FOAM_BRANCH__ ) )
+
+
+//---------------------------------------------------------------------------
+#include "src/isinstance.hh"
 
 
 //---------------------------------------------------------------------------
 #endif
-
