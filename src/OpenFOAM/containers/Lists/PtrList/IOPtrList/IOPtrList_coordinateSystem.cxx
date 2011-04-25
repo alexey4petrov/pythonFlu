@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_coordinateSystem";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.hpp"
+  #include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.hh"
 %}
 
 
@@ -46,7 +46,7 @@
 
 %template( IOPtrList_coordinateSystem ) Foam::IOPtrList< Foam::coordinateSystem >;
 
-%include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.hpp"
+%include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.hh"
 
 
 //---------------------------------------------------------------------------

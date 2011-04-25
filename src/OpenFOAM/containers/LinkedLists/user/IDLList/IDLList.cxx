@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.LinkedLists.user.IDLList.IDLList";
 %{
-   #include "src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.hpp"
+   #include "src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.hh"
 %}
 
 

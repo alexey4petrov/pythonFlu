@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_fvMesh";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvMesh.hpp"
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvMesh.hh"
 %}
 
 

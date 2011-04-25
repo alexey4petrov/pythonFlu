@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_coordinateSystem";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_coordinateSystem.hpp"
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_coordinateSystem.hh"
 %}
 
 

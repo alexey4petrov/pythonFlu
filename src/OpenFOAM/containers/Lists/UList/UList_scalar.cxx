@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_scalar";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_scalar.hpp"
+   #include "src/OpenFOAM/containers/Lists/UList/UList_scalar.hh"
 %}
 
 

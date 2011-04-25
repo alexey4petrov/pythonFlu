@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_fvPatchField_scalar";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_scalar.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_scalar.hh"
 %}
 
 

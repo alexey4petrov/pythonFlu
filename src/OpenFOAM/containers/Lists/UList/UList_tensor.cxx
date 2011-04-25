@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_tensor";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_tensor.hpp"
+   #include "src/OpenFOAM/containers/Lists/UList/UList_tensor.hh"
 %}
 
 

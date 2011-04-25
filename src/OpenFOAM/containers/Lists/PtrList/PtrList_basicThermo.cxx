@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicThermo";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.hh"
 %}
 
 

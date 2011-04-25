@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List.hpp"
+   #include "src/OpenFOAM/containers/Lists/List/List.hh"
 %}
 
 %include "src/OpenFOAM/containers/Lists/UList/UList.cxx"

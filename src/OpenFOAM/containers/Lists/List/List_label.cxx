@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_label";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_label.hpp"
+   #include "src/OpenFOAM/containers/Lists/List/List_label.hh"
 %}
 
 

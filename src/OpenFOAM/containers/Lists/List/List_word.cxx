@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_word";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_word.hpp"
+   #include "src/OpenFOAM/containers/Lists/List/List_word.hh"
 %}
 
 

@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_compressible_RASModel";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_RASModel.hpp"
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_RASModel.hh"
 %}
 
 

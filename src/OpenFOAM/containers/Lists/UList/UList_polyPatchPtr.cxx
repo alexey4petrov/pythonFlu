@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_polyPatchPtr";
 %{
-  #include "src/OpenFOAM/containers/Lists/UList/UList_polyPatchPtr.hpp"
+  #include "src/OpenFOAM/containers/Lists/UList/UList_polyPatchPtr.hh"
 %}
 
 

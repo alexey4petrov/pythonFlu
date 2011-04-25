@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_face";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_face.hpp"
+   #include "src/OpenFOAM/containers/Lists/List/List_face.hh"
 %}
 
 

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable";
 %{
-  #include "src/OpenFOAM/containers/HashTables/HashTable/HashTable.hpp"
+  #include "src/OpenFOAM/containers/HashTables/HashTable/HashTable.hh"
 %}
 
 

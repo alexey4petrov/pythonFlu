@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericINew";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hh"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file
@@ -42,7 +42,7 @@
 %feature( "director" ) PtrList_INewBase;
 %feature( "director" ) PtrList_INewHolder;
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hpp" 
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hh" 
 
 
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::PtrList_INewHolder&

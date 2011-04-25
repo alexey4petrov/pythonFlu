@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_sphericalTensor";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_sphericalTensor.hpp"
+   #include "src/OpenFOAM/containers/Lists/List/List_sphericalTensor.hh"
 %}
 
 

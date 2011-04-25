@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hpp"
+  #include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hh"
 %}
 
 

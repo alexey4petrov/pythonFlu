@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_tensorField";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.hh"
 %}
 
 

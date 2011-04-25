@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_scalar";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_scalar.hpp"
+   #include "src/OpenFOAM/containers/Lists/List/List_scalar.hh"
 %}
 
 

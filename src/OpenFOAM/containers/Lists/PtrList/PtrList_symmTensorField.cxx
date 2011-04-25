@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_symmTensorField";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.hh"
 %}
 
 

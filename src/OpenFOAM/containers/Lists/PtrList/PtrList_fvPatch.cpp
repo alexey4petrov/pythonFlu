@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.hpp"
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.hh"
 %}
 
 

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_string";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_string.hpp"
+   #include "src/OpenFOAM/containers/Lists/UList/UList_string.hh"
 %}
 
 

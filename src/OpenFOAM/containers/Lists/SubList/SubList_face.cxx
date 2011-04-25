@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.SubList.SubList_face";
 %{
-  #include "src/OpenFOAM/containers/Lists/SubList/SubList_face.hpp"
+  #include "src/OpenFOAM/containers/Lists/SubList/SubList_face.hh"
 %}
 
 

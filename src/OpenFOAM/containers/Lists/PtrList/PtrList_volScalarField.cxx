@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_volScalarField";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_volScalarField.hpp"
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_volScalarField.hh"
 %}
 
 

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.FixedList.FixedList"
 %{
-   #include "src/OpenFOAM/containers/Lists/FixedList/FixedList.hpp"
+   #include "src/OpenFOAM/containers/Lists/FixedList/FixedList.hh"
 %}
 
 

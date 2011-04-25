@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_polyPatchPtr";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.hpp"
+   #include "src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.hh"
 %}
 
 

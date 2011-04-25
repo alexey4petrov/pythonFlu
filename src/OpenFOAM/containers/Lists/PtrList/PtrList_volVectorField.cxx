@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_volVectorField";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_volVectorField.hpp"
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_volVectorField.hh"
 %}
 
 

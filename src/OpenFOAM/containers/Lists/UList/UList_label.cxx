@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_label";
 %{
-  #include "src/OpenFOAM/containers/Lists/UList/UList_label.hpp"
+  #include "src/OpenFOAM/containers/Lists/UList/UList_label.hh"
 %}
 
 

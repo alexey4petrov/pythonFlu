@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_sphericalTensorField";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.hh"
 %}
 
 

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_vectorField";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.hh"
 %}
 
 

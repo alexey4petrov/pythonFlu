@@ -35,7 +35,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_UniformDimensionedVectorField";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_UniformDimensionedVectorField.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_UniformDimensionedVectorField.hh"
 %}
 
 

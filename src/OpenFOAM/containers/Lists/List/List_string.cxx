@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_string";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_string.hpp"
+   #include "src/OpenFOAM/containers/Lists/List/List_string.hh"
 %}
 
 

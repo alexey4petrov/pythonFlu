@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_porousZone";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.hpp"
+  #include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.hh"
 %}
 
 

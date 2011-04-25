@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_compressible_turbulenceModel";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_turbulenceModel.hpp"
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_turbulenceModel.hh"
 %}
 
 

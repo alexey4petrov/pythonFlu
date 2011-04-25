@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.hh"
 %}
 
 

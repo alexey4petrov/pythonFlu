@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable_regIOobject_word_string_hash";
 %{
-   #include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.hpp"
+   #include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.hh"
 %}
 
 

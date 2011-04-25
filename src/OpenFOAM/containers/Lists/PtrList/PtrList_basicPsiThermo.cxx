@@ -35,7 +35,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicPsiThermo";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.hh"
 %}
 
 

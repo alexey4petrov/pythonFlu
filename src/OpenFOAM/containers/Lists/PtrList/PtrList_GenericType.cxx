@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericType";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hh"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file
@@ -52,7 +52,7 @@
 
 BAREPTR_TYPEMAP( Foam::PtrList_TypeBase );
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hpp"
+%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hh"
 
 
 //---------------------------------------------------------------------------

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_Generic";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_Generic.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_Generic.hh"
 %}
 
 

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_sphericalTensor";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.hpp"
+   #include "src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.hh"
 %}
 
 

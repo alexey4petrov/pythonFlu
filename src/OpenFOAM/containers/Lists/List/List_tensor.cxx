@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_tensor";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_tensor.hpp"
+   #include "src/OpenFOAM/containers/Lists/List/List_tensor.hh"
 %}
 
 

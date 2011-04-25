@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicRhoThermo";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicRhoThermo.hpp"
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicRhoThermo.hh"
 %}
 
 

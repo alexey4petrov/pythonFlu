@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_symmTensor";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_symmTensor.hpp"
+   #include "src/OpenFOAM/containers/Lists/UList/UList_symmTensor.hh"
 %}
 
 

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_surfaceScalarField";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_surfaceScalarField.hpp"
+  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_surfaceScalarField.hh"
 %}
 
 
