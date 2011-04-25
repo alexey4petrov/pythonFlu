@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.Fields.scalarField";
 %{
-  #include "src/OpenFOAM/fields/Fields/scalarField.hpp"
+  #include "src/OpenFOAM/fields/Fields/scalarField.hh"
 %}
 
 

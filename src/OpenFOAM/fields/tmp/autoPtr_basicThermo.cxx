@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_basicThermo"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.hh"
 %}
 
 

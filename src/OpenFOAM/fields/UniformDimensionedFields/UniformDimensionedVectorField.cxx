@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.UniformDimensionedFields.UniformDimensionedVectorField";
 %{
-  #include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hpp"
+  #include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hh"
 %}
 
 
@@ -49,7 +49,7 @@
 
 %template( uniformDimensionedVectorField ) Foam::UniformDimensionedField< Foam::vector >;
 
-%include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hpp"
+%include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hh"
 
 
 //--------------------------------------------------------------------------

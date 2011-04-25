@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hpp"
+  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
 %}
 
 

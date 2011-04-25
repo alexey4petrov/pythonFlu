@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/FieldFields/FieldField.hpp"
+  #include "src/OpenFOAM/fields/FieldFields/FieldField.hh"
 %}
 
 

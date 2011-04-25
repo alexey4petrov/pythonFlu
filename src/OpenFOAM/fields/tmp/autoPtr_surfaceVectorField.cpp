@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_surfaceVectorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_surfaceVectorField.hh"
 %}
 
 

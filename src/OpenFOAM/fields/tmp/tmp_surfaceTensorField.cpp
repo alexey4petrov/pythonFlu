@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_surfaceTensorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_surfaceTensorField.hh"
 %}
 
 

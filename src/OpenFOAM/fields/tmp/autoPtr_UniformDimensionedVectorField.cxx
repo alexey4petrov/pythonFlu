@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_UniformDimensionedVectorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_UniformDimensionedVectorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_UniformDimensionedVectorField.hh"
 %}
 
 

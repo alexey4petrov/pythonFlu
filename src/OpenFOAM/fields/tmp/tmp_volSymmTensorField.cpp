@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_volSymmTensorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_volSymmTensorField.hh"
 %}
 
 

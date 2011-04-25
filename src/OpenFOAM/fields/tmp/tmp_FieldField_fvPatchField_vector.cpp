@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_vector.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_vector.hh"
 %}
 
 

@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
 %}
 
 

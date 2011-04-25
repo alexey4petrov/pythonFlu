@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_RASModel"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_incompressible_RASModel.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_incompressible_RASModel.hh"
 %}
 
 

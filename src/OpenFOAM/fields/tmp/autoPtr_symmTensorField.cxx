@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_symmTensorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.hh"
 %}
 
 

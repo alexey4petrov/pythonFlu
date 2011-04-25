@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_vectorField";
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_vectorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_vectorField.hh"
 %}
 
 

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.tmp_vectorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_vectorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_vectorField.hh"
 %}
 
 

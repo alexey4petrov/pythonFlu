@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.UniformDimensionedFields.UniformDimensionedField";
 %{
-  #include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.hpp"
+  #include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.hh"
 %}
 
 

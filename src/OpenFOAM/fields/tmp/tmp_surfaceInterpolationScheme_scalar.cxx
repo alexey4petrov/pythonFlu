@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.tmp_surfaceInterpolationScheme_scalar"
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.hh"
 %}
 
 

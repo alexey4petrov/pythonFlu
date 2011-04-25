@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_tensorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_tensorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_tensorField.hh"
 %}
 
 

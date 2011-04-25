@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_polyPatch"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.hh"
 %}
 
 

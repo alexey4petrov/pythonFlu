@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.hh"
 %}
 
 

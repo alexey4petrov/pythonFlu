@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.tmp_scalarField"
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_scalarField.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_scalarField.hh"
 %}
 
 

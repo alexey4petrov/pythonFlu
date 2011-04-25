@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_compressible_turbulenceModel"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.hh"
 %}
 
 

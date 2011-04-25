@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_basicPsiThermo"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.hh"
 %}
 
 

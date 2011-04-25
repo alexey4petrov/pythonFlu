@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_dynamicFvMesh"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_dynamicFvMesh.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_dynamicFvMesh.hh"
 %}
 
 

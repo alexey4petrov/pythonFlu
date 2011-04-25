@@ -28,7 +28,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_motionSolver"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_motionSolver.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_motionSolver.hh"
 %}
 
 

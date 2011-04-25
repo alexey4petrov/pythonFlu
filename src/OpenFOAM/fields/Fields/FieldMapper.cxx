@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.Fields.FieldMapper";
 %{
-  #include "src/OpenFOAM/fields/Fields/FieldMapper.hpp"
+  #include "src/OpenFOAM/fields/Fields/FieldMapper.hh"
 %}
 
 

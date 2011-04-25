@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.Fields.sphericalTensorField";
 %{
-  #include "src/OpenFOAM/fields/Fields/sphericalTensorField.hpp"
+  #include "src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
 %}
 
 

@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_volTensorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_volTensorField.hh"
 %}
 
 

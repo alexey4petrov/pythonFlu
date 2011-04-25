@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_volScalarField.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_volScalarField.hh"
 %}
 
 

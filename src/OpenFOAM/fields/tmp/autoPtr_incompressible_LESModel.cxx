@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_LESModel"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_incompressible_LESModel.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_incompressible_LESModel.hh"
 %}
 
 

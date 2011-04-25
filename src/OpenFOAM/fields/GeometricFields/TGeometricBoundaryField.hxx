@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hpp"
+%include "src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hh"
 
 
 //---------------------------------------------------------------------------

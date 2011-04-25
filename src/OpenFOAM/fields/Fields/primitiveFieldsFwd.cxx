@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.Fields.primitiveFieldsFwd";
 %{
-  #include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hpp"
+  #include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hh"
 %}
 
 

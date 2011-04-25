@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_volVectorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_volVectorField.hh"
 %}
 
 

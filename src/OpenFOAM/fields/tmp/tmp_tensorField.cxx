@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.tmp_tensorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_tensorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_tensorField.hh"
 %}
 
 

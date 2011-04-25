@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField_vector_volMesh";
 %{
-  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.hpp"
+  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.hh"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file

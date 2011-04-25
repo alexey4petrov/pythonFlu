@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.tmp";
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp.hh"
 %}
 
 

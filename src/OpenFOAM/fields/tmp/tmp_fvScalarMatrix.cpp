@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.tmp_fvScalarMatrix"
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hh"
 %}
 
 

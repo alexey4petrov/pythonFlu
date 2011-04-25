@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.refCount";
 %{
-  #include "src/OpenFOAM/fields/tmp/refCount.hpp"
+  #include "src/OpenFOAM/fields/tmp/refCount.hh"
 %}
 
 

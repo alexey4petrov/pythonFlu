@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_radiationModel"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_radiationModel.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_radiationModel.hh"
 %}
 
 

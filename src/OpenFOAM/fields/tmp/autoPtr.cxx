@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr.hh"
 %}
 
 

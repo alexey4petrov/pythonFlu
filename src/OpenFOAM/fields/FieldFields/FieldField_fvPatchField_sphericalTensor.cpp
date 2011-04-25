@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_sphericalTensor.hpp"
+  #include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_sphericalTensor.hh"
 %}
 
 

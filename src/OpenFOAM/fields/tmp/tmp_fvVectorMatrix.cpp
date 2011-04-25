@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.tmp_fvVectorMatrix"
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
 %}
 
 

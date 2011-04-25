@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_scalar.hpp"
+  #include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_scalar.hh"
 %}
 
 

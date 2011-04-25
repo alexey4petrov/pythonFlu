@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_sphericalTensorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_sphericalTensorField.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_sphericalTensorField.hh"
 %}
 
 

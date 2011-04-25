@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_scalarField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_scalarField.hpp"
+  #include "src/OpenFOAM/fields/tmp/autoPtr_scalarField.hh"
 %}
 
 

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.Fields.vectorField";
 %{
-  #include "src/OpenFOAM/fields/Fields/vectorField.hpp"
+  #include "src/OpenFOAM/fields/Fields/vectorField.hh"
 %}
 
 

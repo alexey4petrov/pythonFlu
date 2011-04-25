@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField_sphericalTensor_surfaceMesh";
 %{
-  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_sphericalTensor_surfaceMesh.hpp"
+  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_sphericalTensor_surfaceMesh.hh"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file

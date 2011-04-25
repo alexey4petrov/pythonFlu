@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_tensor.hpp"
+  #include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_tensor.hh"
 %}
 
 

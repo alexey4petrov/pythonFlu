@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField_scalar_fvMesh";
 %{
-  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_fvMesh.hpp"
+  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_fvMesh.hh"
 %}
 
 

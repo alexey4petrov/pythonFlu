@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField";
 %{
-  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.hpp"
+  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.hh"
 %}
 
 

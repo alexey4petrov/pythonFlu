@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/GeometricFields/GeometricField.hpp"
+  #include "src/OpenFOAM/fields/GeometricFields/GeometricField.hh"
 %}
 
 
