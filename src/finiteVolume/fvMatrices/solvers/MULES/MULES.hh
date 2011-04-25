@@ -20,22 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvVectorMatrix_hpp
-#define fvVectorMatrix_hpp
+#ifndef MULES_hh
+#define MULES_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMatrices/fvMatrix.hpp"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/OpenFOAM/primitives/vector.hpp"
-
-#include "src/OpenFOAM/dimensionSet.hpp"
-
-namespace Foam
-{
-  typedef Foam::fvMatrix< Foam::vector > fvVectorMatrix;
-}
+#include <MULES.H>
 
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 #endif

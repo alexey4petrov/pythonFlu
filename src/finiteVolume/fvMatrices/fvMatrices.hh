@@ -20,14 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvMatricesFwd_hpp
-#define fvMatricesFwd_hpp
+#ifndef fvMatrices_hh
+#define fvMatrices_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/fieldTypes.hpp"
+#include "src/finiteVolume/fvMatrices/fvScalarMatrix.hh"
 
-#include <fvMatricesFwd.H>
+#include "src/finiteVolume/fvMatrices/fvVectorMatrix.hh"
 
 
 //---------------------------------------------------------------------------

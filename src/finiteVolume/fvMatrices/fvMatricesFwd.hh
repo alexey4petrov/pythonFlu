@@ -20,30 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvMatrix_hpp
-#define fvMatrix_hpp
+#ifndef fvMatricesFwd_hh
+#define fvMatricesFwd_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/refCount.hpp"
+#include "src/OpenFOAM/fields/Fields/fieldTypes.hh"
 
-#include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hpp"
-
-#include "src/finiteVolume/fvMatrices/fvMatricesFwd.hpp"
-
-#include <fvMatrix.H>
+#include <fvMatricesFwd.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volFieldsFwd.hpp"
-
-#include "src/OpenFOAM/fields/tmp/tmp.hpp"
-
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hpp"
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hpp"
-
-
-//----------------------------------------------------------------------------
 #endif

@@ -20,16 +20,21 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvScalarMatrix_hpp
-#define fvScalarMatrix_hpp
+#ifndef fvVectorMatrix_hh
+#define fvVectorMatrix_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMatrices/fvMatrix.hpp"
+#include "src/finiteVolume/fvMatrices/fvMatrix.hh"
 
-#include "src/OpenFOAM/primitives/scalar.hpp"
+#include "src/OpenFOAM/primitives/vector.hh"
 
-#include "src/OpenFOAM/dimensionSet.hpp"
+#include "src/OpenFOAM/dimensionSet.hh"
+
+namespace Foam
+{
+  typedef Foam::fvMatrix< Foam::vector > fvVectorMatrix;
+}
 
 
 //---------------------------------------------------------------------------

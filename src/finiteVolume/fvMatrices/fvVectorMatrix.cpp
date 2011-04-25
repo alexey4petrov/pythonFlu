@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fvMatrices.fvVectorMatrix";
 %{
-  #include "src/finiteVolume/fvMatrices/fvVectorMatrix.hpp"
+  #include "src/finiteVolume/fvMatrices/fvVectorMatrix.hh"
 %}
 
 
@@ -51,7 +51,7 @@ FVMATRIX_TEMPLATE_FUNC( Foam::vector );
 
 %template( fvVectorMatrix ) Foam::fvMatrix< Foam::vector >;
 
-%include "src/finiteVolume/fvMatrices/fvVectorMatrix.hpp"
+%include "src/finiteVolume/fvMatrices/fvVectorMatrix.hh"
 
 
 //---------------------------------------------------------------------------

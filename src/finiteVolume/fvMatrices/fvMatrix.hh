@@ -20,14 +20,29 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef MULES_hpp
-#define MULES_hpp
+#ifndef fvMatrix_hh
+#define fvMatrix_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+#include "src/OpenFOAM/fields/tmp/refCount.hh"
 
-#include <MULES.H>
+#include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hh"
+
+#include "src/finiteVolume/fvMatrices/fvMatricesFwd.hh"
+
+#include <fvMatrix.H>
+
+
+//---------------------------------------------------------------------------
+#include "src/finiteVolume/fields/volFields/volFieldsFwd.hh"
+
+#include "src/OpenFOAM/fields/tmp/tmp.hh"
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hh"
+#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
 
 
 //----------------------------------------------------------------------------

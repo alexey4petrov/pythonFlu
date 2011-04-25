@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fvMatrices.solvers.MULES.MULES";
 %{
-  #include "src/finiteVolume/fvMatrices/solvers/MULES/MULES.hpp"
+  #include "src/finiteVolume/fvMatrices/solvers/MULES/MULES.hh"
 %}
 
 

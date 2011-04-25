@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fvMatrices.fvMatrix";
 %{
-  #include "src/finiteVolume/fvMatrices/fvMatrix.hpp"
+  #include "src/finiteVolume/fvMatrices/fvMatrix.hh"
 %}
 
 
