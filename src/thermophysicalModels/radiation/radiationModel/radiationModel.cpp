@@ -21,7 +21,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/thermophysicalModels/radiation/radiationModel/radiationModel.hpp"
+  #include "src/thermophysicalModels/radiation/radiationModel/radiationModel.hh"
 %}
 
 

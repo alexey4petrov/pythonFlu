@@ -20,20 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/common.hh"
 
 #if FOAM_VERSION( <, 010600 )
-#define basicPsiThermo_hpp
+#define basicPsiThermo_hh
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef basicPsiThermo_hpp
-#define basicPsiThermo_hpp
+#ifndef basicPsiThermo_hh
+#define basicPsiThermo_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/thermophysicalModels/basic/basicThermo.hpp"
+#include "src/thermophysicalModels/basic/basicThermo.hh"
 
 #include <basicPsiThermo.H>
 

@@ -20,16 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef basicThermo_hpp
-#define basicThermo_hpp
+#ifndef basicThermo_hh
+#define basicThermo_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/OpenFOAM/db/IOdictionary.hpp"
+#include "src/OpenFOAM/db/IOdictionary.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr.hpp"
+#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
 
 #include <basicThermo.H>
 

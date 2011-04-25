@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.thermophysicalModels.basic.psiThermo.basicPsiThermo";
 %{
-  #include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.hpp"
+  #include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.hh"
 %}
 
 

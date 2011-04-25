@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.thermophysicalModels.basic.rhoThermo.basicRhoThermo";
 %{
-  #include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.hpp"
+  #include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.hh"
 %}
 
 

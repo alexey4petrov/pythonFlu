@@ -20,28 +20,28 @@
 
 
 //--------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/common.hh"
 
 #if FOAM_VERSION( <, 010500 )
-#define radiationModel_hpp
+#define radiationModel_hh
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef radiationModel_hpp
-#define radiationModel_hpp
+#ifndef radiationModel_hh
+#define radiationModel_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOdictionary.hpp"
+#include "src/OpenFOAM/db/IOdictionary.hh"
 
-// #include "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hpp"
+// #include "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hh"
 
-#include "src/finiteVolume/fields/volFields/volFields.hpp"
+#include "src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/thermophysicalModels/basic/basicThermo.hpp"
+#include "src/thermophysicalModels/basic/basicThermo.hh"
 
-#include "src/finiteVolume/fvMatrices/fvMatrices.hpp"
+#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
 
 // #include <blackBodyEmission.H>
 

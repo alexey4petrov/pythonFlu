@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.thermophysicalModels.basic.basicThermo";
 %{
-  #include "src/thermophysicalModels/basic/basicThermo.hpp"
+  #include "src/thermophysicalModels/basic/basicThermo.hh"
 %}
 
 
