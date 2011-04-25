@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.dictionary.dictionary";
 %{
-   #include "src/OpenFOAM/db/dictionary/dictionary.hpp"
+   #include "src/OpenFOAM/db/dictionary/dictionary.hh"
 %}
 
 

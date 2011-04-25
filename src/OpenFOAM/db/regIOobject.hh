@@ -20,14 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef entry_hpp
-#define entry_hpp
+#ifndef regIOobject_hh
+#define regIOobject_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/OpenFOAM/db/IOobject.hh"
 
-#include <entry.H>
+#include <regIOobject.H>
 
 
 //---------------------------------------------------------------------------

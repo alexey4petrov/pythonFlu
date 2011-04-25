@@ -20,14 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef TimePaths_hpp
-#define TimePaths_hpp
+#ifndef Switch_hh
+#define Switch_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/strings/fileName.hpp"
+#include "src/OpenFOAM/primitives/bool.hh"
 
-#include <TimePaths.H>
+#include "src/OpenFOAM/primitives/strings/word.hh"
+
+#include <Switch.H>
 
 
 //---------------------------------------------------------------------------

@@ -20,19 +20,28 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef ITstream_hpp
-#define ITstream_hpp
+#ifndef Time_hh
+#define Time_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/OpenFOAM/db/objectRegistry.hh"
 
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hpp"
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hpp"
+#include "src/OpenFOAM/db/Time/clock.hh"
 
-#include "src/OpenFOAM/primitives/Lists/tokenList.hpp"
+#include "src/OpenFOAM/db/Time/cpuTime.hh"
 
-#include <ITstream.H>
+#include "src/OpenFOAM/db/Time/TimePaths.hh"
+
+#include "src/OpenFOAM/db/Time/TimeState.hh"
+
+#include "src/OpenFOAM/primitives/scalar.hh"
+
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+
+#include "src/OpenFOAM/primitives/strings/word.hh"
+
+#include <Time.H>
 
 
 //---------------------------------------------------------------------------

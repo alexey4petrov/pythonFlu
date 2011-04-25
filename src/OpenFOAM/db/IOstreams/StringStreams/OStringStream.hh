@@ -20,14 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef cpuTime_hpp
-#define cpuTime_hpp
+#ifndef OStringStream_hh
+#define OStringStream_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/scalar.hpp"
+#include "src/common.hh"
 
-#include <cpuTime.H>
+#include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.hh"
+
+#include <OStringStream.H>
 
 
 //---------------------------------------------------------------------------

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.Time.clock";
 %{
-  #include "src/OpenFOAM/db/Time/clock.hpp"
+  #include "src/OpenFOAM/db/Time/clock.hh"
 %}
 
 

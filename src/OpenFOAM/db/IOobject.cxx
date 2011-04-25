@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOobject";
 %{
-   #include "src/OpenFOAM/db/IOobject.hpp"
+   #include "src/OpenFOAM/db/IOobject.hh"
 %}
 
 

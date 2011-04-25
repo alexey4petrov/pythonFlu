@@ -20,18 +20,30 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IOdictionary_hpp
-#define IOdictionary_hpp
+#ifndef dictionary_cxx
+#define dictionary_cxx
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/regIOobject.hpp"
+#include "src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.hh"
 
-#include "src/OpenFOAM/db/dictionary/dictionary.hpp"
+#include "src/OpenFOAM/primitives/strings/word.hh"
 
-#include "src/OpenFOAM/db/objectRegistry.hpp"
+#include "src/OpenFOAM/primitives/Lists/tokenList.hh"
 
-#include <IOdictionary.H>
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+
+#include "src/OpenFOAM/primitives/strings/string.hh"
+
+#include "src/OpenFOAM/primitives/scalar.hh"
+
+#include "src/OpenFOAM/db/Switch.hh"
+
+#include <dictionary.H>
+
+#if FOAM_VERSION( >=, 010600 )
+  #include <SHA1Digest.H>
+#endif
 
 
 //---------------------------------------------------------------------------

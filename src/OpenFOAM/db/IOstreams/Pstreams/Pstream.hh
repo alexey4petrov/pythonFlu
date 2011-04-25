@@ -20,14 +20,28 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef TimeState_hpp
-#define TimeState_hpp
+#ifndef Pstream_hh
+#define Pstream_hh
 
 
 //---------------------------------------------------------------------------
-//#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
+#include "src/common.hh"
 
-#include <TimeState.H>
+#include "src/OpenFOAM/primitives/label.hh"
+
+#include "src/OpenFOAM/primitives/Lists/labelList.hh"
+
+// #include "DynamicList.H"
+// #include "HashTable.H"
+
+#include "src/OpenFOAM/primitives/strings/string.hh"
+
+// #include "NamedEnum.H"
+
+#include "src/OpenFOAM/primitives/ops/ops_label.hh"
+
+#include <Pstream.H>
+#include <PstreamReduceOps.H>
 
 
 //---------------------------------------------------------------------------

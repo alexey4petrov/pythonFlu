@@ -20,14 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef OSstream_hpp
-#define OSstream_hpp
+#ifndef TimePaths_hh
+#define TimePaths_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hpp"
+#include "src/OpenFOAM/primitives/strings/fileName.hh"
 
-#include <OSstream.H>
+#include <TimePaths.H>
 
 
 //---------------------------------------------------------------------------

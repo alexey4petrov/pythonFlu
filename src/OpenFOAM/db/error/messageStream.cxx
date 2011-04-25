@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.error.messageStream";
 %{
-   #include "src/OpenFOAM/db/error/messageStream.hpp"
+   #include "src/OpenFOAM/db/error/messageStream.hh"
 %}
 
 

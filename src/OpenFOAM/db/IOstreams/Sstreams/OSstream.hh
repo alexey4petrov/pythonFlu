@@ -20,14 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef regIOobject_hpp
-#define regIOobject_hpp
+#ifndef OSstream_hh
+#define OSstream_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOobject.hpp"
+#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
 
-#include <regIOobject.H>
+#include <OSstream.H>
 
 
 //---------------------------------------------------------------------------

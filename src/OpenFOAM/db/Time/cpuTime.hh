@@ -20,16 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef ISstream_hpp
-#define ISstream_hpp
+#ifndef cpuTime_hh
+#define cpuTime_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/OpenFOAM/primitives/scalar.hh"
 
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hpp"
-
-#include <ISstream.H>
+#include <cpuTime.H>
 
 
 //---------------------------------------------------------------------------

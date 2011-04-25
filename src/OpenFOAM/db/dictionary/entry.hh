@@ -20,18 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IFstream_hpp
-#define IFstream_hpp
+#ifndef entry_hh
+#define entry_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/common.hh"
 
-#include "src/OpenFOAM/primitives/strings/fileName.hpp"
-
-#include "src/OpenFOAM/db/IOstreams/Sstreams/ISstream.hpp"
-
-#include <IFstream.H>
+#include <entry.H>
 
 
 //---------------------------------------------------------------------------

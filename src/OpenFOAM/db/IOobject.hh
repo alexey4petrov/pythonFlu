@@ -20,14 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef subCycleTime_hpp
-#define subCycleTime_hpp
+#ifndef IOobject_hh
+#define IOobject_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/Time/Time.hpp"
+#include "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hh"
 
-#include <subCycleTime.H>
+#include "src/OpenFOAM/primitives/strings/fileName.hh"
+
+#include <IOobject.H>
 
 
 //---------------------------------------------------------------------------

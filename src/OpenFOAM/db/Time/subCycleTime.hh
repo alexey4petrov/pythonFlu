@@ -20,16 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef Switch_hpp
-#define Switch_hpp
+#ifndef subCycleTime_hh
+#define subCycleTime_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/bool.hpp"
+#include "src/OpenFOAM/db/Time/Time.hh"
 
-#include "src/OpenFOAM/primitives/strings/word.hpp"
-
-#include <Switch.H>
+#include <subCycleTime.H>
 
 
 //---------------------------------------------------------------------------

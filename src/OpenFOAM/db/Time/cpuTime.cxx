@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.Time.cpuTime";
 %{
-  #include "src/OpenFOAM/db/Time/cpuTime.hpp"
+  #include "src/OpenFOAM/db/Time/cpuTime.hh"
 %}
 
 

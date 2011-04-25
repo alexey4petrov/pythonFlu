@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOstreams.Sstreams.OSstream";
 %{
-   #include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.hpp"
+   #include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.hh"
 %}
 
 

@@ -20,28 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef Time_hpp
-#define Time_hpp
+#ifndef messageStream_hh
+#define messageStream_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/objectRegistry.hpp"
+#include "src/OpenFOAM/db/dictionary/dictionary.hh"
 
-#include "src/OpenFOAM/db/Time/clock.hpp"
+#include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.hh"
 
-#include "src/OpenFOAM/db/Time/cpuTime.hpp"
-
-#include "src/OpenFOAM/db/Time/TimePaths.hpp"
-
-#include "src/OpenFOAM/db/Time/TimeState.hpp"
-
-#include "src/OpenFOAM/primitives/scalar.hpp"
-
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
-
-#include "src/OpenFOAM/primitives/strings/word.hpp"
-
-#include <Time.H>
+#include <messageStream.H>
 
 
 //---------------------------------------------------------------------------

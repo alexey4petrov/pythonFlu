@@ -20,16 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IOobject_hpp
-#define IOobject_hpp
+#ifndef clock_hh
+#define clock_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hpp"
+#include "src/OpenFOAM/primitives/strings/string.hh"
 
-#include "src/OpenFOAM/primitives/strings/fileName.hpp"
-
-#include <IOobject.H>
+#include <clock.H>
 
 
 //---------------------------------------------------------------------------

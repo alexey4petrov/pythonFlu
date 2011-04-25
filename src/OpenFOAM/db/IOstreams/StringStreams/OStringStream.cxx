@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOstreams.StringStreams.OStringStream";
 %{
-  #include "src/OpenFOAM/db/IOstreams/StringStreams/OStringStream.hpp"
+  #include "src/OpenFOAM/db/IOstreams/StringStreams/OStringStream.hh"
 %}
 
 

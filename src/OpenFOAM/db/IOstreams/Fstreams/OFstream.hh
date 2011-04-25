@@ -20,18 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef token_hpp
-#define token_hpp
+#ifndef OFstream_hh
+#define OFstream_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/strings/word.hpp"
+#include "src/common.hh"
 
-#include "src/OpenFOAM/primitives/strings/string.hpp"
+#include "src/OpenFOAM/primitives/strings/fileName.hh"
 
-#include "src/OpenFOAM/primitives/label.hpp"
+#include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.hh"
 
-#include <token.H>
+#include <OFstream.H>
 
 
 //---------------------------------------------------------------------------

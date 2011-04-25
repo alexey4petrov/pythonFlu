@@ -20,16 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef OStringStream_hpp
-#define OStringStream_hpp
+#ifndef Istream_hh
+#define Istream_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hh"
 
-#include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.hpp"
-
-#include <OStringStream.H>
+#include <Istream.H>
 
 
 //---------------------------------------------------------------------------

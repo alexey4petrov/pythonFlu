@@ -20,16 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IStringStream_hpp
-#define IStringStream_hpp
+#ifndef TimeState_hh
+#define TimeState_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+//#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
-#include "src/OpenFOAM/db/IOstreams/Sstreams/ISstream.hpp"
-
-#include <IStringStream.H>
+#include <TimeState.H>
 
 
 //---------------------------------------------------------------------------

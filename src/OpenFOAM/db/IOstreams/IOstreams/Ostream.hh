@@ -20,14 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef Istream_hpp
-#define Istream_hpp
+#ifndef Ostream_hh
+#define Ostream_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hpp"
+#include "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hh"
 
-#include <Istream.H>
+#include "src/OpenFOAM/primitives/scalar.hh"
+
+#include "src/OpenFOAM/primitives/strings/keyType.hh"
+
+#include "src/OpenFOAM/db/IOstreams/token.hh"
+
+#include <Ostream.H>
 
 
 //---------------------------------------------------------------------------

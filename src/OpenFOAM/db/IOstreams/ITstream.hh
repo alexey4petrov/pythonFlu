@@ -20,14 +20,19 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef clock_hpp
-#define clock_hpp
+#ifndef ITstream_hh
+#define ITstream_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/strings/string.hpp"
+#include "src/common.hh"
 
-#include <clock.H>
+#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
+#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
+
+#include "src/OpenFOAM/primitives/Lists/tokenList.hh"
+
+#include <ITstream.H>
 
 
 //---------------------------------------------------------------------------

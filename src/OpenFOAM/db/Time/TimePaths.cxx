@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.Time.TimePaths";
 %{
-  #include "src/OpenFOAM/db/Time/TimePaths.hpp"
+  #include "src/OpenFOAM/db/Time/TimePaths.hh"
 %}
 
 

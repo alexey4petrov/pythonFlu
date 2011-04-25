@@ -20,14 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef objectRegistry_hpp
-#define objectRegistry_hpp
+#ifndef IOstream_hh
+#define IOstream_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.hpp"
+#include "src/common.hh"
 
-#include <objectRegistry.H>
+#include <IOstream.H>
+
+typedef IOstream::streamAccess streamAccess;
+typedef IOstream::streamFormat streamFormat;
+typedef IOstream::compressionType compressionType;
+
+typedef IOstream::versionNumber versionNumber;
+
+using std::ios;
 
 
 //---------------------------------------------------------------------------

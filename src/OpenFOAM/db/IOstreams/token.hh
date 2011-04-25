@@ -20,16 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef messageStream_hpp
-#define messageStream_hpp
+#ifndef token_hh
+#define token_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/dictionary/dictionary.hpp"
+#include "src/OpenFOAM/primitives/strings/word.hh"
 
-#include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.hpp"
+#include "src/OpenFOAM/primitives/strings/string.hh"
 
-#include <messageStream.H>
+#include "src/OpenFOAM/primitives/label.hh"
+
+#include <token.H>
 
 
 //---------------------------------------------------------------------------

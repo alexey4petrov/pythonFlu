@@ -20,20 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef Ostream_hpp
-#define Ostream_hpp
+#ifndef IOdictionary_hh
+#define IOdictionary_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hpp"
+#include "src/OpenFOAM/db/regIOobject.hh"
 
-#include "src/OpenFOAM/primitives/scalar.hpp"
+#include "src/OpenFOAM/db/dictionary/dictionary.hh"
 
-#include "src/OpenFOAM/primitives/strings/keyType.hpp"
+#include "src/OpenFOAM/db/objectRegistry.hh"
 
-#include "src/OpenFOAM/db/IOstreams/token.hpp"
-
-#include <Ostream.H>
+#include <IOdictionary.H>
 
 
 //---------------------------------------------------------------------------

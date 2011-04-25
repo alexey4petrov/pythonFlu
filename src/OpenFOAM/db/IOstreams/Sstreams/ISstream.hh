@@ -20,22 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IOstream_hpp
-#define IOstream_hpp
+#ifndef ISstream_hh
+#define ISstream_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/common.hh"
 
-#include <IOstream.H>
+#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
 
-typedef IOstream::streamAccess streamAccess;
-typedef IOstream::streamFormat streamFormat;
-typedef IOstream::compressionType compressionType;
-
-typedef IOstream::versionNumber versionNumber;
-
-using std::ios;
+#include <ISstream.H>
 
 
 //---------------------------------------------------------------------------

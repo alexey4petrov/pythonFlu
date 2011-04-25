@@ -20,28 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef Pstream_hpp
-#define Pstream_hpp
+#ifndef IFstream_hh
+#define IFstream_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/common.hh"
 
-#include "src/OpenFOAM/primitives/label.hpp"
+#include "src/OpenFOAM/primitives/strings/fileName.hh"
 
-#include "src/OpenFOAM/primitives/Lists/labelList.hpp"
+#include "src/OpenFOAM/db/IOstreams/Sstreams/ISstream.hh"
 
-// #include "DynamicList.H"
-// #include "HashTable.H"
-
-#include "src/OpenFOAM/primitives/strings/string.hpp"
-
-// #include "NamedEnum.H"
-
-#include "src/OpenFOAM/primitives/ops/ops_label.hpp"
-
-#include <Pstream.H>
-#include <PstreamReduceOps.H>
+#include <IFstream.H>
 
 
 //---------------------------------------------------------------------------

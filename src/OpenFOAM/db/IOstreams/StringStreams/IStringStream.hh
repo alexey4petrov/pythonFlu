@@ -20,18 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef OFstream_hpp
-#define OFstream_hpp
+#ifndef IStringStream_hh
+#define IStringStream_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/common.hh"
 
-#include "src/OpenFOAM/primitives/strings/fileName.hpp"
+#include "src/OpenFOAM/db/IOstreams/Sstreams/ISstream.hh"
 
-#include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.hpp"
-
-#include <OFstream.H>
+#include <IStringStream.H>
 
 
 //---------------------------------------------------------------------------

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.Time.subCycleTime";
 %{
-  #include "src/OpenFOAM/db/Time/subCycleTime.hpp"
+  #include "src/OpenFOAM/db/Time/subCycleTime.hh"
 %}
 
 

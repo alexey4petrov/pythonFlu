@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.dictionary.entry";
 %{
-   #include "src/OpenFOAM/db/dictionary/entry.hpp"
+   #include "src/OpenFOAM/db/dictionary/entry.hh"
 %}
 
 

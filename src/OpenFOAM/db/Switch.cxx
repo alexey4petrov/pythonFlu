@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.Switch";
 %{
-   #include "src/OpenFOAM/db/Switch.hpp"
+   #include "src/OpenFOAM/db/Switch.hh"
 %}
 
 
