@@ -24,16 +24,16 @@
 #define MUSCL_NVDTVD_cxx
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.MUSCL.MUSCL_NVDTVD"
+%{
+   #include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/MUSCL/MUSCL_NVDTVD.hh"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/MUSCL/MUSCL.cxx"
-%include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/NVDTVD.cxx"
+%import "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/MUSCL/MUSCL.cxx"
+
+%import "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/NVDTVD.cxx"
 
 %template ( MUSCL_NVDTVD ) Foam::MUSCLLimiter<Foam::NVDTVD>;
 

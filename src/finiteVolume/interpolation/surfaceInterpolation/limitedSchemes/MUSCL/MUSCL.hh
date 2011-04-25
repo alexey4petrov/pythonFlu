@@ -20,20 +20,13 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef MUSCL_cxx
-#define MUSCL_cxx
+#ifndef MUSCL_hh
+#define MUSCL_hh
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.MUSCL.MUSCL";
-%{
-    #include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/MUSCL/MUSCL.hh"
-%}
+#include "src/OpenFOAM/primitives/vector.hh"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
-
-%include <MUSCL.H>
+#include <MUSCL.H>
 
 
 //---------------------------------------------------------------------------
