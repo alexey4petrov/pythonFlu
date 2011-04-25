@@ -193,8 +193,19 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.cxx \
 	\
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/schemes/weighted/weighted.cxx \
 	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/schemes/weighted/weighted_vector.cxx \
-
+	\
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/limitedSurfaceInterpolationScheme/limitedSurfaceInterpolationScheme.cxx \
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/limitedSurfaceInterpolationScheme/limitedSurfaceInterpolationScheme_vector.cxx \
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/LimitFuncs.cxx \
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/NVDTVD.cxx \
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/MUSCL/MUSCL.cxx \
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/MUSCL/MUSCL_NVDTVD.cxx \
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/LimitedScheme.cxx \
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/LimitedScheme_vector_MUSCLLimiter_NVDTVD_limitFuncs_magSqr.cxx \
+	
+	
 
 #--------------------------------------------------------------------------------------
 include @abs_top_builddir@/include.foam.makefile

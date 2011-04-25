@@ -34,7 +34,7 @@ from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_surfaceScalarField impor
 from Foam.src.finiteVolume.fvMatrices.fvMatrices import *
 
 from Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.linear import *
-from Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.weighted_vector import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.weighted.weighted_vector import *
 
 from Foam.src.finiteVolume.cfdTools.general.findRefCell import *
 from Foam.src.finiteVolume.cfdTools.general.adjustPhi import *
@@ -46,6 +46,12 @@ from Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedValue.fixedValueFvPat
 from Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZones import *
 from Foam.src.finiteVolume.fvMesh.fvPatches.derived.wallFvPatch import *
 from Foam.src.OpenFOAM.algorithms.subCycle.subCycle_volScalarField import *
+
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.limitedSurfaceInterpolationScheme.limitedSurfaceInterpolationScheme_vector import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.NVDTVD import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.LimitFuncs import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.MUSCL.MUSCL_NVDTVD import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.LimitedScheme_vector_MUSCLLimiter_NVDTVD_limitFuncs_magSqr import *
 
 
 #---------------------------------------------------------------------------
