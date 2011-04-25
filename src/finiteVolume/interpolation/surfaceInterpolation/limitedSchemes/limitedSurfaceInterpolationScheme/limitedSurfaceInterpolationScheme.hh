@@ -20,19 +20,13 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef limitedSurfaceInterpolationScheme_cxx
-#define limitedSurfaceInterpolationScheme_cxx
+#ifndef limitedSurfaceInterpolationScheme_hh
+#define limitedSurfaceInterpolationScheme_hh
 
 //---------------------------------------------------------------------------
-%module "src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.limitedSurfaceInterpolationScheme.limitedSurfaceInterpolationScheme";
+#include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.hh"
 
-%import  "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx"
-
-%{
-    #include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/limitedSurfaceInterpolationScheme/limitedSurfaceInterpolationScheme.hh"
-%}
-
-%include <limitedSurfaceInterpolationScheme.H>
+#include <limitedSurfaceInterpolationScheme.H>
 
 
 //---------------------------------------------------------------------------

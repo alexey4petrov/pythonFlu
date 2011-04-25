@@ -24,17 +24,15 @@
 #define limitedSurfaceInterpolationScheme_vector_cxx
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
+%module "src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.limitedSurfaceInterpolationScheme.limitedSurfaceInterpolationScheme_vector";
+%{
+   #include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/limitedSurfaceInterpolationScheme/limitedSurfaceInterpolationScheme_vector.hh"
+%}
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/limitedSurfaceInterpolationScheme/limitedSurfaceInterpolationScheme.cxx"
+%import "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/limitedSurfaceInterpolationScheme/limitedSurfaceInterpolationScheme.cxx"
 
-%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.cxx"
+%import "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.cxx"
 
 
 //---------------------------------------------------------------------------
