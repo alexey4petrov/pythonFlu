@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.wordList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/wordList.hpp"
+   #include "src/OpenFOAM/primitives/Lists/wordList.hh"
 %}
 
 

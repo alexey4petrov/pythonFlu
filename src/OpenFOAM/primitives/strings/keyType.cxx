@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.strings.keyType";
 %{
-  #include "src/OpenFOAM/primitives/strings/keyType.hpp"
+  #include "src/OpenFOAM/primitives/strings/keyType.hh"
 %}
 
 

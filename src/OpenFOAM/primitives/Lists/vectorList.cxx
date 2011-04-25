@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.vectorList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/vectorList.hpp"
+   #include "src/OpenFOAM/primitives/Lists/vectorList.hh"
 %}
 
 

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.sphericalTensorList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/sphericalTensorList.hpp"
+   #include "src/OpenFOAM/primitives/Lists/sphericalTensorList.hh"
 %}
 
 

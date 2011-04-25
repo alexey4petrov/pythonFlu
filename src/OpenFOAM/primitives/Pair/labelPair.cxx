@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Pair.labelPair"
 %{
-  #include "src/OpenFOAM/primitives/Pair/labelPair.hpp"
+  #include "src/OpenFOAM/primitives/Pair/labelPair.hh"
 %}
 
 

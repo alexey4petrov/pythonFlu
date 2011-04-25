@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.ops.ops";
 %{
-   #include "src/OpenFOAM/primitives/ops/ops.hpp"
+   #include "src/OpenFOAM/primitives/ops/ops.hh"
 %}
 
 

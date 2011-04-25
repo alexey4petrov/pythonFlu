@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.tensor";
 %{
-  #include "src/OpenFOAM/primitives/tensor.hpp"
+  #include "src/OpenFOAM/primitives/tensor.hh"
 %}
 
 

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.int_";
 %{
-  #include "src/OpenFOAM/primitives/int_.hpp"
+  #include "src/OpenFOAM/primitives/int_.hh"
 %}
 
 

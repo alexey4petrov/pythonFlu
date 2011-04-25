@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.strings.word";
 %{
-  #include "src/OpenFOAM/primitives/strings/word.hpp"
+  #include "src/OpenFOAM/primitives/strings/word.hh"
 %}
 
 

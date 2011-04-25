@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.one";
 %{
-  #include "src/OpenFOAM/primitives/one.hpp"
+  #include "src/OpenFOAM/primitives/one.hh"
 %}
 
 

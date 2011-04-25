@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.bool";
 %{
-  #include "src/OpenFOAM/primitives/bool.hpp"
+  #include "src/OpenFOAM/primitives/bool.hh"
 %}
 
 

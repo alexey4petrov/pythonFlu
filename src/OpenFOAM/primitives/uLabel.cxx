@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.uLabel";
 %{
-  #include "src/OpenFOAM/primitives/uLabel.hpp"
+  #include "src/OpenFOAM/primitives/uLabel.hh"
 %}
 
 

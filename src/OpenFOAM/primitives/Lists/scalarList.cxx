@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.scalarList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/scalarList.hpp"
+   #include "src/OpenFOAM/primitives/Lists/scalarList.hh"
 %}
 
 

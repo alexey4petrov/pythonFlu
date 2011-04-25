@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.labelList";
 %{
-  #include "src/OpenFOAM/primitives/Lists/labelList.hpp"
+  #include "src/OpenFOAM/primitives/Lists/labelList.hh"
 %}
 
 

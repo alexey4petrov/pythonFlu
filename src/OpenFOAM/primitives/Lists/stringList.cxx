@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.stringList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/stringList.hpp"
+   #include "src/OpenFOAM/primitives/Lists/stringList.hh"
 %}
 
 

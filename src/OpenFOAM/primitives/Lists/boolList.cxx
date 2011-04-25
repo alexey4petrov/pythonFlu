@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.boolList";
 %{
-  #include "src/OpenFOAM/primitives/Lists/boolList.hpp"
+  #include "src/OpenFOAM/primitives/Lists/boolList.hh"
 %}
 
 

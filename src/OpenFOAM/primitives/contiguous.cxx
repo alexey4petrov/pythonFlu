@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.contiguous";
 %{
-  #include "src/OpenFOAM/primitives/contiguous.hpp"
+  #include "src/OpenFOAM/primitives/contiguous.hh"
 %}
 
 

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.scalar";
 %{
-  #include "src/OpenFOAM/primitives/scalar.hpp"
+  #include "src/OpenFOAM/primitives/scalar.hh"
 %}
 
 

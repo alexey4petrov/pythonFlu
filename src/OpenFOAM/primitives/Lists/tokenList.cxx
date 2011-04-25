@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.tokenList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/tokenList.hpp"
+   #include "src/OpenFOAM/primitives/Lists/tokenList.hh"
 %}
 
 

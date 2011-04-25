@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.pTraits_vector";
 %{
-  #include "src/OpenFOAM/primitives/pTraits_vector.hpp"
+  #include "src/OpenFOAM/primitives/pTraits_vector.hh"
 %}
 
 

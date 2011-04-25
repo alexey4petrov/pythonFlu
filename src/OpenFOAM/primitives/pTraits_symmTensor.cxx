@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.pTraits_symmTensor";
 %{
-  #include "src/OpenFOAM/primitives/pTraits_symmTensor.hpp"
+  #include "src/OpenFOAM/primitives/pTraits_symmTensor.hh"
 %}
 
 

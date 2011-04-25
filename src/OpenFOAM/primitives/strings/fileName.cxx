@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.strings.fileName";
 %{
-  #include "src/OpenFOAM/primitives/strings/fileName.hpp"
+  #include "src/OpenFOAM/primitives/strings/fileName.hh"
 %}
 
 

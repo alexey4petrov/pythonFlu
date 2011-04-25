@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.direction";
 %{
-  #include "src/OpenFOAM/primitives/direction.hpp"
+  #include "src/OpenFOAM/primitives/direction.hh"
 %}
 
 

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.ulong";
 %{
-  #include "src/OpenFOAM/primitives/ulong.hpp"
+  #include "src/OpenFOAM/primitives/ulong.hh"
 %}
 
 

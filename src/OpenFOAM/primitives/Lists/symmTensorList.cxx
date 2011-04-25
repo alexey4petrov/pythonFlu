@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.symmTensorList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/symmTensorList.hpp"
+   #include "src/OpenFOAM/primitives/Lists/symmTensorList.hh"
 %}
 
 

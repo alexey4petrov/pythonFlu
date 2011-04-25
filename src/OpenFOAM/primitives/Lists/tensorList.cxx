@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.tensorList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/tensorList.hpp"
+   #include "src/OpenFOAM/primitives/Lists/tensorList.hh"
 %}
 
 
