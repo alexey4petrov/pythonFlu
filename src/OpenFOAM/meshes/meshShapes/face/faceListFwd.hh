@@ -20,14 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef point_hpp
-#define point_hpp
+#ifndef faceListFwd_hh
+#define faceListFwd_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/OpenFOAM/meshes/meshShapes/face/face.hh"
 
-#include <point.H>
+#include <faceListFwd.H>
 
 
 //---------------------------------------------------------------------------

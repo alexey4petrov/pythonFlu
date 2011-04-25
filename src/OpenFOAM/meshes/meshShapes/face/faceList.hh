@@ -20,14 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeoMesh_hpp
-#define GeoMesh_hpp
+#ifndef faceList_hh
+#define faceList_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/objectRegistry.hpp"
+#include "src/OpenFOAM/meshes/meshShapes/face/faceListFwd.hh"
 
-#include <GeoMesh.H>
+#include "src/OpenFOAM/containers/Lists/UList/UList_face.hh"
+
+#include "src/OpenFOAM/containers/Lists/List/List_face.hh"
+
+#include "src/OpenFOAM/containers/Lists/SubList/SubList_face.hh"
+
+#include "src/OpenFOAM/containers/Lists/List/List_TList_face.hh"
 
 
 //---------------------------------------------------------------------------

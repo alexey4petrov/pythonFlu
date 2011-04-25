@@ -20,14 +20,28 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef oppositeFace_hpp
-#define oppositeFace_hpp
+#include "src/common.hh"
+
+#if FOAM_VERSION( <, 010600 )
+#define mapDistribute_hh
+#endif
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/meshShapes/face/face.hpp"
+#ifndef mapDistribute_hh
+#define mapDistribute_hh
 
-#include <oppositeFace.H>
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/primitives/Lists/labelList.hh"
+
+#include "src/OpenFOAM/primitives/Pair/labelPair.hh"
+
+#include "src/OpenFOAM/db/IOstreams/Pstreams/Pstream.hh"
+
+#include "src/OpenFOAM/primitives/Lists/boolList.hh"
+
+#include <mapDistribute.H>
 
 
 //---------------------------------------------------------------------------

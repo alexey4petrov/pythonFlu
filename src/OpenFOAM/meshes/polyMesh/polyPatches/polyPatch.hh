@@ -20,16 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef cellList_hpp
-#define cellList_hpp
+#ifndef polyPatch_hh
+#define polyPatch_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/UList/UList_cell.hpp"
+#include "src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.hh"
 
-#include "src/OpenFOAM/containers/Lists/List/List_cell.hpp"
+#include "src/OpenFOAM/meshes/patchIdentifier.hh"
 
-#include <cellList.H>
+#include "src/OpenFOAM/fields/Fields/vectorField.hh"
+
+#include <polyPatch.H>
+
+#include <polyBoundaryMesh.H>
 
 
 //---------------------------------------------------------------------------

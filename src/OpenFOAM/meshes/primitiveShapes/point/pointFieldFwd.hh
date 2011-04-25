@@ -20,16 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef lduMesh_hpp
-#define lduMesh_hpp
+#ifndef pointFieldFwd_hh
+#define pointFieldFwd_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hpp"
+#include "src/OpenFOAM/meshes/primitiveShapes/point/point.hh"
 
-#include "src/OpenFOAM/db/objectRegistry.hpp"
+#include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hh"
 
-#include <lduMesh.H>
+#include <pointFieldFwd.H>
 
 
 //---------------------------------------------------------------------------

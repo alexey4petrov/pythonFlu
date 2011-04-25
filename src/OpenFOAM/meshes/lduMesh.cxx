@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.lduMesh"
 %{
-  #include "src/OpenFOAM/meshes/lduMesh.hpp"
+  #include "src/OpenFOAM/meshes/lduMesh.hh"
 %}
 
 

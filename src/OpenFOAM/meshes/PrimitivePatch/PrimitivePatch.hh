@@ -20,30 +20,26 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef polyMesh_hpp
-#define polyMesh_hpp
+#ifndef PrimitivePatch_hh
+#define PrimitivePatch_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/objectRegistry.hpp"
+#include "src/OpenFOAM/primitives/Lists/boolList.hh"
 
-#include "src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.hpp"
+#include "src/OpenFOAM/primitives/Lists/labelList.hh"
 
-#include "src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.hpp"
+//#include <edgeList.H>
 
+#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
 
-//---------------------------------------------------------------------------
-#if FOAM_VERSION( >=, 010600 )
-  #include "src/OpenFOAM/memory/Xfer_pointField.hpp"
+#include "src/OpenFOAM/fields/Fields/vectorField.hh"
 
-  #include "src/OpenFOAM/memory/Xfer_faceList.hpp"
+//#include <intersection.H>
 
-  #include "src/OpenFOAM/memory/Xfer_cellList.hpp"
-#endif
+//#include <labelHashSet.H>
 
-
-//---------------------------------------------------------------------------
-#include <polyMesh.H>
+#include <PrimitivePatch.H>
 
 
 //---------------------------------------------------------------------------

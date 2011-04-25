@@ -20,16 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef patchIdentifier_hpp
-#define patchIdentifier_hpp
+#ifndef oppositeFace_hh
+#define oppositeFace_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/strings/word.hpp"
+#include "src/OpenFOAM/meshes/meshShapes/face/face.hh"
 
-#include "src/OpenFOAM/primitives/label.hpp"
-
-#include <patchIdentifier.H>
+#include <oppositeFace.H>
 
 
 //---------------------------------------------------------------------------

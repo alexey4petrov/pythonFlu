@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.PrimitivePatch.p_rimitivePatch"
 %{
-  #include "src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.hpp"
+  #include "src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.hh"
 %}
 
 

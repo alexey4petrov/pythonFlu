@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.meshShapes.face.oppositeFace";
 %{
-   #include "src/OpenFOAM/meshes/meshShapes/face/oppositeFace.hpp"
+   #include "src/OpenFOAM/meshes/meshShapes/face/oppositeFace.hh"
 %}
 
 

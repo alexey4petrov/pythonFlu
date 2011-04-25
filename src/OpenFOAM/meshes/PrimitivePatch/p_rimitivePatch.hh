@@ -20,18 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef primitiveMesh_hpp
-#define primitiveMesh_hpp
+#ifndef primitivePatch_hh
+#define primitivePatch_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
+#include "src/OpenFOAM/containers/Lists/SubList/SubList_face.hh"
 
-#include "src/OpenFOAM/meshes/meshShapes/face/faceList.hpp"
+#include "src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.hh"
 
-#include "src/OpenFOAM/meshes/meshShapes/cell/cellList.hpp"
-
-#include "primitiveMesh.H"
+#include <primitivePatch.H>
 
 
 //---------------------------------------------------------------------------

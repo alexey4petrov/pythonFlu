@@ -20,20 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef polyPatch_hpp
-#define polyPatch_hpp
+#ifndef primitiveMesh_hh
+#define primitiveMesh_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.hpp"
+#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
 
-#include "src/OpenFOAM/meshes/patchIdentifier.hpp"
+#include "src/OpenFOAM/meshes/meshShapes/face/faceList.hh"
 
-#include "src/OpenFOAM/fields/Fields/vectorField.hpp"
+#include "src/OpenFOAM/meshes/meshShapes/cell/cellList.hh"
 
-#include <polyPatch.H>
-
-#include <polyBoundaryMesh.H>
+#include "primitiveMesh.H"
 
 
 //---------------------------------------------------------------------------

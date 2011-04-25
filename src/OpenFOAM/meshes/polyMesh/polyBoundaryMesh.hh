@@ -20,16 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef cell_hpp
-#define cell_hpp
+#ifndef polyBoundaryMesh_hh
+#define polyBoundaryMesh_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/Lists/labelList.hpp"
+#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.hh"
 
-#include "src/OpenFOAM/meshes/meshShapes/face/oppositeFace.hpp"
+#include "src/OpenFOAM/db/regIOobject.hh"
 
-#include <cell.H>
+#include <polyBoundaryMesh.H>
 
 
 //---------------------------------------------------------------------------

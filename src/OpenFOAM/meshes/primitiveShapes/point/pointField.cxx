@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.primitiveShapes.point.pointField";
 %{
-   #include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
+   #include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
 %}
 
 

@@ -20,14 +20,30 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef faceListFwd_hpp
-#define faceListFwd_hpp
+#ifndef polyMesh_hh
+#define polyMesh_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/meshShapes/face/face.hpp"
+#include "src/OpenFOAM/db/objectRegistry.hh"
 
-#include <faceListFwd.H>
+#include "src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.hh"
+
+#include "src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.hh"
+
+
+//---------------------------------------------------------------------------
+#if FOAM_VERSION( >=, 010600 )
+  #include "src/OpenFOAM/memory/Xfer_pointField.hh"
+
+  #include "src/OpenFOAM/memory/Xfer_faceList.hh"
+
+  #include "src/OpenFOAM/memory/Xfer_cellList.hh"
+#endif
+
+
+//---------------------------------------------------------------------------
+#include <polyMesh.H>
 
 
 //---------------------------------------------------------------------------

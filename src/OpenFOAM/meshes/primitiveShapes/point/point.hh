@@ -20,28 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
-
-#if FOAM_VERSION( <, 010600 )
-#define mapDistribute_hpp
-#endif
+#ifndef point_hh
+#define point_hh
 
 
 //---------------------------------------------------------------------------
-#ifndef mapDistribute_hpp
-#define mapDistribute_hpp
+#include "src/common.hh"
 
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/Lists/labelList.hpp"
-
-#include "src/OpenFOAM/primitives/Pair/labelPair.hpp"
-
-#include "src/OpenFOAM/db/IOstreams/Pstreams/Pstream.hpp"
-
-#include "src/OpenFOAM/primitives/Lists/boolList.hpp"
-
-#include <mapDistribute.H>
+#include <point.H>
 
 
 //---------------------------------------------------------------------------

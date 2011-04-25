@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.PrimitivePatch.PrimitivePatch"
 %{
-  #include "src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.hpp"
+  #include "src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.hh"
 %}
 
 

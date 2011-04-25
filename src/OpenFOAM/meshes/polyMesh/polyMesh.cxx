@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.polyMesh.polyMesh"
 %{
-  #include "src/OpenFOAM/meshes/polyMesh/polyMesh.hpp"
+  #include "src/OpenFOAM/meshes/polyMesh/polyMesh.hh"
 %}
 
 

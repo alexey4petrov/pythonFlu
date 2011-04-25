@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.polyMesh.mapPolyMesh.mapDistribute.mapDistribute"
 %{
-  #include "src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.hpp"
+  #include "src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.hh"
 %}
 
 

@@ -20,20 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef faceList_hpp
-#define faceList_hpp
+#ifndef patchIdentifier_hh
+#define patchIdentifier_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/meshShapes/face/faceListFwd.hpp"
+#include "src/OpenFOAM/primitives/strings/word.hh"
 
-#include "src/OpenFOAM/containers/Lists/UList/UList_face.hpp"
+#include "src/OpenFOAM/primitives/label.hh"
 
-#include "src/OpenFOAM/containers/Lists/List/List_face.hpp"
-
-#include "src/OpenFOAM/containers/Lists/SubList/SubList_face.hpp"
-
-#include "src/OpenFOAM/containers/Lists/List/List_TList_face.hpp"
+#include <patchIdentifier.H>
 
 
 //---------------------------------------------------------------------------

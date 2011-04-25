@@ -20,26 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef PrimitivePatch_hpp
-#define PrimitivePatch_hpp
+#ifndef cellList_hh
+#define cellList_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/Lists/boolList.hpp"
+#include "src/OpenFOAM/containers/Lists/UList/UList_cell.hh"
 
-#include "src/OpenFOAM/primitives/Lists/labelList.hpp"
+#include "src/OpenFOAM/containers/Lists/List/List_cell.hh"
 
-//#include <edgeList.H>
-
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
-
-#include "src/OpenFOAM/fields/Fields/vectorField.hpp"
-
-//#include <intersection.H>
-
-//#include <labelHashSet.H>
-
-#include <PrimitivePatch.H>
+#include <cellList.H>
 
 
 //---------------------------------------------------------------------------

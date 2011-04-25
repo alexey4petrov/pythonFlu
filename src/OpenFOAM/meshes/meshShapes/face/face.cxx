@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.meshShapes.face.face";
 %{
-   #include "src/OpenFOAM/meshes/meshShapes/face/face.hpp"
+   #include "src/OpenFOAM/meshes/meshShapes/face/face.hh"
 %}
 
 

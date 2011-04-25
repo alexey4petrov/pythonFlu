@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.meshShapes.cell.cell";
 %{
-  #include "src/OpenFOAM/meshes/meshShapes/cell/cell.hpp"
+  #include "src/OpenFOAM/meshes/meshShapes/cell/cell.hh"
 %}
 
 

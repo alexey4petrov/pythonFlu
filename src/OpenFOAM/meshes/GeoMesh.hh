@@ -20,18 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef face_hpp
-#define face_hpp
+#ifndef GeoMesh_hh
+#define GeoMesh_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/Lists/labelList.hpp"
+#include "src/OpenFOAM/db/objectRegistry.hh"
 
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
-
-#include "src/OpenFOAM/fields/Fields/vectorField.hpp"
-
-#include <face.H>
+#include <GeoMesh.H>
 
 
 //---------------------------------------------------------------------------

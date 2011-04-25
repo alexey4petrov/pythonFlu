@@ -20,16 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef polyBoundaryMesh_hpp
-#define polyBoundaryMesh_hpp
+#ifndef pointField_hh
+#define pointField_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.hpp"
+#include "src/OpenFOAM/meshes/primitiveShapes/point/pointFieldFwd.hh"
 
-#include "src/OpenFOAM/db/regIOobject.hpp"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
-#include <polyBoundaryMesh.H>
+#include <pointField.H>
 
 
 //---------------------------------------------------------------------------

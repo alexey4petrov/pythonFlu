@@ -20,16 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef pointField_hpp
-#define pointField_hpp
+#ifndef cell_hh
+#define cell_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointFieldFwd.hpp"
+#include "src/OpenFOAM/primitives/Lists/labelList.hh"
 
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hpp"
+#include "src/OpenFOAM/meshes/meshShapes/face/oppositeFace.hh"
 
-#include <pointField.H>
+#include <cell.H>
 
 
 //---------------------------------------------------------------------------

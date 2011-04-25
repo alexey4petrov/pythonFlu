@@ -20,17 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeoMesh_fvMesh_hpp
-#define GeoMesh_fvMesh_hpp
+#ifndef lduMesh_hh
+#define lduMesh_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/GeoMesh.hpp"
+#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hh"
 
-#include "src/finiteVolume/fvMesh/fvMesh.hpp"
+#include "src/OpenFOAM/db/objectRegistry.hh"
 
-#include <volMesh.H>
-#include <surfaceMesh.H>
+#include <lduMesh.H>
 
 
 //---------------------------------------------------------------------------

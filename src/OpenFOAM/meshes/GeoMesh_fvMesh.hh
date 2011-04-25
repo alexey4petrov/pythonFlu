@@ -20,16 +20,17 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef pointFieldFwd_hpp
-#define pointFieldFwd_hpp
+#ifndef GeoMesh_fvMesh_hh
+#define GeoMesh_fvMesh_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/primitiveShapes/point/point.hpp"
+#include "src/OpenFOAM/meshes/GeoMesh.hh"
 
-#include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hpp"
+#include "src/finiteVolume/fvMesh/fvMesh.hh"
 
-#include <pointFieldFwd.H>
+#include <volMesh.H>
+#include <surfaceMesh.H>
 
 
 //---------------------------------------------------------------------------

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.patchIdentifier"
 %{
-  #include "src/OpenFOAM/meshes/patchIdentifier.hpp"
+  #include "src/OpenFOAM/meshes/patchIdentifier.hh"
 %}
 
 
