@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/surfaceMesh.hpp"
+  #include "src/finiteVolume/surfaceMesh.hh"
 %}
 
 

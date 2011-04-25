@@ -31,7 +31,7 @@
 
 %{
    #include <fvPatchField.H>
-   #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hpp"
+   #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hh"
    #include <mixedFvPatchField.H>
    #include <fixedGradientFvPatchField.H>
    #include <fixedValueFvPatchField.H>

@@ -20,14 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef surfaceMesh_hpp
-#define surfaceMesh_hpp
+#ifndef volMesh_hh
+#define volMesh_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hpp"
+#include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hh"
 
-#include <surfaceMesh.H>
+#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_fvMesh.hh"
+
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+
+#include "src/OpenFOAM/fields/Fields/scalarField.hh"
+
+#include "src/OpenFOAM/dimensionSet.hh"
+
+#include <volMesh.H>
 
 
 //---------------------------------------------------------------------------
