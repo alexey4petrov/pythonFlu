@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/dynamicFvMesh/dynamicFvMesh.hpp"
+  #include "src/dynamicFvMesh/dynamicFvMesh.hh"
 %}
 
 

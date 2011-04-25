@@ -20,12 +20,12 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef dynamicFvMesh_hpp
-#define dynamicFvMesh_hpp
+#ifndef dynamicFvMesh_hh
+#define dynamicFvMesh_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
 #include <dynamicFvMesh.H>
 
