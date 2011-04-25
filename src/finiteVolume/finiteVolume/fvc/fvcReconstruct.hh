@@ -20,33 +20,25 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvmDiv_hpp
-#define fvmDiv_hpp
+#ifndef fvcReconstruct_hh
+#define fvcReconstruct_hh
+
+
+//----------------------------------------------------------------------------
+#include "src/finiteVolume/fields/volFields/volFields.hh"
+#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+
+#include <fvcSurfaceIntegrate.H>
+#include <fvcReconstruct.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hpp"
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.hh"
 
-#include <fvmDiv.H>
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
 
-
-//---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hpp"
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hpp"
-
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hpp"
-#include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hpp"
-
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hpp"
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hpp"
-
-
-//---------------------------------------------------------------------------
-#include "src/finiteVolume/volMesh.hpp"
+#include "src/finiteVolume/fvMesh/fvMesh.hh"
+#include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.hh"
 
 
 //---------------------------------------------------------------------------

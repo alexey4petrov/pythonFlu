@@ -20,16 +20,28 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvcLaplacian_hpp
-#define fvcLaplacian_hpp
+#ifndef fvcDdt_hh
+#define fvcDdt_hh
 
 
 //---------------------------------------------------------------------------
-#include <fvcLaplacian.H>
+#include <fvMesh.H>
+#include <fvcDdt.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volFields.hpp"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "src/finiteVolume/fields/volFields/volScalarField.hh"
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
+#include "src/finiteVolume/fields/volFields/volVectorField.hh"
+#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
+
+
+//---------------------------------------------------------------------------
+#include "src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

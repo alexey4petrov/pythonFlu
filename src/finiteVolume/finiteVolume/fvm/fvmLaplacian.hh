@@ -20,25 +20,39 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvcFlux_hpp
-#define fvcFlux_hpp
+#ifndef fvmLaplacian_hh
+#define fvmLaplacian_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volFields.hpp"
+#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
-#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hpp"
-
-#include <fvcFlux.H>
+#include <fvmLaplacian.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hpp"
-#include "src/OpenFOAM/fields/tmp/tmp_volVectorField.hpp"
-#include "src/OpenFOAM/fields/tmp/tmp_volTensorField.hpp"
+#include "src/finiteVolume/fields/volFields/volScalarField.hh"
+#include "src/finiteVolume/fields/volFields/volTensorField.hh"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hpp"
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.hpp"
+
+//---------------------------------------------------------------------------
+#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hh"
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
+
+
+//---------------------------------------------------------------------------
+#include "src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

@@ -20,33 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvmDdt_hpp
-#define fvmDdt_hpp
+#ifndef fvSchemes_hh
+#define fvSchemes_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hpp"
+#include "src/OpenFOAM/db/IOdictionary.hh"
 
-#include <fvmDdt.H>
-
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
-#include "src/finiteVolume/fields/volFields/volScalarField.hpp"
-
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hpp"
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hpp"
-
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hpp"
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hpp"
-
-
-//---------------------------------------------------------------------------
-#include "src/finiteVolume/volMesh.hpp"
+#include <fvSchemes.H>
 
 
 //---------------------------------------------------------------------------

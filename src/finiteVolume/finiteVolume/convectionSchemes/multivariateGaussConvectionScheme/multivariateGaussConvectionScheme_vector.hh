@@ -20,16 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef multivariateGaussConvectionScheme_vector_hpp
-#define multivariateGaussConvectionScheme_vector_hpp
+#ifndef multivariateGaussConvectionScheme_vector_hh
+#define multivariateGaussConvectionScheme_vector_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.hpp"
+#include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.hh"
 
-#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.hpp"
+#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.hpp"
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.hh"
 
 
 //---------------------------------------------------------------------------

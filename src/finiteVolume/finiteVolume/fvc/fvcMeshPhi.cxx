@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvc.fvcMeshPhi";
 %{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.hpp"
+  #include "src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.hh"
 %}
 
 

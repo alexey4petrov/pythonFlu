@@ -20,25 +20,25 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvcReconstruct_hpp
-#define fvcReconstruct_hpp
-
-
-//----------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volFields.hpp"
-#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hpp"
-
-#include <fvcSurfaceIntegrate.H>
-#include <fvcReconstruct.H>
+#ifndef fvcFlux_hh
+#define fvcFlux_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.hpp"
+#include "src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hpp"
+#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
 
-#include "src/finiteVolume/fvMesh/fvMesh.hpp"
-#include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.hpp"
+#include <fvcFlux.H>
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_volVectorField.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_volTensorField.hh"
+
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.hh"
 
 
 //---------------------------------------------------------------------------

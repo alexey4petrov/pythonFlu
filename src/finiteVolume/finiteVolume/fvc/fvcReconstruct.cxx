@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvc.fvcReconstruct";
 %{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcReconstruct.hpp"
+  #include "src/finiteVolume/finiteVolume/fvc/fvcReconstruct.hh"
 %}
 
 

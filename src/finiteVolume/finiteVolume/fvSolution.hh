@@ -20,28 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvcDdt_hpp
-#define fvcDdt_hpp
+#ifndef fvSolution_hh
+#define fvSolution_hh
 
 
 //---------------------------------------------------------------------------
-#include <fvMesh.H>
-#include <fvcDdt.H>
+#include "src/OpenFOAM/matrices/solution.hh"
 
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
-#include "src/finiteVolume/fields/volFields/volScalarField.hpp"
-
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hpp"
-#include "src/finiteVolume/fields/volFields/volVectorField.hpp"
-#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hpp"
-
-
-//---------------------------------------------------------------------------
-#include "src/finiteVolume/volMesh.hpp"
+#include <fvSolution.H>
 
 
 //---------------------------------------------------------------------------

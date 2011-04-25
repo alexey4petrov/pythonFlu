@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvc.fvcVolumeIntegrate";
 %{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcVolumeIntegrate.hpp"
+  #include "src/finiteVolume/finiteVolume/fvc/fvcVolumeIntegrate.hh"
 %}
 
 

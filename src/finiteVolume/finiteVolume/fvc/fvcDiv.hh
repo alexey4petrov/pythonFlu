@@ -20,14 +20,25 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef multivariateGaussConvectionScheme_hpp
-#define multivariateGaussConvectionScheme_hpp
+#ifndef fvcDiv_hh
+#define fvcDiv_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.hpp"
+#include "src/finiteVolume/fields/volFields/volFields.hh"
 
-#include <multivariateGaussConvectionScheme.H>
+#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+
+#include <fvcDiv.H>
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_volVectorField.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_volTensorField.hh"
+
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.hh"
 
 
 //---------------------------------------------------------------------------

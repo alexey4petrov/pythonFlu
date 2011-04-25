@@ -20,15 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvSchemes_hpp
-#define fvSchemes_hpp
+#ifndef gaussConvectionScheme_vector_hh
+#define gaussConvectionScheme_vector_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOdictionary.hpp"
+#include "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme.hh"
 
-#include <fvSchemes.H>
+#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.hh"
 
 
-//---------------------------------------------------------------------------
+//----------------------------------------------------------------------------
 #endif

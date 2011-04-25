@@ -20,14 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvSolution_hpp
-#define fvSolution_hpp
+#ifndef gaussConvectionScheme_scalar_hh
+#define gaussConvectionScheme_scalar_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/matrices/solution.hpp"
+#include "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme.hh"
 
-#include <fvSolution.H>
+#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.hh"
 
 
 //---------------------------------------------------------------------------

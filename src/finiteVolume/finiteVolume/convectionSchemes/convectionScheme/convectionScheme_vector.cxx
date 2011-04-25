@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.convectionSchemes.convectionScheme.convectionScheme_vector";
 %{
-  #include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.hpp"
+  #include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.hh"
 %}
 
 

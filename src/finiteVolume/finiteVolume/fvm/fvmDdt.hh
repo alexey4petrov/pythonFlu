@@ -20,14 +20,33 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef gaussConvectionScheme_scalar_hpp
-#define gaussConvectionScheme_scalar_hpp
+#ifndef fvmDdt_hh
+#define fvmDdt_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme.hpp"
+#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
-#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.hpp"
+#include <fvmDdt.H>
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "src/finiteVolume/fields/volFields/volScalarField.hh"
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hh"
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
+
+
+//---------------------------------------------------------------------------
+#include "src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

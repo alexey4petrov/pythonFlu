@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvm.fvmLaplacian";
 %{
-  #include "src/finiteVolume/finiteVolume/fvm/fvmLaplacian.hpp"
+  #include "src/finiteVolume/finiteVolume/fvm/fvmLaplacian.hh"
 %}
 
 

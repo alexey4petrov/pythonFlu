@@ -20,15 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef gaussConvectionScheme_vector_hpp
-#define gaussConvectionScheme_vector_hpp
+#ifndef multivariateGaussConvectionScheme_hh
+#define multivariateGaussConvectionScheme_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme.hpp"
+#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.hh"
 
-#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.hpp"
+#include <multivariateGaussConvectionScheme.H>
 
 
-//----------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 #endif

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvc.fvcSnGrad";
 %{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcSnGrad.hpp"
+  #include "src/finiteVolume/finiteVolume/fvc/fvcSnGrad.hh"
 %}
 
 

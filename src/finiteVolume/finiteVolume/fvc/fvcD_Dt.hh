@@ -20,24 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvcVolumeIntegrate_hpp
-#define fvcVolumeIntegrate_hpp
+#ifndef fvcDDt_hh
+#define fvcDDt_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volFields.hpp"
+#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
 
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hpp"
-
-#include "src/OpenFOAM/dimensionedTypes/dimensionedTypes.hpp"
-
-#include <fvcVolumeIntegrate.H>
+#include <fvcDdt.H>
+#include <fvcDDt.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_volVectorField.hpp"
- 
-#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hpp"
+#include "src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

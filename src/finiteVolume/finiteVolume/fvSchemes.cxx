@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvSchemes";
 %{
-  #include "src/finiteVolume/finiteVolume/fvSchemes.hpp"
+  #include "src/finiteVolume/finiteVolume/fvSchemes.hh"
 %}
 
 

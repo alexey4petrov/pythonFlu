@@ -20,20 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvcDDt_hpp
-#define fvcDDt_hpp
+#ifndef convectionScheme_vector_hh
+#define convectionScheme_vector_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hpp"
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hpp"
+#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.hh"
 
-#include <fvcDdt.H>
-#include <fvcDDt.H>
-
-
-//---------------------------------------------------------------------------
-#include "src/finiteVolume/volMesh.hpp"
+#include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_vector.hh"
 
 
 //---------------------------------------------------------------------------

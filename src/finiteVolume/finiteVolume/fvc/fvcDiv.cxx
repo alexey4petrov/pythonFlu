@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvc.fvcDiv";
 %{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcDiv.hpp"
+  #include "src/finiteVolume/finiteVolume/fvc/fvcDiv.hh"
 %}
 
 

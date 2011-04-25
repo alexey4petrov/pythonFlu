@@ -20,14 +20,30 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef convectionScheme_vector_hpp
-#define convectionScheme_vector_hpp
+#ifndef fvcGrad_hh
+#define fvcGrad_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.hpp"
+#include <Field.H>
+#include <fvcGrad.H>
 
-#include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_vector.hpp"
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/fields/tmp/tmp_volVectorField.hh"
+#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
+#include "src/finiteVolume/fields/volFields/volScalarField.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_volTensorField.hh"
+
+
+//---------------------------------------------------------------------------
+#include "src/finiteVolume/surfaceMesh.hh"
+
+#include "src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

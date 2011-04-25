@@ -20,39 +20,36 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvmLaplacian_hpp
-#define fvmLaplacian_hpp
+#ifndef fvmSup_hh
+#define fvmSup_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hpp"
+#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
-#include <fvmLaplacian.H>
-
-
-//---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volScalarField.hpp"
-#include "src/finiteVolume/fields/volFields/volTensorField.hpp"
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
+#include <fvmSup.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hpp"
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hpp"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.hh"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hpp"
-#include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hpp"
+#include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hh"
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hpp"
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hpp"
+#include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/volMesh.hpp"
+#include "src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

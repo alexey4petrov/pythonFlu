@@ -20,14 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef convectionScheme_scalar_hpp
-#define convectionScheme_scalar_hpp
+#ifndef convectionScheme_scalar_hh
+#define convectionScheme_scalar_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.hpp"
+#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.hh"
 
-#include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_scalar.hpp"
+#include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_scalar.hh"
 
 
 //---------------------------------------------------------------------------

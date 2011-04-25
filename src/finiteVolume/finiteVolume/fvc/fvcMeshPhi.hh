@@ -20,14 +20,20 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef gaussConvectionScheme_hpp
-#define gaussConvectionScheme_hpp
+#ifndef fvcMeshPhi_hh
+#define fvcMeshPhi_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.hpp"
+#include "src/finiteVolume/fields/volFields/volScalarField.hh"
 
-#include <gaussConvectionScheme.H>
+#include "src/finiteVolume/fields/volFields/volVectorField.hh"
+
+#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
+
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+
+#include <fvcMeshPhi.H>
 
 
 //---------------------------------------------------------------------------

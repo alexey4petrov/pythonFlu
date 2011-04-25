@@ -20,20 +20,33 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef convectionScheme_hpp
-#define convectionScheme_hpp
+#ifndef fvmDiv_hh
+#define fvmDiv_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp.hpp"
+#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
-#include "src/OpenFOAM/fields/tmp/refCount.hpp"
+#include <fvmDiv.H>
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
 
-#include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.hpp"
+//---------------------------------------------------------------------------
+#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
 
-#include <convectionScheme.H>
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
+#include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hh"
+
+
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
+
+
+//---------------------------------------------------------------------------
+#include "src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

@@ -20,33 +20,21 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvmD2dt2_hpp
-#define fvmD2dt2_hpp
+#ifndef fvcSnGrad_hh
+#define fvcSnGrad_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hpp"
+#include "src/finiteVolume/fields/volFields/volFields.hh"
+#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
 
-#include <fvmD2dt2.H>
-
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
-#include "src/finiteVolume/fields/volFields/volScalarField.hpp"
+#include <fvcSnGrad.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hpp"
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hpp"
+#include "src/OpenFOAM/fields/tmp/tmp_volVectorField.hh"
 
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hpp"
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hpp"
-
-
-//---------------------------------------------------------------------------
-#include "src/finiteVolume/volMesh.hpp"
+#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
 
 
 //---------------------------------------------------------------------------
