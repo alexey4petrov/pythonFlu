@@ -20,15 +20,24 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef bound_hpp
-#define bound_hpp
+#ifndef porousZones_hh
+#define porousZones_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
-#include "src/finiteVolume/fields/volFields/volFieldsFwd.hpp"
+#include "src/finiteVolume/cfdTools/general/porousMedia/porousZone.hh"
 
-#include <bound.H>
+#include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.hh"
+
+#include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hh"
+
+#include "src/OpenFOAM/fields/Fields/oneField.hh"
+
+#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
+
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+
+#include <porousZones.H>
 
 
 //---------------------------------------------------------------------------

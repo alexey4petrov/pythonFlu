@@ -20,32 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef porousZone_hpp
-#define porousZone_hpp
+#ifndef findRefCell_hh
+#define findRefCell_hh
 
 
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/dictionary/dictionary.hpp"
+//-------------------------------------------------------------------------------------
+#include "src/OpenFOAM/primitives/label.hh"
+#include "src/OpenFOAM/primitives/scalar.hh"
+#include "src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/meshTools/coordinateSystems/coordinateSystem.hpp"
-
-#include "src/meshTools/coordinateSystems/coordinateSystems.hpp"
-
-#include "src/OpenFOAM/primitives/Lists/wordList.hpp"
-
-#include "src/OpenFOAM/primitives/Lists/labelList.hpp"
-
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hpp"
-
-#include "src/OpenFOAM/dimensionedTypes/dimensionedTensor.hpp"
-
-#include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hpp"
-
-#include "src/finiteVolume/fvMatrices/fvMatrices.hpp"
-
-#include "src/finiteVolume/fvMesh/fvMesh.hpp"
-
-#include <porousZone.H>
+#include <findRefCell.H>
 
 
 //---------------------------------------------------------------------------

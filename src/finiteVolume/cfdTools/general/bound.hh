@@ -20,16 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef findRefCell_hpp
-#define findRefCell_hpp
+#ifndef bound_hh
+#define bound_hh
 
 
-//-------------------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/label.hpp"
-#include "src/OpenFOAM/primitives/scalar.hpp"
-#include "src/finiteVolume/fields/volFields/volFields.hpp"
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "src/finiteVolume/fields/volFields/volFieldsFwd.hh"
 
-#include <findRefCell.H>
+#include <bound.H>
 
 
 //---------------------------------------------------------------------------

@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.cfdTools.general.bound";
 %{
-  #include "src/finiteVolume/cfdTools/general/bound.hpp"
+  #include "src/finiteVolume/cfdTools/general/bound.hh"
 %}
 
 

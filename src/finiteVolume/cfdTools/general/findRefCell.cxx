@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.cfdTools.general.findRefCell";
 %{
-  #include "src/finiteVolume/cfdTools/general/findRefCell.hpp"
+  #include "src/finiteVolume/cfdTools/general/findRefCell.hh"
 %}
 
 

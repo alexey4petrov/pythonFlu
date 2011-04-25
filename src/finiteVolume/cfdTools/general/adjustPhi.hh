@@ -20,24 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef porousZones_hpp
-#define porousZones_hpp
+#ifndef adjustPhi_hh
+#define adjustPhi_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/cfdTools/general/porousMedia/porousZone.hpp"
+#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+#include "src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.hpp"
-
-#include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hpp"
-
-#include "src/OpenFOAM/fields/Fields/oneField.hpp"
-
-#include "src/finiteVolume/fvMatrices/fvMatrices.hpp"
-
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
-
-#include <porousZones.H>
+#include <adjustPhi.H>
 
 
 //---------------------------------------------------------------------------

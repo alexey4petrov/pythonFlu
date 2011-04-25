@@ -20,15 +20,32 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef adjustPhi_hpp
-#define adjustPhi_hpp
+#ifndef porousZone_hh
+#define porousZone_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hpp"
-#include "src/finiteVolume/fields/volFields/volFields.hpp"
+#include "src/OpenFOAM/db/dictionary/dictionary.hh"
 
-#include <adjustPhi.H>
+#include "src/meshTools/coordinateSystems/coordinateSystem.hh"
+
+#include "src/meshTools/coordinateSystems/coordinateSystems.hh"
+
+#include "src/OpenFOAM/primitives/Lists/wordList.hh"
+
+#include "src/OpenFOAM/primitives/Lists/labelList.hh"
+
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+
+#include "src/OpenFOAM/dimensionedTypes/dimensionedTensor.hh"
+
+#include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hh"
+
+#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
+
+#include "src/finiteVolume/fvMesh/fvMesh.hh"
+
+#include <porousZone.H>
 
 
 //---------------------------------------------------------------------------

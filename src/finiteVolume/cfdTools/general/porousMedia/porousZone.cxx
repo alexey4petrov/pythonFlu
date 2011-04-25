@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZone";
 %{
-  #include "src/finiteVolume/cfdTools/general/porousMedia/porousZone.hpp"
+  #include "src/finiteVolume/cfdTools/general/porousMedia/porousZone.hh"
 %}
 
 

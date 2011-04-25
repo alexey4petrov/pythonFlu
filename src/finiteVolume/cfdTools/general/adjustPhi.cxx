@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.cfdTools.general.adjustPhi";
 %{
-  #include "src/finiteVolume/cfdTools/general/adjustPhi.hpp"
+  #include "src/finiteVolume/cfdTools/general/adjustPhi.hh"
 %}
 
 
