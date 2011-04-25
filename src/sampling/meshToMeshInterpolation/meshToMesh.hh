@@ -20,18 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef meshToMesh_hpp
-#define meshToMesh_hpp
+#ifndef meshToMesh_hh
+#define meshToMesh_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/common.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/OpenFOAM/primitives/Lists/wordList.hpp"
+#include "src/OpenFOAM/primitives/Lists/wordList.hh"
 
-#include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_word_word_string_hash.hpp"
+#include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_word_word_string_hash.hh"
 
 #include <meshToMesh.H>
 

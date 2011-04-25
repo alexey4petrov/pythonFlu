@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.sampling.graphField.makeGraph";
 %{
-  #include "src/sampling/graphField/makeGraph.hpp"
+  #include "src/sampling/graphField/makeGraph.hh"
 %}
 
 

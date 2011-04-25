@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.sampling.meshToMeshInterpolation.meshToMesh";
 %{
-  #include "src/sampling/meshToMeshInterpolation/meshToMesh.hpp"
+  #include "src/sampling/meshToMeshInterpolation/meshToMesh.hh"
 %}
 
 

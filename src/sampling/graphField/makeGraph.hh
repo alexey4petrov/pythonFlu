@@ -20,18 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef makeGraph_hpp
-#define makeGraph_hpp
+#ifndef makeGraph_hh
+#define makeGraph_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hpp"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/OpenFOAM/primitives/strings/word.hpp"
+#include "src/OpenFOAM/primitives/strings/word.hh"
 
-#include "src/OpenFOAM/primitives/strings/fileName.hpp"
+#include "src/OpenFOAM/primitives/strings/fileName.hh"
 
 #include <makeGraph.H>
 
