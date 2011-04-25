@@ -20,12 +20,12 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef dimensionSets_hpp
-#define dimensionSets_hpp
+#ifndef dimensionSets_hh
+#define dimensionSets_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionSet.hpp"
+#include "src/OpenFOAM/dimensionSet.hh"
 
 #include <dimensionSets.H>
 

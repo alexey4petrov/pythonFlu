@@ -32,8 +32,8 @@
    #include <regIOobject.H>
    #include <IOdictionary.H>
 
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hpp"
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hpp"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hh"
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hh"
 %}
 
 

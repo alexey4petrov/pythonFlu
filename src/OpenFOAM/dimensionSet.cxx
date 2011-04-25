@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.dimensionSet";
 %{
-  #include "src/OpenFOAM/dimensionSet.hpp"
+  #include "src/OpenFOAM/dimensionSet.hh"
 %}
 
 
