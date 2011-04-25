@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fvMesh.fvBoundaryMesh";
 %{
-  #include "src/finiteVolume/fvMesh/fvBoundaryMesh.hpp"
+  #include "src/finiteVolume/fvMesh/fvBoundaryMesh.hh"
 %}
 
 

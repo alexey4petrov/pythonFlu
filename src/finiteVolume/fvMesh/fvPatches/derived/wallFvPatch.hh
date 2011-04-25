@@ -20,12 +20,12 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef wallFvPatch_hpp
-#define wallFvPatch_hpp
+#ifndef wallFvPatch_hh
+#define wallFvPatch_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
 #include <wallFvPatch.H>
 

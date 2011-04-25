@@ -20,33 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvMesh_hpp
-#define fvMesh_hpp
+#ifndef fvMeshes_hh
+#define fvMeshes_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/polyMesh/polyMesh.hpp"
+#include "src/common.hh"
 
-#include "src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.hpp"
+#include "src/finiteVolume/fvMesh/fvMesh.hh"
 
-#include "src/OpenFOAM/db/Time/Time.hpp"
+#include "src/finiteVolume/surfaceMesh.hh"
 
-#include "src/OpenFOAM/db/objectRegistry.hpp"
-
-#include "src/OpenFOAM/meshes/lduMesh.hpp"
-
-#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hpp"
-
-#include "src/finiteVolume/fvMesh/fvBoundaryMesh.hpp"
-
-#include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.hpp"
-
-#include "src/finiteVolume/fields/volFields/volFields.hpp"
-
-#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hpp"
-
-#include <fvMesh.H>
-#include <volMesh.H>
+#include "src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

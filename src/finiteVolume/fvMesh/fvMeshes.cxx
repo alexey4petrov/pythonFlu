@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fvMesh.fvMeshes";
 %{
-  #include "src/finiteVolume/fvMesh/fvMeshes.hpp"
+  #include "src/finiteVolume/fvMesh/fvMeshes.hh"
 %}
 
 // Keep on corresponding "director" includes at the top of SWIG defintion file

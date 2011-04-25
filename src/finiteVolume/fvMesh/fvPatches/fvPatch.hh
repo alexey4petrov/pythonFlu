@@ -20,12 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvPatchList_hpp
-#define fvPatchList_hpp
+#ifndef fvPatch_hh
+#define fvPatch_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.hpp"
+#include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
+
+#include <fvPatch.H>
 
 
 //---------------------------------------------------------------------------

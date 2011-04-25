@@ -20,12 +20,12 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvBoundaryMesh_hpp
-#define fvBoundaryMesh_hpp
+#ifndef fvBoundaryMesh_hh
+#define fvBoundaryMesh_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMesh/fvPatches/fvPatchList.hpp"
+#include "src/finiteVolume/fvMesh/fvPatches/fvPatchList.hh"
 
 #include <fvBoundaryMesh.H>
 

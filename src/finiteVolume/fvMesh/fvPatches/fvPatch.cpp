@@ -26,7 +26,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hpp"
+  #include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hh"
 %}
 
 

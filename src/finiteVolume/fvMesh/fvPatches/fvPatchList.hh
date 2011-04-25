@@ -20,18 +20,12 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvMeshes_hpp
-#define fvMeshes_hpp
+#ifndef fvPatchList_hh
+#define fvPatchList_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
-
-#include "src/finiteVolume/fvMesh/fvMesh.hpp"
-
-#include "src/finiteVolume/surfaceMesh.hpp"
-
-#include "src/finiteVolume/volMesh.hpp"
+#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.hh"
 
 
 //---------------------------------------------------------------------------

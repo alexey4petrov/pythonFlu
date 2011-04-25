@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "src.finiteVolume.fvMesh.fvPatches.derived.wallFvPatch"
 %{
-  #include "src/finiteVolume/fvMesh/fvPatches/derived/wallFvPatch.hpp"
+  #include "src/finiteVolume/fvMesh/fvPatches/derived/wallFvPatch.hh"
 %}
 
 
