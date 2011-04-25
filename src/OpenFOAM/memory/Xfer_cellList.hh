@@ -20,22 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/common.hh"
 
 #if FOAM_VERSION( <, 010600 )
-#define Xfer_faceList_hpp
+#define Xfer_cellList_hh
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef Xfer_faceList_hpp
-#define Xfer_faceList_hpp
+#ifndef Xfer_cellList_hh
+#define Xfer_cellList_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/memory/Xfer.hpp"
+#include "src/OpenFOAM/memory/Xfer.hh"
 
-#include "src/OpenFOAM/meshes/meshShapes/face/faceList.hpp"
+#include "src/OpenFOAM/meshes/meshShapes/cell/cellList.hh"
 
 
 //---------------------------------------------------------------------------

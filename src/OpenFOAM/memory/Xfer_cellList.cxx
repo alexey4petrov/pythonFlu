@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.memory.Xfer_cellList"
 %{
-  #include "src/OpenFOAM/memory/Xfer_cellList.hpp"
+  #include "src/OpenFOAM/memory/Xfer_cellList.hh"
 %}
 
 

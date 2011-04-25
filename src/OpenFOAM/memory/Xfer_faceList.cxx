@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.memory.Xfer_faceList"
 %{
-  #include "src/OpenFOAM/memory/Xfer_faceList.hpp"
+  #include "src/OpenFOAM/memory/Xfer_faceList.hh"
 %}
 
 

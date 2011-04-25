@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.memory.Xfer_pointField"
 %{
-  #include "src/OpenFOAM/memory/Xfer_pointField.hpp"
+  #include "src/OpenFOAM/memory/Xfer_pointField.hh"
 %}
 
 

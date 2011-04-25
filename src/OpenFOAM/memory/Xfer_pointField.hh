@@ -20,19 +20,22 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
+#include "src/common.hh"
 
 #if FOAM_VERSION( <, 010600 )
-#define Xfer_hpp
+#define Xfer_pointField_hh
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef Xfer_hpp
-#define Xfer_hpp
+#ifndef Xfer_pointField_hh
+#define Xfer_pointField_hh
+
 
 //---------------------------------------------------------------------------
-#include <Xfer.H>
+#include "src/OpenFOAM/memory/Xfer.hh"
+
+#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
 
 
 //---------------------------------------------------------------------------
