@@ -20,28 +20,29 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef coordinateSystem_hpp
-#define coordinateSystem_hpp
+#include "src/common.hh"
+
+#if FOAM_VERSION( <, 010600 )
+#define directMappedPatchBase_hh
+#endif
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/vector.hpp"
+#ifndef directMappedPatchBase_hh
+#define directMappedPatchBase_hh
 
-#include "src/OpenFOAM/meshes/primitiveShapes/point/point.hpp"
 
-#include "src/OpenFOAM/primitives/tensor.hpp"
+//---------------------------------------------------------------------------
+#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
 
-#include "src/OpenFOAM/fields/Fields/vectorField.hpp"
+#include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
 
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hpp"
+// #include "Tuple2.H"
+// #include "pointIndexHit.H"
 
-#include "src/OpenFOAM/fields/tmp/tmp.hpp"
+#include "src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.hh"
 
-#include "src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.hpp"
-
-#include "src/OpenFOAM/db/objectRegistry.hpp"
-
-#include <coordinateSystem.H>
+#include <directMappedPatchBase.H>
 
 
 //---------------------------------------------------------------------------

@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.meshTools.directMapped.directMappedPolyPatch.directMappedPatchBase";
 %{
-  #include "src/meshTools/directMapped/directMappedPolyPatch/directMappedPatchBase.hpp"
+  #include "src/meshTools/directMapped/directMappedPolyPatch/directMappedPatchBase.hh"
 %}
 
 

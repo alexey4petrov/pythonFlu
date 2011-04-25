@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.meshTools.coordinateSystems.coordinateRotation.coordinateRotation";
 %{
-  #include "src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.hpp"
+  #include "src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.hh"
 %}
 
 

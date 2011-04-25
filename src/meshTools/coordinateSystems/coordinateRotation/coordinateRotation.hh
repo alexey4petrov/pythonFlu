@@ -20,16 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef coordinateRotation_hpp
-#define coordinateRotation_hpp
+#ifndef coordinateRotation_hh
+#define coordinateRotation_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/vector.hpp"
+#include "src/OpenFOAM/primitives/vector.hh"
 
-#include "src/OpenFOAM/primitives/tensor.hpp"
+#include "src/OpenFOAM/primitives/tensor.hh"
 
-#include "src/OpenFOAM/db/dictionary/dictionary.hpp"
+#include "src/OpenFOAM/db/dictionary/dictionary.hh"
 
 #include <coordinateRotation.H>
 

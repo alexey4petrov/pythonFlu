@@ -20,22 +20,28 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hpp"
-
-#if FOAM_VERSION( <, 010500 )
-#define coordinateSystems_hpp
-#endif
+#ifndef coordinateSystem_hh
+#define coordinateSystem_hh
 
 
 //---------------------------------------------------------------------------
-#ifndef coordinateSystems_hpp
-#define coordinateSystems_hpp
+#include "src/OpenFOAM/primitives/vector.hh"
 
+#include "src/OpenFOAM/meshes/primitiveShapes/point/point.hh"
 
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.hpp"
+#include "src/OpenFOAM/primitives/tensor.hh"
 
-#include <coordinateSystems.H>
+#include "src/OpenFOAM/fields/Fields/vectorField.hh"
+
+#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
+
+#include "src/OpenFOAM/fields/tmp/tmp.hh"
+
+#include "src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.hh"
+
+#include "src/OpenFOAM/db/objectRegistry.hh"
+
+#include <coordinateSystem.H>
 
 
 //---------------------------------------------------------------------------

@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.meshTools.coordinateSystems.coordinateSystems";
 %{
-  #include "src/meshTools/coordinateSystems/coordinateSystems.hpp"
+  #include "src/meshTools/coordinateSystems/coordinateSystems.hh"
 %}
 
 
