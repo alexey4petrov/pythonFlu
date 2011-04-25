@@ -20,12 +20,12 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef subCycle_hpp
-#define subCycle_hpp
+#ifndef subCycle_hh
+#define subCycle_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/Time/subCycleTime.hpp"
+#include "src/OpenFOAM/db/Time/subCycleTime.hh"
 
 #include <subCycle.H>
 

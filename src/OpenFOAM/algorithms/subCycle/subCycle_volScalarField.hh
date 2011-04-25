@@ -20,14 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef subCycle_volScalarField_hpp
-#define subCycle_volScalarField_hpp
+#ifndef subCycle_volScalarField_hh
+#define subCycle_volScalarField_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/algorithms/subCycle/subCycle.hpp"
+#include "src/OpenFOAM/algorithms/subCycle/subCycle.hh"
 
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hpp"
+#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
 
 
 //---------------------------------------------------------------------------

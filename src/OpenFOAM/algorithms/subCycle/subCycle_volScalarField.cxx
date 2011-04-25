@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.algorithms.subCycle.subCycle_volScalarField"
 %{
-  #include "src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.hpp"
+  #include "src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.hh"
 %}
 
 

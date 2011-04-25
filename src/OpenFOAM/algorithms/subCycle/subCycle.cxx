@@ -27,9 +27,9 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.algorithms.subCycle.subCycle"
 %{
-  #include "src/OpenFOAM/algorithms/subCycle/subCycle.hpp"
+  #include "src/OpenFOAM/algorithms/subCycle/subCycle.hh"
 %}
-%include "src/OpenFOAM/algorithms/subCycle/subCycle.hpp"
+%include "src/OpenFOAM/algorithms/subCycle/subCycle.hh"
 
 
 //---------------------------------------------------------------------------
