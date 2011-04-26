@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/meshes/GeoMesh.hxx"
 
-%include "src/finiteVolume/fvMesh/fvMesh.hxx"
+%include "src/finiteVolume/fvMesh/fvMesh.hpp"
 
 
 //---------------------------------------------------------------------------

@@ -35,7 +35,7 @@
 
 %include "src/finiteVolume/fields/surfaceFields/surfaceFields.cpp"
 
-%include "src/finiteVolume/fvMesh/fvMesh.hxx"
+%include "src/finiteVolume/fvMesh/fvMesh.hpp"
 
 %ignore Foam::fvMesh::writeObjects;
 
