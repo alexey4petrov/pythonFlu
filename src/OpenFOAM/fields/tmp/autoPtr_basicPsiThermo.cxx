@@ -42,7 +42,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx"
+%include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cpp"
 
 
 //---------------------------------------------------------------------------

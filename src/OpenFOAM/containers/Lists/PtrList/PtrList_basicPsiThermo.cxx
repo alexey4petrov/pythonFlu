@@ -40,8 +40,6 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.cxx"
-
 %import "src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx"
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
