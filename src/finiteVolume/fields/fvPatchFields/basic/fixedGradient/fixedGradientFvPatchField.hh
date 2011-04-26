@@ -20,40 +20,17 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fixedGradientFvPatchField_cxx
-#define fixedGradientFvPatchField_cxx
+#ifndef fixedGradientFvPatchField_hh
+#define fixedGradientFvPatchField_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedGradient.fixedGradientFvPatchField"
-%{
-    #include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField.hh"
-%}
 
+#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
-%feature( "director" ) fixedGradientFvPatchField;
-
-%include <fixedGradientFvPatchField.H>
-
-
-//---------------------------------------------------------------------------
-%define COMMON_FIXEDGRADIENT_FVPATCHFIELD_TEMPLATE_FUNC_EXTENDS( Type )
-
-  Foam::Field< Type >& ext_snGrad()
-  {
-    return self->snGrad()();
-  }
-
-  Foam::Field< Type >& ext_gradientBoundaryCoeffs()
-  {
-    return self->gradientBoundaryCoeffs()();
-  }
-
-
-%enddef
+#include <fixedGradientFvPatchField.H>
 
 
 //---------------------------------------------------------------------------

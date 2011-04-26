@@ -25,20 +25,22 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedGradient.fixedGradientFvPatchField_vector"
+%{
+    #include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField_vector.hh"
+%}
+
 // Keep on corresponding "director" includes at the top of SWIG defintion file
-
 %include "src/OpenFOAM/directors.hxx"
-
 %include "src/finiteVolume/directors.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-
-%include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField.cxx"
+%import "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField.cxx"
 
 
 %feature( "director" ) fixedGradientFvPatchVectorField;
@@ -64,7 +66,7 @@ DIRECTOR_PRE_EXTENDS( fixedGradientFvPatchVectorField );
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/objectRegistry.cxx"
+%import "src/OpenFOAM/db/objectRegistry.cxx"
 
 %extend Foam::fixedGradientFvPatchField< Foam::vector >
 {
