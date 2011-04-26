@@ -31,6 +31,7 @@
 %}
 
 
+//---------------------------------------------------------------------------
 %import "src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.cxx"
 
 %import "src/OpenFOAM/primitives/Lists/wordList.cxx"
