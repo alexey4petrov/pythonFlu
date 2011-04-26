@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef surfaceFieldsFwd_hxx
-#define surfaceFieldsFwd_hxx
+#ifndef surfaceFieldsFwd_hpp
+#define surfaceFieldsFwd_hpp
 
 
 //---------------------------------------------------------------------------

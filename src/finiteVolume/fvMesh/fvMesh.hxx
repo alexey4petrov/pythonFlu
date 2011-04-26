@@ -43,7 +43,7 @@
 
 %include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hxx"
+%include "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hpp"
 
 
 //---------------------------------------------------------------------------
