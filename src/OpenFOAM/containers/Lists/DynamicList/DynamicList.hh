@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef DynamicList_cxx
-#define DynamicList_cxx
+#ifndef DynamicList_hh
+#define DynamicList_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.DynamicList.DynamicList";
-%{
-    #include "src/OpenFOAM/containers/Lists/DynamicList/DynamicList.hh"
-%}
+#include "src/OpenFOAM/containers/Lists/List/List.hh"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
-
-%include <DynamicList.H>
+#include <DynamicList.H>
 
 
 //---------------------------------------------------------------------------
