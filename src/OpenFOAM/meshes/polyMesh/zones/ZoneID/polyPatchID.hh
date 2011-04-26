@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef polyPatchID_cxx
-#define polyPatchID_cxx
+#ifndef polyPatchID_hh
+#define polyPatchID_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.meshes.polyMesh.zones.ZoneID.polyPatchID"
-%{
-    #include "src/OpenFOAM/meshes/polyMesh/zones/ZoneID/polyPatchID.hh"
-%}
+#include "src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.hh"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx"
-
-%include <polyPatchID.H>
+#include <polyPatchID.H>
 
 
 //---------------------------------------------------------------------------
