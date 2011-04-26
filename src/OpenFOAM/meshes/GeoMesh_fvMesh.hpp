@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeoMesh_fvMesh_hxx
-#define GeoMesh_fvMesh_hxx
+#ifndef GeoMesh_fvMesh_hpp
+#define GeoMesh_fvMesh_hpp
 
 
 //---------------------------------------------------------------------------

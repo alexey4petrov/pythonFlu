@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hxx"
+%include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hpp"
 
 %import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
