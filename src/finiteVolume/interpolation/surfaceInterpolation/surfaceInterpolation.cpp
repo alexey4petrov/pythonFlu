@@ -38,7 +38,7 @@
 %import "src/finiteVolume/finiteVolume/fvSchemes.cxx"
 %import "src/finiteVolume/finiteVolume/fvSolution.cxx"
 
-%include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+%include "src/finiteVolume/fields/volFields/volFieldsFwd.hpp"
 %include "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hpp"
 
 %include <surfaceInterpolation.H>

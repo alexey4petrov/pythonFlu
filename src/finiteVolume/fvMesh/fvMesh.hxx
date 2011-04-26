@@ -41,7 +41,7 @@
 
 %include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cpp"
 
-%include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+%include "src/finiteVolume/fields/volFields/volFieldsFwd.hpp"
 
 %include "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hpp"
 

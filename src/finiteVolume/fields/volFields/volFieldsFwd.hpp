@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef volFieldsFwd_hxx
-#define volFieldsFwd_hxx
+#ifndef volFieldsFwd_hpp
+#define volFieldsFwd_hpp
 
 
 //---------------------------------------------------------------------------

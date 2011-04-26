@@ -41,7 +41,7 @@
 
 %include "src/finiteVolume/fields/volFields/volSphericalTensorField.cpp"
 
-%include "src/finiteVolume/fields/volFields/volFieldsFwd.hxx"
+%include "src/finiteVolume/fields/volFields/volFieldsFwd.hpp"
 
 
 //---------------------------------------------------------------------------
