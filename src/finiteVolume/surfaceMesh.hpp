@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef surfaceMesh_hxx
-#define surfaceMesh_hxx
+#ifndef surfaceMesh_hpp
+#define surfaceMesh_hpp
 
 
 //---------------------------------------------------------------------------

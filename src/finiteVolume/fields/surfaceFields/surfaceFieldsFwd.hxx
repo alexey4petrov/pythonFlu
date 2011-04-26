@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
 
-%include "src/finiteVolume/surfaceMesh.hxx"
+%include "src/finiteVolume/surfaceMesh.hpp"
 
 %include <surfaceFieldsFwd.H>
 

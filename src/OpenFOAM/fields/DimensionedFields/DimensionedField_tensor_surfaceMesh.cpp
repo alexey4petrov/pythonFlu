@@ -39,7 +39,7 @@
 %import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
 
 %import "src/OpenFOAM/fields/Fields/tensorField.cxx"
-%import "src/finiteVolume/surfaceMesh.hxx"
+%import "src/finiteVolume/surfaceMesh.hpp"
 
 %ignore Foam::DimensionedField< Foam::tensor, Foam::surfaceMesh >::typeName;
 %ignore Foam::DimensionedField< Foam::tensor, Foam::surfaceMesh >::debug;
