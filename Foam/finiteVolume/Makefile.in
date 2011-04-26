@@ -175,6 +175,9 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_tensor.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.cxx \
 	\
+	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField_scalar.cxx \
+	\
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField_scalar.cxx \
 	@abs_top_builddir@/src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.cxx \
 	@abs_top_builddir@/src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx \

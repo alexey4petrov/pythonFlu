@@ -42,6 +42,7 @@ from Foam.src.finiteVolume.cfdTools.general.bound import *
 
 from Foam.src.finiteVolume.fields.fvPatchFields.basic.mixed.mixedFvPatchField_scalar import *
 from Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedValue.fixedValueFvPatchField_scalar import *
+from Foam.src.finiteVolume.fields.fvPatchFields.basic.calculated.calculatedFvPatchField_scalar import *
 
 from Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZones import *
 from Foam.src.finiteVolume.fvMesh.fvPatches.derived.wallFvPatch import *
