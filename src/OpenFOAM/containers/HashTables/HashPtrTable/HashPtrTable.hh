@@ -20,33 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef HashPtrTable_cxx
-#define HashPtrTable_cxx
+#ifndef HashPtrTable_hh
+#define HashPtrTable_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.HashTables.HashPtrTable.HashPtrTable";
-%{
-    #include "src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable.hh"
-%}
+#include "src/OpenFOAM/containers/HashTables/HashTable/HashTable.hh"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
-
-%include <HashPtrTable.H>
-
-
-//---------------------------------------------------------------------------
-%define HASHPTRTABLE_ADDONS( TValue, TKey, THash )
-%extend Foam::HashPtrTable< TValue, TKey, THash > 
-{
-  TPtrContainer_iterator< Foam::HashPtrTable< TValue, TKey, THash > >* __iter__()
-  {
-    return new TPtrContainer_iterator< Foam::HashPtrTable< TValue, TKey, THash > >( *self );
-  }
-}
-%enddef
+#include <HashPtrTable.H>
 
 
 //---------------------------------------------------------------------------
