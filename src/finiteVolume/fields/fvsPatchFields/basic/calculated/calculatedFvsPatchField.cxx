@@ -25,19 +25,14 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+%module "Foam.src.finiteVolume.fields.fvsPatchFields.basic.calculated.calculatedFvsPatchField"
+%{
+    #include "src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchField.hh"
+%}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cxx"
-
-%{
-    #include <calculatedFvsPatchField.H>
-%}
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <calculatedFvsPatchField.H>
 

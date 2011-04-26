@@ -20,38 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef calculatedFvsPatchField_scalar_cxx
-#define calculatedFvsPatchField_scalar_cxx
+#ifndef calculatedFvsPatchField_scalar_hh
+#define calculatedFvsPatchField_scalar_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.fvsPatchFields.basic.calculated.calculatedFvsPatchField_scalar"
-%{
-    #include "src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchField_scalar.hh"
-%}
+#include "src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchField.hh"
 
-
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchField.cxx"
-
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-%inline
-{
-  namespace Foam 
-  {
-    typedef calculatedFvsPatchField< scalar > calculatedFvsPatchScalarField;
-  }
-}
-
-%template ( calculatedFvsPatchField_scalar ) Foam::calculatedFvsPatchField< Foam::scalar >;
-
-
-//---------------------------------------------------------------------------
-%extend Foam::calculatedFvsPatchField< Foam::scalar >
-{
-  TYPEINFO_EXTENDS( fvsPatchField_scalar, calculatedFvsPatchScalarField )
-}
+#include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.hh"
 
 
 //----------------------------------------------------------------------------
