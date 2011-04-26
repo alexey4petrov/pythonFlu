@@ -67,6 +67,9 @@ from Foam.src.OpenFOAM.fields.Fields.vectorField import *
 
 from Foam.src.OpenFOAM.containers.HashTables.HashPtrTable.HashPtrTable_IOobject_word_string_hash import *
 
+from Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable_int_word_string_hash import *
+from Foam.src.OpenFOAM.containers.NamedEnum.NamedEnum import *
+
 
 #---------------------------------------------------------------------------
 scalar = float

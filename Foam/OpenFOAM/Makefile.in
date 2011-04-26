@@ -247,6 +247,9 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Pair/labelPair.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_int_word_string_hash.cxx
+	@abs_top_builddir@/src/OpenFOAM/containers/NamedEnum/NamedEnum.cxx
 
 
 #--------------------------------------------------------------------------------------
