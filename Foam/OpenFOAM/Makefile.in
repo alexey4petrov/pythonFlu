@@ -53,6 +53,7 @@ sources = \
 	\
 	@abs_top_builddir@/src/iterators.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_word.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_word.cxx \
