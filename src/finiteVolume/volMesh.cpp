@@ -33,7 +33,7 @@
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/meshes/GeoMesh_fvMesh.cpp"
 
-%include "src/finiteVolume/volMesh.hxx"
+%include "src/finiteVolume/volMesh.hpp"
 
 %include "src/finiteVolume/fvMesh/fvMesh.cpp"
 

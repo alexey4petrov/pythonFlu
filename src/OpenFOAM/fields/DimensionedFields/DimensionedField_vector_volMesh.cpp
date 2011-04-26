@@ -39,7 +39,7 @@
 %import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
 
 %import "src/OpenFOAM/primitives/vector.cxx"
-%import "src/finiteVolume/volMesh.hxx"
+%import "src/finiteVolume/volMesh.hpp"
 
 %ignore Foam::DimensionedField< Foam::vector, Foam::volMesh >::debug;
 %ignore Foam::DimensionedField< Foam::vector, Foam::volMesh >::typeName;

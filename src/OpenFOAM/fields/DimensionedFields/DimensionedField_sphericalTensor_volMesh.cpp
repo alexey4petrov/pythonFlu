@@ -39,7 +39,7 @@
 %import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
 
 %import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
-%import "src/finiteVolume/volMesh.hxx"
+%import "src/finiteVolume/volMesh.hpp"
 
 %ignore Foam::DimensionedField< Foam::sphericalTensor, Foam::volMesh >::debug;
 %ignore Foam::DimensionedField< Foam::sphericalTensor, Foam::volMesh >::typeName;

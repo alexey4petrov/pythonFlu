@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
 
-%include "src/finiteVolume/volMesh.hxx"
+%include "src/finiteVolume/volMesh.hpp"
 
 %import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
 
