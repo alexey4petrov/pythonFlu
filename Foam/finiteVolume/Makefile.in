@@ -148,7 +148,6 @@ fvMatrices_sources = \
 #--------------------------------------------------------------------------------------
 sources = \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvSchemes.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/snGradSchemes/snGradScheme.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvSolution.cxx \
 	\
 	@abs_top_builddir@/src/finiteVolume/fvMesh/fvMeshes.cxx \
@@ -157,6 +156,8 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_volScalarField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_volVectorField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_surfaceScalarField.cxx \
+	\
+	@abs_top_builddir@/src/finiteVolume/finiteVolume/snGradSchemes/snGradScheme.cxx \
 	\
 	@abs_top_builddir@/src/finiteVolume/fvMatrices/fvMatrices.cxx \
 	\
