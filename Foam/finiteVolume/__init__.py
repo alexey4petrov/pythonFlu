@@ -53,6 +53,7 @@ from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.Lim
 from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.MUSCL.MUSCL_NVDTVD import *
 from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.LimitedScheme_vector_MUSCLLimiter_NVDTVD_limitFuncs_magSqr import *
 
+from Foam.src.finiteVolume.finiteVolume.snGradSchemes.snGradScheme import *
 
 #---------------------------------------------------------------------------
 volScalarField = GeometricField_scalar_fvPatchField_volMesh

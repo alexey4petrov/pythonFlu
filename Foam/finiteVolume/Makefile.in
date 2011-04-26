@@ -148,6 +148,7 @@ fvMatrices_sources = \
 #--------------------------------------------------------------------------------------
 sources = \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvSchemes.cxx \
+	@abs_top_builddir@/src/finiteVolume/finiteVolume/snGradSchemes/snGradScheme.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvSolution.cxx \
 	\
 	@abs_top_builddir@/src/finiteVolume/fvMesh/fvMeshes.cxx \
