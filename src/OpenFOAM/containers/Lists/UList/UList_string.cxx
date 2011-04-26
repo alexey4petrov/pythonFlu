@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
 %import "src/OpenFOAM/primitives/strings/string.cxx"
 
