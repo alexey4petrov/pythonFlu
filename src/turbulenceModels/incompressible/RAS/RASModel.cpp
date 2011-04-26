@@ -20,51 +20,68 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.turbulenceModels.incompressible.LES.LESModel";
 %{
-  #include "src/turbulenceModels/incompressible/LES/LESModel.hh"
+  #include "src/turbulenceModels/incompressible/RAS/RASModel.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%include "src/common.hxx"
 
 #if FOAM_VERSION( <, 010500 )
-#define incompressibleLESModel_cxx
+#define incompressibleRASModel_cpp
 #endif
 
 
 //-----------------------------------------------------------------------------
-#ifndef incompressibleLESModel_cxx
-#define incompressibleLESModel_cxx
+#ifndef incompressibleRASModel_cpp
+#define incompressibleRASModel_cpp
 
 
 //----------------------------------------------------------------------------
-%import "src/turbulenceModels/incompressible/turbulenceModel.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_incompressible_turbulenceModel.cxx"
 
-// #include "LESdelta.H"
-// #include "fvm.H"
-// #include "fvc.H"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
 %import "src/transportModels/incompressible/transportModel.cxx"
 
-// #include "wallFvPatch.H"
+%import "src/OpenFOAM/db/IOdictionary.cxx"
+
+%import "src/OpenFOAM/db/Switch.cxx"
 
 %import "src/finiteVolume/cfdTools/general/bound.cxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-// #include "runTimeSelectionTables.H"
-
-%import "src/OpenFOAM/db/IOdictionary.cxx"
-
 
 //----------------------------------------------------------------------------
-%rename( incompressible_LESModel ) Foam::incompressible::LESModel;
+%ignore Foam::incompressible::RASModel::k;
 
-%include <incompressible/LESModel.H>
+%ignore Foam::incompressible::RASModel::epsilon;
+
+%ignore Foam::incompressible::RASModel::nut;
+
+%rename( incompressible_RASModel ) Foam::incompressible::RASModel;
+
+%include <incompressible/RASModel.H>
+
+
+//---------------------------------------------------------------------------
+%extend Foam::incompressible::RASModel
+{
+  Foam::volScalarField& ext_k()
+  {
+    return self->k()();
+  }
+  Foam::volScalarField& ext_epsilon()
+  {
+    return self->epsilon()();
+  }
+  Foam::volScalarField& ext_nut()
+  {
+    return self->nut()();
+  }
+}
 
 
 //---------------------------------------------------------------------------

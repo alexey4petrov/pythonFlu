@@ -42,7 +42,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/turbulenceModels/incompressible/LES/LESModel.cxx"
+%include "src/turbulenceModels/incompressible/LES/LESModel.cpp"
 
 
 //----------------------------------------------------------------------------
