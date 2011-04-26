@@ -189,6 +189,9 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.cxx \
 	@abs_top_builddir@/src/finiteVolume/cfdTools/general/porousMedia/porousZones.cxx \
 	\
+	@abs_top_builddir@/src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchField.cxx \
+	@abs_top_builddir@/src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchField_scalar.cxx \
+	\
 	@abs_top_builddir@/src/finiteVolume/fvMesh/fvPatches/derived/wallFvPatch.cxx \
 	\
 	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.cxx \
