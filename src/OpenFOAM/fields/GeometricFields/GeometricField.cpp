@@ -37,9 +37,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hxx"
+%include "src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hpp"
 
-%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hxx"
+%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hpp"
 
 
 //---------------------------------------------------------------------------

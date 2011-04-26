@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef no_tmp_typemap_GeometricFields_hxx
-#define no_tmp_typemap_GeometricFields_hxx
+#ifndef no_tmp_typemap_GeometricFields_hpp
+#define no_tmp_typemap_GeometricFields_hpp
 
 
 //---------------------------------------------------------------------------

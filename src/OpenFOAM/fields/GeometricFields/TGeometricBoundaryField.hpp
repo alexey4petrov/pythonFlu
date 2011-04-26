@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef TGeometricBoundaryField_hxx
-#define TGeometricBoundaryField_hxx
+#ifndef TGeometricBoundaryField_hpp
+#define TGeometricBoundaryField_hpp
 
 
 //---------------------------------------------------------------------------
