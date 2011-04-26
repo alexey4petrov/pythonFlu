@@ -40,8 +40,6 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/turbulenceModels/compressible/RAS/RASModel.cxx"
-
 %import "src/OpenFOAM/fields/tmp/autoPtr_compressible_RASModel.cxx"
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"

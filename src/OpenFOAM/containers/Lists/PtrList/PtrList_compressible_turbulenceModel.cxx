@@ -40,8 +40,6 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/turbulenceModels/compressible/turbulenceModel.cxx"
-
 %import "src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.cxx"
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"

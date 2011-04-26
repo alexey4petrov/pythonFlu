@@ -20,7 +20,6 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.turbulenceModels.compressible.turbulenceModel";
 %{
   #include "src/turbulenceModels/compressible/turbulenceModel.hh"
 %}
@@ -30,13 +29,13 @@
 %import "src/common.hxx"
 
 #if FOAM_VERSION( ==, 010500 )   
-#define compressibleturbulenceModel_cxx
+#define compressibleturbulenceModel_cpp
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef compressibleturbulenceModel_cxx
-#define compressibleturbulenceModel_cxx
+#ifndef compressibleturbulenceModel_cpp
+#define compressibleturbulenceModel_cpp
 
 
 //---------------------------------------------------------------------------

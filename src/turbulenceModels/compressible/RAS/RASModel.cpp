@@ -20,7 +20,6 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.turbulenceModels.compressible.RAS.RASModel";
 %{
   #include "src/turbulenceModels/compressible/RAS/RASModel.hh"
 %}
@@ -30,17 +29,17 @@
 %import "src/common.hxx"
 
 #if FOAM_VERSION( <, 010500 )
-#define compressibleRASModel_cxx
+#define compressibleRASModel_cpp
 #endif
 
 
 //-----------------------------------------------------------------------------
-#ifndef compressibleRASModel_cxx
-#define compressibleRASModel_cxx
+#ifndef compressibleRASModel_cpp
+#define compressibleRASModel_cpp
 
 
 //----------------------------------------------------------------------------
-%import "src/turbulenceModels/compressible/turbulenceModel.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.cxx"
 
 %import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 

@@ -42,7 +42,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/turbulenceModels/compressible/RAS/RASModel.cxx"
+%include "src/turbulenceModels/compressible/RAS/RASModel.cpp"
 
 
 //----------------------------------------------------------------------------
