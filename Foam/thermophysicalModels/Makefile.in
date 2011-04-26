@@ -39,7 +39,6 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/thermophysicalModels/basic/basicThermo.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.cxx \
 	\

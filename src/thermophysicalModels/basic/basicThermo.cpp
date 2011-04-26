@@ -20,12 +20,11 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef basicThermo_cxx
-#define basicThermo_cxx
+#ifndef basicThermo_cpp
+#define basicThermo_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.thermophysicalModels.basic.basicThermo";
 %{
   #include "src/thermophysicalModels/basic/basicThermo.hh"
 %}

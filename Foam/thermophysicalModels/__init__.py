@@ -21,7 +21,6 @@
 
 
 #---------------------------------------------------------------------------
-from Foam.src.thermophysicalModels.basic.basicThermo import *
 from Foam.src.OpenFOAM.fields.tmp.autoPtr_basicThermo import *
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicThermo import *
 

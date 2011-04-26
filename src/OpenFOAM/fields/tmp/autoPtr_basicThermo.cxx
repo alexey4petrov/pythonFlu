@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/thermophysicalModels/basic/basicThermo.cxx"
+%include "src/thermophysicalModels/basic/basicThermo.cpp"
 
 
 //----------------------------------------------------------------------------
