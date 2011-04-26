@@ -29,7 +29,7 @@
    #include "src/OpenFOAM/containers/Lists/List/List.hh"
 %}
 
-%include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
 %import "src/OpenFOAM/primitives/label.cxx"
 
