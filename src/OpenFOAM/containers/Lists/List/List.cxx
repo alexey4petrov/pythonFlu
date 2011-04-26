@@ -25,6 +25,7 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.containers.Lists.List.List";
 %{
    #include "src/OpenFOAM/containers/Lists/List/List.hh"
 %}
