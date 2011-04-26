@@ -20,29 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef calculatedFvPatchField_scalar_cxx
-#define calculatedFvPatchField_scalar_cxx
+#ifndef calculatedFvPatchField_scalar_hh
+#define calculatedFvPatchField_scalar_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.fvPatchFields.basic.calculated.calculatedFvPatchField_scalar"
-%{
-    #include "src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField_scalar.hh"
-%}
+#include "src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField.hh"
 
-
-//---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField.cxx"
-
-%inline
-{
-  namespace Foam 
-  {
-    typedef calculatedFvPatchField< scalar > calculatedFvPatchScalarField;
-  }
-}
-
-%template ( calculatedFvPatchField_scalar ) Foam::calculatedFvPatchField< Foam::scalar >;
+#include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.hh"
 
 
 //----------------------------------------------------------------------------
