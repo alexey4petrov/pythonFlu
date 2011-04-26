@@ -174,15 +174,16 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/db/IOobject.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOobjectList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/Switch.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_IOobject_word_string_hash.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/regIOobject.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/objectRegistry.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.cxx \
+	@abs_top_builddir@/src/OpenFOAM/db/IOobjectList.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.cxx \

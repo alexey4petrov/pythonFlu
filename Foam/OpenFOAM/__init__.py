@@ -28,6 +28,7 @@ from Foam.src.OpenFOAM.db.IOstreams.IOstreams.Ostream import *
 
 from Foam.src.OpenFOAM.db.Time.Time import *
 from Foam.src.OpenFOAM.db.IOobject import *
+from Foam.src.OpenFOAM.db.IOobjectList import *
 from Foam.src.OpenFOAM.primitives.strings.fileName import *
 
 from Foam.src.OpenFOAM.db.IOdictionary import *
@@ -63,6 +64,8 @@ from Foam.src.OpenFOAM.fields.UniformDimensionedFields.UniformDimensionedVectorF
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_UniformDimensionedVectorField import *
 
 from Foam.src.OpenFOAM.fields.Fields.vectorField import *
+
+from Foam.src.OpenFOAM.containers.HashTables.HashPtrTable.HashPtrTable_IOobject_word_string_hash import *
 
 
 #---------------------------------------------------------------------------
