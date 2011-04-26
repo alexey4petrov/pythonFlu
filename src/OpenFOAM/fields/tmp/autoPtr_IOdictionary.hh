@@ -20,35 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_IOdictionary_cxx
-#define autoPtr_IOdictionary_cxx
+#ifndef autoPtr_IOdictionary_hh
+#define autoPtr_IOdictionary_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_IOdictionary"
-%{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_IOdictionary.hh"
-%}
+#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-%import "src/OpenFOAM/db/IOdictionary.cxx"
-
-AUTOPTR_TYPEMAP( Foam::IOdictionary );
-
-%ignore Foam::autoPtr< Foam::IOdictionary >::operator->;
-
-%template( autoPtr_IOdictionary ) Foam::autoPtr< Foam::IOdictionary >;
-
-%inline
-{
-    namespace Foam
-    {
-        typedef autoPtr< IOdictionary > autoPtr_IOdictionary;
-    }
-}
+#include "src/OpenFOAM/db/IOdictionary.hh"
 
 
 //---------------------------------------------------------------------------
