@@ -47,7 +47,7 @@
 
 %import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%import "src/thermophysicalModels/basic/basicThermo.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
 
 // #include <blackBodyEmission.H>
 
