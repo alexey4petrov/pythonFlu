@@ -25,10 +25,13 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.containers.Lists.UList.UList";
 %{
    #include "src/OpenFOAM/containers/Lists/UList/UList.hh"
 %}
 
+
+//---------------------------------------------------------------------------
 %include "src/common.hxx"
 
 %import "src/iterators.cxx"
