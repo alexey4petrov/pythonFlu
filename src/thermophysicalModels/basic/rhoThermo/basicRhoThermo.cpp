@@ -20,7 +20,6 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.thermophysicalModels.basic.rhoThermo.basicRhoThermo";
 %{
   #include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.hh"
 %}
@@ -30,17 +29,17 @@
 %import "src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
-#define basicRhoThermo_cxx
+#define basicRhoThermo_cpp
 #endif
 
 
 //---------------------------------------------------------------------------
-#ifndef basicRhoThermo_cxx
-#define basicRhoThermo_cxx
+#ifndef basicRhoThermo_cpp
+#define basicRhoThermo_cpp
 
 
 //---------------------------------------------------------------------------
-%import "src/thermophysicalModels/basic/basicThermo.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
 
 // %import "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
 

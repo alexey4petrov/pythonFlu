@@ -40,8 +40,6 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.cxx"
-
 %import "src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.cxx"
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"

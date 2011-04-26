@@ -42,7 +42,7 @@
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.cxx"
+%include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.cpp"
 
 
 //---------------------------------------------------------------------------
