@@ -60,6 +60,7 @@ from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.Lim
 
 from Foam.src.finiteVolume.finiteVolume.snGradSchemes.snGradScheme import *
 
+
 #---------------------------------------------------------------------------
 volScalarField = GeometricField_scalar_fvPatchField_volMesh
 
