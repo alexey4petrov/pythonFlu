@@ -42,7 +42,7 @@
 
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/finiteVolume/fvMatrices/fvMatricesFwd.hxx"
+%import "src/finiteVolume/fvMatrices/fvMatricesFwd.hpp"
 
 %include <fvMatrix.H>
 

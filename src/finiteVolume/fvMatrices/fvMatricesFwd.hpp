@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvMatricesFwd_hxx
-#define fvMatricesFwd_hxx
+#ifndef fvMatricesFwd_hpp
+#define fvMatricesFwd_hpp
 
 
 //---------------------------------------------------------------------------
