@@ -20,35 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef UList_IOobject_cxx
-#define UList_IOobject_cxx
+#ifndef UList_entry_hh
+#define UList_entry_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_IOobject";
-%{
-    #include "src/OpenFOAM/containers/Lists/UList/UList_IOobject.hh"
-%}
+#include "src/OpenFOAM/containers/Lists/UList/UList.hh"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
-%import "src/OpenFOAM/db/IOobject.cxx"
-
-%ignore Foam::UList< Foam::IOobject >::swap;
-%ignore Foam::UList< Foam::IOobject >::writeEntry;
-%ignore Foam::UList< Foam::IOobject >::operator==;
-%ignore Foam::UList< Foam::IOobject >::operator!=;
-%ignore Foam::UList< Foam::IOobject >::operator<=;
-%ignore Foam::UList< Foam::IOobject >::operator>=;
-%ignore Foam::UList< Foam::IOobject >::operator<;
-%ignore Foam::UList< Foam::IOobject >::operator>;
-
-%template( UList_IOobject ) Foam::UList< Foam::IOobject >;
-
-%template( TContainer_word_IOobject ) Foam::TContainer_iterator< Foam::UList< Foam::IOobject > >;
-
-%extend Foam::UList< Foam::IOobject > SEQUENCE_ADDONS( Foam::IOobject );
+#include "src/OpenFOAM/db/dictionary/entry.hh"
 
 
 //---------------------------------------------------------------------------

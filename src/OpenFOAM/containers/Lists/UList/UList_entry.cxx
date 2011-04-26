@@ -25,8 +25,15 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/UList/UList.cxx"
-%include "src/OpenFOAM/db/dictionary/entry.cxx"
+%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_entry";
+%{
+    #include "src/OpenFOAM/containers/Lists/UList/UList_entry.hh"
+%}
+
+
+//---------------------------------------------------------------------------
+%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "src/OpenFOAM/db/dictionary/entry.cxx"
 
 %ignore Foam::UList< Foam::entry >::writeEntry;
 %ignore Foam::UList< Foam::entry >::swap;
