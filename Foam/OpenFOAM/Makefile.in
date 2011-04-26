@@ -201,6 +201,7 @@ sources = \
 	\
 	@abs_top_builddir@/src/OpenFOAM/db/dictionary/dictionary.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/IOdictionary.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_IOdictionary.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Sstreams/ISstream.cxx \
