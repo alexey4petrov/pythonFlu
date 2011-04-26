@@ -222,7 +222,6 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/memory/Xfer_faceList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/memory/Xfer_cellList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/zones/ZoneID/polyPatchID.cxx \
 	@abs_top_builddir@/src/OpenFOAM/global/argList.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.cxx \
@@ -239,6 +238,7 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyMesh.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/zones/ZoneID/polyPatchID.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/primitives/uint.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/ulong.cxx \
@@ -249,8 +249,8 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Pair/labelPair.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_int_word_string_hash.cxx
-	@abs_top_builddir@/src/OpenFOAM/containers/NamedEnum/NamedEnum.cxx
+	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_int_word_string_hash.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/NamedEnum/NamedEnum.cxx \
 
 
 #--------------------------------------------------------------------------------------
