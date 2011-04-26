@@ -20,21 +20,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef NamedEnum_cxx
-#define NamedEnum_cxx
+#ifndef NamedEnum_hh
+#define NamedEnum_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.NamedEnum.NamedEnum";
-%{
-    #include "src/OpenFOAM/containers/NamedEnum/NamedEnum.hh"
-%}
+#include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_int_word_string_hash.hh"
 
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable_int_word_string_hash.cxx"
-
-%include <NamedEnum.H>
+#include <NamedEnum.H>
 
 
 //---------------------------------------------------------------------------
