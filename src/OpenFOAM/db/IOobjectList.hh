@@ -20,23 +20,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IOobjectList_cxx
-#define IOobjectList_cxx
+#ifndef IOobjectList_hh
+#define IOobjectList_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.IOobjectList"
-%{
-    #include "src/OpenFOAM/db/IOobjectList.hh"
-%}
+#include "src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.hh"
 
+#include "src/OpenFOAM/primitives/Lists/wordList.hh"
 
-%import "src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.cxx"
-
-%import "src/OpenFOAM/primitives/Lists/wordList.cxx"
-
-
-%include <IOobjectList.H>
+#include <IOobjectList.H>
 
 
 //---------------------------------------------------------------------------
