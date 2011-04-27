@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
-%import "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
+%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
 %import "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
 %ignore Foam::T( Foam::Field< Foam::scalar >&, const Foam::UList< Foam::scalar >& );

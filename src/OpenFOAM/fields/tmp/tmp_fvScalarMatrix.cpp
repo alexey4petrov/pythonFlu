@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/finiteVolume/fvMatrices/fvScalarMatrix.cpp"
+%include "src/finiteVolume/fvMatrices/fvScalarMatrix.cpp"
 
 
 //---------------------------------------------------------------------------

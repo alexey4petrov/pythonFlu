@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "ext/common/ext_tmp.hxx"
 
-%import "src/finiteVolume/fields/volFields/volScalarField.cpp"
+%include "src/finiteVolume/fields/volFields/volScalarField.cpp"
 
 
 //---------------------------------------------------------------------------
