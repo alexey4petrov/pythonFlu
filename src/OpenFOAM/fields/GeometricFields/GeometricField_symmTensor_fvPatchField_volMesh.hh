@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeometricField_SymmTensor_fvPatchField_volMesh_hh
-#define GeometricField_SymmTensor_fvPatchField_volMesh_hh
+#ifndef GeometricField_symmTensor_fvPatchField_volMesh_hh
+#define GeometricField_symmTensor_fvPatchField_volMesh_hh
 
 
 //---------------------------------------------------------------------------

@@ -20,13 +20,13 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeometricField_SymmTensor_fvPatchField_volMesh_cpp
-#define GeometricField_SymmTensor_fvPatchField_volMesh_cpp
+#ifndef GeometricField_symmTensor_fvPatchField_volMesh_cpp
+#define GeometricField_symmTensor_fvPatchField_volMesh_cpp
 
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_SymmTensor_fvPatchField_volMesh.hh"
+  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_symmTensor_fvPatchField_volMesh.hh"
 %}
 
 

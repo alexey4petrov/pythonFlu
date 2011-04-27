@@ -31,7 +31,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_SymmTensor_fvPatchField_volMesh.cpp"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_symmTensor_fvPatchField_volMesh.cpp"
 
 %include "src/OpenFOAM/fields/tmp/autoPtr_volSymmTensorField.cpp"
 
