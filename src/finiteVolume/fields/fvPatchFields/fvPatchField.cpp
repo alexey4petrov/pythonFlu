@@ -30,6 +30,8 @@
   #include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 %}
 
+%include "src/director.hxx"
+
 
 //---------------------------------------------------------------------------
 %include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cpp"

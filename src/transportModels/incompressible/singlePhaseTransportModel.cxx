@@ -30,10 +30,6 @@
   #include "src/transportModels/incompressible/singlePhaseTransportModel.hh"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
 
 //---------------------------------------------------------------------------
 %import "src/transportModels/incompressible/transportModel.cxx"

@@ -30,8 +30,7 @@
   #include "src/OpenFOAM/db/IOdictionary.hh"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
+%include "src/director.hxx"
 
 
 //---------------------------------------------------------------------------

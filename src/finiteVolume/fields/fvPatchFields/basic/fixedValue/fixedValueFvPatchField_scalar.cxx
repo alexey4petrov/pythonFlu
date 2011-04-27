@@ -30,10 +30,7 @@
   #include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.hh"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
-
+%include "src/director.hxx"
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/Fields/scalarField.cxx"

@@ -32,14 +32,6 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
-
-
-//---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
 %include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.cpp"

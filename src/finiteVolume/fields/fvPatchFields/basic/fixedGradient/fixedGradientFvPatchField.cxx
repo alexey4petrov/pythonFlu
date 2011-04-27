@@ -30,6 +30,8 @@
     #include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField.hh"
 %}
 
+%include "src/director.hxx"
+
 
 //---------------------------------------------------------------------------
 %import "src/finiteVolume/fvMesh/fvMeshes.cxx"

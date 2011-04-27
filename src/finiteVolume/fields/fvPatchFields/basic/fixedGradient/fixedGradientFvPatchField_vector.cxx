@@ -30,9 +30,7 @@
     #include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField_vector.hh"
 %}
 
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-%include "src/OpenFOAM/directors.hxx"
-%include "src/finiteVolume/directors.hxx"
+%include "src/director.hxx"
 
 
 //---------------------------------------------------------------------------
