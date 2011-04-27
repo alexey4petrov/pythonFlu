@@ -29,7 +29,7 @@
 
 #include "src/OpenFOAM/primitives/vector.hh"
 
-#include "src/OpenFOAM/primitives/s_ymmTensor.hh"
+#include "src/OpenFOAM/primitives/symmTensor.hh"
 
 #include "src/OpenFOAM/primitives/s_phericalTensor.hh"
 

@@ -46,8 +46,8 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/contiguous.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/s_phericalTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/contiguous.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/SymmTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/s_ymmTensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/S_ymmTensor.hh \
+	@abs_top_builddir@/src/OpenFOAM/primitives/symmTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/pTraits_symmTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/tensor.cxx \
 	\

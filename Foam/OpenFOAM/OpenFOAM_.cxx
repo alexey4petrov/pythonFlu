@@ -36,7 +36,7 @@
 %include "src/OpenFOAM/primitives/scalar.cxx"
 %include "src/OpenFOAM/primitives/vector.cxx"
 %include "src/OpenFOAM/primitives/tensor.cxx"
-%include "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+%include "src/OpenFOAM/primitives/symmTensor.cxx"
 %include "src/OpenFOAM/primitives/strings/string.cxx"
 %include "src/OpenFOAM/primitives/strings/word.cxx"
 %include "src/OpenFOAM/primitives/strings/fileName.cxx"

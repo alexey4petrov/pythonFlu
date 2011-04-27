@@ -20,62 +20,24 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef symmTensor_cxx
-#define symmTensor_cxx
+#ifndef SymmTensor_cxx
+#define SymmTensor_cxx
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.s_ymmTensor";
+%module "Foam.src.OpenFOAM.primitives.SymmTensor";
 %{
-  #include "src/OpenFOAM/primitives/s_ymmTensor.hh"
+  #include "src/OpenFOAM/primitives/S_ymmTensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/primitives/vector.cxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "src/OpenFOAM/primitives/SphericalTensor.cxx"
 
-%import "src/OpenFOAM/primitives/SymmTensor.cxx"
-
-%import "src/OpenFOAM/primitives/contiguous.cxx"
-
-%template( VectorSpace_symmTensor ) Foam::VectorSpace< Foam::SymmTensor< Foam::scalar >, Foam::scalar, 6 >;
+%include <SymmTensor.H>
 
 
 //---------------------------------------------------------------------------
-%extend Foam::VectorSpace< Foam::SymmTensor< Foam::scalar >, Foam::scalar, 6 >
-{
-  int __len__()
-  {
-    return self->size();
-  }
-  
-  Foam::scalar __getitem__( const Foam::direction theIndex )
-  {
-    return self->operator[]( theIndex );
-  }
-  
-  void __setitem__( const Foam::direction theIndex, const Foam::scalar& theValue )
-  {
-    self->operator[]( theIndex ) = theValue;
-  }
-}
-
-%include <symmTensor.H>
-
-%template ( symmTensor ) Foam::SymmTensor< Foam::scalar >;
-
-
-//---------------------------------------------------------------------------
-%extend Foam::SymmTensor< Foam::scalar >
-{
-  Foam::Vector< Foam::scalar > __rand__( const Foam::Vector< Foam::scalar >& theArg )
-  {
-    return theArg & *self;
-  }
-}
-
-
-//----------------------------------------------------------------------------
 #endif

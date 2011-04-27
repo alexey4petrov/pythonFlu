@@ -33,7 +33,7 @@
 
 #include <SymmTensor.H>
 
-#include "src/OpenFOAM/primitives/SymmTensor.hh"
+#include "src/OpenFOAM/primitives/S_ymmTensor.hh"
 
 #include "src/OpenFOAM/primitives/contiguous.hh"
 

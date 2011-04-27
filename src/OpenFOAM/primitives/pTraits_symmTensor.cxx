@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/primitives/pTraits.cxx"
 
-%import "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+%import "src/OpenFOAM/primitives/symmTensor.cxx"
 
 %template ( pTraits_symmTensor ) Foam::pTraits<Foam::symmTensor>;
 

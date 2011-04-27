@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/Fields/Field.cxx"
 
-%import "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+%import "src/OpenFOAM/primitives/symmTensor.cxx"
 
 %import "src/OpenFOAM/primitives/pTraits_symmTensor.cxx"
 

@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/s_ymmTensor.hh"
+#include "src/OpenFOAM/primitives/symmTensor.hh"
 
 #include "src/OpenFOAM/primitives/pTraits.hh"
 

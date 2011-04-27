@@ -51,7 +51,7 @@
 
 
 //-----------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/s_ymmTensor.hh"
+#include "src/OpenFOAM/primitives/symmTensor.hh"
 #include "src/finiteVolume/volMesh.hh"
 #include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 

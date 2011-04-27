@@ -64,7 +64,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/primitives/s_phericalTensor.cxx"
 
-%import "src/OpenFOAM/primitives/s_ymmTensor.cxx"
+%import "src/OpenFOAM/primitives/symmTensor.cxx"
 
 %include <Tensor.H>
 

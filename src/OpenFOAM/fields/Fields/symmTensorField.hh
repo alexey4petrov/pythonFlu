@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 #include "src/OpenFOAM/fields/Fields/Field.hh"
 
-#include "src/OpenFOAM/primitives/s_ymmTensor.hh"
+#include "src/OpenFOAM/primitives/symmTensor.hh"
 
 #include "src/OpenFOAM/primitives/pTraits_symmTensor.hh"
 
