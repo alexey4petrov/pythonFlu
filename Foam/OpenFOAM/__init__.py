@@ -49,7 +49,7 @@ from Foam.src.OpenFOAM.primitives.scalar import *
 from Foam.src.OpenFOAM.primitives.label import *
 from Foam.src.OpenFOAM.primitives.int_ import *
 from Foam.src.OpenFOAM.primitives.vector import *
-from Foam.src.OpenFOAM.primitives.s_phericalTensor import *
+from Foam.src.OpenFOAM.primitives.symmTensor import *
 from Foam.src.OpenFOAM.primitives.tensor import *
 
 from Foam.src.OpenFOAM.db.IOstreams.Fstreams.IFstream import *
@@ -117,7 +117,7 @@ wordHashTable = HashTable_word_word_string_hash
 
 
 #---------------------------------------------------------------------------
-from Foam.src.OpenFOAM.primitives.s_phericalTensor import *
+from Foam.src.OpenFOAM.primitives.sphericalTensor import *
 I = sphericalTensor.I
 
 

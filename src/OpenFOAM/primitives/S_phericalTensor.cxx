@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.primitives.SphericalTensor";
+%module "Foam.src.OpenFOAM.primitives.S_phericalTensor";
 %{
   #include "src/OpenFOAM/primitives/S_phericalTensor.hh"
 %}
