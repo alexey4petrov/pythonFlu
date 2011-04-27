@@ -31,7 +31,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_SphericalTensor_fvPatchField_volMesh.cpp"
+%include "src/OpenFOAM/fields/GeometricFields/GeometricField_sphericalTensor_fvPatchField_volMesh.cpp"
 
 %include "src/OpenFOAM/fields/tmp/autoPtr_volSphericalTensorField.cpp"
 

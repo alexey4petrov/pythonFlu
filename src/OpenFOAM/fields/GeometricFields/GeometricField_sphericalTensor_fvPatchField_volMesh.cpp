@@ -20,13 +20,13 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeometricField_SphericalTensor_fvPatchField_volMesh_cpp
-#define GeometricField_SphericalTensor_fvPatchField_volMesh_cpp
+#ifndef GeometricField_sphericalTensor_fvPatchField_volMesh_cpp
+#define GeometricField_sphericalTensor_fvPatchField_volMesh_cpp
 
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_SphericalTensor_fvPatchField_volMesh.hh"
+  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_sphericalTensor_fvPatchField_volMesh.hh"
 %}
 
 

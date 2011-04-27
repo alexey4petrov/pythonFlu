@@ -20,8 +20,8 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeometricField_SphericalTensor_fvPatchField_volMesh_hh
-#define GeometricField_SphericalTensor_fvPatchField_volMesh_hh
+#ifndef GeometricField_sphericalTensor_fvPatchField_volMesh_hh
+#define GeometricField_sphericalTensor_fvPatchField_volMesh_hh
 
 
 //---------------------------------------------------------------------------
