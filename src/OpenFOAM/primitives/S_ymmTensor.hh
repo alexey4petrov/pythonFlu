@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 #include "src/OpenFOAM/primitives/vector.hh"
 
-#include "src/OpenFOAM/primitives/SphericalTensor.hh"
+#include "src/OpenFOAM/primitives/S_phericalTensor.hh"
 
 #include <SymmTensor.H>
 

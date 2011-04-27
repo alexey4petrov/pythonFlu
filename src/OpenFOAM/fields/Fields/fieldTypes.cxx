@@ -38,7 +38,7 @@
 
 %import "src/OpenFOAM/primitives/symmTensor.cxx"
 
-%import "src/OpenFOAM/primitives/s_phericalTensor.cxx"
+%import "src/OpenFOAM/primitives/sphericalTensor.cxx"
 
 %import "src/OpenFOAM/primitives/tensor.cxx"
 

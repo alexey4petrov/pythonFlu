@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%import "src/OpenFOAM/primitives/s_phericalTensor.cxx"
+%import "src/OpenFOAM/primitives/sphericalTensor.cxx"
 
 #if FOAM_VERSION( <, 010500 )
 

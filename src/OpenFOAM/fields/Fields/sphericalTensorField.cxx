@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/Fields/Field.cxx"
 
-%import "src/OpenFOAM/primitives/s_phericalTensor.cxx"
+%import "src/OpenFOAM/primitives/sphericalTensor.cxx"
 
 %import "src/OpenFOAM/primitives/Lists/sphericalTensorList.cxx"
 

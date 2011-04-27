@@ -102,7 +102,7 @@ NO_TMP_TYPEMAP_GEOMETRIC_FIELD( Foam::SymmTensor< Foam::scalar >, Foam::fvPatchF
 
 
 //------------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/s_phericalTensor.cxx"
+%import "src/OpenFOAM/primitives/sphericalTensor.cxx"
 %include "src/finiteVolume/volMesh.hpp"
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
 

@@ -57,7 +57,7 @@
 
 
 //------------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/s_phericalTensor.hh"
+#include "src/OpenFOAM/primitives/sphericalTensor.hh"
 #include "src/finiteVolume/volMesh.hh"
 #include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 

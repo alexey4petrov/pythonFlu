@@ -31,7 +31,7 @@
 
 #include "src/OpenFOAM/primitives/symmTensor.hh"
 
-#include "src/OpenFOAM/primitives/s_phericalTensor.hh"
+#include "src/OpenFOAM/primitives/sphericalTensor.hh"
 
 #include "src/OpenFOAM/primitives/tensor.hh"
 

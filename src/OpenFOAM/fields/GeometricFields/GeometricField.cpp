@@ -198,7 +198,7 @@
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/primitives/tensor.cxx"
-%import "src/OpenFOAM/primitives/s_phericalTensor.cxx"
+%import "src/OpenFOAM/primitives/sphericalTensor.cxx"
 
 %define __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( TPatchField, TMesh )
 {
