@@ -25,10 +25,14 @@
 
 
 //---------------------------------------------------------------------------
+#include "src/director.hh"
+
 #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hh"
 
 #include "src/OpenFOAM/fields/tmp/autoPtr.hh"
 
+
+//---------------------------------------------------------------------------
 namespace Foam
 {
   struct PtrList_INewBase

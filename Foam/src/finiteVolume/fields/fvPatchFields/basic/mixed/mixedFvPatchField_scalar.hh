@@ -25,6 +25,8 @@
 
 
 //---------------------------------------------------------------------------
+#include "src/director.hh"
+
 #include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField.hh"
 
 #include "src/OpenFOAM/db/objectRegistry.hh"

@@ -20,21 +20,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IOdictionary_hh
-#define IOdictionary_hh
+#ifndef director_hh
+#define director_hh
 
 
 //---------------------------------------------------------------------------
-#include "src/director.hh"
+#include <Time.H>
 
-#include "src/OpenFOAM/db/regIOobject.hh"
-
-#include "src/OpenFOAM/db/dictionary/dictionary.hh"
-
-#include "src/OpenFOAM/db/objectRegistry.hh"
-
-#include <IOdictionary.H>
+#include <objectRegistry.H>
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------
 #endif

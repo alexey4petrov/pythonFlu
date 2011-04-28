@@ -30,7 +30,7 @@
   #include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField_scalar.hh"
 %}
 
-%include "src/director.hxx"
+%import "src/director.hxx"
 
 
 //---------------------------------------------------------------------------

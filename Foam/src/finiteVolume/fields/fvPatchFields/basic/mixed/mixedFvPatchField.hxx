@@ -29,7 +29,7 @@
   #include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/mixedFvPatchField.hh"
 %}
 
-%include "src/director.hxx"
+%import "src/director.hxx"
 
 
 //---------------------------------------------------------------------------

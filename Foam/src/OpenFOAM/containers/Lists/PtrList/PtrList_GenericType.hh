@@ -25,6 +25,8 @@
 
 
 //---------------------------------------------------------------------------
+#include "src/director.hh"
+
 #include "src/OpenFOAM/fields/tmp/autoPtr.hh"
 
 #include <Istream.H>

@@ -30,7 +30,7 @@
   #include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 %}
 
-%include "src/director.hxx"
+%import "src/director.hxx"
 
 
 //---------------------------------------------------------------------------

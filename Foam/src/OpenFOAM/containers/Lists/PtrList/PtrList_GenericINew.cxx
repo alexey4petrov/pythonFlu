@@ -30,7 +30,7 @@
    #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hh"
 %}
 
-%include "src/director.hxx"
+%import "src/director.hxx"
 
 
 //---------------------------------------------------------------------------

@@ -25,6 +25,7 @@
 
 
 //---------------------------------------------------------------------------
+#include "src/director.hh"
 
 #include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 

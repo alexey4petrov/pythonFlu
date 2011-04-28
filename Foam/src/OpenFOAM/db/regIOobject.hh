@@ -25,11 +25,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/Time/Time.hh"
+#include "src/director.hh"
 
 #include "src/OpenFOAM/db/IOobject.hh"
-
-#include "src/OpenFOAM/db/objectRegistry.hh"
 
 #include <regIOobject.H>
 

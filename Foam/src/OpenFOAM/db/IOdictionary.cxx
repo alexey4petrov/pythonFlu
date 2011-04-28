@@ -30,7 +30,7 @@
   #include "src/OpenFOAM/db/IOdictionary.hh"
 %}
 
-%include "src/director.hxx"
+%import "src/director.hxx"
 
 
 //---------------------------------------------------------------------------

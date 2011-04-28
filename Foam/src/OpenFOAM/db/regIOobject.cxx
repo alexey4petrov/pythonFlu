@@ -30,7 +30,7 @@
   #include "src/OpenFOAM/db/regIOobject.hh"
 %}
 
-%include "src/director.hxx"
+%import "src/director.hxx"
 
 
 //---------------------------------------------------------------------------

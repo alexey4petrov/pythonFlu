@@ -25,6 +25,8 @@
 
 
 //---------------------------------------------------------------------------
+#include "src/director.hh"
+
 #include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hh"
 
 #include "src/OpenFOAM/fields/tmp/tmp.hh"

@@ -30,7 +30,7 @@
   #include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.hh"
 %}
 
-%include "src/director.hxx"
+%import "src/director.hxx"
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/Fields/scalarField.cxx"
