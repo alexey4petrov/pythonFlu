@@ -122,8 +122,6 @@ AC_OUTPUT( [ bashrc \
 	     Foam/compressible/Makefile \
 	     Foam/applications/utilities/postProcessing/graphics/Makefile \
 	     Foam/applications/utilities/mesh/conversion/Makefile \
-	     EFoam/pbmr/diffusion/Makefile \
-	     EFoam/common/shared_ptr/Makefile \
 	     make-deb.sh \
 	     deb-template/control \
 	     ChangeLog ],
