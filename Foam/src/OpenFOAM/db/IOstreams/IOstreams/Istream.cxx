@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx"
 
-%include "src/OpenFOAM/db/IOstreams/token.cxx"
+%import "src/OpenFOAM/db/IOstreams/token.cxx"
 
 %include <Istream.H>
 

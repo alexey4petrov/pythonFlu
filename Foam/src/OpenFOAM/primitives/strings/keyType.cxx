@@ -27,7 +27,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%import "src/common.hxx"
 #if FOAM_VERSION( <, 010600 )
 #define keyType_cxx
 #endif

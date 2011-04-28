@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
 %import "src/OpenFOAM/primitives/strings/word.cxx"
 

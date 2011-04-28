@@ -74,7 +74,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/try_reverse_operator.hxx"
+%import "src/try_reverse_operator.hxx"
 
 %feature ("pythonprepend") Foam::Vector< Foam::scalar >::TRY_REVERSE_PYPREPEND( and )
 

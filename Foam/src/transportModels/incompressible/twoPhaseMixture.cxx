@@ -36,7 +36,7 @@
 
 %import "src/transportModels/incompressible/viscosityModels/viscosityModel.cxx"
 
-%include "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 

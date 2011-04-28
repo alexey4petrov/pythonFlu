@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%import "src/common.hxx"
 
 #if FOAM_VERSION( <, 010500 )
 #define incompressibleRASModel_cpp

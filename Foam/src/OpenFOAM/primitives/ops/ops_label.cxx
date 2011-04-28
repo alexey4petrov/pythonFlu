@@ -32,9 +32,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/primitives/ops/ops.cxx"
+%import "src/OpenFOAM/primitives/ops/ops.cxx"
 
-%include "src/OpenFOAM/primitives/label.cxx"
+%import "src/OpenFOAM/primitives/label.cxx"
 
 
 //---------------------------------------------------------------------------

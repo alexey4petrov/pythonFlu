@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/db/IOdictionary.cxx"
 
-%include "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <interfaceProperties.H>
 

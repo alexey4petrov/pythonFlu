@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%import "src/common.hxx"
 
 %include <runTimeSelectionTables.H>
 

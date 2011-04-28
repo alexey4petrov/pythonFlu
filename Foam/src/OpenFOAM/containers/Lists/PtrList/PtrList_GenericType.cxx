@@ -42,7 +42,7 @@
 
 %import "src/OpenFOAM/primitives/scalar.cxx"
 
-%include "src/redirect2base.hxx"
+%import "src/redirect2base.hxx"
 
 
 //---------------------------------------------------------------------------

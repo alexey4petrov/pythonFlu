@@ -42,7 +42,7 @@
 
 %include <Field.H>
 
-%include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -208,7 +208,7 @@
 //---------------------------------------------------------------------------
 %define FIELD_TEMPLATE_FUNC( Type )
 
-%include "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
 NO_TMP_TYPEMAP_FIELD( Field< Foam::scalar > );
 NO_TMP_TYPEMAP_FIELD( Field< Foam::vector > );

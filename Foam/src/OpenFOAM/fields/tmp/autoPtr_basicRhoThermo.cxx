@@ -20,7 +20,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%import "src/common.hxx"
 #if FOAM_VERSION( <, 010600 )
 #define autoPtr_basicRhoThermo_cxx
 #endif
@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
 %include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.cpp"
 

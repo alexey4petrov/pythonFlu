@@ -50,7 +50,7 @@
 
 %include <UniformDimensionedField.H>
 
-%include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
 
 %include <uniformDimensionedFields.H>
 

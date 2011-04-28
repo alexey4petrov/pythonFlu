@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.cxx"
+%import "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.cxx"
 
 %include <multivariateGaussConvectionScheme.H>
 

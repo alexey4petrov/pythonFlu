@@ -44,7 +44,7 @@
 
 %import "src/OpenFOAM/primitives/scalar.cxx"
 
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 %import "src/OpenFOAM/primitives/strings/word.cxx"
 

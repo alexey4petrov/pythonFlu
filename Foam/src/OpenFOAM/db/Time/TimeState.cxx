@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 %include <TimeState.H>
 

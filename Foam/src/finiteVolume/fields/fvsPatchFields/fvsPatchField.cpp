@@ -35,7 +35,7 @@
 
 %include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cpp"
 
-%include "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
 
 %include <fvsPatchFieldsFwd.H>
 

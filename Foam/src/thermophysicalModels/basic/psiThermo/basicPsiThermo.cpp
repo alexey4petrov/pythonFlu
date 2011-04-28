@@ -41,7 +41,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
 
-// %include "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
+// %import "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
 
 %include <basicPsiThermo.H>
 

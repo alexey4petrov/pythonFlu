@@ -32,13 +32,13 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
+%import "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
 
-%include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx"
+%import "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx"
 
-%include "src/OpenFOAM/meshes/lduMesh.cxx"
+%import "src/OpenFOAM/meshes/lduMesh.cxx"
 
-%include "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -112,7 +112,7 @@ namespace Foam
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/db/typeInfo/className.hxx"
+%import "src/OpenFOAM/db/typeInfo/className.hxx"
 
 #if FOAM_BRANCH_VERSION( dev, >=, 010500 )
 %ignore Foam::lduMatrix::bufferedUpdateMatrixInterfaces;

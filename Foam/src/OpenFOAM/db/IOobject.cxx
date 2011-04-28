@@ -36,7 +36,7 @@
 
 %import "src/OpenFOAM/primitives/strings/fileName.cxx"
 
-%include "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
 %include <IOobject.H>
 

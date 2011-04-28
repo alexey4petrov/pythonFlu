@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-//#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
 #include <TimeState.H>
 

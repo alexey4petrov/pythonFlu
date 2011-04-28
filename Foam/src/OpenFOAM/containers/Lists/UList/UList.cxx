@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%import "src/common.hxx"
 
 %import "src/iterators.cxx"
 
