@@ -34,6 +34,7 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/strings/word.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/strings/keyType.cxx \
 	\
+	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/token.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx \
 	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx \
 	\
@@ -231,10 +232,10 @@ sources = \
 	\
 	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx \
 	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx \
+	@abs_top_builddir@/src/OpenFOAM/meshes/lduMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx \
 	@abs_top_builddir@/src/OpenFOAM/matrices/solution.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/meshes/lduMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyMesh.cxx \
