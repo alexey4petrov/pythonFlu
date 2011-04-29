@@ -68,7 +68,11 @@ class polyBoundaryMesh;
 class polyPatch
 :
     public patchIdentifier,
+#ifndef SWIG
     public primitivePatch
+#else
+    public PrimitivePatch< face, SubList, const pointField& >
+#endif
 {
     // Private data
 
