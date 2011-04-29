@@ -1,4 +1,5 @@
-## VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
+## pythonFlu - Python wrapping for OpenFOAM C++ API
+## Copyright (C) 2010- Alexey Petrov
 ## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 ## 
 ## This program is free software: you can redistribute it and/or modify
@@ -14,22 +15,22 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ## 
-## See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
+## See http://sourceforge.net/projects/pythonflu
 ##
 ## Author : Alexey PETROV
 ##
 
 
 #--------------------------------------------------------------------------------------
-if test "${PYFOAM_ROOT_DIR}x" = "x" ; then
-   export PYFOAM_ROOT_DIR="@abs_top_builddir@"
-   echo PYFOAM_ROOT_DIR=\"${PYFOAM_ROOT_DIR}\"
+if test "${PYTHONFLU_ROOT_DIR}x" = "x" ; then
+   export PYTHONFLU_ROOT_DIR="@abs_top_builddir@"
+   echo PYTHONFLU_ROOT_DIR=\"${PYTHONFLU_ROOT_DIR}\"
 
-   source ${PYFOAM_ROOT_DIR}/env.sh
+   source ${PYTHONFLU_ROOT_DIR}/env.sh
 
-   export PATH=${PYFOAM_ROOT_DIR}:${PATH}
-   export PYTHONPATH=${PYFOAM_ROOT_DIR}:${PYTHONPATH}
-   export LD_LIBRARY_PATH=${PYFOAM_ROOT_DIR}:${LD_LIBRARY_PATH}
+   export PATH=${PYTHONFLU_ROOT_DIR}:${PATH}
+   export PYTHONPATH=${PYTHONFLU_ROOT_DIR}:${PYTHONPATH}
+   export LD_LIBRARY_PATH=${PYTHONFLU_ROOT_DIR}:${LD_LIBRARY_PATH}
 fi
 
 

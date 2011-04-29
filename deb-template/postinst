@@ -1,0 +1,10 @@
+#!/bin/bash
+# postinst script for #PACKAGE#
+#
+# see: dh_installdeb(1)
+
+set -e
+
+sudo python -c "from setuptools import setup; setup(name='Foam')" install
+
+exit 0

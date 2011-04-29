@@ -1,0 +1,64 @@
+Summary: pythonflu@FOAM_PACKAGE_SUFFIX@ package
+
+%define version @PACKAGE_VERSION@
+
+License: GPL
+
+Name: pythonflu@FOAM_PACKAGE_SUFFIX@
+
+Version: %{version} 
+
+Release: @BUILD_VERSION@
+
+URL: http://sourceforge.net/projects/pythonflu/
+
+Group: Applications / Engineering
+
+Packager: Alexey Petrov <alexey.petrov.nnov@gmail.com>
+
+ExclusiveArch: @OS_ARCHITECTURE@
+
+Requires: openfoam171, python >= 2.6, python < 2.7, python-setuptools
+
+Buildroot: /tmp/%{name}-%{version}-root
+
+%description
+Python wrapping for OpenFOAM (R) C++ API
+
+%prep 
+
+%build
+
+%install
+
+rm -rf $RPM_BUILD_ROOT
+
+make install DESTDIR=$RPM_BUILD_ROOT
+
+%clean 
+rm -rf $RPM_BUILD_ROOT
+
+%post
+sudo python -c "from setuptools import setup; setup(name='Foam')" install
+
+%preun
+install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`
+sudo easy_install -m Foam
+sudo rm -rf ${install_path}/Foam-*.egg*
+
+dummy_package_name=Foam-0.0.0-py@PYTHON_VERSION@.egg
+tmp_file="/tmp/tmp_easy-install.pth"
+cat ${install_path}/easy-install.pth | sed -e "s/\.\/${dummy_package_name}$//g" | sed '/./!d' > ${tmp_file}
+sudo mv -f ${tmp_file} ${install_path}/easy-install.pth
+
+
+%postun
+install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`
+sudo rm -rf ${install_path}/Foam
+
+
+%files
+%defattr(-, root, root)
+
+
+

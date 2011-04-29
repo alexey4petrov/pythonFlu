@@ -2,7 +2,8 @@
 Installation Instructions
 #--------------------------------------------------------------------------------------
 
-VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
+pythonFlu - Python wrapping for OpenFOAM C++ API
+Copyright (C) 2010- Alexey Petrov
 Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 
 This program is free software: you can redistribute it and/or modify
@@ -18,14 +19,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
+See http://sourceforge.net/projects/pythonflu
 
 
 #--------------------------------------------------------------------------------------
 Pre-requisites
 #--------------------------------------------------------------------------------------
 
-"pyFoam" Python OpenFOAM binding requires the following mandatory and optional
+"pythonFlu" Python OpenFOAM binding requires the following mandatory and optional
 pre-requisites.
 
 * Make sure that confFoam (common configuration package) is installed 
@@ -62,7 +63,7 @@ pre-requisites.
 * Install Boost library (optional) (tested with 1.35.0 )
   Please follow instructions from http://www.boost.org/ web-site.
 
-Then follow the instructions below in order to build and install the "pyFoam" - Python 
+Then follow the instructions below in order to build and install the "pythonFlu" - Python 
 OpenFOAM binding.
 
 
@@ -70,7 +71,7 @@ OpenFOAM binding.
 Basic Installation
 #--------------------------------------------------------------------------------------
 
-The build procedure of the "pyFoam" package is based on GNU autoconf and make utilities. 
+The build procedure of the "pythonFlu" package is based on GNU autoconf and make utilities. 
 In order to build the module you have to perform the following actions:
 
 1. Start a new shell session (to ensure a clear environment).
@@ -111,7 +112,7 @@ In order to build the module you have to perform the following actions:
       --with-boost-includes=<path>
       --with-boost-libraries=<path>
 
-6. Build "pyFoam":
+6. Build "pythonFlu":
 
    make
 
@@ -119,17 +120,17 @@ In order to build the module you have to perform the following actions:
 
 
 #--------------------------------------------------------------------------------------
-"pyFoam" environment
+"pythonFlu" environment
 #--------------------------------------------------------------------------------------
 
-Before start to use "pyFoam" it is necessary to source the generated "bashrc" file
+Before start to use "pythonFlu" it is necessary to source the generated "bashrc" file
 
 
 #--------------------------------------------------------------------------------------
-"pyFoam" installation check
+"pythonFlu" installation check
 #--------------------------------------------------------------------------------------
 
-Run one of the "pyFoam" solvers on the appropriate OpenFOAM case, for example
+Run one of the "pythonFlu" solvers on the appropriate OpenFOAM case, for example
 
   (for OpenFOAM-1.4.1-dev)
   ./Foam/applications/solvers/incompressible/icoFoam.py \

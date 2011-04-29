@@ -29,3 +29,44 @@ SUBDIRS = Foam
 
 
 #--------------------------------------------------------------------------------------
+deb:
+	@./make-deb.sh deb
+	
+launchpad:
+	@./make-deb.sh launchpad
+
+rpm:
+	@./make-rpm.sh
+
+
+
+#--------------------------------------------------------------------------------------
+DESTDIR=
+
+ifeq "$(shell if [ @OS_NAME@ = Ubuntu ]; then echo 'true'; else echo 'false'; fi )" "true" 
+PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python@PYTHON_VERSION@/dist-packages
+endif
+
+ifeq "$(shell if [ @OS_NAME@ = openSUSE ]; then echo 'true'; else echo 'false'; fi )" "true" 
+PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python@PYTHON_VERSION@/site-packages
+endif
+
+ifeq "$(shell if [ x@OS_NAME@ = x ]; then echo 'true'; else echo 'false'; fi )" "true" 
+$(error Your OS is not supported)
+endif
+
+
+install:
+	@ install -d $(PYTHON_FLU_LIB)
+	@ cp -rf Foam $(PYTHON_FLU_LIB)/
+	@ (cd $(PYTHON_FLU_LIB)/Foam && find \( -name "*.cxx" -o -name "*.h" -o -name "*.d" -o -name "pyfoam" -o -name "*.cpp" \) -delete)
+	@ (cd $(PYTHON_FLU_LIB)/Foam && find \( -name "*.h" -o -name "*_" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
+	@ python -c "from setuptools import setup; setup(name='Foam')" install
+
+develop:$(PYTHON_FLU_LIB)/Foam
+
+$(PYTHON_FLU_LIB)/Foam:
+	@ ln -s @abs_top_builddir@/Foam $(PYTHON_FLU_LIB)/Foam
+
+
+#--------------------------------------------------------------------------------------

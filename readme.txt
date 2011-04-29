@@ -3,7 +3,7 @@
 * "Maturity" of the wrapping increased in 2 times and reached 41% 
   (it is possible to reproduce 26 of 63 referenced OpenFOAM solvers)
 
-* Ubuntu binary packages preparation 
-  (available for Maverik and Lucid, i386 and amd64 architectures)
+* Preparation of native Linux binary packages
+  (available for Ubuntu and OpneSUSE, i386 and amd64 architectures)
   
 * Minor bug-fixing
