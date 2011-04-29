@@ -31,6 +31,10 @@
 
 #include <IOPtrList.H>
 
+#if FOAM_VERSION( <, 010500 )
+   template< class Type > const Foam::word Foam::IOPtrList< Type >::typeName = "";
+#endif
+
 
 //---------------------------------------------------------------------------
 #endif
