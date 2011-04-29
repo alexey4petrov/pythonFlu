@@ -25,6 +25,12 @@
 
 
 //---------------------------------------------------------------------------
+#include "src/common.hh"
+
+#if FOAM_VERSION( <, 010500 )
+#include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.hh"
+#endif
+
 #include <fvcLaplacian.H>
 
 

@@ -36,6 +36,8 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 #--------------------------------------------------------------------------------------
 sources = \
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.cxx \
+	\
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcDdt.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcD_Dt.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcGrad.cxx \
@@ -46,8 +48,6 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcReconstruct.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcLaplacian.cxx \
-	\
-	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.cxx \
 
 
 #--------------------------------------------------------------------------------------

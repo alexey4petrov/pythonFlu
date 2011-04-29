@@ -34,6 +34,8 @@
 //---------------------------------------------------------------------------
 %import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
+%import "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.cxx"
+
 
 //---------------------------------------------------------------------------
 %define FVC_LAPLACIAN_TEMPLATE_FUNC( Type1, Type2 )
