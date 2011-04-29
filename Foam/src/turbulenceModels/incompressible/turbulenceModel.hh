@@ -50,7 +50,7 @@
 //------------------------------------------------------------------------
 //There is no namespace "incompressible" in OpenFOAM-1.4.1-dev
 #if FOAM_VERSION( <, 010500 )   
-  #include <incompressible/turbulenceModel.H>
+  #include <incompressible/turbulenceModel/turbulenceModel.H>
 #endif
 
 
