@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------
 #include "src/common.hh"
 #if FOAM_VERSION( <, 010600 )
-#define keyType_cxx
+#define keyType_hh
 #endif
 
 
