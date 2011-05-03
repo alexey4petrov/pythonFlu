@@ -20,12 +20,11 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_symmTensorField_cxx
-#define tmp_symmTensorField_cxx
+#ifndef tmp_symmTensorField_cpp
+#define tmp_symmTensorField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_symmTensorField"
 %{
   #include "src/OpenFOAM/fields/tmp/tmp_symmTensorField.hh"
 %}
@@ -34,7 +33,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
+%include "src/OpenFOAM/fields/Fields/symmTensorField.cpp"
 
 
 //----------------------------------------------------------------------------

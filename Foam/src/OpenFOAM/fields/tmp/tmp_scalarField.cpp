@@ -20,12 +20,11 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_scalarField_cxx
-#define tmp_scalarField_cxx
+#ifndef tmp_scalarField_cpp
+#define tmp_scalarField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_scalarField"
 %{
   #include "src/OpenFOAM/fields/tmp/tmp_scalarField.hh"
 %}
@@ -34,7 +33,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%include "src/OpenFOAM/fields/Fields/scalarField.cpp"
 
 
 //----------------------------------------------------------------------------

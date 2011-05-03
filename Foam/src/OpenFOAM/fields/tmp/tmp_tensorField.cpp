@@ -20,35 +20,34 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_sphericalTensorField_cxx
-#define tmp_sphericalTensorField_cxx
+#ifndef tmp_tensorField_cpp
+#define tmp_tensorField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_sphericalTensorField"
+%module "Foam.src.OpenFOAM.fields.tmp.tmp_tensorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.hh"
+  #include "src/OpenFOAM/fields/tmp/tmp_tensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
-
-
-//---------------------------------------------------------------------------
-%template( tmp_sphericalTensorField ) Foam::tmp< Foam::Field< Foam::sphericalTensor > >;
-
-
-//---------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::sphericalTensor > >::SMARTPTR_PYAPPEND_GETATTR( tmp_sphericalTensorField );
-
-%extend Foam::tmp< Foam::Field< Foam::sphericalTensor > >
-{
-  SMARTPTR_EXTEND_ATTR( tmp_sphericalTensorField )
-}
+%include "src/OpenFOAM/fields/Fields/tensorField.cpp"
 
 
 //----------------------------------------------------------------------------
+%template( tmp_tensorField ) Foam::tmp< Foam::Field< Foam::tensor > >;
+
+
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::tensor > >::SMARTPTR_PYAPPEND_GETATTR( tmp_tensorField );
+
+%extend Foam::tmp< Foam::Field< Foam::tensor > >
+{
+  SMARTPTR_EXTEND_ATTR( tmp_tensorField )
+}
+
+//---------------------------------------------------------------------------
 #endif

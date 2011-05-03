@@ -20,12 +20,11 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tmp_vectorField_cxx
-#define tmp_vectorField_cxx
+#ifndef tmp_vectorField_cpp
+#define tmp_vectorField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.tmp_vectorField"
 %{
   #include "src/OpenFOAM/fields/tmp/tmp_vectorField.hh"
 %}
@@ -34,7 +33,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
+%include "src/OpenFOAM/fields/Fields/vectorField.cpp"
 
 
 //---------------------------------------------------------------------------
