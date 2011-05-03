@@ -195,15 +195,16 @@ sources = \
 	\
 	@abs_top_builddir@/src/finiteVolume/fvMesh/fvPatches/derived/wallFvPatch.cxx \
 	\
-	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.cxx \
-	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_scalar.cxx \
-	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_vector.cxx \
-	\
 	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx \
 	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_scalar.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.cxx \
 	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.cxx \
+	\
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.cxx \
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_scalar.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_multivariateSurfaceInterpolationScheme_scalar.cxx \
+	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_vector.cxx \
 	\
 	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/schemes/weighted/weighted.cxx \
 	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/schemes/weighted/weighted_vector.cxx \
