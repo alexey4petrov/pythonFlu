@@ -21,9 +21,11 @@
 
 
 #---------------------------------------------------------------------------
-from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "fv_" ) 
+from Foam.src.finiteVolume.finiteVolume.convectionSchemes.convectionScheme.convectionScheme_scalar import *
+from Foam.src.finiteVolume.finiteVolume.convectionSchemes.convectionScheme.convectionScheme_scalar import *
 
+from Foam.src.finiteVolume.finiteVolume.convectionSchemes.gaussConvectionScheme.gaussConvectionScheme_scalar import *
+from Foam.src.finiteVolume.finiteVolume.convectionSchemes.gaussConvectionScheme.gaussConvectionScheme_vector import *
 
-#---------------------------------------------------------------------------
-
+from Foam.src.finiteVolume.finiteVolume.convectionSchemes.multivariateGaussConvectionScheme.multivariateGaussConvectionScheme_scalar import *
+from Foam.src.finiteVolume.finiteVolume.convectionSchemes.multivariateGaussConvectionScheme.multivariateGaussConvectionScheme_vector import *
