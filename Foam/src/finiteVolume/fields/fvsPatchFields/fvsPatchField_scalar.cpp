@@ -37,6 +37,14 @@
 
 %template( fvsPatchField_scalar ) Foam::fvsPatchField< Foam::scalar >;
 
+%inline
+{
+    namespace Foam
+    {
+        typedef fvsPatchField< scalar > fvsPatchField_scalar;
+    }
+}
+
 
 //---------------------------------------------------------------------------
 #endif
