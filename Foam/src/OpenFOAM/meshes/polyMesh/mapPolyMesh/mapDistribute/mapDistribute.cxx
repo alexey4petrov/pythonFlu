@@ -42,6 +42,8 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/primitives/Lists/labelList.cxx"
 
+%import "src/OpenFOAM/primitives/Lists/scalarList.cxx"
+
 %import "src/OpenFOAM/primitives/Pair/labelPair.cxx"
 
 %import "src/OpenFOAM/db/IOstreams/Pstreams/Pstream.cxx"

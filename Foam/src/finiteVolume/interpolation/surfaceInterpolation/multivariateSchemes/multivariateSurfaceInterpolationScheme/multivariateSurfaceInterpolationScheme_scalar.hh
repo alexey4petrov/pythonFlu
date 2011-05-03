@@ -31,6 +31,8 @@
 
 #include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
+#include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.hh"
+
 
 //---------------------------------------------------------------------------
 #endif

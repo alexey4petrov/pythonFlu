@@ -33,6 +33,8 @@
 
 #include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.hh"
 
+#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
+
 #include <convectionScheme.H>
 
 

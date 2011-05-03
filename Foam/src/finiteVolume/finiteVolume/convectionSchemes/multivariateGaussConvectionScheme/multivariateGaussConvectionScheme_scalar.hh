@@ -31,6 +31,7 @@
 
 #include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.hh"
 
+#include "src/OpenFOAM/fields/tmp/tmp_multivariateSurfaceInterpolationScheme_scalar.hh"
 
 //---------------------------------------------------------------------------
 #endif

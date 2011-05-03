@@ -42,6 +42,8 @@
 
 %import "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.cxx"
 
+%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
+
 %include <convectionScheme.H>
 
 

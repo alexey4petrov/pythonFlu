@@ -38,6 +38,8 @@
 
 %import "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.cxx"
 
+%import "src/OpenFOAM/fields/tmp/tmp_multivariateSurfaceInterpolationScheme_scalar.cxx"
+
 
 //----------------------------------------------------------------------------
 %ignore Foam::fv::multivariateGaussConvectionScheme< Foam::scalar >::multivariateGaussConvectionScheme;

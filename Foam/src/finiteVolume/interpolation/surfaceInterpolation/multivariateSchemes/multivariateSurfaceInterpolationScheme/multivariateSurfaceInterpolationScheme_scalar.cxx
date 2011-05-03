@@ -38,6 +38,8 @@
 
 %import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
+%import "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.cxx"
+
 
 //---------------------------------------------------------------------------
 %template (TfieldTable_scalar) Foam::TfieldTable< Foam::scalar >;
