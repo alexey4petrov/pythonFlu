@@ -31,7 +31,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/Field.cxx"
+%include "src/OpenFOAM/fields/Fields/Field.cpp"
 
 %import "src/OpenFOAM/primitives/symmTensor.cxx"
 
