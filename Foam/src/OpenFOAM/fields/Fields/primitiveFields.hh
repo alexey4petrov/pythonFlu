@@ -35,6 +35,17 @@
 
 #include "src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
 
+#include "src/OpenFOAM/fields/tmp/tmp_scalarField.hh"
+
+#include "src/OpenFOAM/fields/tmp/tmp_vectorField.hh"
+
+#include "src/OpenFOAM/fields/tmp/tmp_tensorField.hh"
+
+#include "src/OpenFOAM/fields/tmp/tmp_symmTensorField.hh"
+
+#include "src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.hh"
+
+
 
 //---------------------------------------------------------------------------
 #endif

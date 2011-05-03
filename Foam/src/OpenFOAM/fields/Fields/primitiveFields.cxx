@@ -32,15 +32,25 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%include "src/OpenFOAM/fields/Fields/scalarField.cpp"
 
-%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
+%include "src/OpenFOAM/fields/Fields/vectorField.cpp"
 
-%import "src/OpenFOAM/fields/Fields/tensorField.cxx"
+%include "src/OpenFOAM/fields/Fields/tensorField.cpp"
 
-%import "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
+%include "src/OpenFOAM/fields/Fields/symmTensorField.cpp"
 
-%import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
+%include "src/OpenFOAM/fields/Fields/sphericalTensorField.cpp"
+
+%include "src/OpenFOAM/fields/tmp/tmp_scalarField.cpp"
+
+%include "src/OpenFOAM/fields/tmp/tmp_vectorField.cpp"
+
+%include "src/OpenFOAM/fields/tmp/tmp_tensorField.cpp"
+
+%include "src/OpenFOAM/fields/tmp/tmp_symmTensorField.cpp"
+
+%include "src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.cpp"
 
 
 //---------------------------------------------------------------------------
