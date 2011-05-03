@@ -31,4 +31,4 @@ from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_coordinateSystem import 
 from Foam.src.meshTools.directMapped.directMappedPolyPatch.directMappedPatchBase import *
 
 
-
+#---------------------------------------------------------------------------
