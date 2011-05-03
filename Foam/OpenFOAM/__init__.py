@@ -35,6 +35,7 @@ from Foam.src.OpenFOAM.db.IOdictionary import *
 from Foam.src.OpenFOAM.fields.tmp.autoPtr_IOdictionary import *
 from Foam.src.OpenFOAM.db.dictionary.dictionary import *
 from Foam.src.OpenFOAM.primitives.strings.word import *
+from Foam.src.OpenFOAM.primitives.strings.keyType import *
 
 from Foam.src.OpenFOAM.db.Switch import *
 
@@ -52,9 +53,13 @@ from Foam.src.OpenFOAM.primitives.int_ import *
 from Foam.src.OpenFOAM.primitives.vector import *
 from Foam.src.OpenFOAM.primitives.symmTensor import *
 from Foam.src.OpenFOAM.primitives.tensor import *
+from Foam.src.OpenFOAM.primitives.bool import *
+
+from Foam.src.OpenFOAM.primitives.ops.ops_label import *
 
 from Foam.src.OpenFOAM.db.IOstreams.Fstreams.IFstream import *
 from Foam.src.OpenFOAM.db.IOstreams.Fstreams.OFstream import *
+from Foam.src.OpenFOAM.db.IOstreams.Pstreams.Pstream import *
 from Foam.src.OpenFOAM.db.IOstreams.token import *
 
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_entry import *
@@ -73,6 +78,10 @@ from Foam.src.OpenFOAM.containers.NamedEnum.NamedEnum import *
 from Foam.src.OpenFOAM.meshes.polyMesh.zones.ZoneID.polyPatchID import *
 
 from Foam.src.OpenFOAM.fields.Fields.primitiveFields import *
+
+from Foam.src.OpenFOAM.db.IOstreams.StringStreams.IStringStream import *
+
+from Foam.src.OpenFOAM.meshes.polyMesh.mapPolyMesh.mapDistribute.mapDistribute import *
 
 
 #---------------------------------------------------------------------------

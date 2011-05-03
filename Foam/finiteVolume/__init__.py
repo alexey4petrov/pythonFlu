@@ -52,6 +52,8 @@ from Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZones import *
 from Foam.src.finiteVolume.fvMesh.fvPatches.derived.wallFvPatch import *
 from Foam.src.OpenFOAM.algorithms.subCycle.subCycle_volScalarField import *
 
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolationScheme.surfaceInterpolationScheme_vector import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolationScheme.surfaceInterpolationScheme_scalar import *
 from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.limitedSurfaceInterpolationScheme.limitedSurfaceInterpolationScheme_vector import *
 from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.NVDTVD import *
 from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.LimitFuncs import *
@@ -59,6 +61,8 @@ from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.MUS
 from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.LimitedScheme_vector_MUSCLLimiter_NVDTVD_limitFuncs_magSqr import *
 
 from Foam.src.finiteVolume.finiteVolume.snGradSchemes.snGradScheme import *
+
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.multivariateSchemes.multivariateSurfaceInterpolationScheme.multivariateSurfaceInterpolationScheme_scalar import *
 
 
 #---------------------------------------------------------------------------
@@ -83,14 +87,14 @@ fvPatchVectorField = fvPatchField_vector
 fvPatchTensorField = fvPatchField_tensor
 
 
-# #----------------------------------------------------------------------------
-# calculatedFvsPatchScalarField = calculatedFvsPatchField_scalar
-# 
-# 
-# #---------------------------------------------------------------------------
-# calculatedFvPatchScalarField = calculatedFvPatchField_scalar
-# 
-# 
+#----------------------------------------------------------------------------
+calculatedFvsPatchScalarField = calculatedFvsPatchField_scalar
+
+
+#---------------------------------------------------------------------------
+calculatedFvPatchScalarField = calculatedFvPatchField_scalar
+
+
 #---------------------------------------------------------------------------
 from Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_scalar import *
 zeroGradientFvPatchScalarField = zeroGradientFvPatchField_scalar
