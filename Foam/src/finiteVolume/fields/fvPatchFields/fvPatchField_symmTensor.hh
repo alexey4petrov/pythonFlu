@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/symmTensorField.hh"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 #include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 

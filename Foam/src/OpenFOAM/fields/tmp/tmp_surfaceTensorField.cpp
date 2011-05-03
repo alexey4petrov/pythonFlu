@@ -31,7 +31,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_tensorField.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %include "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvsPatchField_surfaceMesh.cpp"
 

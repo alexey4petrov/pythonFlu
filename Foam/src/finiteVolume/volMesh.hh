@@ -31,7 +31,7 @@
 
 #include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
-#include "src/OpenFOAM/fields/Fields/scalarField.hh"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 #include "src/OpenFOAM/dimensionSet.hh"
 

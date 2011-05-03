@@ -38,7 +38,7 @@
 
 %import "src/OpenFOAM/meshes/lduMesh.cxx"
 
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 
 //---------------------------------------------------------------------------

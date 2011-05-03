@@ -29,7 +29,7 @@
 
 #include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
 
-#include "src/OpenFOAM/fields/Fields/vectorField.hh"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 #include <face.H>
 

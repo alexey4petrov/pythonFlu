@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 #include "src/director.hh"
 
-#include "src/OpenFOAM/fields/Fields/scalarField.hh"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 #include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField.hh"
 

@@ -31,7 +31,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/Field.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cpp"
 

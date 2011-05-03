@@ -31,7 +31,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
 

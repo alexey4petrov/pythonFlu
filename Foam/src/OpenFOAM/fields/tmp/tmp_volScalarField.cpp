@@ -31,7 +31,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp_scalarField.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cpp"
 

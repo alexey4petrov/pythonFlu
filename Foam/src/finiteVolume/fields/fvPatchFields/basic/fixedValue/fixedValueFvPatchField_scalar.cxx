@@ -33,7 +33,7 @@
 %import "src/director.hxx"
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %import "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField.hxx"
 

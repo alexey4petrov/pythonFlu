@@ -31,7 +31,7 @@
 
 #include "src/OpenFOAM/meshes/lduMesh.hh"
 
-#include "src/OpenFOAM/fields/Fields/scalarField.hh"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 #include <lduMatrix.H>
 

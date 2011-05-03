@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %template( autoPtr_scalarField ) Foam::autoPtr< scalarField >;
 

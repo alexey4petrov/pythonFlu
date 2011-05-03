@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/scalarField.hh"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 #include "src/OpenFOAM/fields/tmp/tmp_scalarField.hh"
 

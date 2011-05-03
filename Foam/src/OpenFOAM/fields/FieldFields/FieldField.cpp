@@ -37,7 +37,7 @@
 
 %include <FieldField.H>
 
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 
 //---------------------------------------------------------------------------

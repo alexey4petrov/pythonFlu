@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
 
-%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 %import "src/finiteVolume/surfaceMesh.hpp"
 
 %ignore Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >::typeName;

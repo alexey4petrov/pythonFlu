@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %import "src/OpenFOAM/fields/tmp/autoPtr_vectorField.cxx"
 

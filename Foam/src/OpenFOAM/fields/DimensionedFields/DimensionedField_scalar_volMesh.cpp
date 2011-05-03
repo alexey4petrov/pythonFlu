@@ -34,7 +34,7 @@
 //----------------------------------------------------------------------------
 %include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
 
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 %import "src/finiteVolume/volMesh.hpp"
 
 %ignore Foam::DimensionedField< Foam::scalar, Foam::volMesh >::typeName;

@@ -35,7 +35,7 @@
 
 #include <vectorField.H>
 
-#include "src/OpenFOAM/fields/Fields/vectorField.hh"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 
 //---------------------------------------------------------------------------

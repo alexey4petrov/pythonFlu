@@ -40,7 +40,7 @@
 
 %import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
 
-%import "src/OpenFOAM/fields/Fields/vectorField.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 // #include <intersection.H>
 

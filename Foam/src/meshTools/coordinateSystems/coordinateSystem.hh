@@ -31,7 +31,7 @@
 
 #include "src/OpenFOAM/primitives/tensor.hh"
 
-#include "src/OpenFOAM/fields/Fields/vectorField.hh"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 #include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
 

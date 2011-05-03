@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 #include "src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-#include "src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 
 //---------------------------------------------------------------------------

@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/db/regIOobject.cxx"
 
-%import "src/OpenFOAM/fields/Fields/Field.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %import "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
 

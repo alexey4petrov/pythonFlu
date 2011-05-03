@@ -35,7 +35,7 @@
 %import "src/OpenFOAM/primitives/label.cxx"
 %import "src/OpenFOAM/primitives/Lists/labelList.cxx"
 %import "src/OpenFOAM/primitives/Lists/scalarList.cxx"
-%import "src/OpenFOAM/fields/Fields/Field.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %include <FieldMapper.H>
 

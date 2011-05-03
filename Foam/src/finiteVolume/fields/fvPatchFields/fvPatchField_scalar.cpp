@@ -31,11 +31,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/scalarField.cxx"
-
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
 
-%import "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.cxx"
+%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %ignore Foam::fvPatchField< Foam::scalar >::typeName;
 %ignore Foam::fvPatchField< Foam::scalar >::debug;

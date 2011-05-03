@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/vectorField.hh"
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
 
