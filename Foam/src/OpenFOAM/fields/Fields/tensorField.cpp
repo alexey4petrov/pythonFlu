@@ -20,40 +20,40 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef vectorField_cxx
-#define vectorField_cxx
+#ifndef tensorField_cpp
+#define tensorField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.Fields.vectorField";
 %{
-  #include "src/OpenFOAM/fields/Fields/vectorField.hh"
+  #include "src/OpenFOAM/fields/Fields/tensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/Field.cxx"
-
-%import "src/OpenFOAM/primitives/vector.cxx"
-
-%import "src/OpenFOAM/primitives/Lists/vectorList.cxx"
+%include "src/OpenFOAM/fields/Fields/Field.cpp"
 
 %import "src/OpenFOAM/primitives/tensor.cxx"
 
-%import "src/OpenFOAM/primitives/pTraits_vector.cxx"
+%include "src/OpenFOAM/fields/Fields/symmTensorField.cpp"
+
+%include "src/OpenFOAM/fields/Fields/sphericalTensorField.cpp"
+
+%import "src/OpenFOAM/primitives/Lists/tensorList.cxx"
 
 
 //---------------------------------------------------------------------------
-%include <vectorField.H>
+%ignore Foam::Field< Foam::tensor >::typeName;
+%ignore Foam::Field< Foam::tensor >::Field;
+%ignore Foam::Field< Foam::tensor >::T;
 
-%ignore Foam::Field< Foam::vector >::typeName;
-%ignore Foam::Field< Foam::vector >::Field;
-%ignore Foam::Field< Foam::vector >::T;
+%template( tensorField ) Foam::Field< Foam::tensor >; 
 
-VECTOR_FIELD_TEMPLATE_FUNC;
+%typedef Foam::Field< Foam::tensor > tensorField;
 
-%template( vectorField ) Foam::Field< Foam::vector >; 
+TENSOR_FIELD_TEMPLATE_FUNC;
 
 
 //---------------------------------------------------------------------------
+
 #endif

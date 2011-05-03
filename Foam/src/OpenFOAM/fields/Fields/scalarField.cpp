@@ -20,19 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef scalarField_cxx
-#define scalarField_cxx
+#ifndef scalarField_cpp
+#define scalarField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.Fields.scalarField";
 %{
   #include "src/OpenFOAM/fields/Fields/scalarField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/Field.cxx"
+%include "src/OpenFOAM/fields/Fields/Field.cpp"
 
 %import "src/OpenFOAM/primitives/Lists/scalarList.cxx"
 

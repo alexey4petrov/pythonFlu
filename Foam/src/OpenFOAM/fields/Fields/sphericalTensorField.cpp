@@ -20,41 +20,34 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef tensorField_cxx
-#define tensorField_cxx
+#ifndef sphericalTensorField_cpp
+#define sphericalTensorField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.Fields.tensorField";
 %{
-  #include "src/OpenFOAM/fields/Fields/tensorField.hh"
+  #include "src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/Field.cxx"
+%include "src/OpenFOAM/fields/Fields/Field.cpp"
 
-%import "src/OpenFOAM/primitives/tensor.cxx"
+%import "src/OpenFOAM/primitives/sphericalTensor.cxx"
 
-%import "src/OpenFOAM/fields/Fields/symmTensorField.cxx"
-
-%import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
-
-%import "src/OpenFOAM/primitives/Lists/tensorList.cxx"
+%import "src/OpenFOAM/primitives/Lists/sphericalTensorList.cxx"
 
 
 //---------------------------------------------------------------------------
-%ignore Foam::Field< Foam::tensor >::typeName;
-%ignore Foam::Field< Foam::tensor >::Field;
-%ignore Foam::Field< Foam::tensor >::T;
+%ignore Foam::Field< Foam::sphericalTensor >::Field;
+%ignore Foam::Field< Foam::sphericalTensor >::typeName;
 
-%template( tensorField ) Foam::Field< Foam::tensor >; 
+%template( sphericalTensorField ) Foam::Field< Foam::sphericalTensor >; 
 
-%typedef Foam::Field< Foam::tensor > tensorField;
+%typedef Foam::Field< Foam::sphericalTensor > sphericalTensorField;
 
-TENSOR_FIELD_TEMPLATE_FUNC;
+FIELD_TEMPLATE_FUNC( sphericalTensor )
 
 
 //---------------------------------------------------------------------------
-
 #endif

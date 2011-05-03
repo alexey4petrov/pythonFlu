@@ -20,19 +20,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef symmTensorField_cxx
-#define symmTensorField_cxx
+#ifndef symmTensorField_cpp
+#define symmTensorField_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.Fields.symmTensorField";
 %{
   #include "src/OpenFOAM/fields/Fields/symmTensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/Field.cxx"
+%include "src/OpenFOAM/fields/Fields/Field.cxx"
 
 %import "src/OpenFOAM/primitives/symmTensor.cxx"
 
@@ -40,7 +39,7 @@
 
 %import "src/OpenFOAM/primitives/Lists/symmTensorList.cxx"
 
-%import "src/OpenFOAM/fields/Fields/sphericalTensorField.cxx"
+%include "src/OpenFOAM/fields/Fields/sphericalTensorField.cpp"
 
 
 //---------------------------------------------------------------------------
