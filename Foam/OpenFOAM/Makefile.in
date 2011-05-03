@@ -78,7 +78,6 @@ sources = \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/fieldTypes.cxx \
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/Fields/Field.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_entry.cxx \
@@ -94,43 +93,39 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_scalar.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_scalar.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/scalarList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/Fields/scalarField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_scalarField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_scalarField.cxx \
-	@abs_top_builddir@/ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_vector.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_vector.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/vectorList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/Fields/vectorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_vectorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_vectorField.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_sphericalTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/sphericalTensorList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/Fields/sphericalTensorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_sphericalTensorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_symmTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_symmTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/symmTensorList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/Fields/symmTensorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_symmTensorField.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_tensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_tensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/tensorList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/Fields/tensorField.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/Fields/primitiveFields.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_vectorField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_scalarField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_sphericalTensorField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.cxx \
+	\
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_tensorField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_tensorField.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_token.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_token.cxx \
@@ -141,7 +136,6 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveShapes/point/point.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/Fields/primitiveFields.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveShapes/point/pointFieldFwd.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx \
 	\

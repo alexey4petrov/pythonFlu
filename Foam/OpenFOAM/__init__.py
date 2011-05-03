@@ -54,6 +54,7 @@ from Foam.src.OpenFOAM.primitives.tensor import *
 
 from Foam.src.OpenFOAM.db.IOstreams.Fstreams.IFstream import *
 from Foam.src.OpenFOAM.db.IOstreams.Fstreams.OFstream import *
+from Foam.src.OpenFOAM.db.IOstreams.token import *
 
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_entry import *
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericType import *
@@ -63,14 +64,14 @@ from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_Generic import *
 from Foam.src.OpenFOAM.fields.UniformDimensionedFields.UniformDimensionedVectorField import *
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_UniformDimensionedVectorField import *
 
-from Foam.src.OpenFOAM.fields.Fields.vectorField import *
-
 from Foam.src.OpenFOAM.containers.HashTables.HashPtrTable.HashPtrTable_IOobject_word_string_hash import *
 
 from Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable_int_word_string_hash import *
 from Foam.src.OpenFOAM.containers.NamedEnum.NamedEnum import *
 
 from Foam.src.OpenFOAM.meshes.polyMesh.zones.ZoneID.polyPatchID import *
+
+from Foam.src.OpenFOAM.fields.Fields.primitiveFields import *
 
 
 #---------------------------------------------------------------------------
