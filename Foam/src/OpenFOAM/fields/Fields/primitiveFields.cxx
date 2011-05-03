@@ -44,6 +44,8 @@
 
 %include "src/OpenFOAM/fields/tmp/tmp_scalarField.cpp"
 
+%include "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.cpp"
+
 %include "src/OpenFOAM/fields/tmp/tmp_vectorField.cpp"
 
 %include "src/OpenFOAM/fields/tmp/tmp_tensorField.cpp"
