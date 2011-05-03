@@ -32,6 +32,7 @@ from Foam.src.OpenFOAM.db.IOobjectList import *
 from Foam.src.OpenFOAM.primitives.strings.fileName import *
 
 from Foam.src.OpenFOAM.db.IOdictionary import *
+from Foam.src.OpenFOAM.fields.tmp.autoPtr_IOdictionary import *
 from Foam.src.OpenFOAM.db.dictionary.dictionary import *
 from Foam.src.OpenFOAM.primitives.strings.word import *
 
