@@ -147,8 +147,9 @@ public:
         static inline string quotemeta(const string&, const char quote='\\');
 
         //- Avoid masking the normal std::string replace
+#ifndef SWIG
         using std::string::replace;
-
+#endif
         //- Replace first occurence of sub-string oldStr with newStr
         //  starting at start
         string& replace
