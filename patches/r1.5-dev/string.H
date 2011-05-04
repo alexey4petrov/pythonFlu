@@ -73,8 +73,10 @@ Ostream& operator<<(Ostream&, const std::string&);
 \*---------------------------------------------------------------------------*/
 
 class string
+#ifndef SWIG
 :
     public std::string
+#endif
 {
 public:
 
