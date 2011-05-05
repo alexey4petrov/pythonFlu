@@ -33,6 +33,8 @@
 
 #include "src/OpenFOAM/fields/Fields/Field.hh"
 
+#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+
 #include <FieldMapper.H>
 
 
