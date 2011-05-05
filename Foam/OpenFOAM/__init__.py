@@ -60,8 +60,38 @@ from Foam.src.OpenFOAM.primitives.ops.ops_label import *
 from Foam.src.OpenFOAM.db.IOstreams.Fstreams.IFstream import *
 from Foam.src.OpenFOAM.db.IOstreams.Fstreams.OFstream import *
 from Foam.src.OpenFOAM.db.IOstreams.Pstreams.Pstream import *
+
+
+#---------------------------------------------------------------------------
 from Foam.src.OpenFOAM.db.IOstreams.token import *
 
+token.NULL_TOKEN = ext_make_punctuationToken( token.NULL_TOKEN )
+token.SPACE = ext_make_punctuationToken( token.SPACE )
+token.TAB = ext_make_punctuationToken( token.TAB )
+token.NL = ext_make_punctuationToken( token.NL )
+
+token.END_STATEMENT = ext_make_punctuationToken( token.END_STATEMENT )
+token.BEGIN_LIST = ext_make_punctuationToken( token.BEGIN_LIST )
+token.END_LIST = ext_make_punctuationToken( token.END_LIST )
+token.BEGIN_SQR = ext_make_punctuationToken( token.BEGIN_SQR )
+token.END_SQR = ext_make_punctuationToken( token.END_SQR )
+token.BEGIN_BLOCK = ext_make_punctuationToken( token.BEGIN_BLOCK )
+token.END_BLOCK = ext_make_punctuationToken( token.END_BLOCK )
+
+token.COLON = ext_make_punctuationToken( token.COLON )
+token.COMMA = ext_make_punctuationToken( token.COMMA )
+
+token.BEGIN_STRING = ext_make_punctuationToken( token.BEGIN_STRING )
+token.END_STRING = ext_make_punctuationToken( token.END_STRING )
+
+token.ASSIGN = ext_make_punctuationToken( token.ASSIGN )
+token.ADD = ext_make_punctuationToken( token.ADD )
+token.SUBTRACT = ext_make_punctuationToken( token.SUBTRACT )
+token.MULTIPLY = ext_make_punctuationToken( token.MULTIPLY )
+token.DIVIDE = ext_make_punctuationToken( token.DIVIDE )
+
+
+#---------------------------------------------------------------------------
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_entry import *
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericType import *
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericINew import *
