@@ -251,7 +251,7 @@ __APP_FLAGS__ = $(__LDFLAGS__)
 
 %.exe : %.o
 	gcc $< $(__APP_FLAGS__) -o $@
-	python `basename $@ exe`py
+#	python `basename $@ exe`py
 
 %.pyc : %.py
 	@python -c "import py_compile; py_compile.compile('$<')"

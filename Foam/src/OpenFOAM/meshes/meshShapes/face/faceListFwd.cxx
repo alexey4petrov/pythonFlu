@@ -28,7 +28,7 @@
 %import "src/OpenFOAM/meshes/meshShapes/face/face.cxx"
 
 %{
-    #include <faceListFwd.H>
+    #include "src/OpenFOAM/meshes/meshShapes/face/faceListFwd.hh"
 %}
 
 %include <faceListFwd.H>
