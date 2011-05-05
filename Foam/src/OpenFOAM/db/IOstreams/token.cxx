@@ -48,6 +48,8 @@
 
 %include <token.H>
 
+%include "src/OpenFOAM/db/IOstreams/token.hh"
+
 
 //---------------------------------------------------------------------------
 #endif

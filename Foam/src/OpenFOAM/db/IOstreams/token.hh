@@ -35,4 +35,15 @@
 
 
 //---------------------------------------------------------------------------
+namespace Foam
+{
+  inline token ext_make_punctuationToken( int thePunctuationEnum, 
+                                          label lineNumber = 0 )
+  {
+    return token( token::punctuationToken( thePunctuationEnum ), lineNumber );
+  }
+}
+
+
+//---------------------------------------------------------------------------
 #endif
