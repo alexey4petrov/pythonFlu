@@ -64,6 +64,11 @@ from Foam.src.finiteVolume.finiteVolume.snGradSchemes.snGradScheme import *
 
 from Foam.src.finiteVolume.interpolation.surfaceInterpolation.multivariateSchemes.multivariateSurfaceInterpolationScheme.multivariateSurfaceInterpolationScheme_scalar import *
 
+from Foam.src.finiteVolume.cfdTools.general.MRF.MRFZone import *
+from Foam.src.finiteVolume.cfdTools.general.MRF.MRFZones import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_MRFZone import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_MRFZone import *
+
 
 #---------------------------------------------------------------------------
 volScalarField = GeometricField_scalar_fvPatchField_volMesh
