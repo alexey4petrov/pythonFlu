@@ -48,18 +48,18 @@
 //---------------------------------------------------------------------------
 %define POROUSZONES_EXTENDS( Type )
    Foam::tmp< Foam::fvMatrix< Foam::Type > > ddt( const Foam::volScalarField& rho, 
-                                                    Foam::GeometricField< Foam::Type, Foam::fvPatchField, Foam::volMesh>& vf )
+                                                  Foam::GeometricField< Foam::Type, Foam::fvPatchField, Foam::volMesh >& vf )
    {
       return self->ddt( rho, vf );
    }
    
-   Foam::tmp< Foam::fvMatrix< Foam::Type > > ddt( Foam::GeometricField< Foam::Type, Foam::fvPatchField, Foam::volMesh>& vf )
+   Foam::tmp< Foam::fvMatrix< Foam::Type > > ddt( Foam::GeometricField< Foam::Type, Foam::fvPatchField, Foam::volMesh >& vf )
    {
       return self->ddt( vf );
    }
    
    Foam::tmp<Foam::fvMatrix< Foam::Type > > ddt( const Foam::dimensionedScalar& rho, 
-                                                 Foam::GeometricField< Foam::Type, Foam::fvPatchField, Foam::volMesh>& vf )
+                                                 Foam::GeometricField< Foam::Type, Foam::fvPatchField, Foam::volMesh >& vf )
    {
       return self->ddt( rho,vf );
    }
@@ -70,8 +70,8 @@
 //---------------------------------------------------------------------------
 %extend Foam::porousZones
 {
-   POROUSZONES_EXTENDS( vector )
-   POROUSZONES_EXTENDS( scalar )
+   POROUSZONES_EXTENDS( vector );
+   POROUSZONES_EXTENDS( scalar );
 }
 
 
