@@ -20,6 +20,13 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_UniformDimensionedVectorField";
+%{
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_UniformDimensionedVectorField.hh"
+%}
+
+
+//---------------------------------------------------------------------------
 %import "src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
@@ -30,13 +37,6 @@
 //---------------------------------------------------------------------------
 #ifndef PtrList_UniformDimensionedVectorField_cxx
 #define PtrList_UniformDimensionedVectorField_cxx
-
-
-//---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_UniformDimensionedVectorField";
-%{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_UniformDimensionedVectorField.hh"
-%}
 
 
 //---------------------------------------------------------------------------

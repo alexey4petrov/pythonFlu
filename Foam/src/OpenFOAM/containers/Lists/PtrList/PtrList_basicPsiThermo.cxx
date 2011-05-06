@@ -20,6 +20,13 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicPsiThermo";
+%{
+   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.hh"
+%}
+
+
+//---------------------------------------------------------------------------
 %import "src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
@@ -30,13 +37,6 @@
 //---------------------------------------------------------------------------
 #ifndef PtrList_basicPsiThermo_cxx
 #define PtrList_basicPsiThermo_cxx
-
-
-//---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicPsiThermo";
-%{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.hh"
-%}
 
 
 //---------------------------------------------------------------------------

@@ -20,7 +20,15 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_basicRhoThermo"
+%{
+  #include "src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.hh"
+%}
+
+
+//---------------------------------------------------------------------------
 %import "src/common.hxx"
+
 #if FOAM_VERSION( <, 010600 )
 #define autoPtr_basicRhoThermo_cxx
 #endif
