@@ -72,6 +72,7 @@ from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_MRFZone import *
 
 #---------------------------------------------------------------------------
 volScalarField = GeometricField_scalar_fvPatchField_volMesh
+volScalarField.DimensionedInternalField = DimensionedField_scalar_volMesh
 
 volVectorField = GeometricField_vector_fvPatchField_volMesh
 
