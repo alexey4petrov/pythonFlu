@@ -43,7 +43,10 @@
 
 #include "src/OpenFOAM/primitives/scalar.hh"
 
+#include "src/OpenFOAM/primitives/label.hh"
+
 #include <oneField.H>
+
 
 //---------------------------------------------------------------------------
 #endif

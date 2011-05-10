@@ -50,7 +50,10 @@
 
 %import "src/OpenFOAM/primitives/scalar.cxx"
 
+%import "src/OpenFOAM/primitives/label.cxx"
+
 %include <oneField.H>
+
 
 //---------------------------------------------------------------------------
 #endif
