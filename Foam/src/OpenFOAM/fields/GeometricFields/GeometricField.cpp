@@ -145,7 +145,17 @@
   {
     return Foam::max( get_ref( self ), theArg );
   }
-  
+
+  Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_max( const Type& theArg )
+  {
+    return Foam::max( get_ref( self ), theArg );
+  }
+
+  Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_min( const Type& theArg )
+  {
+    return Foam::min( get_ref( self ), theArg );
+  }
+ 
   Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > ext_min( const Foam::dimensioned< Type >& theArg )
   {
     return Foam::min( get_ref( self ), theArg );
