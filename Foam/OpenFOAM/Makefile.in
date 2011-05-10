@@ -29,6 +29,7 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/bool.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/int_.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/label.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/one.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/primitives/strings/string.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/strings/word.cxx \
@@ -109,6 +110,8 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_tensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_tensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/tensorList.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/Fields/oneField.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/primitiveFields.cxx \
 	\
@@ -246,6 +249,9 @@ sources = \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_int_word_string_hash.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/NamedEnum/NamedEnum.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/FieldFields/oneFieldField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/geometricOneField.cxx
 
 
 #--------------------------------------------------------------------------------------
