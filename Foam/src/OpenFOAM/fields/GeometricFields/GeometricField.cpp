@@ -185,6 +185,22 @@
 
 
 //---------------------------------------------------------------------------
+%define __COMMON_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type )
+{
+  const Type& __getitem__( const Foam::label& theIndex ) const
+  {
+    return get_ref( self )[ theIndex ];
+  }
+
+  void __setitem__( const Foam::label& theIndex, const Type& theValue )
+  {
+    get_ref( self )[ theIndex ] = theValue;
+  }
+}
+%enddef
+
+
+//---------------------------------------------------------------------------
 %define GEOMETRIC_FIELD_TEMPLATE_FUNC( Type, TPatchField, TMesh )
 
 %extend Foam::GeometricField< Type, TPatchField, TMesh > COMMON_EXTENDS;
@@ -202,6 +218,8 @@
 %extend Foam::GeometricField< Type, TPatchField, TMesh > __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
 
 %extend Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
+
+%extend Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __COMMON_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type )
 
 %enddef
 
@@ -233,6 +251,11 @@
   }
   
   Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __rdiv__( const Foam::scalar& theArg )
+  {
+    return theArg / get_ref( self );
+  }
+
+  Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __rdiv__( const Foam::dimensioned< Foam::scalar >& theArg )
   {
     return theArg / get_ref( self );
   }
