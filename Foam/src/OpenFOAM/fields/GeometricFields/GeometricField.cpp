@@ -215,11 +215,11 @@
 
 %extend Foam::GeometricField< Type, TPatchField, TMesh > OSTREAM_EXTENDS;
 
-%extend Foam::GeometricField< Type, TPatchField, TMesh > __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
+%extend Foam::GeometricField< Type, TPatchField, TMesh > __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
 
-%extend Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
+%extend Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
 
-%extend Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __COMMON_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type )
+%extend Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __COMMON_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type );
 
 %enddef
 
