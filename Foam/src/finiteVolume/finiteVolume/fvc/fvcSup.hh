@@ -31,21 +31,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
-
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
-#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
-
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
-#include "src/OpenFOAM/fields/tmp/tmp_volVectorField.hh"
-
-
-//---------------------------------------------------------------------------
-#include "src/finiteVolume/volMesh.hh"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
 
 //---------------------------------------------------------------------------

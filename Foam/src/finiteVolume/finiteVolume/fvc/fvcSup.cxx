@@ -42,44 +42,32 @@
 %{
 
 Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > >
-fvc_Su
-(
-    const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh>& su,
-    Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh>& vf
-)
+fvc_Su( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh>& su, 
+        Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh>& vf )
 {
-    return Foam::fvc::Su( su, vf );
+  return Foam::fvc::Su( su, vf );
 }
     
 Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > >
-fvc_Sp
-(
-    const Foam::volScalarField& sp,
-    Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf
-)
+fvc_Sp( const Foam::volScalarField& sp,
+        Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
 {
-    return Foam::fvc::Sp( sp, vf );
+  return Foam::fvc::Sp( sp, vf );
 }
 
 Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > >
-fvc_Sp
-(
-    const Foam::dimensionedScalar& sp,
-    Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf
-)
+fvc_Sp( const Foam::dimensionedScalar& sp,
+        Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
 {
-    return Foam::fvc::Sp( sp, vf );
+  return Foam::fvc::Sp( sp, vf );
 }
 
 
 Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > >
-fvc_SuSp
-(
-    const Foam::volScalarField& sp,
-    Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf
-)
+fvc_SuSp( const Foam::volScalarField& sp,
+          Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf)
 {
-    return Foam::fvc::SuSp( sp, vf );
+  return Foam::fvc::SuSp( sp, vf );
 }
 
 %}
