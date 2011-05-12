@@ -37,6 +37,8 @@
 %import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 %import "src/finiteVolume/volMesh.hpp"
 
+DIMENSIONED_FIELD_VOLMESH_TYPEMAP( scalar );
+
 %ignore Foam::DimensionedField< Foam::scalar, Foam::volMesh >::typeName;
 %ignore Foam::DimensionedField< Foam::scalar, Foam::volMesh >::debug;
 %ignore Foam::DimensionedField< Foam::scalar, Foam::volMesh >::T;

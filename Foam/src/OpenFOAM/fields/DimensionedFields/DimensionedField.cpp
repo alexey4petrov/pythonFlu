@@ -55,14 +55,15 @@
 
 
 //---------------------------------------------------------------------------
-%define NO_TMP_TYPEMAP_DIMENSIONED_FIELD( Type, TMesh )
+%define NO_TMP_TYPEMAP_DIMENSIONED_FIELD( Type, TMesh, TPatchField )
 
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::DimensionedField< Type, TMesh >& 
 {
   void *ptr;
   int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::DimensionedField< Type, TMesh > * ), 0 );
   int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::DimensionedField< Type, TMesh > > * ), 0 );
-  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 );
+  int res2 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
+  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( res2 );
 }
 
 %typemap( in ) const Foam::DimensionedField< Type, TMesh >& 
@@ -80,8 +81,15 @@
       Foam::tmp<Foam::DimensionedField< Type, TMesh > >* tmp_res = %reinterpret_cast( argp, Foam::tmp< Foam::DimensionedField< Type, TMesh > > * );
       $1 = tmp_res->operator->();
     } else {
+    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > >* ), %convertptr_flags );
+    if ( SWIG_IsOK( res ) && argp ) {
+      Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > >* tmp_res = %reinterpret_cast( argp, Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
+     $1 = tmp_res->operator->();
+    }
+    else {    
       %argument_fail( res, "$type", $symname, $argnum );
     }
+   }
   }
 }    
 %enddef
@@ -93,8 +101,6 @@
 %define DIMENSIONED_FIELD_TEMPLATE_FUNC( Type, TMesh )
 
 %extend Foam::DimensionedField< Foam::Type, Foam::TMesh > COMMON_EXTENDS;
-
-NO_TMP_TYPEMAP_DIMENSIONED_FIELD( Foam::Type, Foam::TMesh );
 
 %extend Foam::DimensionedField< Foam::Type, Foam::TMesh > FIELD_VIRTUAL_EXTENDS( Type );
 
@@ -140,6 +146,22 @@ NO_TMP_TYPEMAP_DIMENSIONED_FIELD( Foam::Type, Foam::TMesh );
    DIMENSIONED_FIELD_TEMPLATE_FUNC( vector, TMesh );
    
    %extend Foam::DimensionedField< Foam::vector, Foam::TMesh > __VECTOR_DIMENSIONED_FIELD_OPERATORS( TMesh );
+%enddef
+
+
+//---------------------------------------------------------------------------------
+%define DIMENSIONED_FIELD_VOLMESH_TYPEMAP( Type )
+
+NO_TMP_TYPEMAP_DIMENSIONED_FIELD( Foam::Type, Foam::volMesh, Foam::fvPatchField );
+
+%enddef
+
+
+//---------------------------------------------------------------------------------
+%define DIMENSIONED_FIELD_SURFACEMESH_TYPEMAP( Type )
+
+NO_TMP_TYPEMAP_DIMENSIONED_FIELD( Foam::Type, Foam::surfaceMesh, Foam::fvsPatchField );
+
 %enddef
 
 

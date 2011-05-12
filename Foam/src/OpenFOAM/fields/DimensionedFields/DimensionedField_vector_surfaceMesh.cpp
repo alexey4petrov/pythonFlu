@@ -37,6 +37,8 @@
 %import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 %import "src/finiteVolume/surfaceMesh.hpp"
 
+DIMENSIONED_FIELD_SURFACEMESH_TYPEMAP( vector )
+
 %ignore Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >::typeName;
 %ignore Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >::debug;
 %ignore Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >::T;
