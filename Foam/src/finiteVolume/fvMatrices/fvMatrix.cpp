@@ -112,10 +112,21 @@
   {
     return theArg + get_ref( self )  ;
   }
+
+  Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > > 
+  __and__ ( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
+  {
+    return get_ref( self ) & theArg;
+  }
   
   Foam::tmp< Foam::fvMatrix< Type > > __sub__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
   {
     return get_ref( self ) - theArg;
+  }
+
+  Foam::tmp< Foam::fvMatrix< Type > > __rsub__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
+  {
+    return theArg - get_ref( self );
   }
 
   Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::fvMatrix< Type >& theArg )
