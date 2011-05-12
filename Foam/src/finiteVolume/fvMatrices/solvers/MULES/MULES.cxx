@@ -36,7 +36,7 @@
 
 %import "src/OpenFOAM/fields/GeometricFields/geometricOneField.cxx"
 
-%rename ( ext_explicitSolve ) Foam::MULES::explicitSolve;
+%rename ( MULES_explicitSolve ) Foam::MULES::explicitSolve;
 
 %include <MULES.H>
 
