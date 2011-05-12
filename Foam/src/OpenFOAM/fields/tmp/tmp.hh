@@ -40,11 +40,17 @@ namespace Foam
   {
     return *theArg;
   }
-  
+
   template< class T >
   T& get_ref( tmp< T >* theArg )
   {
     return (*theArg)();
+  }
+
+  template< class T >
+  const T& get_ref( const tmp< T >* theArg )
+  {
+    return *theArg;
   }
   
   template< class T >
@@ -52,7 +58,6 @@ namespace Foam
   {
     return (*theArg)();
   }
-  
 }
 
 
