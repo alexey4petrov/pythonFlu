@@ -34,7 +34,13 @@
 //---------------------------------------------------------------------------
 %import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
+%import "src/OpenFOAM/fields/GeometricFields/geometricOneField.cxx"
+
+%rename ( ext_explicitSolve ) Foam::MULES::explicitSolve;
+
 %include <MULES.H>
+
+%include "src/finiteVolume/fvMatrices/solvers/MULES/MULES.hh"
 
 
 //----------------------------------------------------------------------------

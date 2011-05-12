@@ -27,7 +27,27 @@
 //---------------------------------------------------------------------------
 #include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
+#include "src/OpenFOAM/fields/GeometricFields/geometricOneField.hh"
+
 #include <MULES.H>
+
+namespace Foam
+{
+  namespace MULES
+  {
+   void explicitSolve( const geometricOneField& rho,
+                       volScalarField& psi,
+                       const surfaceScalarField& phiBD,
+                       surfaceScalarField& phiPsi,
+                       const DimensionedField< scalar, volMesh >& Sp,
+                       const DimensionedField< scalar, volMesh >& Su,
+                       const scalar psiMax,
+                       const scalar psiMin )
+   {
+       explicitSolve<>( rho, psi, phiBD, phiPsi, Sp, Su, psiMax, psiMin );
+   }
+  }
+}
 
 
 //----------------------------------------------------------------------------
