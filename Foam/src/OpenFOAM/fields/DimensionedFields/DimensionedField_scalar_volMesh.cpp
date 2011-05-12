@@ -43,7 +43,7 @@ DIMENSIONED_FIELD_VOLMESH_TYPEMAP( scalar );
 %ignore Foam::DimensionedField< Foam::scalar, Foam::volMesh >::debug;
 %ignore Foam::DimensionedField< Foam::scalar, Foam::volMesh >::T;
 
-DIMENSIONED_FIELD_TEMPLATE_FUNC( scalar, volMesh )
+DIMENSIONED_FIELD_TEMPLATE_FUNC( scalar, volMesh );
 
 %template( DimensionedField_scalar_volMesh ) Foam::DimensionedField< Foam::scalar, Foam::volMesh >;
 

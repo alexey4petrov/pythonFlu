@@ -42,7 +42,7 @@ DIMENSIONED_FIELD_VOLMESH_TYPEMAP( symmTensor );
 %ignore Foam::DimensionedField< Foam::symmTensor, Foam::volMesh >::debug;
 %ignore Foam::DimensionedField< Foam::symmTensor, Foam::volMesh >::typeName;
 
-DIMENSIONED_FIELD_TEMPLATE_FUNC( symmTensor, volMesh )
+DIMENSIONED_FIELD_TEMPLATE_FUNC( symmTensor, volMesh );
 
 %template( DimensionedField_symmTensor_volMesh ) Foam::DimensionedField< Foam::symmTensor, Foam::volMesh >;
 

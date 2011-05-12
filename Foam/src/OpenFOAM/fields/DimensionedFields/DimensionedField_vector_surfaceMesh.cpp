@@ -37,13 +37,13 @@
 %import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 %import "src/finiteVolume/surfaceMesh.hpp"
 
-DIMENSIONED_FIELD_SURFACEMESH_TYPEMAP( vector )
+DIMENSIONED_FIELD_SURFACEMESH_TYPEMAP( vector );
 
 %ignore Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >::typeName;
 %ignore Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >::debug;
 %ignore Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >::T;
 
-VECTOR_DIMENSIONED_FIELD_TEMPLATE_FUNC( surfaceMesh )
+VECTOR_DIMENSIONED_FIELD_TEMPLATE_FUNC( surfaceMesh );
 
 %template( DimensionedField_vector_surfaceMesh ) Foam::DimensionedField< Foam::vector, Foam::surfaceMesh >;
 

@@ -42,7 +42,7 @@ DIMENSIONED_FIELD_VOLMESH_TYPEMAP( sphericalTensor );
 %ignore Foam::DimensionedField< Foam::sphericalTensor, Foam::volMesh >::debug;
 %ignore Foam::DimensionedField< Foam::sphericalTensor, Foam::volMesh >::typeName;
 
-DIMENSIONED_FIELD_TEMPLATE_FUNC( sphericalTensor, volMesh )
+DIMENSIONED_FIELD_TEMPLATE_FUNC( sphericalTensor, volMesh );
 
 %template( DimensionedField_sphericalTensor_volMesh ) Foam::DimensionedField< Foam::sphericalTensor, Foam::volMesh >;
 
