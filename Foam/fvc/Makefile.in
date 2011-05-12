@@ -45,6 +45,7 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcFlux.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcVolumeIntegrate.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcSnGrad.cxx \
+	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcSup.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcReconstruct.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcLaplacian.cxx \

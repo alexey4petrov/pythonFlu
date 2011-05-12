@@ -27,6 +27,7 @@ from Foam.src.finiteVolume.finiteVolume.fvc.fvcDiv import *
 from Foam.src.finiteVolume.finiteVolume.fvc.fvcFlux import *
 from Foam.src.finiteVolume.finiteVolume.fvc.fvcVolumeIntegrate import *
 from Foam.src.finiteVolume.finiteVolume.fvc.fvcSnGrad import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcSup import *
 from Foam.src.finiteVolume.finiteVolume.fvc.fvcReconstruct import *
 from Foam.src.finiteVolume.finiteVolume.fvc.fvcMeshPhi import *
 from Foam.src.finiteVolume.finiteVolume.fvc.fvcLaplacian import *
@@ -60,6 +61,12 @@ makeRelative = fvc_makeRelative
 makeAbsolute = fvc_makeAbsolute
 
 flux = fvc_flux
+
+Sp = fvc_Sp
+
+Su = fvc_Su
+
+SuSp = fvc_SuSp
 
 
 #---------------------------------------------------------------------------
