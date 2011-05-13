@@ -52,6 +52,7 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/symmTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/pTraits_symmTensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/tensor.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/complex.cxx \
 	\
 	@abs_top_builddir@/src/iterators.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList.cxx \

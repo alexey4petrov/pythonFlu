@@ -55,6 +55,7 @@ from Foam.src.OpenFOAM.primitives.symmTensor import *
 from Foam.src.OpenFOAM.primitives.tensor import *
 from Foam.src.OpenFOAM.primitives.bool import *
 from Foam.src.OpenFOAM.primitives.one import *
+from Foam.src.OpenFOAM.primitives.complex import *
 
 from Foam.src.OpenFOAM.primitives.ops.ops_label import *
 
