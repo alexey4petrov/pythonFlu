@@ -45,13 +45,14 @@
 %import "src/OpenFOAM/containers/Lists/List/List_complex.cxx"
 
 %ignore Foam::Field< Foam::complex >::Field;
+%ignore Foam::Field< Foam::complex >::typeName;
 %ignore Foam::Field< Foam::complex >::replace;
 %ignore Foam::Field< Foam::complex >::component;
 %ignore Foam::Field< Foam::complex >::T;
 
 COMPLEX_FIELD_TEMPLATE_FUNC( complex );
 
-%template ( complexField ) Foam::Field< Foam::complex >;
+%template( complexField ) Foam::Field< Foam::complex >;
 
 
 //---------------------------------------------------------------------------
@@ -62,11 +63,12 @@ COMPLEX_FIELD_TEMPLATE_FUNC( complex );
 %import "src/OpenFOAM/containers/Lists/List/List_complexVector.cxx"
 
 %ignore Foam::Field< Foam::complexVector >::Field;
+%ignore Foam::Field< Foam::complexVector >::typeName;
 %ignore Foam::Field< Foam::complexVector >::T;
 
 COMPLEX_FIELD_TEMPLATE_FUNC( complexVector );
 
-%template ( complexVectorField ) Foam::Field< Foam::complexVector >;
+%template( complexVectorField ) Foam::Field< Foam::complexVector >;
 
 
 //---------------------------------------------------------------------------
