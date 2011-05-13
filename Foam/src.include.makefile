@@ -36,6 +36,7 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/transportModels \
 	-I$(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/dynamicMesh/lnInclude \
+	-I$(WM_PROJECT_DIR)/src/randomProcesses/lnInclude \
 	
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
@@ -58,7 +59,8 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lspecie \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lincompressibleTransportModels \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -linterfaceProperties \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -ldynamicFvMesh	
+	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -ldynamicFvMesh \
+	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lrandomProcesses
 
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -le 010401 ]; then echo 'true'; else echo 'false'; fi )" "true" 
