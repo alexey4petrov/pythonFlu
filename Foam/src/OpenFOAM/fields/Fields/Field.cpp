@@ -295,4 +295,14 @@ FIELD_TEMPLATE_FUNC( tensor );
 
 
 //----------------------------------------------------------------------------
+%define COMPLEX_FIELD_TEMPLATE_FUNC( ComplexType )
+
+%extend Foam::Field< Foam::ComplexType > __FIELD_TEMPLATE_FUNC__( ComplexType );
+
+%extend Foam::Field< Foam::ComplexType > FIELD_VIRTUAL_EXTENDS( ComplexType );
+
+%enddef
+
+
+//----------------------------------------------------------------------------
 #endif
