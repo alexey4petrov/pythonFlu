@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.randomProcesses.fft.fft";
 %{
-    #include "src/randomProcesses/fft/fft.hh"
+  #include "src/randomProcesses/fft/fft.hh"
 %}
 
 
