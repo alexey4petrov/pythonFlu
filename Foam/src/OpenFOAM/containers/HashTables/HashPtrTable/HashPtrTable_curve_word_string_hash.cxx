@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.HashTables.HashPtrTable.HashPtrTable_curve_word_string_hash"
 %{
-    #include "src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_curve_word_string_hash.hh"
+  #include "src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_curve_word_string_hash.hh"
 %}
 
 
@@ -42,26 +42,26 @@
 
 %template( TPtrContainer_word_curve ) Foam::TPtrContainer_iterator< Foam::HashPtrTable< Foam::curve, Foam::word, Foam::string_hash > >;
 
-HASHPTRTABLE_ADDONS( Foam::curve, Foam::word, Foam::string_hash )
+HASHPTRTABLE_ADDONS( Foam::curve, Foam::word, Foam::string_hash );
 
 
 //---------------------------------------------------------------------------
 %typemap( typecheck ) const Foam::HashPtrTable< Foam::curve > &
 {
-    void *ptr;
-    int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::HashPtrTable< Foam::curve, Foam::word, Foam::string_hash >* ), 0 );
-    $1 = SWIG_CheckState( res );
+  void *ptr;
+  int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::HashPtrTable< Foam::curve, Foam::word, Foam::string_hash >* ), 0 );
+  $1 = SWIG_CheckState( res );
 }
 
 %typemap( in ) const Foam::HashPtrTable< Foam::curve > &
 {
-    void *ptr;
-    int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::HashPtrTable< Foam::curve, Foam::word, Foam::string_hash >* ), 0 );
-    if ( SWIG_IsOK( res ) ) {
-        $1 = reinterpret_cast< $1_ltype >( ptr );
-    } else {
-        %argument_fail( res, "$type", $symname, $argnum ); 
-    }
+  void *ptr;
+  int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::HashPtrTable< Foam::curve, Foam::word, Foam::string_hash >* ), 0 );
+  if ( SWIG_IsOK( res ) ) {
+    $1 = reinterpret_cast< $1_ltype >( ptr );
+  } else {
+      %argument_fail( res, "$type", $symname, $argnum ); 
+  }
 }
 
 
