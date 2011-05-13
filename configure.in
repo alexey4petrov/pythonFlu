@@ -116,6 +116,7 @@ AC_OUTPUT( [ bashrc \
 	     Foam/sampling/Makefile \
 	     Foam/dynamicMesh/Makefile \
 	     Foam/dynamicFvMesh/Makefile \
+	     Foam/randomProcesses/Makefile \
 	     Foam/thermophysicalModels/Makefile \
 	     Foam/transportModels/Makefile \
 	     Foam/radiation/Makefile \

@@ -20,15 +20,10 @@
 ##
 
 
-#--------------------------------------------------------------------------------------
-include @abs_top_builddir@/foam.version.makefile
-
-
-#--------------------------------------------------------------------------------------
-include @abs_top_builddir@/include.makefile
-
-SUBDIRS = OpenFOAM meshTools finiteVolume fv fvc fvm MULES sampling dynamicMesh dynamicFvMesh randomProcesses thermophysicalModels transportModels radiation incompressible compressible
-
-
-#--------------------------------------------------------------------------------------
-
+#--------------------------------------------------------------------------
+from Foam.src.randomProcesses.fft.fft import *
+from Foam.src.randomProcesses.fft.calcEk import *
+from Foam.src.randomProcesses.Kmesh.Kmesh import *
+from Foam.src.randomProcesses.processes.UOprocess import *
+	
+#---------------------------------------------------------------------------
