@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.graph.graph";
 %{
-    #include "src/OpenFOAM/graph/graph.hh"
+  #include "src/OpenFOAM/graph/graph.hh"
 %}
 
 
