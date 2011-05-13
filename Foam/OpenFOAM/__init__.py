@@ -57,6 +57,7 @@ from Foam.src.OpenFOAM.primitives.bool import *
 from Foam.src.OpenFOAM.primitives.one import *
 from Foam.src.OpenFOAM.primitives.complex import *
 from Foam.src.OpenFOAM.primitives.complexVector import *
+from Foam.src.OpenFOAM.primitives.Random import *
 
 from Foam.src.OpenFOAM.primitives.ops.ops_label import *
 
@@ -145,6 +146,9 @@ vectorList = List_vector
 from Foam.src.OpenFOAM.containers.Lists.List.List_word import *
 wordList = List_word
 
+from Foam.src.OpenFOAM.containers.Lists.List.List_complex import *
+complexList = List_complex
+
 
 #---------------------------------------------------------------------------
 from Foam.src.OpenFOAM.containers.Lists.List.List_cell import *
@@ -175,4 +179,8 @@ from Foam.src.OpenFOAM.fields.FieldFields.oneFieldField import *
 from Foam.src.OpenFOAM.fields.GeometricFields.geometricOneField import *
 
 
+#---------------------------------------------------------------------------
+from Foam.src.OpenFOAM.fields.Fields.complexFields import *
+
+	
 #---------------------------------------------------------------------------

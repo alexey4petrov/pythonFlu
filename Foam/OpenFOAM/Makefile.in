@@ -54,6 +54,7 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/primitives/tensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/complex.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/complexVector.cxx \
+	@abs_top_builddir@/src/OpenFOAM/primitives/Random.cxx \
 	\
 	@abs_top_builddir@/src/iterators.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList.cxx \
@@ -113,9 +114,16 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_tensor.cxx \
 	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/tensorList.cxx \
 	\
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_complex.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_complex.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_complexVector.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_complexVector.cxx \
+	\
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/oneField.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/primitiveFields.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/fields/Fields/complexFields.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_vectorField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.cxx \
