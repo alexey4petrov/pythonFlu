@@ -44,9 +44,8 @@
 
 %extend Foam::tmp< Foam::Field< Foam::complexVector > >
 {
-  SMARTPTR_EXTEND_ATTR( tmp_complexVectorField )
+  SMARTPTR_EXTEND_ATTR( tmp_complexVectorField );
 }
-
 
 
 //---------------------------------------------------------------------------

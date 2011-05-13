@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.tmp_complexField"
 %{
-    #include "src/OpenFOAM/fields/tmp/tmp_complexField.hh"
+  #include "src/OpenFOAM/fields/tmp/tmp_complexField.hh"
 %}
 
 
@@ -44,7 +44,7 @@
 
 %extend Foam::tmp< Foam::Field< Foam::complex > >
 {
-  SMARTPTR_EXTEND_ATTR( tmp_complexField )
+  SMARTPTR_EXTEND_ATTR( tmp_complexField );
 }
 
 
