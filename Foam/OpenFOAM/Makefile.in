@@ -124,6 +124,8 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/primitiveFields.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/complexFields.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_complexField.cxx \
+	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_complexVectorField.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_vectorField.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.cxx \

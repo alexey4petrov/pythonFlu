@@ -181,6 +181,8 @@ from Foam.src.OpenFOAM.fields.GeometricFields.geometricOneField import *
 
 #---------------------------------------------------------------------------
 from Foam.src.OpenFOAM.fields.Fields.complexFields import *
+from Foam.src.OpenFOAM.fields.tmp.tmp_complexField import *
+from Foam.src.OpenFOAM.fields.tmp.tmp_complexVectorField import *
 
 	
 #---------------------------------------------------------------------------
