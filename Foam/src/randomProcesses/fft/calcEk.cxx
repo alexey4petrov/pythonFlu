@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.randomProcesses.fft.calcEk";
 %{
-    #include "src/randomProcesses/fft/calcEk.hh"
+  #include "src/randomProcesses/fft/calcEk.hh"
 %}
 
 

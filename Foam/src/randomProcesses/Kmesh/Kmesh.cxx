@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.randomProcesses.Kmesh";
 %{
-   #include "src/randomProcesses/Kmesh/Kmesh.hh"
+  #include "src/randomProcesses/Kmesh/Kmesh.hh"
 %}
 
 
