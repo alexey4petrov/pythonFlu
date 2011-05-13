@@ -42,12 +42,12 @@
 
 
 //---------------------------------------------------------------------------
+%include <complexVector.H>
+
 %ignore Foam::Vector< Foam::complex >::max;
 %ignore Foam::Vector< Foam::complex >::min;
 
 %template( complexVector ) Foam::Vector< Foam::complex >;
-
-%include <complexVector.H>
 
 
 //---------------------------------------------------------------------------
