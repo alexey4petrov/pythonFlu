@@ -27,7 +27,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.randomProcesses.processes.UOprocess";
 %{
-    #include "src/randomProcesses/processes/UOprocess.hh"
+  #include "src/randomProcesses/processes/UOprocess.hh"
 %}
 
 
