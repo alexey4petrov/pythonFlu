@@ -364,6 +364,10 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::Geomet
   {
     return get_ref( self ) / theArg;
   }
+  Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __div__( const Foam::dimensioned< Foam::scalar >& theArg )
+  {
+    return get_ref( self ) / theArg;
+  }
   Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __mul__( const Foam::dimensioned< Foam::scalar >& theArg )
   {
     return get_ref( self ) * theArg;
