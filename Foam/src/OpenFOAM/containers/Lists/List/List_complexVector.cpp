@@ -20,31 +20,25 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef UList_complexVector_cxx
-#define UList_complexVector_cxx
+#ifndef List_complexVector_cxx
+#define List_complexVector_cxx
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.containers.Lists.UList.UList_complexVector";
+%module "Foam.src.OpenFOAM.containers.Lists.List.List_complexVector";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_complexVector.hh"
+   #include "src/OpenFOAM/containers/Lists/List/List_complexVector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%import "src/OpenFOAM/primitives/complexVector.cxx"
+%include "src/OpenFOAM/containers/Lists/UList/UList_complexVector.cpp"
 
-%ignore Foam::UList< Foam::complexVector >::operator >;
-%ignore Foam::UList< Foam::complexVector >::operator <;
+%template( List_complexVector ) Foam::List< Foam::complexVector >;
 
-%ignore Foam::UList< Foam::complexVector >::operator >=;
-%ignore Foam::UList< Foam::complexVector >::operator <=;
-
-%template( UList_complexVector ) Foam::UList< Foam::complexVector >; 
-
-ULISTBASED_ADDONS( Foam::complexVector );
+%extend Foam::List< Foam::complexVector > COMMON_EXTENDS;
 
 
 //---------------------------------------------------------------------------
