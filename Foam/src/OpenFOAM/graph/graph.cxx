@@ -34,6 +34,8 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/primitives/strings/string.cxx"
 
+%import "src/OpenFOAM/primitives/strings/fileName.cxx"
+
 %import "src/OpenFOAM/meshes/primitiveShapes/point/point.cxx"
 
 %import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"

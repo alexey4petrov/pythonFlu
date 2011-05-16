@@ -27,6 +27,8 @@
 //---------------------------------------------------------------------------
 #include "src/OpenFOAM/primitives/strings/string.hh"
 
+#include "src/OpenFOAM/primitives/strings/fileName.hh"
+
 #include "src/OpenFOAM/meshes/primitiveShapes/point/point.hh"
 
 #include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
