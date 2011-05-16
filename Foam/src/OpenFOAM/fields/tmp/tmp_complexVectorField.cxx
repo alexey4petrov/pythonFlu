@@ -47,6 +47,7 @@ TMP_TYPEMAP( Foam::complexVectorField );
 %extend Foam::tmp< Foam::Field< Foam::complexVector > >
 {
   SMARTPTR_EXTEND_ATTR( tmp_complexVectorField );
+  ULIST_COMPLEX_VECTOR_OPERATORS;
 }
 
 
