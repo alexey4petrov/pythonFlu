@@ -118,8 +118,8 @@
   } else {
       res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::Field< Foam::Type > >* ), %convertptr_flags );
       if ( SWIG_IsOK( res ) && argp ) {
-         Foam::tmp< Foam::Field< Foam::Type > >* tmp_res = %reinterpret_cast( argp, Foam::tmp< Foam::Field< Foam::Type > > * );
-         $1 = tmp_res->operator->();
+        Foam::tmp< Foam::Field< Foam::Type > >* tmp_res = %reinterpret_cast( argp, Foam::tmp< Foam::Field< Foam::Type > > * );
+        $1 = tmp_res->operator->();
       } else {
           %argument_fail( res, "$type", $symname, $argnum );
         }
