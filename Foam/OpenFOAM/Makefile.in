@@ -263,7 +263,12 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/containers/NamedEnum/NamedEnum.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/FieldFields/oneFieldField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/geometricOneField.cxx
+	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/geometricOneField.cxx \
+	\
+	@abs_top_builddir@/src/OpenFOAM/graph/curve.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_curve_word_string_hash.cxx \
+	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_curve_word_string_hash.cxx \
+	@abs_top_builddir@/src/OpenFOAM/graph/graph.cxx
 
 
 #--------------------------------------------------------------------------------------
