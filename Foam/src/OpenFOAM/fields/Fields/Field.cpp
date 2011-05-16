@@ -227,9 +227,25 @@ NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
 %enddef
 
 //--------------------------------------------------------------------------
+%define __SCALAR_FIELD_TEMPLATE_OPERATOR
+{
+  Foam::tmp< Foam::Field< Foam::scalar > > __add__( const Foam::scalar& theArg)
+  {
+    return get_ref( self ) + theArg;
+  }
+}  
+%enddef
+
+
+//--------------------------------------------------------------------------
 %define SCALAR_FIELD_TEMPLATE_FUNC
 FIELD_TEMPLATE_FUNC( scalar );
+
+%extend Foam::Field< Foam::scalar >__SCALAR_FIELD_TEMPLATE_OPERATOR;
+%extend Foam::tmp< Foam::Field< Foam::scalar > >__SCALAR_FIELD_TEMPLATE_OPERATOR;
+
 %enddef
+
 
 //---------------------------------------------------------------------------
 %define __VECTOR_FIELD_TEMPLATE_FUNC
@@ -296,6 +312,8 @@ FIELD_TEMPLATE_FUNC( tensor );
 
 //----------------------------------------------------------------------------
 %define COMPLEX_FIELD_TEMPLATE_FUNC( ComplexType )
+
+NO_TMP_TYPEMAP_FIELD( Field< Foam::ComplexType > );
 
 %extend Foam::Field< Foam::ComplexType > __FIELD_TEMPLATE_FUNC__( ComplexType );
 
