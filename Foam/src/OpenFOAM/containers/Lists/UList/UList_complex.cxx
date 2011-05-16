@@ -36,6 +36,8 @@
 
 %import "src/OpenFOAM/primitives/complex.cxx"
 
+ULIST_TYPEMAP( complex );
+
 %ignore Foam::UList< Foam::complex >::operator >;
 %ignore Foam::UList< Foam::complex >::operator <;
 

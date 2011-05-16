@@ -31,6 +31,9 @@
 #include <UList.H>
 #include <ListOps.H>
 
+#include "Field.H"
+#include "tmp.H"
+
 
 //---------------------------------------------------------------------------
 #endif

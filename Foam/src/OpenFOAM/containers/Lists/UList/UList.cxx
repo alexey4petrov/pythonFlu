@@ -96,4 +96,37 @@
 
 
 //---------------------------------------------------------------------------
+%define ULIST_TYPEMAP( Type )
+
+%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::UList< Foam::Type >& 
+{
+  void *ptr;
+  int resT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::UList< Foam::Type > * ), 0 );
+  int res_tmpField = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::Field< Foam::Type > > * ), 0 );
+  $1 = SWIG_CheckState( resT ) || SWIG_CheckState( res_tmpField );
+}
+
+%typemap( in ) const Foam::UList< Foam::Type >& 
+{
+  void  *argp = 0;
+  int res = 0;
+  
+  res = SWIG_ConvertPtr( $input, &argp, $descriptor(  Foam::UList< Foam::Type > * ), %convertptr_flags );
+  if ( SWIG_IsOK( res )&& argp  ){
+    Foam::UList< Foam::Type > * res = %reinterpret_cast( argp, Foam::UList< Foam::Type >* );
+    $1 = res;
+  } else {
+      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::Field< Foam::Type > >* ), %convertptr_flags );
+      if ( SWIG_IsOK( res ) && argp ) {
+         Foam::tmp< Foam::Field< Foam::Type > >* tmp_res = %reinterpret_cast( argp, Foam::tmp< Foam::Field< Foam::Type > > * );
+         $1 = tmp_res->operator->();
+      } else {
+          %argument_fail( res, "$type", $symname, $argnum );
+        }
+    }
+}    
+%enddef
+
+
+//---------------------------------------------------------------------------
 #endif

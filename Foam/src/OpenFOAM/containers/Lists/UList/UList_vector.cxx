@@ -36,6 +36,8 @@
 
 %import "src/OpenFOAM/primitives/vector.cxx"
 
+ULIST_TYPEMAP( vector );
+
 %ignore Foam::UList< Foam::vector >::operator [];
 %ignore Foam::UList< Foam::vector >::operator =;
 
