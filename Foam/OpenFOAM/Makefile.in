@@ -116,8 +116,6 @@ sources = \
 	\
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_complex.cxx \
 	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_complex.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_complexVector.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_complexVector.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/fields/Fields/oneField.cxx \
 	\
