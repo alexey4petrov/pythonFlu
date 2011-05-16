@@ -35,7 +35,7 @@
 
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
 
-TMP_TYPEMAP( Foam::fvPatchField< Foam::vector > )
+TMP_DIRECTOR_TYPEMAP( Foam::fvPatchField< Foam::vector > )
 
 %ignore Foam::tmp< Foam::fvPatchField< Foam::vector > >::tmp;
 

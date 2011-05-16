@@ -35,7 +35,7 @@
 
 %include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
 
-TMP_TYPEMAP( Foam::fvPatchField< Foam::scalar > )
+TMP_DIRECTOR_TYPEMAP( Foam::fvPatchField< Foam::scalar > )
 
 
 //----------------------------------------------------------------------------

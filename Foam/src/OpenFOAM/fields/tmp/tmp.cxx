@@ -44,7 +44,7 @@
 
 
 //---------------------------------------------------------------------------
-%define TMP_TYPEMAP( Type )
+%define TMP_DIRECTOR_TYPEMAP( Type )
 
 %feature( "novaluewrapper" ) Foam::tmp< Type >;
 
@@ -62,6 +62,38 @@
       if ( Swig::Director *director = SWIG_DIRECTOR_CAST( arg ) ) {
         PyObject_CallMethod( director->swig_get_self(), (char *) "__disown__", NULL );
       }
+      result = Foam::tmp< Type >( arg );
+    } else {
+      %argument_fail( check, "$type", $symname, $argnum ); 
+    }
+  }
+  $1 = &result;
+}
+
+%enddef
+
+
+//---------------------------------------------------------------------------
+%define TMP_TYPEMAP( Type )
+
+%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::tmp< Type >& 
+{
+  void *ptr;
+  int res_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Type > * ), 0 );
+  int res_T = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Type * ), 0 );
+  $1 = SWIG_CheckState( res_T ) || SWIG_CheckState( res_tmpT );
+}
+
+%typemap( in ) const Foam::tmp< Type >& ( void  *argp = 0, int check = 0, Foam::tmp< Type > result ) 
+{
+  // First check the simplest case, complete coinsidence of the types
+  check = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Type > * ), %convertptr_flags );
+  if ( SWIG_IsOK( check ) && argp ) {
+    result = *%reinterpret_cast( argp, Foam::tmp< Type > * );
+  } else {
+    check = SWIG_ConvertPtr( $input, &argp, $descriptor( Type * ), SWIG_POINTER_DISOWN | %convertptr_flags );
+    if ( SWIG_IsOK( check ) && argp ) {
+      Type* arg = %reinterpret_cast( argp, Type * );
       result = Foam::tmp< Type >( arg );
     } else {
       %argument_fail( check, "$type", $symname, $argnum ); 

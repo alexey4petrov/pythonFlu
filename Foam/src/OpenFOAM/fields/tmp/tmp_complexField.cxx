@@ -38,6 +38,8 @@
 
 
 //----------------------------------------------------------------------------
+TMP_TYPEMAP( Foam::complexField );
+
 %template( tmp_complexField ) Foam::tmp< Foam::Field< Foam::complex > >;
 
 %feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::complex > >::SMARTPTR_PYAPPEND_GETATTR( tmp_complexField );
