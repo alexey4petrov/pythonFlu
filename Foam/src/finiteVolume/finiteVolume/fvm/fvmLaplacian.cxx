@@ -38,82 +38,96 @@
 
 %import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
+%import "src/OpenFOAM/fields/GeometricFields/geometricOneField.cxx"
+
 
 //---------------------------------------------------------------------------
-%define FVM_LAPLACIAN_TEMPLATE_FUNC( Type )
+%define FVM_LAPLACIAN_TEMPLATE_1_FUNC( Type )
 %{
-  Foam::tmp< Foam::fvMatrix< Type > > 
-  fvm_laplacian( Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf,
-                 const Foam::word& name )
+  Foam::tmp< Foam::fvMatrix< Type > > fvm_laplacian( Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+                                                     const Foam::word& name )
   {
     return Foam::fvm::laplacian( vf, name );
   }
 
-  Foam::tmp< Foam::fvMatrix< Type > > 
-  fvm_laplacian( Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf )
+  Foam::tmp< Foam::fvMatrix< Type > > fvm_laplacian( Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
   {
     return Foam::fvm::laplacian( vf );
   }
 
-  Foam::tmp< Foam::fvMatrix< Type > > 
-  fvm_laplacian( const Foam::dimensionedScalar& gamma,
-                 Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf,
-                 const Foam::word& name )
+  Foam::tmp< Foam::fvMatrix< Type > > fvm_laplacian( const geometricOneField &,
+                                                     Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+                                                     const Foam::word& name )
   {
-    return Foam::fvm::laplacian( gamma, vf, name );
+    return Foam::fvm::laplacian( vf, name );
   }
-
-  Foam::tmp< Foam::fvMatrix< Type > > 
-  fvm_laplacian( const Foam::dimensionedScalar& gamma,
-                 Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf )
+  
+  Foam::tmp< Foam::fvMatrix< Type > > fvm_laplacian( const geometricOneField &,
+                                                     Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
   {
-    return Foam::fvm::laplacian( gamma, vf );
-  }
-
-  Foam::tmp< Foam::fvMatrix< Type > > 
-  fvm_laplacian( const Foam::volScalarField& gamma,
-                 Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf,
-                 const Foam::word& name )
-  {
-    return Foam::fvm::laplacian( gamma, vf, name );
-  }
-
-  Foam::tmp< Foam::fvMatrix< Type > > 
-  fvm_laplacian( const Foam::volScalarField& gamma,
-                 Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf )
-  {
-    return Foam::fvm::laplacian( gamma, vf );
-  }
-
-  Foam::tmp< Foam::fvMatrix< Type > > 
-  fvm_laplacian( const Foam::volTensorField& tgamma,
-                 Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf )
-  {
-    return Foam::fvm::laplacian( tgamma, vf );
-  }
-
-  Foam::tmp< Foam::fvMatrix< Type > > 
-  fvm_laplacian( const Foam::surfaceScalarField& gamma,
-                 Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf,
-                 const Foam::word& name )
-  {
-    return Foam::fvm::laplacian( gamma, vf, name );
-  }
-
-  Foam::tmp< Foam::fvMatrix< Type > > 
-  fvm_laplacian( const Foam::surfaceScalarField& gamma,
-                 Foam::GeometricField<Type, Foam::fvPatchField, Foam::volMesh>& vf )
-  {
-    return Foam::fvm::laplacian( gamma, vf );
+    return Foam::fvm::laplacian( vf );
   }
 %}
 %enddef
 
 
 //---------------------------------------------------------------------------
-%inline FVM_LAPLACIAN_TEMPLATE_FUNC( Foam::scalar );
+%inline FVM_LAPLACIAN_TEMPLATE_1_FUNC( Foam::scalar );
+%inline FVM_LAPLACIAN_TEMPLATE_1_FUNC( Foam::vector );
 
-%inline FVM_LAPLACIAN_TEMPLATE_FUNC( Foam::vector );
+
+//---------------------------------------------------------------------------
+%define FVM_LAPLACIAN_TEMPLATE_2_FUNC( Type, GType )
+%{
+  Foam::tmp< Foam::fvMatrix< Type > > fvm_laplacian( const Foam::dimensioned< GType >& gamma,
+                                                     Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+                                                     const Foam::word& name )
+  {
+    return Foam::fvm::laplacian( gamma, vf, name );
+  }
+
+  Foam::tmp< Foam::fvMatrix< Type > > fvm_laplacian( const Foam::dimensioned< GType >& gamma,
+                                                     Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvm::laplacian( gamma, vf );
+  }
+
+  Foam::tmp< Foam::fvMatrix< Type > > fvm_laplacian( const Foam::GeometricField< GType, Foam::fvPatchField, Foam::volMesh >& gamma,
+                                                     Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+                                                     const Foam::word& name )
+  {
+    return Foam::fvm::laplacian( gamma, vf, name );
+  }
+
+  Foam::tmp< Foam::fvMatrix< Type > > fvm_laplacian( const Foam::GeometricField< GType, Foam::fvPatchField, Foam::volMesh >& gamma,
+                                                     Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvm::laplacian( gamma, vf );
+  }
+
+  Foam::tmp< Foam::fvMatrix< Type > > fvm_laplacian( const Foam::GeometricField< GType, Foam::fvsPatchField, Foam::surfaceMesh >& gamma,
+                                                     Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+                                                     const Foam::word& name )
+  {
+    return Foam::fvm::laplacian( gamma, vf, name );
+  }
+
+  Foam::tmp< Foam::fvMatrix< Type > > fvm_laplacian( const Foam::GeometricField< GType, Foam::fvsPatchField, Foam::surfaceMesh >& gamma,
+                                                     Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvm::laplacian( gamma, vf );
+  }
+%}
+%enddef
+
+//---------------------------------------------------------------------------
+%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::scalar, Foam::scalar );
+%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::scalar, Foam::tensor );
+%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::scalar, Foam::symmTensor );
+
+%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::vector, Foam::scalar );
+%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::vector, Foam::tensor );
+%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::vector, Foam::symmTensor );
 
 
 //---------------------------------------------------------------------------
