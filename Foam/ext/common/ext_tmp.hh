@@ -94,6 +94,11 @@ namespace Foam
     {
       return this->engine->operator () ();
     }
+    
+    const T& operator()() const
+    {
+      return this->engine->operator () ();
+    }
   };
   
   

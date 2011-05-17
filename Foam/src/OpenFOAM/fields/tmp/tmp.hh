@@ -58,6 +58,12 @@ namespace Foam
   {
     return (*theArg)();
   }
+  template< class T >
+  const T& get_ref( const ext_tmp< T >* theArg )
+  {
+    return (*theArg)();
+  }
+
 }
 
 
