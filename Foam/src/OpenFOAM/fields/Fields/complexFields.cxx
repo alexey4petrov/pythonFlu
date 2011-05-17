@@ -69,6 +69,5 @@ COMPLEX_FIELD_TEMPLATE_FUNC( complexVector );
 %include <complexFields.H>
 
 
-
 //---------------------------------------------------------------------------
 #endif
