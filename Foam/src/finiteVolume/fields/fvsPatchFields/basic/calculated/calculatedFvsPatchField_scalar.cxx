@@ -42,7 +42,7 @@
 //---------------------------------------------------------------------------
 %extend Foam::calculatedFvsPatchField< Foam::scalar >
 {
-  TYPEINFO_EXTENDS( fvsPatchField_scalar, calculatedFvsPatchScalarField )
+  TYPEINFO_EXTENDS( fvsPatchScalarField, calculatedFvsPatchScalarField )
 }
 
 

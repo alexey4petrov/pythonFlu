@@ -29,6 +29,8 @@
 
 #include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hh"
 
+#include <fvsPatchFieldsFwd.H>
+
 #include <fvsPatchField.H>
 
 #include <surfaceMesh.H>

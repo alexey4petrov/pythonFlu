@@ -29,11 +29,6 @@
 
 #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
 
-namespace Foam
-{
-  typedef Foam::fvsPatchField< Foam::vector > fvsPatchField_vector;
-}
-
 
 //---------------------------------------------------------------------------
 #endif
