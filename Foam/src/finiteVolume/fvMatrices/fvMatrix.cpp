@@ -83,62 +83,62 @@
 
 %define __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type )
 {
-  Foam::tmp< Foam::fvMatrix< Type > > __neg__()
+  Foam::tmp< Foam::fvMatrix< Type > > __neg__() const
   {
     return -get_ref( self );
   }
   
-  Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::fvMatrix< Type >& theArg )
+  Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::fvMatrix< Type >& theArg ) const
   {
     return get_ref( self ) + theArg;
   }
   
-  Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::dimensioned< Type >& theArg )
+  Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::dimensioned< Type >& theArg ) const
   {
     return get_ref( self ) + theArg;
   }
 
-  Foam::tmp< Foam::fvMatrix< Type > > __sub__( const Foam::fvMatrix< Type >& theArg )
+  Foam::tmp< Foam::fvMatrix< Type > > __sub__( const Foam::fvMatrix< Type >& theArg ) const
   {
     return get_ref( self ) - theArg;
   }
 
-  Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
+  Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg ) const
   {
     return get_ref( self ) + theArg;
   }
 
-  Foam::tmp< Foam::fvMatrix< Type > > __radd__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
+  Foam::tmp< Foam::fvMatrix< Type > > __radd__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg ) const
   {
     return theArg + get_ref( self )  ;
   }
 
   Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > > 
-  __and__ ( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
+  __and__ ( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg ) const
   {
     return get_ref( self ) & theArg;
   }
   
-  Foam::tmp< Foam::fvMatrix< Type > > __sub__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
+  Foam::tmp< Foam::fvMatrix< Type > > __sub__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg ) const
   {
     return get_ref( self ) - theArg;
   }
 
-  Foam::tmp< Foam::fvMatrix< Type > > __rsub__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
+  Foam::tmp< Foam::fvMatrix< Type > > __rsub__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg ) const
   {
     return theArg - get_ref( self );
   }
 
-  Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::fvMatrix< Type >& theArg )
+  Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::fvMatrix< Type >& theArg ) const
   {
     return get_ref( self ) == theArg;
   }
-  Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg )
+  Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg ) const
   {
     return get_ref( self ) == theArg;
   }
   
-  Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::dimensioned< Type >& theArg )
+  Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::dimensioned< Type >& theArg ) const
   {
     return get_ref( self ) == theArg;
   }
@@ -225,7 +225,7 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
 //---------------------------------------------------------------------------
 %define __SCALAR_FVMATRIX_TEMPLATE_OPERATORS
 {
-  Foam::tmp< Foam::fvMatrix< Foam::scalar > > __rmul__( const Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& theArg )
+  Foam::tmp< Foam::fvMatrix< Foam::scalar > > __rmul__( const Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& theArg ) const
   {
     return theArg * get_ref( self );
   }
