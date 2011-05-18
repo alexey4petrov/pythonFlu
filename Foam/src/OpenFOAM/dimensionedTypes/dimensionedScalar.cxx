@@ -69,6 +69,8 @@ PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(Foam::dimensioned, Foam::scala
 
 %feature ( "pythonprepend" ) Foam::dimensioned< Foam::scalar >::TRY_REVERSE_PYPREPEND( div );
 
+%feature ( "pythonprepend" ) Foam::dimensioned< Foam::scalar >::TRY_REVERSE_PYPREPEND( sub );
+
 DIMENSIONEDTYPE_ADDONS( Foam::scalar )
 
 %extend Foam::dimensioned< Foam::scalar >

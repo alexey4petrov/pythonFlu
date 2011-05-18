@@ -42,6 +42,9 @@ typedef Foam::dimensioned< Foam::tensor > dimensionedTensor;
 
 %template( dimensionedTensor ) Foam::dimensioned< Foam::tensor >; 
 
+%feature ( "pythonprepend" ) Foam::dimensioned< Foam::tensor >::TRY_REVERSE_PYPREPEND( add );
+%feature ( "pythonprepend" ) Foam::dimensioned< Foam::tensor >::TRY_REVERSE_PYPREPEND( sub );
+
 DIMENSIONEDTYPE_ADDONS( Foam::tensor )
 
 

@@ -40,7 +40,13 @@
 
 %include <dimensionedSymmTensor.H>
 
+%feature ( "pythonprepend" ) Foam::dimensioned< Foam::symmTensor >::TRY_REVERSE_PYPREPEND( add );
+%feature ( "pythonprepend" ) Foam::dimensioned< Foam::symmTensor >::TRY_REVERSE_PYPREPEND( sub );
+
 DIMENSIONEDTYPE_ADDONS( Foam::symmTensor )
+
+
+//---------------------------------------------------------------------------
 
 
 //---------------------------------------------------------------------------

@@ -95,6 +95,11 @@
   {
     return get_ref( self ) - theArg;
   }
+
+  Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __rsub__( const Foam::dimensioned< Type >& theArg ) const
+  {
+    return theArg - get_ref( self ) ;
+  }
   
   Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __radd__( const Foam::dimensioned< Type >& theArg ) const 
   {
@@ -396,7 +401,21 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::Geomet
   {
     return theArg & get_ref( self );
   }
-    
+  Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __rmul__( const Foam::dimensioned< Foam::scalar >& theArg ) const
+  {
+    return theArg * get_ref( self ) ;
+  }
+
+  Foam::tmp<Foam::GeometricField<Foam::scalar, TPatchField, TMesh > > __and__( const Foam::dimensioned< Foam::vector >& theArg ) const
+  {
+    return get_ref( self ) & theArg;
+  }
+
+  Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > >  __xor__( const Foam::dimensioned< Foam::vector >& theArg ) const
+  {
+    return get_ref( self ) ^ theArg ;
+  }
+  
 #if FOAM_VERSION( >, 010500 )
   Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > >__rand__( const Foam::UniformDimensionedField< Foam::vector >& theArg ) const
   {
