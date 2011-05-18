@@ -27,7 +27,9 @@
 
 
 //---------------------------------------------------------------------------
-#if FOAM_VERSION( <, 010500 )
+%import "src/common.hxx"
+
+#if FOAM_VERSION( <, 010700 ) || FOAM_BRANCH_VERSION( dev, <, 010600 )
 #define oneFieldField_cxx
 #endif
 
@@ -35,8 +37,6 @@
 //---------------------------------------------------------------------------
 #ifndef oneFieldField_cxx
 #define oneFieldField_cxx
-
-%import "src/common.hxx"
 
 
 //---------------------------------------------------------------------------

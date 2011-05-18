@@ -24,7 +24,7 @@
 
 
 //---------------------------------------------------------------------------
-#if FOAM_VERSION( <, 010500 )
+#if FOAM_REF_VERSION( <, 010700 ) || FOAM_BRANCH_VERSION( dev, <, 010600 )
 #define oneFieldField_hh
 #endif
 

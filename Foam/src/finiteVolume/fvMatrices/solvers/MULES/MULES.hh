@@ -31,6 +31,7 @@
 
 #include <MULES.H>
 
+#if FOAM_REF_VERSION( >, 010600 ) || FOAM_BRANCH_VERSION( dev, >, 010500 )
 namespace Foam
 {
   namespace MULES
@@ -48,7 +49,7 @@ namespace Foam
     }
   }
 }
-
+#endif
 
 //----------------------------------------------------------------------------
 #endif
