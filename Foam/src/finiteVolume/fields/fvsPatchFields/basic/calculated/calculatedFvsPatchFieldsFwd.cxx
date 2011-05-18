@@ -20,21 +20,21 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef calculatedFvsPatchField_cxx
-#define calculatedFvsPatchField_cxx
+#ifndef calculatedFvsPatchFieldsFwd_cxx
+#define calculatedFvsPatchFieldsFwd_cxx
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.finiteVolume.fields.fvsPatchFields.basic.calculated.calculatedFvsPatchField"
+%module "Foam.src.finiteVolume.fields.fvsPatchFields.basic.calculated.calculatedFvsPatchFieldsFwd"
 %{
-    #include "src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchField.hh"
+  #include "src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchFieldsFwd.hh"
 %}
 
 
 //---------------------------------------------------------------------------
 %import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchFieldsFwd.cxx"
+%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
 
 %include <calculatedFvsPatchField.H>
 

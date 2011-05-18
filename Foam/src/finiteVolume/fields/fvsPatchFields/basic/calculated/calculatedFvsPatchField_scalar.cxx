@@ -36,14 +36,6 @@
 
 %import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%inline
-{
-  namespace Foam 
-  {
-    typedef calculatedFvsPatchField< scalar > calculatedFvsPatchScalarField;
-  }
-}
-
 %template ( calculatedFvsPatchField_scalar ) Foam::calculatedFvsPatchField< Foam::scalar >;
 
 

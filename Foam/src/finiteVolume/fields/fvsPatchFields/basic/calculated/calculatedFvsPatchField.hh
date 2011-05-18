@@ -29,6 +29,8 @@
 
 #include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
+#include "src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchFieldsFwd.hh"
+
 #include <calculatedFvsPatchField.H>
 
 
