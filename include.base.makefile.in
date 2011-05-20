@@ -118,9 +118,13 @@ __SWIG_FLAGS__+=-w503 # Can't wrap 'XXX' unless renamed to a valid identifier
 __SWIG_FLAGS__+=-w462 # Unable to set dimensionless array variable
 __SWIG_FLAGS__+=-w473 # Returning a pointer or reference in a director method is not recommended
 
+FOAM_BRANCH = 
+
 ifeq "$(shell if [ x${__FOAM_BRANCH__} != x ]; then echo 'true'; else echo 'false'; fi )" "true" 
-__SWIG_FLAGS__+=-D__FOAM_BRANCH__=${__FOAM_BRANCH__}
+FOAM_BRANCH+=-D__FOAM_BRANCH__=${__FOAM_BRANCH__}
 endif
+
+__SWIG_FLAGS__+=$(FOAM_BRANCH)
 
 ifdef WM_PROJECT_VERSION
 	__SWIG_FLAGS__+=-D__FOAM_VERSION__=$(__FOAM_VERSION__)
@@ -134,7 +138,7 @@ endif
 %.cc : %.cxx
 	@SWIG@ $(__SWIG_FLAGS__) -module $(notdir $(patsubst %.cxx,%,$<)) -o $@ $<
 
-__CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(__CPPFLAGS__)
+__CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(FOAM_BRANCH) $(__CPPFLAGS__)
 
 %.o : %.cc
 	gcc $(__CXXFLAGS__)  "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
