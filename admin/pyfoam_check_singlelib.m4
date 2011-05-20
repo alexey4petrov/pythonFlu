@@ -1,4 +1,5 @@
-dnl VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
+dnl pythonFlu - Python wrapping for OpenFOAM C++ API
+dnl Copyright (C) 2010- Alexey Petrov
 dnl Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 dnl 
 dnl This program is free software: you can redistribute it and/or modify
@@ -14,7 +15,7 @@ dnl
 dnl You should have received a copy of the GNU General Public License
 dnl along with this program.  If not, see <http://www.gnu.org/licenses/>.
 dnl 
-dnl See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
+dnl See http://sourceforge.net/projects/pythonflu
 dnl
 dnl Author : Alexey PETROV
 dnl
