@@ -123,12 +123,15 @@
 
 //---------------------------------------------------------------------------
 %inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::scalar, Foam::scalar );
-%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::scalar, Foam::tensor );
-%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::scalar, Foam::symmTensor );
 
 %inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::vector, Foam::scalar );
+
+#if FOAM_VERSION( >=, 010500 )
+%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::scalar, Foam::tensor );
+%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::scalar, Foam::symmTensor );
 %inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::vector, Foam::tensor );
 %inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::vector, Foam::symmTensor );
+#endif
 
 
 //---------------------------------------------------------------------------

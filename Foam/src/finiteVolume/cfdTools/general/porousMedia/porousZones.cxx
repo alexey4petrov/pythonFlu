@@ -68,11 +68,13 @@
 
 
 //---------------------------------------------------------------------------
+#if FOAM_VERSION( >=, 010500 )
 %extend Foam::porousZones
 {
    POROUSZONES_EXTENDS( vector );
    POROUSZONES_EXTENDS( scalar );
 }
+#endif
 
 
 //---------------------------------------------------------------------------
