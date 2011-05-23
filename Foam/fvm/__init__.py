@@ -22,11 +22,11 @@
 
 
 #---------------------------------------------------------------------------
-from src.finiteVolume.finiteVolume.fvm.fvmDdt import *
-from src.finiteVolume.finiteVolume.fvm.fvmD2dt2 import *
-from src.finiteVolume.finiteVolume.fvm.fvmDiv import *
-from src.finiteVolume.finiteVolume.fvm.fvmSup import *
-from src.finiteVolume.finiteVolume.fvm.fvmLaplacian import *
+from Foam.src.finiteVolume.finiteVolume.fvm.fvmDdt import *
+from Foam.src.finiteVolume.finiteVolume.fvm.fvmD2dt2 import *
+from Foam.src.finiteVolume.finiteVolume.fvm.fvmDiv import *
+from Foam.src.finiteVolume.finiteVolume.fvm.fvmSup import *
+from Foam.src.finiteVolume.finiteVolume.fvm.fvmLaplacian import *
 
 
 #---------------------------------------------------------------------------
