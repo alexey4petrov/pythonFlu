@@ -24,7 +24,7 @@
 #--------------------------------------------------------------------------------------
 # Process this file with autoconf to produce a configure script
 #--------------------------------------------------------------------------------------
-AC_INIT([pythonFlu Project], [8.0], [alexey.petrov.nnov@gmail.com], [pythonflu])
+AC_INIT([pythonFlu Project], [8.1-Elvis], [alexey.petrov.nnov@gmail.com], [pythonflu])
 
 # AC_CONFIG_AUX_DIR defines an alternative directory where to find the auxiliary
 # scripts such as config.guess, install-sh, ...
