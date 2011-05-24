@@ -91,6 +91,11 @@ for file in ${lib_files}; do
    echo "${pythonflu_lib}/${file}" >> ${package_folder}/${files_list}
 done
 
+links=`( cd ${build_folder} && find Foam -type l )`
+for link in ${links}; do
+   echo "${pythonflu_lib}/${link}" >> ${package_folder}/${files_list}
+done
+
 echo "--------------------------------------------------------------------------------"
 
 
