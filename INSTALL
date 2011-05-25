@@ -29,42 +29,23 @@ Pre-requisites
 "pythonFlu" Python OpenFOAM binding requires the following mandatory and optional
 pre-requisites.
 
-* Make sure that confFoam (common configuration package) is installed 
-  Can be found at https://vulashaka.svn.sourceforge.net/svnroot/vulashaka/conffoam.
-  Please follow instructions from corresponding INSTALL file to setup confFoam
+* Make sure that confFlu (common configuration package) is installed 
+  Can be found at  http://sourceforge.net/projects/pythonflu/files.
+  Please follow instructions from corresponding INSTALL file to setup confFlu
   in your environment.
 
-* Make sure that OpenFOAM is installed (tested with versions 1.4.1-dev and 1.6).
-  Please follow instructions from corresponding INSTALL file to setup OpenFOAM
-  in your environment.
+* Make sure that OpenFOAM is installed (tested with 1.4.1-dev, 1.5, 1.6, 1.6-ext, 
+  1.7.0 and 1.7.1 versions). Please follow instructions from corresponding INSTALL file 
+  to setup OpenFOAM in your environment.
 
 * Make sure that Python (developement version, with Python.h header file) is 
   installed (tested with 2.4, 2.6.2)
   Please follow instructions from http://www.python.org/ web-site.
 
-* Make sure that SWIG is installed (tested with 1.3.36 - 1.3.40 )
+* Make sure that SWIG is installed (tested with 1.3.36 - 1.3.40)
   Please follow instructions from http://www.swig.org/ web-site.
 
-* Install extFoam (optional)
-  Can be found at https://vulashaka.svn.sourceforge.net/svnroot/vulashaka/extfoam.
-  Please follow instructions from corresponding INSTALL file to setup extFoam
-  in your environment.
-
-* Install foam2vtk (optional)
-  Can be found at https://vulashaka.svn.sourceforge.net/svnroot/vulashaka/foam2vtk.
-  Please follow instructions from corresponding INSTALL file to setup foam2vtk
-  in your environment.
-
-* Install unv2foam (optional)
-  Can be found at https://vulashaka.svn.sourceforge.net/svnroot/vulashaka/unv2foam.
-  Please follow instructions from corresponding INSTALL file to setup unv2foam
-  in your environment.
-
-* Install Boost library (optional) (tested with 1.35.0 )
-  Please follow instructions from http://www.boost.org/ web-site.
-
-Then follow the instructions below in order to build and install the "pythonFlu" - Python 
-OpenFOAM binding.
+Then follow the instructions below in order to build and install the "pythonFlu".
 
 
 #--------------------------------------------------------------------------------------
@@ -90,7 +71,7 @@ In order to build the module you have to perform the following actions:
 
 5. Configuring the build system:
 
-   build_configure
+   ./build_configure
    ./configure
 
    Make sure that after each configuration step the "--- OK ---" message is
@@ -99,48 +80,47 @@ In order to build the module you have to perform the following actions:
    To see all applicable configuration options run "./configure --help"
    Currently, the following options are available:
 
-      --disable-singlelib
-      --enable-embeddedcxx
       --with-swig=<path>
       --with-python-includes=<path>
       --with-python-libraries=<path>
-      --with-extfoam=<path>
-      --with-vtk-includes=<path>
-      --with-vtk-libraries=<path>
-      --with-foam2vtk=<path>
-      --with-unv2foam=<path>
-      --with-boost-includes=<path>
-      --with-boost-libraries=<path>
 
-6. Build "pythonFlu":
+6. Source the generated on configure step "bashrc" file to define the corresponding 
+   build environment.
+
+   source ./bashrc
+
+7. Build and install "pythonFlu":
 
    make
+   make install
 
   (use "make clean" command to cleanup the build folder)
 
 
 #--------------------------------------------------------------------------------------
-"pythonFlu" environment
+Environment
 #--------------------------------------------------------------------------------------
 
-Before start to use "pythonFlu" it is necessary to source the generated "bashrc" file
+Before using pythonFlu do not forget to configure OpenFOAM itself
+
+   # For OpenCFD's OpenFOAM-1.7.1
+   source /opt/openfoam171/etc/bashrc 
+
+   # For Extended's OpenFOAM-1.6
+   source /usr/lib/OpenFOAM-1.6-ext/etc/bashrc
 
 
 #--------------------------------------------------------------------------------------
-"pythonFlu" installation check
+Installation check
 #--------------------------------------------------------------------------------------
 
-Run one of the "pythonFlu" solvers on the appropriate OpenFOAM case, for example
+Import installed pythonFlu kernel library
 
-  (for OpenFOAM-1.4.1-dev)
-  ./Foam/applications/solvers/incompressible/icoFoam.py \
-    ${WM_PROJECT_USER_DIR}/run/tutorials/icoFoam cavity
+  python -c "from Foam import finiteVolume"
 
-  (for OpenFOAM-1.6)
-  ./Foam/applications/solvers/incompressible/icoFoam.py \
-    -case ${WM_PROJECT_USER_DIR}/run/tutorials/incompressible/icoFoam/cavity
-
-(use the same command line option as for referenced OpenFOAM implementation)
+Note : Install one of the existing pythonFlu based solvers to verify this installation 
+on a more complex test case. See http://pythonflu.wikidot.com/install-solvers for more 
+details
 
 
 #--------------------------------------------------------------------------------------
