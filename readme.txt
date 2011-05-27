@@ -33,7 +33,7 @@ pythonFlu r8.1-Elvis
 
   * The whole pythonFlu wrapping scheme were revised, as result size 
     of the corresponding binary packages were decresed in 3 - 5 times
-    and amount of the RAM need to compile them decreased in 2 times
+    and amount of RAM needed to compile them decreased in about 2 times
 
   * pythonflu.wikidot.com web-site were updated to discuss in details 
     "installation from sources" procedure. Corresponding information
