@@ -15,7 +15,7 @@ pythonFlu r8.1-Elvis
     solvers
 
     Look at http://pythonflu.wikidot.com/install-solvers to learn
-    how to install them.
+    how to install them
 
   * The following 7 new solvers were implemented in Python :
 
