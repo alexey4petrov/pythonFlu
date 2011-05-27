@@ -2,7 +2,7 @@
 pythonFlu r8.1-Elvis
 #--------------------------------------------------------------------------------------
 
-  * Name this release after a person who believed in this project 
+  * Name this release after the person who believed in this project 
     and inspired us continue its developement. Thank you "Elvis"!
 
   * Extracting Python solvers from the initial pythonFlu distribution.
