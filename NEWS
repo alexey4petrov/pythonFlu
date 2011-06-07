@@ -23,7 +23,51 @@ See http://sourceforge.net/projects/pythonflu
 
 
 ---------------------------------------------------------------------------
+New Features and Important Changes, r8.1-Elvis vs r8.0
 
+Author(s) :  Alexey PETROV
+
+2011-05-27
+
+1. Name this release after the person who believed in this project 
+   and inspired us continue its developement. Thank you "Elvis"!
+
+2. Extracting Python solvers from the initial pythonFlu distribution.
+   Since "Elvis" release pythonFlu kernel fucntionality and 
+   corresponding Python solvers, that demonstrates this wrapping,
+   will be advanced and ditributed separately. We encourage all
+   pythonFlu users to follow this practise.
+  
+   Look at http://pythonflu.wikidot.com/solvers to see the avaialbe
+   solvers
+
+   Look at http://pythonflu.wikidot.com/install-solvers to learn
+   how to install them
+
+3. The following 7 new solvers were implemented in Python :
+
+   - compressible / rhoPorousMRFPimpleFlux
+
+   - incompressible / porousSimpleFlux
+
+   - heatTransfer / buoyantPimpleFlux
+
+   - multiPhase / compressibleInterFlux, interDyMFlux
+
+   - multiPhase / twoLiquidMixingFlux (thanks to Dhasthagheer)
+
+   - DNS / dnsFlux
+
+4. The whole pythonFlu wrapping scheme were revised, as result size 
+   of the corresponding binary packages were decresed in 3 - 5 times
+   and amount of RAM needed to compile them decreased in about 2 times
+
+5. pythonflu.wikidot.com web-site were updated to discuss in details 
+   "installation from sources" procedure. Corresponding information
+   can be found at http://pythonflu.wikidot.com/install-sources
+
+
+---------------------------------------------------------------------------
 New Features and Important Changes, r8.0 vs r7.4
 
 Author(s) :  Alexey PETROV
@@ -31,24 +75,20 @@ Author(s) :  Alexey PETROV
 2011-04-04
 
 1. Porting to the latest OpenFOAM version 
---------------------------------------------------------------------
-(OpenCFD 1.7.1 & Extended 1.6-ext)
+   (OpenCFD 1.7.1 & Extended 1.6-ext)
 
 2. "Maturity" of the wrapping increased in 2 times and reached 41% 
---------------------------------------------------------------------
-(it is possible to reproduce 26 of 63 referenced OpenFOAM solvers)
+   (it is possible to reproduce 26 of 63 referenced OpenFOAM solvers)
 
 3. Preparation of native Linux binary packages
---------------------------------------------------------------------
-(for Ubuntu and SUSE Linux, i386 and amd64 architectures)
+   (for Ubuntu and SUSE Linux, i386 and amd64 architectures)
 
 4. Minor bug fixing
---------------------------------------------------------------------
-(all Python solvers give the same output results as the referenced C++ ones)
+   (all Python solvers give the same output results as the referenced C++ 
+   ones)
 
 
 ---------------------------------------------------------------------------
-
 New Features and Important Changes, r7.4 vs r7.3
 
 Author(s) :  Alexey PETROV
@@ -87,7 +127,6 @@ will be able to load and use only functionality they need.
 
 
 ---------------------------------------------------------------------------
-
 New Features and Important Changes, r7.3 vs r5.0
 
 Author(s) :  Alexey PETROV
@@ -112,7 +151,6 @@ the OpenFOAM developement.
 
 
 ---------------------------------------------------------------------------
-
 New Features and Important Changes, r5.0 vs r4.0
 
 Author(s) :  Alexey PETROV
@@ -156,7 +194,6 @@ corresponding OpenFOAM/application/utilities.
 
 
 ---------------------------------------------------------------------------
-
 New Features and Important Changes, r4.0 vs r2.0
 
 Author(s) :  Alexey PETROV

@@ -1,4 +1,5 @@
-## VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
+## pythonFlu - Python wrapping for OpenFOAM C++ API
+## Copyright (C) 2010- Alexey Petrov
 ## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 ## 
 ## This program is free software: you can redistribute it and/or modify
@@ -14,15 +15,21 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ## 
-## See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
+## See http://sourceforge.net/projects/pythonflu
 ##
 ## Author : Alexey PETROV
 ##
 
 
 #---------------------------------------------------------------------------
-from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "meshTools_" ) 
+from Foam.src.meshTools.coordinateSystems.coordinateSystem import *
+from Foam.src.meshTools.coordinateSystems.coordinateSystems import *
+from Foam.src.meshTools.coordinateSystems.coordinateRotation.coordinateRotation import *
+
+from Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_coordinateSystem import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_coordinateSystem import *
+
+from Foam.src.meshTools.directMapped.directMappedPolyPatch.directMappedPatchBase import *
 
 
-
+#---------------------------------------------------------------------------

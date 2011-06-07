@@ -1,4 +1,5 @@
-## VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
+## pythonFlu - Python wrapping for OpenFOAM C++ API
+## Copyright (C) 2010- Alexey Petrov
 ## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 ## 
 ## This program is free software: you can redistribute it and/or modify
@@ -14,7 +15,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ## 
-## See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
+## See http://sourceforge.net/projects/pythonflu
 ##
 ## Author : Alexey PETROV
 ##
@@ -40,6 +41,9 @@ include $(RULES)/general
 include $(RULES)/$(WM_LINK_LANGUAGE)
 
 c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-Wold-style-cast %%g")
+c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-Wall %%g")
+c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-Wextra %%g")
+c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-O3 %-ggdb3 -DFULLDEBUG %g")
 
 
 #------------------------------------------------------------------------------
@@ -72,7 +76,7 @@ PROJECT_LIBS       = -l$(WM_PROJECT)
 
 
 #--------------------------------------------------------------------------------------
-__CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I$(pyfoam_root_dir) -I/usr/include -I/usr/include/c++ 
+__CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I@abs_top_builddir@/ -I/usr/include -I/usr/include/c++ 
 
 
 #--------------------------------------------------------------------------------------
@@ -101,10 +105,10 @@ else
 sources = $(filter-out emb_%.cxx,$(wildcard *.cxx))
 endif
 
-apps = $(patsubst %.cxx, %, $(sources))
+apps = $(patsubst %.cxx, %.exe, $(sources))
 libs = $(patsubst %.cxx, _%.so, $(sources))
 objs = $(patsubst %.cxx, %.o, $(sources))
-stubs = $(patsubst %.cxx, %.cpp, $(sources))
+stubs = $(patsubst %.cxx, %.cc, $(sources))
 pyths = $(patsubst %.cxx, %.py, $(sources))
 tests = $(patsubst %.py, %.pyc, $(wildcard test_*.py))
 
@@ -182,7 +186,7 @@ $(RECURSIVE_CLEAN_TARGETS):
 #--------------------------------------------------------------------------------------
 __HEADER_PATH_SUFFIXES__ := @HEADER_PATHS@
 
-__HEADER_PATHS__ := $(foreach path,$(__HEADER_PATH_SUFFIXES__),$(addprefix -I$(pyfoam_root_dir),$(path)))
+__HEADER_PATHS__ := $(foreach path,$(__HEADER_PATH_SUFFIXES__),$(addprefix -I@abs_top_builddir@,$(path)))
 
 __SWIG_INCLUDES__ += $(__HEADER_PATHS__)
 
@@ -190,7 +194,7 @@ __SWIG_INCLUDES__ += $(__HEADER_PATHS__)
 #--------------------------------------------------------------------------------------------
 __SWIG_INCLUDES__ += $(__CPPFLAGS__)
 
-__SWIG_FLAGS__ += -python -c++ -MD
+__SWIG_FLAGS__ += -python -c++ -MMD
 
 __SWIG_FLAGS__ += -D__restrict__ # GCC type qualifier (a non-standard GCC entention) - to avoid SWIG parsing errors
 
@@ -211,9 +215,13 @@ __SWIG_FLAGS__+=-w503 # Can't wrap 'XXX' unless renamed to a valid identifier
 __SWIG_FLAGS__+=-w462 # Unable to set dimensionless array variable
 __SWIG_FLAGS__+=-w473 # Returning a pointer or reference in a director method is not recommended
 
+FOAM_BRANCH = 
+
 ifeq "$(shell if [ x${__FOAM_BRANCH__} != x ]; then echo 'true'; else echo 'false'; fi )" "true" 
-__SWIG_FLAGS__+=-D__FOAM_BRANCH__=${__FOAM_BRANCH__}
+FOAM_BRANCH+=-D__FOAM_BRANCH__=${__FOAM_BRANCH__}
 endif
+
+__SWIG_FLAGS__+=$(FOAM_BRANCH)
 
 ifdef WM_PROJECT_VERSION
 	__SWIG_FLAGS__+=-D__FOAM_VERSION__=$(__FOAM_VERSION__)
@@ -224,13 +232,15 @@ endif
 
 
 #--------------------------------------------------------------------------------------
-%.cpp : %.cxx
+%.cc : %.cxx
 	@SWIG@ $(__SWIG_FLAGS__) -module $(patsubst %.cxx,%,$<) -o $@ $<
 
-__CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(__CPPFLAGS__)
+__CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(FOAM_BRANCH) $(__CPPFLAGS__)
 
 %.o : %.cpp
-	gcc $(__CXXFLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cpp,%.h,$<)>" -c $< -o $@
+
+%.o : %.cc
+	gcc $(__CXXFLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
 
 
 PACKAGE_DEPENDENCIES = $(wildcard *.d)
@@ -244,9 +254,9 @@ _%.so : %.o
 
 __APP_FLAGS__ = $(__LDFLAGS__)
 
-% : %.o
+%.exe : %.o
 	gcc $< $(__APP_FLAGS__) -o $@
-	python $@.py
+#	python `basename $@ exe`py
 
 %.pyc : %.py
 	@python -c "import py_compile; py_compile.compile('$<')"
@@ -254,4 +264,3 @@ __APP_FLAGS__ = $(__LDFLAGS__)
 
 
 #--------------------------------------------------------------------------------------
-

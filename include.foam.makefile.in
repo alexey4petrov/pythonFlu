@@ -1,0 +1,58 @@
+## pythonFlu - Python wrapping for OpenFOAM C++ API
+## Copyright (C) 2010- Alexey Petrov
+## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
+## 
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+## 
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+## 
+## See http://sourceforge.net/projects/pythonflu
+##
+## Author : Alexey PETROV
+##
+
+
+#--------------------------------------------------------------------------------------
+dirs = $(dir $(sources))
+names = $(patsubst %.cxx,_%.so,$(notdir $(sources)))
+libs = $(join $(dirs),$(names))
+
+stubs = $(patsubst %.cxx,%.cc,$(sources))
+deps = $(patsubst %.cxx,%.d,$(sources))
+heads = $(patsubst %.cxx,%.h,$(sources))
+objs = $(patsubst %.cxx,%.o,$(sources))
+pyths = $(patsubst %.cxx,%.py,$(sources))
+apps = $(patsubst %.cxx,%.exe,$(sources))
+pycs = $(addsuffix *.pyc,$(dirs))
+tmps = $(addsuffix *~,$(dirs))
+tests = $(patsubst %.py,%.pyc,$(wildcard test_*.py))
+
+.INTERMEDIATE : $(stubs) $(objs)
+
+.SUFFIXES : .o
+
+%.o : %.cpp
+
+
+#--------------------------------------------------------------------------------------
+all : $(libs)
+	@echo output : $(notdir $(pyths))
+
+clean :
+	rm -fr $(libs) $(stubs) $(objs) $(pyths) $(deps) $(heads) $(apps) $(pycs) $(tmps)
+
+
+#--------------------------------------------------------------------------------------
+include @abs_top_builddir@/include.base.makefile
+
+
+#--------------------------------------------------------------------------------------

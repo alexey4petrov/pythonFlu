@@ -1,4 +1,5 @@
-## VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
+## pythonFlu - Python wrapping for OpenFOAM C++ API
+## Copyright (C) 2010- Alexey Petrov
 ## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 ## 
 ## This program is free software: you can redistribute it and/or modify
@@ -14,15 +15,20 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ## 
-## See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
+## See http://sourceforge.net/projects/pythonflu
 ##
 ## Author : Alexey PETROV
 ##
 
 
 #---------------------------------------------------------------------------
-from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "compressible_" ) 
+from Foam.src.OpenFOAM.fields.tmp.autoPtr_compressible_turbulenceModel import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_compressible_turbulenceModel import *
+
+from Foam.src.OpenFOAM.fields.tmp.autoPtr_compressible_RASModel import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_compressible_RASModel import *
+
+from Foam.src.turbulenceModels.compressible.RAS.derivedFvPatchFields.turbulentTemperatureCoupledBaffle.regionProperties import *
 
 
 #---------------------------------------------------------------------------
@@ -30,7 +36,6 @@ from Foam import FOAM_VERSION, FOAM_BRANCH_VERSION, FOAM_REF_VERSION
 if FOAM_VERSION( "<=", "010401" ):
    turbulenceModel = compressible_turbulenceModel
    autoPtr_turbulenceModel = autoPtr_compressible_turbulenceModel
-   
    pass
 
 
@@ -38,7 +43,6 @@ if FOAM_VERSION( "<=", "010401" ):
 if FOAM_REF_VERSION( "==", "010500" ) or FOAM_BRANCH_VERSION( "dev", "==", "010500" ):
    RASModel = compressible_RASModel
    autoPtr_RASModel = autoPtr_compressible_RASModel
-   
    pass
 
 
@@ -51,3 +55,5 @@ if FOAM_REF_VERSION(  ">=", "010600" ) or FOAM_BRANCH_VERSION( "dev", ">=", "010
    autoPtr_RASModel = autoPtr_compressible_RASModel
    pass
 
+
+#----------------------------------------------------------------------------

@@ -24,7 +24,7 @@
 #--------------------------------------------------------------------------------------
 # Process this file with autoconf to produce a configure script
 #--------------------------------------------------------------------------------------
-AC_INIT([pythonFlu Project], [8.0], [alexey.petrov.nnov@gmail.com], [pythonflu])
+AC_INIT([pythonFlu Project], [8.1-Elvis], [alexey.petrov.nnov@gmail.com], [pythonflu])
 
 # AC_CONFIG_AUX_DIR defines an alternative directory where to find the auxiliary
 # scripts such as config.guess, install-sh, ...
@@ -101,14 +101,29 @@ CONFFOAM_CHECK_MANDATORY( "openfoam_ok swig_ok python_ok" )
 AC_OUTPUT( [ bashrc \
 	     Makefile \
 	     include.makefile \
+	     include.base.makefile \
+	     include.foam.makefile \
 	     foam.version.makefile \
 	     Foam/__init__.py \
-	     Foam/pyfoam.cxx \
 	     Foam/Makefile \
+	     Foam/OpenFOAM/Makefile \
+	     Foam/meshTools/Makefile \
+	     Foam/finiteVolume/Makefile \
+	     Foam/fv/Makefile \
+	     Foam/fvc/Makefile \
+	     Foam/fvm/Makefile \
+	     Foam/MULES/Makefile \
+	     Foam/sampling/Makefile \
+	     Foam/dynamicMesh/Makefile \
+	     Foam/dynamicFvMesh/Makefile \
+	     Foam/randomProcesses/Makefile \
+	     Foam/thermophysicalModels/Makefile \
+	     Foam/transportModels/Makefile \
+	     Foam/radiation/Makefile \
+	     Foam/incompressible/Makefile \
+	     Foam/compressible/Makefile \
 	     Foam/applications/utilities/postProcessing/graphics/Makefile \
 	     Foam/applications/utilities/mesh/conversion/Makefile \
-	     EFoam/pbmr/diffusion/Makefile \
-	     EFoam/common/shared_ptr/Makefile \
 	     make-deb.sh \
 	     make-rpm.sh \
 	     deb-template/control \

@@ -1,4 +1,5 @@
-## VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
+## pythonFlu - Python wrapping for OpenFOAM C++ API
+## Copyright (C) 2010- Alexey Petrov
 ## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 ## 
 ## This program is free software: you can redistribute it and/or modify
@@ -14,15 +15,25 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ## 
-## See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
+## See http://sourceforge.net/projects/pythonflu
 ##
 ## Author : Alexey PETROV
 ##
 
-
 #---------------------------------------------------------------------------
-from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "fvc_" ) 
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcDdt import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcD_Dt import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcGrad import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcDiv import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcFlux import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcVolumeIntegrate import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcSnGrad import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcSup import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcReconstruct import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcMeshPhi import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcLaplacian import *
+
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolate import *
 
 
 #---------------------------------------------------------------------------
@@ -51,6 +62,12 @@ makeRelative = fvc_makeRelative
 makeAbsolute = fvc_makeAbsolute
 
 flux = fvc_flux
+
+Sp = fvc_Sp
+
+Su = fvc_Su
+
+SuSp = fvc_SuSp
 
 
 #---------------------------------------------------------------------------

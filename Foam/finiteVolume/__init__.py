@@ -1,4 +1,5 @@
-## VulaSHAKA (Simultaneous Neutronic, Fuel Performance, Heat And Kinetics Analysis)
+## pythonFlu - Python wrapping for OpenFOAM C++ API
+## Copyright (C) 2010- Alexey Petrov
 ## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 ## 
 ## This program is free software: you can redistribute it and/or modify
@@ -14,19 +15,65 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ## 
-## See https://vulashaka.svn.sourceforge.net/svnroot/vulashaka
+## See http://sourceforge.net/projects/pythonflu
 ##
 ## Author : Alexey PETROV
 ##
 
 
 #---------------------------------------------------------------------------
-from Foam import get_module_initializtion_command
-exec get_module_initializtion_command( "finiteVolume_" ) 
+from Foam.src.finiteVolume.finiteVolume.fvSchemes import *
+from Foam.src.finiteVolume.finiteVolume.fvSolution import *
+
+from Foam.src.finiteVolume.fvMesh.fvMeshes import *
+
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_fvMesh import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_volScalarField import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_volVectorField import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_surfaceScalarField import *
+
+from Foam.src.finiteVolume.fvMatrices.fvMatrices import *
+
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.linear import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.weighted.weighted_vector import *
+
+from Foam.src.finiteVolume.cfdTools.general.findRefCell import *
+from Foam.src.finiteVolume.cfdTools.general.adjustPhi import *
+from Foam.src.finiteVolume.cfdTools.general.bound import *
+
+from Foam.src.finiteVolume.fields.fvPatchFields.basic.mixed.mixedFvPatchField_scalar import *
+from Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedValue.fixedValueFvPatchField_scalar import *
+from Foam.src.finiteVolume.fields.fvPatchFields.basic.calculated.calculatedFvPatchField_scalar import *
+from Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedGradient.fixedGradientFvPatchField_vector import *
+from Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedGradient.fixedGradientFvPatchField_scalar import *
+
+from Foam.src.finiteVolume.fields.fvsPatchFields.basic.calculated.calculatedFvsPatchField_scalar import *
+
+from Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZones import *
+from Foam.src.finiteVolume.fvMesh.fvPatches.derived.wallFvPatch import *
+from Foam.src.OpenFOAM.algorithms.subCycle.subCycle_volScalarField import *
+
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolationScheme.surfaceInterpolationScheme_vector import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolationScheme.surfaceInterpolationScheme_scalar import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.limitedSurfaceInterpolationScheme.limitedSurfaceInterpolationScheme_vector import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.NVDTVD import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.LimitFuncs import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.MUSCL.MUSCL_NVDTVD import *
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.LimitedScheme_vector_MUSCLLimiter_NVDTVD_limitFuncs_magSqr import *
+
+from Foam.src.finiteVolume.finiteVolume.snGradSchemes.snGradScheme import *
+
+from Foam.src.finiteVolume.interpolation.surfaceInterpolation.multivariateSchemes.multivariateSurfaceInterpolationScheme.multivariateSurfaceInterpolationScheme_scalar import *
+
+from Foam.src.finiteVolume.cfdTools.general.MRF.MRFZone import *
+from Foam.src.finiteVolume.cfdTools.general.MRF.MRFZones import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_MRFZone import *
+from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_MRFZone import *
 
 
 #---------------------------------------------------------------------------
 volScalarField = GeometricField_scalar_fvPatchField_volMesh
+volScalarField.DimensionedInternalField = DimensionedField_scalar_volMesh
 
 volVectorField = GeometricField_vector_fvPatchField_volMesh
 
@@ -56,11 +103,14 @@ calculatedFvPatchScalarField = calculatedFvPatchField_scalar
 
 
 #---------------------------------------------------------------------------
+from Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_scalar import *
 zeroGradientFvPatchScalarField = zeroGradientFvPatchField_scalar
 
+from Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_vector import *
 zeroGradientFvPatchVectorField = zeroGradientFvPatchField_vector
 
-zeroGradientFvPatchTensorField = zeroGradientFvPatchField_tensor
+from Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_scalar import *
+zeroGradientFvPatchTensorField = zeroGradientFvPatchField_vector
 
 
 #----------------------------------------------------------------------------

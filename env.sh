@@ -23,23 +23,12 @@
 
 #--------------------------------------------------------------------------------------
 # Source the confFlu environment
-source /opt/confFlu/r1.0/bashrc
+source /home/alexey/confflu-deb-1.7.1-1/bashrc
 
 #--------------------------------------------------------------------------------------
 # Source the OpenFOAM environment
-which_open_foam="1.4.1-dev"
-source_openfoam /opt/OpenFOAM/r${which_open_foam}/debug/bashrc
+source_openfoam /opt/openfoam171/etc/bashrc
 
-if [ "${which_open_foam}" == "1.4.1-dev" ]; then
-    source /opt/diffusionFoam/r1.4/OpenFOAM-${which_open_foam}/bashrc 
-fi
-
-# Source the SALOME environment
-source_salome /opt/SALOME/r5.1.3/r1.0/from_sources/env_products.sh
-
-# Source the VulaSHAKA utility components : unv2foam and foam2vtk
-source /opt/unv2foam/r0.4/OpenFOAM-${which_open_foam}/bashrc 
-source /opt/foam2vtk/r0.4/OpenFOAM-${which_open_foam}/bashrc 
 
 
 #--------------------------------------------------------------------------------------
