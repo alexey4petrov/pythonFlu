@@ -243,6 +243,7 @@ sources = \
 	@abs_top_builddir@/src/OpenFOAM/meshes/lduMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx \
 	@abs_top_builddir@/src/OpenFOAM/matrices/solution.cxx \
+	@abs_top_builddir@/src/OpenFOAM/matrices/ext_solution.cxx \
 	\
 	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx \
 	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx \
