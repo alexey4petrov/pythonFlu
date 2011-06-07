@@ -34,7 +34,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%import "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
 
 %include <fvPatch.H>
 

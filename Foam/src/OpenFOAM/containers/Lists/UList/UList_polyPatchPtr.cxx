@@ -37,8 +37,6 @@
 
 %import "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
 
-%import "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
-
 %ignore Foam::UList< Foam::polyPatch* >::writeEntry;
 
 %template( UList_polyPatchPtr ) Foam::UList< Foam::polyPatch* >;

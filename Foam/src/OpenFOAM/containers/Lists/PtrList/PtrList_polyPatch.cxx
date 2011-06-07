@@ -33,7 +33,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
 
 %import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 

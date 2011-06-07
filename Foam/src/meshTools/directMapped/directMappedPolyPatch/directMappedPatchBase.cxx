@@ -43,7 +43,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
 
-%import "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
+%import "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
 
 // #include "Tuple2.H"
 // #include "pointIndexHit.H"

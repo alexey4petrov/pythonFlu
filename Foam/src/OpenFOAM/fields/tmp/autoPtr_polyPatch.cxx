@@ -35,7 +35,7 @@
 //---------------------------------------------------------------------------
 %import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
+%include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cpp"
 
 %template( autoPtr_polyPatch ) Foam::autoPtr< Foam::polyPatch >;
 

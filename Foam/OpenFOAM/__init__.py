@@ -114,7 +114,7 @@ from Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable_int_word_string
 from Foam.src.OpenFOAM.containers.NamedEnum.NamedEnum import *
 
 
-from Foam.src.OpenFOAM.meshes.polyMesh.polyPatches.polyPatch import *
+from Foam.src.OpenFOAM.fields.tmp.autoPtr_polyPatch import *
 from Foam.src.OpenFOAM.meshes.polyMesh.zones.ZoneID.polyPatchID import *
 
 from Foam.src.OpenFOAM.fields.Fields.primitiveFields import *
