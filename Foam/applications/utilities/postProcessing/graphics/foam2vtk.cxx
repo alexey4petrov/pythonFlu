@@ -21,23 +21,19 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+#ifndef foam2vtk_cxx
+#define foam2vtk_cxx
 
 
-//--------------------------------------------------------------------------------------
-%include "src/OpenFOAM/db/typeInfo/className.hxx"
-
-%include "src/finiteVolume/fields/volFields/volScalarField.cxx"
-
-%include "src/finiteVolume/fields/volFields/volVectorField.cxx"
-
+//---------------------------------------------------------------------------
 %{
-    #include "vtkFoamInterfaces.H"
+  #include "Foam/applications/utilities/postProcessing/graphics/foam2vtk.hh"
 %}
+
+
+%import "src/OpenFOAM/db/typeInfo/className.hxx"
+
+%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include "vtkFoamInterface.H"
 
@@ -51,3 +47,4 @@
 
 
 //--------------------------------------------------------------------------------------
+#endif

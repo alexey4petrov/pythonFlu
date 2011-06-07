@@ -21,20 +21,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef unv2foam_cxx
-#define unv2foam_cxx
+#ifndef foam2vtk_hh
+#define foam2vtk_hh
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "Foam/applications/utilities/mesh/conversion/unv2foam.hh"
-%}
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+#include "vtkFoamInterfaces.H"
 
-%include "create_fvMesh.H"
-
-%include "unv2foam.H"
+#include "vtkFoamInterface.H"
 
 
 //--------------------------------------------------------------------------------------

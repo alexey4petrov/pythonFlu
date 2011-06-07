@@ -21,21 +21,13 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef unv2foam_cxx
-#define unv2foam_cxx
+#ifndef emb_createPhi_hh
+#define emb_createPhi_hh
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "Foam/applications/utilities/mesh/conversion/unv2foam.hh"
-%}
-
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-%include "create_fvMesh.H"
-
-%include "unv2foam.H"
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
 
-//--------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 #endif
