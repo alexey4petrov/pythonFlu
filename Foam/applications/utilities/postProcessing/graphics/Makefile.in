@@ -23,7 +23,7 @@
 ifeq "@ENABLE_FOAM2VTK@xx" "yesxx"
 #--------------------------------------------------------------------------------------
 
-pyfoam_root_dir:=../../../../..
+include @abs_top_builddir@/foam.version.makefile
 
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
@@ -34,8 +34,11 @@ __CXXFLAGS__ := $(__CXXFLAGS__)  @FOAM2VTK_CXXFLAGS@ @VTK_CXXFLAGS@
 __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
 	@FOAM2VTK_LDFLAGS@
-
-include $(pyfoam_root_dir)/include.makefile
+	
+sources = \
+	@abs_top_builddir@/Foam/applications/utilities/postProcessing/graphics/foam2vtk.cxx
+	
+include @abs_top_builddir@/include.foam.makefile
 
 #--------------------------------------------------------------------------------------
 else

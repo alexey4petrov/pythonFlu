@@ -28,7 +28,7 @@ include @abs_top_builddir@/foam.version.makefile
 #--------------------------------------------------------------------------------------
 include @abs_top_builddir@/include.makefile
 
-SUBDIRS = OpenFOAM meshTools finiteVolume fv fvc fvm MULES sampling dynamicMesh dynamicFvMesh randomProcesses thermophysicalModels transportModels radiation incompressible compressible
+SUBDIRS = OpenFOAM meshTools finiteVolume fv fvc fvm MULES sampling dynamicMesh dynamicFvMesh randomProcesses thermophysicalModels transportModels radiation incompressible compressible applications/utilities/mesh/conversion applications/utilities/postProcessing/graphics/
 
 
 #--------------------------------------------------------------------------------------

@@ -23,7 +23,7 @@
 ifeq "@ENABLE_UNV2FOAM@xx" "yesxx"
 #--------------------------------------------------------------------------------------
 
-pyfoam_root_dir:=../../../../..
+include @abs_top_builddir@/foam.version.makefile
 
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
@@ -34,8 +34,12 @@ __CXXFLAGS__ := $(__CXXFLAGS__)  @UNV2FOAM_CXXFLAGS@
 __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
 	@UNV2FOAM_LDFLAGS@
+	
+sources = \
+	@abs_top_builddir@/Foam/applications/utilities/mesh/conversion/unv2foam.cxx
 
-include $(pyfoam_root_dir)/include.makefile
+include @abs_top_builddir@/include.foam.makefile
+
 
 #--------------------------------------------------------------------------------------
 else
