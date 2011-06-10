@@ -53,7 +53,7 @@ clean :
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/include.base.makefile
+include $(pythonflu_root_dir)/Foam/include.base.makefile
 
 
 #--------------------------------------------------------------------------------------

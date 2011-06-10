@@ -96,10 +96,10 @@ CONFFOAM_CHECK_MANDATORY( "openfoam_ok swig_ok python_ok" )
 #--------------------------------------------------------------------------------------
 AC_OUTPUT( [ bashrc \
 	     Makefile \
-	     include.makefile \
-	     include.base.makefile \
-	     include.foam.makefile \
-	     foam.version.makefile \
+	     Foam/include.makefile \
+	     Foam/include.base.makefile \
+	     Foam/include.foam.makefile \
+	     Foam/foam.version.makefile \
 	     Foam/__init__.py \
 	     Foam/Makefile \
 	     Foam/OpenFOAM/Makefile \
