@@ -76,7 +76,7 @@ PROJECT_LIBS       = -l$(WM_PROJECT)
 
 
 #--------------------------------------------------------------------------------------
-__CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I@abs_top_builddir@/ -I/usr/include -I/usr/include/c++ 
+__CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I$(pythonflu_root_dir) -I/usr/include -I/usr/include/c++ 
 
 
 #--------------------------------------------------------------------------------------
@@ -186,7 +186,7 @@ $(RECURSIVE_CLEAN_TARGETS):
 #--------------------------------------------------------------------------------------
 __HEADER_PATH_SUFFIXES__ := @HEADER_PATHS@
 
-__HEADER_PATHS__ := $(foreach path,$(__HEADER_PATH_SUFFIXES__),$(addprefix -I@abs_top_builddir@,$(path)))
+__HEADER_PATHS__ := $(foreach path,$(__HEADER_PATH_SUFFIXES__),$(addprefix -I$(pythonflu_root_dir),$(path)))
 
 __SWIG_INCLUDES__ += $(__HEADER_PATHS__)
 
