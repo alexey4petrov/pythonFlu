@@ -23,7 +23,7 @@
 ifeq "@ENABLE_UNV2FOAM@xx" "yesxx"
 #--------------------------------------------------------------------------------------
 
-include @abs_top_builddir@/foam.version.makefile
+include @abs_top_builddir@/Foam/foam.version.makefile
 
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
@@ -38,7 +38,7 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 sources = \
 	@abs_top_builddir@/Foam/applications/utilities/mesh/conversion/unv2foam.cxx
 
-include @abs_top_builddir@/include.foam.makefile
+include @abs_top_builddir@/Foam/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------
