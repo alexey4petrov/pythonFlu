@@ -22,6 +22,8 @@
 #--------------------------------------------------------------------------------------
 ifeq "@ENABLE_UNV2FOAM@xx" "yesxx"
 #--------------------------------------------------------------------------------------
+pythonflu_root_dir=@abs_top_builddir@
+
 
 include @abs_top_builddir@/Foam/foam.version.makefile
 

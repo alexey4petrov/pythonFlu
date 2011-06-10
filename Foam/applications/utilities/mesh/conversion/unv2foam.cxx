@@ -27,7 +27,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "Foam/applications/utilities/mesh/conversion/unv2foam.hh"
+  #include "applications/utilities/mesh/conversion/unv2foam.hh"
 %}
 
 %import "src/finiteVolume/fvMesh/fvMeshes.cxx"
