@@ -40,14 +40,14 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicRhoThermo.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicRhoThermo.cxx \
 
 
 #--------------------------------------------------------------------------------------

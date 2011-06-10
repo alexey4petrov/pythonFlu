@@ -65,11 +65,11 @@ endif
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_incompressible_turbulenceModel.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_incompressible_turbulenceModel.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_incompressible_RASModel.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_incompressible_RASModel.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_incompressible_LESModel.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_incompressible_LESModel.cxx \
 
 
 #--------------------------------------------------------------------------------------

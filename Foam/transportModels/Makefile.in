@@ -47,11 +47,11 @@ endif
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/transportModels/incompressible/transportModel.cxx \
-	@abs_top_builddir@/src/transportModels/incompressible/viscosityModels/viscosityModel.cxx \
-	@abs_top_builddir@/src/transportModels/incompressible/singlePhaseTransportModel.cxx \
-	@abs_top_builddir@/src/transportModels/incompressible/twoPhaseMixture.cxx \
-	@abs_top_builddir@/src/transportModels/interfaceProperties/interfaceProperties.cxx \
+	@abs_top_builddir@/Foam/src/transportModels/incompressible/transportModel.cxx \
+	@abs_top_builddir@/Foam/src/transportModels/incompressible/viscosityModels/viscosityModel.cxx \
+	@abs_top_builddir@/Foam/src/transportModels/incompressible/singlePhaseTransportModel.cxx \
+	@abs_top_builddir@/Foam/src/transportModels/incompressible/twoPhaseMixture.cxx \
+	@abs_top_builddir@/Foam/src/transportModels/interfaceProperties/interfaceProperties.cxx \
 
 
 #--------------------------------------------------------------------------------------

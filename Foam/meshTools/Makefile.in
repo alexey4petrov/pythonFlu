@@ -37,12 +37,12 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.cxx \
-	@abs_top_builddir@/src/meshTools/coordinateSystems/coordinateSystem.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_coordinateSystem.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.cxx \
-	@abs_top_builddir@/src/meshTools/coordinateSystems/coordinateSystems.cxx \
-	@abs_top_builddir@/src/meshTools/directMapped/directMappedPolyPatch/directMappedPatchBase.cxx \
+	@abs_top_builddir@/Foam/src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.cxx \
+	@abs_top_builddir@/Foam/src/meshTools/coordinateSystems/coordinateSystem.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_coordinateSystem.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.cxx \
+	@abs_top_builddir@/Foam/src/meshTools/coordinateSystems/coordinateSystems.cxx \
+	@abs_top_builddir@/Foam/src/meshTools/directMapped/directMappedPolyPatch/directMappedPatchBase.cxx \
 
 
 #--------------------------------------------------------------------------------------

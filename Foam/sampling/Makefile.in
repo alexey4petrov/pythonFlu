@@ -39,8 +39,8 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/sampling/meshToMeshInterpolation/meshToMesh.cxx \
-	@abs_top_builddir@/src/sampling/graphField/makeGraph.cxx \
+	@abs_top_builddir@/Foam/src/sampling/meshToMeshInterpolation/meshToMesh.cxx \
+	@abs_top_builddir@/Foam/src/sampling/graphField/makeGraph.cxx \
 
 
 #--------------------------------------------------------------------------------------
