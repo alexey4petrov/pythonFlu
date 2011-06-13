@@ -32,9 +32,9 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 
 #--------------------------------------------------------------------------------------
-pythonflu_root_dir:=../../..
+pythonflu_root_dir:=../../../..
 
-include $(pythonflu_root_dir)/include.makefile
+include $(pythonflu_root_dir)/Foam/src.include.makefile
 
 
 #--------------------------------------------------------------------------------------
