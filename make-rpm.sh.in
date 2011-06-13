@@ -58,8 +58,8 @@ cp -rf Foam ${package_folder}
 # remove all unnecessary from the ${package_folder}
 echo "cleaning cxx, h, o, etc..."
 echo "--------------------------------------------------------------------------------"
-(cd ${package_folder} && find \( -name "*.cxx" -o -name "*.h" -o -name "*.hxx" -o -name "*.cpp" -o -name "*.hpp" \) -delete)
-(cd ${package_folder} && find \( -name "*.cc" -o -name "*.hh" -o -name "*.exe" \) -delete)
+(cd ${package_folder} && find \( -name "*.h" \) -delete)
+(cd ${package_folder} && find \( -name "*.cc" -o -name "*.exe" \) -delete)
 (cd ${package_folder} && find \( -name "*.d" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
 (cd ${package_folder} && find ./ -name ".svn" -exec rm -rf {} \; 2>/dev/null)
 

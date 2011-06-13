@@ -61,7 +61,7 @@ install:
 	@ install -d $(PYTHON_FLU_LIB)
 	@ rm -rf $(PYTHON_FLU_LIB)/Foam
 	@ cp -rf Foam $(PYTHON_FLU_LIB)/
-	@ (cd $(PYTHON_FLU_LIB)/Foam && find \( -name "*.cxx" -o -name "*.h" -o -name "*.d" -o -name "pyfoam" -o -name "*.cpp" \) -delete)
+	@ (cd $(PYTHON_FLU_LIB)/Foam && find \( -o -name "*.d" -o -name "pyfoam" -o \) -delete)
 	@ (cd $(PYTHON_FLU_LIB)/Foam && find \( -name "*.h" -o -name "*_" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
 	@ python -c "from setuptools import setup; setup(name='Foam')" install
 
