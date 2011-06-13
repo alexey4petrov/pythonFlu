@@ -48,8 +48,15 @@ all : $(libs)
 	@echo output : $(notdir $(pyths))
 
 clean :
-	rm -fr $(libs) $(stubs) $(objs) $(pyths) $(deps) 
-	rm -rf $(heads) $(apps) $(pycs) $(tmps)
+	rm -fr $(libs) 
+	rm -rf $(stubs) 
+	rm -rf $(objs) 
+	rm -rf $(pyths) 
+	rm -rf $(deps) 
+	rm -rf $(heads) 
+	rm -rf $(apps) 
+	rm -rf $(pycs) 
+	rm -rf $(tmps)
 
 
 #--------------------------------------------------------------------------------------
