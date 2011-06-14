@@ -61,7 +61,7 @@ In order to build the module you have to perform the following actions:
 
    cd <path to the sources>
 
-3. Modify the provided "env.sh" file to adjust to your local environment.
+3. Copy the provided "env.sh.example" file to "env.sh" and adjust to your local environment.
    
    <your favorite editor> ./env.sh
 
