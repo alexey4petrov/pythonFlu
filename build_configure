@@ -40,7 +40,7 @@ if test "${confflu_path}x" = "x"; then
    exit 0
 fi
 
-${confflu_path}/build_configure -I${confflu_path}
+${confflu_path}/build_configure 
 
 
 #--------------------------------------------------------------------------------------
