@@ -23,11 +23,21 @@
 
 #--------------------------------------------------------------------------------------
 # Source the confFlu environment
-source /home/alexey/confflu-deb-1.7.1-1/bashrc
+source /usr/local/share/confFlu/bashrc
 
 #--------------------------------------------------------------------------------------
-# Source the OpenFOAM environment
-source_openfoam /opt/openfoam171/etc/bashrc
+# Source OpenFOAM environment
+which_open_foam="1.6"
+#source_openfoam /home/andrey/OpenFOAM/OpenFOAM-1.6/etc/bashrc
+
+source /opt/openfoam171/etc/bashrc
+
+source /home/andrey/salome_5.1.4/env_products.sh
+
+# Source VulaShaka utility components : foam2vtk, unv2foam, pyfoam and foam2med
+#source /home/andrey/hybridflu/unv2foam/bashrc 
+
+#source /home/andrey/hybridflu/foam2med/bashrc 
 
 
 

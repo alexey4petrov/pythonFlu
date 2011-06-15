@@ -25,7 +25,22 @@
 
 
 #--------------------------------------------------------------------------------------
-${CONFFLU_ROOT_DIR}/build_configure
+confflu_path=""
+
+if test "x${CONFFLU_ROOT_DIR}" != "x"; then
+   confflu_path=${CONFFLU_ROOT_DIR}
+fi
+
+if test "x${confflu_path}" = x && test -f /usr/local/share/confFlu/build_configure; then
+   confflu_path=/usr/local/share/confFlu
+fi
+
+if test "${confflu_path}x" = "x"; then
+   echo "ERROR:confFlu need to be installed or sourced"
+   exit 0
+fi
+
+${confflu_path}/build_configure -I${confflu_path}
 
 
 #--------------------------------------------------------------------------------------
