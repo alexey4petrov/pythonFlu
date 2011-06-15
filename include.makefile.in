@@ -88,7 +88,15 @@ endif
 
 
 #--------------------------------------------------------------------------------------
-subdirs := $(shell find -maxdepth 1 -type d)
+
+ifneq (`uname -s`,Darwin)
+#use util from MacPorts
+FIND=gfind
+else
+FIND=find
+endif
+
+subdirs := $(shell $(FIND) -maxdepth 1 -type d)
 subdirs := $(subst ./,,$(subdirs))
 subdirs := $(subst CVS,,$(subdirs))
 subdirs := $(subst cvs,,$(subdirs))
@@ -240,7 +248,7 @@ __CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION_
 %.o : %.cpp
 
 %.o : %.cc
-	gcc $(__CXXFLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
+	$(CC) $(__CXXFLAGS__)  "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
 
 
 PACKAGE_DEPENDENCIES = $(wildcard *.d)
@@ -255,7 +263,7 @@ _%.so : %.o
 __APP_FLAGS__ = $(__LDFLAGS__)
 
 %.exe : %.o
-	gcc $< $(__APP_FLAGS__) -o $@
+	$(CC) $< $(__APP_FLAGS__) -o $@
 #	python `basename $@ exe`py
 
 %.pyc : %.py

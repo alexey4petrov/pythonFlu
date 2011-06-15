@@ -142,7 +142,7 @@ endif
 __CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(FOAM_BRANCH) $(__CPPFLAGS__)
 
 %.o : %.cc
-	gcc $(__CXXFLAGS__)  "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
+	$(CC)  $(__CXXFLAGS__)  "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
 
 -include $(deps) dummy
 
@@ -150,7 +150,7 @@ __APP_FLAGS__ = $(__LDFLAGS__)
 
 _%.so : %.o
 	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@; \
-	gcc $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<); \
+	$(CC) $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<); \
 	cd $(dir $<); python $(patsubst %.o,%.py,$<) || (rm $@ && exit 1)
 
 
