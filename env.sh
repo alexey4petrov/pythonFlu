@@ -29,9 +29,9 @@ source /usr/local/share/confFlu/bashrc
 # Source OpenFOAM environment
 #source_openfoam /home/andrey/OpenFOAM/OpenFOAM-1.6/etc/bashrc
 
-source /opt/openfoam171/etc/bashrc
+source_openfoam /opt/openfoam171/etc/bashrc
 
-source /home/andrey/salome_5.1.4/env_products.sh
+source_salome /home/andrey/salome_5.1.4/env_products.sh
 
 # Source VulaShaka utility components : foam2vtk, unv2foam, pyfoam and foam2med
 #source /home/andrey/hybridflu/unv2foam/bashrc 
