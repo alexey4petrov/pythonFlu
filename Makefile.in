@@ -22,9 +22,13 @@
 
 
 #--------------------------------------------------------------------------------------
+prefix:=@prefix@
+
 pythondir:=@PYTHONDIR@
 
 pythonflu_root_dir:=@abs_top_builddir@
+
+m4dir:=@datarootdir@
 
 include $(pythonflu_root_dir)/Foam/include.makefile
 
@@ -45,16 +49,19 @@ rpm:
 
 #--------------------------------------------------------------------------------------
 install:
-	@ install -d $(pythondir)
-	@ rm -rf $(pythondir)/Foam
+	@ rm -rf $(pythondir)/Foam $(m4dir)/pythonFlu
+	@ install -d $(pythondir) $(m4dir)/pythonFlu/admin
 	@ cp -rf Foam $(pythondir)/
 	@ (cd $(pythondir)/Foam && find \( -name "*.d" -o -name "pyfoam" -o -name "*.cc" -o -name "*.exe" \) -delete)
 	@ (cd $(pythondir)/Foam && find \( -name "*.h" -o -name "*_" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
+	@ cp -rf @abs_top_builddir@/admin/pythonflu_check_pythonflu.m4 $(m4dir)/pythonFlu/admin/
 	@ python -c "from setuptools import setup; setup(name='Foam')" install
 
 develop:
-	@ rm -rf $(pythondir)/Foam
-	@ ln -s @abs_top_builddir@/Foam $(pythondir)/Foam
+	@ rm -rf $(pythondir)/Foam $(m4dir)/pythonFlu
+	@ install -d $(pythondir) $(m4dir)/pythonFlu/admin
+	@ ln -s @abs_top_builddir@/Foam $(pythondir)/Foam 
+	@ ln -s @abs_top_builddir@/admin/pythonflu_check_pythonflu.m4 $(m4dir)/pythonFlu/admin/pythonflu_check_pythonflu.m4
 	@ python -c "from setuptools import setup; setup(name='Foam')" install
 
 
