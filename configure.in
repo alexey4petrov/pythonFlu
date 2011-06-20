@@ -69,17 +69,6 @@ echo "--------------------------------------------------------------------------
 CONFFOAM_CHECK_BOOST_SHARED_PTR
 echo 
 
-
-echo "--------------------------------------------------------------------------------------"
-PYFOAM_CHECK_SINGLELIB
-echo 
-
-
-echo "--------------------------------------------------------------------------------------"
-PYFOAM_CHECK_EMBEDDEDCXX
-echo 
-
-
 echo "---------------------------- mandatory products --------------------------------"
 CONFFOAM_PRINT_SUMMURY( "openfoam_ok swig_ok python_ok" )
 echo
