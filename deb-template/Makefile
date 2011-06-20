@@ -26,12 +26,15 @@ DESTDIR=
 
 PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python2.6/dist-packages/
 
+PYTHONFLU_M4=$(DESTDIR)/usr/local/share
+
 install: $(PYTHON_FLU_LIB)/Foam
 	@ echo "That's all"
 
 $(PYTHON_FLU_LIB)/Foam: 
-	@ install -d $(PYTHON_FLU_LIB)
+	@ install -d $(PYTHON_FLU_LIB) $(PYTHONFLU_M4)/pythonFlu/admin
 	@ cp -rf Foam $(PYTHON_FLU_LIB)/
+	@ cp -rf admin/pythonflu_check_pythonflu.m4 $(PYTHONFLU_M4)/pythonFlu/admin/
 
 
 #--------------------------------------------------------------------------------------     	

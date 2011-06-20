@@ -77,6 +77,9 @@ echo "--------------------------------------------------------------------------
 echo "Copying \"Foam\" to ${package_folder}"
 echo "--------------------------------------------------------------------------------"
 cp -rf Foam ${package_folder}
+mkdir ${package_folder}/admin
+cp -rf admin/pythonflu_check_pythonflu.m4 ${package_folder}/admin/
+
 
 
 #--------------------------------------------------------------------------------------
