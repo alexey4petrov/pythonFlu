@@ -23,12 +23,12 @@
 
 #--------------------------------------------------------------------------------------
 # Source the confFlu environment
-source /home/alexey/confflu-deb-1.7.1-1/bashrc
+source /home/alexey/Source/confFlu/bashrc
+
 
 #--------------------------------------------------------------------------------------
 # Source the OpenFOAM environment
-source_openfoam /opt/openfoam171/etc/bashrc
-
+# source_openfoam /opt/openfoam171/etc/bashrc
 
 
 #--------------------------------------------------------------------------------------
