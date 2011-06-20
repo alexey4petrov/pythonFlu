@@ -24,7 +24,7 @@ dnl
 dnl --------------------------------------------------------------------------------
 AC_DEFUN([PYTHONFLU_CHECK_PYTHONFLU],
 [
-AC_CHECKING(for pyFoam package)
+AC_CHECKING(for pythonFlu package)
 
 AC_REQUIRE([CONFFLU_CHECK_OPENFOAM])
 AC_REQUIRE([CONFFLU_CHECK_SWIG])
