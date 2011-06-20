@@ -58,10 +58,6 @@ CONFFLU_CHECK_PYTHON
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFLU_CHECK_UNV2FOAM
-echo 
-
-echo "--------------------------------------------------------------------------------------"
 CONFFLU_CHECK_DIFFUSIONFOAMLIB
 echo 
 
@@ -107,7 +103,6 @@ AC_OUTPUT( [ bashrc \
 	     Foam/radiation/Makefile \
 	     Foam/incompressible/Makefile \
 	     Foam/compressible/Makefile \
-	     Foam/applications/utilities/mesh/conversion/Makefile \
 	     make-deb.sh \
 	     make-rpm.sh \
 	     deb-template/control \
