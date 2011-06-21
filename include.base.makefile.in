@@ -55,7 +55,7 @@ ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo
 __SWIG_FLAGS__ += -D__CINT__ 
 endif
 
-__SWIG_FLAGS__ +=  @OPENFOAM_GFLAGS@ $(__SWIG_INCLUDES__)
+__SWIG_FLAGS__ += @OPENFOAM_GFLAGS@ $(__SWIG_INCLUDES__)
 
 __SWIG_FLAGS__+=-w508 # Declaration of 'XXX' shadows declaration accessible via 'YYY"
 __SWIG_FLAGS__+=-w317 # Specialization of non-template 'XXX'
