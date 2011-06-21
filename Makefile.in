@@ -31,14 +31,16 @@ SUBDIRS = Foam
 
 #--------------------------------------------------------------------------------------
 deb:
+	test "x@OS_NAME@" = "x" && echo Current OS is not supported && exit 1
 	@./make-deb.sh deb
-	
+
 launchpad:
+	test "x@OS_NAME@" = "x" && echo Current OS is not supported && exit 1
 	@./make-deb.sh launchpad
 
 rpm:
+	test "x@OS_NAME@" = "x" && echo Current OS is not supported && exit 1
 	@./make-rpm.sh
-
 
 
 #--------------------------------------------------------------------------------------
@@ -50,10 +52,6 @@ endif
 
 ifeq "$(shell if [ @OS_NAME@ = openSUSE ]; then echo 'true'; else echo 'false'; fi )" "true" 
 PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python@PYTHON_VERSION@/site-packages
-endif
-
-ifeq "$(shell if [ x@OS_NAME@ = x ]; then echo 'true'; else echo 'false'; fi )" "true" 
-$(error Your OS is not supported)
 endif
 
 
