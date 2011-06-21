@@ -68,7 +68,7 @@ PROJECT_LIBS       = -l$(WM_PROJECT)
 
 
 #--------------------------------------------------------------------------------------
-__CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I$(pythonflu_root_dir)/Foam -I/usr/include -I/usr/include/c++ 
+__CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I$(pythonflu_root_dir) -I/usr/include -I/usr/include/c++ 
 
 
 #--------------------------------------------------------------------------------------
@@ -133,18 +133,9 @@ endif
 
 __CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(FOAM_BRANCH) $(__CPPFLAGS__)
 
-%.o : %.cc
-	gcc $(__CXXFLAGS__) "-I./" "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
-
 -include $(deps) dummy
 
 __APP_FLAGS__ = $(__LDFLAGS__)
 
-_%.so : %.o
-	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@; \
-	gcc $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<)
-ifndef src_compilation_flag
-	cd $(dir $<) python $(patsubst %.o,%.py,$<) || (rm $@ && exit 1)
-endif
 
 #--------------------------------------------------------------------------------------
