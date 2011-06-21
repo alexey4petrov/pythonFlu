@@ -28,8 +28,6 @@
 //---------------------------------------------------------------------------
 #include <VectorSpace.H>
 
-#include <SphericalTensor.H>
-
 #include "src/OpenFOAM/primitives/vector.hh"
 
 #include "src/OpenFOAM/primitives/scalar.hh"
