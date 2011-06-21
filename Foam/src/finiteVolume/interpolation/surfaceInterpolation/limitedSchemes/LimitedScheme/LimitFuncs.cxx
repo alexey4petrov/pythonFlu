@@ -27,12 +27,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.LimitFuncs";
 %{
-    #include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/LimitFuncs.hh"
+    #include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/LimitFuncs.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <LimitFuncs.H>
 

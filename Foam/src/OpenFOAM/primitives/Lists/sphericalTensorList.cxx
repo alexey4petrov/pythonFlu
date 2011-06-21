@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.sphericalTensorList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/sphericalTensorList.hh"
+   #include "Foam/src/OpenFOAM/primitives/Lists/sphericalTensorList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_sphericalTensor.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_sphericalTensor.cxx"
 
 %include <sphericalTensorList.H>
 

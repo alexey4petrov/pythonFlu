@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volScalarField.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volScalarField.hh"
 
-#include "src/finiteVolume/fields/volFields/volVectorField.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volVectorField.hh"
 
-#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
 #include <fvcMeshPhi.H>
 

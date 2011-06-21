@@ -26,24 +26,24 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/refCount.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/refCount.hh"
 
-#include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hh"
+#include "Foam/src/OpenFOAM/matrices/lduMatrix/lduMatrix.hh"
 
-#include "src/finiteVolume/fvMatrices/fvMatricesFwd.hh"
+#include "Foam/src/finiteVolume/fvMatrices/fvMatricesFwd.hh"
 
 #include <fvMatrix.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volFieldsFwd.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volFieldsFwd.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hh"
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
+#include "Foam/src/OpenFOAM/matrices/lduMatrix/lduMatrix.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
 
 
 //----------------------------------------------------------------------------

@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/Fields/scalarField.hh"
+  #include "Foam/src/OpenFOAM/fields/Fields/scalarField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/Field.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/Field.cpp"
 
-%import "src/OpenFOAM/primitives/Lists/scalarList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/scalarList.cxx"
 
 
 //---------------------------------------------------------------------------

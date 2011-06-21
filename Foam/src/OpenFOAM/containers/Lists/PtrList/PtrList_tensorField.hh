@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr_tensorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr_tensorField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_tensorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_tensorField.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
 
 
 //---------------------------------------------------------------------------

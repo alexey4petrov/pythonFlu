@@ -26,15 +26,15 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/List/List.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/List/List.hh"
 
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
 
-#include "src/OpenFOAM/fields/tmp/refCount.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/refCount.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
 
-#include "ext/common/ext_tmp.hh"
+#include "Foam/ext/common/ext_tmp.hh"
 
 #include <Field.H>
 

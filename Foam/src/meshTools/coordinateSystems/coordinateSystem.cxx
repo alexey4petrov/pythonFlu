@@ -28,26 +28,26 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.meshTools.coordinateSystems.coordinateSystem";
 %{
-  #include "src/meshTools/coordinateSystems/coordinateSystem.hh"
+  #include "Foam/src/meshTools/coordinateSystems/coordinateSystem.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
-%import "src/OpenFOAM/meshes/primitiveShapes/point/point.cxx"
+%import "Foam/src/OpenFOAM/meshes/primitiveShapes/point/point.cxx"
 
-%import "src/OpenFOAM/primitives/tensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/tensor.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
+%import "Foam/src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
 
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.cxx"
+%import "Foam/src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.cxx"
 
-%import "src/OpenFOAM/db/objectRegistry.cxx"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
 %include <coordinateSystem.H>
 

@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.hh"
+#include "Foam/src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.hh"
 
-#include "src/OpenFOAM/meshes/patchIdentifier.hh"
+#include "Foam/src/OpenFOAM/meshes/patchIdentifier.hh"
 
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 #include <polyPatch.H>
 

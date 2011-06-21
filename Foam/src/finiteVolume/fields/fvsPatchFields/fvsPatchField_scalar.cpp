@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.hh"
+  #include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
+%include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
 
 %template( fvsPatchField_scalar ) Foam::fvsPatchField< Foam::scalar >;
 

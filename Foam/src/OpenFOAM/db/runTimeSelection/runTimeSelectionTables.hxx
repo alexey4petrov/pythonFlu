@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 %include <runTimeSelectionTables.H>
 

@@ -30,13 +30,13 @@
 
 #include <SphericalTensor.H>
 
-#include "src/OpenFOAM/primitives/vector.hh"
+#include "Foam/src/OpenFOAM/primitives/vector.hh"
 
-#include "src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
 
-#include "src/OpenFOAM/primitives/S_phericalTensor.hh"
+#include "Foam/src/OpenFOAM/primitives/S_phericalTensor.hh"
 
-#include "src/OpenFOAM/primitives/contiguous.hh"
+#include "Foam/src/OpenFOAM/primitives/contiguous.hh"
 
 #include <sphericalTensor.H>
 

@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.meshShapes.face.oppositeFace";
 %{
-   #include "src/OpenFOAM/meshes/meshShapes/face/oppositeFace.hh"
+   #include "Foam/src/OpenFOAM/meshes/meshShapes/face/oppositeFace.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/meshes/meshShapes/face/face.cxx"
+%import "Foam/src/OpenFOAM/meshes/meshShapes/face/face.cxx"
 
 %include <oppositeFace.H>
 

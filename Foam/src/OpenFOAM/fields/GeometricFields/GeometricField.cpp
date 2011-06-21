@@ -27,28 +27,28 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/GeometricFields/GeometricField.hh"
+  #include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
+%include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
 
 %include <GeometricField.H>
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hpp"
 
-%include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hpp"
 
 
 //---------------------------------------------------------------------------
-%import "src/compound_operator.hxx"
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/compound_operator.hxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/OpenFOAM/db/objectRegistry.cxx"
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
 %define __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
 {
@@ -211,13 +211,13 @@
 
 %extend Foam::GeometricField< Type, TPatchField, TMesh > COMMON_EXTENDS;
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
 %extend Foam::GeometricField< Type, TPatchField, TMesh > COMMON_EXTENDS;
 
 %extend Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > COMMON_EXTENDS;
 
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::GeometricField< Type, TPatchField, TMesh > OSTREAM_EXTENDS;
 
@@ -231,8 +231,8 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/tensor.cxx"
-%import "src/OpenFOAM/primitives/sphericalTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/tensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/sphericalTensor.cxx"
 
 %define __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( TPatchField, TMesh )
 {
@@ -364,8 +364,8 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::Geomet
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
-%import "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
+%import "Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.cxx"
 %define __VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh )
 {
   Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __and__( const Foam::GeometricField< Foam::vector, TPatchField, TMesh >& theArg ) const

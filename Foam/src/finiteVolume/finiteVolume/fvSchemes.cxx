@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvSchemes";
 %{
-  #include "src/finiteVolume/finiteVolume/fvSchemes.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/fvSchemes.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/className.hxx"
 
-%import "src/OpenFOAM/db/IOdictionary.cxx"
+%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
 %include <fvSchemes.H>
 

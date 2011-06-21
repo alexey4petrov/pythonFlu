@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/UList/UList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/UList/UList.hh"
 
-#include "src/OpenFOAM/containers/Lists/UList/UList_vector.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/UList/UList_vector.hh"
 
-#include "src/OpenFOAM/primitives/complexVector.hh"
+#include "Foam/src/OpenFOAM/primitives/complexVector.hh"
 
 
 //---------------------------------------------------------------------------

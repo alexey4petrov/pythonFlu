@@ -27,16 +27,16 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fvMesh/fvMesh.hh"
+  #include "Foam/src/finiteVolume/fvMesh/fvMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volFields.cpp"
+%include "Foam/src/finiteVolume/fields/volFields/volFields.cpp"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceFields.cpp"
+%include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.cpp"
 
-%include "src/finiteVolume/fvMesh/fvMesh.hpp"
+%include "Foam/src/finiteVolume/fvMesh/fvMesh.hpp"
 
 %ignore Foam::fvMesh::writeObjects;
 

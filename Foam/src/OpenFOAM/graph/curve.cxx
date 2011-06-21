@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.graph.curve";
 %{
-  #include "src/OpenFOAM/graph/curve.hh"
+  #include "Foam/src/OpenFOAM/graph/curve.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/strings/string.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/string.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
 
 %include <curve.H>
 

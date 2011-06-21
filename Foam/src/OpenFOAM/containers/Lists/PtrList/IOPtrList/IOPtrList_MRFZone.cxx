@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_MRFZone";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_MRFZone.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_MRFZone.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/cfdTools/general/MRF/MRFZone.cxx"
+%import "Foam/src/finiteVolume/cfdTools/general/MRF/MRFZone.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_MRFZone.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_MRFZone.cxx"
 
 %ignore Foam::IOPtrList< Foam::MRFZone >::IOPtrList;
 

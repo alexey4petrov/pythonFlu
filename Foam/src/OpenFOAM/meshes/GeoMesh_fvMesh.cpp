@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hh"
+  #include "Foam/src/OpenFOAM/meshes/GeoMesh_fvMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hpp"
+%include "Foam/src/OpenFOAM/meshes/GeoMesh_fvMesh.hpp"
 
-%include "src/finiteVolume/fvMesh/fvMesh.cpp"
+%include "Foam/src/finiteVolume/fvMesh/fvMesh.cpp"
 
 %template( GeoMesh_fvMesh ) Foam::GeoMesh< Foam::fvMesh >; 
 

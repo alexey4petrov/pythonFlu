@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 // To support native Python of iteration over containers
 namespace Foam

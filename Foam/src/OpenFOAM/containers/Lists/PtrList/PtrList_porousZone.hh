@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/cfdTools/general/porousMedia/porousZone.hh"
+#include "Foam/src/finiteVolume/cfdTools/general/porousMedia/porousZone.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
 
 
 //---------------------------------------------------------------------------

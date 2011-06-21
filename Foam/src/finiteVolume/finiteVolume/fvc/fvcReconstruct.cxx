@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvc.fvcReconstruct";
 %{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcReconstruct.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/fvc/fvcReconstruct.hh"
 %}
 
 
 //----------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -59,7 +59,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.cxx"
+%import "Foam/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.cxx"
 
 %include <fvcReconstruct.H>
 

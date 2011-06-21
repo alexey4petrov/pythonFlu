@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/Field.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/Field.hh"
 
-#include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvPatches/fvPatch.hh"
 
 #include <fvsPatchFieldsFwd.H>
 

@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_sphericalTensor";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%import "src/OpenFOAM/primitives/sphericalTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/sphericalTensor.cxx"
 
 #if FOAM_VERSION( <, 010500 )
 

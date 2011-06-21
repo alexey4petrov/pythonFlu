@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/vector.hh"
+#include "Foam/src/OpenFOAM/primitives/vector.hh"
 
-#include "src/OpenFOAM/primitives/pTraits.hh"
+#include "Foam/src/OpenFOAM/primitives/pTraits.hh"
 
 
 //---------------------------------------------------------------------------

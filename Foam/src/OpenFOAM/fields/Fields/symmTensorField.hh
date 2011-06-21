@@ -26,15 +26,15 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/Field.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/Field.hh"
 
-#include "src/OpenFOAM/primitives/symmTensor.hh"
+#include "Foam/src/OpenFOAM/primitives/symmTensor.hh"
 
-#include "src/OpenFOAM/primitives/pTraits_symmTensor.hh"
+#include "Foam/src/OpenFOAM/primitives/pTraits_symmTensor.hh"
 
-#include "src/OpenFOAM/primitives/Lists/symmTensorList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/symmTensorList.hh"
 
-#include "src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
 
 #include <symmTensorField.H>
 

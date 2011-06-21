@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/UList/UList_token.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/UList/UList_token.hh"
 
 #include <tokenList.H>
 

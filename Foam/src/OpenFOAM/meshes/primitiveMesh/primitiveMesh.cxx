@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.primitiveMesh.primitiveMesh"
 %{
-  #include "src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.hh"
+  #include "Foam/src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/className.hxx"
 
-%import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
+%import "Foam/src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
 
-%import "src/OpenFOAM/meshes/meshShapes/face/faceList.cxx"
+%import "Foam/src/OpenFOAM/meshes/meshShapes/face/faceList.cxx"
 
-%import "src/OpenFOAM/meshes/meshShapes/cell/cellList.cxx"
+%import "Foam/src/OpenFOAM/meshes/meshShapes/cell/cellList.cxx"
 
 %include <primitiveMesh.H>
 

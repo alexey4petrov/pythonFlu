@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.GeometricFields.geometricOneField";
 %{
-    #include "src/OpenFOAM/fields/GeometricFields/geometricOneField.hh"
+    #include "Foam/src/OpenFOAM/fields/GeometricFields/geometricOneField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_REF_VERSION( <, 010700 ) || FOAM_BRANCH_VERSION( dev, <, 010600 )
 #define geometricOneField_cxx
@@ -41,11 +41,11 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/oneField.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/oneField.cxx"
 
-%import "src/OpenFOAM/fields/FieldFields/oneFieldField.cxx"
+%import "Foam/src/OpenFOAM/fields/FieldFields/oneFieldField.cxx"
 
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
 %include <geometricOneField.H>
 

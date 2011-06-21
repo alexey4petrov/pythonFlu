@@ -28,13 +28,13 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.cfdTools.general.bound";
 %{
-  #include "src/finiteVolume/cfdTools/general/bound.hh"
+  #include "Foam/src/finiteVolume/cfdTools/general/bound.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <bound.H>
 

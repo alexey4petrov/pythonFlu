@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.complexVector";
 %{
-  #include "src/OpenFOAM/primitives/complexVector.hh"
+  #include "Foam/src/OpenFOAM/primitives/complexVector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "src/OpenFOAM/primitives/complex.cxx"
+%import "Foam/src/OpenFOAM/primitives/complex.cxx"
 
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
 %template( VectorSpace_complex ) Foam::VectorSpace< Foam::Vector< Foam::complex >, Foam::complex, 3 >;
 

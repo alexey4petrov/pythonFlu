@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 
 //---------------------------------------------------------------------------
@@ -34,9 +34,9 @@
 #define oneFieldField_hh
 
 
-#include "src/OpenFOAM/fields/Fields/oneField.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/oneField.hh"
 
-#include "src/OpenFOAM/primitives/label.hh"
+#include "Foam/src/OpenFOAM/primitives/label.hh"
 
 #include <oneFieldField.H>
 

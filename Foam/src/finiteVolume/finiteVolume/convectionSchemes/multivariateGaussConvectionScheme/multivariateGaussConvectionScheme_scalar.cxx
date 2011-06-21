@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.convectionSchemes.multivariateGaussConvectionScheme.multivariateGaussConvectionScheme_scalar";
 %{
-  #include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme_scalar.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme_scalar.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.cxx"
+%import "Foam/src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.cxx"
 
-%import "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.cxx"
+%import "Foam/src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.cxx"
 
-%import "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.cxx"
 
-%import "src/OpenFOAM/fields/tmp/tmp_multivariateSurfaceInterpolationScheme_scalar.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp_multivariateSurfaceInterpolationScheme_scalar.cxx"
 
 
 //----------------------------------------------------------------------------

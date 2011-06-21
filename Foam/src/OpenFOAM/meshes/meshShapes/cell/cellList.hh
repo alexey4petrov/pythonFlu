@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/UList/UList_cell.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/UList/UList_cell.hh"
 
-#include "src/OpenFOAM/containers/Lists/List/List_cell.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/List/List_cell.hh"
 
 #include <cellList.H>
 

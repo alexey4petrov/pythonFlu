@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_sphericalTensorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_sphericalTensorField.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_sphericalTensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %template( autoPtr_sphericalTensorField ) Foam::autoPtr< Foam::Field< Foam::sphericalTensor > >;
 

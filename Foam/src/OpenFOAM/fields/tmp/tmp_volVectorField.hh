@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_vectorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_vectorField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
 
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
 
 
 //---------------------------------------------------------------------------

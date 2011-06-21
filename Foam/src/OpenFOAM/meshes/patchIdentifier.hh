@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/strings/word.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 
-#include "src/OpenFOAM/primitives/label.hh"
+#include "Foam/src/OpenFOAM/primitives/label.hh"
 
 #include <patchIdentifier.H>
 

@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_compressible_RASModel";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_RASModel.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_RASModel.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010500 )   
 #define PtrList_compressible_RASModel_cxx
@@ -41,9 +41,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr_compressible_RASModel.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_compressible_RASModel.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::compressible::RASModel >::PtrList;
 %ignore Foam::PtrList< Foam::compressible::RASModel >::begin;

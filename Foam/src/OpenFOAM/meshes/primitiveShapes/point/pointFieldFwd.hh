@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/primitiveShapes/point/point.hh"
+#include "Foam/src/OpenFOAM/meshes/primitiveShapes/point/point.hh"
 
-#include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hh"
 
 #include <pointFieldFwd.H>
 

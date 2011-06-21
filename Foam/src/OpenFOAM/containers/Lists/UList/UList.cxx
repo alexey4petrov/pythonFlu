@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/UList/UList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "src/iterators.cxx"
+%import "Foam/src/iterators.cxx"
 
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
 %include <UList.H>
 

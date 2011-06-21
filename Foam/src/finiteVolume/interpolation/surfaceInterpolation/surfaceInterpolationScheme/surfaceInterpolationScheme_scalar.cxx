@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolationScheme.surfaceInterpolationScheme_scalar";
 %{
-  #include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_scalar.hh"
+  #include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_scalar.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx"
+%import "Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx"
 
 %ignore Foam::surfaceInterpolationScheme< Foam::scalar >::typeName;
 %ignore Foam::surfaceInterpolationScheme< Foam::scalar >::debug;

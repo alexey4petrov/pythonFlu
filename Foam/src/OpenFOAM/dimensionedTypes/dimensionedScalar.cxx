@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedScalar";
 %{
-  #include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+  #include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
 %ignore Foam::dimensioned< Foam::scalar >::component;
 %ignore Foam::dimensioned< Foam::scalar >::replace;
@@ -62,7 +62,7 @@ PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(Foam::dimensioned, Foam::scala
 
 
 //--------------------------------------------------
-%import "src/try_reverse_operator.hxx"
+%import "Foam/src/try_reverse_operator.hxx"
 
 %feature ( "pythonprepend" ) Foam::dimensioned< Foam::scalar >::TRY_REVERSE_PYPREPEND( mul );
 

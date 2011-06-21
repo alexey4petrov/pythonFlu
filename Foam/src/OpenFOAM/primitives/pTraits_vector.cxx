@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.pTraits_vector";
 %{
-  #include "src/OpenFOAM/primitives/pTraits_vector.hh"
+  #include "Foam/src/OpenFOAM/primitives/pTraits_vector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
-%import "src/OpenFOAM/primitives/pTraits.cxx"
+%import "Foam/src/OpenFOAM/primitives/pTraits.cxx"
 
 %template ( pTraits_vector ) Foam::pTraits< Foam::vector >;
 

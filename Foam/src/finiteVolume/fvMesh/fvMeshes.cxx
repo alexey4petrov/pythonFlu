@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fvMesh.fvMeshes";
 %{
-  #include "src/finiteVolume/fvMesh/fvMeshes.hh"
+  #include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMesh/fvMesh.cpp"
+%include "Foam/src/finiteVolume/fvMesh/fvMesh.cpp"
 
-%include "src/finiteVolume/surfaceMesh.cpp"
+%include "Foam/src/finiteVolume/surfaceMesh.cpp"
 
-%include "src/finiteVolume/volMesh.cpp"
+%include "Foam/src/finiteVolume/volMesh.cpp"
 
 
 //---------------------------------------------------------------------------

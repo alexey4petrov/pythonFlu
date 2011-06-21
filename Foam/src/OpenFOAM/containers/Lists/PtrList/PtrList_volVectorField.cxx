@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_volVectorField";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_volVectorField.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_volVectorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::volVectorField >::PtrList;
 %ignore Foam::PtrList< Foam::volVectorField >::set;

@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_tensor";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_tensor.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/UList/UList_tensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%import "src/OpenFOAM/primitives/tensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/tensor.cxx"
 
 %ignore Foam::UList< Foam::tensor >::operator <;
 %ignore Foam::UList< Foam::tensor >::operator >;

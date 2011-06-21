@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.PrimitivePatch.p_rimitivePatch"
 %{
-  #include "src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.hh"
+  #include "Foam/src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/SubList/SubList_face.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/SubList/SubList_face.cxx"
 
-%import "src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.cxx"
+%import "Foam/src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.cxx"
 
 %ignore Foam::PrimitivePatch< Foam::face, Foam::SubList, const Foam::pointField& >::PrimitivePatch;
 %ignore Foam::PrimitivePatch< Foam::face, Foam::SubList, const Foam::pointField& >::faceCentres;

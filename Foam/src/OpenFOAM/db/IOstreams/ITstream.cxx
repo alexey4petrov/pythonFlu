@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOstreams.ITstream";
 %{
-   #include "src/OpenFOAM/db/IOstreams/ITstream.hh"
+   #include "Foam/src/OpenFOAM/db/IOstreams/ITstream.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/tokenList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/tokenList.cxx"
 
 %ignore Foam::ITstream::ITstream( const string& name,
                                   const tokenList& tokens,
@@ -48,7 +48,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::ITstream OSTREAM_EXTENDS;
 

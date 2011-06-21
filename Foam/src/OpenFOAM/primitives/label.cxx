@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.label";
 %{
-  #include "src/OpenFOAM/primitives/label.hh"
+  #include "Foam/src/OpenFOAM/primitives/label.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "usr/include/c++/climits.cxx"
+%import "Foam/usr/include/c++/climits.cxx"
 
-%import "src/OpenFOAM/primitives/int_.cxx"
+%import "Foam/src/OpenFOAM/primitives/int_.cxx"
 
 %include <label.H>
 

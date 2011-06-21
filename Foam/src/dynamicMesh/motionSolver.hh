@@ -27,9 +27,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOdictionary.hh"
+#include "Foam/src/OpenFOAM/db/IOdictionary.hh"
 
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
+#include "Foam/src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
 
 #include <motionSolver.H>
 

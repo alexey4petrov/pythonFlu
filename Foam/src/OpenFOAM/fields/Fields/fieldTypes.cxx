@@ -28,20 +28,20 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.Fields.fieldTypes";
 %{
-  #include "src/OpenFOAM/fields/Fields/fieldTypes.hh"
+  #include "Foam/src/OpenFOAM/fields/Fields/fieldTypes.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
-%import "src/OpenFOAM/primitives/symmTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/symmTensor.cxx"
 
-%import "src/OpenFOAM/primitives/sphericalTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/sphericalTensor.cxx"
 
-%import "src/OpenFOAM/primitives/tensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/tensor.cxx"
 
 
 //---------------------------------------------------------------------------

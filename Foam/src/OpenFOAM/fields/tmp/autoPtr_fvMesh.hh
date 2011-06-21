@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
 
 //---------------------------------------------------------------------------

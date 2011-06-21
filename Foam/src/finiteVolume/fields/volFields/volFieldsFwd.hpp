@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
+%include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
 
-%include "src/finiteVolume/volMesh.hpp"
+%include "Foam/src/finiteVolume/volMesh.hpp"
 
-%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/fieldTypes.cxx"
 
 %include <volFieldsFwd.H>
 

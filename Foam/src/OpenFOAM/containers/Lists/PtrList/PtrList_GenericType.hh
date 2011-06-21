@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/director.hh"
+#include "Foam/src/director.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
 #include <Istream.H>
 #include <refCount.H>

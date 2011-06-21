@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMesh/fvPatches/fvPatchList.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvPatches/fvPatchList.hh"
 
 #include <fvBoundaryMesh.H>
 

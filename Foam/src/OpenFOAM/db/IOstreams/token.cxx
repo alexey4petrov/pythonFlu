@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOstreams.token";
 %{
-   #include "src/OpenFOAM/db/IOstreams/token.hh"
+   #include "Foam/src/OpenFOAM/db/IOstreams/token.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%import "src/OpenFOAM/primitives/strings/word.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
 
-%import "src/OpenFOAM/primitives/strings/string.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/string.cxx"
 
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
 %ignore Foam::token::transferCompoundToken();
 %ignore Foam::token::compoundToken() const;
@@ -49,7 +49,7 @@
 
 %include <token.H>
 
-%include "src/OpenFOAM/db/IOstreams/token.hh"
+%include "Foam/src/OpenFOAM/db/IOstreams/token.hh"
 
 
 //---------------------------------------------------------------------------

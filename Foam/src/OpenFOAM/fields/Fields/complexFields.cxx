@@ -28,20 +28,20 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.Fields.complexFields";
 %{
-  #include "src/OpenFOAM/fields/Fields/complexFields.hh"
+  #include "Foam/src/OpenFOAM/fields/Fields/complexFields.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/complex.cxx"
+%import "Foam/src/OpenFOAM/primitives/complex.cxx"
 
-%import "src/OpenFOAM/containers/Lists/UList/UList_complex.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList_complex.cxx"
 
-%import "src/OpenFOAM/containers/Lists/List/List_complex.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_complex.cxx"
 
 %ignore Foam::Field< Foam::complex >::Field;
 %ignore Foam::Field< Foam::complex >::typeName;
@@ -55,9 +55,9 @@ COMPLEX_FIELD_TEMPLATE_FUNC( complex );
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/complexVector.cxx"
+%import "Foam/src/OpenFOAM/primitives/complexVector.cxx"
 
-%include "src/OpenFOAM/containers/Lists/List/List_complexVector.cpp"
+%include "Foam/src/OpenFOAM/containers/Lists/List/List_complexVector.cpp"
 
 %ignore Foam::Field< Foam::complexVector >::Field;
 %ignore Foam::Field< Foam::complexVector >::typeName;

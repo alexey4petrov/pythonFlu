@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
-#include "src/OpenFOAM/primitives/complex.hh"
+#include "Foam/src/OpenFOAM/primitives/complex.hh"
 
-#include "src/OpenFOAM/primitives/vector.hh"
+#include "Foam/src/OpenFOAM/primitives/vector.hh"
 
 #include <complexVector.H>
 

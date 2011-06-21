@@ -22,12 +22,12 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/turbulenceModels/incompressible/turbulenceModel.hh"
+  #include "Foam/src/turbulenceModels/incompressible/turbulenceModel.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( ==, 010500 )   
 #define incompressibleturbulenceModel_cpp
@@ -39,17 +39,17 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
+%import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%import "src/transportModels/incompressible/transportModel.cxx"
+%import "Foam/src/transportModels/incompressible/transportModel.cxx"
 
 
 //------------------------------------------------------------------------

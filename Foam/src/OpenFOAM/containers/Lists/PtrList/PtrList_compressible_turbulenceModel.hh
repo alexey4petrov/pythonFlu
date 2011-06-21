@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( ==, 010500 )   
 #define PtrList_ccompressible_turbulenceModel_hh
@@ -34,11 +34,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/turbulenceModels/compressible/turbulenceModel.hh"
+#include "Foam/src/turbulenceModels/compressible/turbulenceModel.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
 
 
 //---------------------------------------------------------------------------

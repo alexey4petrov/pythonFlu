@@ -26,21 +26,21 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/objectRegistry.hh"
+#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
 
-#include "src/OpenFOAM/db/Time/clock.hh"
+#include "Foam/src/OpenFOAM/db/Time/clock.hh"
 
-#include "src/OpenFOAM/db/Time/cpuTime.hh"
+#include "Foam/src/OpenFOAM/db/Time/cpuTime.hh"
 
-#include "src/OpenFOAM/db/Time/TimePaths.hh"
+#include "Foam/src/OpenFOAM/db/Time/TimePaths.hh"
 
-#include "src/OpenFOAM/db/Time/TimeState.hh"
+#include "Foam/src/OpenFOAM/db/Time/TimeState.hh"
 
-#include "src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
-#include "src/OpenFOAM/primitives/strings/word.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 
 #include <Time.H>
 

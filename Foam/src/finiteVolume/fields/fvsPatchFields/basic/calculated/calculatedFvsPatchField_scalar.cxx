@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fields.fvsPatchFields.basic.calculated.calculatedFvsPatchField_scalar"
 %{
-    #include "src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchField_scalar.hh"
+    #include "Foam/src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchField_scalar.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchField.cxx"
+%import "Foam/src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchField.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %template ( calculatedFvsPatchField_scalar ) Foam::calculatedFvsPatchField< Foam::scalar >;
 

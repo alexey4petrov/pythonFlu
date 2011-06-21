@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.dimensionSets";
 %{
-  #include "src/OpenFOAM/dimensionSets.hh"
+  #include "Foam/src/OpenFOAM/dimensionSets.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/className.hxx"
 
-%import "src/OpenFOAM/dimensionSet.cxx"
+%import "Foam/src/OpenFOAM/dimensionSet.cxx"
 
 %include <dimensionSets.H>
 

@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_porousZone";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_porousZone.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_porousZone.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx"
+%import "Foam/src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::porousZone >::PtrList;
 %ignore Foam::PtrList< Foam::porousZone >::begin;

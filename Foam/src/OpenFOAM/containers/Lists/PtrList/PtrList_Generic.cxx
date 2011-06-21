@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_Generic";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_Generic.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_Generic.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.cxx"
 
 %ignore Foam::PtrList< Foam::PtrList_TypeHolder >::begin;
 %ignore Foam::PtrList< Foam::PtrList_TypeHolder >::end;

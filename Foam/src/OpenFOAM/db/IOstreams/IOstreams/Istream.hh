@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hh"
 
 #include <Istream.H>
 

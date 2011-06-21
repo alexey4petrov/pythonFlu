@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/director.hh"
+#include "Foam/src/director.hh"
 
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
 #include <fixedGradientFvPatchField.H>
 

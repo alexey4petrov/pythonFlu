@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/vector.hh"
+#include "Foam/src/OpenFOAM/primitives/vector.hh"
 
 #include <SphericalTensor.H>
 

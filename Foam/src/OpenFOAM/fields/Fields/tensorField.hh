@@ -26,15 +26,15 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/Field.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/Field.hh"
 
-#include "src/OpenFOAM/primitives/tensor.hh"
+#include "Foam/src/OpenFOAM/primitives/tensor.hh"
 
-#include "src/OpenFOAM/fields/Fields/symmTensorField.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/symmTensorField.hh"
 
-#include "src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
 
-#include "src/OpenFOAM/primitives/Lists/tensorList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/tensorList.hh"
 
 #include <tensorField.H>
 

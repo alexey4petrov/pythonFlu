@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOstreams.StringStreams.OStringStream";
 %{
-  #include "src/OpenFOAM/db/IOstreams/StringStreams/OStringStream.hh"
+  #include "Foam/src/OpenFOAM/db/IOstreams/StringStreams/OStringStream.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx"
 
 %rename( ext_print ) Foam::OStringStream::print;
 

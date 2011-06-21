@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/director.hh"
+#include "Foam/src/director.hh"
 
-#include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvPatches/fvPatch.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
 
 #include <fvPatchField.H>
 
@@ -38,9 +38,9 @@
 
 #include <fvPatchField.H>
 
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
 
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hh"
 
 
 //---------------------------------------------------------------------------

@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.cfdTools.general.findRefCell";
 %{
-  #include "src/finiteVolume/cfdTools/general/findRefCell.hh"
+  #include "Foam/src/finiteVolume/cfdTools/general/findRefCell.hh"
 %}
 
 
 //-------------------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 
 //--------------------------------------------------------------------------------------

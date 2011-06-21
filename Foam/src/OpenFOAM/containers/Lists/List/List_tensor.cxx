@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_tensor";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_tensor.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/List/List_tensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%import "src/OpenFOAM/containers/Lists/UList/UList_tensor.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList_tensor.cxx"
 
 %template( List_tensor ) Foam::List< Foam::tensor >; 
 

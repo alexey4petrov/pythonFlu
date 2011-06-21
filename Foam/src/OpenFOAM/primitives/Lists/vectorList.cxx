@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.vectorList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/vectorList.hh"
+   #include "Foam/src/OpenFOAM/primitives/Lists/vectorList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_vector.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_vector.cxx"
 
 %include <vectorList.H>
 

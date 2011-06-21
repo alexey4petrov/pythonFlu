@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/strings/string.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/string.hh"
 
-#include "src/OpenFOAM/primitives/Lists/wordList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/wordList.hh"
 
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
 
 #include <fileName.H>
 

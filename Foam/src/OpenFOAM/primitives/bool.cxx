@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.bool";
 %{
-  #include "src/OpenFOAM/primitives/bool.hh"
+  #include "Foam/src/OpenFOAM/primitives/bool.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 %include <bool.H>
 

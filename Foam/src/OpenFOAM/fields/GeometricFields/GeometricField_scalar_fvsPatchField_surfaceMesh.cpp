@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.hh"
+  #include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.cpp"
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_surfaceMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
+%include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField_scalar.cpp"
+%include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_surfaceMesh.cpp"
 
 
 //----------------------------------------------------------------------------
@@ -59,7 +59,7 @@
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >::min;
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >::max;
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvsPatchField, Foam::surfaceMesh );
 

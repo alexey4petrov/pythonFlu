@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.tmp_fvVectorMatrix"
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "src/finiteVolume/fvMatrices/fvVectorMatrix.cpp"
+%include "Foam/src/finiteVolume/fvMatrices/fvVectorMatrix.cpp"
 
 
 //---------------------------------------------------------------------------

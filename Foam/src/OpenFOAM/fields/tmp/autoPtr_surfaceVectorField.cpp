@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_surfaceVectorField.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_surfaceVectorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cpp"
 
 %template( autoPtr_surfaceVectorField ) Foam::autoPtr< Foam::surfaceVectorField >;
 

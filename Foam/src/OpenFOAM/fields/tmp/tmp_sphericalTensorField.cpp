@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "src/OpenFOAM/fields/Fields/sphericalTensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/sphericalTensorField.cpp"
 
 
 //---------------------------------------------------------------------------

@@ -26,15 +26,15 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionSet.hh"
+#include "Foam/src/OpenFOAM/dimensionSet.hh"
 
-#include "src/OpenFOAM/primitives/direction.hh"
+#include "Foam/src/OpenFOAM/primitives/direction.hh"
 
-#include "src/OpenFOAM/primitives/strings/word.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 
-#include "src/OpenFOAM/db/IOstreams/ITstream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/ITstream.hh"
 
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
 
 #include <dimensionedType.H>
 

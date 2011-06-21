@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "ext/common/ext_tmp.hh"
+#include "Foam/ext/common/ext_tmp.hh"
 
-#include "src/OpenFOAM/fields/Fields/scalarField.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/scalarField.hh"
 
 
 //---------------------------------------------------------------------------

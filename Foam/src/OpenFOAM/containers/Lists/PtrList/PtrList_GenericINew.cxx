@@ -28,21 +28,21 @@
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericINew";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hh"
 %}
 
-%import "src/director.hxx"
+%import "Foam/src/director.hxx"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.cxx"
 
 %feature( "director" ) PtrList_INewBase;
 %feature( "director" ) PtrList_INewHolder;
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hh" 
+%include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.hh" 
 
 
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::PtrList_INewHolder&

@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOstreams.Fstreams.IFstream";
 %{
-   #include "src/OpenFOAM/db/IOstreams/Fstreams/IFstream.hh"
+   #include "Foam/src/OpenFOAM/db/IOstreams/Fstreams/IFstream.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "src/OpenFOAM/primitives/strings/fileName.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/fileName.cxx"
 
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/className.hxx"
 
-%import "src/OpenFOAM/db/IOstreams/Sstreams/ISstream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/Sstreams/ISstream.cxx"
 
 %include <IFstream.H>
 

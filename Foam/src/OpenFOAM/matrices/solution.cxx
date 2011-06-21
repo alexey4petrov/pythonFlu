@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.matrices.solution"
 %{
-  #include "src/OpenFOAM/matrices/solution.hh"
+  #include "Foam/src/OpenFOAM/matrices/solution.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOdictionary.cxx"
+%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
 %include <solution.H>
 

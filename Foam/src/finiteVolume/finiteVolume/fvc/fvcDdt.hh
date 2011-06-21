@@ -31,18 +31,18 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
-#include "src/finiteVolume/fields/volFields/volScalarField.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volScalarField.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
-#include "src/finiteVolume/fields/volFields/volVectorField.hh"
-#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volVectorField.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/volMesh.hh"
+#include "Foam/src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

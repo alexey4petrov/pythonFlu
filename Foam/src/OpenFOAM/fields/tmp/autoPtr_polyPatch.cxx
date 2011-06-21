@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_polyPatch"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_polyPatch.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cpp"
+%include "Foam/src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cpp"
 
 %template( autoPtr_polyPatch ) Foam::autoPtr< Foam::polyPatch >;
 

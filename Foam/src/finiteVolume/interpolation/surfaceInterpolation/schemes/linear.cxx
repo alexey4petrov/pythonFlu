@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.linear";
 %{
-  #include "src/finiteVolume/interpolation/surfaceInterpolation/schemes/linear.hh"
+  #include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/schemes/linear.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <linear.H>
 

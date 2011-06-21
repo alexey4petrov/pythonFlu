@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.hh"
+#include "Foam/src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.hh"
 
-#include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_scalar.hh"
+#include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_scalar.hh"
 
 
 //---------------------------------------------------------------------------

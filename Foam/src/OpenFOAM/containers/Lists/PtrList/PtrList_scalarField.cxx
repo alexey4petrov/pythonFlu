@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_scalarField";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_scalarField.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_scalarField.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::scalarField >::PtrList;
 %ignore Foam::PtrList< Foam::scalarField >::set;

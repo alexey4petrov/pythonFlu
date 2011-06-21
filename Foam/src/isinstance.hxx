@@ -27,7 +27,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/isinstance.hh"
+  #include "Foam/src/isinstance.hh"
 %}
 
 

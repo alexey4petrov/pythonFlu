@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( <, 010600 )
 #define autoPtr_basicPsiThermo_hh
@@ -34,9 +34,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-#include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.hh"
+#include "Foam/src/thermophysicalModels/basic/psiThermo/basicPsiThermo.hh"
 
 
 //---------------------------------------------------------------------------

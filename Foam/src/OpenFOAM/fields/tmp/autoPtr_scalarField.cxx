@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_scalarField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_scalarField.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_scalarField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %template( autoPtr_scalarField ) Foam::autoPtr< scalarField >;
 

@@ -26,34 +26,34 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.hh"
+#include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField.hh"
 #include <GeometricField.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hh"
-#include "src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp.hh"
-#include "src/OpenFOAM/db/objectRegistry.hh"
-#include "src/OpenFOAM/primitives/label.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
+#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
+#include "Foam/src/OpenFOAM/primitives/label.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/scalar.hh"
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/tensor.hh"
-#include "src/OpenFOAM/primitives/sphericalTensor.hh"
+#include "Foam/src/OpenFOAM/primitives/tensor.hh"
+#include "Foam/src/OpenFOAM/primitives/sphericalTensor.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
-#include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
+#include "Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hh"
 
 
 //-------------------------------------------------------------------------------

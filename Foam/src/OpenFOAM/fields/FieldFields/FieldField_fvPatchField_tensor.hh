@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/FieldFields/FieldField.hh"
+#include "Foam/src/OpenFOAM/fields/FieldFields/FieldField.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.hh"
 
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.hh"
 
 
 //---------------------------------------------------------------------------

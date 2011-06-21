@@ -27,16 +27,16 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_tensor.hh"
+  #include "Foam/src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_tensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/FieldFields/FieldField.cpp"
+%include "Foam/src/OpenFOAM/fields/FieldFields/FieldField.cpp"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.cpp"
+%include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.cpp"
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::tensor >::FieldField;
 

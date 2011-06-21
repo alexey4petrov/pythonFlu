@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fields.fvPatchFields.basic.calculated.calculatedFvPatchField_scalar"
 %{
-    #include "src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField_scalar.hh"
+    #include "Foam/src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField_scalar.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField.cxx"
+%import "Foam/src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField.cxx"
 
 %inline
 {

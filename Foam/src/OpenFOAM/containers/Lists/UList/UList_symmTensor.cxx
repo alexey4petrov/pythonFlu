@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_symmTensor";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_symmTensor.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/UList/UList_symmTensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%import "src/OpenFOAM/primitives/symmTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/symmTensor.cxx"
 
 #if FOAM_VERSION( <, 010500 )
 

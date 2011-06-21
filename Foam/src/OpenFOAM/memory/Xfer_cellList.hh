@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( <, 010600 )
 #define Xfer_cellList_hh
@@ -34,9 +34,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/memory/Xfer.hh"
+#include "Foam/src/OpenFOAM/memory/Xfer.hh"
 
-#include "src/OpenFOAM/meshes/meshShapes/cell/cellList.hh"
+#include "Foam/src/OpenFOAM/meshes/meshShapes/cell/cellList.hh"
 
 
 //---------------------------------------------------------------------------

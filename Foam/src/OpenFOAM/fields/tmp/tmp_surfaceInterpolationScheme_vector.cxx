@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.tmp_surfaceInterpolationScheme_vector"
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.cxx"
+%import "Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.cxx"
 
 %ignore Foam::tmp< Foam::surfaceInterpolationScheme< Foam::vector > >::ptr;
 

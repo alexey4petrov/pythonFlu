@@ -28,22 +28,22 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.graph.graph";
 %{
-  #include "src/OpenFOAM/graph/graph.hh"
+  #include "Foam/src/OpenFOAM/graph/graph.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/strings/string.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/string.cxx"
 
-%import "src/OpenFOAM/primitives/strings/fileName.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/fileName.cxx"
 
-%import "src/OpenFOAM/meshes/primitiveShapes/point/point.cxx"
+%import "Foam/src/OpenFOAM/meshes/primitiveShapes/point/point.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
 
-%import "src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_curve_word_string_hash.cxx"
+%import "Foam/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_curve_word_string_hash.cxx"
 
 %include <graph.H>
 

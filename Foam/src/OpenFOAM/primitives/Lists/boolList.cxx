@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.boolList";
 %{
-  #include "src/OpenFOAM/primitives/Lists/boolList.hh"
+  #include "Foam/src/OpenFOAM/primitives/Lists/boolList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_bool.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_bool.cxx"
 
 %include <boolList.H>
 

@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/HashTables/HashTable/HashTable.hh"
+#include "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable.hh"
 
-#include "src/OpenFOAM/primitives/strings/string.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/string.hh"
 
 
 //---------------------------------------------------------------------------

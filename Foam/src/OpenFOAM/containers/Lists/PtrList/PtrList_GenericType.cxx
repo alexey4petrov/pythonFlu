@@ -28,22 +28,22 @@
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericType";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hh"
 %}
 
-%import "src/director.hxx"
+%import "Foam/src/director.hxx"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/OpenFOAM/primitives/direction.cxx"
+%import "Foam/src/OpenFOAM/primitives/direction.cxx"
 
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/redirect2base.hxx"
+%import "Foam/src/redirect2base.hxx"
 
 
 //---------------------------------------------------------------------------
@@ -52,7 +52,7 @@
 
 BAREPTR_TYPEMAP( Foam::PtrList_TypeBase );
 
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hh"
+%include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hh"
 
 
 //---------------------------------------------------------------------------

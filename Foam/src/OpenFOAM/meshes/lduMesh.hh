@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hh"
+#include "Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hh"
 
-#include "src/OpenFOAM/db/objectRegistry.hh"
+#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
 
 #include <lduMesh.H>
 

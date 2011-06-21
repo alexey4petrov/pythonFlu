@@ -22,12 +22,12 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/turbulenceModels/incompressible/RAS/RASModel.hh"
+  #include "Foam/src/turbulenceModels/incompressible/RAS/RASModel.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010500 )
 #define incompressibleRASModel_cpp
@@ -40,19 +40,19 @@
 
 
 //----------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr_incompressible_turbulenceModel.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_incompressible_turbulenceModel.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
+%import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%import "src/transportModels/incompressible/transportModel.cxx"
+%import "Foam/src/transportModels/incompressible/transportModel.cxx"
 
-%import "src/OpenFOAM/db/IOdictionary.cxx"
+%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
-%import "src/OpenFOAM/db/Switch.cxx"
+%import "Foam/src/OpenFOAM/db/Switch.cxx"
 
-%import "src/finiteVolume/cfdTools/general/bound.cxx"
+%import "Foam/src/finiteVolume/cfdTools/general/bound.cxx"
 
 
 //----------------------------------------------------------------------------

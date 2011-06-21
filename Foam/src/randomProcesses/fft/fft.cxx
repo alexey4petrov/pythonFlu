@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.randomProcesses.fft.fft";
 %{
-  #include "src/randomProcesses/fft/fft.hh"
+  #include "Foam/src/randomProcesses/fft/fft.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/complexFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/complexFields.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/labelList.cxx"
 
-%import "src/OpenFOAM/fields/tmp/tmp_complexField.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp_complexField.cxx"
 
-%import "src/OpenFOAM/fields/tmp/tmp_complexVectorField.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp_complexVectorField.cxx"
 
 %include <fft.H>
 

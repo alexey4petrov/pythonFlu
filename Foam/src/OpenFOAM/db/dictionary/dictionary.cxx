@@ -28,26 +28,26 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.dictionary.dictionary";
 %{
-   #include "src/OpenFOAM/db/dictionary/dictionary.hh"
+   #include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.cxx"
+%import "Foam/src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.cxx"
 
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/className.hxx"
 
-%import "src/OpenFOAM/primitives/strings/word.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/tokenList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/tokenList.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
-%import "src/OpenFOAM/primitives/strings/string.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/string.cxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/db/Switch.cxx"
+%import "Foam/src/OpenFOAM/db/Switch.cxx"
 
 // To use as input / output value for readIfPresent function
 %apply double& INOUT { double& val }; 

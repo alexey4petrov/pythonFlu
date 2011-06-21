@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.convectionSchemes.convectionScheme.convectionScheme_vector";
 %{
-  #include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.cxx"
+%import "Foam/src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme.cxx"
 
-%import "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_vector.cxx"
+%import "Foam/src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme_vector.cxx"
 
 
 //----------------------------------------------------------------------------

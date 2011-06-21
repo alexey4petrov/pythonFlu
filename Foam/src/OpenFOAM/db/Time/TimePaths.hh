@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/strings/fileName.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/fileName.hh"
 
 #include <TimePaths.H>
 

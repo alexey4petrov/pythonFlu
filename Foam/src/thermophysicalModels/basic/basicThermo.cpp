@@ -27,18 +27,18 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/thermophysicalModels/basic/basicThermo.hh"
+  #include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/OpenFOAM/db/IOdictionary.cxx"
+%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
-// %import "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
+// %import "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
 
 //---------------------------------------------------------------------------

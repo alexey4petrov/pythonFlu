@@ -28,15 +28,15 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField_sphericalTensor_volMesh";
 %{
-  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_sphericalTensor_volMesh.hh"
+  #include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_sphericalTensor_volMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
+%include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
-%import "src/finiteVolume/volMesh.hpp"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/finiteVolume/volMesh.hpp"
 
 DIMENSIONED_FIELD_VOLMESH_TYPEMAP( sphericalTensor );
 

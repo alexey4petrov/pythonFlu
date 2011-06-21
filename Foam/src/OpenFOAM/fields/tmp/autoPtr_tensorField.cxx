@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_tensorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_tensorField.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_tensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %template( autoPtr_tensorField ) Foam::autoPtr< Foam::Field< Foam::tensor > >;
 

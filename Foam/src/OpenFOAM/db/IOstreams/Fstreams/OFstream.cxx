@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOstreams.Fstreams.OFstream";
 %{
-   #include "src/OpenFOAM/db/IOstreams/Fstreams/OFstream.hh"
+   #include "Foam/src/OpenFOAM/db/IOstreams/Fstreams/OFstream.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "src/OpenFOAM/primitives/strings/fileName.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/fileName.cxx"
 
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/className.hxx"
 
-%import "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx"
 
 %ignore Foam::Snull;
 

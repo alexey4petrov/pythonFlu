@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.S_phericalTensor";
 %{
-  #include "src/OpenFOAM/primitives/S_phericalTensor.hh"
+  #include "Foam/src/OpenFOAM/primitives/S_phericalTensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
 %include <SphericalTensor.H>
 

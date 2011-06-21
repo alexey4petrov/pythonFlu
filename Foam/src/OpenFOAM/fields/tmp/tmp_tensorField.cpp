@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.tmp_tensorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_tensorField.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/tmp_tensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "src/OpenFOAM/fields/Fields/tensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/tensorField.cpp"
 
 
 //----------------------------------------------------------------------------

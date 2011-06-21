@@ -27,13 +27,13 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField.hh"
+  #include "Foam/src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField.hh"
 %}
 
-%import "src/director.hxx"
+%import "Foam/src/director.hxx"
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %feature( "director" ) fixedValueFvPatchField;
 

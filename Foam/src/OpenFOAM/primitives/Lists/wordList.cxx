@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.wordList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/wordList.hh"
+   #include "Foam/src/OpenFOAM/primitives/Lists/wordList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_word.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_word.cxx"
 
 %include <wordList.H>
 

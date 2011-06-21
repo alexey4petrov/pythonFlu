@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/GeoMesh.hh"
+#include "Foam/src/OpenFOAM/meshes/GeoMesh.hh"
 
-#include "src/finiteVolume/fvMesh/fvMesh.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMesh.hh"
 
 #include <volMesh.H>
 #include <surfaceMesh.H>

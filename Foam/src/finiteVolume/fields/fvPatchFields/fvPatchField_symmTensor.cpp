@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.hh"
+  #include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
+%include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField.cpp"
 
 %template( fvPatchField_symmTensor ) Foam::fvPatchField< Foam::symmTensor >;
 

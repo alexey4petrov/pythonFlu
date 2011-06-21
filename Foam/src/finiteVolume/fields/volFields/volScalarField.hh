@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr_volScalarField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr_volScalarField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
 
-#include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hh"
+#include "Foam/ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hh"
 
 
 //---------------------------------------------------------------------------

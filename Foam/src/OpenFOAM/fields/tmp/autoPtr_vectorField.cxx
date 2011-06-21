@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_vectorField";
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_vectorField.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_vectorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %template( autoPtr_vectorField ) Foam::autoPtr< Foam::vectorField >;
 

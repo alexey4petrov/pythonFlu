@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
+#include "Foam/src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
 
-#include "src/OpenFOAM/meshes/meshShapes/face/faceList.hh"
+#include "Foam/src/OpenFOAM/meshes/meshShapes/face/faceList.hh"
 
-#include "src/OpenFOAM/meshes/meshShapes/cell/cellList.hh"
+#include "Foam/src/OpenFOAM/meshes/meshShapes/cell/cellList.hh"
 
 #include <primitiveMesh.H>
 

@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volFields.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
 #include <viscosityModel.H>
 

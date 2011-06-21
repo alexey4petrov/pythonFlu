@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.hh"
+#include "Foam/src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.hh"
 
-#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.hh"
+#include "Foam/src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_scalar.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_multivariateSurfaceInterpolationScheme_scalar.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_multivariateSurfaceInterpolationScheme_scalar.hh"
 
 //---------------------------------------------------------------------------
 #endif

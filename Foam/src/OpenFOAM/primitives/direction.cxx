@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.direction";
 %{
-  #include "src/OpenFOAM/primitives/direction.hh"
+  #include "Foam/src/OpenFOAM/primitives/direction.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 %include <direction.H>
 

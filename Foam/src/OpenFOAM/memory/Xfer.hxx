@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define Xfer_hxx

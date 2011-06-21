@@ -26,15 +26,15 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/Lists/boolList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/boolList.hh"
 
-#include "src/OpenFOAM/primitives/Lists/labelList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/labelList.hh"
 
 //#include <edgeList.H>
 
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
+#include "Foam/src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
 
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 //#include <intersection.H>
 

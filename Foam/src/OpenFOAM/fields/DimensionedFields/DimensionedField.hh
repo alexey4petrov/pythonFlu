@@ -26,21 +26,21 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/regIOobject.hh"
+#include "Foam/src/OpenFOAM/db/regIOobject.hh"
 
-#include "src/OpenFOAM/fields/Fields/Field.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/Field.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedType.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedType.hh"
 
 #include <DimensionedField.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
 
-#include "src/OpenFOAM/db/objectRegistry.hh"
+#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
 
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
 
 
 //---------------------------------------------------------------------------------

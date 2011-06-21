@@ -28,15 +28,15 @@
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.iterators";
 
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 
 //---------------------------------------------------------------------------
 // To support native Python of iteration over containers
 %{
-   #include "src/iterators.hh"
+   #include "Foam/src/iterators.hh"
 %}
-%include "src/iterators.hh"
+%include "Foam/src/iterators.hh"
 
 %typemap(throws) const Foam::TStopIterationException& 
 %{

@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.sphericalTensor";
 %{
-  #include "src/OpenFOAM/primitives/sphericalTensor.hh"
+  #include "Foam/src/OpenFOAM/primitives/sphericalTensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/primitives/S_phericalTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/S_phericalTensor.cxx"
 
-%import "src/OpenFOAM/primitives/contiguous.cxx"
+%import "Foam/src/OpenFOAM/primitives/contiguous.cxx"
 
 %template( VectorSpace_sphericalTensor ) Foam::VectorSpace< Foam::SphericalTensor< Foam::scalar >, Foam::scalar, 1 >;
 

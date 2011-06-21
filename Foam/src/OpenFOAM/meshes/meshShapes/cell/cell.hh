@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/Lists/labelList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/labelList.hh"
 
-#include "src/OpenFOAM/meshes/meshShapes/face/oppositeFace.hh"
+#include "Foam/src/OpenFOAM/meshes/meshShapes/face/oppositeFace.hh"
 
 #include <cell.H>
 

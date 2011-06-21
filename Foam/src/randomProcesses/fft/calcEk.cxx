@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.randomProcesses.fft.calcEk";
 %{
-  #include "src/randomProcesses/fft/calcEk.hh"
+  #include "Foam/src/randomProcesses/fft/calcEk.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/graph/graph.cxx"
+%import "Foam/src/OpenFOAM/graph/graph.cxx"
 
-%import "src/randomProcesses/Kmesh/Kmesh.cxx"
+%import "Foam/src/randomProcesses/Kmesh/Kmesh.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <calcEk.H>
 

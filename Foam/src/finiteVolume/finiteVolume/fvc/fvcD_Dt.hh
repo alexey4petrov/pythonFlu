@@ -26,15 +26,15 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
 
 #include <fvcDdt.H>
 #include <fvcDDt.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/volMesh.hh"
+#include "Foam/src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

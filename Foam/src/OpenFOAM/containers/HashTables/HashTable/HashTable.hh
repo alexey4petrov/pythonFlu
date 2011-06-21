@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/strings/string.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/string.hh"
 
-#include "src/OpenFOAM/primitives/strings/word.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 
-#include "src/iterators.hh"
+#include "Foam/src/iterators.hh"
 
 #include <HashTable.H>
 

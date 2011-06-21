@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fvMesh.fvBoundaryMesh";
 %{
-  #include "src/finiteVolume/fvMesh/fvBoundaryMesh.hh"
+  #include "Foam/src/finiteVolume/fvMesh/fvBoundaryMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMesh/fvPatches/fvPatchList.cpp"
+%include "Foam/src/finiteVolume/fvMesh/fvPatches/fvPatchList.cpp"
 
 %include <fvBoundaryMesh.H>
 

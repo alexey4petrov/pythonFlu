@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_sphericalTensor_fvPatchField_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_sphericalTensor_fvPatchField_volMesh.hh"
 
 
 //---------------------------------------------------------------------------

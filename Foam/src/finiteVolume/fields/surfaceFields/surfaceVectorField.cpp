@@ -27,16 +27,16 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/surfaceFields/surfaceVectorField.hh"
+  #include "Foam/src/finiteVolume/fields/surfaceFields/surfaceVectorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cpp"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_surfaceVectorField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/autoPtr_surfaceVectorField.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.cpp"
 
 
 //---------------------------------------------------------------------------

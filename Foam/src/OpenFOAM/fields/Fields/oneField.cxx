@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.Fields.oneField";
 %{
-  #include "src/OpenFOAM/fields/Fields/oneField.hh"
+  #include "Foam/src/OpenFOAM/fields/Fields/oneField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 
 //---------------------------------------------------------------------------
 #if FOAM_VERSION( <, 010500 )
 
-%import "src/OpenFOAM/primitives/pTraits.cxx"
+%import "Foam/src/OpenFOAM/primitives/pTraits.cxx"
 
 %include <OneField.H>
 
@@ -47,11 +47,11 @@
 #else
 //---------------------------------------------------------------------------
 
-%import "src/OpenFOAM/primitives/one.cxx"
+%import "Foam/src/OpenFOAM/primitives/one.cxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
 %include <oneField.H>
 

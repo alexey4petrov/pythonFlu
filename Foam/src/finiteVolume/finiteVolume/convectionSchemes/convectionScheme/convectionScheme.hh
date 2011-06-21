@@ -26,15 +26,15 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
 
-#include "src/OpenFOAM/fields/tmp/refCount.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/refCount.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.hh"
+#include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/multivariateSchemes/multivariateSurfaceInterpolationScheme/multivariateSurfaceInterpolationScheme.hh"
 
-#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
+#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
 
 #include <convectionScheme.H>
 

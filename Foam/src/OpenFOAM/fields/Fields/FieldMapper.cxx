@@ -28,15 +28,15 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.Fields.FieldMapper";
 %{
-  #include "src/OpenFOAM/fields/Fields/FieldMapper.hh"
+  #include "Foam/src/OpenFOAM/fields/Fields/FieldMapper.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/label.cxx"
-%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
-%import "src/OpenFOAM/primitives/Lists/scalarList.cxx"
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/labelList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/scalarList.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %include <FieldMapper.H>
 

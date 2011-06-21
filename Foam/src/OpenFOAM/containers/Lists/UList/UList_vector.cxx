@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_vector";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_vector.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/UList/UList_vector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
 ULIST_TYPEMAP( vector );
 

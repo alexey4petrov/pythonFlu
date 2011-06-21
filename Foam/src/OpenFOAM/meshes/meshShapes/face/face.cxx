@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.meshShapes.face.face";
 %{
-   #include "src/OpenFOAM/meshes/meshShapes/face/face.hh"
+   #include "Foam/src/OpenFOAM/meshes/meshShapes/face/face.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/labelList.cxx"
 
-%import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
+%import "Foam/src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %ignore Foam::face::ray;
 %ignore Foam::face::intersection;

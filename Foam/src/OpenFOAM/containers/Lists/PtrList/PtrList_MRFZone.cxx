@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_MRFZone";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_MRFZone.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_MRFZone.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/cfdTools/general/MRF/MRFZone.cxx"
+%import "Foam/src/finiteVolume/cfdTools/general/MRF/MRFZone.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::MRFZone >::PtrList;
 %ignore Foam::PtrList< Foam::MRFZone >::begin;

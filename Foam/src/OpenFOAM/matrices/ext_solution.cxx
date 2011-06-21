@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/matrices/ext_solution.hh"
+  #include "Foam/src/OpenFOAM/matrices/ext_solution.hh"
 %}
 
-%import "src/OpenFOAM/db/IOdictionary.cxx"
+%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/matrices/ext_solution.hh"
+%include "Foam/src/OpenFOAM/matrices/ext_solution.hh"
 
 
 //---------------------------------------------------------------------------

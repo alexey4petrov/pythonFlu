@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Pair.labelPair"
 %{
-  #include "src/OpenFOAM/primitives/Pair/labelPair.hh"
+  #include "Foam/src/OpenFOAM/primitives/Pair/labelPair.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
-%import "src/OpenFOAM/primitives/Pair/Pair.cxx"
+%import "Foam/src/OpenFOAM/primitives/Pair/Pair.cxx"
 
-%import "src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.cxx"
 
 %include <labelPair.H>
 

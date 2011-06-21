@@ -26,28 +26,28 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
 #include <fvmDiv.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
-#include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/volMesh.hh"
+#include "Foam/src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

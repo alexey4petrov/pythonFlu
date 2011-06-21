@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicPsiThermo";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define PtrList_basicPsiThermo_cxx
@@ -41,9 +41,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::basicPsiThermo >::PtrList;
 %ignore Foam::PtrList< Foam::basicPsiThermo >::begin;

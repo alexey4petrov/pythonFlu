@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_tensorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_tensorField.hh"
 
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvPatchField_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvPatchField_volMesh.hh"
 
 
 //---------------------------------------------------------------------------

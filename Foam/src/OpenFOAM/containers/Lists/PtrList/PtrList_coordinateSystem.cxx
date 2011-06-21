@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_coordinateSystem";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_coordinateSystem.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_coordinateSystem.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/meshTools/coordinateSystems/coordinateSystem.cxx"
+%import "Foam/src/meshTools/coordinateSystems/coordinateSystem.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::coordinateSystem >::begin;
 %ignore Foam::PtrList< Foam::coordinateSystem >::end;

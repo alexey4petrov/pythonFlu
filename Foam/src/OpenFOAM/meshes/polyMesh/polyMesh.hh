@@ -26,20 +26,20 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/objectRegistry.hh"
+#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
 
-#include "src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.hh"
+#include "Foam/src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.hh"
 
-#include "src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.hh"
+#include "Foam/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.hh"
 
 
 //---------------------------------------------------------------------------
 #if FOAM_VERSION( >=, 010600 )
-  #include "src/OpenFOAM/memory/Xfer_pointField.hh"
+  #include "Foam/src/OpenFOAM/memory/Xfer_pointField.hh"
 
-  #include "src/OpenFOAM/memory/Xfer_faceList.hh"
+  #include "Foam/src/OpenFOAM/memory/Xfer_faceList.hh"
 
-  #include "src/OpenFOAM/memory/Xfer_cellList.hh"
+  #include "Foam/src/OpenFOAM/memory/Xfer_cellList.hh"
 #endif
 
 

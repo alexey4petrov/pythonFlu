@@ -25,7 +25,7 @@
 #define MUSCL_hh
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/vector.hh"
+#include "Foam/src/OpenFOAM/primitives/vector.hh"
 
 #include <MUSCL.H>
 

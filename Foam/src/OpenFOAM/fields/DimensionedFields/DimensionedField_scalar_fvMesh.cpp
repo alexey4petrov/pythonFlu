@@ -28,15 +28,15 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField_scalar_fvMesh";
 %{
-  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_fvMesh.hh"
+  #include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_fvMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %ignore Foam::T( Foam::Field< Foam::scalar >&, const Foam::UList< Foam::scalar >& );
 

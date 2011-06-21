@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.polyMesh.polyPatches.polyPatch"
 %{
-  #include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
+  #include "Foam/src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%import "src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.cxx"
+%import "Foam/src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.cxx"
 
-%import "src/OpenFOAM/meshes/patchIdentifier.cxx"
+%import "Foam/src/OpenFOAM/meshes/patchIdentifier.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %ignore Foam::polyPatch::faceCentres() const;
 %ignore Foam::polyPatch::faceAreas() const;

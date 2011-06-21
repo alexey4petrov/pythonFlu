@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_RASModel"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_incompressible_RASModel.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_incompressible_RASModel.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010500 )
 #define autoPtr_incompressible_RASModel_cxx
@@ -41,9 +41,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/turbulenceModels/incompressible/RAS/RASModel.cpp"
+%include "Foam/src/turbulenceModels/incompressible/RAS/RASModel.cpp"
 
 
 //----------------------------------------------------------------------------

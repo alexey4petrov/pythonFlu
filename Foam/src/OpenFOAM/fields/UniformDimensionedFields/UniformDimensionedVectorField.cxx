@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.UniformDimensionedFields.UniformDimensionedVectorField";
 %{
-  #include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hh"
+  #include "Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define UniformDimensionedVectorField_cxx
@@ -41,20 +41,20 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.cxx"
+%import "Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
 
 %ignore Foam::UniformDimensionedField< Foam::vector >::typeName;
 %ignore Foam::UniformDimensionedField< Foam::vector >::debug;
 
 %template( uniformDimensionedVectorField ) Foam::UniformDimensionedField< Foam::vector >;
 
-%include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hh"
+%include "Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hh"
 
 
 //--------------------------------------------------------------------------
-%import "src/try_reverse_operator.hxx"
+%import "Foam/src/try_reverse_operator.hxx"
 
 %feature ("pythonprepend") Foam::UniformDimensionedField< Foam::vector >::TRY_REVERSE_PYPREPEND( and );
 

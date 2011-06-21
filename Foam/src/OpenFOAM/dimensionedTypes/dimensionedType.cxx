@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedType";
 %{
-  #include "src/OpenFOAM/dimensionedTypes/dimensionedType.hh"
+  #include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedType.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionSet.cxx"
+%import "Foam/src/OpenFOAM/dimensionSet.cxx"
 
-%import "src/OpenFOAM/primitives/direction.cxx"
+%import "Foam/src/OpenFOAM/primitives/direction.cxx"
 
-%import "src/OpenFOAM/primitives/strings/word.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
 
-%import "src/OpenFOAM/db/IOstreams/ITstream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/ITstream.cxx"
 
 %include <dimensionedType.H>
 
@@ -107,7 +107,7 @@
   }
 }
 
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::dimensioned< Type > OSTREAM_EXTENDS;
 

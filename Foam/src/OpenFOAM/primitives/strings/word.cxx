@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.strings.word";
 %{
-  #include "src/OpenFOAM/primitives/strings/word.hh"
+  #include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/strings/string.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/string.cxx"
 
 %include <word.H>
 

@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/List/List_label.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/List/List_label.hh"
 
 #include <labelList.H>
 

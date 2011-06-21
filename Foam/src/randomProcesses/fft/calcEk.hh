@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/graph/graph.hh"
+#include "Foam/src/OpenFOAM/graph/graph.hh"
 
-#include "src/randomProcesses/Kmesh/Kmesh.hh"
+#include "Foam/src/randomProcesses/Kmesh/Kmesh.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
 #include <calcEk.H>
 

@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_complexVector";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_complexVector.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/UList/UList_complexVector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%import "src/OpenFOAM/containers/Lists/UList/UList_vector.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList_vector.cxx"
 
-%import "src/OpenFOAM/primitives/complexVector.cxx"
+%import "Foam/src/OpenFOAM/primitives/complexVector.cxx"
 
 ULIST_TYPEMAP( complexVector );
 

@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.primitiveShapes.point.pointFieldFwd";
 %{
-   #include "src/OpenFOAM/meshes/primitiveShapes/point/pointFieldFwd.hh"
+   #include "Foam/src/OpenFOAM/meshes/primitiveShapes/point/pointFieldFwd.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/meshes/primitiveShapes/point/point.cxx"
+%import "Foam/src/OpenFOAM/meshes/primitiveShapes/point/point.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx"
 
 %include <pointFieldFwd.H>
 

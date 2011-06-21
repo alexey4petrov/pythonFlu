@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fvMatrices.fvVectorMatrix";
 %{
-  #include "src/finiteVolume/fvMatrices/fvVectorMatrix.hh"
+  #include "Foam/src/finiteVolume/fvMatrices/fvVectorMatrix.hh"
 %}
 
 
  //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMatrices/fvMatrix.cpp"
+%include "Foam/src/finiteVolume/fvMatrices/fvMatrix.cpp"
 
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
-%import "src/OpenFOAM/dimensionSet.cxx"
+%import "Foam/src/OpenFOAM/dimensionSet.cxx"
 
 %ignore Foam::fvMatrix< Foam::vector >::debug;
 %ignore Foam::fvMatrix< Foam::vector >::typeName;
@@ -52,7 +52,7 @@ FVMATRIX_TEMPLATE_FUNC( Foam::vector );
 
 %template( fvVectorMatrix ) Foam::fvMatrix< Foam::vector >;
 
-%include "src/finiteVolume/fvMatrices/fvVectorMatrix.hh"
+%include "Foam/src/finiteVolume/fvMatrices/fvVectorMatrix.hh"
 
 
 //---------------------------------------------------------------------------

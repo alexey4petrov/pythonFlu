@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_symmTensorField";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::symmTensorField >::PtrList;
 

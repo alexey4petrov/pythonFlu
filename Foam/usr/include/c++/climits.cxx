@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%include "Foam/src/common.hxx"
 
-%include "usr/include/limits.cxx"
+%include "Foam/usr/include/limits.cxx"
 
 
 //---------------------------------------------------------------------------

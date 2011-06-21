@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/fieldTypes.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/fieldTypes.hh"
 
 #include <fvMatricesFwd.H>
 

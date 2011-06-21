@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.meshTools.directMapped.directMappedPolyPatch.directMappedPatchBase";
 %{
-  #include "src/meshTools/directMapped/directMappedPolyPatch/directMappedPatchBase.hh"
+  #include "Foam/src/meshTools/directMapped/directMappedPolyPatch/directMappedPatchBase.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define directMappedPatchBase_cxx
@@ -41,14 +41,14 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
+%import "Foam/src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
 
 // #include "Tuple2.H"
 // #include "pointIndexHit.H"
 
-%import "src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.cxx"
+%import "Foam/src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.cxx"
 
 %include <directMappedPatchBase.H>
 

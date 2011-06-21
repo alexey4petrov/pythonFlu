@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_vector.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_vector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
+%include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
 
 %template( autoPtr_fvPatchField_vector ) Foam::autoPtr< Foam::fvPatchField< Foam::vector > >;
 

@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.UniformDimensionedFields.UniformDimensionedField";
 %{
-  #include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.hh"
+  #include "Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define UniformDimensionedField_cxx
@@ -41,17 +41,17 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/regIOobject.cxx"
+%import "Foam/src/OpenFOAM/db/regIOobject.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
 
 %ignore Foam::UniformDimensionedField::UniformDimensionedField;
 
 %include <UniformDimensionedField.H>
 
-%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/fieldTypes.cxx"
 
 %include <uniformDimensionedFields.H>
 

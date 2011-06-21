@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fvMatrices.fvScalarMatrix";
 %{
-  #include "src/finiteVolume/fvMatrices/fvScalarMatrix.hh"
+  #include "Foam/src/finiteVolume/fvMatrices/fvScalarMatrix.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMatrices/fvMatrix.cpp"
+%include "Foam/src/finiteVolume/fvMatrices/fvMatrix.cpp"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/dimensionSet.cxx"
+%import "Foam/src/OpenFOAM/dimensionSet.cxx"
 
 %ignore Foam::fvMatrix< Foam::scalar >::debug;
 %ignore Foam::fvMatrix< Foam::scalar >::typeName;

@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_scalar.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_scalar.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.cpp"
+%include "Foam/src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.cpp"
 
 
 //-----------------------------------------------------------------------------

@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_word";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_word.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/List/List_word.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%import "src/OpenFOAM/containers/Lists/UList/UList_word.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList_word.cxx"
 
 %template( List_word ) Foam::List< Foam::word >; 
 

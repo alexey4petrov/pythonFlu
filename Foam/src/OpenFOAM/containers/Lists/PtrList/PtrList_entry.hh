@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/dictionary/entry.hh"
+#include "Foam/src/OpenFOAM/db/dictionary/entry.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
 
 
 //---------------------------------------------------------------------------

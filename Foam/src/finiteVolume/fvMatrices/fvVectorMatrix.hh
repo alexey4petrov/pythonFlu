@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMatrices/fvMatrix.hh"
+#include "Foam/src/finiteVolume/fvMatrices/fvMatrix.hh"
 
-#include "src/OpenFOAM/primitives/vector.hh"
+#include "Foam/src/OpenFOAM/primitives/vector.hh"
 
-#include "src/OpenFOAM/dimensionSet.hh"
+#include "Foam/src/OpenFOAM/dimensionSet.hh"
 
 namespace Foam
 {

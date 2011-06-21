@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/objectRegistry.cxx"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
 %include <GeoMesh.H>
 

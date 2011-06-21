@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.primitiveShapes.point.point";
 %{
-   #include "src/OpenFOAM/meshes/primitiveShapes/point/point.hh"
+   #include "Foam/src/OpenFOAM/meshes/primitiveShapes/point/point.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 %include <point.H>
 

@@ -27,18 +27,18 @@
 
 //---------------------------------------------------------------------------
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_vector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
+%include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_vector.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_fvPatchField_vector.cpp"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_vector.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_vector.cpp"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 
 //---------------------------------------------------------------------------

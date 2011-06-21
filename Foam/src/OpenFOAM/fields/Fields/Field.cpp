@@ -27,22 +27,22 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/Fields/Field.hh"
+  #include "Foam/src/OpenFOAM/fields/Fields/Field.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%import "src/OpenFOAM/fields/tmp/refCount.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/refCount.cxx"
 
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "ext/common/ext_tmp.hxx"
+%import "Foam/ext/common/ext_tmp.hxx"
 
 %include <Field.H>
 
-%import "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -208,7 +208,7 @@
 //---------------------------------------------------------------------------
 %define FIELD_TEMPLATE_FUNC( Type )
 
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
 NO_TMP_TYPEMAP_FIELD( Field< Foam::scalar > );
 NO_TMP_TYPEMAP_FIELD( Field< Foam::vector > );
@@ -221,7 +221,7 @@ NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
 %extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
 %extend Foam::ext_tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
 
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::Field< Foam::Type > OSTREAM_EXTENDS;
 

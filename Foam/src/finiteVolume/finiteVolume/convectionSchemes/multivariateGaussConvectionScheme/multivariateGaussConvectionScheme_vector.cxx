@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.convectionSchemes.multivariateGaussConvectionScheme.multivariateGaussConvectionScheme_vector";
 %{
-  #include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme_vector.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme_vector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.cxx"
+%import "Foam/src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.cxx"
 
-%import "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.cxx"
+%import "Foam/src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.cxx"
 
-%import "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.cxx"
 
 
 //----------------------------------------------------------------------------

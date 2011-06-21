@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
 
-#include "src/finiteVolume/fields/surfaceFields/surfaceVectorField.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceVectorField.hh"
 
-#include "src/finiteVolume/fields/surfaceFields/surfaceTensorField.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceTensorField.hh"
 
 
 //---------------------------------------------------------------------------

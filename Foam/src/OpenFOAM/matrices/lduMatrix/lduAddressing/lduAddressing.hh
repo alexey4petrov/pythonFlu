@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.hh"
+#include "Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.hh"
 
-#include "src/OpenFOAM/primitives/Lists/labelList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/labelList.hh"
 
 #include <lduAddressing.H>
 

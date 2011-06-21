@@ -28,20 +28,20 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.snGradSchemes.snGradScheme";
 %{
-    #include "src/finiteVolume/finiteVolume/snGradSchemes/snGradScheme.hh"
+    #include "Foam/src/finiteVolume/finiteVolume/snGradSchemes/snGradScheme.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/OpenFOAM/fields/tmp/refCount.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/refCount.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%import "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
+%import "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
 
 %include <snGradScheme.H>
 

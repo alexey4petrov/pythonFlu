@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedTypes.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedTypes.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.hh"
 
 #include <dimensionedTensor.H>
 

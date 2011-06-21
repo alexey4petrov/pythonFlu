@@ -27,16 +27,16 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
+  #include "Foam/src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cpp"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_surfaceScalarField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/autoPtr_surfaceScalarField.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.cpp"
 
 
 //---------------------------------------------------------------------------

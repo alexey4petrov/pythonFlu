@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hh"
+  #include "Foam/src/finiteVolume/fvMesh/fvPatches/fvPatch.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
 
 %include <fvPatch.H>
 

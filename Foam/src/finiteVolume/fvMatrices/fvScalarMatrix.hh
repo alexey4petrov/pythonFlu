@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMatrices/fvMatrix.hh"
+#include "Foam/src/finiteVolume/fvMatrices/fvMatrix.hh"
 
-#include "src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
 
-#include "src/OpenFOAM/dimensionSet.hh"
+#include "Foam/src/OpenFOAM/dimensionSet.hh"
 
 
 //---------------------------------------------------------------------------

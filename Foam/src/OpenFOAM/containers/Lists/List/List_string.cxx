@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_string";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_string.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/List/List_string.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%import "src/OpenFOAM/containers/Lists/UList/UList_string.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList_string.cxx"
 
 %template( List_string ) Foam::List< Foam::string >; 
 

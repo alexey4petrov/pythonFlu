@@ -31,20 +31,20 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_volVectorField.hh"
-#include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_volVectorField.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceScalarField.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
-#include "src/finiteVolume/fields/volFields/volScalarField.hh"
-#include "src/OpenFOAM/fields/tmp/tmp_volTensorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volScalarField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_volTensorField.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/surfaceMesh.hh"
+#include "Foam/src/finiteVolume/surfaceMesh.hh"
 
-#include "src/finiteVolume/volMesh.hh"
+#include "Foam/src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

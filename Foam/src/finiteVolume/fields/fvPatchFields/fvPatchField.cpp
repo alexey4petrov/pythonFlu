@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchField";
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
+  #include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 %}
 
-%import "src/director.hxx"
+%import "Foam/src/director.hxx"
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cpp"
+%include "Foam/src/finiteVolume/fvMesh/fvPatches/fvPatch.cpp"
 
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
 %feature( "director" ) fvPatchField;
 
@@ -83,7 +83,7 @@ NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::tensor > );
 
 %extend Foam::fvPatchField< Foam::Type > FVPATCHFIELD_VIRTUAL_EXTENDS( Type );
 
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::fvPatchField< Foam::Type > OSTREAM_EXTENDS;
 
@@ -91,7 +91,7 @@ NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::tensor > );
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hh"
+%include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hh"
 
 %feature( "director" ) fvPatchFieldConstructorToTableBase;
 

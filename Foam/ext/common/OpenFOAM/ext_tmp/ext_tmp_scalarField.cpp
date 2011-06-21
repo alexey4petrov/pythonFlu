@@ -27,16 +27,16 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.hh"
+  #include "Foam/ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "ext/common/ext_tmp.hxx"
+%import "Foam/ext/common/ext_tmp.hxx"
 
-%include "src/OpenFOAM/fields/Fields/scalarField.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/scalarField.cpp"
 
 %ignore Foam::ext_tmp< Foam::Field< Foam::scalar > >::operator=;
 

@@ -26,8 +26,8 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
-#include "src/finiteVolume/fields/volFields/volFieldsFwd.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volFieldsFwd.hh"
 
 #include <bound.H>
 

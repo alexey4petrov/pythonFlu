@@ -27,22 +27,22 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/volFields/volFields.hh"
+  #include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/volFields/volScalarField.cpp"
+%include "Foam/src/finiteVolume/fields/volFields/volScalarField.cpp"
 
-%include "src/finiteVolume/fields/volFields/volVectorField.cpp"
+%include "Foam/src/finiteVolume/fields/volFields/volVectorField.cpp"
 
-%include "src/finiteVolume/fields/volFields/volTensorField.cpp"
+%include "Foam/src/finiteVolume/fields/volFields/volTensorField.cpp"
 
-%include "src/finiteVolume/fields/volFields/volSymmTensorField.cpp"
+%include "Foam/src/finiteVolume/fields/volFields/volSymmTensorField.cpp"
 
-%include "src/finiteVolume/fields/volFields/volSphericalTensorField.cpp"
+%include "Foam/src/finiteVolume/fields/volFields/volSphericalTensorField.cpp"
 
-%include "src/finiteVolume/fields/volFields/volFieldsFwd.hpp"
+%include "Foam/src/finiteVolume/fields/volFields/volFieldsFwd.hpp"
 
 
 //---------------------------------------------------------------------------

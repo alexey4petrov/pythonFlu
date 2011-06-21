@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-#include "src/thermophysicalModels/basic/basicThermo.hh"
+#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
 
 
 //---------------------------------------------------------------------------

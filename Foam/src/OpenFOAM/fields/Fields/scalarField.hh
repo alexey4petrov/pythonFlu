@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/Field.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/Field.hh"
 
-#include "src/OpenFOAM/primitives/Lists/scalarList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/scalarList.hh"
 
 #include <scalarField.H>
 

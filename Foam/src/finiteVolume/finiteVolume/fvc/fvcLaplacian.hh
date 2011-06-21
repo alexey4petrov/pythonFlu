@@ -26,17 +26,17 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( <, 010500 )
-#include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.hh"
+#include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.hh"
 #endif
 
 #include <fvcLaplacian.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volFields.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
 
 
 //---------------------------------------------------------------------------

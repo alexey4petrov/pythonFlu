@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/cfdTools/general/MRF/MRFZone.hh"
+#include "Foam/src/finiteVolume/cfdTools/general/MRF/MRFZone.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_MRFZone.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_MRFZone.hh"
 
-#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
+#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
 #include <MRFZones.H>
 

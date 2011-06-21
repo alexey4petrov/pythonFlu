@@ -27,9 +27,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-#include "src/dynamicMesh/motionSolver.hh"
+#include "Foam/src/dynamicMesh/motionSolver.hh"
 
 
 //---------------------------------------------------------------------------

@@ -27,16 +27,16 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/surfaceMesh.hh"
+  #include "Foam/src/finiteVolume/surfaceMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/GeoMesh_fvMesh.cpp"
+%include "Foam/src/OpenFOAM/meshes/GeoMesh_fvMesh.cpp"
 
-%include "src/finiteVolume/surfaceMesh.hpp"
+%include "Foam/src/finiteVolume/surfaceMesh.hpp"
 
-%include "src/finiteVolume/fvMesh/fvMesh.cpp"
+%include "Foam/src/finiteVolume/fvMesh/fvMesh.cpp"
 
 %include <surfaceMesh.H>
 

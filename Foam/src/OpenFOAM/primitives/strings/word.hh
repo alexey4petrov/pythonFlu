@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/strings/string.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/string.hh"
 
 #include <word.H>
 

@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.scalarList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/scalarList.hh"
+   #include "Foam/src/OpenFOAM/primitives/Lists/scalarList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_scalar.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_scalar.cxx"
 
 %include <scalarList.H>
 

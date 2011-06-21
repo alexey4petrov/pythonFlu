@@ -22,12 +22,12 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/turbulenceModels/compressible/RAS/RASModel.hh"
+  #include "Foam/src/turbulenceModels/compressible/RAS/RASModel.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010500 )
 #define compressibleRASModel_cpp
@@ -40,13 +40,13 @@
 
 
 //----------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
+%import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
 
 
 //-----------------------------------------------------------------------------

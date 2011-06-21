@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
 #include <List.H>
 
@@ -36,7 +36,7 @@
 
 #include <vectorField.H>
 
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 
 //---------------------------------------------------------------------------

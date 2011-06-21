@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 #include <FieldField.H>
 

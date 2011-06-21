@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.Time.cpuTime";
 %{
-  #include "src/OpenFOAM/db/Time/cpuTime.hh"
+  #include "Foam/src/OpenFOAM/db/Time/cpuTime.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
 %include <cpuTime.H>
 

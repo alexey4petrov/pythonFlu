@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/transportModels/incompressible/transportModel.hh"
+#include "Foam/src/transportModels/incompressible/transportModel.hh"
 
-#include "src/transportModels/incompressible/viscosityModels/viscosityModel.hh"
+#include "Foam/src/transportModels/incompressible/viscosityModels/viscosityModel.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
 #include <twoPhaseMixture.H>
 

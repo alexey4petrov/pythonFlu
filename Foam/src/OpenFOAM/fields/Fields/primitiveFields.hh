@@ -26,25 +26,25 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/scalarField.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/scalarField.hh"
 
-#include "src/OpenFOAM/fields/Fields/vectorField.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/vectorField.hh"
 
-#include "src/OpenFOAM/fields/Fields/tensorField.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/tensorField.hh"
 
-#include "src/OpenFOAM/fields/Fields/symmTensorField.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/symmTensorField.hh"
 
-#include "src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_scalarField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_scalarField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_vectorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_vectorField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_tensorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_tensorField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_symmTensorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_symmTensorField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.hh"
 
 
 

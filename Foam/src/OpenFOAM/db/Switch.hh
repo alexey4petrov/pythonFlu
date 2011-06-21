@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/bool.hh"
+#include "Foam/src/OpenFOAM/primitives/bool.hh"
 
-#include "src/OpenFOAM/primitives/strings/word.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 
 #include <Switch.H>
 

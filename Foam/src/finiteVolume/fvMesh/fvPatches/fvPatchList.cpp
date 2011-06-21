@@ -27,12 +27,12 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fvMesh/fvPatches/fvPatchList.hh"
+  #include "Foam/src/finiteVolume/fvMesh/fvPatches/fvPatchList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.cpp"
+%include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.cpp"
 
 
 //---------------------------------------------------------------------------

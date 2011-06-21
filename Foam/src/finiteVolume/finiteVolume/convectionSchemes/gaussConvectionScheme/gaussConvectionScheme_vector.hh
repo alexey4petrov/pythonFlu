@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme.hh"
+#include "Foam/src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme.hh"
 
-#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.hh"
+#include "Foam/src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.hh"
 
 
 //----------------------------------------------------------------------------

@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.convectionSchemes.gaussConvectionScheme.gaussConvectionScheme_scalar";
 %{
-  #include "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme_scalar.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme_scalar.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme.cxx"
+%import "Foam/src/finiteVolume/finiteVolume/convectionSchemes/gaussConvectionScheme/gaussConvectionScheme.cxx"
 
-%import "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.cxx"
+%import "Foam/src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_scalar.cxx"
 
 %template( gaussConvectionScheme_scalar ) Foam::fv::gaussConvectionScheme< Foam::scalar >;
 

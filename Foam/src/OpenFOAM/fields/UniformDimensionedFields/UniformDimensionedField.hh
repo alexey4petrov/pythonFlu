@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( <, 010600 )
 #define UniformDimensionedField_hh
@@ -34,11 +34,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/regIOobject.hh"
+#include "Foam/src/OpenFOAM/db/regIOobject.hh"
 
-#include "src/OpenFOAM/fields/Fields/Field.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/Field.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedType.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedType.hh"
 
 #include <uniformDimensionedFields.H>
 

@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedSymmTensor";
 %{
-  #include "src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.hh"
+  #include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx"
 
 %typedef Foam::dimensioned< Foam::symmTensor > dimensionedSymmTensor;
 

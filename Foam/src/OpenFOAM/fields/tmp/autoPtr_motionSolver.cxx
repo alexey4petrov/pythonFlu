@@ -29,14 +29,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_motionSolver"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_motionSolver.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_motionSolver.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/dynamicMesh/motionSolver.cpp"
+%include "Foam/src/dynamicMesh/motionSolver.cpp"
 
 
 //----------------------------------------------------------------------------

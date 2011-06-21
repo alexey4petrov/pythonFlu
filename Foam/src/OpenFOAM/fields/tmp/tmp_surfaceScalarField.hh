@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_scalarField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_scalarField.hh"
 
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.hh"
 
 
 //---------------------------------------------------------------------------

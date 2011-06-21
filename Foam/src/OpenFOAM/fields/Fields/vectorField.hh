@@ -26,15 +26,15 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/Field.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/Field.hh"
 
-#include "src/OpenFOAM/primitives/vector.hh"
+#include "Foam/src/OpenFOAM/primitives/vector.hh"
 
-#include "src/OpenFOAM/primitives/Lists/vectorList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/vectorList.hh"
 
-#include "src/OpenFOAM/primitives/tensor.hh"
+#include "Foam/src/OpenFOAM/primitives/tensor.hh"
 
-#include "src/OpenFOAM/primitives/pTraits_vector.hh"
+#include "Foam/src/OpenFOAM/primitives/pTraits_vector.hh"
 
 #include <vectorField.H>
 

@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
 
 #include <ISstream.H>
 

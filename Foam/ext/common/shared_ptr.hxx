@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%include "Foam/src/common.hxx"
 
 %{
     #include "boost/shared_ptr.hpp"

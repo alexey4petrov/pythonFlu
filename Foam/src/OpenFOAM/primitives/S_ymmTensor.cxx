@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.S_ymmTensor";
 %{
-  #include "src/OpenFOAM/primitives/S_ymmTensor.hh"
+  #include "Foam/src/OpenFOAM/primitives/S_ymmTensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
-%import "src/OpenFOAM/primitives/S_phericalTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/S_phericalTensor.cxx"
 
 %include <SymmTensor.H>
 

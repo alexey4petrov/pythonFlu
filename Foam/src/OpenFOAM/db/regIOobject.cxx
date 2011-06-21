@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.regIOobject";
 %{
-  #include "src/OpenFOAM/db/regIOobject.hh"
+  #include "Foam/src/OpenFOAM/db/regIOobject.hh"
 %}
 
-%import "src/director.hxx"
+%import "Foam/src/director.hxx"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOobject.cxx"
+%import "Foam/src/OpenFOAM/db/IOobject.cxx"
 
 
 //---------------------------------------------------------------------------

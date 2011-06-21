@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "ext/common/shared_ptr.hxx"
+%include "Foam/ext/common/shared_ptr.hxx"
 
-%include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 SHAREDPTR_TYPEMAP( Foam::dimensionedScalar );
 

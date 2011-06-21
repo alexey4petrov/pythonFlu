@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/FieldFields/FieldField.hh"
+#include "Foam/src/OpenFOAM/fields/FieldFields/FieldField.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.hh"
 
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField_sphericalTensor.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_sphericalTensor.hh"
 
 
 //---------------------------------------------------------------------------

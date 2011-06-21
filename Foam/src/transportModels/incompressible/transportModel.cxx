@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.transportModels.incompressible.transportModel";
 %{
-  #include "src/transportModels/incompressible/transportModel.hh"
+  #include "Foam/src/transportModels/incompressible/transportModel.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOdictionary.cxx"
+%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <transportModel.H>
 

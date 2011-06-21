@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable_curve_word_string_hash";
 %{
-  #include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_curve_word_string_hash.hh"
+  #include "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_curve_word_string_hash.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
+%import "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
 
-%import "src/OpenFOAM/graph/curve.cxx"
+%import "Foam/src/OpenFOAM/graph/curve.cxx"
 
 %ignore Foam::HashTable< Foam::curve*, Foam::word, Foam::string_hash >::begin;
 %ignore Foam::HashTable< Foam::curve*, Foam::word, Foam::string_hash >::find;

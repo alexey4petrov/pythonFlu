@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
 
 #include <dimensionedTypes.H>
 

@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.Time.TimePaths";
 %{
-  #include "src/OpenFOAM/db/Time/TimePaths.hh"
+  #include "Foam/src/OpenFOAM/db/Time/TimePaths.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/strings/fileName.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/fileName.cxx"
 
 %include <TimePaths.H>
 

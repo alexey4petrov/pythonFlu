@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.symmTensor";
 %{
-  #include "src/OpenFOAM/primitives/symmTensor.hh"
+  #include "Foam/src/OpenFOAM/primitives/symmTensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/primitives/S_ymmTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/S_ymmTensor.cxx"
 
-%import "src/OpenFOAM/primitives/contiguous.cxx"
+%import "Foam/src/OpenFOAM/primitives/contiguous.cxx"
 
 %template( VectorSpace_symmTensor ) Foam::VectorSpace< Foam::SymmTensor< Foam::scalar >, Foam::scalar, 6 >;
 

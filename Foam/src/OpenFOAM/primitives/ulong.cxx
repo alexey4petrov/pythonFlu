@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.ulong";
 %{
-  #include "src/OpenFOAM/primitives/ulong.hh"
+  #include "Foam/src/OpenFOAM/primitives/ulong.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 %include <ulong.H>
 

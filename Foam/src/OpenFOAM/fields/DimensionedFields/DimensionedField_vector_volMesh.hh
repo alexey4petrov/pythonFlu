@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.hh"
+#include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField.hh"
 
-#include "src/OpenFOAM/primitives/vector.hh"
+#include "Foam/src/OpenFOAM/primitives/vector.hh"
 
-#include "src/finiteVolume/volMesh.hh"
+#include "Foam/src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.hh"
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.hh"
-#include "src/finiteVolume/volMesh.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.hh"
+#include "Foam/src/finiteVolume/volMesh.hh"
 
 #include <volFieldsFwd.H>
 

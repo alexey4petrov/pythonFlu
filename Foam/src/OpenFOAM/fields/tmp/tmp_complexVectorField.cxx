@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.tmp_complexVectorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_complexVectorField.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/tmp_complexVectorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/OpenFOAM/fields/Fields/complexFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/complexFields.cxx"
 
 
 //----------------------------------------------------------------------------

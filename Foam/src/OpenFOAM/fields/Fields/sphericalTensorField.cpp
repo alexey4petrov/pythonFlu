@@ -27,16 +27,16 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
+  #include "Foam/src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/Field.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/Field.cpp"
 
-%import "src/OpenFOAM/primitives/sphericalTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/sphericalTensor.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/sphericalTensorList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/sphericalTensorList.cxx"
 
 
 //---------------------------------------------------------------------------

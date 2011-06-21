@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.error.messageStream";
 %{
-   #include "src/OpenFOAM/db/error/messageStream.hh"
+   #include "Foam/src/OpenFOAM/db/error/messageStream.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/dictionary/dictionary.cxx"
+%import "Foam/src/OpenFOAM/db/dictionary/dictionary.cxx"
 
-%import "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx"
 
 %include <messageStream.H>
 

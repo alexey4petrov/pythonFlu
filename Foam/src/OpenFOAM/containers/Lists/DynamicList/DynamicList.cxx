@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.DynamicList.DynamicList";
 %{
-    #include "src/OpenFOAM/containers/Lists/DynamicList/DynamicList.hh"
+    #include "Foam/src/OpenFOAM/containers/Lists/DynamicList/DynamicList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List.cxx"
 
 %include <DynamicList.H>
 

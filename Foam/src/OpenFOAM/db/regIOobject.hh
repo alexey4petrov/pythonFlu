@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/director.hh"
+#include "Foam/src/director.hh"
 
-#include "src/OpenFOAM/db/IOobject.hh"
+#include "Foam/src/OpenFOAM/db/IOobject.hh"
 
 #include <regIOobject.H>
 

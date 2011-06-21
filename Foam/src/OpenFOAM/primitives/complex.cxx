@@ -28,20 +28,20 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.complex";
 %{
-  #include "src/OpenFOAM/primitives/complex.hh"
+  #include "Foam/src/OpenFOAM/primitives/complex.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/primitives/bool.cxx"
+%import "Foam/src/OpenFOAM/primitives/bool.cxx"
 
-%import "src/OpenFOAM/primitives/strings/word.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
 
-%import "src/OpenFOAM/primitives/contiguous.cxx"
+%import "Foam/src/OpenFOAM/primitives/contiguous.cxx"
 
 %include <complex.H>
 

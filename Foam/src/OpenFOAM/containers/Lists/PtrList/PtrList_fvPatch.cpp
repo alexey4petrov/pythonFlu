@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatch.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
-%include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cpp"
+%include "Foam/src/finiteVolume/fvMesh/fvPatches/fvPatch.cpp"
 
 %ignore Foam::PtrList< Foam::fvPatch >::PtrList;
 %ignore Foam::PtrList< Foam::fvPatch >::begin;

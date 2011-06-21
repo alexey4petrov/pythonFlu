@@ -25,9 +25,9 @@
 #define MUSCL_NVDTVD_hh
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/MUSCL/MUSCL.hh"
+#include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/MUSCL/MUSCL.hh"
 
-#include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/NVDTVD.hh"
+#include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/NVDTVD.hh"
 
 
 //---------------------------------------------------------------------------

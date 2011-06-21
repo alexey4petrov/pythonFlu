@@ -27,24 +27,24 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_sphericalTensor_fvPatchField_volMesh.hh"
+  #include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_sphericalTensor_fvPatchField_volMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/FieldFields/FieldField.cpp"
+%include "Foam/src/OpenFOAM/fields/FieldFields/FieldField.cpp"
 
-%import "src/OpenFOAM/fields/tmp/refCount.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/refCount.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.cxx"
 
-%include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_sphericalTensor.cpp"
+%include "Foam/src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_sphericalTensor.cpp"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
 
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_sphericalTensor_volMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_sphericalTensor_volMesh.cpp"
 
 %ignore Foam::GeometricField< Foam::sphericalTensor, Foam::fvPatchField, Foam::volMesh >::debug;
 %ignore Foam::GeometricField< Foam::sphericalTensor, Foam::fvPatchField, Foam::volMesh >::typeName;

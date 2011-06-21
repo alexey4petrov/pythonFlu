@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_complexVector";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_complexVector.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/List/List_complexVector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%include "src/OpenFOAM/containers/Lists/UList/UList_complexVector.cpp"
+%include "Foam/src/OpenFOAM/containers/Lists/UList/UList_complexVector.cpp"
 
 %template( List_complexVector ) Foam::List< Foam::complexVector >;
 

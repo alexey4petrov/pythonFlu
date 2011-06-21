@@ -22,12 +22,12 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/thermophysicalModels/basic/psiThermo/basicPsiThermo.hh"
+  #include "Foam/src/thermophysicalModels/basic/psiThermo/basicPsiThermo.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define basicPsiThermo_cpp
@@ -40,9 +40,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
 
-// %import "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
+// %import "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
 
 %include <basicPsiThermo.H>
 

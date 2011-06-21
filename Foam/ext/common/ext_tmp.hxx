@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%include "ext/common/ext_tmp.hh"
+%include "Foam/ext/common/ext_tmp.hh"
 
-%import "src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
+%import "Foam/src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
 
 
 //---------------------------------------------------------------------------

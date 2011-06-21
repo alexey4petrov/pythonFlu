@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_vectorField";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_vectorField.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_vectorField.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::vectorField >::PtrList;
 %ignore Foam::PtrList< Foam::vectorField >::set;

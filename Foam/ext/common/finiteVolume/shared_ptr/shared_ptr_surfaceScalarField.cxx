@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "ext/common/shared_ptr.hxx"
+%include "Foam/ext/common/shared_ptr.hxx"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
+%include "Foam/src/finiteVolume/fields/surfaceFields/surfaceScalarField.cxx"
 
 SHAREDPTR_TYPEMAP( Foam::surfaceScalarField );
 

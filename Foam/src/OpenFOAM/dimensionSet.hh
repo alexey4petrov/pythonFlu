@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
 
 #include <dimensionSet.H>
 

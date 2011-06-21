@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "ext/common/shared_ptr.hxx"
+%include "Foam/ext/common/shared_ptr.hxx"
 
-%include "src/OpenFOAM/db/Time/Time.cxx"
+%include "Foam/src/OpenFOAM/db/Time/Time.cxx"
 
 SHAREDPTR_TYPEMAP( Foam::Time );
 

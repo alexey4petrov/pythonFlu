@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvc.fvcMeshPhi";
 %{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 
 //---------------------------------------------------------------------------

@@ -28,13 +28,13 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_IOobject";
 %{
-    #include "src/OpenFOAM/containers/Lists/UList/UList_IOobject.hh"
+    #include "Foam/src/OpenFOAM/containers/Lists/UList/UList_IOobject.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
-%import "src/OpenFOAM/db/IOobject.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/db/IOobject.cxx"
 
 %ignore Foam::UList< Foam::IOobject >::swap;
 %ignore Foam::UList< Foam::IOobject >::writeEntry;

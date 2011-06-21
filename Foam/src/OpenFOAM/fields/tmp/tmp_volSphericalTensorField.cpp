@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_volSphericalTensorField.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/tmp_volSphericalTensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_sphericalTensor_fvPatchField_volMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_sphericalTensor_fvPatchField_volMesh.cpp"
 
 
 //---------------------------------------------------------------------------

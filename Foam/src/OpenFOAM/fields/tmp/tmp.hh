@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/refCount.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/refCount.hh"
 
-#include "ext/common/ext_tmp.hh"
+#include "Foam/ext/common/ext_tmp.hh"
 
 #include <tmp.H>
 

@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hh"
 
-#include "src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
 
-#include "src/OpenFOAM/primitives/strings/keyType.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/keyType.hh"
 
-#include "src/OpenFOAM/db/IOstreams/token.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/token.hh"
 
 #include <Ostream.H>
 

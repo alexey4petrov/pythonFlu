@@ -25,7 +25,7 @@
 #define LimitFuncs_hh
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volFields.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
 
 #include <LimitFuncs.H>
 

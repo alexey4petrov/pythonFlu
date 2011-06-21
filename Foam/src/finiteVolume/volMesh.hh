@@ -26,15 +26,15 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hh"
+#include "Foam/src/OpenFOAM/meshes/GeoMesh_fvMesh.hh"
 
-#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_fvMesh.hh"
+#include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_fvMesh.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
-#include "src/OpenFOAM/dimensionSet.hh"
+#include "Foam/src/OpenFOAM/dimensionSet.hh"
 
 #include <volMesh.H>
 

@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_entry";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_entry.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_entry.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/dictionary/entry.cxx"
+%import "Foam/src/OpenFOAM/db/dictionary/entry.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::entry >::begin;
 %ignore Foam::PtrList< Foam::entry >::end;

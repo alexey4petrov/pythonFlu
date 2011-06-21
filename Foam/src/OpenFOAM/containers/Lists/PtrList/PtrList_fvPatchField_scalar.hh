@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_scalar.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_fvPatchField_scalar.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_scalar.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_scalar.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
 
 
 //---------------------------------------------------------------------------

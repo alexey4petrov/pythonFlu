@@ -25,9 +25,9 @@
 #define limitedSurfaceInterpolationScheme_vector_hh
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/limitedSurfaceInterpolationScheme/limitedSurfaceInterpolationScheme.hh"
+#include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/limitedSurfaceInterpolationScheme/limitedSurfaceInterpolationScheme.hh"
 
-#include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.hh"
+#include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme_vector.hh"
 
 
 //---------------------------------------------------------------------------

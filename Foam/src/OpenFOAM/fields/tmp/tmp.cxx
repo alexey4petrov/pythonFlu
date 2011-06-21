@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.tmp";
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/refCount.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/refCount.cxx"
 
-%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%import "src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
+%import "Foam/src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
 
-%import "ext/common/ext_tmp.hxx"
+%import "Foam/ext/common/ext_tmp.hxx"
 
 %include <tmp.H>
 

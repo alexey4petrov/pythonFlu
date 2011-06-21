@@ -28,22 +28,22 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fvMatrices.fvMatrix";
 %{
-  #include "src/finiteVolume/fvMatrices/fvMatrix.hh"
+  #include "Foam/src/finiteVolume/fvMatrices/fvMatrix.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/refCount.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/refCount.cxx"
 
-%import "src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx"
+%import "Foam/src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx"
 
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/className.hxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/finiteVolume/fvMatrices/fvMatricesFwd.hpp"
+%import "Foam/src/finiteVolume/fvMatrices/fvMatricesFwd.hpp"
 
 %include <fvMatrix.H>
 
@@ -150,8 +150,8 @@
 //---------------------------------------------------------------------------
 %define FVMATRIX_TEMPLATE_GLOBAL_FUNC( Type )
 
-%import "src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx"
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
+%import "Foam/src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
 
 %inline
 %{
@@ -208,7 +208,7 @@
 //---------------------------------------------------------------------------
 %define FVMATRIX_TEMPLATE_FUNC( Type )
 
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
 NO_TMP_TYPEMAP_FVMATRIX( Type );
 

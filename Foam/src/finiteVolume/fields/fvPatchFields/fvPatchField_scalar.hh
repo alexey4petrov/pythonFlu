@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
-#include "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.hh"
+#include "Foam/ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.hh"
 
 
 //---------------------------------------------------------------------------

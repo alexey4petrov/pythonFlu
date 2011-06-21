@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/UList/UList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/UList/UList.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr_polyPatch.hh"
 
-#include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
+#include "Foam/src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
 
 
 //---------------------------------------------------------------------------

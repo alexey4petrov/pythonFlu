@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvc.fvcLaplacian";
 %{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcLaplacian.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/fvc/fvcLaplacian.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.cxx"
+%import "Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.cxx"
 
 
 //---------------------------------------------------------------------------

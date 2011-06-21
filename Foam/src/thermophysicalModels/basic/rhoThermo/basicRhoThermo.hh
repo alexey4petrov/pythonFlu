@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( <, 010600 )
 #define basicRhoThermo_hh
@@ -34,7 +34,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/thermophysicalModels/basic/basicThermo.hh"
+#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
 
 #include <basicRhoThermo.H>
 

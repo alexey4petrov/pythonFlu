@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/complexFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/complexFields.hh"
 
-#include "src/OpenFOAM/primitives/Lists/labelList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/labelList.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_complexField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_complexField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_complexVectorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_complexVectorField.hh"
 
 #include <fft.H>
 

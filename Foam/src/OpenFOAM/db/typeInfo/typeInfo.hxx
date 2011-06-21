@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/className.hxx"
 
 %include <typeInfo.H>
 

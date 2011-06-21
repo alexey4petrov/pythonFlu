@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List.cxx"
 
 %include <PtrList.H>
 

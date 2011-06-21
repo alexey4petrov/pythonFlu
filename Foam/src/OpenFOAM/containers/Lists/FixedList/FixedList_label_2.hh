@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/label.hh"
+#include "Foam/src/OpenFOAM/primitives/label.hh"
 
-#include "src/OpenFOAM/containers/Lists/FixedList/FixedList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/FixedList/FixedList.hh"
 
 
 //---------------------------------------------------------------------------

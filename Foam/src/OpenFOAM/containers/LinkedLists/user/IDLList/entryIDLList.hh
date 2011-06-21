@@ -26,8 +26,8 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.hh"
-#include "src/OpenFOAM/db/dictionary/entry.hh"
+#include "Foam/src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.hh"
+#include "Foam/src/OpenFOAM/db/dictionary/entry.hh"
 
 
 //---------------------------------------------------------------------------

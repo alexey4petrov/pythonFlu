@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedTypes";
 %{
-  #include "src/OpenFOAM/dimensionedTypes/dimensionedTypes.hh"
+  #include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedTypes.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
 
 %include <dimensionedTypes.H>
 

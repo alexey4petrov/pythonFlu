@@ -27,12 +27,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.weighted.weighted";
 %{
-    #include "src/finiteVolume/interpolation/surfaceInterpolation/schemes/weighted/weighted.hh"
+    #include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/schemes/weighted/weighted.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx"
+%import "Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolationScheme/surfaceInterpolationScheme.cxx"
 
 %include <weighted.H>
 

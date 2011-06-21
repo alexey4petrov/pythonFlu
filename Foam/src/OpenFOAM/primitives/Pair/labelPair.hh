@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/label.hh"
+#include "Foam/src/OpenFOAM/primitives/label.hh"
 
-#include "src/OpenFOAM/primitives/Pair/Pair.hh"
+#include "Foam/src/OpenFOAM/primitives/Pair/Pair.hh"
 
-#include "src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.hh"
 
 #include <labelPair.H>
 

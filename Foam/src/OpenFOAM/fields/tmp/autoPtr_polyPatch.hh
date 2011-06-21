@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-#include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
+#include "Foam/src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
 
 
 //---------------------------------------------------------------------------

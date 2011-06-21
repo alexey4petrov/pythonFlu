@@ -28,30 +28,30 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZone";
 %{
-  #include "src/finiteVolume/cfdTools/general/porousMedia/porousZone.hh"
+  #include "Foam/src/finiteVolume/cfdTools/general/porousMedia/porousZone.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/dictionary/dictionary.cxx"
+%import "Foam/src/OpenFOAM/db/dictionary/dictionary.cxx"
 
-%import "src/meshTools/coordinateSystems/coordinateSystem.cxx"
+%import "Foam/src/meshTools/coordinateSystems/coordinateSystem.cxx"
 
-%import "src/meshTools/coordinateSystems/coordinateSystems.cxx"
+%import "Foam/src/meshTools/coordinateSystems/coordinateSystems.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/wordList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/wordList.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/labelList.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedTensor.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedTensor.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx"
 
-%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
+%import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <porousZone.H>
 

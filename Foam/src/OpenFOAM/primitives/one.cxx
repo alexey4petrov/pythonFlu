@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.one";
 %{
-  #include "src/OpenFOAM/primitives/one.hh"
+  #include "Foam/src/OpenFOAM/primitives/one.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010500 )
 #define one_cxx
