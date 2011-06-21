@@ -31,15 +31,15 @@ SUBDIRS = Foam
 
 #--------------------------------------------------------------------------------------
 deb:
-	test "x@OS_NAME@" = "x" && echo Current OS is not supported && exit 1
+	test "x@OS_NAME@" = "x" && echo "Current OS is not supported" && exit 1
 	@./make-deb.sh deb
 
 launchpad:
-	test "x@OS_NAME@" = "x" && echo Current OS is not supported && exit 1
+	test "x@OS_NAME@" = "x" && echo "Current OS is not supported" && exit 1
 	@./make-deb.sh launchpad
 
 rpm:
-	test "x@OS_NAME@" = "x" && echo Current OS is not supported && exit 1
+	test "x@OS_NAME@" = "x" && echo "Current OS is not supported" && exit 1
 	@./make-rpm.sh
 
 
