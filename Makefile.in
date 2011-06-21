@@ -30,7 +30,7 @@ pythonflu_root_dir:=@abs_top_builddir@
 
 m4dir:=@datarootdir@
 
-include $(pythonflu_root_dir)/Foam/include.makefile
+include $(pythonflu_root_dir)/Foam/src.include.makefile
 
 SUBDIRS = Foam
 

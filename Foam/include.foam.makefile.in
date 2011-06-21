@@ -22,6 +22,10 @@
 
 
 #--------------------------------------------------------------------------------------
+include $(pythonflu_root_dir)/Foam/foam.version.makefile
+
+
+#--------------------------------------------------------------------------------------
 dirs = $(dir $(sources))
 names = $(patsubst %.cxx,_%.so,$(notdir $(sources)))
 libs = $(join $(dirs),$(names))

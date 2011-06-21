@@ -26,6 +26,11 @@ include $(pythonflu_root_dir)/Foam/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
+#define src_complition_flag to ignore last step in "%.so" target
+src_compilation_flag=yes
+
+
+#--------------------------------------------------------------------------------------
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/basic/lnInclude \
@@ -95,7 +100,97 @@ endif
 
 
 #--------------------------------------------------------------------------------------
-include $(pythonflu_root_dir)/Foam/include.makefile
+sources = $(filter-out emb_%.cxx,$(wildcard *.cxx))
+
+subdirs := $(shell find -maxdepth 1 -type d)
+subdirs := $(subst ./,,$(subdirs))
+subdirs := $(subst CVS,,$(subdirs))
+subdirs := $(subst cvs,,$(subdirs))
+subdirs := $(subst .svn,,$(subdirs))
+subdirs := $(subst .,,$(subdirs))
+
+SUBDIRS = $(subdirs)
+
+apps = $(patsubst %.cxx, %.exe, $(sources))
+libs = $(patsubst %.cxx, _%.so, $(sources))
+objs = $(patsubst %.cxx, %.o, $(sources))
+stubs = $(patsubst %.cxx, %.cc, $(sources))
+pyths = $(patsubst %.cxx, %.py, $(sources))
+tests = $(patsubst %.py, %.pyc, $(wildcard test_*.py))
+
+
+#--------------------------------------------------------------------------------------
+RECURSIVE_TARGETS = all-recursive test-recursive
+
+all: $(libs) $(apps) $(objs) $(stubs) $(tests) all-recursive
+	@echo output : $(sources) $(pyths) $(tests)
+
+test: $(pyths) test-recursive
+
+$(RECURSIVE_TARGETS):
+	@failcom='exit 1'; \
+	for f in x $$MAKEFLAGS; do \
+	  case $$f in \
+	    *=* | --[!k]*);; \
+	    *k*) failcom='fail=yes';; \
+	  esac; \
+	done; \
+	target=`echo $@ | sed s/-recursive//`; \
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	  echo "Making $$target in $$subdir"; \
+	  if test "$$subdir" = "."; then \
+	    break; \
+	  fi; \
+	  if ! test -f "$$subdir/Makefile"; then \
+	    break; \
+	  fi; \
+	  echo "(cd $$subdir && $(MAKE) $$target)"; \
+	  (cd $$subdir && $(MAKE) $$target) \
+	  || eval $$failcom; \
+	done; \
+
+
+#--------------------------------------------------------------------------------------
+RECURSIVE_CLEAN_TARGETS = clean-recursive
+
+clean: clean-recursive
+	rm -fr $(apps) $(libs) $(objs) $(stubs) $(pyths) *.h *.pyc *.d *~
+
+$(RECURSIVE_CLEAN_TARGETS):
+	@failcom='exit 1'; \
+	for f in x $$MAKEFLAGS; do \
+	  case $$f in \
+	    *=* | --[!k]*);; \
+	    *k*) failcom='fail=yes';; \
+	  esac; \
+	done; \
+	dot_seen=no; \
+	case "$@" in \
+	  distclean-* | maintainer-clean-*) list='$(DIST_SUBDIRS)' ;; \
+	  *) list='$(SUBDIRS)' ;; \
+	esac; \
+	rev=''; for subdir in $$list; do \
+	  if test "$$subdir" = "."; then :; else \
+	    rev="$$subdir $$rev"; \
+	  fi; \
+	done; \
+	rev="$$rev ."; \
+	target=`echo $@ | sed s/-recursive//`; \
+	for subdir in $$rev; do \
+	  if test "$$subdir" = "."; then \
+	    break; \
+	  fi; \
+	  if ! test -f "$$subdir/Makefile"; then \
+	    break; \
+	  fi; \
+	  echo "(cd $$subdir && $(MAKE) $$target)"; \
+	  (cd $$subdir && $(MAKE) $$target) \
+	  || eval $$failcom; \
+	done && test -z "$$fail"
+
+
+#--------------------------------------------------------------------------------------
+include $(pythonflu_root_dir)/Foam/include.base.makefile
 
 
 #--------------------------------------------------------------------------------------
