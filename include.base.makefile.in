@@ -82,7 +82,7 @@ __APP_FLAGS__ = $(__LDFLAGS__)
 _%.so : %.o
 	@OPENFOAM_LINKLIBSO@ $< $(__LDFLAGS__) -o $@; \
 	gcc $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<); \
-	cd $(dir $<); python $(patsubst %.o,%.py,$<) || (rm $@ && exit 1)
+	python $(patsubst %.o,%.py,$<) || (rm $@ && exit 1)
 
 
 #--------------------------------------------------------------------------------------
