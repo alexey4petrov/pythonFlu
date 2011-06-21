@@ -26,11 +26,6 @@ include $(pythonflu_root_dir)/Foam/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
-#define src_complition_flag to ignore last step in "%.so" target
-src_compilation_flag=yes
-
-
-#--------------------------------------------------------------------------------------
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/basic/lnInclude \
@@ -191,6 +186,15 @@ $(RECURSIVE_CLEAN_TARGETS):
 
 #--------------------------------------------------------------------------------------
 include $(pythonflu_root_dir)/Foam/include.base.makefile
+
+
+#--------------------------------------------------------------------------------------
+%.o : %.cc
+	gcc $(__CXXFLAGS__) "-I./" "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
+
+_%.so : %.o
+	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@; \
+	gcc $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<)
 
 
 #--------------------------------------------------------------------------------------

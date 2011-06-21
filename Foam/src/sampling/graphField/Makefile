@@ -34,7 +34,7 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 #--------------------------------------------------------------------------------------
 pythonflu_root_dir:=../../../..
 
-include $(pythonflu_root_dir)/Foam/src.include.makefile
+include $(pythonflu_root_dir)/Foam/include.src.makefile
 
 
 #--------------------------------------------------------------------------------------
