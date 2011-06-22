@@ -39,7 +39,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-sudo python -c "from setuptools import setup; setup(name='Foam')" install
+sudo python -c "from setuptools import setup; setup(name='Foam', version='@PACKAGE_VERSION@')" install
 
 %preun
 install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`

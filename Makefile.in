@@ -55,14 +55,14 @@ install:
 	@ (cd $(pythondir)/Foam && find \( -name "*.d" -o -name "pyfoam" -o -name "*.cc" -o -name "*.exe" \) -delete)
 	@ (cd $(pythondir)/Foam && find \( -name "*.h" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
 	@ cp -rf @abs_top_builddir@/admin/pythonflu_check_pythonflu.m4 $(m4dir)/pythonFlu/admin/
-	@ python -c "from setuptools import setup; setup(name='Foam')" install
+	@ python -c "from setuptools import setup; setup(name='Foam', version='@PACKAGE_VERSION@')" install
 
 develop:
 	@ rm -rf $(pythondir)/Foam $(m4dir)/pythonFlu
 	@ install -d $(pythondir) $(m4dir)/pythonFlu/admin
 	@ ln -s @abs_top_builddir@/Foam $(pythondir)/Foam 
 	@ ln -s @abs_top_builddir@/admin/pythonflu_check_pythonflu.m4 $(m4dir)/pythonFlu/admin/pythonflu_check_pythonflu.m4
-	@ python -c "from setuptools import setup; setup(name='Foam')" install
+	@ python -c "from setuptools import setup; setup(name='Foam', version='@PACKAGE_VERSION@')" install
 
 
 #--------------------------------------------------------------------------------------
