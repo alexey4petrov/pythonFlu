@@ -52,7 +52,11 @@
 //-----------------------------------------------------------------------------
 %rename( compressible_RASModel ) Foam::compressible::RASModel;
 
+#if FOAM_NOT_BRANCH( free )
 %include <compressible/RASModel.H>
+#else
+%include <compressibleRASModels/RASModel.H>
+#endif
 
 
 //-----------------------------------------------------------------------------
