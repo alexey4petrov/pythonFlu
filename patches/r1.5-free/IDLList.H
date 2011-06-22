@@ -47,8 +47,10 @@ namespace Foam
 
 template<class T>
 class IDLList
+#ifndef SWIG
 :
     public ILList<DLListBase, T>
+#endif
 {
 
 public:

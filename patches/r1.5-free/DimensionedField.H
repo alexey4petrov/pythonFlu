@@ -294,7 +294,7 @@ public:
 
 
     // Ostream Operators
-
+#ifndef SWIG
         friend Ostream& operator<< <Type, GeoMesh>
         (
             Ostream&,
@@ -306,6 +306,7 @@ public:
             Ostream&,
             const tmp<DimensionedField<Type, GeoMesh> >&
         );
+#endif
 };
 
 

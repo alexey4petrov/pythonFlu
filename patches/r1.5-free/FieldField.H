@@ -74,8 +74,12 @@ Ostream& operator<<
 template<template<class> class Field, class Type>
 class FieldField
 :
+#ifndef SWIG    
     public refCount,
     public PtrList<Field<Type> >
+#else
+      public refCount
+#endif
 {
 
 public:
@@ -188,7 +192,7 @@ public:
 
 
     // IOstream operators
-
+#ifndef SWIG
         friend Ostream& operator<< <Field, Type>
         (
             Ostream&,
@@ -200,6 +204,7 @@ public:
             Ostream&,
             const tmp<FieldField<Field, Type> >&
         );
+#endif
 };
 
 

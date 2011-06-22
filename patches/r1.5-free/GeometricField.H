@@ -534,7 +534,7 @@ public:
 
 
     // Ostream operators
-
+#ifndef SWIG
         friend Ostream& operator<< <Type, PatchField, GeoMesh>
         (
             Ostream&,
@@ -546,6 +546,7 @@ public:
             Ostream&,
             const tmp<GeometricField<Type, PatchField, GeoMesh> >&
         );
+#endif
 };
 
 

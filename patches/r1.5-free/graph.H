@@ -59,7 +59,11 @@ Ostream& operator<<(Ostream&, const graph&);
 
 class graph
 :
+#ifndef SWIG
     public HashPtrTable<curve>
+#else
+    public HashPtrTable<curve, word, string_hash>
+#endif
 {
     // private data
 
