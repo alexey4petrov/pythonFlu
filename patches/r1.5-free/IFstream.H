@@ -41,7 +41,9 @@ SourceFiles
 #include <OpenFOAM/className.H>
 
 #include <fstream>
-using std::ifstream;
+#ifndef SWIG
+using std::ofstream;
+#endif
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
