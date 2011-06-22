@@ -27,12 +27,12 @@ include @abs_top_builddir@/foam.version.makefile
 
 #--------------------------------------------------------------------------------------
 __CPPFLAGS__ := $(__CPPFLAGS__) \
-	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude
+	@OPENFOAM_FINITEVOLUME_CPPFLAGS@
 
 
 #--------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume
+	@OPENFOAM_FINITEVOLUME_LIBS@
 
 
 #--------------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ sources = \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcSup.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcReconstruct.cxx \
 	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcLaplacian.cxx \
+	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcLaplacian.cxx
 
 
 #--------------------------------------------------------------------------------------
