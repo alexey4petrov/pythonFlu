@@ -91,7 +91,7 @@ public:
 
 
     // Declare run-time constructor selection table
-
+#ifndef SWIG
         declareRunTimeSelectionTable
         (
             autoPtr,
@@ -105,7 +105,7 @@ public:
             ),
             (name, viscosityProperties, U, phi)
         );
-
+#endif
 
     // Selectors
 

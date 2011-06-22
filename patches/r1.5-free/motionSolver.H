@@ -75,7 +75,7 @@ public:
 
 
     // Declare run-time constructor selection tables
-
+#ifndef SWIG
         declareRunTimeSelectionTable
         (
             autoPtr,
@@ -84,7 +84,7 @@ public:
             (const polyMesh& mesh, Istream& msData),
             (mesh, msData)
         );
-
+#endif
 
     // Selectors
 
