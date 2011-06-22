@@ -298,6 +298,7 @@ public:
         );
 
         //- Constructor from components
+#ifndef SWIG
         GeometricField
         (
             const IOobject&,
@@ -306,7 +307,7 @@ public:
             const Field<Type>&,
             const PtrList<PatchField<Type> >&
         );
-
+#endif
         //- Construct and read given IOobject
         GeometricField
         (
