@@ -28,6 +28,7 @@ include ../$(pyfoam_root_dir)/foam.version.makefile
 #--------------------------------------------------------------------------------------
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	@OPENFOAM_FINITEVOLUME_CPPFLAGS@ \
+	@OPENFOAM_SAMPLING_CPPFLAGS@ \
 	@OPENFOAM_BASICTHERMOPHYSICALMODELS_CPPFLAGS@ \
 	@OPENFOAM_MESHTOOLS_CPPFLAGS@ \
 	@OPENFOAM_TURBULENCEMODELS_CPPFLAGS@ \
@@ -46,6 +47,7 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 #--------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
 	@OPENFOAM_FINITEVOLUME_LIBS@ \
+	@OPENFOAM_SAMPLING_LIBS@ \
 	@OPENFOAM_BASICTHERMOPHYSICALMODELS_LIBS@ \
 	@OPENFOAM_MESHTOOLS_LIBS@ \
 	@OPENFOAM_TURBULENCEMODELS_LIBS@ \
