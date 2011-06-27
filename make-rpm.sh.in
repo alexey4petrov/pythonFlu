@@ -30,6 +30,8 @@ os_name="opensuse@SUSE_VERSION@"
 foam_package_suffix=@FOAM_PACKAGE_SUFFIX@
 pythonflu_version=@PACKAGE_VERSION@
 
+number_part_version=@NUMBER_PART_VERSION@
+
 package_name="pythonflu${foam_package_suffix}"
 
 build_version=@BUILD_VERSION@
@@ -132,7 +134,7 @@ echo "%doc README INSTALL NEWS" >> ${specs_folder}/${package_name}.spec
 echo "create package"
 echo "--------------------------------------------------------------------------------"
 rpmbuild -bb ${specs_folder}/${package_name}.spec
-a_package_file=${rpm_package_folder}/RPMS/@OS_ARCHITECTURE@/${package_name}-${package_version}.@OS_ARCHITECTURE@.rpm
+a_package_file=${rpm_package_folder}/RPMS/@OS_ARCHITECTURE@/${package_name}-${number_part_version}-${build_version}.@OS_ARCHITECTURE@.rpm
 a_new_filename=${package_name}-${package_version}-${os_name}.@OS_ARCHITECTURE@.rpm
 mv ${a_package_file} ${a_new_filename}
 
