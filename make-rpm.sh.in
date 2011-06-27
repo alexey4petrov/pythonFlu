@@ -1,6 +1,6 @@
 #!/bin/bash
 
-## pythonFlu - Python wrapping for OpenFOAM C++ API
+## confFlu - pythonFlu configuration package
 ## Copyright (C) 2010- Alexey Petrov
 ## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 ## 
@@ -52,6 +52,8 @@ echo "--------------------------------------------------------------------------
 echo "Copying \"Foam\" to ${package_folder}"
 echo "--------------------------------------------------------------------------------"
 cp -rf Foam ${package_folder}
+(cd ${package_folder} && mkdir admin)
+cp -rf admin/pythonflu_check_pythonflu.m4 ${package_folder}/admin
 
 
 #--------------------------------------------------------------------------------------
@@ -83,6 +85,8 @@ cp ${template_folder}/Makefile ${build_folder}/
 
 pythonflu_lib="/usr/local/lib/python2.6/site-packages"
 
+m4dir="/usr/local/share/pythonFlu"
+
 files_list="files.txt"
 ( cd ${package_folder} && touch ${files_list} )
 
@@ -95,6 +99,12 @@ links=`( cd ${build_folder} && find Foam -type l )`
 for link in ${links}; do
    echo "${pythonflu_lib}/${link}" >> ${package_folder}/${files_list}
 done
+
+m4files=`( cd ${build_folder} && find admin -type f )`
+for file in ${m4files}; do
+   echo "${m4dir}/${file}" >> ${package_folder}/${files_list}
+done
+
 
 echo "--------------------------------------------------------------------------------"
 
