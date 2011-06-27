@@ -79,7 +79,7 @@ public:
 
 
     // Declare run-time constructor selection tables
-
+#ifndef SWIG
         declareRunTimeSelectionTable
         (
             tmp,
@@ -104,7 +104,7 @@ public:
             ),
             (mesh, faceFlux, schemeData)
         );
-
+#endif
 
     // Constructors
 
