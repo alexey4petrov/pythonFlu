@@ -108,7 +108,7 @@ public:
 
 
     // Declare run-time constructor selection tables
-
+#ifndef SWIG
         declareRunTimeSelectionTable
         (
             autoPtr,
@@ -117,7 +117,7 @@ public:
             (const polyPatch& patch, const fvBoundaryMesh& bm),
             (patch, bm)
         );
-
+#endif
 
     // Constructors
 

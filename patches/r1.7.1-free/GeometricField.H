@@ -303,7 +303,7 @@ public:
             const dimensioned<Type>&,
             const wordList& patchFieldTypes
         );
-
+#ifndef SWIG
         //- Constructor from components
         GeometricField
         (
@@ -313,7 +313,7 @@ public:
             const Field<Type>&,
             const PtrList<PatchField<Type> >&
         );
-
+#endif
         //- Construct and read given IOobject
         GeometricField
         (
@@ -550,7 +550,7 @@ public:
 
 
     // Ostream operators
-
+#ifndef SWIG
         friend Ostream& operator<< <Type, PatchField, GeoMesh>
         (
             Ostream&,
@@ -562,6 +562,7 @@ public:
             Ostream&,
             const tmp<GeometricField<Type, PatchField, GeoMesh> >&
         );
+#endif
 };
 
 

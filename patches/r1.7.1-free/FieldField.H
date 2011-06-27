@@ -187,7 +187,7 @@ public:
 
 
     // IOstream operators
-
+#ifndef SWIG
         friend Ostream& operator<< <Field, Type>
         (
             Ostream&,
@@ -199,6 +199,7 @@ public:
             Ostream&,
             const tmp<FieldField<Field, Type> >&
         );
+#endif
 };
 
 
