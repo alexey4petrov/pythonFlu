@@ -134,7 +134,7 @@ public:
 
 
     // Declare run-time constructor selection table
-
+#ifndef SWIG
         declareRunTimeSelectionTable
         (
             autoPtr,
@@ -148,7 +148,7 @@ public:
             ),
             (rho, U, phi, thermoPhysicalModel)
         );
-
+#endif
 
     // Constructors
 
