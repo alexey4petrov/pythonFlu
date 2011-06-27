@@ -1,6 +1,6 @@
 Summary: pythonflu@FOAM_PACKAGE_SUFFIX@ package
 
-%define version @NUMBER_PART_VERSION@
+%define version @VERSION_NUMBER_PART@
 
 License: GPL
 
