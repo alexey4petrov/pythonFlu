@@ -22,107 +22,92 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Class
-    Foam::motionSolver
+    Foam::basicRhoThermo
 
 Description
-    Virtual base class for mesh motion solver.
+    Basic thermodynamic properties based on density
 
 SourceFiles
-    motionSolver.C
+    basicRhoThermo.C
+    newBasicRhoThermo.C
 
 \*---------------------------------------------------------------------------*/
 
-#ifndef motionSolver_H
-#define motionSolver_H
+#ifndef basicRhoThermo_H
+#define basicRhoThermo_H
 
-#include <OpenFOAM/IOdictionary.H>
-#include <OpenFOAM/pointField.H>
-#include <meshTools/twoDPointCorrector.H>
+#include <basicThermophysicalModels/basicThermo.H>
+#include <OpenFOAM/runTimeSelectionTables.H>
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
 
-// Forward class declarations
-class polyMesh;
-class mapPolyMesh;
-
 /*---------------------------------------------------------------------------*\
-                           Class motionSolver Declaration
+                       Class basicRhoThermo Declaration
 \*---------------------------------------------------------------------------*/
 
-class motionSolver
+class basicRhoThermo
 :
-    public IOdictionary
+    public basicThermo
 {
-private:
 
-    // Private data
+protected:
 
-        //- Reference to mesh
-        const polyMesh& mesh_;
+    // Protected data
 
-        //- 2-D motion corrector pointer
-        twoDPointCorrector twoDPointCorrector_;
+        //- Density field [kg/m^3]
+        //  Named 'rhoThermo' to avoid (potential) conflict with solver density
+        volScalarField rho_;
+
+
+    // Protected member functions
+
+        //- Construct as copy (not implemented)
+        basicRhoThermo(const basicRhoThermo&);
 
 
 public:
 
     //- Runtime type information
-    TypeName("motionSolver");
+    TypeName("basicRhoThermo");
 
-
-    // Declare run-time constructor selection tables
 #ifndef SWIG
-        declareRunTimeSelectionTable
-        (
-            autoPtr,
-            motionSolver,
-            dictionary,
-            (const polyMesh& mesh, Istream& msData),
-            (mesh, msData)
-        );
+    //- Declare run-time constructor selection table
+    declareRunTimeSelectionTable
+    (
+        autoPtr,
+        basicRhoThermo,
+        fvMesh,
+        (const fvMesh& mesh),
+        (mesh)
+    );
 #endif
-
-    // Selectors
-
-        //- Select constructed from polyMesh
-        static autoPtr<motionSolver> New(const polyMesh& mesh);
-
 
     // Constructors
 
-        //- Construct from polyMesh
-        motionSolver(const polyMesh& mesh);
+        //- Construct from mesh
+        basicRhoThermo(const fvMesh&);
 
 
-    // Destructor
+    //- Selector
+    static autoPtr<basicRhoThermo> New(const fvMesh&);
 
-        virtual ~motionSolver();
+
+    //- Destructor
+    virtual ~basicRhoThermo();
 
 
-    // Member Functions
-        
-        //- Return reference to mesh
-        const polyMesh& mesh() const
-        {
-            return mesh_;
-        }
+    // Member functions
 
-        //- Provide new points for motion.  Solves for motion
-        virtual tmp<pointField> newPoints();
+        // Fields derived from thermodynamic state variables
 
-        //- Provide current points for motion.  Uses current motion field
-        virtual tmp<pointField> curPoints() const = 0;
+            //- Density [kg/m^3]
+            virtual tmp<volScalarField> rho() const;
 
-        virtual void twoDCorrectPoints(pointField&) const;
-
-        //- Solve for motion
-        virtual void solve() = 0;
-
-        //- Update topology
-        virtual void updateMesh(const mapPolyMesh&) = 0;
+            //- Return non-const access to the local density field [kg/m^3]
+            virtual volScalarField& rho();
 };
 
 
