@@ -4,6 +4,13 @@
 # see: dh_installdeb(1)
 
 install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`
-sudo rm -rf ${install_path}/Foam
+sudo rm -rf ${install_path}/Foam/__init__.pyc
+
+# checking is "Foam" folder empty? The empty folder means that we remove package( not reinstall )
+files=`ls ${install_path}/Foam`
+
+if test "x${files}" = "x"; then
+   sudo rm -rf ${install_path}/Foam
+fi
 
 exit 0
