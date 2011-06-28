@@ -4,10 +4,17 @@
 # see: dh_installdeb(1)
 
 install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`
-sudo rm -rf ${install_path}/Foam/__init__.pyc
+rm -rf ${install_path}/Foam/__init__.pyc
 
-if test "${1}" = "remove"; then
-   sudo rm -rf ${install_path}/Foam
-fi
+case ${1} in
+  "remove")
+      rm -rf ${install_path}/Foam
+      echo
+      echo "REMOVE $1"
+      echo
+  ;;
+  "upgrade")
+  ;;
+esac
 
 exit 0
