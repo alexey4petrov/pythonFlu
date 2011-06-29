@@ -9,9 +9,9 @@ rm -rf ${install_path}/Foam/__init__.pyc
 case ${1} in
   "remove")
       rm -rf ${install_path}/Foam
-      echo
-      echo "REMOVE $1"
-      echo
+      if [ "@WITH_SOLVERS@" = "yes" ]; then
+        rm -rf /usr/local/share/pythonFlu
+      fi
   ;;
   "upgrade")
   ;;
