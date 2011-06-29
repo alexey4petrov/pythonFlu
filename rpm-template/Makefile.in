@@ -35,6 +35,13 @@ preparation:$(libs_preparation_dir)/Foam
 $(libs_preparation_dir)/Foam:
 	@ cp -rf Foam $(libs_preparation_dir)/
 	@ cp -rf admin $(libs_preparation_dir)/
+ifeq "@WITH_CONFFLU@" "yes"
+	@ cp -rf confFlu $(libs_preparation_dir)/
+endif 
+ifeq "@WITH_SOLVERS@" "yes"
+	@ cp -rf solvers $(libs_preparation_dir)/
+endif 
+
 
 install: $(PYTHON_FLU_LIB)/Foam
 
@@ -42,7 +49,12 @@ $(PYTHON_FLU_LIB)/Foam:
 	@ install -d $(PYTHON_FLU_LIB) $(M4DIR)
 	@ cp -rf $(libs_preparation_dir)/Foam $(PYTHON_FLU_LIB)/
 	@ cp -rf $(libs_preparation_dir)/admin $(M4DIR)
-
+ifeq "@WITH_CONFFLU@" "yes"
+	@ cp -rf $(libs_preparation_dir)/confFlu $(DESTDIR)/usr/local/share/
+endif 
+ifeq "@WITH_SOLVERS@" "yes"
+	@ cp -rf $(libs_preparation_dir)/solvers $(DESTDIR)/usr/local/share/pythonFlu/
+endif 
 
 
 #--------------------------------------------------------------------------------------     	

@@ -115,6 +115,7 @@ AC_OUTPUT( [ bashrc \
 	     deb-template/prerm \
 	     deb-template/postrm \
 	     rpm-template/rpm.spec \
+	     rpm-template/Makefile \
 	     ChangeLog ],
 	     [ chmod 755 make-deb.sh make-rpm.sh ] )
 
