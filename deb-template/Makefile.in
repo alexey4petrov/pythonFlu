@@ -34,7 +34,7 @@ install: $(PYTHON_FLU_LIB)/Foam
 $(PYTHON_FLU_LIB)/Foam: 
 	@ install -d $(PYTHON_FLU_LIB) $(PYTHONFLU_M4)/pythonFlu/admin
 	@ cp -rf Foam $(PYTHON_FLU_LIB)/
-	@ cp -rf admin/pythonflu_check_pythonflu.m4 $(PYTHONFLU_M4)/pythonFlu/admin/
+	@ cp -rf admin/pythonflu*.m4 $(PYTHONFLU_M4)/pythonFlu/admin/
 ifeq "@WITH_CONFFLU@" "yes"
 	@ cp -rf confFlu $(DESTDIR)/usr/local/share/
 endif 
