@@ -63,7 +63,12 @@ echo
 
 echo "--------------------------------------------------------------------------------------"
 CONFFLU_CHECK_BOOST_SHARED_PTR
-echo 
+echo
+
+echo "--------------------------------------------------------------------------------------"
+PYTHONFLU_CHECK_CREATING_PACKAGE
+echo
+
 
 echo "---------------------------- mandatory products --------------------------------"
 CONFFLU_PRINT_SUMMURY( "openfoam_ok swig_ok python_ok" )
@@ -105,7 +110,10 @@ AC_OUTPUT( [ bashrc \
 	     make-deb.sh \
 	     make-rpm.sh \
 	     deb-template/control \
+	     deb-template/Makefile \
 	     deb-template/postinst \
+	     deb-template/prerm \
+	     deb-template/postrm \
 	     rpm-template/rpm.spec \
 	     ChangeLog ],
 	     [ chmod 755 make-deb.sh make-rpm.sh ] )
