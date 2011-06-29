@@ -15,6 +15,7 @@ if [ "@WITH_SOLVERS@" = "yes" ]; then
      package=`echo ${install_list} | grep -o -e "[A-Z,a-z]*$"`
      easy_install -m $package
      rm -rf ${install_path}/${package}.egg*
+     rm -f /usr/local/bin/${package}
      install_list=`echo ${install_list} | sed -e "s/${package}$//" | sed -e "s/ $//"`
   done
 fi
