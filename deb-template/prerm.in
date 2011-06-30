@@ -9,7 +9,7 @@ install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.
 
 if [ "@WITH_SOLVERS@" = "yes" ]; then
   packages_dir=/usr/local/share/pythonFlu/solvers
-  source ${packages_dir}/install_list.sh
+  . ${packages_dir}/install_list.sh
   install_list=`create_install_list`
   while [ "x${install_list}" != "x" ]; do
      package=`echo ${install_list} | grep -o -e "[A-Z,a-z]*$"`
