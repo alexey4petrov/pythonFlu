@@ -114,6 +114,7 @@ AC_OUTPUT( [ bashrc \
 	     deb-template/postinst \
 	     deb-template/prerm \
 	     deb-template/postrm \
+	     deb-template/preinst \
 	     rpm-template/rpm.spec \
 	     rpm-template/Makefile \
 	     ChangeLog ],
