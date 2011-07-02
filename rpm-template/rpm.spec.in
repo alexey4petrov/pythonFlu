@@ -78,14 +78,25 @@ mv -f ${tmp_file} ${install_path}/easy-install.pth
 
 
 %postun
-install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`
-rm -rf ${install_path}/Foam
-if [ "@WITH_SOLVERS@" = "yes" ]; then
-  rm -rf /usr/local/share/pythonFlu
-fi
-if [ "@WITH_CONFFLU@" = "yes" ]; then
-  rm -rf /usr/local/share/confFlu
-fi
+case ${1} in
+   # remove package
+   0)
+     install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`
+     rm -rf ${install_path}/Foam
+     if [ "@WITH_SOLVERS@" = "yes" ]; then
+       rm -rf /usr/local/share/pythonFlu
+     fi
+     if [ "@WITH_CONFFLU@" = "yes" ]; then
+       rm -rf /usr/local/share/confFlu
+     fi
+   ;;
+   # install
+   1)
+   ;;
+   # uprgade
+   2)
+   ;;
+esac
 
 %files
 %defattr(-, root, root)
