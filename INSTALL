@@ -92,7 +92,7 @@ In order to build the module you have to perform the following actions:
 7. Build and install "pythonFlu":
 
    make
-   make install
+   sudo bash -c "source ./bashrc  && make install"
 
   (use "make clean" command to cleanup the build folder)
 
