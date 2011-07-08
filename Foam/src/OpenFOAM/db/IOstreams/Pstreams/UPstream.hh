@@ -17,59 +17,40 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Andrey Simurzin
 
 
 //---------------------------------------------------------------------------
-#ifndef Pstream_cxx
-#define Pstream_cxx
+#include "Foam/src/common.hh"
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.IOstreams.Pstreams.Pstream";
-%{
-   #include "Foam/src/OpenFOAM/db/IOstreams/Pstreams/Pstream.hh"
-%}
+#if FOAM_VERSION( <, 020000 )   
+#define UPstream_hh
+#endif
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/common.hxx"
-
-%import "Foam/src/OpenFOAM/db/typeInfo/className.hxx"
-
-%import "Foam/src/OpenFOAM/primitives/label.cxx"
-
-%import "Foam/src/OpenFOAM/primitives/Lists/labelList.cxx"
-
-// #include <DynamicList.H>
-// #include <HashTable.H>
-
-%import "Foam/src/OpenFOAM/primitives/strings/string.cxx"
-
-// #include <NamedEnum.H>
-
-%import "Foam/src/OpenFOAM/primitives/ops/ops_label.cxx"
-
-%import "Foam/src/OpenFOAM/db/IOstreams/Pstreams/UPstream.cxx"
-
-%include <Pstream.H>
+#ifndef UPstream_hh
+#define UPstream_hh
 
 
 //---------------------------------------------------------------------------
-%inline
-{
-  int ext_reduce( int theValue, const Foam::sumOp<Foam::label>& theBop )
-  {
-    Foam::reduce( theValue, theBop );
-    return theValue;
-  }
+#include "Foam/src/OpenFOAM/primitives/label.hh"
 
-  Foam::label returnReduce( const Foam::label& theValue, 
-                            const Foam::sumOp< Foam::label >& theBop )
-  {
-    return Foam::returnReduce( theValue, theBop );
-  }
-}
+#include "Foam/src/OpenFOAM/primitives/Lists/labelList.hh"
+
+#include "Foam/src/OpenFOAM/containers/Lists/DynamicList/DynamicList.hh"
+
+#include "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable.hh"
+
+#include "Foam/src/OpenFOAM/primitives/strings/string.hh"
+
+#include "Foam/src/OpenFOAM/containers/NamedEnum/NamedEnum.hh"
+
+#include "Foam/src/OpenFOAM/primitives/ops/ops_label.hh"
+
+#include <UPstream.H>
 
 
 //---------------------------------------------------------------------------

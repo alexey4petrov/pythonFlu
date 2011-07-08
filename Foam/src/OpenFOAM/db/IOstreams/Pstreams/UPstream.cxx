@@ -17,59 +17,47 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Andrey Simurzin
 
 
 //---------------------------------------------------------------------------
-#ifndef Pstream_cxx
-#define Pstream_cxx
-
-
-//---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.IOstreams.Pstreams.Pstream";
+%module "Foam.src.OpenFOAM.db.IOstreams.Pstreams.UPstream";
 %{
-   #include "Foam/src/OpenFOAM/db/IOstreams/Pstreams/Pstream.hh"
+   #include "Foam/src/OpenFOAM/db/IOstreams/Pstreams/UPstream.hh"
 %}
 
-
-//---------------------------------------------------------------------------
 %import "Foam/src/common.hxx"
 
+
+//---------------------------------------------------------------------------
+#if FOAM_VERSION( <, 020000 )
+#define UPstream_cxx
+#endif
+
+
+//---------------------------------------------------------------------------
+#ifndef UPstream_cxx
+#define UPstream_cxx
+
+
+//---------------------------------------------------------------------------
 %import "Foam/src/OpenFOAM/db/typeInfo/className.hxx"
 
 %import "Foam/src/OpenFOAM/primitives/label.cxx"
 
 %import "Foam/src/OpenFOAM/primitives/Lists/labelList.cxx"
 
-// #include <DynamicList.H>
-// #include <HashTable.H>
+%import "Foam/src/OpenFOAM/containers/Lists/DynamicList/DynamicList.cxx"
+
+%import "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
 
 %import "Foam/src/OpenFOAM/primitives/strings/string.cxx"
 
-// #include <NamedEnum.H>
+%import "Foam/src/OpenFOAM/containers/NamedEnum/NamedEnum.cxx"
 
 %import "Foam/src/OpenFOAM/primitives/ops/ops_label.cxx"
 
-%import "Foam/src/OpenFOAM/db/IOstreams/Pstreams/UPstream.cxx"
-
-%include <Pstream.H>
-
-
-//---------------------------------------------------------------------------
-%inline
-{
-  int ext_reduce( int theValue, const Foam::sumOp<Foam::label>& theBop )
-  {
-    Foam::reduce( theValue, theBop );
-    return theValue;
-  }
-
-  Foam::label returnReduce( const Foam::label& theValue, 
-                            const Foam::sumOp< Foam::label >& theBop )
-  {
-    return Foam::returnReduce( theValue, theBop );
-  }
-}
+%include <UPstream.H>
 
 
 //---------------------------------------------------------------------------
