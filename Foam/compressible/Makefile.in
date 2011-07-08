@@ -35,7 +35,12 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010700 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/compressible/RAS/lnInclude
-endif	
+endif
+
+ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 020000 ]; then echo 'true'; else echo 'false'; fi )" "true" 
+        __CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/compressible/turbulenceModel/lnInclude
+endif
+
 
 #--------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
