@@ -41,6 +41,15 @@
 
 %import "Foam/src/iterators.cxx"
 
+
+//---------------------------------------------------------------------------
+#if FOAM_REF_VERSION( >=, 020000 )
+  %ignore Foam::HashTableCore::end;
+  %ignore Foam::HashTableCore::cend;
+#endif
+
+
+//---------------------------------------------------------------------------
 %include <HashTable.H>
 
 

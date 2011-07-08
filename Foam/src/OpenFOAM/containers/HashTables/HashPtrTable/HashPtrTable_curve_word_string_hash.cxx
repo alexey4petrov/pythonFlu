@@ -39,6 +39,10 @@
 
 %ignore Foam::HashPtrTable< Foam::curve, Foam::word, Foam::string_hash >::HashPtrTable;
 
+#if FOAM_REF_VERSION( >=, 020000 )
+  %ignore Foam::HashPtrTable< Foam::curve, Foam::word, Foam::string_hash >::write;
+#endif
+
 %template( HashPtrTable_curve_word_string_hash ) Foam::HashPtrTable< Foam::curve, Foam::word, Foam::string_hash >; 
 
 %template( TPtrContainer_word_curve ) Foam::TPtrContainer_iterator< Foam::HashPtrTable< Foam::curve, Foam::word, Foam::string_hash > >;

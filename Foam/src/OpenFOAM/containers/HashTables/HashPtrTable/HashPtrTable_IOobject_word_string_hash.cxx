@@ -39,6 +39,10 @@
 
 %ignore Foam::HashPtrTable< Foam::IOobject, Foam::word, Foam::string_hash >::HashPtrTable;
 
+#if FOAM_REF_VERSION( >=, 020000 )
+  %ignore Foam::HashPtrTable< Foam::IOobject, Foam::word, Foam::string_hash >::write;
+#endif
+
 %template( HashPtrTable_IOobject_word_string_hash ) Foam::HashPtrTable< Foam::IOobject, Foam::word, Foam::string_hash >; 
 
 %template( TPtrContainer_word_IOobject ) Foam::TPtrContainer_iterator< Foam::HashPtrTable< Foam::IOobject, Foam::word, Foam::string_hash > >;
