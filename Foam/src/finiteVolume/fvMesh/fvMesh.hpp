@@ -36,6 +36,8 @@
 
 %import "Foam/src/OpenFOAM/meshes/lduMesh.cxx"
 
+%import "Foam/src/OpenFOAM/meshes/data.cxx"
+
 %import "Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
 
 %include "Foam/src/finiteVolume/fvMesh/fvBoundaryMesh.cpp"

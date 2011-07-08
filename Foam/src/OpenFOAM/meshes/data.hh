@@ -17,39 +17,32 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Andrey Simurzin
 
 
 //---------------------------------------------------------------------------
-#ifndef fvMesh_hh
-#define fvMesh_hh
+#include "Foam/src/common.hh"
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/meshes/polyMesh/polyMesh.hh"
+#if FOAM_VERSION( <, 020000 )   
+#define data_hh
+#endif
 
-#include "Foam/src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.hh"
 
-#include "Foam/src/OpenFOAM/db/Time/Time.hh"
+//---------------------------------------------------------------------------
+#ifndef data_hh
+#define data_hh
+
+
+//---------------------------------------------------------------------------
+#include "Foam/src/OpenFOAM/matrices/lduMatrix/lduMatrix.hh"
 
 #include "Foam/src/OpenFOAM/db/objectRegistry.hh"
 
-#include "Foam/src/OpenFOAM/meshes/lduMesh.hh"
+#include "Foam/src/OpenFOAM/db/IOdictionary.hh"
 
-#include "Foam/src/OpenFOAM/meshes/data.hh"
-
-#include "Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hh"
-
-#include "Foam/src/finiteVolume/fvMesh/fvBoundaryMesh.hh"
-
-#include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.hh"
-
-#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
-
-#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
-
-#include <fvMesh.H>
-#include <volMesh.H>
+#include <data.H>
 
 
 //---------------------------------------------------------------------------
