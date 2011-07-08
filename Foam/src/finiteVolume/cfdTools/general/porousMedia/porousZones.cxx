@@ -69,7 +69,7 @@
 
 
 //---------------------------------------------------------------------------
-#if FOAM_VERSION( >=, 010500 )
+#if FOAM_VERSION( >=, 010500 ) && FOAM_VERSION( <, 020000)
 %extend Foam::porousZones
 {
    POROUSZONES_EXTENDS( vector );
