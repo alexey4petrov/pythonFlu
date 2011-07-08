@@ -47,6 +47,10 @@
   %ignore Foam::face::fastIntersection;
 #endif
 
+#if FOAM_REF_VERSION( >=, 020000 )
+  %ignore Foam::face::nearestPointClassify;
+#endif
+
 %include <face.H>
 
 
