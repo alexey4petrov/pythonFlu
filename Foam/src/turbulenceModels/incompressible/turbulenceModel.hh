@@ -49,16 +49,17 @@
 
 
 //------------------------------------------------------------------------
-//There is no namespace "incompressible" in OpenFOAM-1.4.1-dev
-#if FOAM_VERSION( <, 010500 )   
-  #include <incompressible/turbulenceModel/turbulenceModel.H>
-#endif
+#if FOAM_NOT_BRANCH( free )
+  #if FOAM_VERSION( <, 010500 )   
+    #include <incompressible/turbulenceModel/turbulenceModel.H>
+  #endif
 
-
-//-------------------------------------------------------------------------
-#if FOAM_VERSION( >=, 010600 )
-  #include <incompressible/turbulenceModel/turbulenceModel.H>
-#endif
+  #if FOAM_VERSION( >=, 010600 )
+    #include <incompressible/turbulenceModel/turbulenceModel.H>
+  #endif
+#else
+  #include <incompressibleTurbulenceModel/turbulenceModel.H>
+#endif 
 
 
 //---------------------------------------------------------------------------
