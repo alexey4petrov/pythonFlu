@@ -46,6 +46,8 @@ int main()
 
 
 //---------------------------------------------------------------------------
+@CXX_DEFINE_BRANCHES@
+
 #define FOAM_VERSION( CMP, VERSION ) \
   __FOAM_VERSION__ CMP VERSION 
 

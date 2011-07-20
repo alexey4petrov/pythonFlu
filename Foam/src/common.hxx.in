@@ -32,6 +32,8 @@
 
 
 //---------------------------------------------------------------------------
+@SWIG_DEFINE_BRANCHES@
+
 %define FOAM_VERSION( CMP, VERSION ) __FOAM_VERSION__ CMP VERSION %enddef
 
 %define FOAM_BRANCH( NAME ) defined( __FOAM_BRANCH__ ) && __FOAM_BRANCH__ == NAME %enddef
