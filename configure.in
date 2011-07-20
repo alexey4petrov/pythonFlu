@@ -89,9 +89,9 @@ AC_OUTPUT( [ bashrc \
 	     Foam/include.base.makefile \
 	     Foam/include.foam.makefile \
 	     Foam/foam.version.makefile \
+	     Foam/include.src.makefile \
 	     Foam/__init__.py \
 	     Foam/Makefile \
-	     Foam/src.include.makefile \
 	     Foam/OpenFOAM/Makefile \
 	     Foam/meshTools/Makefile \
 	     Foam/finiteVolume/Makefile \

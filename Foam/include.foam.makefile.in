@@ -70,9 +70,9 @@ include $(pythonflu_root_dir)/Foam/include.base.makefile
 #--------------------------------------------------------------------------------------
 %.o : %.cc
 	gcc $(__CXXFLAGS__) "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
-	
+
 _%.so : %.o
-	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@; \
+	@OPENFOAM_LINKLIBSO@ $< $(__LDFLAGS__) -o $@; \
 	gcc $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<)
 	cd $(dir $<) python $(patsubst %.o,%.py,$<) || (rm $@ && exit 1)
 

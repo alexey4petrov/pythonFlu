@@ -72,17 +72,11 @@ __SWIG_FLAGS__+=-w473 # Returning a pointer or reference in a director method is
 %.cc : %.cxx
 	@SWIG@ $(__SWIG_FLAGS__) -module $(notdir $(patsubst %.cxx,%,$<)) -o $@ $<
 
-%.o : %.cc
-	gcc @OPENFOAM_CXXFLAGS@  $(__CPPFLAGS__) "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
+__CXXFLAGS__ := @OPENFOAM_CXXFLAGS@ $(c++FLAGS) $(__CPPFLAGS__)
 
 -include $(deps) dummy
 
 __APP_FLAGS__ = $(__LDFLAGS__)
-
-_%.so : %.o
-	@OPENFOAM_LINKLIBSO@ $< $(__LDFLAGS__) -o $@; \
-	gcc $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<); \
-	python $(patsubst %.o,%.py,$<) || (rm $@ && exit 1)
 
 
 #--------------------------------------------------------------------------------------
