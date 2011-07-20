@@ -37,7 +37,7 @@
 
 %import "Foam/src/OpenFOAM/primitives/S_phericalTensor.cxx"
 
-#if FOAM_NOT_BRANCH( free )
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
 %include <SymmTensor.H>
 #else
 %include <SymmTensor_.H>

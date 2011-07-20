@@ -52,7 +52,7 @@
 
 
 //----------------------------------------------------------------------------
-#if FOAM_NOT_BRANCH( free )
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
   #if FOAM_VERSION( ==, 010500 )
     #include <RAS/incompressible/RASModel/RASModel.H>
   #endif

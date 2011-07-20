@@ -77,7 +77,7 @@
     
 %ignore Foam::incompressible::turbulenceModel::nut;
 
-#if FOAM_NOT_BRANCH( free )
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
 %include <incompressible/turbulenceModel.H>
 #else
 %include <incompressibleTurbulenceModel/turbulenceModel.H>

@@ -35,7 +35,7 @@
 //---------------------------------------------------------------------------
 %import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
-#if FOAM_NOT_BRANCH( free )
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
 %include <SphericalTensor.H>
 #else
 %include <SphericalTensor_.H>

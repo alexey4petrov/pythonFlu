@@ -42,7 +42,7 @@
 
 #include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
 
-#if FOAM_NOT_BRANCH( free )
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
   #include <compressible/turbulenceModel/turbulenceModel.H>
 #else
   #include <compressibleTurbulenceModel/turbulenceModel.H>

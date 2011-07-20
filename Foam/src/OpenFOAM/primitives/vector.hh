@@ -30,7 +30,7 @@
 
 #include <VectorSpace.H>
 
-#if FOAM_NOT_BRANCH( free )
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
 #include <Vector.H>
 #else
 #include <Vector_.H>
@@ -38,7 +38,7 @@
 
 #include <vector.H>
 
-#if FOAM_NOT_BRANCH( free )
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
 #include <Tensor.H>
 #else
 #include <Tensor_.H>

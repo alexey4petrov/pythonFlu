@@ -50,7 +50,7 @@
 
 %import "Foam/src/OpenFOAM/primitives/ops/ops_label.cxx"
 
-#if FOAM_NOT_BRANCH( free )
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
 %include <Pstream.H>
 #else
 %nodefaultctor;
