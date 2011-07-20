@@ -67,7 +67,11 @@
 
 %import "Foam/src/OpenFOAM/primitives/symmTensor.cxx"
 
+#if FOAM_NOT_BRANCH( free )
 %include <Tensor.H>
+#else
+%include <Tensor_.H>
+#endif
 
 %include <tensor.H>
 

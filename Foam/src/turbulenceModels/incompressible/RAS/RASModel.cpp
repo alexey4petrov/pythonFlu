@@ -64,7 +64,11 @@
 
 %rename( incompressible_RASModel ) Foam::incompressible::RASModel;
 
+#if FOAM_NOT_BRANCH( free )
 %include <incompressible/RASModel.H>
+#else
+%include <incompressibleRASModels/RASModel.H>
+#endif
 
 
 //---------------------------------------------------------------------------

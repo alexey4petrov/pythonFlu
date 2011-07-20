@@ -52,7 +52,11 @@
 
 %rename( compressible_turbulenceModel ) Foam::compressible::turbulenceModel;
 
+#if FOAM_NOT_BRANCH( free )
 %include <compressible/turbulenceModel.H>
+#else
+%include <compressibleTurbulenceModel/turbulenceModel.H>
+#endif 
 
 
 //---------------------------------------------------------------------------

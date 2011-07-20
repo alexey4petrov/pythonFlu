@@ -29,16 +29,18 @@ include @abs_top_builddir@/Foam/foam.version.makefile
 
 #--------------------------------------------------------------------------------------
 __CPPFLAGS__ := $(__CPPFLAGS__) \
-	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude\
-	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/basic/lnInclude \
-	-I$(WM_PROJECT_DIR)/src/meshTools/lnInclude
+	@OPENFOAM_FINITEVOLUME_CPPFLAGS@ \
+	@OPENFOAM_BASICTHERMOPHYSICALMODELS_CPPFLAGS@ \
+	@OPENFOAM_MESHTOOLS_CPPFLAGS@ \
+	@OPENFOAM_SPECIE_CPPFLAGS@
 
 
 #-------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lbasicThermophysicalModels \
-        -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lspecie	
+	@OPENFOAM_FINITEVOLUME_LIBS@ \
+	@OPENFOAM_BASICTHERMOPHYSICALMODELS_LIBS@ \
+	@OPENFOAM_MESHTOOLS_LIBS@ \
+	@OPENFOAM_SPECIE_LIBS@	
 
 
 #--------------------------------------------------------------------------------------

@@ -47,7 +47,11 @@
 
 // #include <labelHashSet.H>
 
+#if FOAM_NOT_BRANCH( free )
 %include <PrimitivePatch.H>
+#else
+%include <PrimitivePatch_.H>
+#endif
 
 
 //---------------------------------------------------------------------------
