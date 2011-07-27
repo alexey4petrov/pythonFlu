@@ -89,6 +89,7 @@ AC_OUTPUT( [ bashrc \
 	     Foam/include.base.makefile \
 	     Foam/include.foam.makefile \
 	     Foam/foam.version.makefile \
+	     Foam/include.src.makefile \
 	     Foam/__init__.py \
 	     Foam/Makefile \
 	     Foam/OpenFOAM/Makefile \
@@ -107,6 +108,8 @@ AC_OUTPUT( [ bashrc \
 	     Foam/radiation/Makefile \
 	     Foam/incompressible/Makefile \
 	     Foam/compressible/Makefile \
+	     Foam/src/common.hxx \
+	     Foam/src/common.hh \
 	     make-deb.sh \
 	     make-rpm.sh \
 	     deb-template/control \

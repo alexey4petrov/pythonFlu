@@ -22,16 +22,6 @@
 
 
 #--------------------------------------------------------------------------------------
-__CPPFLAGS__ := $(__CPPFLAGS__) \
-	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
-	-I$(WM_PROJECT_DIR)/src/sampling/lnInclude
-
-__LDFLAGS__ := $(__LDFLAGS__) \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lsampling
-
-
-#--------------------------------------------------------------------------------------
 pythonflu_root_dir:=../../../..
 
 include $(pythonflu_root_dir)/Foam/include.src.makefile

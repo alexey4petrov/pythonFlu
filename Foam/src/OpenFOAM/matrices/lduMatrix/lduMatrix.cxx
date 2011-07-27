@@ -115,7 +115,7 @@ namespace Foam
 //---------------------------------------------------------------------------
 %import "Foam/src/OpenFOAM/db/typeInfo/className.hxx"
 
-#if FOAM_BRANCH_VERSION( dev, >=, 010500 )
+#if FOAM_BRANCH_VERSION( __OPENFOAM_EXT__, >=, 010500 )
 %ignore Foam::lduMatrix::bufferedUpdateMatrixInterfaces;
 %ignore Foam::lduMatrix::bufferedInitMatrixInterfaces;
 #endif

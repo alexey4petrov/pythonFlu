@@ -64,7 +64,11 @@
 //----------------------------------------------------------------------------
 %rename( incompressible_LESModel ) Foam::incompressible::LESModel;
 
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
 %include <incompressible/LESModel.H>
+#else
+%include <incompressibleLESModels/LESModel.H>
+#endif
 
 
 //---------------------------------------------------------------------------

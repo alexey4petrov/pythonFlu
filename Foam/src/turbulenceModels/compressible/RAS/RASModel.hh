@@ -44,12 +44,16 @@
 
 
 //----------------------------------------------------------------------------
-#if FOAM_VERSION( ==, 010500 )
-  #include <RAS/compressible/RASModel/RASModel.H>
-#endif
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
+  #if FOAM_VERSION( ==, 010500 )
+    #include <RAS/compressible/RASModel/RASModel.H>
+  #endif
 
-#if FOAM_VERSION( >=, 010600 )
-  #include <compressible/RAS/RASModel/RASModel.H>
+  #if FOAM_VERSION( >=, 010600 )
+    #include <compressible/RAS/RASModel/RASModel.H>
+  #endif
+#else
+  #include <compressibleRASModels/RASModel.H>
 #endif
 
 

@@ -32,8 +32,6 @@
 
 #include "Foam/src/OpenFOAM/primitives/scalar.hh"
 
-#include <SymmTensor.H>
-
 #include "Foam/src/OpenFOAM/primitives/S_ymmTensor.hh"
 
 #include "Foam/src/OpenFOAM/primitives/contiguous.hh"

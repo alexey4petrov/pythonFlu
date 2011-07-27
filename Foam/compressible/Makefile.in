@@ -29,41 +29,22 @@ include @abs_top_builddir@/Foam/foam.version.makefile
 
 #--------------------------------------------------------------------------------------
 __CPPFLAGS__ := $(__CPPFLAGS__) \
-	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
-	-I$(WM_PROJECT_DIR)/src/thermophysicalModels/basic/lnInclude \
-	-I$(WM_PROJECT_DIR)/src/turbulenceModels
-
-ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010700 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/compressible/RAS/lnInclude
-endif
-
-ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 020000 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-        __CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/compressible/turbulenceModel/lnInclude
-endif
+	@OPENFOAM_FINITEVOLUME_CPPFLAGS@ \
+	@OPENFOAM_BASICTHERMOPHYSICALMODELS_CPPFLAGS@ \
+	@OPENFOAM_TURBULENCEMODELS_CPPFLAGS@ \
+	@OPENFOAM_COMPRESSIBLETURBULENCEMODELS_CPPFLAGS@ \
+	@OPENFOAM_TRANSPORTMODELS_CPPFLAGS@ \
+	@OPENFOAM_INCOMPRESSIBLETRANSPORTMODELS_CPPFLAGS@
 
 
 #--------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lbasicThermophysicalModels \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lspecie
-
-ifeq "$(shell if [ ${__FOAM_VERSION__} -le 010401 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleTurbulenceModels
-endif
-
-ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleLESModels
-	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleRASModels	
-endif
-
-
-ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010600 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleTurbulenceModel
-	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleLESModels
-	__LDFLAGS__ += -L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lcompressibleRASModels	
-endif
-
+	@OPENFOAM_FINITEVOLUME_LIBS@ \
+	@OPENFOAM_BASICTHERMOPHYSICALMODELS_LIBS@ \
+	@OPENFOAM_TURBULENCEMODELS_LIBS@ \
+	@OPENFOAM_COMPRESSIBLETURBULENCEMODELS_LIBS@ \
+	@OPENFOAM_TRANSPORTMODELS_LIBS@ \
+	@OPENFOAM_INCOMPRESSIBLETRANSPORTMODELS_LIBS@
 
 
 #--------------------------------------------------------------------------------------

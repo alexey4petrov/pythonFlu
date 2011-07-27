@@ -55,7 +55,7 @@
   {
     return Foam::fvm::laplacian( vf );
   }
-#if FOAM_REF_VERSION( >, 010600 ) || FOAM_BRANCH_VERSION( dev, >, 010500 )
+#if FOAM_REF_VERSION( >, 010600 ) || FOAM_BRANCH_VERSION( __OPENFOAM_EXT__, >, 010500 )
   Foam::tmp< Foam::fvMatrix< Type > > fvm_laplacian( const geometricOneField &,
                                                      Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& vf,
                                                      const Foam::word& name )

@@ -29,20 +29,16 @@ include @abs_top_builddir@/Foam/foam.version.makefile
 
 #--------------------------------------------------------------------------------------
 __CPPFLAGS__ := $(__CPPFLAGS__) \
-	-I$(WM_PROJECT_DIR)/src/meshTools/lnInclude \
-	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude \
-	-I$(WM_PROJECT_DIR)/src/dynamicMesh/lnInclude 
-ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010600 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-	ifeq "x$(__FOAM_BRANCH__)" "xdev" 
-                __CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/dynamicMesh/dynamicMesh/lnInclude
-        endif
-endif	
+	@OPENFOAM_MESHTOOLS_CPPFLAGS@ \
+	@OPENFOAM_FINITEVOLUME_CPPFLAGS@ \
+	@OPENFOAM_DYNAMICMESH_CPPFLAGS@ 
 
 
 #--------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume \
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -ldynamicMesh
+	@OPENFOAM_MESHTOOLS_LIBS@ \
+	@OPENFOAM_FINITEVOLUME_LIBS@ \
+	@OPENFOAM_DYNAMICMESH_LIBS@
 
 
 #--------------------------------------------------------------------------------------

@@ -77,8 +77,12 @@
     
 %ignore Foam::incompressible::turbulenceModel::nut;
 
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
 %include <incompressible/turbulenceModel.H>
-   
+#else
+%include <incompressibleTurbulenceModel/turbulenceModel.H>
+#endif 
+  
 %extend Foam::incompressible::turbulenceModel  
 {
   Foam::ext_tmp< Foam::volScalarField > ext_nut()

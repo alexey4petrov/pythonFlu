@@ -30,7 +30,12 @@
 #include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
 
 #include <fvcDdt.H>
+
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
 #include <fvcDDt.H>
+#else
+#include <fvcDDt_subst.H>
+#endif
 
 
 //---------------------------------------------------------------------------

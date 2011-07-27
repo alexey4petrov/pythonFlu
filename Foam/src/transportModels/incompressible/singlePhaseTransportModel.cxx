@@ -45,7 +45,7 @@
 //--------------------------------------------------------------------------
 %extend Foam::singlePhaseTransportModel
 {
-#if FOAM_BRANCH_VERSION( dev, >=, 010500 )
+#if FOAM_BRANCH_VERSION( __OPENFOAM_EXT__, >=, 010500 )
   const Foam::volScalarField& ext_nu() const 
   {
     return self->nu();

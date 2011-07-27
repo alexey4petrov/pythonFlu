@@ -37,6 +37,10 @@
 
 %include <tokenList.H>
 
+#if FOAM_BRANCH( __FREEFOAM__ )
+typedef List< token > __tokenList__;
+#endif
+
 
 //---------------------------------------------------------------------------
 #endif

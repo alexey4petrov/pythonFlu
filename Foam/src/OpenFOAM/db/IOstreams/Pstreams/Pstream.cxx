@@ -52,7 +52,13 @@
 
 %import "Foam/src/OpenFOAM/db/IOstreams/Pstreams/UPstream.cxx"
 
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
 %include <Pstream.H>
+#else
+%nodefaultctor;
+%include <Pstream.H>
+%clearnodefaultctor;
+#endif
 
 
 //---------------------------------------------------------------------------

@@ -56,12 +56,16 @@
 
 
 //----------------------------------------------------------------------------
-#if FOAM_VERSION( ==, 010500 )
-  #include <LES/incompressible/LESModel/LESModel.H>
-#endif
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
+  #if FOAM_VERSION( ==, 010500 )
+    #include <LES/incompressible/LESModel/LESModel.H>
+  #endif
 
-#if FOAM_VERSION( >=, 010600 )
-  #include <incompressible/LES/LESModel/LESModel.H>
+  #if FOAM_VERSION( >=, 010600 )
+    #include <incompressible/LES/LESModel/LESModel.H>
+  #endif
+#else
+  #include <incompressibleLESModels/LESModel.H>
 #endif
 
 

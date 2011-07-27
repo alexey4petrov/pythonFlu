@@ -75,7 +75,7 @@
 #endif
 
 //----------------------------------
-#if FOAM_VERSION( >=, 010600 ) || FOAM_BRANCH_VERSION( dev, >=, 010500 )
+#if FOAM_VERSION( >=, 010600 ) || FOAM_BRANCH_VERSION( __OPENFOAM_EXT__, >=, 010500 )
   Foam::t_setRefCell ext_setRefCell( const Foam::volScalarField& field,
                                      const Foam::dictionary& dict,
                                      Foam::label refCelli,
@@ -105,7 +105,7 @@
 
 
 //---------------------------------------------------------------------------
-#if  FOAM_VERSION( >=, 010600 ) || FOAM_BRANCH_VERSION( dev, >=, 010500 )
+#if  FOAM_VERSION( >=, 010600 ) || FOAM_BRANCH_VERSION( __OPENFOAM_EXT__, >=, 010500 )
   Foam::scalar getRefCellValue( const Foam::volScalarField& field, const Foam::label refCelli );
 #endif
 
