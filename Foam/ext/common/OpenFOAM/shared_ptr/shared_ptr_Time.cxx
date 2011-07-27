@@ -26,6 +26,7 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.ext.common.OpenFOAM.shared_ptr.shared_ptr_Time"
 %{
   #include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_Time.hh"
 %}
