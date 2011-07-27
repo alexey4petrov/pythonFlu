@@ -21,24 +21,12 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef shared_ptr_Time_cxx
-#define shared_ptr_Time_cxx
+#ifndef shared_ptr_Time_hh
+#define shared_ptr_Time_hh
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_Time.hh"
-%}
-
-%include "Foam/ext/common/shared_ptr.hxx"
-
-%import "Foam/src/OpenFOAM/db/Time/Time.cxx"
-
-SHAREDPTR_TYPEMAP( Foam::Time );
-
-%ignore boost::shared_ptr< Foam::Time >::operator->;
-
-%template( shared_ptr_Time ) boost::shared_ptr< Foam::Time >;
+#include "Foam/src/OpenFOAM/db/Time/Time.hh"
 
 
 //---------------------------------------------------------------------------
