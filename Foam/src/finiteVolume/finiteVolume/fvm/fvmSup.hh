@@ -26,31 +26,31 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
 #include <fvmSup.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
-#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.hh"
-#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
-#include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.hh"
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hh"
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/volMesh.hh"
+#include "Foam/src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

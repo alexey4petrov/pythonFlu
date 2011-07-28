@@ -28,20 +28,20 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.PrimitivePatch.PrimitivePatch"
 %{
-  #include "src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.hh"
+  #include "Foam/src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/Lists/boolList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/boolList.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/labelList.cxx"
 
 // #include <edgeList.H>
 
-%import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
+%import "Foam/src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 // #include <intersection.H>
 

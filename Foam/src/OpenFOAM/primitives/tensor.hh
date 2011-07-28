@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
 
-#include "src/OpenFOAM/primitives/direction.hh"
+#include "Foam/src/OpenFOAM/primitives/direction.hh"
 
 #include <VectorSpace.H>
 
@@ -36,9 +36,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/sphericalTensor.hh"
+#include "Foam/src/OpenFOAM/primitives/sphericalTensor.hh"
 
-#include "src/OpenFOAM/primitives/symmTensor.hh"
+#include "Foam/src/OpenFOAM/primitives/symmTensor.hh"
 
 #include <tensor.H>
 

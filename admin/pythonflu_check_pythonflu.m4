@@ -22,21 +22,31 @@ dnl
 
 
 dnl --------------------------------------------------------------------------------
-AC_DEFUN([PYFOAM_CHECK_SINGLELIB],
+AC_DEFUN([PYTHONFLU_CHECK_PYTHONFLU],
 [
-AC_MSG_CHECKING(whether to use optimized pyFoam libraries structure)
+AC_CHECKING(for pythonFlu package)
 
-AC_SUBST(USE_SINGLE_LIB)
+AC_REQUIRE([CONFFLU_CHECK_OPENFOAM])
+AC_REQUIRE([CONFFLU_CHECK_SWIG])
+AC_REQUIRE([CONFFLU_CHECK_PYTHON])
 
-AC_ARG_ENABLE( [singlelib],
-               AC_HELP_STRING( [--disable-singlelib ],
-		               [ enable singlelib to speedup compilation process ( disabled by default ) ]),
-               [ USE_SINGLE_LIB=$enableval ],
-	       [ USE_SINGLE_LIB="yes" ] )
+AC_SUBST(ENABLE_PYTHONFLU)
+AC_SUBST(PYTHONFLU_ROOT_DIR)
 
-singlelib=${USE_SINGLE_LIB}
+pythonflu_ok=no
+PYTHONFLU_ROOT_DIR=""
 
-AC_MSG_RESULT(${USE_SINGLE_LIB})
+dnl --------------------------------------------------------------------------------
+check_pythonflu=[`python -c "import Foam.finiteVolume; print \"ok\"" 2>/dev/null`]
+
+if test "${check_pythonflu}" == "ok"; then
+    pythonflu_ok=yes
+    PYTHONFLU_ROOT_DIR=[`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`]
+fi
+
+
+dnl --------------------------------------------------------------------------------
+ENABLE_PYTHONFLU=${pythonflu_ok}
 ])
 
 

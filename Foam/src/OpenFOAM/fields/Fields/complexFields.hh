@@ -26,23 +26,23 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/complex.hh"
+#include "Foam/src/OpenFOAM/primitives/complex.hh"
 
-#include "src/OpenFOAM/containers/Lists/UList/UList_complex.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/UList/UList_complex.hh"
 
-#include "src/OpenFOAM/containers/Lists/List/List_complex.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/List/List_complex.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/complexVector.hh"
+#include "Foam/src/OpenFOAM/primitives/complexVector.hh"
 
-#include "src/OpenFOAM/containers/Lists/UList/UList_complexVector.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/UList/UList_complexVector.hh"
 
-#include "src/OpenFOAM/containers/Lists/List/List_complexVector.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/List/List_complexVector.hh"
 
 
 //---------------------------------------------------------------------------

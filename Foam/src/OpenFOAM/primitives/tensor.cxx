@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.tensor";
 %{
-  #include "src/OpenFOAM/primitives/tensor.hh"
+  #include "Foam/src/OpenFOAM/primitives/tensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/primitives/direction.cxx"
+%import "Foam/src/OpenFOAM/primitives/direction.cxx"
 
 %include <VectorSpace.H>
 
@@ -63,9 +63,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/sphericalTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/sphericalTensor.cxx"
 
-%import "src/OpenFOAM/primitives/symmTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/symmTensor.cxx"
 
 %include <Tensor.H>
 

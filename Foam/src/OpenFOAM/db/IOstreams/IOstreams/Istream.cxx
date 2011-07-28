@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOstreams.IOstreams.Istream";
 %{
-   #include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
+   #include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx"
 
-%import "src/OpenFOAM/db/IOstreams/token.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/token.cxx"
 
 %include <Istream.H>
 

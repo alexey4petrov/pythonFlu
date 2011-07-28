@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.sampling.meshToMeshInterpolation.meshToMesh";
 %{
-  #include "src/sampling/meshToMeshInterpolation/meshToMesh.hh"
+  #include "Foam/src/sampling/meshToMeshInterpolation/meshToMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/wordList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/wordList.cxx"
 
-%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable_word_word_string_hash.cxx"
+%import "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_word_word_string_hash.cxx"
 
 %include <meshToMesh.H>
 

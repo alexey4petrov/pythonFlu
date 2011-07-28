@@ -22,7 +22,9 @@
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/foam.version.makefile
+pythonflu_root_dir:=@abs_top_builddir@
+
+include @abs_top_builddir@/Foam/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
@@ -37,23 +39,23 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.cxx \
 	\
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcDdt.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcD_Dt.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcGrad.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcDiv.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcFlux.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcVolumeIntegrate.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcSnGrad.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcSup.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcReconstruct.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.cxx \
-	@abs_top_builddir@/src/finiteVolume/finiteVolume/fvc/fvcLaplacian.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcDdt.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcD_Dt.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcGrad.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcDiv.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcFlux.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcVolumeIntegrate.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcSnGrad.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcSup.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcReconstruct.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcLaplacian.cxx \
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/include.foam.makefile
+include @abs_top_builddir@/Foam/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------

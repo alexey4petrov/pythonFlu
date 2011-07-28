@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/UList/UList_word.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/UList/UList_word.hh"
 
 #include <wordList.H>
 

@@ -28,32 +28,32 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.Fields.primitiveFields";
 %{
-  #include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+  #include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/scalarField.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/scalarField.cpp"
 
-%include "src/OpenFOAM/fields/Fields/vectorField.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/vectorField.cpp"
 
-%include "src/OpenFOAM/fields/Fields/tensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/tensorField.cpp"
 
-%include "src/OpenFOAM/fields/Fields/symmTensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/symmTensorField.cpp"
 
-%include "src/OpenFOAM/fields/Fields/sphericalTensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/sphericalTensorField.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_scalarField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_scalarField.cpp"
 
-%include "ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.cpp"
+%include "Foam/ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_vectorField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_vectorField.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_tensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_tensorField.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_symmTensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_symmTensorField.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.cpp"
 
 
 //---------------------------------------------------------------------------

@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.symmTensorList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/symmTensorList.hh"
+   #include "Foam/src/OpenFOAM/primitives/Lists/symmTensorList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_symmTensor.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_symmTensor.cxx"
 
 %include <symmTensorList.H>
 

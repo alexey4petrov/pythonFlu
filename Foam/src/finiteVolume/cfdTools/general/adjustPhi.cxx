@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.cfdTools.general.adjustPhi";
 %{
-  #include "src/finiteVolume/cfdTools/general/adjustPhi.hh"
+  #include "Foam/src/finiteVolume/cfdTools/general/adjustPhi.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <adjustPhi.H>
 

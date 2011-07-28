@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volFields.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
 
 #include <surfaceInterpolate.H>
 

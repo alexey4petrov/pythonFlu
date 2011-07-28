@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.patchIdentifier"
 %{
-  #include "src/OpenFOAM/meshes/patchIdentifier.hh"
+  #include "Foam/src/OpenFOAM/meshes/patchIdentifier.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/strings/word.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
 
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
 %include <patchIdentifier.H>
 

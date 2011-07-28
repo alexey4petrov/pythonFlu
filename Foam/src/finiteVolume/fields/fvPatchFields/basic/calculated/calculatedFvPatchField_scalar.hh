@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField.hh"
 
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.hh"
 
 
 //----------------------------------------------------------------------------

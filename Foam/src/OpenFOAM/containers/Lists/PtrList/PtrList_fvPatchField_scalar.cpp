@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_fvPatchField_scalar";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_scalar.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_fvPatchField_scalar.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
+%include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_scalar.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_fvPatchField_scalar.cpp"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_scalar.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_scalar.cpp"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 
 //---------------------------------------------------------------------------

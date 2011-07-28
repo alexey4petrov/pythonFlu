@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.hh"
+#include "Foam/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.hh"
 
-#include "src/OpenFOAM/primitives/Lists/wordList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/wordList.hh"
 
 #include <IOobjectList.H>
 

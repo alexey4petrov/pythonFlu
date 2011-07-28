@@ -26,25 +26,25 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/meshes/polyMesh/polyMesh.cxx"
+%import "Foam/src/OpenFOAM/meshes/polyMesh/polyMesh.cxx"
 
-%import "src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.cxx"
 
-%import "src/OpenFOAM/db/Time/Time.cxx"
+%import "Foam/src/OpenFOAM/db/Time/Time.cxx"
 
-%import "src/OpenFOAM/db/objectRegistry.cxx"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
-%import "src/OpenFOAM/meshes/lduMesh.cxx"
+%import "Foam/src/OpenFOAM/meshes/lduMesh.cxx"
 
-%import "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
+%import "Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
 
-%include "src/finiteVolume/fvMesh/fvBoundaryMesh.cpp"
+%include "Foam/src/finiteVolume/fvMesh/fvBoundaryMesh.cpp"
 
-%include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cpp"
+%include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.cpp"
 
-%include "src/finiteVolume/fields/volFields/volFieldsFwd.hpp"
+%include "Foam/src/finiteVolume/fields/volFields/volFieldsFwd.hpp"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hpp"
+%include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hpp"
 
 
 //---------------------------------------------------------------------------

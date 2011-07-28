@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOobjectList"
 %{
-    #include "src/OpenFOAM/db/IOobjectList.hh"
+    #include "Foam/src/OpenFOAM/db/IOobjectList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.cxx"
+%import "Foam/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/wordList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/wordList.cxx"
 
 
 %include <IOobjectList.H>

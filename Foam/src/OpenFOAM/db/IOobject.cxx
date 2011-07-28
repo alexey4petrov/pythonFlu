@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOobject";
 %{
-   #include "src/OpenFOAM/db/IOobject.hh"
+   #include "Foam/src/OpenFOAM/db/IOobject.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx"
 
-%import "src/OpenFOAM/primitives/strings/fileName.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/fileName.cxx"
 
-%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
 %include <IOobject.H>
 

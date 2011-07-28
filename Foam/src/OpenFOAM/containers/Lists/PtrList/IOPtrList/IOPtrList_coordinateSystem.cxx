@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_coordinateSystem";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/meshTools/coordinateSystems/coordinateSystem.cxx"
+%import "Foam/src/meshTools/coordinateSystems/coordinateSystem.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_coordinateSystem.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_coordinateSystem.cxx"
 
 #if FOAM_VERSION( <, 010500 )
   %ignore Foam::IOPtrList< Foam::coordinateSystem >::debug;
@@ -47,7 +47,7 @@
 
 %template( IOPtrList_coordinateSystem ) Foam::IOPtrList< Foam::coordinateSystem >;
 
-%include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.hh"
+%include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.hh"
 
 
 //---------------------------------------------------------------------------

@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hh"
+#include "Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hh"
 
-#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.hh"
+#include "Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.hh"
 
-#include "src/OpenFOAM/meshes/lduMesh.hh"
+#include "Foam/src/OpenFOAM/meshes/lduMesh.hh"
 
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 #include <lduMatrix.H>
 

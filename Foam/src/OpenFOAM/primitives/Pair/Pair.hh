@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/FixedList/FixedList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/FixedList/FixedList.hh"
 
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
 
 #include <Pair.H>
 

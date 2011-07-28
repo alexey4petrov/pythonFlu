@@ -27,16 +27,16 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_symmTensor.hh"
+  #include "Foam/src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_symmTensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/FieldFields/FieldField.cpp"
+%include "Foam/src/OpenFOAM/fields/FieldFields/FieldField.cpp"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.cpp"
+%include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_symmTensor.cpp"
 
 %ignore Foam::FieldField< Foam::fvPatchField, Foam::symmTensor >::FieldField;
 

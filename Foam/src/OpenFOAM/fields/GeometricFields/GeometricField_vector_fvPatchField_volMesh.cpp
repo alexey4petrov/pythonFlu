@@ -27,30 +27,30 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
+  #include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/FieldFields/FieldField.cpp"
+%include "Foam/src/OpenFOAM/fields/FieldFields/FieldField.cpp"
 
-%import "src/OpenFOAM/fields/tmp/refCount.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/refCount.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.cxx"
 
-%include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.cpp"
+%include "Foam/src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_vector.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_vector.cpp"
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
 
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.cpp"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
 
 
 //----------------------------------------------------------------------------

@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/director.hh"
+#include "Foam/src/director.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
 
 //---------------------------------------------------------------------------

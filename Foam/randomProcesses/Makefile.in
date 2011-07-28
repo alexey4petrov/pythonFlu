@@ -22,7 +22,9 @@
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/foam.version.makefile
+pythonflu_root_dir:=@abs_top_builddir@
+
+include @abs_top_builddir@/Foam/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
@@ -39,14 +41,14 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/randomProcesses/Kmesh/Kmesh.cxx \
-	@abs_top_builddir@/src/randomProcesses/processes/UOprocess.cxx \
-	@abs_top_builddir@/src/randomProcesses/fft/fft.cxx \
-	@abs_top_builddir@/src/randomProcesses/fft/calcEk.cxx 
+	@abs_top_builddir@/Foam/src/randomProcesses/Kmesh/Kmesh.cxx \
+	@abs_top_builddir@/Foam/src/randomProcesses/processes/UOprocess.cxx \
+	@abs_top_builddir@/Foam/src/randomProcesses/fft/fft.cxx \
+	@abs_top_builddir@/Foam/src/randomProcesses/fft/calcEk.cxx 
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/include.foam.makefile
+include @abs_top_builddir@/Foam/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------

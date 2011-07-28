@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hpp"
+%include "Foam/src/OpenFOAM/meshes/GeoMesh_fvMesh.hpp"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%import "src/OpenFOAM/dimensionSet.cxx"
+%import "Foam/src/OpenFOAM/dimensionSet.cxx"
 
 
 //---------------------------------------------------------------------------

@@ -27,14 +27,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.MUSCL.MUSCL_NVDTVD"
 %{
-   #include "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/MUSCL/MUSCL_NVDTVD.hh"
+   #include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/MUSCL/MUSCL_NVDTVD.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/MUSCL/MUSCL.cxx"
+%import "Foam/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/MUSCL/MUSCL.cxx"
 
-%import "src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/NVDTVD.cxx"
+%import "Foam/src/finiteVolume/interpolation/surfaceInterpolation/limitedSchemes/LimitedScheme/NVDTVD.cxx"
 
 %template ( MUSCL_NVDTVD ) Foam::MUSCLLimiter<Foam::NVDTVD>;
 

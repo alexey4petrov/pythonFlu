@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_bool";
 %{
-  #include "src/OpenFOAM/containers/Lists/List/List_bool.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/List/List_bool.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%import "src/OpenFOAM/containers/Lists/UList/UList_bool.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList_bool.cxx"
 
 %template( List_bool ) Foam::List< bool >; 
 

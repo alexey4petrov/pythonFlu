@@ -1,0 +1,19 @@
+#!/bin/bash
+# postinst script for #PACKAGE#
+#
+# see: dh_installdeb(1)
+
+set -e
+
+sudo python -c "from setuptools import setup; setup(name='Foam', version='@PACKAGE_VERSION@')" install
+
+if [ "@WITH_SOLVERS@" = "yes" ]; then
+  packages_dir=/usr/local/share/pythonFlu/solvers
+  . ${packages_dir}/install_list.sh
+  install_list=`create_install_list`
+  for package in ${install_list}; do
+    ( cd ${packages_dir}/${package} && ./setup.py develop )
+  done
+fi
+
+exit 0

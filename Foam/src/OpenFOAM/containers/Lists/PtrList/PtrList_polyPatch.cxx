@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_polyPatch";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::polyPatch >::PtrList;
 %ignore Foam::PtrList< Foam::polyPatch >::begin;

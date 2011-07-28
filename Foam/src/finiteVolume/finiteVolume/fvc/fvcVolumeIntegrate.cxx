@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvc.fvcVolumeIntegrate";
 %{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcVolumeIntegrate.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/fvc/fvcVolumeIntegrate.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx"
 
 
 //---------------------------------------------------------------------------

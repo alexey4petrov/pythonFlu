@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/matrices/solution.hh"
+#include "Foam/src/OpenFOAM/matrices/solution.hh"
 
 #include <fvSolution.H>
 

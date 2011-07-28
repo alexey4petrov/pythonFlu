@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedVector";
 %{
-  #include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
+  #include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
 
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
-%import "src/OpenFOAM/primitives/tensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/tensor.cxx"
 
 %ignore Foam::dimensioned< Foam::vector >::component;
 %ignore Foam::dimensioned< Foam::vector >::replace;
@@ -62,7 +62,7 @@ PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(Foam::dimensioned, Foam::vecto
 
 
 //------------------------------------------------------------------------
-%import "src/try_reverse_operator.hxx"
+%import "Foam/src/try_reverse_operator.hxx"
 
 %feature ("pythonprepend") Foam::dimensioned< Foam::vector >::TRY_REVERSE_PYPREPEND( and );
 %feature ("pythonprepend") Foam::dimensioned< Foam::vector >::TRY_REVERSE_PYPREPEND( sub );

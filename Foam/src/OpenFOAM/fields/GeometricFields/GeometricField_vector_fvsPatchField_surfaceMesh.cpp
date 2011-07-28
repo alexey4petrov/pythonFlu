@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.hh"
+  #include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.cpp"
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_surfaceMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
+%include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField_vector.cpp"
+%include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_surfaceMesh.cpp"
 
 
 //----------------------------------------------------------------------------
@@ -59,7 +59,7 @@
 %ignore Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >::min;
 %ignore Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >::max;
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
 
 VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvsPatchField, Foam::surfaceMesh );
 

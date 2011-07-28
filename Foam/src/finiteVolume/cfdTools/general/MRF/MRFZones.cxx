@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.cfdTools.general.MRF.MRFZones";
 %{
-  #include "src/finiteVolume/cfdTools/general/MRF/MRFZones.hh"
+  #include "Foam/src/finiteVolume/cfdTools/general/MRF/MRFZones.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/cfdTools/general/MRF/MRFZone.cxx"
+%import "Foam/src/finiteVolume/cfdTools/general/MRF/MRFZone.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_MRFZone.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_MRFZone.cxx"
 
-%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
+%import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <MRFZones.H>
 

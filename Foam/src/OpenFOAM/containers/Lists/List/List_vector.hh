@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/List/List.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/List/List.hh"
 
-#include "src/OpenFOAM/containers/Lists/UList/UList_vector.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/UList/UList_vector.hh"
 
 
 //---------------------------------------------------------------------------

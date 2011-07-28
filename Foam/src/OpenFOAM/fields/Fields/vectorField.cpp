@@ -27,20 +27,20 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/Fields/vectorField.hh"
+  #include "Foam/src/OpenFOAM/fields/Fields/vectorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/Field.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/Field.cpp"
 
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/vectorList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/vectorList.cxx"
 
-%import "src/OpenFOAM/primitives/tensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/tensor.cxx"
 
-%import "src/OpenFOAM/primitives/pTraits_vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/pTraits_vector.cxx"
 
 
 //---------------------------------------------------------------------------

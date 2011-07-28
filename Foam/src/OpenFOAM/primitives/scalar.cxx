@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.scalar";
 %{
-  #include "src/OpenFOAM/primitives/scalar.hh"
+  #include "Foam/src/OpenFOAM/primitives/scalar.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 %include <doubleScalar.H>
 
@@ -94,7 +94,7 @@ namespace Foam
   struct scalar{};
 }
 
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
 
 %include <scalar.H>
 

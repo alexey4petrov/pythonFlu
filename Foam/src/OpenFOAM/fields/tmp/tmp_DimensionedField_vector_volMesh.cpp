@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.cpp"
 
 
 //---------------------------------------------------------------------------

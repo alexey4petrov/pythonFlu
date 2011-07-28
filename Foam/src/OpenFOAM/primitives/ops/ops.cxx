@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.ops.ops";
 %{
-   #include "src/OpenFOAM/primitives/ops/ops.hh"
+   #include "Foam/src/OpenFOAM/primitives/ops/ops.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 %include <ops.H>
 

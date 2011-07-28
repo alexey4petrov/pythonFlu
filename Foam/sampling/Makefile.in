@@ -22,7 +22,9 @@
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/foam.version.makefile
+pythonflu_root_dir:=@abs_top_builddir@
+
+include @abs_top_builddir@/Foam/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
@@ -39,12 +41,12 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/sampling/meshToMeshInterpolation/meshToMesh.cxx \
-	@abs_top_builddir@/src/sampling/graphField/makeGraph.cxx \
+	@abs_top_builddir@/Foam/src/sampling/meshToMeshInterpolation/meshToMesh.cxx \
+	@abs_top_builddir@/Foam/src/sampling/graphField/makeGraph.cxx \
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/include.foam.makefile
+include @abs_top_builddir@/Foam/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------

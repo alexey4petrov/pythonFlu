@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( <, 010700 )
 #define regionProperties_hh
@@ -34,9 +34,9 @@
 
 
 //----------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOdictionary.hh"
+#include "Foam/src/OpenFOAM/db/IOdictionary.hh"
 
-#include "src/OpenFOAM/db/Time/Time.hh"
+#include "Foam/src/OpenFOAM/db/Time/Time.hh"
 
 
 //-----------------------------------------------------------------------------

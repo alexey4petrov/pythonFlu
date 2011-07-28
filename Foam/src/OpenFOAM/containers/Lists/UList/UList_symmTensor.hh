@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/UList/UList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/UList/UList.hh"
 
-#include "src/OpenFOAM/primitives/symmTensor.hh"
+#include "Foam/src/OpenFOAM/primitives/symmTensor.hh"
 
 
 //---------------------------------------------------------------------------

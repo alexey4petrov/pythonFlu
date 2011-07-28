@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchFields";
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.hh"
+  #include "Foam/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_scalar.cxx"
-%import "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_vector.cxx"
-%import "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_tensor.cxx"
+%import "Foam/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_scalar.cxx"
+%import "Foam/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_vector.cxx"
+%import "Foam/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_tensor.cxx"
 
 
 //---------------------------------------------------------------------------

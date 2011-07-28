@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField";
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField.hh"
+  #include "Foam/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <zeroGradientFvPatchField.H>
 

@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvsPatchField_surfaceMesh.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvsPatchField_surfaceMesh.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr_surfaceTensorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr_surfaceTensorField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceTensorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceTensorField.hh"
 
 
 //---------------------------------------------------------------------------

@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.strings.fileName";
 %{
-  #include "src/OpenFOAM/primitives/strings/fileName.hh"
+  #include "Foam/src/OpenFOAM/primitives/strings/fileName.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/Lists/wordList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/wordList.cxx"
 
 %include <fileName.H>
 
@@ -47,7 +47,7 @@
   }   
 }
 
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::fileName OSTREAM_EXTENDS;
 

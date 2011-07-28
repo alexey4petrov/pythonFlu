@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.matrices.lduMatrix.lduMatrix"
 %{
-  #include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hh"
+  #include "Foam/src/OpenFOAM/matrices/lduMatrix/lduMatrix.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
+%import "Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
 
-%import "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx"
+%import "Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx"
 
-%import "src/OpenFOAM/meshes/lduMesh.cxx"
+%import "Foam/src/OpenFOAM/meshes/lduMesh.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -113,7 +113,7 @@ namespace Foam
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/className.hxx"
 
 #if FOAM_BRANCH_VERSION( dev, >=, 010500 )
 %ignore Foam::lduMatrix::bufferedUpdateMatrixInterfaces;
@@ -124,7 +124,7 @@ namespace Foam
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/matrices/lduMatrix/lduMatrix.hh"
+%include "Foam/src/OpenFOAM/matrices/lduMatrix/lduMatrix.hh"
 
 // This trick intends to publish nested class into SWIG domain
 %typemap( out ) Foam::lduMatrix::solverPerformance

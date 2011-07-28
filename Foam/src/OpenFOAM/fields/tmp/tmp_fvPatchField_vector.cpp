@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_fvPatchField_vector.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/tmp_fvPatchField_vector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
+%include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
 
 TMP_DIRECTOR_TYPEMAP( Foam::fvPatchField< Foam::vector > )
 

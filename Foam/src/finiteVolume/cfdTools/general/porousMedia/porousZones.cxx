@@ -28,20 +28,20 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZones";
 %{
-  #include "src/finiteVolume/cfdTools/general/porousMedia/porousZones.hh"
+  #include "Foam/src/finiteVolume/cfdTools/general/porousMedia/porousZones.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx"
+%import "Foam/src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hxx"
 
-%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
+%import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <porousZones.H>
 

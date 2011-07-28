@@ -27,18 +27,18 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvsPatchField_surfaceMesh.hh"
+  #include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvsPatchField_surfaceMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_tensor_surfaceMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
+%include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
+%include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_tensor_surfaceMesh.cpp"
 
 
 //----------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_tensor.cpp"
+%include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField_tensor.cpp"
 
 %template ( TGeometricBoundaryField_tensor_fvsPatchField_surfaceMesh ) Foam::TGeometricBoundaryField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >;
 
@@ -61,7 +61,7 @@
 %ignore Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >::min;
 %ignore Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >::max;
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedTensor.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedTensor.cxx"
 
 
 //---------------------------------------------------------------------------

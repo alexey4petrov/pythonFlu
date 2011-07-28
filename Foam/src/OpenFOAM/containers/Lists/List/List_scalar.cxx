@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_scalar";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_scalar.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/List/List_scalar.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%import "src/OpenFOAM/containers/Lists/UList/UList_scalar.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList_scalar.cxx"
 
 %template( List_scalar ) Foam::List< Foam::scalar >; 
 

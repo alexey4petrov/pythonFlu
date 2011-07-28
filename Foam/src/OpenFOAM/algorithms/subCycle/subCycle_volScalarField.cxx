@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.algorithms.subCycle.subCycle_volScalarField"
 %{
-  #include "src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.hh"
+  #include "Foam/src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/algorithms/subCycle/subCycle.cxx"
+%import "Foam/src/OpenFOAM/algorithms/subCycle/subCycle.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %template ( subCycle_volScalarField ) Foam::subCycle< Foam::volScalarField >;
 

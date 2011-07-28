@@ -22,7 +22,9 @@
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/foam.version.makefile
+pythonflu_root_dir:=@abs_top_builddir@
+
+include @abs_top_builddir@/Foam/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
@@ -47,15 +49,15 @@ endif
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/transportModels/incompressible/transportModel.cxx \
-	@abs_top_builddir@/src/transportModels/incompressible/viscosityModels/viscosityModel.cxx \
-	@abs_top_builddir@/src/transportModels/incompressible/singlePhaseTransportModel.cxx \
-	@abs_top_builddir@/src/transportModels/incompressible/twoPhaseMixture.cxx \
-	@abs_top_builddir@/src/transportModels/interfaceProperties/interfaceProperties.cxx \
+	@abs_top_builddir@/Foam/src/transportModels/incompressible/transportModel.cxx \
+	@abs_top_builddir@/Foam/src/transportModels/incompressible/viscosityModels/viscosityModel.cxx \
+	@abs_top_builddir@/Foam/src/transportModels/incompressible/singlePhaseTransportModel.cxx \
+	@abs_top_builddir@/Foam/src/transportModels/incompressible/twoPhaseMixture.cxx \
+	@abs_top_builddir@/Foam/src/transportModels/interfaceProperties/interfaceProperties.cxx \
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/include.foam.makefile
+include @abs_top_builddir@/Foam/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------

@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_porousZone";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx"
+%import "Foam/src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_porousZone.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_porousZone.cxx"
 
 %ignore Foam::IOPtrList< Foam::porousZone >::IOPtrList;
 

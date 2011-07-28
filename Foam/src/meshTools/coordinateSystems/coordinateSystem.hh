@@ -26,21 +26,21 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/vector.hh"
+#include "Foam/src/OpenFOAM/primitives/vector.hh"
 
-#include "src/OpenFOAM/meshes/primitiveShapes/point/point.hh"
+#include "Foam/src/OpenFOAM/meshes/primitiveShapes/point/point.hh"
 
-#include "src/OpenFOAM/primitives/tensor.hh"
+#include "Foam/src/OpenFOAM/primitives/tensor.hh"
 
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
-#include "src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
+#include "Foam/src/OpenFOAM/meshes/primitiveShapes/point/pointField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
 
-#include "src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.hh"
+#include "Foam/src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.hh"
 
-#include "src/OpenFOAM/db/objectRegistry.hh"
+#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
 
 #include <coordinateSystem.H>
 

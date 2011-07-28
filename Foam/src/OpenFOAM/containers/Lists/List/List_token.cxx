@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_token";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_token.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/List/List_token.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%import "src/OpenFOAM/containers/Lists/UList/UList_token.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList_token.cxx"
 
 %template( List_token ) Foam::List< Foam::token >; 
 

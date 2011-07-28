@@ -26,14 +26,14 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
 
-#include "src/OpenFOAM/primitives/scalar.hh"
-#include "src/finiteVolume/finiteVolume/fvSchemes.hh"
-#include "src/finiteVolume/finiteVolume/fvSolution.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/finiteVolume/finiteVolume/fvSchemes.hh"
+#include "Foam/src/finiteVolume/finiteVolume/fvSolution.hh"
 
-#include "src/finiteVolume/fields/volFields/volFieldsFwd.hh"
-#include "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volFieldsFwd.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hh"
 
 #include <surfaceInterpolation.H>
 

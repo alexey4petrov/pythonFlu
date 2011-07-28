@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/List/List_tensor.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/List/List_tensor.hh"
 
 #include <tensorList.H>
 

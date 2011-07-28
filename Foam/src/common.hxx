@@ -27,7 +27,7 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/common.hh"
+  #include "Foam/src/common.hh"
 %}
 
 
@@ -42,7 +42,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/bareptr_typemap.hxx"
+%import "Foam/src/bareptr_typemap.hxx"
 
 //---------------------------------------------------------------------------
 %define COMMON_EXTENDS
@@ -51,9 +51,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/isinstance.hxx"
+%import "Foam/src/isinstance.hxx"
 
-%import "src/compound_operator.hxx"
+%import "Foam/src/compound_operator.hxx"
 
 
 //---------------------------------------------------------------------------

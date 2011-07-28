@@ -16,6 +16,10 @@ set -e
 
 case "$1" in
     install|upgrade)
+    old_version=`dpkg -s pythonflu@FOAM_PACKAGE_SUFFIX@ | grep -o -e "^Version: .*" | sed -e "s/^Version: //"`
+    if [ "${old_version}" = "8.1-Elvis-1" ]; then 
+       echo "#!/bin/sh" > /var/lib/dpkg/info/pythonflu@FOAM_PACKAGE_SUFFIX@.postrm
+    fi 
     ;;
 
     abort-upgrade)

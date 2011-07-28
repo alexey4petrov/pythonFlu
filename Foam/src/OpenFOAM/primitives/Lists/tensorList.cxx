@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.tensorList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/tensorList.hh"
+   #include "Foam/src/OpenFOAM/primitives/Lists/tensorList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_tensor.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_tensor.cxx"
 
 %include <tensorList.H>
 

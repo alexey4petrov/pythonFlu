@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
 
-#include "src/OpenFOAM/primitives/Random.hh"
+#include "Foam/src/OpenFOAM/primitives/Random.hh"
 
-#include "src/OpenFOAM/db/dictionary/dictionary.hh"
+#include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
 
-#include "src/OpenFOAM/fields/Fields/complexFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/complexFields.hh"
 
 #include <UOprocess.H>
 

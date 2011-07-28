@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.global.argList";
 %{
-   #include "src/OpenFOAM/global/argList.hh"
+   #include "Foam/src/OpenFOAM/global/argList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/Lists/stringList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/stringList.cxx"
 
-%import "src/OpenFOAM/primitives/strings/word.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
 
-%import "src/OpenFOAM/primitives/strings/fileName.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/fileName.cxx"
 
-%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.cxx"
+%import "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.cxx"
 
 
 //---------------------------------------------------------------------------

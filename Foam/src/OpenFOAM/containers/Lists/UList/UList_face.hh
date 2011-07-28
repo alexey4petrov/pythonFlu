@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/UList/UList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/UList/UList.hh"
 
-#include "src/OpenFOAM/meshes/meshShapes/face/face.hh"
+#include "Foam/src/OpenFOAM/meshes/meshShapes/face/face.hh"
 
 
 //---------------------------------------------------------------------------

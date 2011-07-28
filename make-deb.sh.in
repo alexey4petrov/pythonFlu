@@ -77,16 +77,55 @@ echo "--------------------------------------------------------------------------
 echo "Copying \"Foam\" to ${package_folder}"
 echo "--------------------------------------------------------------------------------"
 cp -rf Foam ${package_folder}
+mkdir ${package_folder}/admin
+cp -rf admin/pythonflu*.m4 ${package_folder}/admin/
+
+
+#--------------------------------------------------------------------------------------
+# prepare external packages
+if [ "@WITH_CONFFLU@" = "yes" ]; then
+    if [ "x${CONFFLU_ROOT_DIR}" = "x" ]; then
+       echo
+       echo "$0: It is necessary to source CONFFLU" >&2
+       exit 1
+    fi
+    
+    echo "--------------------------------------------------------------------------------"
+    echo "prepare confFlu..."
+    echo "--------------------------------------------------------------------------------"
+    mkdir ${package_folder}/confFlu
+    mkdir ${package_folder}/confFlu/admin
+    cp -rf ${CONFFLU_ROOT_DIR}/admin/confflu*.m4 ${package_folder}/confFlu/admin/
+    cp -rf ${CONFFLU_ROOT_DIR}/build_configure ${package_folder}/confFlu/
+    cp -rf ${CONFFLU_ROOT_DIR}/env.sh ${package_folder}/confFlu/bashrc 
+fi
+
+if [ "@WITH_SOLVERS@" = "yes" ]; then
+    echo "--------------------------------------------------------------------------------"
+    echo "prepare solvers & models..."
+    
+    solvers_folder=${package_folder}/solvers
+    mkdir ${solvers_folder}
+    
+    ( cd ${solvers_folder} && wget https://afgan.svn.sourceforge.net/svnroot/afgan/pyfoam_testing/trunk/install_list.sh ) >/dev/null
+    source ${solvers_folder}/install_list.sh
+    install_list=`create_install_list`
+    
+    for package in ${install_list}; do  
+       ( cd ${solvers_folder} && git clone git://github.com/asimurzin/${package}.git ${package} )
+      #cp -rf solvers/${package} ${solvers_folder} 
+    done
+fi
 
 
 #--------------------------------------------------------------------------------------
 # remove all unnecessary from the ${package_folder}
-echo "cleaning cxx, h, o, etc..."
+echo "cleaning h, o, etc..."
 echo "--------------------------------------------------------------------------------"
-(cd ${package_folder} && find \( -name "*.cxx" -o -name "*.h" -o -name "*.hxx" -o -name "*.cpp" -o -name "*.hpp" \) -delete)
-(cd ${package_folder} && find \( -name "*.cc" -o -name "*.hh" -o -name "*.exe" \) -delete)
+(cd ${package_folder} && find \( -name "*.h" \) -delete)
+(cd ${package_folder} && find \( -name "*.cc" -o -name "*.exe" \) -delete)
 (cd ${package_folder} && find \( -name "*.d" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
-(cd ${package_folder} && find ./ -name ".svn" -exec rm -rf {} \; 2>/dev/null)
+(cd ${package_folder} && find -name ".git" -exec rm -rf {} \; 2>/dev/null)
 
 
 #--------------------------------------------------------------------------------------

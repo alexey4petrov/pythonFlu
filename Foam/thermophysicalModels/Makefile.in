@@ -22,7 +22,9 @@
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/foam.version.makefile
+pythonflu_root_dir:=@abs_top_builddir@
+
+include @abs_top_builddir@/Foam/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
@@ -40,18 +42,18 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_basicPsiThermo.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicPsiThermo.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicRhoThermo.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicRhoThermo.cxx \
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/include.foam.makefile
+include @abs_top_builddir@/Foam/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------

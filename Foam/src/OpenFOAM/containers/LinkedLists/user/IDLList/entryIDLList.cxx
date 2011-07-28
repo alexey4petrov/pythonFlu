@@ -28,7 +28,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.LinkedLists.user.IDLList.entryIDLList";
 %{
-   #include "src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.hh"
+   #include "Foam/src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.hh"
 %}
 
 
@@ -36,9 +36,9 @@
 %ignore Foam::IDLList< Foam::entry >::IDLList( Istream& );
 %ignore Foam::IDLList< Foam::entry >::IDLList( const Foam::entry& );
 
-%import "src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.cxx"
+%import "Foam/src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.cxx"
 
-%import "src/OpenFOAM/db/dictionary/entry.cxx"
+%import "Foam/src/OpenFOAM/db/dictionary/entry.cxx"
 
 %template( entryIDLList ) Foam::IDLList< Foam::entry >; 
 

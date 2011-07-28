@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fields.fvPatchFields.basic.mixed.mixedFvPatchField_scalar";
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField_scalar.hh"
+  #include "Foam/src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField_scalar.hh"
 %}
 
-%import "src/director.hxx"
+%import "Foam/src/director.hxx"
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField.hxx"
+%import "Foam/src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField.hxx"
 
 %feature( "director" ) mixedFvPatchScalarField;
 
@@ -45,13 +45,13 @@ DIRECTOR_PRE_EXTENDS( mixedFvPatchScalarField );
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField.hh"
+%include "Foam/src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField.hh"
 
 %template( mixedFvPatchScalarField ) Foam::mixedFvPatchField< Foam::scalar >;
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/objectRegistry.cxx"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
 %extend Foam::mixedFvPatchField< Foam::scalar >
 {

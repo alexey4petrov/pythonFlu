@@ -26,20 +26,20 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
-#include "src/OpenFOAM/primitives/label.hh"
+#include "Foam/src/OpenFOAM/primitives/label.hh"
 
-#include "src/OpenFOAM/primitives/Lists/labelList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/labelList.hh"
 
 // #include <DynamicList.H>
 // #include <HashTable.H>
 
-#include "src/OpenFOAM/primitives/strings/string.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/string.hh"
 
 // #include <NamedEnum.H>
 
-#include "src/OpenFOAM/primitives/ops/ops_label.hh"
+#include "Foam/src/OpenFOAM/primitives/ops/ops_label.hh"
 
 #include <Pstream.H>
 #include <PstreamReduceOps.H>

@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvm.fvmDiv";
 %{
-  #include "src/finiteVolume/finiteVolume/fvm/fvmDiv.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/fvm/fvmDiv.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
+%import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
 
 //---------------------------------------------------------------------------

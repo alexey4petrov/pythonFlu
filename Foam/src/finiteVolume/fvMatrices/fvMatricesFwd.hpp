@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/fieldTypes.cxx"
 
 %include <fvMatricesFwd.H>
 

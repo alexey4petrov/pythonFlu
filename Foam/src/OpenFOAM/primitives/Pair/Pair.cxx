@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Pair.Pair"
 %{
-  #include "src/OpenFOAM/primitives/Pair/Pair.hh"
+  #include "Foam/src/OpenFOAM/primitives/Pair/Pair.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/FixedList/FixedList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/FixedList/FixedList.cxx"
 
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx"
 
 %include <Pair.H>
 

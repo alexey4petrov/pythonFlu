@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_scalar.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_fvPatchField_scalar.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
+%include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
 
 %template( autoPtr_fvPatchField_scalar ) Foam::autoPtr< Foam::fvPatchField< Foam::scalar > >;
 

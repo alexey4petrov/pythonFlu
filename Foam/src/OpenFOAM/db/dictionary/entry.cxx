@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.dictionary.entry";
 %{
-   #include "src/OpenFOAM/db/dictionary/entry.hh"
+   #include "Foam/src/OpenFOAM/db/dictionary/entry.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 %include <entry.H>
 

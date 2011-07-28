@@ -22,7 +22,7 @@
 
 
 #--------------------------------------------------------------------------------------
-pyfoam_root_dir:=../../..
+pythonflu_root_dir:=../../..
 
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude
@@ -30,7 +30,7 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 __LDFLAGS__ := $(__LDFLAGS__) \
 	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume
 
-include $(pyfoam_root_dir)/include.makefile
+include $(pythonflu_root_dir)/include.makefile
 
 
 #--------------------------------------------------------------------------------------

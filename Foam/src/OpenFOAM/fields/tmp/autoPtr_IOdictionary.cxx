@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_IOdictionary"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_IOdictionary.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_IOdictionary.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/OpenFOAM/db/IOdictionary.cxx"
+%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
 AUTOPTR_TYPEMAP( Foam::IOdictionary );
 

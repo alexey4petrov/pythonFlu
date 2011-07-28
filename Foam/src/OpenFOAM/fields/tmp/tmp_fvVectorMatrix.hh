@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
 
-#include "src/finiteVolume/fvMatrices/fvVectorMatrix.hh"
+#include "Foam/src/finiteVolume/fvMatrices/fvVectorMatrix.hh"
 
 
 //---------------------------------------------------------------------------

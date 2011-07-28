@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_UniformDimensionedVectorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_UniformDimensionedVectorField.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_UniformDimensionedVectorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define autoPtr_UniformDimensionedVectorField_cxx
@@ -41,9 +41,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.cxx"
+%import "Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.cxx"
 
 AUTOPTR_TYPEMAP( Foam::uniformDimensionedVectorField )
 

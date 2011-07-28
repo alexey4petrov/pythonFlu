@@ -22,6 +22,10 @@
 
 
 #--------------------------------------------------------------------------------------
+include $(pythonflu_root_dir)/Foam/foam.version.makefile
+
+
+#--------------------------------------------------------------------------------------
 dirs = $(dir $(sources))
 names = $(patsubst %.cxx,_%.so,$(notdir $(sources)))
 libs = $(join $(dirs),$(names))
@@ -48,11 +52,29 @@ all : $(libs)
 	@echo output : $(notdir $(pyths))
 
 clean :
-	rm -fr $(libs) $(stubs) $(objs) $(pyths) $(deps) $(heads) $(apps) $(pycs) $(tmps)
+	rm -fr $(libs) 
+	rm -rf $(stubs) 
+	rm -rf $(objs) 
+	rm -rf $(pyths) 
+	rm -rf $(deps) 
+	rm -rf $(heads) 
+	rm -rf $(apps) 
+	rm -rf $(pycs) 
+	rm -rf $(tmps)
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/include.base.makefile
+include $(pythonflu_root_dir)/Foam/include.base.makefile
+
+
+#--------------------------------------------------------------------------------------
+%.o : %.cc
+	gcc $(__CXXFLAGS__) "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
+	
+_%.so : %.o
+	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@; \
+	gcc $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<)
+	cd $(dir $<) python $(patsubst %.o,%.py,$<) || (rm $@ && exit 1)
 
 
 #--------------------------------------------------------------------------------------

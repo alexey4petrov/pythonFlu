@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 
 //---------------------------------------------------------------------------
@@ -34,11 +34,11 @@
 #define geometricOneField_hh
 
 
-#include "src/OpenFOAM/fields/Fields/oneField.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/oneField.hh"
 
-#include "src/OpenFOAM/fields/FieldFields/oneFieldField.hh"
+#include "Foam/src/OpenFOAM/fields/FieldFields/oneFieldField.hh"
 
-#include "src/OpenFOAM/primitives/label.hh"
+#include "Foam/src/OpenFOAM/primitives/label.hh"
 
 #include <geometricOneField.H>
 

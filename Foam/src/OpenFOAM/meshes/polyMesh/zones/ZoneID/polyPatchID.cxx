@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.polyMesh.zones.ZoneID.polyPatchID"
 %{
-    #include "src/OpenFOAM/meshes/polyMesh/zones/ZoneID/polyPatchID.hh"
+    #include "Foam/src/OpenFOAM/meshes/polyMesh/zones/ZoneID/polyPatchID.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx"
+%import "Foam/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx"
 
 %include <polyPatchID.H>
 

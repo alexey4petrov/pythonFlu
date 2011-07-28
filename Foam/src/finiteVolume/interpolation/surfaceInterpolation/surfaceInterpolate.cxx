@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolate";
 %{
-  #include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.hh"
+  #include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolate.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <surfaceInterpolate.H>
 

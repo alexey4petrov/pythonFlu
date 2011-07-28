@@ -22,7 +22,9 @@
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/foam.version.makefile
+pythonflu_root_dir:=@abs_top_builddir@
+
+include @abs_top_builddir@/Foam/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
@@ -61,17 +63,17 @@ endif
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_turbulenceModel.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_turbulenceModel.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_compressible_RASModel.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_RASModel.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_compressible_RASModel.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_compressible_RASModel.cxx \
 	\
-	@abs_top_builddir@/src/turbulenceModels/compressible/RAS/derivedFvPatchFields/turbulentTemperatureCoupledBaffle/regionProperties.cxx \
+	@abs_top_builddir@/Foam/src/turbulenceModels/compressible/RAS/derivedFvPatchFields/turbulentTemperatureCoupledBaffle/regionProperties.cxx \
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/include.foam.makefile
+include @abs_top_builddir@/Foam/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------

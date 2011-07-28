@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( ==, 010500 )   
 #define incompressibleturbulenceModel_hh
@@ -33,19 +33,19 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-#include "src/finiteVolume/fields/volFields/volFields.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
 
-#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
+#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
 
-#include "src/transportModels/incompressible/transportModel.hh"
+#include "Foam/src/transportModels/incompressible/transportModel.hh"
 
-#include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hh"
+#include "Foam/ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hh"
 
 
 //------------------------------------------------------------------------

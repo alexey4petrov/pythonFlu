@@ -28,15 +28,15 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField_sphericalTensor_surfaceMesh";
 %{
-  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_sphericalTensor_surfaceMesh.hh"
+  #include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_sphericalTensor_surfaceMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
+%include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField.cpp"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
-%import "src/finiteVolume/surfaceMesh.hpp"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/finiteVolume/surfaceMesh.hpp"
 
 DIMENSIONED_FIELD_SURFACEMESH_TYPEMAP( sphericalTensor );
 

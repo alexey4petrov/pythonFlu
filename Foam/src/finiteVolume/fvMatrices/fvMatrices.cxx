@@ -28,20 +28,20 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fvMatrices.fvMatrices";
 %{
-  #include "src/finiteVolume/fvMatrices/fvMatrices.hh"
+  #include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMatrices/fvScalarMatrix.cpp"
-%include "src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cpp"
+%include "Foam/src/finiteVolume/fvMatrices/fvScalarMatrix.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cpp"
 
 FVMATRIX_TEMPLATE_GLOBAL_FUNC( Foam::scalar );
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fvMatrices/fvVectorMatrix.cpp"
-%include "src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cpp"
+%include "Foam/src/finiteVolume/fvMatrices/fvVectorMatrix.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cpp"
 
 FVMATRIX_TEMPLATE_GLOBAL_FUNC( Foam::vector );
 

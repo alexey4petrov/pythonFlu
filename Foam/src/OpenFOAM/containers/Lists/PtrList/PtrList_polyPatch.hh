@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
+#include "Foam/src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
 
 #include <polyPatchList.H>
 

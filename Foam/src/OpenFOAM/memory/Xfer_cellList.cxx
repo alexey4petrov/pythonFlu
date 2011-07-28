@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.memory.Xfer_cellList"
 %{
-  #include "src/OpenFOAM/memory/Xfer_cellList.hh"
+  #include "Foam/src/OpenFOAM/memory/Xfer_cellList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define Xfer_cellList_cxx
@@ -41,9 +41,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/memory/Xfer.hxx"
+%import "Foam/src/OpenFOAM/memory/Xfer.hxx"
 
-%import "src/OpenFOAM/meshes/meshShapes/cell/cellList.cxx"
+%import "Foam/src/OpenFOAM/meshes/meshShapes/cell/cellList.cxx"
 
 XFER_ADDONS( Foam::cellList );
 

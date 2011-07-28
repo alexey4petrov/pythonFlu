@@ -26,8 +26,8 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
-#include "src/iterators.hh"
+#include "Foam/src/common.hh"
+#include "Foam/src/iterators.hh"
 
 #include <UList.H>
 #include <ListOps.H>

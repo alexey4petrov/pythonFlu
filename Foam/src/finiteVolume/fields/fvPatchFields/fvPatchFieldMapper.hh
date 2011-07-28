@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/FieldMapper.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/FieldMapper.hh"
 
 #include <fvPatchFieldMapper.H>
 

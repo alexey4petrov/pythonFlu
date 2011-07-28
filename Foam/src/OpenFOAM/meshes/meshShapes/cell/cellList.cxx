@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.meshShapes.cell.cellList";
 %{
-  #include "src/OpenFOAM/meshes/meshShapes/cell/cellList.hh"
+  #include "Foam/src/OpenFOAM/meshes/meshShapes/cell/cellList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_cell.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_cell.cxx"
 
 %include <cellList.H>
 

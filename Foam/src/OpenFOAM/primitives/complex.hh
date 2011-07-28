@@ -26,15 +26,15 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
-#include "src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
 
-#include "src/OpenFOAM/primitives/bool.hh"
+#include "Foam/src/OpenFOAM/primitives/bool.hh"
 
-#include "src/OpenFOAM/primitives/strings/word.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 
-#include "src/OpenFOAM/primitives/contiguous.hh"
+#include "Foam/src/OpenFOAM/primitives/contiguous.hh"
 
 #include <complex.H>
 

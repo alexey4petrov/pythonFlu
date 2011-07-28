@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/HashTables/HashTable/HashTable.hh"
+#include "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable.hh"
 
 #include <HashPtrTable.H>
 

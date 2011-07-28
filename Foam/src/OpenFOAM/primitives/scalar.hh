@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #include <doubleScalar.H>
 #include <scalar.H>

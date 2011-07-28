@@ -26,20 +26,20 @@
 
 
 //----------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volFields.hh"
-#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
 
 #include <fvcSurfaceIntegrate.H>
 #include <fvcReconstruct.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
 
-#include "src/finiteVolume/fvMesh/fvMesh.hh"
-#include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMesh.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchFields.hh"
 
 
 //---------------------------------------------------------------------------

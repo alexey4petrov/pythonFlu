@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.Time.subCycleTime";
 %{
-  #include "src/OpenFOAM/db/Time/subCycleTime.hh"
+  #include "Foam/src/OpenFOAM/db/Time/subCycleTime.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/Time/Time.cxx"
+%import "Foam/src/OpenFOAM/db/Time/Time.cxx"
 
 %include <subCycleTime.H>
 

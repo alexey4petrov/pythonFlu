@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/meshTools/coordinateSystems/coordinateSystem.hh"
+#include "Foam/src/meshTools/coordinateSystems/coordinateSystem.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_coordinateSystem.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_coordinateSystem.hh"
 
 
 //---------------------------------------------------------------------------

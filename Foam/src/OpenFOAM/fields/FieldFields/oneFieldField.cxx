@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.FieldFields.oneFieldField";
 %{
-  #include "src/OpenFOAM/fields/FieldFields/oneFieldField.hh"
+  #include "Foam/src/OpenFOAM/fields/FieldFields/oneFieldField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010700 ) || FOAM_BRANCH_VERSION( dev, <, 010600 )
 #define oneFieldField_cxx
@@ -41,9 +41,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/oneField.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/oneField.cxx"
 
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
 %include <oneFieldField.H>
 

@@ -27,20 +27,20 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/Fields/symmTensorField.hh"
+  #include "Foam/src/OpenFOAM/fields/Fields/symmTensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/Fields/Field.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/Field.cpp"
 
-%import "src/OpenFOAM/primitives/symmTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/symmTensor.cxx"
 
-%import "src/OpenFOAM/primitives/pTraits_symmTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/pTraits_symmTensor.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/symmTensorList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/symmTensorList.cxx"
 
-%include "src/OpenFOAM/fields/Fields/sphericalTensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/sphericalTensorField.cpp"
 
 
 //---------------------------------------------------------------------------

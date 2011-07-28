@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( <, 010500 )
 #define compressibleRASModel_hh
@@ -34,13 +34,13 @@
 
 
 //----------------------------------------------------------------------------
-#include "src/turbulenceModels/compressible/turbulenceModel.hh"
+#include "Foam/src/turbulenceModels/compressible/turbulenceModel.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
+#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
 
-#include "src/thermophysicalModels/basic/basicThermo.hh"
+#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
 
 
 //----------------------------------------------------------------------------

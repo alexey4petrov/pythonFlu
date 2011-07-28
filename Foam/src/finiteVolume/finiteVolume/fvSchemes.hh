@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOdictionary.hh"
+#include "Foam/src/OpenFOAM/db/IOdictionary.hh"
 
 #include <fvSchemes.H>
 

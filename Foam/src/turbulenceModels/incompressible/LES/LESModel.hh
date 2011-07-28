@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( <, 010500 )
 #define incompressibleLESModel_hh
@@ -34,25 +34,25 @@
 
 
 //----------------------------------------------------------------------------
-#include "src/turbulenceModels/incompressible/turbulenceModel.hh"
+#include "Foam/src/turbulenceModels/incompressible/turbulenceModel.hh"
 
 // #include <LESdelta.H>
 // #include <fvm.H>
 // #include <fvc.H>
 
-#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
+#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
 
-#include "src/transportModels/incompressible/transportModel.hh"
+#include "Foam/src/transportModels/incompressible/transportModel.hh"
 
 // #include <wallFvPatch.H>
 
-#include "src/finiteVolume/cfdTools/general/bound.hh"
+#include "Foam/src/finiteVolume/cfdTools/general/bound.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
 // #include <runTimeSelectionTables.H>
 
-#include "src/OpenFOAM/db/IOdictionary.hh"
+#include "Foam/src/OpenFOAM/db/IOdictionary.hh"
 
 
 //----------------------------------------------------------------------------

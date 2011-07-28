@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.SubList.SubList";
 %{
-  #include "src/OpenFOAM/containers/Lists/SubList/SubList.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/SubList/SubList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
 %include <SubList.H>
 

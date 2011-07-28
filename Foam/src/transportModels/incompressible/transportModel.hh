@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOdictionary.hh"
+#include "Foam/src/OpenFOAM/db/IOdictionary.hh"
 
-#include "src/finiteVolume/fields/volFields/volFields.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
 
 #include <transportModel.H>
 

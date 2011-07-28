@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fields.fvsPatchFields.basic.calculated.calculatedFvsPatchFieldsFwd"
 %{
-  #include "src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchFieldsFwd.hh"
+  #include "Foam/src/finiteVolume/fields/fvsPatchFields/basic/calculated/calculatedFvsPatchFieldsFwd.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/fieldTypes.cxx"
 
 %include <calculatedFvsPatchField.H>
 

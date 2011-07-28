@@ -22,9 +22,15 @@
 
 
 #--------------------------------------------------------------------------------------
-pyfoam_root_dir:=.
+prefix:=@prefix@
 
-include $(pyfoam_root_dir)/include.makefile
+pythondir:=@PYTHONDIR@
+
+pythonflu_root_dir:=@abs_top_builddir@
+
+m4dir:=@datarootdir@
+
+include $(pythonflu_root_dir)/Foam/include.src.makefile
 
 SUBDIRS = Foam
 
@@ -42,33 +48,21 @@ rpm:
 
 
 #--------------------------------------------------------------------------------------
-DESTDIR=
-
-ifeq "$(shell if [ @OS_NAME@ = Ubuntu ]; then echo 'true'; else echo 'false'; fi )" "true" 
-PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python@PYTHON_VERSION@/dist-packages
-endif
-
-ifeq "$(shell if [ @OS_NAME@ = openSUSE ]; then echo 'true'; else echo 'false'; fi )" "true" 
-PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python@PYTHON_VERSION@/site-packages
-endif
-
-ifeq "$(shell if [ x@OS_NAME@ = x ]; then echo 'true'; else echo 'false'; fi )" "true" 
-$(error Your OS is not supported)
-endif
-
-
 install:
-	@ install -d $(PYTHON_FLU_LIB)
-	@ rm -rf $(PYTHON_FLU_LIB)/Foam
-	@ cp -rf Foam $(PYTHON_FLU_LIB)/
-	@ (cd $(PYTHON_FLU_LIB)/Foam && find \( -name "*.cxx" -o -name "*.h" -o -name "*.d" -o -name "pyfoam" -o -name "*.cpp" \) -delete)
-	@ (cd $(PYTHON_FLU_LIB)/Foam && find \( -name "*.h" -o -name "*_" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
-	@ python -c "from setuptools import setup; setup(name='Foam')" install
+	@ rm -rf $(pythondir)/Foam $(m4dir)/pythonFlu
+	@ install -d $(pythondir) $(m4dir)/pythonFlu/admin
+	@ cp -rf Foam $(pythondir)/
+	@ (cd $(pythondir)/Foam && find \( -name "*.d" -o -name "pyfoam" -o -name "*.cc" -o -name "*.exe" \) -delete)
+	@ (cd $(pythondir)/Foam && find \( -name "*.h" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
+	@ cp -rf @abs_top_builddir@/admin/pythonflu_check_pythonflu.m4 $(m4dir)/pythonFlu/admin/
+	@ python -c "from setuptools import setup; setup(name='Foam', version='@PACKAGE_VERSION@')" install
 
 develop:
-	@ rm -rf $(PYTHON_FLU_LIB)/Foam
-	@ ln -s @abs_top_builddir@/Foam $(PYTHON_FLU_LIB)/Foam
-	@ python -c "from setuptools import setup; setup(name='Foam')" install
+	@ rm -rf $(pythondir)/Foam $(m4dir)/pythonFlu
+	@ install -d $(pythondir) $(m4dir)/pythonFlu/admin
+	@ ln -s @abs_top_builddir@/Foam $(pythondir)/Foam 
+	@ ln -s @abs_top_builddir@/admin/pythonflu_check_pythonflu.m4 $(m4dir)/pythonFlu/admin/pythonflu_check_pythonflu.m4
+	@ python -c "from setuptools import setup; setup(name='Foam', version='@PACKAGE_VERSION@')" install
 
 
 #--------------------------------------------------------------------------------------

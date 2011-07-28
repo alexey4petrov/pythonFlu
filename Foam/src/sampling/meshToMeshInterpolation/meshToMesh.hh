@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/OpenFOAM/primitives/Lists/wordList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/wordList.hh"
 
-#include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_word_word_string_hash.hh"
+#include "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_word_word_string_hash.hh"
 
 #include <meshToMesh.H>
 

@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hh"
 
-#include "src/OpenFOAM/primitives/strings/fileName.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/fileName.hh"
 
 #include <IOobject.H>
 

@@ -26,10 +26,10 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/meshes/meshShapes/face/face.cxx"
+%import "Foam/src/OpenFOAM/meshes/meshShapes/face/face.cxx"
 
 %{
-    #include "src/OpenFOAM/meshes/meshShapes/face/faceListFwd.hh"
+    #include "Foam/src/OpenFOAM/meshes/meshShapes/face/faceListFwd.hh"
 %}
 
 %include <faceListFwd.H>

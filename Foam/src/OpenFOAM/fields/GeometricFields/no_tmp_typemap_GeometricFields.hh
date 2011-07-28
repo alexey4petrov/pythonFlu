@@ -26,59 +26,59 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
 
-#include "ext/common/ext_tmp.hh"
+#include "Foam/ext/common/ext_tmp.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/scalar.hh"
-#include "src/finiteVolume/volMesh.hh"
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/finiteVolume/volMesh.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
 
 //----------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/vector.hh"
-#include "src/finiteVolume/volMesh.hh"
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
+#include "Foam/src/OpenFOAM/primitives/vector.hh"
+#include "Foam/src/finiteVolume/volMesh.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
 
 //----------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/tensor.hh"
-#include "src/finiteVolume/volMesh.hh"
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
+#include "Foam/src/OpenFOAM/primitives/tensor.hh"
+#include "Foam/src/finiteVolume/volMesh.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
 
 //-----------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/symmTensor.hh"
-#include "src/finiteVolume/volMesh.hh"
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
+#include "Foam/src/OpenFOAM/primitives/symmTensor.hh"
+#include "Foam/src/finiteVolume/volMesh.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
 
 //------------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/sphericalTensor.hh"
-#include "src/finiteVolume/volMesh.hh"
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
+#include "Foam/src/OpenFOAM/primitives/sphericalTensor.hh"
+#include "Foam/src/finiteVolume/volMesh.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
 
 //------------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/scalar.hh"
-#include "src/finiteVolume/surfaceMesh.hh"
-#include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/finiteVolume/surfaceMesh.hh"
+#include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
 
 
 //-------------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/vector.hh"
-#include "src/finiteVolume/surfaceMesh.hh"
-#include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
+#include "Foam/src/OpenFOAM/primitives/vector.hh"
+#include "Foam/src/finiteVolume/surfaceMesh.hh"
+#include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
 
 
 //-------------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/tensor.hh"
-#include "src/finiteVolume/surfaceMesh.hh"
-#include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
+#include "Foam/src/OpenFOAM/primitives/tensor.hh"
+#include "Foam/src/finiteVolume/surfaceMesh.hh"
+#include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
 
 
 //-------------------------------------------------------------------------------

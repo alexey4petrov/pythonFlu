@@ -28,20 +28,20 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fvMatrices.solvers.MULES.MULES";
 %{
-  #include "src/finiteVolume/fvMatrices/solvers/MULES/MULES.hh"
+  #include "Foam/src/finiteVolume/fvMatrices/solvers/MULES/MULES.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/OpenFOAM/fields/GeometricFields/geometricOneField.cxx"
+%import "Foam/src/OpenFOAM/fields/GeometricFields/geometricOneField.cxx"
 
 %rename ( MULES_explicitSolve ) Foam::MULES::explicitSolve;
 
 %include <MULES.H>
 
-%include "src/finiteVolume/fvMatrices/solvers/MULES/MULES.hh"
+%include "Foam/src/finiteVolume/fvMatrices/solvers/MULES/MULES.hh"
 
 
 //----------------------------------------------------------------------------

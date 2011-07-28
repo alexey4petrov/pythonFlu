@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
-%import "src/OpenFOAM/db/regIOobject.cxx"
+%import "Foam/src/OpenFOAM/db/regIOobject.cxx"
 
 %include <IOPtrList.H>
 

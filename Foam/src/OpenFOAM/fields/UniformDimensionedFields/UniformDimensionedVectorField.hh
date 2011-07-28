@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( <, 010600 )
 #define UniformDimensionedVectorField_hh
@@ -34,9 +34,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.hh"
+#include "Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
 
 
 //---------------------------------------------------------------------------

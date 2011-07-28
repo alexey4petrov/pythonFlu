@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
 
-#include "src/finiteVolume/fvMesh/fvPatches/fvPatch.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvPatches/fvPatch.hh"
 
 #include <fvPatchList.H>
 

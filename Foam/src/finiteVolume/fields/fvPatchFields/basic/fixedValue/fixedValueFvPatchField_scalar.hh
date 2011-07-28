@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/director.hh"
+#include "Foam/src/director.hh"
 
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField.hh"
 
 namespace Foam 
 {

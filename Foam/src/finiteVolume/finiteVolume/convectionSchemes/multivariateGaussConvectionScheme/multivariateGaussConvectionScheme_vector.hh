@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.hh"
+#include "Foam/src/finiteVolume/finiteVolume/convectionSchemes/multivariateGaussConvectionScheme/multivariateGaussConvectionScheme.hh"
 
-#include "src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.hh"
+#include "Foam/src/finiteVolume/finiteVolume/convectionSchemes/convectionScheme/convectionScheme_vector.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceInterpolationScheme_vector.hh"
 
 
 //---------------------------------------------------------------------------

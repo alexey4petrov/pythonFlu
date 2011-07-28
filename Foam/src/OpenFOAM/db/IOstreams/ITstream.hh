@@ -26,12 +26,12 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
 
-#include "src/OpenFOAM/primitives/Lists/tokenList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/tokenList.hh"
 
 #include <ITstream.H>
 

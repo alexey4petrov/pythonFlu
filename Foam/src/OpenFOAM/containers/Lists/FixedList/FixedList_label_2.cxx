@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.FixedList.FixedList_label_2"
 %{
-   #include "src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
-%import "src/OpenFOAM/containers/Lists/FixedList/FixedList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/FixedList/FixedList.cxx"
 
 %ignore Foam::FixedList< Foam::label, 2 >::operator<;
 %ignore Foam::FixedList< Foam::label, 2 >::operator>;

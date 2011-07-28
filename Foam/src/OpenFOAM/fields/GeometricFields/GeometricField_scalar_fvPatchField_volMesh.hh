@@ -26,29 +26,29 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/FieldFields/FieldField.hh"
+#include "Foam/src/OpenFOAM/fields/FieldFields/FieldField.hh"
 
-#include "src/OpenFOAM/fields/tmp/refCount.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/refCount.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.hh"
 
-#include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.hh"
+#include "Foam/src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_scalar.hh"
-
-
-//---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField.hh"
-
-#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.hh"
-
-#include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_scalar.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.hh"
+
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.hh"
+
+
+//---------------------------------------------------------------------------
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.hh"
+
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
 
 //---------------------------------------------------------------------------

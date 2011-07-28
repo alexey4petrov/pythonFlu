@@ -22,256 +22,258 @@
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/foam.version.makefile
+pythonflu_root_dir:=@abs_top_builddir@
+
+include @abs_top_builddir@/Foam/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
 sources = \
-	@abs_top_builddir@/src/OpenFOAM/primitives/bool.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/int_.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/label.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/one.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/bool.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/int_.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/label.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/one.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/primitives/strings/string.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/strings/word.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/strings/keyType.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/strings/string.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/strings/word.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/strings/keyType.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/token.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/token.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/IOstreams/Istream.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/primitives/scalar.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/direction.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/vector.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/pTraits.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/pTraits_vector.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/S_phericalTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/contiguous.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/sphericalTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/contiguous.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/S_ymmTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/symmTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/pTraits_symmTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/tensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/complex.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/complexVector.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Random.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/scalar.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/direction.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/vector.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/pTraits.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/pTraits_vector.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/S_phericalTensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/contiguous.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/sphericalTensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/contiguous.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/S_ymmTensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/symmTensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/pTraits_symmTensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/tensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/complex.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/complexVector.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Random.cxx \
 	\
-	@abs_top_builddir@/src/iterators.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List.cxx \
+	@abs_top_builddir@/Foam/src/iterators.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_word.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_word.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/wordList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_word.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_word.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Lists/wordList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/db/dictionary/entry.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/token.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/strings/fileName.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/dictionary/entry.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/token.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/strings/fileName.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_string.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_string.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/stringList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_string.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_string.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Lists/stringList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/primitives/ops/ops.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/ops/ops_label.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/ops/ops.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/ops/ops_label.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/refCount.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/refCount.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/tmp.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/Fields/fieldTypes.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/Fields/fieldTypes.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/Fields/primitiveFieldsFwd.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_entry.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_entry.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_bool.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_bool.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/boolList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_bool.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_bool.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Lists/boolList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_label.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_label.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/labelList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_label.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_label.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Lists/labelList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_scalar.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_scalar.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/scalarList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_scalar.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_scalar.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Lists/scalarList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_vector.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_vector.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/vectorList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_vector.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_vector.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Lists/vectorList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_sphericalTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/sphericalTensorList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_sphericalTensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Lists/sphericalTensorList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_symmTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_symmTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/symmTensorList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_symmTensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_symmTensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Lists/symmTensorList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_tensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_tensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/tensorList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_tensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_tensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Lists/tensorList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_complex.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_complex.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_complex.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_complex.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/Fields/oneField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/Fields/oneField.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/Fields/primitiveFields.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/Fields/complexFields.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_complexField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/tmp_complexVectorField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/Fields/complexFields.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/tmp_complexField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/tmp_complexVectorField.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_vectorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_vectorField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_scalarField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_scalarField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_sphericalTensorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_sphericalTensorField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_sphericalTensorField.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_symmTensorField.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_tensorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_tensorField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_token.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_token.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Lists/tokenList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_token.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_token.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Lists/tokenList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_word_word_string_hash.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_word_word_string_hash.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveShapes/point/point.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveShapes/point/pointFieldFwd.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/primitiveShapes/point/point.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/primitiveShapes/point/pointFieldFwd.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/meshes/meshShapes/face/face.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/meshShapes/face/oppositeFace.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_face.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_face.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/SubList/SubList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/SubList/SubList_face.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_TList_face.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_TList_face.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/meshShapes/face/faceList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/meshShapes/face/face.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/meshShapes/face/oppositeFace.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_face.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_face.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/SubList/SubList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/SubList/SubList_face.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_TList_face.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_TList_face.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/meshShapes/face/faceList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/meshes/meshShapes/cell/cell.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_cell.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_cell.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/meshShapes/cell/cellList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/meshShapes/cell/cell.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_cell.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_cell.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/meshShapes/cell/cellList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_Generic.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericType.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_GenericINew.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_Generic.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/patchIdentifier.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/UList/UList_polyPatchPtr.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/patchIdentifier.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/UList/UList_polyPatchPtr.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/db/IOobject.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/Switch.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOobject.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/Switch.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_IOobject_word_string_hash.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/regIOobject.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/objectRegistry.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_IOobject_word_string_hash.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/regIOobject.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/objectRegistry.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOobjectList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOobjectList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/dimensionSet.cxx \
-	@abs_top_builddir@/src/OpenFOAM/dimensionSets.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/ITstream.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/LinkedLists/user/IDLList/IDLList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/dimensionSet.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/dimensionSets.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/ITstream.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedType.cxx \
-	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx \
-	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx \
-	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx \
-	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.cxx \
-	@abs_top_builddir@/src/OpenFOAM/dimensionedTypes/dimensionedTensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/dimensionedTypes/dimensionedType.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/dimensionedTypes/dimensionedTensor.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/db/dictionary/dictionary.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOdictionary.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_IOdictionary.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/dictionary/dictionary.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOdictionary.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_IOdictionary.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Sstreams/ISstream.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Fstreams/OFstream.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Fstreams/IFstream.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/StringStreams/IStringStream.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/StringStreams/OStringStream.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/IOstreams/Pstreams/Pstream.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/error/messageStream.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/Sstreams/OSstream.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/Sstreams/ISstream.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/Fstreams/OFstream.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/Fstreams/IFstream.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/StringStreams/IStringStream.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/StringStreams/OStringStream.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/Pstreams/Pstream.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/error/messageStream.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/db/Time/clock.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/Time/cpuTime.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/Time/TimePaths.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/Time/TimeState.cxx \
-	@abs_top_builddir@/src/OpenFOAM/db/Time/Time.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/Time/clock.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/Time/cpuTime.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/Time/TimePaths.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/Time/TimeState.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/Time/Time.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/memory/Xfer_pointField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/memory/Xfer_faceList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/memory/Xfer_cellList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/memory/Xfer_pointField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/memory/Xfer_faceList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/memory/Xfer_cellList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/global/argList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/global/argList.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/tmp/autoPtr_UniformDimensionedVectorField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/PtrList/PtrList_UniformDimensionedVectorField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_UniformDimensionedVectorField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_UniformDimensionedVectorField.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx \
-	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/lduMesh.cxx \
-	@abs_top_builddir@/src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx \
-	@abs_top_builddir@/src/OpenFOAM/matrices/solution.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/lduMesh.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/matrices/solution.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/matrices/ext_solution.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/polyMesh.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/zones/ZoneID/polyPatchID.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/polyMesh/polyMesh.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/polyMesh/zones/ZoneID/polyPatchID.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/primitives/uint.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/ulong.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/uLabel.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/FixedList/FixedList.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Pair/Pair.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.cxx \
-	@abs_top_builddir@/src/OpenFOAM/primitives/Pair/labelPair.cxx \
-	@abs_top_builddir@/src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/uint.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/ulong.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/uLabel.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/FixedList/FixedList.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Pair/Pair.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/FixedList/FixedList_label_2.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Pair/labelPair.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_int_word_string_hash.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/NamedEnum/NamedEnum.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_int_word_string_hash.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/NamedEnum/NamedEnum.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/fields/FieldFields/oneFieldField.cxx \
-	@abs_top_builddir@/src/OpenFOAM/fields/GeometricFields/geometricOneField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/FieldFields/oneFieldField.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/GeometricFields/geometricOneField.cxx \
 	\
-	@abs_top_builddir@/src/OpenFOAM/graph/curve.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashTable/HashTable_curve_word_string_hash.cxx \
-	@abs_top_builddir@/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_curve_word_string_hash.cxx \
-	@abs_top_builddir@/src/OpenFOAM/graph/graph.cxx
+	@abs_top_builddir@/Foam/src/OpenFOAM/graph/curve.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_curve_word_string_hash.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_curve_word_string_hash.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/graph/graph.cxx
 
 
 #--------------------------------------------------------------------------------------
-include @abs_top_builddir@/include.foam.makefile
+include @abs_top_builddir@/Foam/include.foam.makefile
 
 
 #--------------------------------------------------------------------------------------

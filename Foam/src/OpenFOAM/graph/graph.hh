@@ -26,17 +26,17 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/strings/string.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/string.hh"
 
-#include "src/OpenFOAM/primitives/strings/fileName.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/fileName.hh"
 
-#include "src/OpenFOAM/meshes/primitiveShapes/point/point.hh"
+#include "Foam/src/OpenFOAM/meshes/primitiveShapes/point/point.hh"
 
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
-#include "src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Istream.hh"
 
-#include "src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_curve_word_string_hash.hh"
+#include "Foam/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_curve_word_string_hash.hh"
 
 #include <graph.H>
 

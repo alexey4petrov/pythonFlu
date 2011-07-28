@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.HashTables.HashPtrTable.HashPtrTable";
 %{
-    #include "src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable.hh"
+    #include "Foam/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
+%import "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
 
 %include <HashPtrTable.H>
 

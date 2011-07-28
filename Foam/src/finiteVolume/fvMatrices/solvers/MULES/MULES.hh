@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/OpenFOAM/fields/GeometricFields/geometricOneField.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/geometricOneField.hh"
 
 #include <MULES.H>
 

@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvc.fvcD_Dt";
 %{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcD_Dt.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/fvc/fvcD_Dt.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 
 //---------------------------------------------------------------------------

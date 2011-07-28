@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.contiguous";
 %{
-  #include "src/OpenFOAM/primitives/contiguous.hh"
+  #include "Foam/src/OpenFOAM/primitives/contiguous.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 %include <contiguous.H>
 

@@ -26,19 +26,19 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/dictionary/dictionary.hh"
+#include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
 
-#include "src/OpenFOAM/primitives/Lists/wordList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/wordList.hh"
 
-#include "src/OpenFOAM/primitives/Lists/labelList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/labelList.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedTensor.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedTensor.hh"
 
-#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
+#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
 
-#include "src/finiteVolume/fvMesh/fvMesh.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMesh.hh"
 
 #include <MRFZone.H>
 

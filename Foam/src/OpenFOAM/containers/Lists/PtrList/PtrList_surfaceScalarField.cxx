@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_surfaceScalarField";
 %{
-  #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_surfaceScalarField.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_surfaceScalarField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::surfaceScalarField >::PtrList;
 %ignore Foam::PtrList< Foam::surfaceScalarField >::set;

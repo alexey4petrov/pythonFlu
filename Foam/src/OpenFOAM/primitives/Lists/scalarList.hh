@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/List/List_scalar.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/List/List_scalar.hh"
 
 #include <scalarList.H>
 

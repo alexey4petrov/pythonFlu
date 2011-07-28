@@ -66,6 +66,9 @@ from Foam.src.OpenFOAM.db.IOstreams.Fstreams.IFstream import *
 from Foam.src.OpenFOAM.db.IOstreams.Fstreams.OFstream import *
 from Foam.src.OpenFOAM.db.IOstreams.Pstreams.Pstream import *
 
+from Foam.src.OpenFOAM.matrices.solution import *
+from Foam.src.OpenFOAM.matrices.ext_solution import *
+
 
 #---------------------------------------------------------------------------
 from Foam.src.OpenFOAM.db.IOstreams.token import *
@@ -110,6 +113,8 @@ from Foam.src.OpenFOAM.containers.HashTables.HashPtrTable.HashPtrTable_IOobject_
 from Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable_int_word_string_hash import *
 from Foam.src.OpenFOAM.containers.NamedEnum.NamedEnum import *
 
+
+from Foam.src.OpenFOAM.fields.tmp.autoPtr_polyPatch import *
 from Foam.src.OpenFOAM.meshes.polyMesh.zones.ZoneID.polyPatchID import *
 
 from Foam.src.OpenFOAM.fields.Fields.primitiveFields import *

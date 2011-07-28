@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvm.fvmLaplacian";
 %{
-  #include "src/finiteVolume/finiteVolume/fvm/fvmLaplacian.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/fvm/fvmLaplacian.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
+%import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
-%import "src/OpenFOAM/fields/GeometricFields/geometricOneField.cxx"
+%import "Foam/src/OpenFOAM/fields/GeometricFields/geometricOneField.cxx"
 
 
 //---------------------------------------------------------------------------

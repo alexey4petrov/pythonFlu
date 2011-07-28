@@ -26,19 +26,19 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/FieldFields/FieldField.hh"
+#include "Foam/src/OpenFOAM/fields/FieldFields/FieldField.hh"
 
-#include "src/OpenFOAM/fields/tmp/refCount.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/refCount.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_tensorField.hh"
 
-#include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_tensor.hh"
+#include "Foam/src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_tensor.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField.hh"
 
-#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_tensor_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_tensor_volMesh.hh"
 
 #include <GeometricTensorField.H>
 

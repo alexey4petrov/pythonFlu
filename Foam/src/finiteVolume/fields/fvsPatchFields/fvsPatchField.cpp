@@ -27,16 +27,16 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
+  #include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%include "src/finiteVolume/fvMesh/fvPatches/fvPatch.cpp"
+%include "Foam/src/finiteVolume/fvMesh/fvPatches/fvPatch.cpp"
 
-%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/fieldTypes.cxx"
 
 %include <fvsPatchFieldsFwd.H>
 

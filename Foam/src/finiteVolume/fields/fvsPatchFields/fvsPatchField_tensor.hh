@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
-#include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
+#include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
 
 
 //---------------------------------------------------------------------------

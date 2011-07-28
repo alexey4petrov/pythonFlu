@@ -26,15 +26,15 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/meshShapes/face/faceListFwd.hh"
+#include "Foam/src/OpenFOAM/meshes/meshShapes/face/faceListFwd.hh"
 
-#include "src/OpenFOAM/containers/Lists/UList/UList_face.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/UList/UList_face.hh"
 
-#include "src/OpenFOAM/containers/Lists/List/List_face.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/List/List_face.hh"
 
-#include "src/OpenFOAM/containers/Lists/SubList/SubList_face.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/SubList/SubList_face.hh"
 
-#include "src/OpenFOAM/containers/Lists/List/List_TList_face.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/List/List_TList_face.hh"
 
 
 //---------------------------------------------------------------------------

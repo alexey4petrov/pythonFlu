@@ -21,7 +21,7 @@
 
 
 //--------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( <, 010500 )
 #define radiationModel_hh
@@ -34,15 +34,15 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/IOdictionary.hh"
+#include "Foam/src/OpenFOAM/db/IOdictionary.hh"
 
-// #include "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hh"
+// #include "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hh"
 
-#include "src/finiteVolume/fields/volFields/volFields.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/thermophysicalModels/basic/basicThermo.hh"
+#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
 
-#include "src/finiteVolume/fvMatrices/fvMatrices.hh"
+#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
 
 // #include <blackBodyEmission.H>
 

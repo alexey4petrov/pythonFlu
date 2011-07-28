@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
-#include "src/finiteVolume/fvMesh/fvMesh.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMesh.hh"
 
-#include "src/finiteVolume/surfaceMesh.hh"
+#include "Foam/src/finiteVolume/surfaceMesh.hh"
 
-#include "src/finiteVolume/volMesh.hh"
+#include "Foam/src/finiteVolume/volMesh.hh"
 
 
 //---------------------------------------------------------------------------

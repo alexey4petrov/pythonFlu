@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_label";
 %{
-  #include "src/OpenFOAM/containers/Lists/UList/UList_label.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/UList/UList_label.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
 %template( UList_label ) Foam::UList< Foam::label >; 
 

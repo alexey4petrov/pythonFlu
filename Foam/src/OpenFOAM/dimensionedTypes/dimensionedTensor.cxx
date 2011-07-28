@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.dimensionedTypes.dimensionedTensor";
 %{
-  #include "src/OpenFOAM/dimensionedTypes/dimensionedTensor.hh"
+  #include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedTensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedTypes.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.cxx"
 
 %include <dimensionedTensor.H>
 

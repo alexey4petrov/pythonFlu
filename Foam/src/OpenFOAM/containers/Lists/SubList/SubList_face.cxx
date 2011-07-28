@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.SubList.SubList_face";
 %{
-  #include "src/OpenFOAM/containers/Lists/SubList/SubList_face.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/SubList/SubList_face.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList_face.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList_face.cxx"
 
-%import "src/OpenFOAM/containers/Lists/SubList/SubList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/SubList/SubList.cxx"
 
-%import "src/OpenFOAM/meshes/meshShapes/face/face.cxx"
+%import "Foam/src/OpenFOAM/meshes/meshShapes/face/face.cxx"
 
 %template( SubList_face ) Foam::SubList< Foam::face >;
 

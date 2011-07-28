@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_tensor.hh"
 
-#include "src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField.hh"
 
 
 //---------------------------------------------------------------------------

@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_word";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_word.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/UList/UList_word.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
 %ignore Foam::UList< Foam::word >::writeEntry;
 
-%import "src/OpenFOAM/primitives/strings/word.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
 
 %template( UList_word ) Foam::UList< Foam::word >; 
 

@@ -28,24 +28,24 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Random";
 %{
-  #include "src/OpenFOAM/primitives/Random.hh"
+  #include "Foam/src/OpenFOAM/primitives/Random.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
-%import "src/OpenFOAM/primitives/tensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/tensor.cxx"
 
-%import "src/OpenFOAM/primitives/symmTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/symmTensor.cxx"
 
-%import "src/OpenFOAM/primitives/sphericalTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/sphericalTensor.cxx"
 
 %include <Random.H>
 

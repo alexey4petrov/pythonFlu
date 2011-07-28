@@ -21,14 +21,39 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef limits_cxx
-#define limits_cxx
+#ifndef polyPatch_cpp
+#define polyPatch_cpp
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%module "Foam.src.OpenFOAM.meshes.polyMesh.polyPatches.polyPatch"
+%{
+  #include "Foam/src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
+%}
 
-%include <limits.h>
+
+//---------------------------------------------------------------------------
+%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+
+%import "Foam/src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.cxx"
+
+%import "Foam/src/OpenFOAM/meshes/patchIdentifier.cxx"
+
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+
+%ignore Foam::polyPatch::faceCentres() const;
+%ignore Foam::polyPatch::faceAreas() const;
+%ignore Foam::polyPatch::faceCellCentres() const;
+
+%include <polyPatch.H>
+
+%extend Foam::polyPatch
+{
+  static Foam::polyPatch* nullPtr()
+  {
+    return (Foam::polyPatch*) NULL;
+  }
+}
 
 
 //---------------------------------------------------------------------------

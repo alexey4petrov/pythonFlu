@@ -29,7 +29,7 @@ Pre-requisites
 "pythonFlu" Python OpenFOAM binding requires the following mandatory and optional
 pre-requisites.
 
-* Make sure that confFlu (common configuration package) is installed 
+* Make sure that confFlu (common configuration package) is installed (tested with release 1.2-hybrid)
   Can be found at  http://sourceforge.net/projects/pythonflu/files.
   Please follow instructions from corresponding INSTALL file to setup confFlu
   in your environment.
@@ -92,7 +92,7 @@ In order to build the module you have to perform the following actions:
 7. Build and install "pythonFlu":
 
    make
-   make install
+   sudo bash -c "source ./bashrc  && make install"
 
   (use "make clean" command to cleanup the build folder)
 

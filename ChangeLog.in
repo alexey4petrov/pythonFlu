@@ -1,5 +1,11 @@
 #PACKAGE# (#VERSION#) @UBUNTU_CODENAME@; urgency=high
 
+  * To support compilation for third-party pythonFlu extensions
+
+ -- #USERNAME# <#EMAIL#>  #DATE#
+
+pythonflu (8.1-Elvis) maverick; urgency=high
+
   * Name this release after the person who believed in this project 
     and inspired us continue its developement. Thank you "Elvis"!
 
@@ -37,7 +43,7 @@
     "installation from sources" procedure. Corresponding information
     can be found at http://pythonflu.wikidot.com/install-sources
 
- -- #USERNAME# <#EMAIL#>  #DATE#
+ -- Alexey PETROV <alexey.petrov.nnov@gmail.com> Sat, 28 May 2011 19:45:32 +0300
 
 pythonflu (8.0-1) maverick; urgency=high
 

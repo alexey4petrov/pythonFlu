@@ -28,27 +28,27 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.polyMesh.polyMesh"
 %{
-  #include "src/OpenFOAM/meshes/polyMesh/polyMesh.hh"
+  #include "Foam/src/OpenFOAM/meshes/polyMesh/polyMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%import "src/OpenFOAM/db/objectRegistry.cxx"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
-%import "src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx"
+%import "Foam/src/OpenFOAM/meshes/primitiveMesh/primitiveMesh.cxx"
 
-%import "src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx"
+%import "Foam/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.cxx"
 
 
 //---------------------------------------------------------------------------
 #if FOAM_VERSION( >=, 010600 )
-  %import "src/OpenFOAM/memory/Xfer_pointField.cxx"
+  %import "Foam/src/OpenFOAM/memory/Xfer_pointField.cxx"
 
-  %import "src/OpenFOAM/memory/Xfer_faceList.cxx"
+  %import "Foam/src/OpenFOAM/memory/Xfer_faceList.cxx"
 
-  %import "src/OpenFOAM/memory/Xfer_cellList.cxx"
+  %import "Foam/src/OpenFOAM/memory/Xfer_cellList.cxx"
 #endif
 
 

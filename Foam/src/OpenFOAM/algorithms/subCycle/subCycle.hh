@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/Time/subCycleTime.hh"
+#include "Foam/src/OpenFOAM/db/Time/subCycleTime.hh"
 
 #include <subCycle.H>
 

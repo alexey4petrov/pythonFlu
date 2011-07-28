@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.pTraits_symmTensor";
 %{
-  #include "src/OpenFOAM/primitives/pTraits_symmTensor.hh"
+  #include "Foam/src/OpenFOAM/primitives/pTraits_symmTensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/pTraits.cxx"
+%import "Foam/src/OpenFOAM/primitives/pTraits.cxx"
 
-%import "src/OpenFOAM/primitives/symmTensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/symmTensor.cxx"
 
 %template ( pTraits_symmTensor ) Foam::pTraits<Foam::symmTensor>;
 

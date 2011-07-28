@@ -24,7 +24,7 @@
 #--------------------------------------------------------------------------------------
 # Process this file with autoconf to produce a configure script
 #--------------------------------------------------------------------------------------
-AC_INIT([pythonFlu Project], [8.1-Elvis], [alexey.petrov.nnov@gmail.com], [pythonflu])
+AC_INIT([pythonFlu Project], [8.2-hybrid], [alexey.petrov.nnov@gmail.com], [pythonflu])
 
 # AC_CONFIG_AUX_DIR defines an alternative directory where to find the auxiliary
 # scripts such as config.guess, install-sh, ...
@@ -34,76 +34,61 @@ AM_INIT_AUTOMAKE([tar-pax -Wno-portability])
 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_OS
+CONFFLU_CHECK_OS
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_BUILD_VERSION1
+CONFFLU_CHECK_PROJECT_VERSION1
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_PGP_KEY_ID
+CONFFLU_CHECK_PGP_KEY_ID
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_OPENFOAM
+CONFFLU_CHECK_OPENFOAM
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_SWIG
+CONFFLU_CHECK_SWIG
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_PYTHON
+CONFFLU_CHECK_PYTHON
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_FOAM2VTK
+CONFFLU_CHECK_DIFFUSIONFOAMLIB
 echo 
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_UNV2FOAM
-echo 
+CONFFLU_CHECK_BOOST_SHARED_PTR
+echo
 
 echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_DIFFUSIONFOAMLIB
-echo 
-
-echo "--------------------------------------------------------------------------------------"
-CONFFOAM_CHECK_BOOST_SHARED_PTR
-echo 
-
-
-echo "--------------------------------------------------------------------------------------"
-PYFOAM_CHECK_SINGLELIB
-echo 
-
-
-echo "--------------------------------------------------------------------------------------"
-PYFOAM_CHECK_EMBEDDEDCXX
-echo 
+PYTHONFLU_CHECK_CREATING_PACKAGE
+echo
 
 
 echo "---------------------------- mandatory products --------------------------------"
-CONFFOAM_PRINT_SUMMURY( "openfoam_ok swig_ok python_ok" )
+CONFFLU_PRINT_SUMMURY( "openfoam_ok swig_ok python_ok" )
 echo
 echo "---------------------------- optional products ---------------------------------"
-CONFFOAM_PRINT_SUMMURY( "diffusionfoamlib_ok foam2vtk_ok unv2foam_ok boost_shared_ptr_ok" )
+CONFFLU_PRINT_SUMMURY( "diffusionfoamlib_ok foam2vtk_ok unv2foam_ok boost_shared_ptr_ok" )
 echo
 echo "--------------------------------- features -------------------------------------"
-CONFFOAM_PRINT_SUMMURY( "singlelib embeddedcxx" )
+CONFFLU_PRINT_SUMMURY( "singlelib embeddedcxx" )
 echo
 echo "--------------------------------------------------------------------------------"
-CONFFOAM_CHECK_MANDATORY( "openfoam_ok swig_ok python_ok" )
+CONFFLU_CHECK_MANDATORY( "openfoam_ok swig_ok python_ok" )
 
 
 #--------------------------------------------------------------------------------------
 AC_OUTPUT( [ bashrc \
 	     Makefile \
-	     include.makefile \
-	     include.base.makefile \
-	     include.foam.makefile \
-	     foam.version.makefile \
+	     Foam/include.base.makefile \
+	     Foam/include.foam.makefile \
+	     Foam/foam.version.makefile \
 	     Foam/__init__.py \
 	     Foam/Makefile \
 	     Foam/OpenFOAM/Makefile \
@@ -122,12 +107,16 @@ AC_OUTPUT( [ bashrc \
 	     Foam/radiation/Makefile \
 	     Foam/incompressible/Makefile \
 	     Foam/compressible/Makefile \
-	     Foam/applications/utilities/postProcessing/graphics/Makefile \
-	     Foam/applications/utilities/mesh/conversion/Makefile \
 	     make-deb.sh \
 	     make-rpm.sh \
 	     deb-template/control \
+	     deb-template/Makefile \
+	     deb-template/postinst \
+	     deb-template/prerm \
+	     deb-template/postrm \
+	     deb-template/preinst \
 	     rpm-template/rpm.spec \
+	     rpm-template/Makefile \
 	     ChangeLog ],
 	     [ chmod 755 make-deb.sh make-rpm.sh ] )
 

@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( ==, 010500 )   
 #define autoPtr_incompressible_turbulenceModel_hh
@@ -34,9 +34,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-#include "src/turbulenceModels/incompressible/turbulenceModel.hh"
+#include "Foam/src/turbulenceModels/incompressible/turbulenceModel.hh"
 
 
 //----------------------------------------------------------------------------

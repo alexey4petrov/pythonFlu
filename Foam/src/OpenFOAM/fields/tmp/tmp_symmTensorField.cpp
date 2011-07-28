@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/tmp/tmp_symmTensorField.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/tmp_symmTensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%include "src/OpenFOAM/fields/Fields/symmTensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/Fields/symmTensorField.cpp"
 
 
 //----------------------------------------------------------------------------

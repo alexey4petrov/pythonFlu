@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.transportModels.incompressible.twoPhaseMixture";
 %{
-  #include "src/transportModels/incompressible/twoPhaseMixture.hh"
+  #include "Foam/src/transportModels/incompressible/twoPhaseMixture.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/transportModels/incompressible/transportModel.cxx"
+%import "Foam/src/transportModels/incompressible/transportModel.cxx"
 
-%import "src/transportModels/incompressible/viscosityModels/viscosityModel.cxx"
+%import "Foam/src/transportModels/incompressible/viscosityModels/viscosityModel.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 %include <twoPhaseMixture.H>
 

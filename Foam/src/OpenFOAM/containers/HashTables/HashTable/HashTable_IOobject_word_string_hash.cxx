@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable_IOobject_word_string_hash";
 %{
-   #include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_IOobject_word_string_hash.hh"
+   #include "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_IOobject_word_string_hash.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
+%import "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/wordList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/wordList.cxx"
 
-%import "src/OpenFOAM/db/IOobject.cxx"
+%import "Foam/src/OpenFOAM/db/IOobject.cxx"
 
 %ignore Foam::HashTable< Foam::IOobject*, Foam::word, Foam::string_hash >::HashTable;
 %ignore Foam::HashTable< Foam::IOobject*, Foam::word, Foam::string_hash >::find;

@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.uLabel";
 %{
-  #include "src/OpenFOAM/primitives/uLabel.hh"
+  #include "Foam/src/OpenFOAM/primitives/uLabel.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define uLabel_cxx
@@ -41,9 +41,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/uint.cxx"
+%import "Foam/src/OpenFOAM/primitives/uint.cxx"
 
-%import "src/OpenFOAM/primitives/ulong.cxx"
+%import "Foam/src/OpenFOAM/primitives/ulong.cxx"
 
 %include <uLabel.H>
 

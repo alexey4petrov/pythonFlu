@@ -26,19 +26,19 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.hh"
+#include "Foam/src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.hh"
 
-#include "src/OpenFOAM/primitives/strings/word.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 
-#include "src/OpenFOAM/primitives/Lists/tokenList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/tokenList.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
 
-#include "src/OpenFOAM/primitives/strings/string.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/string.hh"
 
-#include "src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
 
-#include "src/OpenFOAM/db/Switch.hh"
+#include "Foam/src/OpenFOAM/db/Switch.hh"
 
 #include <dictionary.H>
 

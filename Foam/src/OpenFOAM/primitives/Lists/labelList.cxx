@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.labelList";
 %{
-  #include "src/OpenFOAM/primitives/Lists/labelList.hh"
+  #include "Foam/src/OpenFOAM/primitives/Lists/labelList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_label.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_label.cxx"
 
 %include <labelList.H>
 

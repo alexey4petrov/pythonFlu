@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.List.List_sphericalTensor";
 %{
-   #include "src/OpenFOAM/containers/Lists/List/List_sphericalTensor.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/List/List_sphericalTensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List.cxx"
 
-%import "src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.cxx"
 
 %template( List_sphericalTensor ) Foam::List< Foam::sphericalTensor >; 
 

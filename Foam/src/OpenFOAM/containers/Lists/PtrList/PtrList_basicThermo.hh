@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/thermophysicalModels/basic/basicThermo.hh"
+#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
 
 
 //---------------------------------------------------------------------------

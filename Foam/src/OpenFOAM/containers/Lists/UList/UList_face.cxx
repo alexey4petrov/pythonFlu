@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_face";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_face.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/UList/UList_face.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%import "src/OpenFOAM/meshes/meshShapes/face/face.cxx"
+%import "Foam/src/OpenFOAM/meshes/meshShapes/face/face.cxx"
 
 %ignore Foam::UList< Foam::face >::writeEntry;
 

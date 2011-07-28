@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.meshTools.coordinateSystems.coordinateSystems";
 %{
-  #include "src/meshTools/coordinateSystems/coordinateSystems.hh"
+  #include "Foam/src/meshTools/coordinateSystems/coordinateSystems.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010500 )
 #define coordinateSystems_cxx
@@ -41,7 +41,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_coordinateSystem.cxx"
 
 #if FOAM_VERSION( <, 010600 )
   %ignore Foam::coordinateSystems::dataType;

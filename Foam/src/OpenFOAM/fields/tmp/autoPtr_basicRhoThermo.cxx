@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_basicRhoThermo"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define autoPtr_basicRhoThermo_cxx
@@ -41,9 +41,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.cpp"
+%include "Foam/src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.cpp"
 
 
 //---------------------------------------------------------------------------

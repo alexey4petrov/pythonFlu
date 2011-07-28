@@ -26,25 +26,25 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/polyMesh/polyMesh.hh"
+#include "Foam/src/OpenFOAM/meshes/polyMesh/polyMesh.hh"
 
-#include "src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.hh"
 
-#include "src/OpenFOAM/db/Time/Time.hh"
+#include "Foam/src/OpenFOAM/db/Time/Time.hh"
 
-#include "src/OpenFOAM/db/objectRegistry.hh"
+#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
 
-#include "src/OpenFOAM/meshes/lduMesh.hh"
+#include "Foam/src/OpenFOAM/meshes/lduMesh.hh"
 
-#include "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hh"
+#include "Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hh"
 
-#include "src/finiteVolume/fvMesh/fvBoundaryMesh.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvBoundaryMesh.hh"
 
-#include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.hh"
+#include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.hh"
 
-#include "src/finiteVolume/fields/volFields/volFields.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
 
 #include <fvMesh.H>
 #include <volMesh.H>

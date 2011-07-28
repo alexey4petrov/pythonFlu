@@ -1,0 +1,26 @@
+#!/bin/sh
+# prerm script for #PACKAGE#
+#
+# see: dh_installdeb(1)
+
+set -e
+
+install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`
+
+if [ "@WITH_SOLVERS@" = "yes" ]; then
+  packages_dir=/usr/local/share/pythonFlu/solvers
+  . ${packages_dir}/install_list.sh
+  install_list=`create_install_list`
+  while [ "x${install_list}" != "x" ]; do
+     package=`echo ${install_list} | grep -o -e "[A-Z,a-z]*$"`
+     easy_install -m $package
+     rm -rf ${install_path}/${package}.egg*
+     rm -f /usr/local/bin/${package}
+     install_list=`echo ${install_list} | sed -e "s/${package}$//" | sed -e "s/ $//"`
+  done
+fi
+
+easy_install -m Foam
+rm -rf ${install_path}/Foam-*.egg*
+
+exit 0

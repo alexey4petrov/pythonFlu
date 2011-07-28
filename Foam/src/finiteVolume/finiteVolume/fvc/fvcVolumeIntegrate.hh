@@ -26,19 +26,19 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volFields.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
 
-#include "src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedTypes.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedTypes.hh"
 
 #include <fvcVolumeIntegrate.H>
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp_volVectorField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_volVectorField.hh"
  
-#include "src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
 
 
 //---------------------------------------------------------------------------

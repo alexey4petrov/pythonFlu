@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/bool.hh"
+#include "Foam/src/OpenFOAM/primitives/bool.hh"
 
-#include "src/OpenFOAM/primitives/label.hh"
+#include "Foam/src/OpenFOAM/primitives/label.hh"
 
-#include "src/OpenFOAM/primitives/uLabel.hh"
+#include "Foam/src/OpenFOAM/primitives/uLabel.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
 #include <FixedList.H>
 

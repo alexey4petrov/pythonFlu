@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.polyMesh.polyBoundaryMesh";
 %{
-  #include "src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.hh"
+  #include "Foam/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.cxx"
 
-%import "src/OpenFOAM/db/regIOobject.cxx"
+%import "Foam/src/OpenFOAM/db/regIOobject.cxx"
 
 %include <polyBoundaryMesh.H>
 

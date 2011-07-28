@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.refCount";
 %{
-  #include "src/OpenFOAM/fields/tmp/refCount.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/refCount.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 %include <refCount.H>
 

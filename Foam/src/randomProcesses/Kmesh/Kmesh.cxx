@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.randomProcesses.Kmesh";
 %{
-  #include "src/randomProcesses/Kmesh/Kmesh.hh"
+  #include "Foam/src/randomProcesses/Kmesh/Kmesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %include <Kmesh.H>
 

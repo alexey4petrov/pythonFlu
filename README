@@ -159,16 +159,13 @@ See the INSTALL file for more information about building of "pythonFlu" package.
 Usage
 #--------------------------------------------------------------------------------------
 
-Before start to use "pythonFlu" it is necessary to source the generated "bashrc" file
-
 There are two main ways to use "pythonFlu", namely:
 
-  - Use predefined set of solvers in the same way as referenced OpenFOAM ones
-    ( ${PYTHONFLU_ROOT_DIR}/Foam/applications/solvers/incompressible/icoFoam.py, for example )
+  - Use existing pythonFlu based solvers in the same way as referenced OpenFOAM ones
+    ( See http://pythonflu.wikidot.com/install-solvers for more details )
 
   - Write your own solver ( or modify existing one ) through usage of corresponding 
     Python OpenFOAM API
-    (see, ${PYTHONFLU_ROOT_DIR}/Foam/applications/solvers/incompressible/icoFoam.py, for example ) 
 
 
 #--------------------------------------------------------------------------------------

@@ -27,12 +27,12 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/surfaceFields/surfaceTensorField.hh"
+  #include "Foam/src/finiteVolume/fields/surfaceFields/surfaceTensorField.hh"
 %}
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_surfaceTensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/autoPtr_surfaceTensorField.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_surfaceTensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceTensorField.cpp"
 
 
 //---------------------------------------------------------------------------

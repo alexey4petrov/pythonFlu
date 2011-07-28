@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fields.fvPatchFields.basic.calculated.calculatedFvPatchField"
 %{
-    #include "src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField.hh"
+    #include "Foam/src/finiteVolume/fields/fvPatchFields/basic/calculated/calculatedFvPatchField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <calculatedFvPatchField.H>
 

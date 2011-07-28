@@ -26,19 +26,19 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
-#include "src/OpenFOAM/primitives/label.hh"
+#include "Foam/src/OpenFOAM/primitives/label.hh"
 
-#include "src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
 
-#include "src/OpenFOAM/primitives/vector.hh"
+#include "Foam/src/OpenFOAM/primitives/vector.hh"
 
-#include "src/OpenFOAM/primitives/tensor.hh"
+#include "Foam/src/OpenFOAM/primitives/tensor.hh"
 
-#include "src/OpenFOAM/primitives/symmTensor.hh"
+#include "Foam/src/OpenFOAM/primitives/symmTensor.hh"
 
-#include "src/OpenFOAM/primitives/sphericalTensor.hh"
+#include "Foam/src/OpenFOAM/primitives/sphericalTensor.hh"
 
 #include <Random.H>
 

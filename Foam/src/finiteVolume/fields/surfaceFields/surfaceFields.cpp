@@ -27,16 +27,16 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+  #include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/surfaceFields/surfaceScalarField.cpp"
+%include "Foam/src/finiteVolume/fields/surfaceFields/surfaceScalarField.cpp"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceVectorField.cpp"
+%include "Foam/src/finiteVolume/fields/surfaceFields/surfaceVectorField.cpp"
 
-%include "src/finiteVolume/fields/surfaceFields/surfaceTensorField.cpp"
+%include "Foam/src/finiteVolume/fields/surfaceFields/surfaceTensorField.cpp"
 
 
 //---------------------------------------------------------------------------

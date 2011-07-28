@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.transportModels.incompressible.viscosityModels.viscosityModel";
 %{
-  #include "src/transportModels/incompressible/viscosityModels/viscosityModel.hh"
+  #include "Foam/src/transportModels/incompressible/viscosityModels/viscosityModel.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 %include <viscosityModel.H>
 

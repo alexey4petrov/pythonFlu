@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "ext/common/ext_tmp.hh"
+#include "Foam/ext/common/ext_tmp.hh"
 
-#include "src/finiteVolume/fields/volFields/volScalarField.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volScalarField.hh"
 
 
 //---------------------------------------------------------------------------

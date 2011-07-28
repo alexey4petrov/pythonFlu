@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_dynamicFvMesh"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_dynamicFvMesh.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_dynamicFvMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/dynamicFvMesh/dynamicFvMesh.cpp"
+%include "Foam/src/dynamicFvMesh/dynamicFvMesh.cpp"
 
 
 //---------------------------------------------------------------------------

@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicThermo";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicThermo.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::basicThermo >::PtrList;
 %ignore Foam::PtrList< Foam::basicThermo >::begin;

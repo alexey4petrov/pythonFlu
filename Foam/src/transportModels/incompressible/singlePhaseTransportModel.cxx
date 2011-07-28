@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.transportModels.incompressible.singlePhaseTransportModel";
 %{
-  #include "src/transportModels/incompressible/singlePhaseTransportModel.hh"
+  #include "Foam/src/transportModels/incompressible/singlePhaseTransportModel.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/transportModels/incompressible/transportModel.cxx"
+%import "Foam/src/transportModels/incompressible/transportModel.cxx"
 
-%import "src/transportModels/incompressible/viscosityModels/viscosityModel.cxx"
+%import "Foam/src/transportModels/incompressible/viscosityModels/viscosityModel.cxx"
 
 %ignore Foam::singlePhaseTransportModel::nu;
 

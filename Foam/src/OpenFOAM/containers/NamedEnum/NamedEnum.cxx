@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.NamedEnum.NamedEnum";
 %{
-    #include "src/OpenFOAM/containers/NamedEnum/NamedEnum.hh"
+    #include "Foam/src/OpenFOAM/containers/NamedEnum/NamedEnum.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable_int_word_string_hash.cxx"
+%import "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_int_word_string_hash.cxx"
 
 %include <NamedEnum.H>
 

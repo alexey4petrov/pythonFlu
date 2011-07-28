@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_UniformDimensionedVectorField";
 %{
-   #include "src/OpenFOAM/containers/Lists/PtrList/PtrList_UniformDimensionedVectorField.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_UniformDimensionedVectorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define PtrList_UniformDimensionedVectorField_cxx
@@ -41,11 +41,11 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.cxx"
+%import "Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.cxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_UniformDimensionedVectorField.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_UniformDimensionedVectorField.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
 
 %ignore Foam::PtrList< Foam::uniformDimensionedVectorField >::PtrList;
 %ignore Foam::PtrList< Foam::uniformDimensionedVectorField >::begin;

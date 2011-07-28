@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( <, 010600 )
 #define autoPtr_UniformDimensionedVectorField_hh
@@ -34,9 +34,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-#include "src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hh"
+#include "Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedVectorField.hh"
 
 
 //---------------------------------------------------------------------------

@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/Fields/Field.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/Field.hh"
 
-#include "src/OpenFOAM/primitives/sphericalTensor.hh"
+#include "Foam/src/OpenFOAM/primitives/sphericalTensor.hh"
 
-#include "src/OpenFOAM/primitives/Lists/sphericalTensorList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/sphericalTensorList.hh"
 
 #include <sphericalTensorField.H>
 

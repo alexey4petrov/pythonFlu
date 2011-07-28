@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.turbulenceModels.compressible.RAS.derivedFvPatchFields.turbulentTemperatureCoupledBaffle.regionProperties";
 %{
-  #include "src/turbulenceModels/compressible/RAS/derivedFvPatchFields/turbulentTemperatureCoupledBaffle/regionProperties.hh"
+  #include "Foam/src/turbulenceModels/compressible/RAS/derivedFvPatchFields/turbulentTemperatureCoupledBaffle/regionProperties.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010700 )
 #define regionProperties_cxx
@@ -41,9 +41,9 @@
 
 
 //----------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOdictionary.cxx"
+%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
-%import "src/OpenFOAM/db/Time/Time.cxx"
+%import "Foam/src/OpenFOAM/db/Time/Time.cxx"
 
 
 //-----------------------------------------------------------------------------

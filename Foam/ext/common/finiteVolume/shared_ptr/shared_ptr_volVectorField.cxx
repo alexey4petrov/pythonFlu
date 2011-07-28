@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "ext/common/shared_ptr.hxx"
+%include "Foam/ext/common/shared_ptr.hxx"
 
-%include "src/finiteVolume/fields/volFields/volVectorField.cxx"
+%include "Foam/src/finiteVolume/fields/volFields/volVectorField.cxx"
 
 SHAREDPTR_TYPEMAP( Foam::volVectorField );
 

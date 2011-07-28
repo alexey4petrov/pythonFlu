@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.meshShapes.cell.cell";
 %{
-  #include "src/OpenFOAM/meshes/meshShapes/cell/cell.hh"
+  #include "Foam/src/OpenFOAM/meshes/meshShapes/cell/cell.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/labelList.cxx"
 
-%import "src/OpenFOAM/meshes/meshShapes/face/oppositeFace.cxx"
+%import "Foam/src/OpenFOAM/meshes/meshShapes/face/oppositeFace.cxx"
 
 %include <cell.H>
 

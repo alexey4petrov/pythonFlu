@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvc.fvcSnGrad";
 %{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcSnGrad.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/fvc/fvcSnGrad.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 
 //---------------------------------------------------------------------------

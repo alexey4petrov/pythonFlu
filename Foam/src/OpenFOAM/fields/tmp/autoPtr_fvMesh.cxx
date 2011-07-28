@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_fvMesh"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_fvMesh.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_fvMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 AUTOPTR_TYPEMAP( Foam::fvMesh )
 

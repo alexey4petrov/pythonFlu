@@ -28,20 +28,20 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.meshShapes.face.faceList";
 %{
-   #include "src/OpenFOAM/meshes/meshShapes/face/faceList.hh"
+   #include "Foam/src/OpenFOAM/meshes/meshShapes/face/faceList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/meshes/meshShapes/face/faceListFwd.cxx"
+%import "Foam/src/OpenFOAM/meshes/meshShapes/face/faceListFwd.cxx"
 
-%import "src/OpenFOAM/containers/Lists/UList/UList_face.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList_face.cxx"
 
-%import "src/OpenFOAM/containers/Lists/List/List_face.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_face.cxx"
 
-%import "src/OpenFOAM/containers/Lists/SubList/SubList_face.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/SubList/SubList_face.cxx"
 
-%import "src/OpenFOAM/containers/Lists/List/List_TList_face.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_TList_face.cxx"
 
 
 //---------------------------------------------------------------------------

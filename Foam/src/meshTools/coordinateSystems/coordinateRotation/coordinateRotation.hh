@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/vector.hh"
+#include "Foam/src/OpenFOAM/primitives/vector.hh"
 
-#include "src/OpenFOAM/primitives/tensor.hh"
+#include "Foam/src/OpenFOAM/primitives/tensor.hh"
 
-#include "src/OpenFOAM/db/dictionary/dictionary.hh"
+#include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
 
 #include <coordinateRotation.H>
 

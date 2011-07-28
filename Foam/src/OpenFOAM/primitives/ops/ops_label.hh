@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/ops/ops.hh"
+#include "Foam/src/OpenFOAM/primitives/ops/ops.hh"
 
-#include "src/OpenFOAM/primitives/label.hh"
+#include "Foam/src/OpenFOAM/primitives/label.hh"
 
 
 //---------------------------------------------------------------------------

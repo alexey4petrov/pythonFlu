@@ -27,16 +27,16 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/volFields/volSymmTensorField.hh"
+  #include "Foam/src/finiteVolume/fields/volFields/volSymmTensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_symmTensor_fvPatchField_volMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_symmTensor_fvPatchField_volMesh.cpp"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_volSymmTensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/autoPtr_volSymmTensorField.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_volSymmTensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_volSymmTensorField.cpp"
 
 
 //---------------------------------------------------------------------------

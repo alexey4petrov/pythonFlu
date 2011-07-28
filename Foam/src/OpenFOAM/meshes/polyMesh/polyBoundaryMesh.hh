@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_polyPatch.hh"
 
-#include "src/OpenFOAM/db/regIOobject.hh"
+#include "Foam/src/OpenFOAM/db/regIOobject.hh"
 
 #include <polyBoundaryMesh.H>
 

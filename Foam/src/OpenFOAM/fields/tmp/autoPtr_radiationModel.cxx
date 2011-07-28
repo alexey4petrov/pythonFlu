@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_radiationModel"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_radiationModel.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_radiationModel.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010500 )
 #define autoPtr_radiationModel_cxx
@@ -41,9 +41,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/thermophysicalModels/radiation/radiationModel/radiationModel.cpp"
+%include "Foam/src/thermophysicalModels/radiation/radiationModel/radiationModel.cpp"
 
 
 //-----------------------------------------------------------------------------

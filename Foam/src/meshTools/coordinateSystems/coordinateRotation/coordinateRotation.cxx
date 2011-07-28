@@ -23,7 +23,7 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.meshTools.coordinateSystems.coordinateRotation.coordinateRotation";
 %{
-  #include "src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.hh"
+  #include "Foam/src/meshTools/coordinateSystems/coordinateRotation/coordinateRotation.hh"
 %}
 
 
@@ -33,11 +33,11 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/vector.cxx"
+%import "Foam/src/OpenFOAM/primitives/vector.cxx"
 
-%import "src/OpenFOAM/primitives/tensor.cxx"
+%import "Foam/src/OpenFOAM/primitives/tensor.cxx"
 
-%import "src/OpenFOAM/db/dictionary/dictionary.cxx"
+%import "Foam/src/OpenFOAM/db/dictionary/dictionary.cxx"
 
 %include <coordinateRotation.H>
 

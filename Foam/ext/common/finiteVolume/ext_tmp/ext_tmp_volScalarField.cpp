@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.ext.common.finiteVolume.ext_tmp.ext_tmp_volScalarField";
 %{
-  #include "ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hh"
+  #include "Foam/ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "ext/common/ext_tmp.hxx"
+%import "Foam/ext/common/ext_tmp.hxx"
 
-%include "src/finiteVolume/fields/volFields/volScalarField.cpp"
+%include "Foam/src/finiteVolume/fields/volFields/volScalarField.cpp"
 
 
 //---------------------------------------------------------------------------

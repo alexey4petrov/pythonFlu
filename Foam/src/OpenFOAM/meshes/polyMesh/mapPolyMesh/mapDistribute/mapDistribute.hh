@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( <, 010600 )
 #define mapDistribute_hh
@@ -34,13 +34,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/Lists/labelList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/labelList.hh"
 
-#include "src/OpenFOAM/primitives/Pair/labelPair.hh"
+#include "Foam/src/OpenFOAM/primitives/Pair/labelPair.hh"
 
-#include "src/OpenFOAM/db/IOstreams/Pstreams/Pstream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/Pstreams/Pstream.hh"
 
-#include "src/OpenFOAM/primitives/Lists/boolList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/boolList.hh"
 
 #include <mapDistribute.H>
 

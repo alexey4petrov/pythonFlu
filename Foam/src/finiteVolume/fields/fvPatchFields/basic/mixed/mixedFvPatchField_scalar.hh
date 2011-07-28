@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/director.hh"
+#include "Foam/src/director.hh"
 
-#include "src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField.hh"
+#include "Foam/src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField.hh"
 
-#include "src/OpenFOAM/db/objectRegistry.hh"
+#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
 
 namespace Foam
 {

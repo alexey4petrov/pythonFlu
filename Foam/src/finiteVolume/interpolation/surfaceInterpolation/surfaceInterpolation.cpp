@@ -28,19 +28,19 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolation";
 %{
-  #include "src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.hh"
+  #include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
-%import "src/finiteVolume/finiteVolume/fvSchemes.cxx"
-%import "src/finiteVolume/finiteVolume/fvSolution.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/finiteVolume/finiteVolume/fvSchemes.cxx"
+%import "Foam/src/finiteVolume/finiteVolume/fvSolution.cxx"
 
-%include "src/finiteVolume/fields/volFields/volFieldsFwd.hpp"
-%include "src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hpp"
+%include "Foam/src/finiteVolume/fields/volFields/volFieldsFwd.hpp"
+%include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFieldsFwd.hpp"
 
 %include <surfaceInterpolation.H>
 

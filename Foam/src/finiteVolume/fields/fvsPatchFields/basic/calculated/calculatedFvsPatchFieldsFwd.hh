@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
+#include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
 
-#include "src/finiteVolume/fvMesh/fvMeshes.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "src/OpenFOAM/fields/Fields/fieldTypes.hh"
+#include "Foam/src/OpenFOAM/fields/Fields/fieldTypes.hh"
 
 #include <calculatedFvsPatchField.H>
 

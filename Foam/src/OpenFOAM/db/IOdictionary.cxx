@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.IOdictionary";
 %{
-  #include "src/OpenFOAM/db/IOdictionary.hh"
+  #include "Foam/src/OpenFOAM/db/IOdictionary.hh"
 %}
 
-%import "src/director.hxx"
+%import "Foam/src/director.hxx"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/regIOobject.cxx"
+%import "Foam/src/OpenFOAM/db/regIOobject.cxx"
 
-%import "src/OpenFOAM/db/dictionary/dictionary.cxx"
+%import "Foam/src/OpenFOAM/db/dictionary/dictionary.cxx"
 
-%import "src/OpenFOAM/db/objectRegistry.cxx"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
 
 //---------------------------------------------------------------------------

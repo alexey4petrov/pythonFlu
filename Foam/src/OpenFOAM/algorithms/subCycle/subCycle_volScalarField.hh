@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/algorithms/subCycle/subCycle.hh"
+#include "Foam/src/OpenFOAM/algorithms/subCycle/subCycle.hh"
 
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
 
 
 //---------------------------------------------------------------------------

@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/transportModels/incompressible/transportModel.hh"
+#include "Foam/src/transportModels/incompressible/transportModel.hh"
 
-#include "src/transportModels/incompressible/viscosityModels/viscosityModel.hh"
+#include "Foam/src/transportModels/incompressible/viscosityModels/viscosityModel.hh"
 
 #include <singlePhaseTransportModel.H>
 

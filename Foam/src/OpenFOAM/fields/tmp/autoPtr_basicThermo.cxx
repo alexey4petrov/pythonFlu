@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_basicThermo"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/thermophysicalModels/basic/basicThermo.cpp"
+%include "Foam/src/thermophysicalModels/basic/basicThermo.cpp"
 
 
 //----------------------------------------------------------------------------

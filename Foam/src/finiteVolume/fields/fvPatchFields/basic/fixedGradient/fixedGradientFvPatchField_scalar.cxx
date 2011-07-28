@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedGradient.fixedGradientFvPatchField_scalar"
 %{
-    #include "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField_scalar.hh"
+    #include "Foam/src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField_scalar.hh"
 %}
 
-%import "src/director.hxx"
+%import "Foam/src/director.hxx"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField.cxx"
+%import "Foam/src/finiteVolume/fields/fvPatchFields/basic/fixedGradient/fixedGradientFvPatchField.cxx"
 
 %feature( "director" ) fixedGradientFvPatchScalarField;
 
@@ -64,7 +64,7 @@ DIRECTOR_PRE_EXTENDS( fixedGradientFvPatchScalarField );
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/objectRegistry.cxx"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
 %extend Foam::fixedGradientFvPatchField< Foam::scalar >
 {

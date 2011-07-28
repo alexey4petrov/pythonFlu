@@ -28,15 +28,15 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedValue.fixedValueFvPatchField_scalar";
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.hh"
+  #include "Foam/src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.hh"
 %}
 
-%import "src/director.hxx"
+%import "Foam/src/director.hxx"
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%import "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField.hxx"
+%import "Foam/src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField.hxx"
 
 %feature( "director" ) fixedValueFvPatchScalarField;
 
@@ -46,7 +46,7 @@ DIRECTOR_PRE_EXTENDS( fixedValueFvPatchScalarField );
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/objectRegistry.cxx"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
 %extend Foam::fixedValueFvPatchField< Foam::scalar >
 {
@@ -54,7 +54,7 @@ DIRECTOR_PRE_EXTENDS( fixedValueFvPatchScalarField );
   TYPEINFO_DIRECTOR_EXTENDS( fvPatchScalarField, fixedValueFvPatchScalarField );
 }
 
-%include "src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.hh"
+%include "Foam/src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.hh"
 
 
 //---------------------------------------------------------------------------

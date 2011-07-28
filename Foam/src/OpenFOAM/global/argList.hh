@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/Lists/stringList.hh"
+#include "Foam/src/OpenFOAM/primitives/Lists/stringList.hh"
 
-#include "src/OpenFOAM/primitives/strings/word.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 
-#include "src/OpenFOAM/primitives/strings/fileName.hh"
+#include "Foam/src/OpenFOAM/primitives/strings/fileName.hh"
 
-#include "src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.hh"
+#include "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.hh"
 
 #include <argList.H>
 

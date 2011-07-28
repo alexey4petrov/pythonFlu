@@ -28,21 +28,21 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOstreams.IOstreams.Ostream";
 %{
-   #include "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
+   #include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/primitives/strings/keyType.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/keyType.cxx"
 
-%import "src/OpenFOAM/db/IOstreams/token.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/token.cxx"
 
 // To avoid cyclic dependencies
-//%import "src/OpenFOAM/db/dictionary/dictionary.cxx"
+//%import "Foam/src/OpenFOAM/db/dictionary/dictionary.cxx"
 
 %rename( ext_print ) Foam::Ostream::print;
 

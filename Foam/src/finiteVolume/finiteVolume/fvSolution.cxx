@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvSolution";
 %{
-  #include "src/finiteVolume/finiteVolume/fvSolution.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/fvSolution.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/matrices/solution.cxx"
+%import "Foam/src/OpenFOAM/matrices/solution.cxx"
 
 %include <fvSolution.H>
 

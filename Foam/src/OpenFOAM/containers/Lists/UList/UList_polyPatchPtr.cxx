@@ -28,16 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_polyPatchPtr";
 %{
-  #include "src/OpenFOAM/containers/Lists/UList/UList_polyPatchPtr.hh"
+  #include "Foam/src/OpenFOAM/containers/Lists/UList/UList_polyPatchPtr.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
-
-%import "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_polyPatch.cxx"
 
 %ignore Foam::UList< Foam::polyPatch* >::writeEntry;
 

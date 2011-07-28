@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_symmTensorField"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_symmTensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 %template( autoPtr_symmTensorField ) Foam::autoPtr< Foam::Field< Foam::symmTensor > >;
 

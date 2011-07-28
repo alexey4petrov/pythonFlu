@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
+%import "Foam/src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
 
 %include <autoPtr.H>
 

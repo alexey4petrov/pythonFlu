@@ -27,32 +27,32 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
+  #include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/FieldFields/FieldField.cpp"
+%include "Foam/src/OpenFOAM/fields/FieldFields/FieldField.cpp"
 
-%import "src/OpenFOAM/fields/tmp/refCount.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/refCount.cxx"
 
-%import "src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_scalarField.cxx"
 
-%include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.cpp"
+%include "Foam/src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_scalar.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_scalar.cpp"
-
-
-//---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
-
-%include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.cpp"
-
-%include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_scalar.cpp"
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField.cpp"
+
+%include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_scalar_volMesh.cpp"
+
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.cpp"
+
+
+//---------------------------------------------------------------------------
+%include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
 
 %template ( TGeometricBoundaryField_scalar_fvPatchField_volMesh ) Foam::TGeometricBoundaryField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >;
 
@@ -77,7 +77,7 @@
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >::max;
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >::T;
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 
 //---------------------------------------------------------------------------

@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/containers/Lists/SubList/SubList_face.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/SubList/SubList_face.hh"
 
-#include "src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.hh"
+#include "Foam/src/OpenFOAM/meshes/PrimitivePatch/PrimitivePatch.hh"
 
 #include <primitivePatch.H>
 

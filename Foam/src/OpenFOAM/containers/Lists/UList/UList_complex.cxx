@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_complex";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_complex.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/UList/UList_complex.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%import "src/OpenFOAM/primitives/complex.cxx"
+%import "Foam/src/OpenFOAM/primitives/complex.cxx"
 
 ULIST_TYPEMAP( complex );
 

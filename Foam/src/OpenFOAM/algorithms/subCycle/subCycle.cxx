@@ -28,13 +28,13 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.algorithms.subCycle.subCycle"
 %{
-  #include "src/OpenFOAM/algorithms/subCycle/subCycle.hh"
+  #include "Foam/src/OpenFOAM/algorithms/subCycle/subCycle.hh"
 %}
-%include "src/OpenFOAM/algorithms/subCycle/subCycle.hh"
+%include "Foam/src/OpenFOAM/algorithms/subCycle/subCycle.hh"
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/Time/subCycleTime.cxx"
+%import "Foam/src/OpenFOAM/db/Time/subCycleTime.cxx"
 
 %include <subCycle.H>
 

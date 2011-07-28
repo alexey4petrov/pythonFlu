@@ -26,25 +26,25 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/FieldFields/FieldField.hh"
+#include "Foam/src/OpenFOAM/fields/FieldFields/FieldField.hh"
 
-#include "src/OpenFOAM/fields/tmp/refCount.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/refCount.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_vectorField.hh"
 
-#include "src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.hh"
+#include "Foam/src/OpenFOAM/fields/FieldFields/FieldField_fvPatchField_vector.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_vector.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_FieldField_fvPatchField_vector.hh"
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField.hh"
 
-#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_DimensionedField_vector_volMesh.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
 
 
 //---------------------------------------------------------------------------

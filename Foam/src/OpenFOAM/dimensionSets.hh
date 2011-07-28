@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/dimensionSet.hh"
+#include "Foam/src/OpenFOAM/dimensionSet.hh"
 
 #include <dimensionSets.H>
 

@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/cfdTools/general/porousMedia/porousZone.hh"
+#include "Foam/src/finiteVolume/cfdTools/general/porousMedia/porousZone.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hh"
 
-#include "src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.hh"
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.hh"
 
 
 //---------------------------------------------------------------------------

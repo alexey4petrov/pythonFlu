@@ -26,11 +26,11 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.hh"
 
-#include "src/OpenFOAM/fields/tmp/autoPtr_surfaceScalarField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr_surfaceScalarField.hh"
 
-#include "src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
 
 
 //---------------------------------------------------------------------------

@@ -28,26 +28,26 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.Time.Time";
 %{
-  #include "src/OpenFOAM/db/Time/Time.hh"
+  #include "Foam/src/OpenFOAM/db/Time/Time.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/objectRegistry.cxx"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
-%import "src/OpenFOAM/db/Time/clock.cxx"
+%import "Foam/src/OpenFOAM/db/Time/clock.cxx"
 
-%import "src/OpenFOAM/db/Time/cpuTime.cxx"
+%import "Foam/src/OpenFOAM/db/Time/cpuTime.cxx"
 
-%import "src/OpenFOAM/db/Time/TimePaths.cxx"
+%import "Foam/src/OpenFOAM/db/Time/TimePaths.cxx"
 
-%import "src/OpenFOAM/db/Time/TimeState.cxx"
+%import "Foam/src/OpenFOAM/db/Time/TimeState.cxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
-%import "src/OpenFOAM/primitives/strings/word.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
 
 %ignore Foam::Time::writeVersion;
 

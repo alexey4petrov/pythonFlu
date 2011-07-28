@@ -28,13 +28,13 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvc.fvcDdt";
 %{
-  #include "src/finiteVolume/finiteVolume/fvc/fvcDdt.hh"
+  #include "Foam/src/finiteVolume/finiteVolume/fvc/fvcDdt.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 
 //---------------------------------------------------------------------------
@@ -76,8 +76,8 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %inline FVC_DDT_TEMPLATE_FUNC( Foam::vector )
 
@@ -105,7 +105,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 
 //---------------------------------------------------------------------------

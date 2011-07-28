@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.FixedList.FixedList"
 %{
-   #include "src/OpenFOAM/containers/Lists/FixedList/FixedList.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/FixedList/FixedList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/bool.cxx"
+%import "Foam/src/OpenFOAM/primitives/bool.cxx"
 
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
-%import "src/OpenFOAM/primitives/uLabel.cxx"
+%import "Foam/src/OpenFOAM/primitives/uLabel.cxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
 %include <FixedList.H>
 

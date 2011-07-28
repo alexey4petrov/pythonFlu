@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.objectRegistry";
 %{
-   #include "src/OpenFOAM/db/objectRegistry.hh"
+   #include "Foam/src/OpenFOAM/db/objectRegistry.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.cxx"
+%import "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.cxx"
 
 %include <objectRegistry.H>
 

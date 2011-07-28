@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.Lists.tokenList";
 %{
-   #include "src/OpenFOAM/primitives/Lists/tokenList.hh"
+   #include "Foam/src/OpenFOAM/primitives/Lists/tokenList.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/List/List_token.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/List/List_token.cxx"
 
 %include <tokenList.H>
 

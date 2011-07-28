@@ -27,16 +27,16 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/volFields/volSphericalTensorField.hh"
+  #include "Foam/src/finiteVolume/fields/volFields/volSphericalTensorField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/GeometricFields/GeometricField_sphericalTensor_fvPatchField_volMesh.cpp"
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_sphericalTensor_fvPatchField_volMesh.cpp"
 
-%include "src/OpenFOAM/fields/tmp/autoPtr_volSphericalTensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/autoPtr_volSphericalTensorField.cpp"
 
-%include "src/OpenFOAM/fields/tmp/tmp_volSphericalTensorField.cpp"
+%include "Foam/src/OpenFOAM/fields/tmp/tmp_volSphericalTensorField.cpp"
 
 
 //---------------------------------------------------------------------------

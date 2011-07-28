@@ -26,17 +26,17 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/GeometricFields/GeometricField.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField.hh"
 
-#include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
+#include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField.hh"
 
-#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_tensor_surfaceMesh.hh"
+#include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_tensor_surfaceMesh.hh"
 
 
 //----------------------------------------------------------------------------
-#include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_tensor.hh"
+#include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField_tensor.hh"
 
-#include "src/OpenFOAM/dimensionedTypes/dimensionedTensor.hh"
+#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedTensor.hh"
 
 
 //---------------------------------------------------------------------------

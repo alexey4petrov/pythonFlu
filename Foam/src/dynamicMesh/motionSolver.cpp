@@ -28,14 +28,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/dynamicMesh/motionSolver.hh"
+  #include "Foam/src/dynamicMesh/motionSolver.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOdictionary.cxx"
+%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
-%import "src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
+%import "Foam/src/OpenFOAM/meshes/primitiveShapes/point/pointField.cxx"
 
 // #include "twoDPointCorrector.H"
 

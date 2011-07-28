@@ -27,12 +27,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.fields.fvPatchFields.fvPatchFieldMapper";
 %{
-  #include "src/finiteVolume/fields/fvPatchFields/fvPatchFieldMapper.hh"
+  #include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchFieldMapper.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/FieldMapper.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/FieldMapper.cxx"
 
 %include <fvPatchFieldMapper.H>
 

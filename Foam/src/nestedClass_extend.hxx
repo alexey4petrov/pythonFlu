@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/redirect2base.hxx"
+%import "Foam/src/redirect2base.hxx"
 
 //this trick allows to access to the base class's member's of the nested class
 //the nested class(the struct which redirect call to the nested class) 

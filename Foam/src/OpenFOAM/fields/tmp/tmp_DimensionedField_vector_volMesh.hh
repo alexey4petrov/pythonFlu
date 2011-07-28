@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/fields/tmp/tmp.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
 
-#include "src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.hh"
+#include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_vector_volMesh.hh"
 
 
 //---------------------------------------------------------------------------

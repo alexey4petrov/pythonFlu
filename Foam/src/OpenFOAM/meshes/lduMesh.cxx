@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.lduMesh"
 %{
-  #include "src/OpenFOAM/meshes/lduMesh.hh"
+  #include "Foam/src/OpenFOAM/meshes/lduMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
+%import "Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx"
 
-%import "src/OpenFOAM/db/objectRegistry.cxx"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
 %include <lduMesh.H>
 

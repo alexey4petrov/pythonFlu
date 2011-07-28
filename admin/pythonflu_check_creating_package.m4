@@ -22,21 +22,29 @@ dnl
 
 
 dnl --------------------------------------------------------------------------------
-AC_DEFUN([PYFOAM_CHECK_EMBEDDEDCXX],
+AC_DEFUN([PYTHONFLU_CHECK_CREATING_PACKAGE],
 [
-AC_MSG_CHECKING(whether to compile embedded C++ pyFoam libraries)
+  AC_CHECKING(packages which will be included to deb(rpm) package)
 
-AC_SUBST(COMPILE_EMBEDDED_CXX)
+  AC_SUBST(WITH_CONFFLU)
+ 
+  AC_SUBST(WITH_SOLVERS)
 
-AC_ARG_ENABLE( [embeddedcxx],
-               AC_HELP_STRING( [--disable-embeddedcxx ],
-		               [ enable compilation of embedded C++ libraries ( disabled by default ) ]),
-               [ COMPILE_EMBEDDED_CXX=${enableval} ],
-	       [ COMPILE_EMBEDDED_CXX="yes" ] )
+  AC_ARG_WITH( [confflu],
+             AC_HELP_STRING( [--with-confflu],
+                             [include confflu to deb(rpm) package] ),
+             [WITH_CONFFLU=yes],
+             [WITH_CONFFLU=no] )
 
-embeddedcxx=${COMPILE_EMBEDDED_CXX}
 
-AC_MSG_RESULT(${COMPILE_EMBEDDED_CXX})
+  AC_ARG_WITH( [solvers],
+             AC_HELP_STRING( [--with-solvers],
+                             [include solvers & models to deb(rpm) package] ),
+             [WITH_SOLVERS=yes],
+             [WITH_SOLVERS=no] )
+
+  AC_MSG_NOTICE( @WITH_CONFFLU@ == "${WITH_CONFFLU}" )
+  AC_MSG_NOTICE( @WITH_SOLVERS@ == "${WITH_SOLVERS}" )
 ])
 
 

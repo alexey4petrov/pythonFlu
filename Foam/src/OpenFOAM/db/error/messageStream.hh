@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/db/dictionary/dictionary.hh"
+#include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
 
-#include "src/OpenFOAM/db/IOstreams/Sstreams/OSstream.hh"
+#include "Foam/src/OpenFOAM/db/IOstreams/Sstreams/OSstream.hh"
 
 #include <messageStream.H>
 

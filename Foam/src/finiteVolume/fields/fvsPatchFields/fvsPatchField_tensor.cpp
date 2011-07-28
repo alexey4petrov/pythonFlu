@@ -27,14 +27,14 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField_tensor.hh"
+  #include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField_tensor.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
+%include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
 
 %template( fvsPatchField_tensor ) Foam::fvsPatchField< Foam::tensor >;
 

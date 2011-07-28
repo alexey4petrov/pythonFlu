@@ -22,12 +22,12 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/thermophysicalModels/radiation/radiationModel/radiationModel.hh"
+  #include "Foam/src/thermophysicalModels/radiation/radiationModel/radiationModel.hh"
 %}
 
 
 //--------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010500 )
 #define radiationModel_cpp
@@ -40,15 +40,15 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOdictionary.cxx"
+%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
-// %import "src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
+// %import "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%import "src/finiteVolume/fvMatrices/fvMatrices.cxx"
+%import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
-%import "src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
 
 // #include <blackBodyEmission.H>
 

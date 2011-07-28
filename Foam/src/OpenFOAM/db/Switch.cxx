@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.Switch";
 %{
-   #include "src/OpenFOAM/db/Switch.hh"
+   #include "Foam/src/OpenFOAM/db/Switch.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/bool.cxx"
+%import "Foam/src/OpenFOAM/primitives/bool.cxx"
 
-%import "src/OpenFOAM/primitives/strings/word.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
 
 %include <Switch.H>
 

@@ -22,23 +22,9 @@
 
 
 #--------------------------------------------------------------------------------------
-DESTDIR=
-PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python2.6/site-packages/
+pythonflu_root_dir:=../..
 
-BUILD_DIR=/usr/src/packages/BUILD
-libs_preparation_dir=$(BUILD_DIR)
-
-preparation:$(libs_preparation_dir)/Foam
-
-$(libs_preparation_dir)/Foam:
-	@ cp -rf Foam $(libs_preparation_dir)/
-
-install: $(PYTHON_FLU_LIB)/Foam
-
-$(PYTHON_FLU_LIB)/Foam: 
-	@ install -d $(PYTHON_FLU_LIB)
-	@ cp -rf $(libs_preparation_dir)/Foam $(PYTHON_FLU_LIB)/
+include $(pythonflu_root_dir)/include.makefile
 
 
-
-#--------------------------------------------------------------------------------------     	
+#--------------------------------------------------------------------------------------

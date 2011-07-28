@@ -28,18 +28,18 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.randomProcesses.processes.UOprocess";
 %{
-  #include "src/randomProcesses/processes/UOprocess.hh"
+  #include "Foam/src/randomProcesses/processes/UOprocess.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/primitives/Random.cxx"
+%import "Foam/src/OpenFOAM/primitives/Random.cxx"
 
-%import "src/OpenFOAM/db/dictionary/dictionary.cxx"
+%import "Foam/src/OpenFOAM/db/dictionary/dictionary.cxx"
 
-%import "src/OpenFOAM/fields/Fields/complexFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/complexFields.cxx"
 
 %include <UOprocess.H>
 

@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fvMatrices/fvScalarMatrix.hh"
+#include "Foam/src/finiteVolume/fvMatrices/fvScalarMatrix.hh"
 
-#include "src/finiteVolume/fvMatrices/fvVectorMatrix.hh"
+#include "Foam/src/finiteVolume/fvMatrices/fvVectorMatrix.hh"
 
 
 //---------------------------------------------------------------------------

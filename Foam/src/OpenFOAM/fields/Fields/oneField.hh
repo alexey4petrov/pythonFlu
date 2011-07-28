@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 
 //---------------------------------------------------------------------------
 #if FOAM_VERSION( <, 010500 )
 
-#include "src/OpenFOAM/primitives/pTraits.hh"
+#include "Foam/src/OpenFOAM/primitives/pTraits.hh"
 
 #include <OneField.H>
 
@@ -40,11 +40,11 @@
 #else
 //---------------------------------------------------------------------------
 
-#include "src/OpenFOAM/primitives/one.hh"
+#include "Foam/src/OpenFOAM/primitives/one.hh"
 
-#include "src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/OpenFOAM/primitives/scalar.hh"
 
-#include "src/OpenFOAM/primitives/label.hh"
+#include "Foam/src/OpenFOAM/primitives/label.hh"
 
 #include <oneField.H>
 

@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.Fields.primitiveFieldsFwd";
 %{
-  #include "src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hh"
+  #include "Foam/src/OpenFOAM/fields/Fields/primitiveFieldsFwd.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/Fields/fieldTypes.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/fieldTypes.cxx"
 
 %include <primitiveFieldsFwd.H>
 

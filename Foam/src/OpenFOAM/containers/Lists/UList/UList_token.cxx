@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_token";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_token.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/UList/UList_token.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
-%import "src/OpenFOAM/db/IOstreams/token.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/token.cxx"
 
 %ignore Foam::UList< Foam::token >::operator >;
 %ignore Foam::UList< Foam::token >::operator <;

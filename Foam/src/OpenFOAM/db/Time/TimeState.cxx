@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.Time.TimeState";
 %{
-  #include "src/OpenFOAM/db/Time/TimeState.hh"
+  #include "Foam/src/OpenFOAM/db/Time/TimeState.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 
 %include <TimeState.H>
 

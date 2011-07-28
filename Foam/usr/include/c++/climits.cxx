@@ -21,23 +21,15 @@
 
 
 //---------------------------------------------------------------------------
-// Keep on corresponding "director" includes at the top of SWIG defintion file
-
-%include "src/OpenFOAM/directors.hxx"
-
-%include "src/finiteVolume/directors.hxx"
+#ifndef climits_cxx
+#define climits_cxx
 
 
-//--------------------------------------------------------------------------------------
-%include "src/OpenFOAM/fields/tmp/autoPtr_fvMesh.cxx"
+//---------------------------------------------------------------------------
+%include "Foam/src/common.hxx"
 
-%include "create_fvMesh.H"
-
-%{
-    #include "unv2foam.H"
-%}
-
-%include "unv2foam.H"
+%include "Foam/usr/include/limits.cxx"
 
 
-//--------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+#endif

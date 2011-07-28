@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
+#include "Foam/src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
 
 #include <fvPatch.H>
 

@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.containers.Lists.UList.UList_bool";
 %{
-   #include "src/OpenFOAM/containers/Lists/UList/UList_bool.hh"
+   #include "Foam/src/OpenFOAM/containers/Lists/UList/UList_bool.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/containers/Lists/UList/UList.cxx"
+%import "Foam/src/OpenFOAM/containers/Lists/UList/UList.cxx"
 
 %template( UList_bool ) Foam::UList< bool >; 
 

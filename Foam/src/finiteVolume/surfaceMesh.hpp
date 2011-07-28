@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/OpenFOAM/meshes/GeoMesh_fvMesh.hpp"
+%include "Foam/src/OpenFOAM/meshes/GeoMesh_fvMesh.hpp"
 
 
 //---------------------------------------------------------------------------

@@ -28,22 +28,22 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.DimensionedFields.DimensionedField";
 %{
-  #include "src/OpenFOAM/fields/DimensionedFields/DimensionedField.hh"
+  #include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/regIOobject.cxx"
+%import "Foam/src/OpenFOAM/db/regIOobject.cxx"
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
-%import "src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
+%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedType.cxx"
 
 %include <DimensionedField.H>
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/tmp.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
 %define DIMENSIONED_FIELD_VIRTUAL_EXTENDS( Type, TMesh )
 {
@@ -96,7 +96,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/objectRegistry.cxx"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
 %define DIMENSIONED_FIELD_TEMPLATE_FUNC( Type, TMesh )
 
@@ -123,7 +123,7 @@
   ISINSTANCE_TEMPLATE_2_EXTEND( DimensionedField, Foam::Type, Foam::TMesh )
 }
 
-%import "src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::DimensionedField< Foam::Type, Foam::TMesh > OSTREAM_EXTENDS;
 

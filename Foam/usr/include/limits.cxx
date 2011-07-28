@@ -21,14 +21,14 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef climits_cxx
-#define climits_cxx
+#ifndef limits_cxx
+#define limits_cxx
 
 
 //---------------------------------------------------------------------------
-%include "src/common.hxx"
+%include "Foam/src/common.hxx"
 
-%include "usr/include/limits.cxx"
+%include <limits.h>
 
 
 //---------------------------------------------------------------------------

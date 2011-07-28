@@ -21,7 +21,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/common.hh"
+#include "Foam/src/common.hh"
 
 #if FOAM_VERSION( <, 010600 )
 #define uLabel_hh
@@ -34,9 +34,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/primitives/uint.hh"
+#include "Foam/src/OpenFOAM/primitives/uint.hh"
 
-#include "src/OpenFOAM/primitives/ulong.hh"
+#include "Foam/src/OpenFOAM/primitives/ulong.hh"
 
 #include <uLabel.H>
 

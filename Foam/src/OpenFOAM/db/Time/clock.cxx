@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.Time.clock";
 %{
-  #include "src/OpenFOAM/db/Time/clock.hh"
+  #include "Foam/src/OpenFOAM/db/Time/clock.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/strings/string.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/string.cxx"
 
 %typemap( out ) time_t
 {

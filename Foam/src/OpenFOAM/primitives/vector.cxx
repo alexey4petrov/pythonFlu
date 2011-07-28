@@ -28,16 +28,16 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.primitives.vector";
 %{
-  #include "src/OpenFOAM/primitives/vector.hh"
+  #include "Foam/src/OpenFOAM/primitives/vector.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "src/OpenFOAM/primitives/scalar.cxx"
+%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
-%import "src/OpenFOAM/primitives/direction.cxx"
+%import "Foam/src/OpenFOAM/primitives/direction.cxx"
 
 %include <VectorSpace.H>
 
@@ -75,7 +75,7 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/try_reverse_operator.hxx"
+%import "Foam/src/try_reverse_operator.hxx"
 
 %feature ("pythonprepend") Foam::Vector< Foam::scalar >::TRY_REVERSE_PYPREPEND( and )
 

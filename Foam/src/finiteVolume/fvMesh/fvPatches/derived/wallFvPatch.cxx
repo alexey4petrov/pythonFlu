@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "src.finiteVolume.fvMesh.fvPatches.derived.wallFvPatch"
 %{
-  #include "src/finiteVolume/fvMesh/fvPatches/derived/wallFvPatch.hh"
+  #include "Foam/src/finiteVolume/fvMesh/fvPatches/derived/wallFvPatch.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <wallFvPatch.H>
 

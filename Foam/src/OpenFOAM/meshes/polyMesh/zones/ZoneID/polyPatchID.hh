@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.hh"
+#include "Foam/src/OpenFOAM/meshes/polyMesh/polyBoundaryMesh.hh"
 
 #include <polyPatchID.H>
 

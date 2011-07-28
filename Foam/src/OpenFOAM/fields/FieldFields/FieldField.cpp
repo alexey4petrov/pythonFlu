@@ -27,18 +27,18 @@
 
 //---------------------------------------------------------------------------
 %{
-  #include "src/OpenFOAM/fields/FieldFields/FieldField.hh"
+  #include "Foam/src/OpenFOAM/fields/FieldFields/FieldField.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "src/redirect2base.hxx"
+%import "Foam/src/redirect2base.hxx"
 
 %include <FieldField.H>
 
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
 
 //---------------------------------------------------------------------------

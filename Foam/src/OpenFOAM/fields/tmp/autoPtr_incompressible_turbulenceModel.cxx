@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_turbulenceModel"
 %{
-  #include "src/OpenFOAM/fields/tmp/autoPtr_incompressible_turbulenceModel.hh"
+  #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_incompressible_turbulenceModel.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( ==, 010500 )   
 #define autoPtr_incompressible_turbulenceModel_cxx
@@ -41,9 +41,9 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/fields/tmp/autoPtr.cxx"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-%include "src/turbulenceModels/incompressible/turbulenceModel.cpp"
+%include "Foam/src/turbulenceModels/incompressible/turbulenceModel.cpp"
 
 
 //----------------------------------------------------------------------------

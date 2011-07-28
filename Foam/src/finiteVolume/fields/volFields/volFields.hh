@@ -26,15 +26,15 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/finiteVolume/fields/volFields/volScalarField.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volScalarField.hh"
 
-#include "src/finiteVolume/fields/volFields/volVectorField.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volVectorField.hh"
 
-#include "src/finiteVolume/fields/volFields/volTensorField.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volTensorField.hh"
 
-#include "src/finiteVolume/fields/volFields/volSymmTensorField.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volSymmTensorField.hh"
 
-#include "src/finiteVolume/fields/volFields/volSphericalTensorField.hh"
+#include "Foam/src/finiteVolume/fields/volFields/volSphericalTensorField.hh"
 
 
 //---------------------------------------------------------------------------

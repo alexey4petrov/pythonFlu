@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "src/director.hh"
+#include "Foam/src/director.hh"
 
-#include "src/OpenFOAM/db/regIOobject.hh"
+#include "Foam/src/OpenFOAM/db/regIOobject.hh"
 
-#include "src/OpenFOAM/db/dictionary/dictionary.hh"
+#include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
 
-#include "src/OpenFOAM/db/objectRegistry.hh"
+#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
 
 #include <IOdictionary.H>
 

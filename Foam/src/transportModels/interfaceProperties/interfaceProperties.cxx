@@ -28,14 +28,14 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.transportModels.interfaceProperties.interfaceProperties";
 %{
-  #include "src/transportModels/interfaceProperties/interfaceProperties.hh"
+  #include "Foam/src/transportModels/interfaceProperties/interfaceProperties.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/IOdictionary.cxx"
+%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
-%import "src/finiteVolume/fvMesh/fvMeshes.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %include <interfaceProperties.H>
 

@@ -26,9 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-%include "src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
+%include "Foam/src/finiteVolume/fields/fvsPatchFields/fvsPatchField.cpp"
 
-%include "src/finiteVolume/surfaceMesh.hpp"
+%include "Foam/src/finiteVolume/surfaceMesh.hpp"
 
 %include <surfaceFieldsFwd.H>
 

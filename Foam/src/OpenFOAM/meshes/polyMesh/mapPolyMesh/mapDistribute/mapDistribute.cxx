@@ -23,12 +23,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.meshes.polyMesh.mapPolyMesh.mapDistribute.mapDistribute"
 %{
-  #include "src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.hh"
+  #include "Foam/src/OpenFOAM/meshes/polyMesh/mapPolyMesh/mapDistribute/mapDistribute.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 #if FOAM_VERSION( <, 010600 )
 #define mapDistribute_cxx
@@ -41,15 +41,15 @@
 
 
 //---------------------------------------------------------------------------
-%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/labelList.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/scalarList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/scalarList.cxx"
 
-%import "src/OpenFOAM/primitives/Pair/labelPair.cxx"
+%import "Foam/src/OpenFOAM/primitives/Pair/labelPair.cxx"
 
-%import "src/OpenFOAM/db/IOstreams/Pstreams/Pstream.cxx"
+%import "Foam/src/OpenFOAM/db/IOstreams/Pstreams/Pstream.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/boolList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/boolList.cxx"
 
 %include <mapDistribute.H>
 

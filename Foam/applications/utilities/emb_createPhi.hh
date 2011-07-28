@@ -21,39 +21,12 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef polyPatch_cxx
-#define polyPatch_cxx
+#ifndef emb_createPhi_hh
+#define emb_createPhi_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.meshes.polyMesh.polyPatches.polyPatch"
-%{
-  #include "src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.hh"
-%}
-
-
-//---------------------------------------------------------------------------
-%import "src/OpenFOAM/db/typeInfo/typeInfo.hxx"
-
-%import "src/OpenFOAM/meshes/PrimitivePatch/p_rimitivePatch.cxx"
-
-%import "src/OpenFOAM/meshes/patchIdentifier.cxx"
-
-%import "src/OpenFOAM/fields/Fields/primitiveFields.cxx"
-
-%ignore Foam::polyPatch::faceCentres() const;
-%ignore Foam::polyPatch::faceAreas() const;
-%ignore Foam::polyPatch::faceCellCentres() const;
-
-%include <polyPatch.H>
-
-%extend Foam::polyPatch
-{
-  static Foam::polyPatch* nullPtr()
-  {
-    return (Foam::polyPatch*) NULL;
-  }
-}
+#include "src/finiteVolume/fvMesh/fvMeshes.hh"
 
 
 //---------------------------------------------------------------------------

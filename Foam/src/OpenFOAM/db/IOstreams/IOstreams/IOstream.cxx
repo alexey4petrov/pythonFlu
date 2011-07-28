@@ -28,12 +28,12 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOstreams.IOstreams.IOstream";
 %{
-   #include "src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hh"
+   #include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
 
 //---------------------------------------------------------------------------

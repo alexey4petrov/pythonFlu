@@ -28,27 +28,27 @@
 //---------------------------------------------------------------------------
 %module "Foam.src.OpenFOAM.db.IOstreams.Pstreams.Pstream";
 %{
-   #include "src/OpenFOAM/db/IOstreams/Pstreams/Pstream.hh"
+   #include "Foam/src/OpenFOAM/db/IOstreams/Pstreams/Pstream.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "src/common.hxx"
+%import "Foam/src/common.hxx"
 
-%import "src/OpenFOAM/db/typeInfo/className.hxx"
+%import "Foam/src/OpenFOAM/db/typeInfo/className.hxx"
 
-%import "src/OpenFOAM/primitives/label.cxx"
+%import "Foam/src/OpenFOAM/primitives/label.cxx"
 
-%import "src/OpenFOAM/primitives/Lists/labelList.cxx"
+%import "Foam/src/OpenFOAM/primitives/Lists/labelList.cxx"
 
 // #include <DynamicList.H>
 // #include <HashTable.H>
 
-%import "src/OpenFOAM/primitives/strings/string.cxx"
+%import "Foam/src/OpenFOAM/primitives/strings/string.cxx"
 
 // #include <NamedEnum.H>
 
-%import "src/OpenFOAM/primitives/ops/ops_label.cxx"
+%import "Foam/src/OpenFOAM/primitives/ops/ops_label.cxx"
 
 %include <Pstream.H>
 
