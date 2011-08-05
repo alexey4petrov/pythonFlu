@@ -38,7 +38,7 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	-I$(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/dynamicMesh/lnInclude \
 	-I$(WM_PROJECT_DIR)/src/randomProcesses/lnInclude \
-	
+
 
 ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
 	__CPPFLAGS__ += -I$(WM_PROJECT_DIR)/src/turbulenceModels/LES/LESdeltas/lnInclude
@@ -97,7 +97,14 @@ endif
 #--------------------------------------------------------------------------------------
 sources = $(filter-out emb_%.cxx,$(wildcard *.cxx))
 
-subdirs := $(shell find -maxdepth 1 -type d)
+ifneq (`uname -s`,Darwin)
+#use util from MacPorts
+FIND=gfind
+else
+FIND=find
+endif
+
+subdirs := $(shell $(FIND) -maxdepth 1 -type d)
 subdirs := $(subst ./,,$(subdirs))
 subdirs := $(subst CVS,,$(subdirs))
 subdirs := $(subst cvs,,$(subdirs))
@@ -190,11 +197,11 @@ include $(pythonflu_root_dir)/Foam/include.base.makefile
 
 #--------------------------------------------------------------------------------------
 %.o : %.cc
-	gcc $(__CXXFLAGS__) "-I./" "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
+	$(CC) $(__CXXFLAGS__) "-I./" "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
 
 _%.so : %.o
 	$(LINKLIBSO) $< $(__LDFLAGS__) -o $@; \
-	gcc $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<)
+	$(CC) $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<)
 
 
 #--------------------------------------------------------------------------------------
