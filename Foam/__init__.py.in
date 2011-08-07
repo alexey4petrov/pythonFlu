@@ -23,9 +23,20 @@
 
 #--------------------------------------------------------------------------------------
 # These lines will allow to share the type information between different dynamic librararies
-import sys, DLFCN
-sys.setdlopenflags( DLFCN.RTLD_NOW | DLFCN.RTLD_GLOBAL )
 
+import sys
+try:
+    import DLFCN
+except ImportError:
+    # MacOSX doesn't have DLFCN
+    import ctypes as DLFCN
+
+try:
+    sys.setdlopenflags( DLFCN.RTLD_NOW | DLFCN.RTLD_GLOBAL )
+except AttributeError:
+    # MacOSX doesn't have the RTLD_NOW attribute
+    sys.setdlopenflags( DLFCN.RTLD_GLOBAL )
+    
 
 #---------------------------------------------------------------------------
 def get_module_initializtion_command( the_module_name ) :
