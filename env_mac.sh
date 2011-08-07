@@ -23,7 +23,7 @@
 
 #--------------------------------------------------------------------------------------
 # Source the confFlu environment
-source ../confFlu_r1.2-hybrid_1/bashrc
+source ../confFlu.hg/bashrc
 
 #--------------------------------------------------------------------------------------
 # Source the OpenFOAM environment
