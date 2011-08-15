@@ -66,7 +66,14 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 #--------------------------------------------------------------------------------------
 sources = $(filter-out emb_%.cxx,$(wildcard *.cxx))
 
-subdirs := $(shell find -maxdepth 1 -type d)
+ifneq (`uname -s`,Darwin)
+  #use util from MacPorts
+  FIND=gfind
+else
+  FIND=find
+endif
+
+subdirs := $(shell $(FIND) -maxdepth 1 -type d)
 subdirs := $(subst ./,,$(subdirs))
 subdirs := $(subst CVS,,$(subdirs))
 subdirs := $(subst cvs,,$(subdirs))
@@ -159,13 +166,13 @@ include $(pythonflu_root_dir)/Foam/include.base.makefile
 
 #--------------------------------------------------------------------------------------
 %.o : %.cc
-	gcc @OPENFOAM_CXXFLAGS@  $(__CPPFLAGS__) "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
+	$(CC) @OPENFOAM_CXXFLAGS@  $(__CPPFLAGS__) "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
 
 __APP_FLAGS__ = $(__LDFLAGS__)
 
 _%.so : %.o
 	@OPENFOAM_LINKLIBSO@ $< $(__LDFLAGS__) -o $@
-	gcc $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<)
-		
+	$(CC) $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<)
+
 
 #--------------------------------------------------------------------------------------
