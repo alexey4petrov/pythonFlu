@@ -21,14 +21,38 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef runTimeSelectionTables_hxx
-#define runTimeSelectionTables_hxx
+#ifndef runTimeSelectionTables_hh
+#define runTimeSelectionTables_hh
 
 
 //---------------------------------------------------------------------------
-%include "Foam/src/common.hxx"
+#include "Foam/src/common.hh"
 
-%include "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hh"
+
+//---------------------------------------------------------------------------
+namespace Foam
+{
+  // A helper class which provides run-time support for the instationation 
+  // of the classes derived from this one
+  template< class TRegisteredToTable >        
+  struct TConstructorToTableCounter
+  {
+    static int counter()
+    {
+      return m_Counter;
+    }
+  protected:
+    TConstructorToTableCounter()
+    {
+      m_Counter += 1;
+    }
+  private:
+    static int m_Counter;
+  };
+    
+  template< class TRegisteredToTable > int 
+  TConstructorToTableCounter< TRegisteredToTable >::m_Counter = 0;
+}
 
 
 //---------------------------------------------------------------------------
