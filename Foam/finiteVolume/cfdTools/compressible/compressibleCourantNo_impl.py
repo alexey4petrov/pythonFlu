@@ -77,4 +77,27 @@ def compressibleCourantNo_010600_dev( mesh, phi, rho, runTime ):
 
 
 #---------------------------------------------------------------------------
+def compressibleCourantNo_020000( mesh, phi, rho, runTime ):
+    
+    from Foam.OpenFOAM import Time
+    from Foam.finiteVolume import fvMesh
+    from Foam.finiteVolume import surfaceScalarField
+
+    CoNum = 0.0;
+    meanCoNum = 0.0;
+
+    if mesh.nInternalFaces() :
+        from Foam import fvc
+        sumPhi = fvc.surfaceSum( phi.mag() )().internalField() / rho.internalField() 
+        
+        CoNum = 0.5 * ( sumPhi / mesh.V().field() ).gMax() * runTime.deltaTValue()
+        
+        meanCoNum = 0.5 * ( sumPhi.gSum() /mesh.V().field().gSum() ) * runTime.deltaTValue()
+        
+        pass
+        
+    from Foam.OpenFOAM import ext_Info, nl
+    ext_Info() << "Courant Number mean: " << meanCoNum << " max: " << CoNum << nl 
+
+    return CoNum, meanCoNum
 
