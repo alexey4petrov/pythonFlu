@@ -27,6 +27,7 @@ from Foam.src.finiteVolume.finiteVolume.fvc.fvcGrad import *
 from Foam.src.finiteVolume.finiteVolume.fvc.fvcDiv import *
 from Foam.src.finiteVolume.finiteVolume.fvc.fvcFlux import *
 from Foam.src.finiteVolume.finiteVolume.fvc.fvcVolumeIntegrate import *
+from Foam.src.finiteVolume.finiteVolume.fvc.fvcSurfaceIntegrate import *
 from Foam.src.finiteVolume.finiteVolume.fvc.fvcSnGrad import *
 from Foam.src.finiteVolume.finiteVolume.fvc.fvcSup import *
 from Foam.src.finiteVolume.finiteVolume.fvc.fvcReconstruct import *
@@ -50,6 +51,10 @@ grad = fvc_grad
 volumeIntegrate = fvc_volumeIntegrate
 
 domainIntegrate = fvc_domainIntegrate
+
+surfaceIntegrate = fvc_surfaceIntegrate
+
+surfaceSum = fvc_surfaceSum
 
 reconstruct = fvc_reconstruct
 
