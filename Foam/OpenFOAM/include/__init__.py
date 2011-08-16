@@ -66,12 +66,12 @@ def createMesh( runTime ):
     from Foam.OpenFOAM import Time
     from Foam.OpenFOAM import IOobject
     from Foam.OpenFOAM import fileName
-    from Foam.finiteVolume import fvMesh, pythonFluFvMesh
+    from Foam.finiteVolume import fvMesh
     
-    mesh = pythonFluFvMesh( IOobject( fvMesh.defaultRegion.fget(),
+    mesh = fvMesh( IOobject( fvMesh.defaultRegion.fget(),
                              fileName( runTime.timeName() ),
                              runTime,
-                             IOobject.MUST_READ ), runTime )
+                             IOobject.MUST_READ ) )
     
    
     return mesh
