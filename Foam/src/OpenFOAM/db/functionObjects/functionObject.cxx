@@ -26,10 +26,12 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.functionObjects.functionObject";
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.functionObjects.functionObject";
 %{
   #include "Foam/src/OpenFOAM/db/functionObjects/functionObject.hh"
 %}
+
+%import "Foam/src/director.hxx"
 
 
 //---------------------------------------------------------------------------
@@ -39,7 +41,37 @@
 
 %import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
 
+%feature( "director" ) functionObject;
+
 %include <functionObject.H>
+
+
+//---------------------------------------------------------------------------
+%include "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
+
+%include "Foam/src/OpenFOAM/db/functionObjects/functionObject_ConstructorToTable.hh"
+
+%feature( "director" ) functionObjectConstructorToTableBase;
+
+%define __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( counter )
+%template( functionObjectConstructorToTableBase_##counter ) Foam::functionObjectConstructorToTableBase< counter >;
+%enddef
+
+
+//---------------------------------------------------------------------------
+%define FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC()
+  %template( TConstructorToTableCounter_functionObject ) Foam::TConstructorToTableCounter< Foam::functionObject >;
+  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 0 );
+  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 1 );
+  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 2 );
+  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 3 );
+  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 4 );
+  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 5 );
+  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 6 );
+  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 7 );
+%enddef
+
+FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC();
 
 
 //---------------------------------------------------------------------------
