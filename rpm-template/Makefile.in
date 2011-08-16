@@ -23,7 +23,7 @@
 
 #--------------------------------------------------------------------------------------
 DESTDIR=
-PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python2.6/site-packages/
+PYTHON_FLU_LIB=$(DESTDIR)/usr/local/lib/python@PYTHON_VERSION@/site-packages/
 
 BUILD_DIR=/usr/src/packages/BUILD
 libs_preparation_dir=$(BUILD_DIR)

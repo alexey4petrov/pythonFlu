@@ -23,20 +23,12 @@
 
 #--------------------------------------------------------------------------------------
 # Source the confFlu environment
-source /usr/local/share/confFlu/bashrc
+source ../confFlu.hg/bashrc
 
 #--------------------------------------------------------------------------------------
-# Source OpenFOAM environment
-#source_openfoam /home/andrey/OpenFOAM/OpenFOAM-1.6/etc/bashrc
+# Source the OpenFOAM environment
+source_openfoam /Users/bgschaid/OpenFOAM/OpenFOAM-1.7.x/etc/bashrc
 
-source_openfoam /opt/openfoam171/etc/bashrc
-
-source_salome /home/andrey/salome_5.1.4/env_products.sh
-
-# Source VulaShaka utility components : foam2vtk, unv2foam, pyfoam and foam2med
-#source /home/andrey/hybridflu/unv2foam/bashrc 
-
-#source /home/andrey/hybridflu/foam2med/bashrc 
-
+export DYLD_INSERT_LIBRARIES=/opt/local/lib/gcc45/libstdc++.6.dylib
 
 #--------------------------------------------------------------------------------------

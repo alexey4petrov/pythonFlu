@@ -70,7 +70,7 @@ if [ "@WITH_SOLVERS@" = "yes" ]; then
   done
 fi
 easy_install -m Foam
-rm -rf ${install_path}/Foam-*.egg*
+rm -rf ${install_path}/Foam-*@PACKAGE_VERSION@*.egg*
 
 tmp_file="/tmp/tmp_easy-install.pth"
 cat ${install_path}/easy-install.pth | sed -e "s/.*Foam-.*-py@PYTHON_VERSION@.egg//" | sed '/./!d' > ${tmp_file}
