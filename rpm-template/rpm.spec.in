@@ -38,18 +38,8 @@ make install DESTDIR=$RPM_BUILD_ROOT
 %clean 
 rm -rf $RPM_BUILD_ROOT
 
-%pre
-
 %post
-
 python -c "from setuptools import setup; setup(name='Foam', version='@PACKAGE_VERSION@')" install
-
-if [ -d /usr/local/lib/python@PYTHON_VERSION@/site-packages/pythonFlu171-8.2-hybrid ]; then
-  tmp_file="/tmp/tmp_easy-install.pth"
-  cat /usr/local/lib/python@PYTHON_VERSION@/site-packages/easy-install.pth | sed -e "s/egg$/egg\n\.\/pythonFlu171-8.2-hybrid/" > ${tmp_file}
-  mv -f ${tmp_file} /usr/local/lib/python@PYTHON_VERSION@/site-packages/easy-install.pth
-  touch /usr/local/lib/python@PYTHON_VERSION@/site-packages/pythonFlu171-8.2-hybrid/easy-install.pth
-fi
 
 if [ "@WITH_SOLVERS@" = "yes" ]; then
   packages_dir=/usr/local/share/pythonFlu/solvers
@@ -62,6 +52,7 @@ fi
 
 
 %preun
+install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`
 
 if [ "@WITH_SOLVERS@" = "yes" ]; then
   packages_dir=/usr/local/share/pythonFlu/solvers
@@ -70,38 +61,28 @@ if [ "@WITH_SOLVERS@" = "yes" ]; then
   while [ "x${install_list}" != "x" ]; do
      package=`echo ${install_list} | grep -o -e "[A-Z,a-z]*$"`
      easy_install -m $package
-     rm -rf /usr/local/lib/python@PYTHON_VERSION@/site-packages/${package}.egg*
+     rm -rf ${install_path}/${package}.egg*
      rm -f /usr/local/bin/${package}
      tmp_file="/tmp/tmp_easy-install.pth"
-     cat /usr/local/lib/python@PYTHON_VERSION@/site-packages/easy-install.pth | sed -e "s/\/usr\/local\/share\/pythonFlu\/solvers\/${package}//" | sed '/./!d' > ${tmp_file}
-     mv -f ${tmp_file} /usr/local/lib/python@PYTHON_VERSION@/site-packages/easy-install.pth
+     cat ${install_path}/easy-install.pth | sed -e "s/\/usr\/local\/share\/pythonFlu\/solvers\/${package}//" | sed '/./!d' > ${tmp_file}
+     mv -f ${tmp_file} ${install_path}/easy-install.pth
      install_list=`echo ${install_list} | sed -e "s/${package}$//" | sed -e "s/ $//"`
   done
 fi
 easy_install -m Foam
-rm -rf /usr/local/lib/python@PYTHON_VERSION@/site-packages/Foam-*.egg
+rm -rf ${install_path}/Foam-*@PACKAGE_VERSION@*.egg*
 
 tmp_file="/tmp/tmp_easy-install.pth"
-cat /usr/local/lib/python@PYTHON_VERSION@/site-packages/easy-install.pth | sed -e "s/.*Foam-.*-py@PYTHON_VERSION@.egg//" | sed '/./!d' > ${tmp_file}
-mv -f ${tmp_file} /usr/local/lib/python@PYTHON_VERSION@/site-packages/easy-install.pth
-
-if [ -d /usr/local/lib/python@PYTHON_VERSION@/site-packages/pythonFlu171-8.2-hybrid ]; then
-  tmp_file="/tmp/tmp_easy-install.pth"
-  cat /usr/local/lib/python@PYTHON_VERSION@/site-packages/easy-install.pth | sed -e "s/\.\/pythonFlu171-8.2-hybrid//" | sed '/./!d' > ${tmp_file}
-  mv -f ${tmp_file} /usr/local/lib/python@PYTHON_VERSION@/site-packages/easy-install.pth
-fi
+cat ${install_path}/easy-install.pth | sed -e "s/.*Foam-.*-py@PYTHON_VERSION@.egg//" | sed '/./!d' > ${tmp_file}
+mv -f ${tmp_file} ${install_path}/easy-install.pth
 
 
 %postun
 case ${1} in
    # remove package
    0)
-     rm -rf /usr/local/lib/python@PYTHON_VERSION@/site-packages/Foam
-     
-     if [ -d /usr/local/lib/python@PYTHON_VERSION@/site-packages/pythonFlu171-8.2-hybrid ]; then
-       rm -rf /usr/local/lib/python@PYTHON_VERSION@/site-packages/pythonFlu171-8.2-hybrid
-     fi
-     
+     install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`
+     rm -rf ${install_path}/Foam
      if [ "@WITH_SOLVERS@" = "yes" ]; then
        rm -rf /usr/local/share/pythonFlu
      fi

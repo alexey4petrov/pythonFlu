@@ -129,12 +129,12 @@ m4dir="/usr/local/share/pythonFlu"
 files_list="files.txt"
 ( cd ${package_folder} && touch ${files_list} )
 
-lib_files=`( cd ${build_folder} && find pythonFlu171-8.2-hybrid -type f )`
+lib_files=`( cd ${build_folder} && find Foam -type f )`
 for file in ${lib_files}; do
    echo "${pythonflu_lib}/${file}" >> ${package_folder}/${files_list}
 done
 
-links=`( cd ${build_folder} && find pythonFlu171-8.2-hybrid -type l )`
+links=`( cd ${build_folder} && find Foam -type l )`
 for link in ${links}; do
    echo "${pythonflu_lib}/${link}" >> ${package_folder}/${files_list}
 done
