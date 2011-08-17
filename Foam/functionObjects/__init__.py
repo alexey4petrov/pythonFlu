@@ -42,31 +42,31 @@ class functionObject_pythonFlu( functionObject ):
         from Foam.OpenFOAM import word
         return word( 'pythonFlu' )
 
-    def __init__( self, *args ) :
+    def __init__( self, the_name, the_time, the_dict ) :
         print "init"
-        a_name = args[ 0 ]
-        self._time = args[ 1 ]
-        self._dict = args[ 2 ]
+        self._time = the_time
+        self._dict = the_dict
         
         self._startCode = ''
         self._writeCode = ''
         self._executeCode = ''
         self._executionFrame = {}
 
-        runTime = self._time
-        self._executionFrame.update( locals() )
-
-        functionObject.__init__( self, a_name )
+        functionObject.__init__( self, the_name )
+        self.read( self._dict )
         pass
 
     def start( self ) : 
-        print "start"
+        self._executionFrame.update( { 'runTime' : self._time } )
+        print "start", self._startCode, self._executionFrame
         exec self._startCode in self._executionFrame
+        # print self._executionFrame
         return True
 
     def execute( self ): 
-        print "execute"
+        print "execute", self._executeCode
         exec self._executeCode in self._executionFrame
+
         return True
 
     def write( self ) :
@@ -115,9 +115,7 @@ class functionObjectConstructorToTable_pythonFlu( getfunctionObjectConstructorTo
         aBaseClass = self.__class__.__bases__[ 0 ]
         aBaseClass.__init__( self )
         
-        # aBaseClass.init( self, self, functionObject_pythonFlu.type() )
-        from Foam.OpenFOAM import word
-        aBaseClass.init( self, self, word( 'pythonFlu' ) )
+        aBaseClass.init( self, self, functionObject_pythonFlu.type() )
         pass
     
     def _new_( self, the_name, the_time, the_dict ):
@@ -125,8 +123,10 @@ class functionObjectConstructorToTable_pythonFlu( getfunctionObjectConstructorTo
         obj = functionObject_pythonFlu( the_name, the_time, the_dict )
 
         from Foam.OpenFOAM import autoPtr_functionObject
-        print autoPtr_functionObject( obj )
-        return autoPtr_functionObject( obj )
+        print "new 1 -", obj.name(), obj
+        ptr = autoPtr_functionObject( obj )
+        print "new 2 -", ptr.name(), ptr
+        return ptr
             
     pass
 
