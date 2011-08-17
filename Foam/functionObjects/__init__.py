@@ -43,7 +43,6 @@ class functionObject_pythonFlu( functionObject ):
         return word( 'pythonFlu' )
 
     def __init__( self, the_name, the_time, the_dict ) :
-        print "init"
         self._time = the_time
         self._dict = the_dict
         
@@ -58,33 +57,38 @@ class functionObject_pythonFlu( functionObject ):
 
     def start( self ) : 
         self._executionFrame.update( { 'runTime' : self._time } )
-        print "start", self._startCode, self._executionFrame
+        # print "startCode = \"%s\" in %s" % ( self._startCode, self._executionFrame )
         exec self._startCode in self._executionFrame
-        # print self._executionFrame
+
         return True
 
     def execute( self ): 
-        print "execute", self._executeCode
+        # print "executeCode = \"%s\"" % ( self._executeCode )
         exec self._executeCode in self._executionFrame
 
         return True
 
     def write( self ) :
+        # print "writeCode = \"%s\"" % ( self._writeCode )
         exec self._writeCode in self._executionFrame
 
         return True
 
     def read( self, the_dict ): 
-        print "read"
-        self._startCode = self._readCode( the_dict, "start" )
-        self._writeCode = self._readCode( the_dict, "write" )
-        self._executeCode = self._readCode( the_dict, "execute" )
+        self._startCode = self._readCode( the_dict, 'start' )
+        self._writeCode = self._readCode( the_dict, 'write' )
+        self._executeCode = self._readCode( the_dict, 'execute' )
 
         return True
 
     def _readCode( self, the_dict, the_prefix ) :
-        an_is_string = the_dict.found( the_prefix + "Code" )
-        an_is_file = the_dict.found( the_prefix + "File" )
+        from Foam.OpenFOAM import word
+        a_code_prefix = word( the_prefix + 'Code' )
+        an_is_string = the_dict.found( a_code_prefix )
+
+        from Foam.OpenFOAM import word
+        a_file_prefix = word( the_prefix + 'File' )
+        an_is_file = the_dict.found( a_file_prefix )
 
         if an_is_string and an_is_file :
             raise AssertionError()
@@ -94,9 +98,11 @@ class functionObject_pythonFlu( functionObject ):
         
         a_string = None
         if an_is_string :
-            a_string = the_dict.lookup( the_prefix + "Code" )
+            from Foam.src.OpenFOAM.primitives.strings.string import string
+            a_string = str( string( the_dict.lookup( a_code_prefix ) ) )
         else:
-            a_filename = the_dict.lookup( the_prefix + "Code" )
+            from Foam.src.OpenFOAM.primitives.strings.string import string
+            a_filename = str( string( the_dict.lookup( a_file_prefix ) ) )
             import os.path
             if not os.path.isfile( a_filename ) :
                 raise AssertionError()
@@ -119,14 +125,10 @@ class functionObjectConstructorToTable_pythonFlu( getfunctionObjectConstructorTo
         pass
     
     def _new_( self, the_name, the_time, the_dict ):
-        print "new"
         obj = functionObject_pythonFlu( the_name, the_time, the_dict )
 
         from Foam.OpenFOAM import autoPtr_functionObject
-        print "new 1 -", obj.name(), obj
-        ptr = autoPtr_functionObject( obj )
-        print "new 2 -", ptr.name(), ptr
-        return ptr
+        return autoPtr_functionObject( obj )
             
     pass
 

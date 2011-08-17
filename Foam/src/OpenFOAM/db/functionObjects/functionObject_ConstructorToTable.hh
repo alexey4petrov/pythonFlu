@@ -44,10 +44,7 @@ namespace Foam
     static autoPtr< functionObject > 
     New( const word& name, const Time& t, const dictionary& dict )
     { 
-      std::cout << "New\n";
-      autoPtr< functionObject > ptr = engine->_new_( name, t, dict ); 
-      std::cout << "New - " << ptr.ptr() << "\n";
-      return engine->_new_( name, t, dict ); 
+      return engine->_new_( name, t, dict );
     }
     
     virtual autoPtr< functionObject > 
