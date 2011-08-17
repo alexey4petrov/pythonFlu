@@ -53,7 +53,7 @@ namespace Foam
     {}
     
     ext_tmp( const ext_tmp< T >& at )
-      : engine( new tmp< T >( at.engine ) )
+      : engine( new tmp< T >( at.engine() ) )
     {}
     
     void operator=( T* tPtr )
@@ -73,7 +73,7 @@ namespace Foam
     
     void operator=( const ext_tmp< T >& at )
     {
-      this->engine.reset( new tmp< T >( at.engine ) );
+      this->engine.reset( new tmp< T >( at.engine() ) );
     }
     
     T* operator->()
@@ -100,6 +100,12 @@ namespace Foam
     {
       return this->engine->operator () ();
     }
+    
+    bool empty() const
+    {
+      return this->engine->empty();
+    }
+    
   };
   
   
