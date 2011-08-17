@@ -30,6 +30,8 @@
 
 %include "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hh"
 
+%include <runTimeSelectionTables.H>
+
 
 //---------------------------------------------------------------------------
 #endif

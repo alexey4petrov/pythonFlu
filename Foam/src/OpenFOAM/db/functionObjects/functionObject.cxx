@@ -43,8 +43,6 @@
 
 %feature( "director" ) functionObject;
 
-%include <functionObject.H>
-
 
 //---------------------------------------------------------------------------
 %include "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
@@ -62,16 +60,7 @@
 %define FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC()
   %template( TConstructorToTableCounter_functionObject ) Foam::TConstructorToTableCounter< Foam::functionObject >;
   __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 0 );
-//  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 1 );
-//  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 2 );
-//  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 3 );
-//  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 4 );
-//  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 5 );
-//  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 6 );
-//  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 7 );
 %enddef
-
-FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC();
 
 
 //---------------------------------------------------------------------------
@@ -79,9 +68,11 @@ FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC();
 
 AUTOPTR_TYPEMAP( Foam::functionObject );
 
-// %ignore Foam::autoPtr< Foam::IOdictionary >::operator->;
-
 %template( autoPtr_functionObject ) Foam::autoPtr< Foam::functionObject >;
+
+%include <functionObject.H>
+
+FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC();
 
 
 //---------------------------------------------------------------------------

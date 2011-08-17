@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include <Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hh>
+#include "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hh"
 
 #include <functionObject.H>
 
@@ -45,6 +45,8 @@ namespace Foam
     New( const word& name, const Time& t, const dictionary& dict )
     { 
       std::cout << "New\n";
+      autoPtr< functionObject > ptr = engine->_new_( name, t, dict ); 
+      std::cout << "New - " << ptr.ptr() << "\n";
       return engine->_new_( name, t, dict ); 
     }
     

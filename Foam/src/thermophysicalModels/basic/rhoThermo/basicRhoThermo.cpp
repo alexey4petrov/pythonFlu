@@ -42,8 +42,6 @@
 //---------------------------------------------------------------------------
 %import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
 
-// %import "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
-
 %ignore Foam::basicRhoThermo::rho() const;
 
 %include <basicRhoThermo.H>

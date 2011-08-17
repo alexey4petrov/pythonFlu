@@ -30,6 +30,7 @@ from Foam.src.OpenFOAM.db.IOstreams.IOstreams.Ostream import *
 from Foam.src.OpenFOAM.db.Time.Time import *
 from Foam.src.OpenFOAM.db.IOobject import *
 from Foam.src.OpenFOAM.db.IOobjectList import *
+from Foam.src.OpenFOAM.db.functionObjects.functionObject import *
 from Foam.src.OpenFOAM.primitives.strings.fileName import *
 
 from Foam.src.OpenFOAM.db.IOdictionary import *
