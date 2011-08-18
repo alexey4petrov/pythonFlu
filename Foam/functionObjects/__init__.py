@@ -47,37 +47,38 @@ class functionObject_pythonFlu( functionObject ):
         self._dict = the_dict
         
         self._startCode = ''
-        self._writeCode = ''
         self._executeCode = ''
+        self._endCode = ''
+
         self._executionFrame = {}
 
         functionObject.__init__( self, the_name )
-        self.read( self._dict )
+        self.read( the_dict )
         pass
 
     def start( self ) : 
-        self._executionFrame.update( { 'runTime' : self._time } )
-        # print "startCode = \"%s\" in %s" % ( self._startCode, self._executionFrame )
+        self._executionFrame.update( { 'runTime' : self._time, 'self' : self } )
+        # print "start = \"%s\" in %s" % ( self._startCode, self._executionFrame )
         exec self._startCode in self._executionFrame
 
         return True
 
     def execute( self ): 
-        # print "executeCode = \"%s\"" % ( self._executeCode )
+        # print "execute = \"%s\"" % ( self._executeCode )
         exec self._executeCode in self._executionFrame
 
         return True
 
-    def write( self ) :
-        # print "writeCode = \"%s\"" % ( self._writeCode )
-        exec self._writeCode in self._executionFrame
+    def end( self ): 
+        # print "end = \"%s\"" % ( self._endCode )
+        exec self._endCode in self._executionFrame
 
         return True
 
     def read( self, the_dict ): 
         self._startCode = self._readCode( the_dict, 'start' )
-        self._writeCode = self._readCode( the_dict, 'write' )
         self._executeCode = self._readCode( the_dict, 'execute' )
+        self._endCode = self._readCode( the_dict, 'end' )
 
         return True
 
@@ -93,14 +94,11 @@ class functionObject_pythonFlu( functionObject ):
         if an_is_string and an_is_file :
             raise AssertionError()
 
-        if not an_is_string and not an_is_file :
-            raise AssertionError()
-        
-        a_string = None
+        a_string = ''
         if an_is_string :
             from Foam.src.OpenFOAM.primitives.strings.string import string
             a_string = str( string( the_dict.lookup( a_code_prefix ) ) )
-        else:
+        elif an_is_file :
             from Foam.src.OpenFOAM.primitives.strings.string import string
             a_filename = str( string( the_dict.lookup( a_file_prefix ) ) )
             import os.path
