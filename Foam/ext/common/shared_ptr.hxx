@@ -28,6 +28,8 @@
 //---------------------------------------------------------------------------
 %include "Foam/src/common.hxx"
 
+%import "Foam/src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
+
 %{
     #include "boost/shared_ptr.hpp"
 %}
@@ -56,6 +58,11 @@ namespace boost
             bool __nonzero__() const
             {
                 return self->get() != 0;
+            }
+            
+            bool valid() const
+            {
+              return self->get() != 0;
             }
         }
     };
