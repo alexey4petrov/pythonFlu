@@ -56,15 +56,17 @@
 
 %import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-// #include "runTimeSelectionTables.H"
-
 %import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
 
 //----------------------------------------------------------------------------
 %rename( incompressible_LESModel ) Foam::incompressible::LESModel;
 
+#if FOAM_NOT_BRANCH( __FREEFOAM__ )
 %include <incompressible/LESModel.H>
+#else
+%include <incompressibleLESModels/LESModel.H>
+#endif
 
 
 //---------------------------------------------------------------------------

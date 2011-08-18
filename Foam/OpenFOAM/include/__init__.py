@@ -36,18 +36,11 @@ def setRootCase( argc, argv ) :
 
 #---------------------------------------------------------------------------
 def createTime( args ) :
-    
-    from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() << "Create time\n" << nl
-    
-    from Foam.OpenFOAM import Time
-    from Foam.OpenFOAM import argList
-    
-    runTime = Time( Time.controlDictName.fget(),
-                    args.rootPath(),
-                    args.caseName() )
-
-    return runTime
+    from Foam import get_proper_function
+    fun = get_proper_function( "Foam.OpenFOAM.include.createTime_impl",
+                               "createTime" )
+    return fun( args )
+     
                     
 
 #---------------------------------------------------------------------------
@@ -80,6 +73,7 @@ def createMesh( runTime ):
                              runTime,
                              IOobject.MUST_READ ) )
     
+   
     return mesh
 
 

@@ -21,43 +21,25 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef common_hh
-#define common_hh
+#ifndef shared_ptr_objectRegistry_cxx
+#define shared_ptr_objectRegistry_cxx
 
 
 //---------------------------------------------------------------------------
-namespace Foam
-{}
-  
-using namespace Foam;
+%module "Foam.ext.common.OpenFOAM.shared_ptr.shared_ptr_objectRegistry"
+%{
+  #include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_objectRegistry.hh"
+%}
 
-// To check "undefined symbols" we additionally compile a standlone executable
-int main() 
-{
-  return 0;
-}  
-  
-// To process error within "director" classes
-#include <error.H>
-  
-// To simulate Info functionality with Python "__str__" method
-#include <OStringStream.H>
-#include <stdio.h>
+%include "Foam/ext/common/shared_ptr.hxx"
 
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
-//---------------------------------------------------------------------------
-#define FOAM_VERSION( CMP, VERSION ) \
-  __FOAM_VERSION__ CMP VERSION 
+SHAREDPTR_TYPEMAP( Foam::objectRegistry );
 
-#define FOAM_BRANCH_VERSION( NAME, CMP, VERSION ) \
-  ( __FOAM_VERSION__ CMP VERSION  && defined( __FOAM_BRANCH__ ) && __FOAM_BRANCH__ == NAME )
+%ignore boost::shared_ptr< Foam::objectRegistry >::operator->;
 
-#define FOAM_REF_VERSION( CMP, VERSION )\
-  ( __FOAM_VERSION__ CMP VERSION && !defined( __FOAM_BRANCH__ ) )
-
-
-//---------------------------------------------------------------------------
-#include "Foam/src/isinstance.hh"
+%template( shared_ptr_objectRegistry ) boost::shared_ptr< Foam::objectRegistry >;
 
 
 //---------------------------------------------------------------------------

@@ -17,69 +17,40 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Andrey Simurzin
 
 
 //---------------------------------------------------------------------------
-#ifndef common_hxx
-#define common_hxx
+#include "Foam/src/common.hh"
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "Foam/src/common.hh"
-%}
+#if FOAM_VERSION( <, 020000 )   
+#define UPstream_hh
+#endif
 
 
 //---------------------------------------------------------------------------
-%define FOAM_VERSION( CMP, VERSION ) __FOAM_VERSION__ CMP VERSION %enddef
-
-//--------------
-%define FOAM_BRANCH_VERSION( NAME, CMP, VERSION ) ( __FOAM_VERSION__ CMP VERSION  && defined( __FOAM_BRANCH__ ) && __FOAM_BRANCH__ == NAME ) %enddef
-
-//--------------
-%define FOAM_REF_VERSION( CMP, VERSION ) ( __FOAM_VERSION__ CMP VERSION && !defined( __FOAM_BRANCH__ ) ) %enddef
+#ifndef UPstream_hh
+#define UPstream_hh
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/bareptr_typemap.hxx"
+#include "Foam/src/OpenFOAM/primitives/label.hh"
 
-//---------------------------------------------------------------------------
-%define COMMON_EXTENDS
-{}
-%enddef
+#include "Foam/src/OpenFOAM/primitives/Lists/labelList.hh"
 
+#include "Foam/src/OpenFOAM/containers/Lists/DynamicList/DynamicList.hh"
 
-//---------------------------------------------------------------------------
-%import "Foam/src/isinstance.hxx"
+#include "Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable.hh"
 
-%import "Foam/src/compound_operator.hxx"
+#include "Foam/src/OpenFOAM/primitives/strings/string.hh"
 
+#include "Foam/src/OpenFOAM/containers/NamedEnum/NamedEnum.hh"
 
-//---------------------------------------------------------------------------
-%ignore operator <<;
-%ignore operator >>;
+#include "Foam/src/OpenFOAM/primitives/ops/ops_label.hh"
 
-%ignore operator ==;
-%ignore operator !=;
-
-%ignore operator -;
-%ignore operator +;
-%ignore operator *;
-%ignore operator /;
-
-%ignore operator &;
-%ignore operator ^;
-
-%ignore operator &&;
-
-%ignore *::operator =;
-%ignore *::operator [];
-
-%ignore *::operator ++;
-%ignore *::operator --;
-
-%ignore *::operator !;
+#include <UPstream.H>
 
 
 //---------------------------------------------------------------------------

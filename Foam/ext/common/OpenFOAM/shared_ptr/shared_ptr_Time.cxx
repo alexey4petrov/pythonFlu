@@ -26,9 +26,14 @@
 
 
 //---------------------------------------------------------------------------
+%module "Foam.ext.common.OpenFOAM.shared_ptr.shared_ptr_Time"
+%{
+  #include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_Time.hh"
+%}
+
 %include "Foam/ext/common/shared_ptr.hxx"
 
-%include "Foam/src/OpenFOAM/db/Time/Time.cxx"
+%import "Foam/src/OpenFOAM/db/Time/Time.cxx"
 
 SHAREDPTR_TYPEMAP( Foam::Time );
 

@@ -43,8 +43,12 @@
 %ignore Foam::face::intersection;
 %ignore Foam::face::nearestPoint;
 
-#if FOAM_BRANCH_VERSION( dev, >=, 010500 )
+#if FOAM_BRANCH_VERSION( __OPENFOAM_EXT__, >=, 010500 )
   %ignore Foam::face::fastIntersection;
+#endif
+
+#if FOAM_REF_VERSION( >=, 020000 )
+  %ignore Foam::face::nearestPointClassify;
 #endif
 
 %include <face.H>

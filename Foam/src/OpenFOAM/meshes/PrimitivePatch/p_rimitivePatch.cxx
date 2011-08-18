@@ -40,7 +40,7 @@
 %ignore Foam::PrimitivePatch< Foam::face, Foam::SubList, const Foam::pointField& >::PrimitivePatch;
 %ignore Foam::PrimitivePatch< Foam::face, Foam::SubList, const Foam::pointField& >::faceCentres;
 
-#if FOAM_BRANCH_VERSION( dev, >=, 010500 )
+#if FOAM_BRANCH_VERSION( __OPENFOAM_EXT__, >=, 010500 )
   %ignore Foam::PrimitivePatch< Foam::face, Foam::SubList, const Foam::pointField& >::writeVTK;
   %ignore Foam::PrimitivePatch< Foam::face, Foam::SubList, const Foam::pointField& >::writeVTKNormals;
 #endif

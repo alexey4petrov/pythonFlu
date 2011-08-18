@@ -47,6 +47,10 @@ DIRECTOR_PRE_EXTENDS( regIOobject );
 //---------------------------------------------------------------------------
 %ignore Foam::regIOobject::writeObject;
 
+#if FOAM_REF_VERSION( >=, 020000 )
+  %ignore Foam::regIOobject::fileCheckTypesNames;
+#endif
+
 %include <regIOobject.H>
 
 

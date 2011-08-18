@@ -65,3 +65,27 @@ def CourantNo_010500_dev( mesh, phi, runTime ):
     ext_Info() << "Courant Number mean: " << meanCoNum << " max: " << CoNum<<  " velocity magnitude: " << velMag << nl
 
     return CoNum, meanCoNum, velMag
+
+
+#---------------------------------------------------------------------------------------------
+def CourantNo_020000( mesh, phi, runTime ):
+    from Foam.OpenFOAM import Time
+    from Foam.finiteVolume import fvMesh
+    from Foam.finiteVolume import surfaceScalarField
+
+    CoNum = 0.0
+    meanCoNum = 0.0
+    from Foam.OpenFOAM import ext_Info, nl
+    
+    if mesh.nInternalFaces() :
+        from Foam import fvc
+        tmp = fvc.surfaceSum( phi.mag() )
+        sumPhi = tmp.internalField()
+        CoNum =  0.5 * ( sumPhi / mesh.V().field() ).gMax() * runTime.deltaTValue()
+        meanCoNum =  0.5 * ( sumPhi.gSum() / mesh.V().field().gSum() ) * runTime.deltaTValue()
+        pass
+
+    
+    ext_Info() << "Courant Number mean: " << meanCoNum << " max: " << CoNum << nl
+
+    return CoNum, meanCoNum

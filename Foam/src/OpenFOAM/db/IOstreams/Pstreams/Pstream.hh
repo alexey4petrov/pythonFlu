@@ -41,6 +41,8 @@
 
 #include "Foam/src/OpenFOAM/primitives/ops/ops_label.hh"
 
+#include "Foam/src/OpenFOAM/db/IOstreams/Pstreams/UPstream.hh"
+
 #include <Pstream.H>
 #include <PstreamReduceOps.H>
 

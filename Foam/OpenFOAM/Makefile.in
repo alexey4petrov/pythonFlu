@@ -147,6 +147,7 @@ sources = \
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/List/List_token.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/Lists/tokenList.cxx \
 	\
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/DynamicList/DynamicList.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_word_word_string_hash.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_string_word_string_hash.cxx \
@@ -191,6 +192,7 @@ sources = \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/regIOobject.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/objectRegistry.cxx \
+	@abs_top_builddir@/Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_objectRegistry.cxx \
 	\
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.cxx \
@@ -219,6 +221,7 @@ sources = \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/Fstreams/IFstream.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/StringStreams/IStringStream.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/StringStreams/OStringStream.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/Pstreams/UPstream.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/IOstreams/Pstreams/Pstream.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/error/messageStream.cxx \
 	\
@@ -227,6 +230,9 @@ sources = \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/Time/TimePaths.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/Time/TimeState.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/Time/Time.cxx \
+	@abs_top_builddir@/Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_Time.cxx \
+	\
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/functionObjects/functionObject.cxx \
 	\
 	@abs_top_builddir@/Foam/src/OpenFOAM/memory/Xfer_pointField.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/memory/Xfer_faceList.cxx \
@@ -242,6 +248,7 @@ sources = \
 	@abs_top_builddir@/Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduSchedule.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/lduMesh.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/meshes/data.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/matrices/lduMatrix/lduMatrix.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/matrices/solution.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/matrices/ext_solution.cxx \

@@ -36,6 +36,8 @@
 
 #include "Foam/src/OpenFOAM/meshes/lduMesh.hh"
 
+#include "Foam/src/OpenFOAM/meshes/data.hh"
+
 #include "Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hh"
 
 #include "Foam/src/finiteVolume/fvMesh/fvBoundaryMesh.hh"

@@ -21,62 +21,16 @@
 ##
 
 
-#------------------------------------------------------------------------------
-# set compilation and dependency building rules
-#------------------------------------------------------------------------------
-GENERAL_RULES = $(WM_DIR)/rules/General
-RULES         = $(WM_DIR)/rules/$(WM_ARCH)$(WM_COMPILER)
-BIN           = $(WM_DIR)/bin/$(WM_ARCH)$(WM_COMPILER)
+#--------------------------------------------------------------------------------------
+__FOAM_VERSION__ := @FOAM_VERSION@
 
-include $(GENERAL_RULES)/general
-include $(RULES)/general
-include $(RULES)/$(WM_LINK_LANGUAGE)
-
-c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-Wold-style-cast %%g")
-c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-Wall %%g")
-c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-Wextra %%g")
-# c++FLAGS:=$(shell echo $(c++FLAGS) | sed -e"s%-O3 %-ggdb3 -DFULLDEBUG %g")
-
-
-#------------------------------------------------------------------------------
-# declare default paths
-#------------------------------------------------------------------------------
-LIB_SRC            = $(WM_PROJECT_DIR)/src
-LIB_DIR            = $(WM_PROJECT_DIR)/lib
-LIB_WM_OPTIONS_DIR = $(LIB_DIR)/$(WM_OPTIONS)
-LIB_WM_OPTIONS_DIR_BINARY_INSTALL = $(LIB_DIR)
-
-OBJECTS_DIR        = $(MAKE_DIR)/$(WM_OPTIONS)
-CLASSES_DIR        = $(MAKE_DIR)/classes
-
-SYS_INC            =
-SYS_LIBS           =
-
-PROJECT_INC        = -I$(LIB_SRC)/$(WM_PROJECT)/lnInclude
-
-PROJECT_INC        += -I$(LIB_SRC)
-
-ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-PROJECT_INC        += -I$(LIB_SRC)/OSspecific/$(WM_OS)/lnInclude
-endif
-
-ifeq "$(shell if [ ${__FOAM_VERSION__} -ge 010600 ]; then echo 'true'; else echo 'false'; fi )" "true" 
-PROJECT_INC        += -I$(LIB_SRC)/OSspecific/$(WM_OSTYPE)/lnInclude
-endif
-
-PROJECT_LIBS       = -l$(WM_PROJECT)
+__FOAM_BRANCH__ := @FOAM_BRANCH@
 
 
 #--------------------------------------------------------------------------------------
-__CPPFLAGS__:=$(__CPPFLAGS__) $(PROJECT_INC) @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I$(pythonflu_root_dir) -I/usr/include -I/usr/include/c++ 
+__CPPFLAGS__:=$(__CPPFLAGS__) @OPENFOAM_CPPFLAGS@ @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I@abs_top_builddir@ -I/usr/include -I/usr/include/c++ 
 
-
-#--------------------------------------------------------------------------------------
-__LDFLAGS__:=$(__LDFLAGS__) @PYTHON_LDFLAGS@ -lstdc++
-
-ifdef WM_PROJECT_VERSION
-	__LDFLAGS__:=-L$(LIB_WM_OPTIONS_DIR) -L$(LIB_WM_OPTIONS_DIR_BINARY_INSTALL) $(PROJECT_LIBS) $(__LDFLAGS__) -lpthread -ldl -lm
-endif
+__LDFLAGS__:=$(__LDFLAGS__) @OPENFOAM_LDFLAGS@ @OPENFOAM_LIBS@ @PYTHON_LDFLAGS@ -lstdc++ 
 
 
 #--------------------------------------------------------------------------------------
@@ -101,7 +55,7 @@ ifeq "$(shell if [ ${__FOAM_VERSION__} -eq 010500 ]; then echo 'true'; else echo
 __SWIG_FLAGS__ += -D__CINT__ 
 endif
 
-__SWIG_FLAGS__ +=  $(GFLAGS) $(__SWIG_INCLUDES__)
+__SWIG_FLAGS__ += @OPENFOAM_GFLAGS@ $(__SWIG_INCLUDES__)
 
 __SWIG_FLAGS__+=-w508 # Declaration of 'XXX' shadows declaration accessible via 'YYY"
 __SWIG_FLAGS__+=-w317 # Specialization of non-template 'XXX'
@@ -111,19 +65,6 @@ __SWIG_FLAGS__+=-w503 # Can't wrap 'XXX' unless renamed to a valid identifier
 __SWIG_FLAGS__+=-w462 # Unable to set dimensionless array variable
 __SWIG_FLAGS__+=-w473 # Returning a pointer or reference in a director method is not recommended
 
-FOAM_BRANCH = 
-
-ifeq "$(shell if [ x${__FOAM_BRANCH__} != x ]; then echo 'true'; else echo 'false'; fi )" "true" 
-FOAM_BRANCH+=-D__FOAM_BRANCH__=${__FOAM_BRANCH__}
-endif
-
-__SWIG_FLAGS__+=$(FOAM_BRANCH)
-
-ifdef WM_PROJECT_VERSION
-	__SWIG_FLAGS__+=-D__FOAM_VERSION__=$(__FOAM_VERSION__)
-	__SWIG_FLAGS__+=$(shell if [ ${__FOAM_VERSION__} -lt 010600 ]; then echo -DINT_MAX=2147483647; fi )
-endif
-
 #-debug-top 4 -directors -dirprot
 
 
@@ -131,7 +72,7 @@ endif
 %.cc : %.cxx
 	@SWIG@ $(__SWIG_FLAGS__) -module $(notdir $(patsubst %.cxx,%,$<)) -o $@ $<
 
-__CXXFLAGS__ := $(__CXXFLAGS__) $(c++FLAGS) -D__FOAM_VERSION__=$(__FOAM_VERSION__) $(FOAM_BRANCH) $(__CPPFLAGS__)
+__CXXFLAGS__ := @OPENFOAM_CXXFLAGS@ $(__CPPFLAGS__)
 
 -include $(deps) dummy
 
