@@ -26,13 +26,13 @@
 
 
 //---------------------------------------------------------------------------
+%{
+  #include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
+%}
+
 %include "Foam/ext/common/shared_ptr.hxx"
 
-%include "Foam/src/finiteVolume/fields/volFields/volFields.cxx"
-
-%include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.cxx"
-
-%include "Foam/src/finiteVolume/fvMesh/fvMesh.cxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 SHAREDPTR_TYPEMAP( Foam::fvMesh );
 
