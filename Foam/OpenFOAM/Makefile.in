@@ -276,7 +276,8 @@ sources = \
 	@abs_top_builddir@/Foam/src/OpenFOAM/graph/curve.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_curve_word_string_hash.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_curve_word_string_hash.cxx \
-	@abs_top_builddir@/Foam/src/OpenFOAM/graph/graph.cxx
+	@abs_top_builddir@/Foam/src/OpenFOAM/graph/graph.cxx \
+	@abs_top_builddir@/Foam/integrationHelpers/getObjectsFromPointers.cxx
 
 
 #--------------------------------------------------------------------------------------
