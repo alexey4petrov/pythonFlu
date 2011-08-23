@@ -26,10 +26,12 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.functionObjects.functionObject";
+%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.functionObjects.functionObject";
 %{
   #include "Foam/src/OpenFOAM/db/functionObjects/functionObject.hh"
 %}
+
+%import "Foam/src/director.hxx"
 
 
 //---------------------------------------------------------------------------
@@ -39,7 +41,38 @@
 
 %import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
 
+%feature( "director" ) functionObject;
+
+
+//---------------------------------------------------------------------------
+%include "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
+
+%include "Foam/src/OpenFOAM/db/functionObjects/functionObject_ConstructorToTable.hh"
+
+%feature( "director" ) functionObjectConstructorToTableBase;
+
+%define __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( counter )
+%template( functionObjectConstructorToTableBase_##counter ) Foam::functionObjectConstructorToTableBase< counter >;
+%enddef
+
+
+//---------------------------------------------------------------------------
+%define FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC()
+  %template( TConstructorToTableCounter_functionObject ) Foam::TConstructorToTableCounter< Foam::functionObject >;
+  __FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( 0 );
+%enddef
+
+
+//---------------------------------------------------------------------------
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
+
+AUTOPTR_TYPEMAP( Foam::functionObject );
+
+%template( autoPtr_functionObject ) Foam::autoPtr< Foam::functionObject >;
+
 %include <functionObject.H>
+
+FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC();
 
 
 //---------------------------------------------------------------------------

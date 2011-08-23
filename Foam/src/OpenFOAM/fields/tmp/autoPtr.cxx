@@ -45,6 +45,22 @@
 
 %feature( "novaluewrapper" ) Foam::autoPtr< Type >;
 
+%typemap( in ) Type* ( void  *argp = 0, int check = 0, Type* result ) 
+{
+  check = SWIG_ConvertPtr( $input, &argp, $descriptor( Type * ), SWIG_POINTER_DISOWN | %convertptr_flags );
+  if ( SWIG_IsOK( check ) && argp ) {
+    Type* arg = %reinterpret_cast( argp, Type * );
+    // "Director" derived classes need special care
+    if ( Swig::Director *director = SWIG_DIRECTOR_CAST( arg ) ) {
+      PyObject_CallMethod( director->swig_get_self(), (char *) "__disown__", NULL );
+    }
+    result = arg;
+  } else {
+    %argument_fail( check, "$type", $symname, $argnum ); 
+  }
+  $1 = result;
+}
+
 %typemap( in ) const Foam::autoPtr< Type > & ( void  *argp = 0, int check = 0, Foam::autoPtr< Type > result ) 
 {
   // First check the simplest case, complete coinsidence of the types

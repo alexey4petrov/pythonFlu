@@ -50,8 +50,6 @@
 
 #include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-// #include <runTimeSelectionTables.H>
-
 #include "Foam/src/OpenFOAM/db/IOdictionary.hh"
 
 

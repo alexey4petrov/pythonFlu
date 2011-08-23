@@ -21,27 +21,40 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef basicThermo_cpp
-#define basicThermo_cpp
+#ifndef runTimeSelectionTables_hh
+#define runTimeSelectionTables_hh
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
-%}
+#include "Foam/src/common.hh"
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
-
-%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-
-//---------------------------------------------------------------------------
-%include <basicThermo.H>
+namespace Foam
+{
+  // A helper class which provides run-time support for the instationation 
+  // of the classes derived from this one
+  template< class TRegisteredToTable >        
+  struct TConstructorToTableCounter
+  {
+    static int counter()
+    {
+      return m_Counter;
+    }
+  protected:
+    TConstructorToTableCounter()
+    {
+      m_Counter += 1;
+    }
+  private:
+    static int m_Counter;
+  };
+    
+  template< class TRegisteredToTable > int 
+  TConstructorToTableCounter< TRegisteredToTable >::m_Counter = 0;
+}
 
 
 //---------------------------------------------------------------------------
 #endif
+

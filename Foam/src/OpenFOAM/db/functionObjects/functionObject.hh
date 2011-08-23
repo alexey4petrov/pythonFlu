@@ -32,6 +32,8 @@
 
 #include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 
+#include "Foam/src/OpenFOAM/db/functionObjects/functionObject_ConstructorToTable.hh"
+
 #include <functionObject.H>
 
 
