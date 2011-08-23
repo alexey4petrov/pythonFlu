@@ -61,6 +61,18 @@
   }
 }
 
+%inline %{
+    Foam::Time &getTimeFromPtr(PyObject *c) {
+        if(!PyCObject_Check(c)) {
+            throw Swig::DirectorMethodException();
+        }
+        void *ptr=PyCObject_AsVoidPtr(c);
+//         if(!isA<Time>(*ptr)) {
+//             throw Swig::DirectorMethodException();
+//         }
+        return *static_cast<Foam::Time *>(ptr);
+    }
+%}
 
 //---------------------------------------------------------------------------
 #endif
