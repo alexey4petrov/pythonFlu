@@ -27,9 +27,9 @@ ifdef BOOSTDIR
 
 __CPPFLAGS__ := -I$(BOOSTDIR)/include
 
-pythonflu_root_dir:=../../../..
+pythonflu_root_dir:=../../../../..
 
-include $(pythonflu_root_dir)/include.makefile
+include $(pythonflu_root_dir)/Foam/include.src.makefile
 
 #--------------------------------------------------------------------------------------
 else
