@@ -232,6 +232,8 @@ sources = \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/Time/Time.cxx \
 	@abs_top_builddir@/Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_Time.cxx \
 	\
+	@abs_top_builddir@/Foam/src/OpenFOAM/db/functionObjects/functionObject.cxx \
+	\
 	@abs_top_builddir@/Foam/src/OpenFOAM/memory/Xfer_pointField.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/memory/Xfer_faceList.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/memory/Xfer_cellList.cxx \

@@ -19,20 +19,3 @@
 ##
 ## Author : Alexey PETROV
 ##
-
-
-#--------------------------------------------------------------------------------------
-# Source the confFlu environment
-source ../confFlu.hg/bashrc
-
-#--------------------------------------------------------------------------------------
-# Source the OpenFOAM environment
-source_openfoam /Users/bgschaid/OpenFOAM/OpenFOAM-1.7.x/etc/bashrc
-
-export DYLD_INSERT_LIBRARIES=/opt/local/lib/gcc45/libstdc++.6.dylib
-
-# export BOOSTDIR=/opt/local
-
-export CC=$WM_CC
-
-#--------------------------------------------------------------------------------------
