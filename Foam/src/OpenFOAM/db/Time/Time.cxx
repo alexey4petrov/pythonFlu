@@ -62,7 +62,8 @@
 }
 
 %inline %{
-    Foam::Time &getTimeFromPtr(PyObject *c) {
+    // this is only as a proof that it works
+    Foam::Time &getTimeFromPtrOld(PyObject *c) {
         if(!PyCObject_Check(c)) {
             throw Swig::DirectorMethodException();
         }
