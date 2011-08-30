@@ -122,5 +122,11 @@ Note : Install one of the existing pythonFlu based solvers to verify this instal
 on a more complex test case. See http://pythonflu.wikidot.com/install-solvers for more 
 details
 
+If the Unit Testing library nose (http://readthedocs.org/docs/nose/en/latest/) is 
+installed then the command
+
+  nosetests -w unittests
+
+runs a number of tests.
 
 #--------------------------------------------------------------------------------------
