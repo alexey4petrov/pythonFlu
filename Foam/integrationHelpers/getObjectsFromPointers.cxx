@@ -7,7 +7,8 @@
     #include "Foam/integrationHelpers/getObjectsFromPointers.hh"
 %}
 
-%import "Foam/src/OpenFOAM/db/Time/Time.cxx"
+// %import "Foam/src/OpenFOAM/db/Time/Time.cxx"
+%include "Foam/src/OpenFOAM/db/Time/Time.cxx"
 
 // %include <Time.H>
 

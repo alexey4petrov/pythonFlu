@@ -19,3 +19,6 @@
 ##
 ## Author : Alexey PETROV
 ##
+
+# doesn't help
+# from Foam.src.OpenFOAM.db.Time import Time
