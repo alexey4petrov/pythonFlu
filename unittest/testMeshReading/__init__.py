@@ -1,7 +1,11 @@
 from os import environ,path
 import shutil
-from subprocess import check_call,PIPE
 
+try:
+    from subprocess import check_call,PIPE
+except ImportError:
+    from subprocess import call,PIPE
+    
 pitzDir=path.join("/tmp","pythonFluTestPitzDaily")
 
 def teardown():
@@ -17,5 +21,9 @@ def setup():
                               "simpleFoam",
                               "pitzDaily"),
                     pitzDir)
-    
-    check_call(["blockMesh -case "+pitzDir],shell=True,stdout=PIPE)
+
+    cmdLine=["blockMesh -case "+pitzDir]
+    try:
+        check_call(cmdLine,shell=True,stdout=PIPE)
+    except NameError:
+        call(cmdLine,shell=True,stdout=PIPE)
