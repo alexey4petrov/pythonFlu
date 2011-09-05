@@ -21,59 +21,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef Time_cxx
-#define Time_cxx
+#ifndef getObjectsFromPointer_hh
+#define getObjectsFromPointer_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.Time.Time";
-%{
-  #include "Foam/src/OpenFOAM/db/Time/Time.hh"
-%}
+#include "Foam/src/OpenFOAM/db/Time/Time.hh"
 
+#include <Time.H>
 
-//---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
-
-%import "Foam/src/OpenFOAM/db/Time/clock.cxx"
-
-%import "Foam/src/OpenFOAM/db/Time/cpuTime.cxx"
-
-%import "Foam/src/OpenFOAM/db/Time/TimePaths.cxx"
-
-%import "Foam/src/OpenFOAM/db/Time/TimeState.cxx"
-
-%import "Foam/src/OpenFOAM/primitives/scalar.cxx"
-
-%import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
-
-%import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
-
-%ignore Foam::Time::writeVersion;
-
-%include <Time.H>
-
-%extend Foam::Time
-{
-  void increment()
-  {
-    self->operator++();
-  }
-}
-
-%inline %{
-    // this is only as a proof that it works
-    Foam::Time &getTimeFromPtrOld(PyObject *c) {
-        if(!PyCObject_Check(c)) {
-            throw Swig::DirectorMethodException();
-        }
-        void *ptr=PyCObject_AsVoidPtr(c);
-//         if(!isA<Time>(*ptr)) {
-//             throw Swig::DirectorMethodException();
-//         }
-        return *static_cast<Foam::Time *>(ptr);
-    }
-%}
 
 //---------------------------------------------------------------------------
 #endif

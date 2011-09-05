@@ -36,7 +36,8 @@ def getfunctionObjectConstructorToTableBase() :
 
 #----------------------------------------------------------------------------------------       
 from Foam.OpenFOAM import functionObject
-class functionObject_pythonFlu( functionObject ):
+class functionObject_( functionObject ):
+    OUTER_EXEC_ENV = {}
     @staticmethod
     def type(): 
         from Foam.OpenFOAM import word
@@ -53,10 +54,12 @@ class functionObject_pythonFlu( functionObject ):
         self._executionFrame = {}
 
         functionObject.__init__( self, the_name )
+
         self.read( the_dict )
         pass
 
     def start( self ) : 
+        self._executionFrame.update( self.OUTER_EXEC_ENV )
         self._executionFrame.update( { 'runTime' : self._time, 'self' : self } )
         # print "start = \"%s\" in %s" % ( self._startCode, self._executionFrame )
         exec self._startCode in self._executionFrame
@@ -64,12 +67,14 @@ class functionObject_pythonFlu( functionObject ):
         return True
 
     def execute( self ): 
+        self._executionFrame.update( self.OUTER_EXEC_ENV )
         # print "execute = \"%s\"" % ( self._executeCode )
         exec self._executeCode in self._executionFrame
 
         return True
 
     def end( self ): 
+        self._executionFrame.update( self.OUTER_EXEC_ENV )
         # print "end = \"%s\"" % ( self._endCode )
         exec self._endCode in self._executionFrame
 
@@ -113,17 +118,33 @@ class functionObject_pythonFlu( functionObject ):
     pass
 
 
+#----------------------------------------------------------------------------------------------------------
+def init( the_locals = None ) :
+    if the_locals == None :
+        import inspect
+        an_outer_frame = inspect.currentframe().f_back 
+        the_locals = an_outer_frame.f_locals
+        pass
+
+    functionObject_.OUTER_EXEC_ENV = the_locals
+    pass
+
+
 #----------------------------------------------------------------------------------------       
 class functionObjectConstructorToTable_pythonFlu( getfunctionObjectConstructorToTableBase() ):
     def __init__( self ):
         aBaseClass = self.__class__.__bases__[ 0 ]
         aBaseClass.__init__( self )
         
-        aBaseClass.init( self, self, functionObject_pythonFlu.type() )
+        import inspect
+        an_outer_frame = inspect.currentframe().f_back.f_back 
+        init( an_outer_frame.f_locals )
+
+        aBaseClass.init( self, self, functionObject_.type() )
         pass
     
     def _new_( self, the_name, the_time, the_dict ):
-        obj = functionObject_pythonFlu( the_name, the_time, the_dict )
+        obj = functionObject_( the_name, the_time, the_dict )
 
         from Foam.OpenFOAM import autoPtr_functionObject
         return autoPtr_functionObject( obj )
