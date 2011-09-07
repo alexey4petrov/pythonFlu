@@ -77,6 +77,11 @@
     
 %ignore Foam::incompressible::turbulenceModel::nut;
 
+#if FOAM_VERSION( >=, 020000 )
+%ignore Foam::incompressible::turbulenceModel::nu;
+#endif
+
+
 #if FOAM_NOT_BRANCH( __FREEFOAM__ )
 %include <incompressible/turbulenceModel.H>
 #else
@@ -89,6 +94,13 @@
   {
     return self->nut();
   }
+#if FOAM_VERSION( >=, 020000 )
+  Foam::ext_tmp< Foam::volScalarField > ext_nu()
+  {
+    return self->nu()();
+  }
+#endif
+
 }
 #endif
 
