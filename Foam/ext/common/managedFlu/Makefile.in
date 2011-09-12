@@ -1,0 +1,51 @@
+## Copyright (C) 2010- Alexey Petrov
+## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
+## 
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+## 
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+## 
+## See http://sourceforge.net/projects/pythonflu
+##
+## Author : Alexey PETROV, Andrey SIMURZIN
+##
+
+
+#--------------------------------------------------------------------------------------
+pythonflu_root_dir:=../../../../
+
+include $(pythonflu_root_dir)/Foam/foam.version.makefile
+
+TEST_MM_CPPFLAGS=-I@abs_top_builddir@/libs -I@abs_top_builddir@/libs/lnInclude -I@abs_top_builddir@ 
+
+__CPPFLAGS__ := $(__CPPFLAGS__) \
+	@MANAGEDFLU_CPPFLAGS@
+
+
+__CXXFLAGS__ := $(__CXXFLAGS__)  @MANAGEDFLU_CPPFLAGS@
+
+
+__LDFLAGS__ := $(__LDFLAGS__) \
+	@MANAGEDFLU_LDFLAGS@ @MANAGEDFLU_LIBS@ 
+	
+sources = \
+	@abs_top_builddir@/Foam/ext/common/managedFlu/SimpleHolder.cxx \
+	@abs_top_builddir@/Foam/ext/common/managedFlu/shared_ptr/shared_ptr_SimpleHolder.cxx \
+	@abs_top_builddir@/Foam/ext/common/managedFlu/Args.cxx \
+	@abs_top_builddir@/Foam/ext/common/managedFlu/Deps.cxx \
+	@abs_top_builddir@/Foam/ext/common/managedFlu/DependentHolder.cxx \
+	\
+	
+include $(pythonflu_root_dir)/Foam/include.foam.makefile
+
+
+#--------------------------------------------------------------------------------------
