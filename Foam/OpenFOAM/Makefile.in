@@ -26,16 +26,6 @@ pythonflu_root_dir:=@abs_top_builddir@
 
 include @abs_top_builddir@/Foam/foam.version.makefile
 
-__CPPFLAGS__ := $(__CPPFLAGS__) \
-	@MANAGEDFLU_CPPFLAGS@
-
-__CXXFLAGS__ := $(__CXXFLAGS__)  @MANAGEDFLU_CPPFLAGS@
-
-__LDFLAGS__ := $(__LDFLAGS__) \
-	@MANAGEDFLU_LDFLAGS@ @MANAGEDFLU_LIBS@ 
-
-
-
 #--------------------------------------------------------------------------------------
 sources = \
 	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/bool.cxx \
