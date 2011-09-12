@@ -53,6 +53,8 @@
 #include <fvMesh.H>
 #include <volMesh.H>
 
+#include "Foam/ext/common/finiteVolume/managedFlu/fvMeshHolder.hh"
+
 
 //---------------------------------------------------------------------------
 #endif

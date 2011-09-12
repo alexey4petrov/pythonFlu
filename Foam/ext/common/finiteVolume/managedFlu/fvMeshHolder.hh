@@ -17,43 +17,25 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef fvMesh_cpp
-#define fvMesh_cpp
+#ifndef fvMeshHolder_hh
+#define fvMeshHolder_hh
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "Foam/src/finiteVolume/fvMesh/fvMesh.hh"
-%}
+#include "Foam/src/common.hh"
+
+#include <fvMeshHolder.hpp>
+
+#include "Foam/ext/common/OpenFOAM/managedFlu/objectRegistryHolder.hh"
+
+#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
 
 
-//---------------------------------------------------------------------------
-%include "Foam/src/finiteVolume/fields/volFields/volFields.cpp"
-
-%include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.cpp"
-
-%include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolders.cpp"
-
-%include "Foam/src/finiteVolume/fvMesh/fvMesh.hpp"
-
-%ignore Foam::fvMesh::writeObjects;
-
-%include <fvMesh.H>
-
-%extend Foam::fvMesh
-{
-  TYPEINFO_EXTENDS( polyMesh, fvMesh );
-  OBJECTREGISTRY_EXTENDS( fvMesh );
-  ISINSTANCE_EXTEND( Foam::fvMesh );
-}
-
-
-//---------------------------------------------------------------------------
-%include "Foam/ext/common/finiteVolume/managedFlu/fvMeshHolder.cpp"
-
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif
+
+

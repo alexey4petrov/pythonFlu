@@ -17,43 +17,41 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef fvMesh_cpp
-#define fvMesh_cpp
+#ifndef fvMeshHolder_cpp
+#define fvMeshHolder_cpp
 
 
 //---------------------------------------------------------------------------
 %{
-  #include "Foam/src/finiteVolume/fvMesh/fvMesh.hh"
+  #include "Foam/ext/common/finiteVolume/managedFlu/fvMeshHolder.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "Foam/src/finiteVolume/fields/volFields/volFields.cpp"
+%import "Foam/ext/common/managedFlu/commonHolder.hxx"
 
-%include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.cpp"
+%include "Foam/ext/common/finiteVolume/shared_ptr/shared_ptr_fvMesh.hpp"
 
-%include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolders.cpp"
+%import "Foam/ext/common/managedFlu/DependentHolder.cxx"
 
-%include "Foam/src/finiteVolume/fvMesh/fvMesh.hpp"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
-%ignore Foam::fvMesh::writeObjects;
+%include <fvMeshHolder.hpp>
 
-%include <fvMesh.H>
 
-%extend Foam::fvMesh
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::fvMeshHolder::SMARTPTR_PYAPPEND_GETATTR( fvMeshHolder );
+
+%extend Foam::fvMeshHolder
 {
-  TYPEINFO_EXTENDS( polyMesh, fvMesh );
-  OBJECTREGISTRY_EXTENDS( fvMesh );
-  ISINSTANCE_EXTEND( Foam::fvMesh );
+  SMARTPTR_EXTEND_ATTR( fvMeshHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( fvMesh );
 }
 
 
-//---------------------------------------------------------------------------
-%include "Foam/ext/common/finiteVolume/managedFlu/fvMeshHolder.cpp"
-
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif
