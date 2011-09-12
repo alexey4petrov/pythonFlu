@@ -28,9 +28,9 @@ __FOAM_BRANCH__ := @FOAM_BRANCH@
 
 
 #--------------------------------------------------------------------------------------
-__CPPFLAGS__:=$(__CPPFLAGS__) @OPENFOAM_CPPFLAGS@ @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ -I@abs_top_builddir@ -I/usr/include -I/usr/include/c++ 
+__CPPFLAGS__:=$(__CPPFLAGS__) @OPENFOAM_CPPFLAGS@ @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ @MANAGEDFLU_CPPFLAGS@ -I@abs_top_builddir@ -I/usr/include -I/usr/include/c++ 
 
-__LDFLAGS__:=$(__LDFLAGS__) @OPENFOAM_LDFLAGS@ @OPENFOAM_LIBS@ @PYTHON_LDFLAGS@ -lstdc++ 
+__LDFLAGS__:=$(__LDFLAGS__) @OPENFOAM_LDFLAGS@ @OPENFOAM_LIBS@ @PYTHON_LDFLAGS@ @MANAGEDFLU_LDFLAGS@ @MANAGEDFLU_LIBS@ -lstdc++ 
 
 
 #--------------------------------------------------------------------------------------
