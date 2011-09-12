@@ -30,6 +30,8 @@
 
 #include <objectRegistry.H>
 
+#include "Foam/ext/common/OpenFOAM/managedFlu/objectRegistryHolder.hh"
+
 
 //---------------------------------------------------------------------------
 #endif
