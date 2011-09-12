@@ -41,7 +41,8 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	@OPENFOAM_DYNAMICFVMESH_CPPFLAGS@ \
 	@OPENFOAM_DYNAMICMESH_CPPFLAGS@ \
 	@OPENFOAM_RANDOMPROCESS_CPPFLAGS@ \
-	@OPENFOAM_SPECIE_CPPFLAGS@
+	@OPENFOAM_SPECIE_CPPFLAGS@ \
+	@MANAGEDFLU_CPPFLAGS@
 
 
 #--------------------------------------------------------------------------------------
@@ -60,7 +61,8 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 	@OPENFOAM_DYNAMICFVMESH_LIBS@ \
 	@OPENFOAM_DYNAMICMESH_LIBS@ \
 	@OPENFOAM_RANDOMPROCESS_LIBS@ \
-	@OPENFOAM_SPECIE_LIBS@
+	@OPENFOAM_SPECIE_LIBS@ \
+	@MANAGEDFLU_LDFLAGS@ @MANAGEDFLU_LIBS@
 
 
 #--------------------------------------------------------------------------------------
