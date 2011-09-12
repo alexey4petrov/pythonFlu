@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include "wrappers/src/smart_tmp/smart_tmp.hh"
+#include "Foam/ext/common/smart_tmp.hh"
 
 #include "Foam/src/finiteVolume/fvMatrices/fvScalarMatrix.hh"
 
