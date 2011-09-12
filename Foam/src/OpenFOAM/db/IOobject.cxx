@@ -56,10 +56,6 @@
 
 
 //---------------------------------------------------------------------------
-%include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_IOobject.hpp"
-
-
-//---------------------------------------------------------------------------
 %include "Foam/ext/common/OpenFOAM/managedFlu/IOobjectHolder.cpp"
 
 

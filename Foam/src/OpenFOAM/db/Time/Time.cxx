@@ -63,10 +63,6 @@
 
 
 //---------------------------------------------------------------------------
-%include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_Time.hpp"
-
-
-//---------------------------------------------------------------------------
 %include "Foam/ext/common/OpenFOAM/managedFlu/TimeHolder.cpp"
 
 
