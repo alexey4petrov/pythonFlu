@@ -1,4 +1,3 @@
-//  pythonFlu - Python wrapping for OpenFOAM C++ API
 //  Copyright (C) 2010- Alexey Petrov
 //  Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 //  
@@ -17,51 +16,36 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef IOobject_cxx
-#define IOobject_cxx
+#ifndef IOobjectHolder_cpp
+#define IOobjectHolder_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.IOobject";
 %{
-   #include "Foam/src/OpenFOAM/db/IOobject.hh"
+  #include "Foam/ext/common/OpenFOAM/managedFlu/IOobjectHolder.hh"
 %}
-
-
-//---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx"
-
-%import "Foam/src/OpenFOAM/primitives/strings/fileName.cxx"
-
-%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
-
-%include <IOobject.H>
-
-%extend Foam::IOobject
-{
-  void setWriteOpt( IOobject::writeOption opt )
-  {
-    self->writeOpt() = opt;
-  }
-  
-  void setReadOpt( IOobject::readOption opt )
-  {
-    self->readOpt() = opt;
-  }
-}
 
 
 //---------------------------------------------------------------------------
 %include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_IOobject.hpp"
 
+%import "Foam/ext/common/managedFlu/DependentHolder.cxx"
+
+%include "IOobjectHolder.hpp"
+
 
 //---------------------------------------------------------------------------
-%include "Foam/ext/common/OpenFOAM/managedFlu/IOobjectHolder.cpp"
+%feature( "pythonappend" ) Foam::IOobjectHolder::SMARTPTR_PYAPPEND_GETATTR( IOobjectHolder );
+
+%extend Foam::IOobjectHolder
+{
+  SMARTPTR_EXTEND_ATTR( IOobjectHolder );
+}
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif

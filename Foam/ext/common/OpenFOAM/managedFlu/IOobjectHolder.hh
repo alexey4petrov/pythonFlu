@@ -1,4 +1,3 @@
-//  pythonFlu - Python wrapping for OpenFOAM C++ API
 //  Copyright (C) 2010- Alexey Petrov
 //  Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 //  
@@ -17,23 +16,22 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef IOobject_hh
-#define IOobject_hh
+#ifndef IOobjectHolder_hh
+#define IOobjectHolder_hh
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.hh"
+#include "Foam/src/common.hh"
 
-#include "Foam/src/OpenFOAM/primitives/strings/fileName.hh"
+#include "IOobjectHolder.hpp"
 
-#include <IOobject.H>
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/IOobjectHolder.hh"
+#include "Foam/ext/common/managedFlu/DependentHolder.hh"
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif
+

@@ -17,50 +17,22 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef IOobject_cxx
-#define IOobject_cxx
+#ifndef shared_ptr_IOobject_hpp
+#define shared_ptr_IOobject_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.db.IOobject";
-%{
-   #include "Foam/src/OpenFOAM/db/IOobject.hh"
-%}
+%include "Foam/ext/common/shared_ptr.hxx"
 
+SHAREDPTR_TYPEMAP( Foam::IOobject );
 
-//---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/IOstream.cxx"
+%ignore boost::shared_ptr< Foam::IOobject >::operator->;
 
-%import "Foam/src/OpenFOAM/primitives/strings/fileName.cxx"
-
-%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
-
-%include <IOobject.H>
-
-%extend Foam::IOobject
-{
-  void setWriteOpt( IOobject::writeOption opt )
-  {
-    self->writeOpt() = opt;
-  }
-  
-  void setReadOpt( IOobject::readOption opt )
-  {
-    self->readOpt() = opt;
-  }
-}
-
-
-//---------------------------------------------------------------------------
-%include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_IOobject.hpp"
-
-
-//---------------------------------------------------------------------------
-%include "Foam/ext/common/OpenFOAM/managedFlu/IOobjectHolder.cpp"
+%template( shared_ptr_IOobject ) boost::shared_ptr< Foam::IOobject >;
 
 
 //---------------------------------------------------------------------------
