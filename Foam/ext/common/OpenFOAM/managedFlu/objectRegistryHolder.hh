@@ -1,4 +1,3 @@
-//  pythonFlu - Python wrapping for OpenFOAM C++ API
 //  Copyright (C) 2010- Alexey Petrov
 //  Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 //  
@@ -17,30 +16,21 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef shared_ptr_objectRegistry_cxx
-#define shared_ptr_objectRegistry_cxx
+#ifndef objectRegistryHolder_hh
+#define objectRegistryHolder_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.ext.common.OpenFOAM.shared_ptr.shared_ptr_objectRegistry"
-%{
-  #include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_objectRegistry.hh"
-%}
+#include "Foam/src/common.hh"
 
-%include "Foam/ext/common/shared_ptr.hxx"
+#include "Foam/src/OpenFOAM/db/IOobject.hh"
 
-%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
-
-SHAREDPTR_TYPEMAP( Foam::objectRegistry );
-
-%ignore boost::shared_ptr< Foam::objectRegistry >::operator->;
-
-%template( shared_ptr_objectRegistry ) boost::shared_ptr< Foam::objectRegistry >;
+#include <objectRegistryHolder.hpp>
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif
