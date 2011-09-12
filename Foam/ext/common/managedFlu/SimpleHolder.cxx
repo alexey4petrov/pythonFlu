@@ -25,7 +25,7 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.ext.common.managedFlu..SimpleHolder"
+%module "Foam.ext.common.managedFlu.SimpleHolder"
 
 %{
   #include "SimpleHolder.hh"
