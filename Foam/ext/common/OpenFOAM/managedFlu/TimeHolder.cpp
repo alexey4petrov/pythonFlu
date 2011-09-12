@@ -17,35 +17,37 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef Time_hh
-#define Time_hh
+#ifndef TimeHolder_cpp
+#define TimeHolder_cpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
+%{
+  #include "Foam/ext/common/OpenFOAM/managedFlu/TimeHolder.hh"
+%}
 
-#include "Foam/src/OpenFOAM/db/Time/clock.hh"
+%import "Foam/ext/common/managedFlu/commonHolder.hxx"
 
-#include "Foam/src/OpenFOAM/db/Time/cpuTime.hh"
+%include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_Time.hpp"
 
-#include "Foam/src/OpenFOAM/db/Time/TimePaths.hh"
+%import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
-#include "Foam/src/OpenFOAM/db/Time/TimeState.hh"
-
-#include "Foam/src/OpenFOAM/primitives/scalar.hh"
-
-#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
-
-#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
-
-#include <Time.H>
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/TimeHolder.hh"
+%include <TimeHolder.hpp>
 
 
 //---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::TimeHolder::SMARTPTR_PYAPPEND_GETATTR( TimeHolder );
+
+%extend Foam::TimeHolder
+{
+SMARTPTR_EXTEND_ATTR( TimeHolder );
+HOLDERS_CALL_SHARED_PTR_EXTENSION( Time );
+}
+
+
+//--------------------------------------------------------------------------------------
 #endif

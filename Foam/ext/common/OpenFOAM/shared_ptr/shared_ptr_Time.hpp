@@ -21,30 +21,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef Time_hh
-#define Time_hh
+#ifndef shared_ptr_Time_hpp
+#define shared_ptr_Time_hpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
+%include "Foam/ext/common/shared_ptr.hxx"
 
-#include "Foam/src/OpenFOAM/db/Time/clock.hh"
+SHAREDPTR_TYPEMAP( Foam::Time );
 
-#include "Foam/src/OpenFOAM/db/Time/cpuTime.hh"
+%ignore boost::shared_ptr< Foam::Time >::operator->;
 
-#include "Foam/src/OpenFOAM/db/Time/TimePaths.hh"
-
-#include "Foam/src/OpenFOAM/db/Time/TimeState.hh"
-
-#include "Foam/src/OpenFOAM/primitives/scalar.hh"
-
-#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
-
-#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
-
-#include <Time.H>
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/TimeHolder.hh"
+%template( shared_ptr_Time ) boost::shared_ptr< Foam::Time >;
 
 
 //---------------------------------------------------------------------------

@@ -17,30 +17,21 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef shared_ptr_Time_cxx
-#define shared_ptr_Time_cxx
+#ifndef TimeHolder_hh
+#define TimeHolder_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.ext.common.OpenFOAM.shared_ptr.shared_ptr_Time"
-%{
-  #include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_Time.hh"
-%}
+#include "Foam/src/common.hh"
 
-%include "Foam/ext/common/shared_ptr.hxx"
+#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
 
-%import "Foam/src/OpenFOAM/db/Time/Time.cxx"
-
-SHAREDPTR_TYPEMAP( Foam::Time );
-
-%ignore boost::shared_ptr< Foam::Time >::operator->;
-
-%template( shared_ptr_Time ) boost::shared_ptr< Foam::Time >;
+#include <TimeHolder.hpp>
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif
