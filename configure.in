@@ -58,6 +58,10 @@ CONFFLU_CHECK_PYTHON
 echo 
 
 echo "--------------------------------------------------------------------------------------"
+MANAGEDFLU_CHECK_MANAGEDFLU
+echo 
+
+echo "--------------------------------------------------------------------------------------"
 CONFFLU_CHECK_DIFFUSIONFOAMLIB
 echo 
 
@@ -71,7 +75,7 @@ echo
 
 
 echo "---------------------------- mandatory products --------------------------------"
-CONFFLU_PRINT_SUMMURY( "openfoam_ok swig_ok python_ok" )
+CONFFLU_PRINT_SUMMURY( "openfoam_ok swig_ok python_ok managedflu_ok" )
 echo
 echo "---------------------------- optional products ---------------------------------"
 CONFFLU_PRINT_SUMMURY( "diffusionfoamlib_ok foam2vtk_ok unv2foam_ok boost_shared_ptr_ok" )
@@ -80,7 +84,7 @@ echo "--------------------------------- features -------------------------------
 CONFFLU_PRINT_SUMMURY( "singlelib embeddedcxx" )
 echo
 echo "--------------------------------------------------------------------------------"
-CONFFLU_CHECK_MANDATORY( "openfoam_ok swig_ok python_ok" )
+CONFFLU_CHECK_MANDATORY( "openfoam_ok swig_ok python_ok managedflu_ok" )
 
 
 #--------------------------------------------------------------------------------------
