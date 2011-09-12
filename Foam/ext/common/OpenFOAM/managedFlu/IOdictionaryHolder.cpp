@@ -17,27 +17,38 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef IOdictionary_hh
-#define IOdictionary_hh
+#ifndef IOdictionaryHolder_cpp
+#define IOdictionaryHolder_cpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/director.hh"
-
-#include "Foam/src/OpenFOAM/db/regIOobject.hh"
-
-#include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
-
-#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
-
-#include <IOdictionary.H>
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/IOdictionaryHolder.hh"
+%{
+  #include "Foam/ext/common/OpenFOAM/managedFlu/IOdictionaryHolder.hh"
+%}
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_IOdictionary.hpp"
+
+%import "Foam/src/OpenFOAM/db/dictionary/dictionary.cxx"
+
+%import "Foam/src/OpenFOAM/db/IOobject.cxx"
+
+%include <IOdictionaryHolder.hpp>
+
+
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::IOdictionaryHolder::SMARTPTR_PYAPPEND_GETATTR( IOdictionaryHolder );
+
+%extend Foam::IOdictionaryHolder
+{
+  SMARTPTR_EXTEND_ATTR( IOdictionaryHolder );
+}
+
+
+//--------------------------------------------------------------------------------------
 #endif

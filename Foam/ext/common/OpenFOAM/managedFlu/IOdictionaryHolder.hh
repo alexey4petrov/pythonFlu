@@ -17,25 +17,25 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef shared_ptr_IOdictionary_cxx
-#define shared_ptr_IOdictionary_cxx
+#ifndef IOdictionaryHolder_hh
+#define IOdictionaryHolder_hh
 
 
 //---------------------------------------------------------------------------
-%include "Foam/ext/common/shared_ptr.hxx"
+#include "Foam/src/common.hh"
 
-%include "Foam/src/OpenFOAM/db/IOdictionary.cxx"
+#include <IOdictionaryHolder.hpp>
 
-SHAREDPTR_TYPEMAP( Foam::IOdictionary );
+#include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
 
-%ignore boost::shared_ptr< Foam::IOdictionary >::operator->;
-
-%template( shared_ptr_IOdictionary ) boost::shared_ptr< Foam::IOdictionary >;
+#include "Foam/src/OpenFOAM/db/IOobject.hh"
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif
+
+

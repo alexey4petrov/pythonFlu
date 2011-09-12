@@ -21,22 +21,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef IOdictionary_hh
-#define IOdictionary_hh
+#ifndef shared_ptr_IOdictionary_hpp
+#define shared_ptr_IOdictionary_hpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/director.hh"
+%include "Foam/ext/common/shared_ptr.hxx"
 
-#include "Foam/src/OpenFOAM/db/regIOobject.hh"
+SHAREDPTR_TYPEMAP( Foam::IOdictionary );
 
-#include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
+%ignore boost::shared_ptr< Foam::IOdictionary >::operator->;
 
-#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
-
-#include <IOdictionary.H>
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/IOdictionaryHolder.hh"
+%template( shared_ptr_IOdictionary ) boost::shared_ptr< Foam::IOdictionary >;
 
 
 //---------------------------------------------------------------------------
