@@ -157,4 +157,12 @@
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_dictionary.hpp"
+
+
+//---------------------------------------------------------------------------
+%include "Foam/ext/common/OpenFOAM/managedFlu/dictionaryHolder.cpp"
+
+
+//---------------------------------------------------------------------------
 #endif

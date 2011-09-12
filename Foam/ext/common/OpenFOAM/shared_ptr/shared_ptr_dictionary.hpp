@@ -17,36 +17,22 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef dictionary_cxx
-#define dictionary_cxx
+#ifndef shared_ptr_dictionary_hpp
+#define shared_ptr_dictionary_hpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.hh"
+%include "Foam/ext/common/shared_ptr.hxx"
 
-#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
+SHAREDPTR_TYPEMAP( Foam::dictionary );
 
-#include "Foam/src/OpenFOAM/primitives/Lists/tokenList.hh"
+%ignore boost::shared_ptr< Foam::dictionary >::operator->;
 
-#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
-
-#include "Foam/src/OpenFOAM/primitives/strings/string.hh"
-
-#include "Foam/src/OpenFOAM/primitives/scalar.hh"
-
-#include "Foam/src/OpenFOAM/db/Switch.hh"
-
-#include <dictionary.H>
-
-#if FOAM_VERSION( >=, 010600 )
-  #include <SHA1Digest.H>
-#endif
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/dictionaryHolder.hh"
+%template( shared_ptr_dictionary ) boost::shared_ptr< Foam::dictionary >;
 
 
 //---------------------------------------------------------------------------

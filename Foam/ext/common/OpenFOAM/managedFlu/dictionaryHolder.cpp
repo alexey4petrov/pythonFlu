@@ -1,4 +1,3 @@
-//  pythonFlu - Python wrapping for OpenFOAM C++ API
 //  Copyright (C) 2010- Alexey Petrov
 //  Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 //  
@@ -17,37 +16,34 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef dictionary_cxx
-#define dictionary_cxx
+#ifndef dictionaryHolder_cpp
+#define dictionaryHolder_cpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/containers/LinkedLists/user/IDLList/entryIDLList.hh"
+%{
+   #include "Foam/ext/common/OpenFOAM/managedFlu/dictionaryHolder.hh"
+%}
 
-#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
+%include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_dictionary.hpp"
 
-#include "Foam/src/OpenFOAM/primitives/Lists/tokenList.hh"
+%import "Foam/ext/common/managedFlu/SimpleHolder.cxx"
 
-#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
-
-#include "Foam/src/OpenFOAM/primitives/strings/string.hh"
-
-#include "Foam/src/OpenFOAM/primitives/scalar.hh"
-
-#include "Foam/src/OpenFOAM/db/Switch.hh"
-
-#include <dictionary.H>
-
-#if FOAM_VERSION( >=, 010600 )
-  #include <SHA1Digest.H>
-#endif
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/dictionaryHolder.hh"
+%include <dictionaryHolder.hpp>
 
 
 //---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::dictionaryHolder::SMARTPTR_PYAPPEND_GETATTR( dictionaryHolder );
+
+%extend Foam::dictionaryHolder
+{
+  SMARTPTR_EXTEND_ATTR( dictionaryHolder );
+}
+
+
+//--------------------------------------------------------------------------------------
 #endif
