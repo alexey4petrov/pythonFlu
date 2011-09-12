@@ -17,42 +17,23 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef fvMesh_hh
-#define fvMesh_hh
+#ifndef GeometricFieldHolder_hh
+#define GeometricFieldHolder_hh
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/meshes/polyMesh/polyMesh.hh"
+#include "GeometricFieldHolder.hpp"
 
-#include "Foam/src/OpenFOAM/containers/Lists/List/List_polyPatchPtr.hh"
+#include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldFunctions.hh"
 
-#include "Foam/src/OpenFOAM/db/Time/Time.hh"
-
-#include "Foam/src/OpenFOAM/db/objectRegistry.hh"
-
-#include "Foam/src/OpenFOAM/meshes/lduMesh.hh"
-
-#include "Foam/src/OpenFOAM/meshes/data.hh"
-
-#include "Foam/src/OpenFOAM/matrices/lduMatrix/lduAddressing/lduAddressing.hh"
-
-#include "Foam/src/finiteVolume/fvMesh/fvBoundaryMesh.hh"
-
-#include "Foam/src/finiteVolume/interpolation/surfaceInterpolation/surfaceInterpolation.hh"
-
-#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
-
-#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolders.hh"
-
-#include <fvMesh.H>
-#include <volMesh.H>
+#include "Foam/ext/common/managedFlu/DependentHolder.hh"
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif
+
+

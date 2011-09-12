@@ -17,40 +17,40 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef fvMesh_cpp
-#define fvMesh_cpp
+#ifndef GeometricFieldHolder_vector_fvPatchField_volMesh_cpp
+#define GeometricFieldHolder_vector_fvPatchField_volMesh_cpp
 
 
 //---------------------------------------------------------------------------
 %{
-  #include "Foam/src/finiteVolume/fvMesh/fvMesh.hh"
+  #include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder_vector_fvPatchField_volMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "Foam/src/finiteVolume/fields/volFields/volFields.cpp"
+%include "Foam/ext/common/finiteVolume/smart_tmp/smart_tmp_volVectorField.cpp"
 
-%include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.cpp"
+%include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder.hxx"
 
-%include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolders.cpp"
+%include <volFields.hpp>
 
-%include "Foam/src/finiteVolume/fvMesh/fvMesh.hpp"
+%template ( GeometricFieldHolder_vector_fvPatchField_volMesh ) Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >;
 
-%ignore Foam::fvMesh::writeObjects;
-
-%include <fvMesh.H>
-
-%extend Foam::fvMesh
-{
-  TYPEINFO_EXTENDS( polyMesh, fvMesh );
-  OBJECTREGISTRY_EXTENDS( fvMesh );
-  ISINSTANCE_EXTEND( Foam::fvMesh );
-}
+EXTEND_VOLVECTORFIELDHOLDER;
 
 
 //---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >::SMARTPTR_PYAPPEND_GETATTR( GeometricFieldHolder_vector_fvPatchField_volMesh );
+
+%extend Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >
+{
+  SMARTPTR_EXTEND_ATTR( GeometricFieldHolder_vector_fvPatchField_volMesh );
+}
+
+
+//--------------------------------------------------------------------------------------
 #endif
