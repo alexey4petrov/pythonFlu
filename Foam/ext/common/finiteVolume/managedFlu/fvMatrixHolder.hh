@@ -17,21 +17,23 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef fvMatrices_hh
-#define fvMatrices_hh
+#ifndef fvMatrixHolder_hh
+#define fvMatrixHolder_hh
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/finiteVolume/fvMatrices/fvScalarMatrix.hh"
-#include "Foam/ext/common/finiteVolume/managedFlu/fvScalarMatrixHolder.hh"
+#include <fvMatrixHolder.hpp>
 
-#include "Foam/src/finiteVolume/fvMatrices/fvVectorMatrix.hh"
-#include "Foam/ext/common/finiteVolume/managedFlu/fvVectorMatrixHolder.hh"
+#include "Foam/ext/common/finiteVolume/managedFlu/fvMatrixFunctions.hh"
+
+#include "Foam/ext/common/managedFlu/DependentHolder.hh"
+
+#include <fvMatrices.hpp>
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif
