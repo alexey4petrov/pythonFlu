@@ -64,6 +64,8 @@
   #include <incompressibleRASModels/RASModel.H>
 #endif
 
+#include "Foam/ext/common/turbulenceModels/managedFlu/incompressible_RASModelHolder.hh"
+
 
 //----------------------------------------------------------------------------
 #endif
