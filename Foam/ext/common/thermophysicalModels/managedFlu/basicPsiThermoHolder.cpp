@@ -17,39 +17,39 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
+
+
+//---------------------------------------------------------------------------
+#ifndef basicPsiThermoHolder_cpp
+#define basicPsiThermoHolder_cpp
 
 
 //---------------------------------------------------------------------------
 %{
-  #include "Foam/src/thermophysicalModels/basic/psiThermo/basicPsiThermo.hh"
+  #include "Foam/ext/common/thermophysicalModels/managedFlu/basicPsiThermoHolder.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/common.hxx"
+%include "Foam/ext/common/thermophysicalModels/shared_ptr/shared_ptr_basicPsiThermo.hpp"
 
-#if FOAM_VERSION( <, 010600 )
-#define basicPsiThermo_cpp
-#endif
-
-
-//---------------------------------------------------------------------------
-#ifndef basicPsiThermo_cpp
-#define basicPsiThermo_cpp
-
-
-//---------------------------------------------------------------------------
 %import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
 
-// %import "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%include <basicPsiThermo.H>
-
-
-//---------------------------------------------------------------------------
-%include "Foam/ext/common/thermophysicalModels/managedFlu/basicPsiThermoHolder.cpp"
+%include <basicPsiThermoHolder.hpp>
 
 
 //---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::basicPsiThermoHolder::SMARTPTR_PYAPPEND_GETATTR( basicPsiThermoHolder );
+
+%extend Foam::basicPsiThermoHolder
+{
+  SMARTPTR_EXTEND_ATTR( basicPsiThermoHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( basicPsiThermo );
+}
+
+
+//--------------------------------------------------------------------------------------
 #endif
