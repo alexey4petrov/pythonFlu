@@ -17,51 +17,37 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
+
+
+//---------------------------------------------------------------------------
+#ifndef compressible_RASModelHolder_cpp
+#define compressible_RASModelHolder_cpp
 
 
 //---------------------------------------------------------------------------
 %{
-  #include "Foam/src/turbulenceModels/compressible/RAS/RASModel.hh"
+  #include "Foam/ext/common/turbulenceModels/managedFlu/compressible_RASModelHolder.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/common.hxx"
+%include "Foam/ext/common/turbulenceModels/shared_ptr/shared_ptr_compressible_RASModel.hpp"
 
-#if FOAM_VERSION( <, 010500 )
-#define compressibleRASModel_cpp
-#endif
-
-
-//-----------------------------------------------------------------------------
-#ifndef compressibleRASModel_cpp
-#define compressibleRASModel_cpp
-
-
-//----------------------------------------------------------------------------
 %import "Foam/src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.cxx"
 
-%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-%import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"
-
-%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
+%include <turbulenceModels/compressible/RASModelHolder.hpp>
 
 
-//-----------------------------------------------------------------------------
-%rename( compressible_RASModel ) Foam::compressible::RASModel;
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::compressible::RASModelHolder::SMARTPTR_PYAPPEND_GETATTR( RASModelHolder );
 
-#if FOAM_NOT_BRANCH( __FREEFOAM__ )
-%include <compressible/RASModel.H>
-#else
-%include <compressibleRASModels/RASModel.H>
-#endif
-
-
-//-----------------------------------------------------------------------------
-%include "Foam/ext/common/turbulenceModels/managedFlu/compressible_RASModelHolder.cpp"
+%extend Foam::compressible::RASModelHolder
+{
+  SMARTPTR_EXTEND_ATTR( RASModelHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( compressible::RASModel );
+}
 
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif

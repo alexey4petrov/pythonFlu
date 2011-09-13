@@ -17,46 +17,22 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/common.hh"
-
-#if FOAM_VERSION( <, 010500 )
-#define compressibleRASModel_hh
-#endif
+#ifndef shared_ptr_compressible_RASModel_hpp
+#define shared_ptr_compressible_RASModel_hpp
 
 
-//-----------------------------------------------------------------------------
-#ifndef compressibleRASModel_hh
-#define compressibleRASModel_hh
+//---------------------------------------------------------------------------
+%include "Foam/ext/common/shared_ptr.hxx"
 
+SHAREDPTR_TYPEMAP( Foam::compressible::RASModel );
 
-//----------------------------------------------------------------------------
-#include "Foam/src/turbulenceModels/compressible/turbulenceModel.hh"
+%ignore boost::shared_ptr< Foam::compressible::RASModel >::operator->;
 
-#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
-
-#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
-
-#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
-
-
-//----------------------------------------------------------------------------
-#if FOAM_NOT_BRANCH( __FREEFOAM__ )
-  #if FOAM_VERSION( ==, 010500 )
-    #include <RAS/compressible/RASModel/RASModel.H>
-  #endif
-
-  #if FOAM_VERSION( >=, 010600 )
-    #include <compressible/RAS/RASModel/RASModel.H>
-  #endif
-#else
-  #include <compressibleRASModels/RASModel.H>
-#endif
-
-#include "Foam/ext/common/turbulenceModels/managedFlu/compressible_RASModelHolder.hh"
+%template( shared_ptr_compressible_RASModel ) boost::shared_ptr< Foam::compressible::RASModel >;
 
 
 //---------------------------------------------------------------------------
