@@ -17,38 +17,22 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/common.hh"
-
-#if FOAM_VERSION( ==, 010500 )   
-#define compressibleturbulenceModel_hh
-#endif
+#ifndef shared_ptr_compressible_turbulenceModel_hpp
+#define shared_ptr_compressible_turbulenceModel_hpp
 
 
 //---------------------------------------------------------------------------
-#ifndef compressibleturbulenceModel_hh
-#define compressibleturbulenceModel_hh
+%include "Foam/ext/common/shared_ptr.hxx"
 
+SHAREDPTR_TYPEMAP( Foam::compressible::turbulenceModel );
 
-//---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
+%ignore boost::shared_ptr< Foam::compressible::turbulenceModel >::operator->;
 
-#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
-
-#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
-
-#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
-
-#if FOAM_NOT_BRANCH( __FREEFOAM__ )
-  #include <compressible/turbulenceModel/turbulenceModel.H>
-#else
-  #include <compressibleTurbulenceModel/turbulenceModel.H>
-#endif 
-
-#include "Foam/ext/common/turbulenceModels/managedFlu/compressible_turbulenceModelHolder.hh"
+%template( shared_ptr_compressible_turbulenceModel ) boost::shared_ptr< Foam::compressible::turbulenceModel >;
 
 
 //---------------------------------------------------------------------------

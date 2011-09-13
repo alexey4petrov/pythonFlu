@@ -17,39 +17,25 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/common.hh"
-
-#if FOAM_VERSION( ==, 010500 )   
-#define compressibleturbulenceModel_hh
-#endif
+#ifndef compressible_turbulenceModelHolder_hh
+#define compressible_turbulenceModelHolder_hh
 
 
 //---------------------------------------------------------------------------
-#ifndef compressibleturbulenceModel_hh
-#define compressibleturbulenceModel_hh
+#include <turbulenceModels/compressible/turbulenceModelHolder.hpp>
 
-
-//---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
+#include "Foam/ext/common/managedFlu/DependentHolder.hh"
 
 #include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
-
-#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
-
-#if FOAM_NOT_BRANCH( __FREEFOAM__ )
-  #include <compressible/turbulenceModel/turbulenceModel.H>
-#else
-  #include <compressibleTurbulenceModel/turbulenceModel.H>
-#endif 
-
-#include "Foam/ext/common/turbulenceModels/managedFlu/compressible_turbulenceModelHolder.hh"
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.hh"
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif
+
+

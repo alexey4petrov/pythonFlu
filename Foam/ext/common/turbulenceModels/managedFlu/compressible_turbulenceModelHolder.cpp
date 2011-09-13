@@ -17,39 +17,41 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/common.hh"
-
-#if FOAM_VERSION( ==, 010500 )   
-#define compressibleturbulenceModel_hh
-#endif
+#ifndef compressible_turbulenceModelHolder_cpp
+#define compressible_turbulenceModelHolder_cpp
 
 
 //---------------------------------------------------------------------------
-#ifndef compressibleturbulenceModel_hh
-#define compressibleturbulenceModel_hh
+%{
+  #include "Foam/ext/common/turbulenceModels/managedFlu/compressible_turbulenceModelHolder.hh"
+%}
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
+%include "Foam/ext/common/turbulenceModels/shared_ptr/shared_ptr_compressible_turbulenceModel.hpp"
 
-#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
+%import "Foam/ext/common/managedFlu/DependentHolder.cxx"
 
-#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
 
-#if FOAM_NOT_BRANCH( __FREEFOAM__ )
-  #include <compressible/turbulenceModel/turbulenceModel.H>
-#else
-  #include <compressibleTurbulenceModel/turbulenceModel.H>
-#endif 
-
-#include "Foam/ext/common/turbulenceModels/managedFlu/compressible_turbulenceModelHolder.hh"
+%include <turbulenceModels/compressible/turbulenceModelHolder.hpp>
 
 
 //---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::compressible::turbulenceModelHolder::SMARTPTR_PYAPPEND_GETATTR( turbulenceModelHolder );
+
+%extend Foam::compressible::turbulenceModelHolder
+{
+  SMARTPTR_EXTEND_ATTR( turbulenceModelHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( compressible::turbulenceModel );
+}
+
+
+//--------------------------------------------------------------------------------------
 #endif
