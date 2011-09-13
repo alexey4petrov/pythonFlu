@@ -26,15 +26,15 @@ from Foam.ext.common.finiteVolume.managedFlu.surfaceInterpolate import *
 
 
 #---------------------------------------------------------------------------
-interpolate = fvc_interpolate
+interpolate = fvch_interpolate
 
-surfaceSum = fvc_surfaceSum
+surfaceSum = fvch_surfaceSum
 
-ddtPhiCorr = fvc_ddtPhiCorr
+ddtPhiCorr = fvch_ddtPhiCorr
 
-div = fvc_div
+div = fvch_div
 
-grad = fvc_grad
+grad = fvch_grad
 
 interpolate = fvch_interpolate
 
