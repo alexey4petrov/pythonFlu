@@ -106,4 +106,8 @@
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/turbulenceModels/managedFlu/incompressible_turbulenceModelHolder.cpp"
+
+
+//---------------------------------------------------------------------------
 #endif

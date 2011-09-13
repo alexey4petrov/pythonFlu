@@ -61,6 +61,8 @@
   #include <incompressibleTurbulenceModel/turbulenceModel.H>
 #endif 
 
+#include "Foam/ext/common/turbulenceModels/managedFlu/incompressible_turbulenceModelHolder.hh"
+
 
 //---------------------------------------------------------------------------
 #endif
