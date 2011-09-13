@@ -17,40 +17,22 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
-
-
-//--------------------------------------------------------------------------
-#include "Foam/src/common.hh"
-
-#if FOAM_VERSION( <, 010500 )
-#define radiationModel_hh
-#endif
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef radiationModel_hh
-#define radiationModel_hh
+#ifndef shared_ptr_radiationModel_hpp
+#define shared_ptr_radiationModel_hpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/db/IOdictionary.hh"
+%include "Foam/ext/common/shared_ptr.hxx"
 
-// #include "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hh"
+SHAREDPTR_TYPEMAP( Foam::radiation::radiationModel );
 
-#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
+%ignore boost::shared_ptr< Foam::radiation::radiationModel >::operator->;
 
-#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
-
-#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
-
-// #include <blackBodyEmission.H>
-
-#include <radiationModel.H>
-
-
-//---------------------------------------------------------------------------
-#include "Foam/ext/common/thermophysicalModels/managedFlu/radiationModelHolder.hh"
+%template( shared_ptr_radiationModel ) boost::shared_ptr< Foam::radiation::radiationModel >;
 
 
 //---------------------------------------------------------------------------

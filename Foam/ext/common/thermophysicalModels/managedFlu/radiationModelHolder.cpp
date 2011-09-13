@@ -17,41 +17,38 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
-
-
-//--------------------------------------------------------------------------
-#include "Foam/src/common.hh"
-
-#if FOAM_VERSION( <, 010500 )
-#define radiationModel_hh
-#endif
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef radiationModel_hh
-#define radiationModel_hh
+#ifndef radiationModelHolder_cpp
+#define radiationModelHolder_cpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/db/IOdictionary.hh"
-
-// #include "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hh"
-
-#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
-
-#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
-
-#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
-
-// #include <blackBodyEmission.H>
-
-#include <radiationModel.H>
+%{
+  #include "Foam/ext/common/thermophysicalModels/managedFlu/radiationModelHolder.hh"
+%}
 
 
 //---------------------------------------------------------------------------
-#include "Foam/ext/common/thermophysicalModels/managedFlu/radiationModelHolder.hh"
+%include "Foam/ext/common/thermophysicalModels/shared_ptr/shared_ptr_radiationModel.hpp"
+
+%import "Foam/ext/common/managedFlu/DependentHolder.cxx"
+
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
+
+%include <radiationModelHolder.hpp>
 
 
 //---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::radiation::radiationModelHolder::SMARTPTR_PYAPPEND_GETATTR( radiationModelHolder );
+
+%extend Foam::radiation::radiationModelHolder
+{
+  SMARTPTR_EXTEND_ATTR( radiationModelHolder );
+}
+
+
+//--------------------------------------------------------------------------------------
 #endif

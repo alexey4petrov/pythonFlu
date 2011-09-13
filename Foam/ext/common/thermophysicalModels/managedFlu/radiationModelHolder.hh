@@ -17,41 +17,23 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
-//--------------------------------------------------------------------------
-#include "Foam/src/common.hh"
+//---------------------------------------------------------------------------
+#ifndef radiationModelHolder_hh
+#define radiationModelHolder_hh
 
-#if FOAM_VERSION( <, 010500 )
-#define radiationModel_hh
+
+//---------------------------------------------------------------------------
+#include <radiationModelHolder.hpp>
+
+#include "Foam/ext/common/managedFlu/DependentHolder.hh"
+
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
+
+
+//--------------------------------------------------------------------------------------
 #endif
 
 
-//---------------------------------------------------------------------------
-#ifndef radiationModel_hh
-#define radiationModel_hh
-
-
-//---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/db/IOdictionary.hh"
-
-// #include "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hh"
-
-#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
-
-#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
-
-#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
-
-// #include <blackBodyEmission.H>
-
-#include <radiationModel.H>
-
-
-//---------------------------------------------------------------------------
-#include "Foam/ext/common/thermophysicalModels/managedFlu/radiationModelHolder.hh"
-
-
-//---------------------------------------------------------------------------
-#endif
