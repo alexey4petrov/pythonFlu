@@ -17,36 +17,23 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef basicThermo_cpp
-#define basicThermo_cpp
+#ifndef shared_ptr_basicThermo_hpp
+#define shared_ptr_basicThermo_hpp
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
-%}
+%include "Foam/ext/common/shared_ptr.hxx"
 
+SHAREDPTR_TYPEMAP( Foam::basicThermo );
 
-//---------------------------------------------------------------------------
-%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
+%ignore boost::shared_ptr< Foam::basicThermo >::operator->;
 
-%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
+%template( shared_ptr_basicThermo ) boost::shared_ptr< Foam::basicThermo >;
 
-// %import "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
-
-%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-
-//---------------------------------------------------------------------------
-%include <basicThermo.H>
-
-
-//---------------------------------------------------------------------------
-%include "Foam/ext/common/thermophysicalModels/managedFlu/basicThermoHolder.cpp"
 
 //---------------------------------------------------------------------------
 #endif

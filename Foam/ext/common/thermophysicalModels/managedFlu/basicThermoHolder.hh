@@ -17,36 +17,23 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef basicThermo_cpp
-#define basicThermo_cpp
+#ifndef basicThermoHolder_hh
+#define basicThermoHolder_hh
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
-%}
+#include <basicThermoHolder.hpp>
+
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
+
+#include "Foam/ext/common/managedFlu/DependentHolder.hh"
 
 
-//---------------------------------------------------------------------------
-%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
-
-// %import "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
-
-%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-
-//---------------------------------------------------------------------------
-%include <basicThermo.H>
-
-
-//---------------------------------------------------------------------------
-%include "Foam/ext/common/thermophysicalModels/managedFlu/basicThermoHolder.cpp"
-
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif
+
+
