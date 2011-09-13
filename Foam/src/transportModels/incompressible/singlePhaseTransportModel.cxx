@@ -60,4 +60,6 @@
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/transportModels/managedFlu/incompressible/singlePhaseTransportModelHolder.cpp"
+
 #endif

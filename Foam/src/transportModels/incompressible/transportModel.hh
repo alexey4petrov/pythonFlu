@@ -34,6 +34,8 @@
 
 #include <transportModel.H>
 
+#include "Foam/ext/common/transportModels/managedFlu/incompressible/transportModelHolder.hh"
+
 
 //---------------------------------------------------------------------------
 #endif

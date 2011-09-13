@@ -17,32 +17,36 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef transportModel_cxx
-#define transportModel_cxx
+#ifndef singlePhaseTransportModelHolder_cpp
+#define singlePhaseTransportModelHolder_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.transportModels.incompressible.transportModel";
 %{
-  #include "Foam/src/transportModels/incompressible/transportModel.hh"
+  #include "Foam/ext/common/transportModels/managedFlu/incompressible/singlePhaseTransportModelHolder.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
+%import "Foam/src/transportModels/incompressible/transportModel.cxx"
 
-%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
+%include "Foam/ext/common/transportModels/shared_ptr/shared_ptr_singlePhaseTransportModel.hpp"
 
-%include <transportModel.H>
-
-
-//---------------------------------------------------------------------------
-%include "Foam/ext/common/transportModels/managedFlu/incompressible/transportModelHolder.cpp"
+%include <transportModels/incompressible/singlePhaseTransportModelHolder.hpp>
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::singlePhaseTransportModelHolder::SMARTPTR_PYAPPEND_GETATTR( singlePhaseTransportModelHolder );
+
+%extend Foam::singlePhaseTransportModelHolder
+{
+  SMARTPTR_EXTEND_ATTR( singlePhaseTransportModelHolder );
+}
+
+
+//--------------------------------------------------------------------------
 #endif

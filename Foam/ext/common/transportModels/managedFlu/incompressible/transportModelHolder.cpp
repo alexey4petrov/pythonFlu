@@ -17,32 +17,39 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef transportModel_cxx
-#define transportModel_cxx
+#ifndef transportModelHolder_cpp
+#define transportModelHolder_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.transportModels.incompressible.transportModel";
 %{
-  #include "Foam/src/transportModels/incompressible/transportModel.hh"
+  #include "Foam/ext/common/transportModels/managedFlu/incompressible/transportModelHolder.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
-
 %import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%include <transportModel.H>
+%include "Foam/ext/common/transportModels/shared_ptr/shared_ptr_transportModel.hpp"
+
+%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
+
+%include <transportModels/incompressible/transportModelHolder.hpp>
 
 
 //---------------------------------------------------------------------------
-%include "Foam/ext/common/transportModels/managedFlu/incompressible/transportModelHolder.cpp"
+%feature( "pythonappend" ) Foam::IOobjectHolder::SMARTPTR_PYAPPEND_GETATTR( transportModelHolder );
+
+%extend Foam::transportModelHolder
+{
+  SMARTPTR_EXTEND_ATTR( transportModelHolder );
+}
 
 
 //---------------------------------------------------------------------------
+
 #endif

@@ -17,31 +17,22 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef transportModel_cxx
-#define transportModel_cxx
+#ifndef shared_ptr_singlePhaseTransportModel_hpp
+#define shared_ptr_singlePhaseTransportModel_hpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.transportModels.incompressible.transportModel";
-%{
-  #include "Foam/src/transportModels/incompressible/transportModel.hh"
-%}
+%include "Foam/ext/common/shared_ptr.hxx"
 
+SHAREDPTR_TYPEMAP( Foam::singlePhaseTransportModel );
 
-//---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
+%ignore boost::shared_ptr< Foam::singlePhaseTransportModel >::operator->;
 
-%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-%include <transportModel.H>
-
-
-//---------------------------------------------------------------------------
-%include "Foam/ext/common/transportModels/managedFlu/incompressible/transportModelHolder.cpp"
+%template( shared_ptr_singlePhaseTransportModel ) boost::shared_ptr< Foam::singlePhaseTransportModel >;
 
 
 //---------------------------------------------------------------------------
