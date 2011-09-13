@@ -103,6 +103,7 @@ AC_OUTPUT( [ bashrc \
 	     Foam/fvc/Makefile \
 	     Foam/fvch/Makefile \
 	     Foam/fvm/Makefile \
+	     Foam/fvmh/Makefile \
 	     Foam/MULES/Makefile \
 	     Foam/sampling/Makefile \
 	     Foam/dynamicMesh/Makefile \
