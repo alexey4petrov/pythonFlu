@@ -17,21 +17,10 @@
 ## 
 ## See http://sourceforge.net/projects/pythonflu
 ##
-## Author : Alexey PETROV
+## Author : Alexey PETROV, Andrey SIMURZIN
 ##
 
 
-#--------------------------------------------------------------------------------------
-pythonflu_root_dir:=@abs_top_builddir@
-
-include @abs_top_builddir@/Foam/foam.version.makefile
-
-
-#--------------------------------------------------------------------------------------
-include @abs_top_builddir@/Foam/include.src.makefile
-
-SUBDIRS = managedFlu OpenFOAM meshTools finiteVolume fv fvc fvch fvm fvmh MULES sampling dynamicMesh dynamicFvMesh randomProcesses thermophysicalModels transportModels radiation incompressible compressible
-
-
-#--------------------------------------------------------------------------------------
-
+#---------------------------------------------------------------------------
+from Foam.ext.common.managedFlu.DependentHolder import *
+from Foam.ext.common.managedFlu.Deps import *

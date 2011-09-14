@@ -114,7 +114,7 @@ AC_OUTPUT( [ bashrc \
 	     Foam/radiation/Makefile \
 	     Foam/incompressible/Makefile \
 	     Foam/compressible/Makefile \
-	     Foam/ext/common/managedFlu/Makefile
+	     Foam/managedFlu/Makefile
 	     Foam/src/common.hxx \
 	     Foam/src/common.hh \
 	     make-deb.sh \
