@@ -41,11 +41,13 @@
 
 //---------------------------------------------------------------------------
 #include "Foam/src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.hh"
+#include "Foam/ext/common/finiteVolume/managedFlu/fvScalarMatrixHolder.hh"
 #include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.hh"
 
 
 //---------------------------------------------------------------------------
 #include "Foam/src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.hh"
+#include "Foam/ext/common/finiteVolume/managedFlu/fvVectorMatrixHolder.hh"
 #include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.hh"
 
 
