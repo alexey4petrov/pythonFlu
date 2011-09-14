@@ -43,6 +43,8 @@ namespace boost
         T * operator-> () const;
 
         T * get() const;
+        
+        T & operator* () const;
 
         bool unique() const;
 
