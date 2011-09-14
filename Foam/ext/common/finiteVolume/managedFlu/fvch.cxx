@@ -43,7 +43,7 @@
 %rename( fvch_ddtPhiCorr ) Foam::fvc::ddtPhiCorr;
 %rename( fvch_grad ) Foam::fvc::grad;
 
-%include "fvc.hpp"
+%include <fvc.hpp>
 
 
 //--------------------------------------------------------------------------------------
