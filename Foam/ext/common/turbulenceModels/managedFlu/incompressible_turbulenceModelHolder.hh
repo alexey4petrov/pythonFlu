@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include <turbulenceModels/incompressible/turbulenceModelHolder.hpp>
+#include <turbulenceModels/incompressible/incompressibleTurbulenceModelHolder.hpp>
 
 #include "Foam/ext/common/managedFlu/DependentHolder.hh"
 

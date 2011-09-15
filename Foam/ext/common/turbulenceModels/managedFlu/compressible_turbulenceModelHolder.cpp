@@ -40,7 +40,7 @@
 
 %import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
 
-%include <turbulenceModels/compressible/turbulenceModelHolder.hpp>
+%include <turbulenceModels/compressible/compressibleTurbulenceModelHolder.hpp>
 
 
 //---------------------------------------------------------------------------
