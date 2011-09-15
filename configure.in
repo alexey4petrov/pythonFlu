@@ -62,6 +62,10 @@ MANAGEDFLU_CHECK_MANAGEDFLU
 echo 
 
 echo "--------------------------------------------------------------------------------------"
+MANAGEDFLU_CHECK_OPENFOAM
+echo 
+
+echo "--------------------------------------------------------------------------------------"
 CONFFLU_CHECK_DIFFUSIONFOAMLIB
 echo 
 
