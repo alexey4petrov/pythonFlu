@@ -36,7 +36,7 @@
 
 %import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
-SWIG_INCLUDE_HEADER(TimeHolder,hpp);
+INCLUDE_FILENAME(TimeHolder,hpp);
 
 
 //---------------------------------------------------------------------------

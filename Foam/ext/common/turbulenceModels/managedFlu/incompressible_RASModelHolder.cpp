@@ -38,7 +38,7 @@
 
 %import "Foam/src/transportModels/incompressible/transportModel.cxx"
 
-SWIG_INCLUDE_HEADER(incompressibleRASModelHolder,hpp)
+INCLUDE_FILENAME(incompressibleRASModelHolder,hpp)
 
 
 //---------------------------------------------------------------------------

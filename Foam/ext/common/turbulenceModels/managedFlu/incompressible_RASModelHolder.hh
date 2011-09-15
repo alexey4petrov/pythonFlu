@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-#include FILE_NAME(incompressibleRASModelHolder,hpp)
+#include FILENAME(incompressibleRASModelHolder,hpp)
 
 #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_incompressible_turbulenceModel.hh"
 

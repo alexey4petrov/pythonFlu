@@ -32,7 +32,7 @@
 
 
 //---------------------------------------------------------------------------
-%define SWIG_INCLUDE_HEADER(Type,Ext) 
+%define INCLUDE_FILENAME(Type,Ext) 
 %include <##Type##_@MANAGEDFLU_HEADER_SUFFIX@.##Ext##>
 %enddef
 
