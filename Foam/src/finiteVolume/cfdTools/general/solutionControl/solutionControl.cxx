@@ -28,6 +28,8 @@
 
 
 //---------------------------------------------------------------------------
+%import "Foam/src/common.hxx"
+
 #if FOAM_VERSION( <, 020000 )
 #define solutionControl_cxx
 #endif
