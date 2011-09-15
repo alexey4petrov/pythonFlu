@@ -32,6 +32,11 @@
 
 
 //---------------------------------------------------------------------------
+%define SWIG_INCLUDE_HEADER(Type,Ext) 
+%include <##Type##_@MANAGEDFLU_HEADER_SUFFIX@.##Ext##>
+%enddef
+
+
 @SWIG_DEFINE_BRANCHES@
 
 %define FOAM_VERSION( CMP, VERSION ) __FOAM_VERSION__ CMP VERSION %enddef
