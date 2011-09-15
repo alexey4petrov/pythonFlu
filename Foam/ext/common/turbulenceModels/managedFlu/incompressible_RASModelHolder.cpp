@@ -38,7 +38,7 @@
 
 %import "Foam/src/transportModels/incompressible/transportModel.cxx"
 
-%include <turbulenceModels/incompressible/RASModelHolder.hpp>
+SWIG_INCLUDE_HEADER(incompressibleRASModelHolder,hpp)
 
 
 //---------------------------------------------------------------------------

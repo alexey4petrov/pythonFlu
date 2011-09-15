@@ -30,7 +30,7 @@
 
 #include "Foam/src/OpenFOAM/db/objectRegistry.hh"
 
-#include <TimeHolder.hpp>
+#include FILE_NAME(TimeHolder,hpp)
 
 
 //--------------------------------------------------------------------------------------

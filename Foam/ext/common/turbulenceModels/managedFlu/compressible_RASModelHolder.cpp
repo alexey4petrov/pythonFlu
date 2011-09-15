@@ -36,7 +36,7 @@
 
 %import "Foam/src/OpenFOAM/fields/tmp/autoPtr_compressible_turbulenceModel.cxx"
 
-%include <turbulenceModels/compressible/RASModelHolder.hpp>
+SWIG_INCLUDE_HEADER(compressibleRASModelHolder,hpp)
 
 
 //---------------------------------------------------------------------------
