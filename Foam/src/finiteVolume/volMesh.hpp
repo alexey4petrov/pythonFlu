@@ -41,7 +41,8 @@
   void *ptr;
   int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::volMesh::Mesh * ), 0 );
   int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::fvMesh * ), 0 );
-  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 );
+  int resHolder = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::fvMeshHolder * ), 0 );
+  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( resHolder );
 }
 
 
@@ -59,7 +60,13 @@
     if ( SWIG_IsOK( res ) && argp ) {
       $1 = %reinterpret_cast( argp, fvMesh * );
     } else {
-      %argument_fail( res, "$type", $symname, $argnum );
+      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::fvMeshHolder * ), %convertptr_flags );
+      if ( SWIG_IsOK( res ) && argp ) {
+        Foam::fvMeshHolder* tmp_res = %reinterpret_cast( argp, Foam::fvMeshHolder * );
+        $1 = tmp_res->operator->();
+      } else{
+        %argument_fail( res, "$type", $symname, $argnum );
+      }
     }
   }
 }

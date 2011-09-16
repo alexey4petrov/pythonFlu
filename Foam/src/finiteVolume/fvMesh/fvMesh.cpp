@@ -32,6 +32,11 @@
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/managedFlu/no_holder_typemap.hxx"
+NO_HOLDER_TYPEMAP( Foam::fvMesh );
+
+
+//---------------------------------------------------------------------------
 %include "Foam/src/finiteVolume/fields/volFields/volFields.cpp"
 
 %include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.cpp"
