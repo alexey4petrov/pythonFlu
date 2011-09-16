@@ -45,7 +45,7 @@
 
 #include "Foam/src/transportModels/incompressible/transportModel.hh"
 
-#include "Foam/ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hh"
+#include "Foam/ext/common/finiteVolume/smart_tmp/smart_tmp_volScalarField.hh"
 
 
 //------------------------------------------------------------------------

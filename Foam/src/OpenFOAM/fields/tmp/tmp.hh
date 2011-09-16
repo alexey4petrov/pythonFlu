@@ -28,7 +28,7 @@
 //---------------------------------------------------------------------------
 #include "Foam/src/OpenFOAM/fields/tmp/refCount.hh"
 
-#include "Foam/ext/common/ext_tmp.hh"
+#include "Foam/ext/common/smart_tmp.hh"
 
 #include <tmp.H>
 
@@ -55,12 +55,12 @@ namespace Foam
   }
   
   template< class T >
-  T& get_ref( ext_tmp< T >* theArg )
+  T& get_ref( smart_tmp< T >* theArg )
   {
     return (*theArg)();
   }
   template< class T >
-  const T& get_ref( const ext_tmp< T >* theArg )
+  const T& get_ref( const smart_tmp< T >* theArg )
   {
     return (*theArg)();
   }

@@ -21,14 +21,26 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef ext_tmp_volScalarField_hh
-#define ext_tmp_volScalarField_hh
+#ifndef smart_tmp_scalarField_cpp
+#define smart_tmp_scalarField_cpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/ext/common/ext_tmp.hh"
+%{
+  #include "Foam/ext/common/OpenFOAM/smart_tmp/smart_tmp_scalarField.hh"
+%}
 
-#include "Foam/src/finiteVolume/fields/volFields/volScalarField.hh"
+
+//---------------------------------------------------------------------------
+%import "Foam/src/common.hxx"
+
+%import "Foam/ext/common/smart_tmp.hxx"
+
+%include "Foam/src/OpenFOAM/fields/Fields/scalarField.cpp"
+
+%ignore Foam::smart_tmp< Foam::Field< Foam::scalar > >::operator=;
+
+%template ( smart_tmp_scalarField ) Foam::smart_tmp< Foam::Field< Foam::scalar > >;
 
 
 //---------------------------------------------------------------------------

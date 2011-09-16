@@ -334,11 +334,11 @@
 
 
 //---------------------------------------------------------------------------
-%define SCALAR_EXT_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC( GeometricFieldType, TPatchField, TMesh )
+%define SCALAR_SMART_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC( GeometricFieldType, TPatchField, TMesh )
 
-%extend Foam::ext_tmp< GeometricFieldType > __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Foam::scalar, TPatchField, TMesh );
-%extend Foam::ext_tmp< GeometricFieldType > __COMMON_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Foam::scalar );
-%extend Foam::ext_tmp< GeometricFieldType > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( TPatchField, TMesh );
+%extend Foam::smart_tmp< GeometricFieldType > __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Foam::scalar, TPatchField, TMesh );
+%extend Foam::smart_tmp< GeometricFieldType > __COMMON_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Foam::scalar );
+%extend Foam::smart_tmp< GeometricFieldType > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( TPatchField, TMesh );
 
 %enddef
 

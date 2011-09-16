@@ -30,7 +30,7 @@
 
 #include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField.hh"
 
-#include "Foam/ext/common/OpenFOAM/ext_tmp/ext_tmp_scalarField.hh"
+#include "Foam/ext/common/OpenFOAM/smart_tmp/smart_tmp_scalarField.hh"
 
 
 //---------------------------------------------------------------------------

@@ -38,7 +38,7 @@
 
 %import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "Foam/ext/common/ext_tmp.hxx"
+%import "Foam/ext/common/smart_tmp.hxx"
 
 %include <Field.H>
 
@@ -53,8 +53,8 @@
   void *ptr;
   int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::Field_Type * ), 0 );
   int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::Field_Type > * ), 0 );
-  int res_ext_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::ext_tmp< Foam::Field_Type > * ), 0 );
-  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( res_ext_tmpT );
+  int res_smart_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::smart_tmp< Foam::Field_Type > * ), 0 );
+  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( res_smart_tmpT );
 }
 
 %typemap( in ) const Foam::Field_Type& 
@@ -72,8 +72,8 @@
       Foam::tmp<Foam::Field_Type >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::Field_Type > * );
       $1 = tmp_res->operator->();
       } else {
-      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::ext_tmp< Foam::Field_Type >* ), %convertptr_flags );
-      if ( SWIG_IsOK( res ) && argp ) { Foam::ext_tmp< Foam::Field_Type >* tmp_res =%reinterpret_cast( argp, Foam::ext_tmp< Foam::Field_Type > * );
+      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::smart_tmp< Foam::Field_Type >* ), %convertptr_flags );
+      if ( SWIG_IsOK( res ) && argp ) { Foam::smart_tmp< Foam::Field_Type >* tmp_res =%reinterpret_cast( argp, Foam::smart_tmp< Foam::Field_Type > * );
       $1 = tmp_res->operator->();
       } else {
         %argument_fail( res, "$type", $symname, $argnum );
@@ -219,7 +219,7 @@ NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
 
 %extend Foam::Field< Foam::Type >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
 %extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
-%extend Foam::ext_tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+%extend Foam::smart_tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
 
 %import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 

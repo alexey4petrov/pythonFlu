@@ -63,7 +63,7 @@
     
 %extend Foam::turbulenceModel  
 {
-  Foam::ext_tmp< Foam::volScalarField > ext_nut()
+  Foam::smart_tmp< Foam::volScalarField > ext_nut()
   {
     return self->nut();
   }
@@ -90,12 +90,12 @@
   
 %extend Foam::incompressible::turbulenceModel  
 {
-  Foam::ext_tmp< Foam::volScalarField > ext_nut()
+  Foam::smart_tmp< Foam::volScalarField > ext_nut()
   {
     return self->nut();
   }
 #if FOAM_VERSION( >=, 020000 )
-  Foam::ext_tmp< Foam::volScalarField > ext_nu()
+  Foam::smart_tmp< Foam::volScalarField > ext_nu()
   {
     return self->nu()();
   }

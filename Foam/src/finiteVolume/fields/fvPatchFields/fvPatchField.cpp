@@ -60,7 +60,7 @@
 //--------------------------------------------------------------------------
 %define __COMMON_FVPATCHFIELD_TEMPLATE_FUNC_EXTENDS( Type )
 {
-  Foam::ext_tmp< Foam::Field< Type > > ext_snGrad()
+  Foam::smart_tmp< Foam::Field< Type > > ext_snGrad()
   {
     return self->snGrad();
   }

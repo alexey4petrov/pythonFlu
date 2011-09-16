@@ -38,7 +38,7 @@
 
 %include "Foam/src/OpenFOAM/fields/tmp/tmp_volScalarField.cpp"
 
-%include "Foam/ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.cpp"
+%include "Foam/ext/common/finiteVolume/smart_tmp/smart_tmp_volScalarField.cpp"
 
 
 //---------------------------------------------------------------------------

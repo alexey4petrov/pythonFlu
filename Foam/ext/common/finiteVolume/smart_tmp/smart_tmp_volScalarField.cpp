@@ -42,6 +42,8 @@
 
 SMART_TMP_VALID_EXTEND( Foam::volScalarField );
 
+SCALAR_SMART_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::volScalarField, Foam::fvPatchField, Foam::volMesh );
+
 %extend Foam::smart_tmp< Foam::volScalarField >
 {
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::scalar );

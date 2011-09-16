@@ -34,7 +34,7 @@
 
 #include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
 
-#include "Foam/ext/common/ext_tmp.hh"
+#include "Foam/ext/common/smart_tmp.hh"
 
 #include <Field.H>
 
