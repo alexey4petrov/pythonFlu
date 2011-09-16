@@ -64,16 +64,16 @@ def createMesh( runTime ):
     ext_Info() << "Create mesh for time = " << runTime.timeName() << nl << nl
 
     from Foam.OpenFOAM import Time
-    from Foam.OpenFOAM import IOobject
+    from Foam.OpenFOAM import IOobject, IOobjectHolder
     from Foam.OpenFOAM import fileName
-    from Foam.finiteVolume import fvMesh
+    from Foam.finiteVolume import fvMeshHolder, fvMesh
     
-    mesh = fvMesh( IOobject( fvMesh.defaultRegion.fget(),
+    mesh = fvMeshHolder( IOobjectHolder( fvMesh.defaultRegion.fget(),
                              fileName( runTime.timeName() ),
                              runTime,
                              IOobject.MUST_READ ) )
     
-   
+    print repr( mesh )   
     return mesh
 
 
@@ -83,11 +83,11 @@ def createMeshNoClear( runTime ):
     ext_Info() << "Create mesh, no clear-out for time = " << runTime.timeName() << nl << nl
 
     from Foam.OpenFOAM import Time
-    from Foam.OpenFOAM import IOobject
+    from Foam.OpenFOAM import IOobject, IOobjectHolder
     from Foam.OpenFOAM import fileName
-    from Foam.finiteVolume import fvMesh
+    from Foam.finiteVolume import fvMesh, fvMeshHolder
     
-    mesh = fvMesh( IOobject( fvMesh.defaultRegion.fget(),
+    mesh = fvMeshHolder( IOobjectHolder( fvMesh.defaultRegion.fget(),
                              fileName( runTime.timeName() ),
                              runTime,
                              IOobject.MUST_READ ) )

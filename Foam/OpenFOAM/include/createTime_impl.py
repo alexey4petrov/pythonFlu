@@ -26,13 +26,13 @@ def createTime_010401_dev( args ):
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "Create time\n" << nl
     
-    from Foam.OpenFOAM import Time
+    from Foam.OpenFOAM import TimeHolder, Time
     from Foam.OpenFOAM import argList
     
-    runTime = Time( Time.controlDictName.fget(),
+    runTime = TimeHolder( Time.controlDictName.fget(),
                     args.rootPath(),
                     args.caseName() )
-
+    print repr( runTime )   
     return runTime
 
 
@@ -41,9 +41,9 @@ def createTime_020000( args ):
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "Create time\n" << nl
     
-    from Foam.OpenFOAM import Time
+    from Foam.OpenFOAM import Time, TimeHolder
 
-    runTime = Time( Time.controlDictName.fget(), args )
+    runTime = TimeHolder( Time.controlDictName.fget(), args )
 
     return runTime
 
