@@ -56,7 +56,8 @@
   void *ptr;
   int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::fvMatrix< Type > * ), 0 );
   int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::fvMatrix< Type > > * ), 0 );
-  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 );
+  int resHolder = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::fvMatrixHolder< Type > * ), 0 );
+  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( resHolder );
 }
 
 %typemap( in ) Foam::fvMatrix< Type >& 
@@ -74,7 +75,13 @@
       Foam::tmp< Foam::fvMatrix< Type > >* tmp_res = %reinterpret_cast( argp, Foam::tmp< Foam::fvMatrix< Type > > * );
       $1 = tmp_res->operator->();
     } else {
-      %argument_fail( res, "$type", $symname, $argnum );
+      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::fvMatrixHolder< Type > * ), %convertptr_flags );
+      if ( SWIG_IsOK( res ) && argp ) {
+        Foam::fvMatrixHolder< Type >* tmp_res = %reinterpret_cast( argp, Foam::fvMatrixHolder< Type > * );
+        $1 = tmp_res->operator->();
+      } else {
+        %argument_fail( res, "$type", $symname, $argnum );
+      }
     }
   }
 }    
