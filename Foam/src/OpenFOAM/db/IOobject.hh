@@ -34,6 +34,7 @@
 
 #include "Foam/ext/common/OpenFOAM/managedFlu/IOobjectHolder.hh"
 
+#include "Foam/ext/common/OpenFOAM/managedFlu/objectRegistryHolder.hh"
 
 //---------------------------------------------------------------------------
 #endif
