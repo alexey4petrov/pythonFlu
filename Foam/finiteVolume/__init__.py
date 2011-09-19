@@ -70,7 +70,7 @@ from Foam.src.finiteVolume.cfdTools.general.MRF.MRFZones import *
 from Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_MRFZone import *
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_MRFZone import *
 
-
+from Foam.src.finiteVolume.cfdTools.general.solutionControl.simpleControl import *
 #---------------------------------------------------------------------------
 volScalarField = GeometricField_scalar_fvPatchField_volMesh
 volScalarField.DimensionedInternalField = DimensionedField_scalar_volMesh
