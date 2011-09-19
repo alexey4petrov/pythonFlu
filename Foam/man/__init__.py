@@ -22,6 +22,9 @@
 
 
 #--------------------------------------------------------------------------
+from Foam.ext.common.managedFlu.Deps import *
+
+#--------------------------------------------------------------------------
 from Foam.OpenFOAM import TimeHolder as Time
 from Foam.OpenFOAM import IOobjectHolder as IOobject
 from Foam.OpenFOAM import dictionaryHolder as dictionary
@@ -65,3 +68,18 @@ from Foam.man import radiation
 
 
 #---------------------------------------------------------------------------
+def createPhi( runTime, mesh, U ):
+    from Foam.OpenFOAM import ext_Info, nl
+    ext_Info() << "Reading/calculating face flux field phi\n" << nl;
+
+    from Foam.OpenFOAM import fileName, word
+    from Foam.OpenFOAM import IOobject as ref_IOobject
+    phi = surfaceScalarField( IOobject( word( "phi" ),
+                                                    fileName( runTime.timeName() ),
+                                                    mesh,
+                                                    ref_IOobject.READ_IF_PRESENT,
+                                                    ref_IOobject.AUTO_WRITE ),
+                                    linearInterpolate(U) & surfaceVectorField( mesh.Sf(), Deps( mesh ) ) ) 
+    
+    return phi
+
