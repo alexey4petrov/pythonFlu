@@ -171,6 +171,7 @@ sources = \
 	@abs_top_builddir@/Foam/src/OpenFOAM/algorithms/subCycle/subCycle_volScalarField.cxx \
 	\
 	@abs_top_builddir@/Foam/src/finiteVolume/interpolation/surfaceInterpolation/schemes/linear.cxx \
+	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/linear.cxx \
 	@abs_top_builddir@/Foam/src/finiteVolume/cfdTools/general/findRefCell.cxx \
 	@abs_top_builddir@/Foam/src/finiteVolume/cfdTools/general/adjustPhi.cxx \
 	@abs_top_builddir@/Foam/src/finiteVolume/cfdTools/general/bound.cxx \
