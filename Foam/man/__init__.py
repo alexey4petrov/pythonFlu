@@ -75,11 +75,29 @@ def createPhi( runTime, mesh, U ):
     from Foam.OpenFOAM import fileName, word
     from Foam.OpenFOAM import IOobject as ref_IOobject
     phi = surfaceScalarField( IOobject( word( "phi" ),
-                                                    fileName( runTime.timeName() ),
-                                                    mesh,
-                                                    ref_IOobject.READ_IF_PRESENT,
-                                                    ref_IOobject.AUTO_WRITE ),
-                                    linearInterpolate(U) & surfaceVectorField( mesh.Sf(), Deps( mesh ) ) ) 
+                                        fileName( runTime.timeName() ),
+                                        mesh,
+                                        ref_IOobject.READ_IF_PRESENT,
+                                        ref_IOobject.AUTO_WRITE ),
+                              linearInterpolate(U) & surfaceVectorField( mesh.Sf(), Deps( mesh ) ) ) 
     
     return phi
+
+
+#---------------------------------------------------------------------------
+def compressibleCreatePhi( runTime, mesh, U, rho ):
+     from Foam.OpenFOAM import ext_Info, nl
+     ext_Info() << "Reading/calculating face flux field phi\n" << nl
+     from Foam.OpenFOAM import fileName, word
+     from Foam.OpenFOAM import IOobject as ref_IOobject
+     from Foam.managedFlu import Deps
+
+     phi = surfaceScalarField( IOobject( word( "phi" ),
+                                         fileName( runTime.timeName() ),
+                                         mesh,
+                                         ref_IOobject.READ_IF_PRESENT,
+                                         ref_IOobject.AUTO_WRITE ),
+                               linearInterpolate( rho * U ) & surfaceVectorField( mesh.Sf(), Deps( mesh ) ) ) 
+     
+     return phi
 
