@@ -32,7 +32,7 @@ def createTime_010401_dev( args ):
     runTime = TimeHolder( Time.controlDictName.fget(),
                     args.rootPath(),
                     args.caseName() )
-    print repr( runTime )   
+
     return runTime
 
 

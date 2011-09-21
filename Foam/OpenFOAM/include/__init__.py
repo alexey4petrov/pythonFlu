@@ -73,7 +73,6 @@ def createMesh( runTime ):
                              runTime,
                              IOobject.MUST_READ ) )
     
-    print repr( mesh )   
     return mesh
 
 
