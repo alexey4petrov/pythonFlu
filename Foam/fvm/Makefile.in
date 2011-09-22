@@ -44,6 +44,8 @@ sources = \
 	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvm/fvmDiv.cxx \
 	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvm/fvmSup.cxx \
 	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvm/fvmLaplacian.cxx \
+	\
+	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/fvmh.cxx \
 
 
 #--------------------------------------------------------------------------------------

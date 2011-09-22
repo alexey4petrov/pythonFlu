@@ -30,7 +30,7 @@ include @abs_top_builddir@/Foam/foam.version.makefile
 #--------------------------------------------------------------------------------------
 include @abs_top_builddir@/Foam/include.src.makefile
 
-SUBDIRS = managedFlu OpenFOAM meshTools finiteVolume fv fvc man/fvc fvm man/fvm MULES sampling dynamicMesh dynamicFvMesh randomProcesses thermophysicalModels transportModels radiation incompressible compressible
+SUBDIRS = managedFlu OpenFOAM meshTools finiteVolume fv fvc fvm MULES sampling dynamicMesh dynamicFvMesh randomProcesses thermophysicalModels transportModels radiation incompressible compressible
 
 
 #--------------------------------------------------------------------------------------
