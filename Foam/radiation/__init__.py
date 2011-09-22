@@ -34,3 +34,8 @@ def createRadiationModel( thermo ) :
 
 
 #----------------------------------------------------------------------------
+def createRadiationModelHolder( thermo ) :
+    from Foam import man
+    pRadiation = man.radiation.radiationModel.New( man.volScalarField( thermo.T(), thermo ) )
+    
+    return pRadiation
