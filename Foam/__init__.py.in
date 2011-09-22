@@ -80,3 +80,14 @@ def FOAM_REF_VERSION( Cmp, Version):
 def FOAM_BRANCH_VERSION( Name, Cmp, Version):
 
     return eval( "@FOAM_VERSION@" + Cmp + Version ) and "@FOAM_BRANCH@x" == ( Name + "x" )
+
+
+#----------------------------------------------------------------------------
+from helper import THelper
+from Foam.Man import interfaces
+
+man = THelper( interfaces.attr2interface )
+
+
+#----------------------------------------------------------------------------
+
