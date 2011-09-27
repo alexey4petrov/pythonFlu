@@ -42,16 +42,32 @@ Foam::Type& __call__()
 
 //--------------------------------------------------------------------------------------
 %define FUNCTION_HOLDER_EXTEND( Type )
-Foam::##Type##Holder holder( const Foam::Deps& the_deps )
 {
-  return Foam::##Type##Holder( self, the_deps );
+Type##Holder holder( const Foam::Deps& the_deps )
+{
+  return Type##Holder( self, the_deps );
 }
+}
+%enddef
 
+%define FUNCTION_HOLDER_EXTEND_TEMPLATE1( Template, Type1 )
+{
+Template##Holder< Type1 > holder( const Foam::Deps& the_deps )
+{
+  return Template##Holder< Type1 >( self, the_deps );
+}
+}
+%enddef
 
-//--------------------------------------------------------------------------------------
+%define FUNCTION_HOLDER_EXTEND_TEMPLATE3( Template, Type1, Type2, Type3 )
+{
+Template##Holder< Type1, Type2, Type3 > holder( const Foam::Deps& the_deps )
+{
+  return Template##Holder< Type1, Type2, Type3 >( self, the_deps );
+}
+}
 %enddef
 
 
 //--------------------------------------------------------------------------------------
-
 #endif
