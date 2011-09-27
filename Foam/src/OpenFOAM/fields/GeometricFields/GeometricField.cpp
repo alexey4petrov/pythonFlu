@@ -185,7 +185,9 @@
   Foam::TGeometricBoundaryField< Type, TPatchField, TMesh > ext_boundaryField()
   {
     return Foam::TGeometricBoundaryField< Type, TPatchField, TMesh >( get_ref( self ).boundaryField() );
-  }    
+  }
+  
+  
 }
 %enddef
 
@@ -201,6 +203,22 @@
   void __setitem__( const Foam::label& theIndex, const Type& theValue )
   {
     get_ref( self )[ theIndex ] = theValue;
+  }
+}
+%enddef
+
+
+//---------------------------------------------------------------------------
+%import "Foam/ext/common/managedFlu/commonHolder.hxx"
+
+%define GEOMETRIC_FIELD_HOLDER_FUNC_EXTEND( Type, TPatchField, TMesh )
+%extend Foam::GeometricField< Type, TPatchField, TMesh > FUNCTION_HOLDER_EXTEND_TEMPLATE3( Foam::GeometricField, Type, TPatchField, TMesh )
+
+%extend Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > >
+{
+  Foam::GeometricFieldHolder< Type, TPatchField, TMesh > holder( const Deps& theDeps ) const
+  {
+    return Foam::GeometricFieldHolder< Type, TPatchField, TMesh >( *self, theDeps );
   }
 }
 %enddef
@@ -360,6 +378,8 @@ PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::GeometricFie
 
 CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ );
 
+GEOMETRIC_FIELD_HOLDER_FUNC_EXTEND( Foam::scalar, TPatchField, TMesh );
+
 %enddef
 
 
@@ -435,6 +455,8 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::vector, TPatchField, TMesh );
 %extend Foam::GeometricField< Foam::vector, TPatchField, TMesh > __VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
 
 %extend Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
+
+GEOMETRIC_FIELD_HOLDER_FUNC_EXTEND( Foam::vector, TPatchField, TMesh );
 
 %enddef
 
