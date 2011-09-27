@@ -44,16 +44,13 @@ INCLUDE_FILENAME(TimeHolder,hpp);
 
 %extend Foam::TimeHolder
 {
-SMARTPTR_EXTEND_ATTR( TimeHolder );
-HOLDERS_CALL_SHARED_PTR_EXTENSION( Time );
+  SMARTPTR_EXTEND_ATTR( TimeHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( Time );
 }
 
 
 //--------------------------------------------------------------------------------------
-%extend Foam::Time
-{
-FUNCTION_HOLDER_EXTEND( Time );
-}
+%extend Foam::Time FUNCTION_HOLDER_EXTEND( Foam::Time );
 
 
 //--------------------------------------------------------------------------------------
