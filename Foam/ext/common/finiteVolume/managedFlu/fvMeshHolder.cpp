@@ -52,6 +52,8 @@
   HOLDERS_CALL_SHARED_PTR_EXTENSION( fvMesh );
 }
 
+%extend Foam::fvMesh FUNCTION_HOLDER_EXTEND( Foam::fvMesh );
+
 
 //--------------------------------------------------------------------------------------
 #endif
