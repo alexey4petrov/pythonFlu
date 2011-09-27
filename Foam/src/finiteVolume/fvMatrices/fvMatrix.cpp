@@ -213,6 +213,23 @@
 
 
 //---------------------------------------------------------------------------
+%import "Foam/ext/common/managedFlu/commonHolder.hxx"
+%define FVMATRIX_HOLDER_FUNC_EXTEND( Type )
+
+%extend Foam::fvMatrix< Type > FUNCTION_HOLDER_EXTEND_TEMPLATE1( Foam::fvMatrix, Type );
+
+%extend Foam::tmp< Foam::fvMatrix< Type > >
+{
+Foam::fvMatrixHolder< Type > holder( const Foam::Deps& the_deps )
+{
+  return Foam::fvMatrixHolder< Type >( *self, the_deps );
+}
+}
+
+%enddef
+
+
+//---------------------------------------------------------------------------
 %define FVMATRIX_TEMPLATE_FUNC( Type )
 
 %import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
@@ -226,6 +243,8 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
 %extend Foam::fvMatrix< Type > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type );
 
 %extend Foam::tmp< Foam::fvMatrix< Type > > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type );
+
+FVMATRIX_HOLDER_FUNC_EXTEND( Type );
 
 %enddef
 
