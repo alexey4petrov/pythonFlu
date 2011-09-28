@@ -52,6 +52,7 @@ def compressibleCreatePhiHolder( runTime, mesh, U, rho ):
      from Foam.OpenFOAM import fileName, word
      from Foam.OpenFOAM import IOobject
 
+     from Foam import man
      phi = man.surfaceScalarField( man.IOobject( word( "phi" ),
                                                  fileName( runTime.timeName() ),
                                                  mesh,
