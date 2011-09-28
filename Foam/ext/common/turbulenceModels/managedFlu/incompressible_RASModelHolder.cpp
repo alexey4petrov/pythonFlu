@@ -38,7 +38,7 @@
 
 %import "Foam/src/transportModels/incompressible/transportModel.cxx"
 
-INCLUDE_FILENAME(incompressibleRASModelHolder,hpp)
+INCLUDE_FILENAME(RASModelHolder,hpp)
 
 
 //---------------------------------------------------------------------------

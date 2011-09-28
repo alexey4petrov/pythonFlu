@@ -38,7 +38,7 @@
 
 %import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%include <turbulenceModels/incompressible/incompressibleTurbulenceModelHolder.hpp>
+%include <turbulenceModels/incompressible/turbulenceModel/turbulenceModelHolder.hpp>
 
 
 //---------------------------------------------------------------------------
