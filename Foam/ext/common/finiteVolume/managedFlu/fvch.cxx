@@ -42,6 +42,8 @@
 %rename( fvch_surfaceSum ) Foam::fvc::surfaceSum;
 %rename( fvch_ddtPhiCorr ) Foam::fvc::ddtPhiCorr;
 %rename( fvch_grad ) Foam::fvc::grad;
+%rename( fvch_snGrad ) Foam::fvc::snGrad;
+%rename( fvch_reconstruct ) Foam::fvc::reconstruct;
 
 %include <fvc.hpp>
 

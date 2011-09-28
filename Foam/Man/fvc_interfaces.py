@@ -27,6 +27,8 @@ attr2interface={ 'interpolate' : 'Foam.ext.common.finiteVolume.managedFlu.fvch.f
                  'ddtPhiCorr' : 'Foam.ext.common.finiteVolume.managedFlu.fvch.fvch_ddtPhiCorr',
                  'div' : 'Foam.ext.common.finiteVolume.managedFlu.fvch.fvch_div',
                  'grad' :'Foam.ext.common.finiteVolume.managedFlu.fvch.fvch_grad',
+                 'snGrad' :'Foam.ext.common.finiteVolume.managedFlu.fvch.fvch_snGrad',
+                 'reconstruct' :'Foam.ext.common.finiteVolume.managedFlu.fvch.fvch_reconstruct',
                  'interpolate' : 'Foam.ext.common.finiteVolume.managedFlu.surfaceInterpolate.fvch_interpolate' }
                  
 
