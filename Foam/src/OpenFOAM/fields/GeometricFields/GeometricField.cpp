@@ -212,7 +212,7 @@
 %import "Foam/ext/common/managedFlu/commonHolder.hxx"
 
 %define GEOMETRIC_FIELD_HOLDER_FUNC_EXTEND( Type, TPatchField, TMesh )
-%extend Foam::GeometricField< Type, TPatchField, TMesh > FUNCTION_HOLDER_EXTEND_TEMPLATE3( Foam::GeometricField, Type, TPatchField, TMesh )
+%extend Foam::GeometricField< Type, TPatchField, TMesh > FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE3( Foam::GeometricField, Type, TPatchField, TMesh )
 
 %extend Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > >
 {

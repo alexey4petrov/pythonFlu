@@ -50,20 +50,22 @@ Type##Holder holder( const Foam::Deps& the_deps )
 }
 %enddef
 
-%define FUNCTION_HOLDER_EXTEND_TEMPLATE1( Template, Type1 )
+
+//--------------------------------------------------------------------------------------
+%define FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE1( Template, Type1 )
 {
 Template##Holder< Type1 > holder( const Foam::Deps& the_deps )
 {
-  return Template##Holder< Type1 >( self, the_deps );
+  return Template##Holder< Type1 >( Foam::smart_tmp< Template< Type1 > >( self ), the_deps );
 }
 }
 %enddef
 
-%define FUNCTION_HOLDER_EXTEND_TEMPLATE3( Template, Type1, Type2, Type3 )
+%define FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE3( Template, Type1, Type2, Type3 )
 {
 Template##Holder< Type1, Type2, Type3 > holder( const Foam::Deps& the_deps )
 {
-  return Template##Holder< Type1, Type2, Type3 >( self, the_deps );
+  return Template##Holder< Type1, Type2, Type3 >( Foam::smart_tmp< Template< Type1, Type2, Type3 > >( self ), the_deps );
 }
 }
 %enddef

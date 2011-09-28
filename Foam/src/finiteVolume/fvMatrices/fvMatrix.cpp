@@ -216,7 +216,7 @@
 %import "Foam/ext/common/managedFlu/commonHolder.hxx"
 %define FVMATRIX_HOLDER_FUNC_EXTEND( Type )
 
-%extend Foam::fvMatrix< Type > FUNCTION_HOLDER_EXTEND_TEMPLATE1( Foam::fvMatrix, Type );
+%extend Foam::fvMatrix< Type > FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE1( Foam::fvMatrix, Type );
 
 %extend Foam::tmp< Foam::fvMatrix< Type > >
 {
