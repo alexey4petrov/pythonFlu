@@ -30,13 +30,17 @@ include @abs_top_builddir@/Foam/foam.version.makefile
 #--------------------------------------------------------------------------------------
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	@OPENFOAM_FINITEVOLUME_CPPFLAGS@ \
-	@OPENFOAM_RANDOMPROCESS_CPPFLAGS@
+	@OPENFOAM_RANDOMPROCESS_CPPFLAGS@ \
+	@MANAGEDFLU_OPENFOAM_CPPFLAGS@ \
+	@MANAGEDFLU_FINITEVOLUME_CPPFLAGS@ \
 
 
 #--------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
 	@OPENFOAM_FINITEVOLUME_LIBS@ \
-	@OPENFOAM_RANDOMPROCESS_LIBS@
+	@OPENFOAM_RANDOMPROCESS_LIBS@ \
+	@MANAGEDFLU_OPENFOAM_LIB@ \
+	@MANAGEDFLU_FINITEVOLUME_LIB@ \
 
 
 #--------------------------------------------------------------------------------------

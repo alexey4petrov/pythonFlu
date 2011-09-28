@@ -31,15 +31,20 @@ include @abs_top_builddir@/Foam/foam.version.makefile
 __CPPFLAGS__ := $(__CPPFLAGS__) \
 	@OPENFOAM_FINITEVOLUME_CPPFLAGS@ \
 	@OPENFOAM_BASICTHERMOPHYSICALMODELS_CPPFLAGS@ \
-	@OPENFOAM_SPECIE_CPPFLAGS@
+	@OPENFOAM_SPECIE_CPPFLAGS@ \
+	@MANAGEDFLU_OPENFOAM_CPPFLAGS@ \
+	@MANAGEDFLU_FINITEVOLUME_CPPFLAGS@ \
+        @MANAGEDFLU_BASICTHERMOPHYSICALMODELS_CPPFLAGS@	
 
 
 #--------------------------------------------------------------------------------------
 __LDFLAGS__ := $(__LDFLAGS__) \
 	@OPENFOAM_FINITEVOLUME_LIBS@ \
 	@OPENFOAM_BASICTHERMOPHYSICALMODELS_LIBS@ \
-	@OPENFOAM_SPECIE_LIBS@
-
+	@OPENFOAM_SPECIE_LIBS@ \
+	@MANAGEDFLU_OPENFOAM_LIB@ \
+	@MANAGEDFLU_FINITEVOLUME_LIB@ \
+        @MANAGEDFLU_BASICTHERMOPHYSICALMODELS_LIB@
 
 #--------------------------------------------------------------------------------------
 sources = \
