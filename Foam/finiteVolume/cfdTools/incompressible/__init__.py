@@ -47,19 +47,8 @@ def createPhi( runTime, mesh, U ):
 #---------------------------------------------------------------------------
 def createPhiHolder( runTime, mesh, U ):
     from Foam import man
-    from Foam.OpenFOAM import ext_Info, nl
-    ext_Info() << "Reading/calculating face flux field phi\n" << nl;
-
-    from Foam.OpenFOAM import fileName, word
-    from Foam.OpenFOAM import IOobject
-    phi = man.surfaceScalarField( man.IOobject( word( "phi" ),
-                                        fileName( runTime.timeName() ),
-                                        mesh,
-                                        IOobject.READ_IF_PRESENT,
-                                        IOobject.AUTO_WRITE ),
-                              man.linearInterpolate(U) & man.surfaceVectorField( mesh.Sf(), man.Deps( mesh ) ) ) 
     
-    return phi
+    return man( createPhi( runTime, mesh, U ), man.Deps( runTime, mesh, U ) )
 
 
 #---------------------------------------------------------------------------

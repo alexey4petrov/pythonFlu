@@ -44,6 +44,12 @@ def createTime( args ) :
                     
 
 #---------------------------------------------------------------------------
+def createTimeHolder( args ):
+    from Foam import man
+    return man( createTime( args ), man.Deps() )
+
+
+#---------------------------------------------------------------------------
 class getTime( object ):
     """
     C++ orientied mapping for the corresponding functional objects
@@ -64,11 +70,11 @@ def createMesh( runTime ):
     ext_Info() << "Create mesh for time = " << runTime.timeName() << nl << nl
 
     from Foam.OpenFOAM import Time
-    from Foam.OpenFOAM import IOobject, IOobjectHolder
+    from Foam.OpenFOAM import IOobject
     from Foam.OpenFOAM import fileName
-    from Foam.finiteVolume import fvMeshHolder, fvMesh
+    from Foam.finiteVolume import fvMesh
     
-    mesh = fvMeshHolder( IOobjectHolder( fvMesh.defaultRegion.fget(),
+    mesh = fvMesh( IOobject( fvMesh.defaultRegion.fget(),
                              fileName( runTime.timeName() ),
                              runTime,
                              IOobject.MUST_READ ) )
@@ -77,18 +83,33 @@ def createMesh( runTime ):
 
 
 #---------------------------------------------------------------------------
+def createMeshHolder( runTime ):
+    from Foam import man
+
+    return man( createMesh( runTime ), man.Deps( runTime ) )
+
+
+#---------------------------------------------------------------------------
 def createMeshNoClear( runTime ):
     from Foam.OpenFOAM import ext_Info, nl
     ext_Info() << "Create mesh, no clear-out for time = " << runTime.timeName() << nl << nl
 
     from Foam.OpenFOAM import Time
-    from Foam.OpenFOAM import IOobject, IOobjectHolder
+    from Foam.OpenFOAM import IOobject
     from Foam.OpenFOAM import fileName
-    from Foam.finiteVolume import fvMesh, fvMeshHolder
+    from Foam.finiteVolume import fvMesh
     
-    mesh = fvMeshHolder( IOobjectHolder( fvMesh.defaultRegion.fget(),
+    mesh = fvMesh( IOobject( fvMesh.defaultRegion.fget(),
                              fileName( runTime.timeName() ),
                              runTime,
                              IOobject.MUST_READ ) )
 
     return mesh
+
+    
+#---------------------------------------------------------------------------
+def createMeshNoClearHolder( runTime ):
+    from Foam import man
+
+    return man( createMeshNoClear( runTime ), man.Deps( runTime ) )
+

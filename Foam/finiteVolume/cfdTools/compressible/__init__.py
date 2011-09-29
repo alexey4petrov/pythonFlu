@@ -46,21 +46,10 @@ def compressibleCreatePhi( runTime, mesh, rho, U ):
 
 
 #---------------------------------------------------------------------------
-def compressibleCreatePhiHolder( runTime, mesh, U, rho ):
-     from Foam.OpenFOAM import ext_Info, nl
-     ext_Info() << "Reading/calculating face flux field phi\n" << nl
-     from Foam.OpenFOAM import fileName, word
-     from Foam.OpenFOAM import IOobject
-
+def compressibleCreatePhiHolder( runTime, mesh, rho, U ):
      from Foam import man
-     phi = man.surfaceScalarField( man.IOobject( word( "phi" ),
-                                                 fileName( runTime.timeName() ),
-                                                 mesh,
-                                                 IOobject.READ_IF_PRESENT,
-                                                 IOobject.AUTO_WRITE ),
-                                   man.linearInterpolate( rho * U ) & man.surfaceVectorField( mesh.Sf(), man.Deps( mesh ) ) ) 
      
-     return phi
+     return man( compressibleCreatePhi( runTime, mesh, rho, U ), man.Deps( runTime, mesh, rho, U ) )
 
 
 #---------------------------------------------------------------------------

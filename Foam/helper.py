@@ -43,6 +43,13 @@ class THelper( object ):
         exec "self.%s = a_result" %the_attr        
         
         return a_result
+
+    def __call__( self, theExpr, theDeps ):
+       result = theExpr.holder( theDeps )
+
+       theExpr.__disown__()
+       return result
+
     pass
 
 
