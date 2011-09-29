@@ -30,4 +30,21 @@
 
 
 //---------------------------------------------------------------------------
+namespace Foam
+{
+  template< class T >
+  smart_tmp<T> get_smart_tmp( T* theArg )
+  {
+    return smart_tmp<T>( theArg );
+  }
+
+  template< class T >
+  smart_tmp<T> get_smart_tmp( tmp< T >* theArg )
+  {
+    return smart_tmp<T>( *theArg );
+  }
+}
+
+
+//---------------------------------------------------------------------------
 #endif

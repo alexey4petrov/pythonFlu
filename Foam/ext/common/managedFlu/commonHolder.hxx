@@ -56,7 +56,7 @@ Type##Holder holder( const Foam::Deps& the_deps )
 {
 Template##Holder< Type1 > holder( const Foam::Deps& the_deps )
 {
-  return Template##Holder< Type1 >( Foam::smart_tmp< Template< Type1 > >( self ), the_deps );
+  return Template##Holder< Type1 >(  get_smart_tmp( self ), the_deps );
 }
 }
 %enddef
@@ -65,7 +65,7 @@ Template##Holder< Type1 > holder( const Foam::Deps& the_deps )
 {
 Template##Holder< Type1, Type2, Type3 > holder( const Foam::Deps& the_deps )
 {
-  return Template##Holder< Type1, Type2, Type3 >( Foam::smart_tmp< Template< Type1, Type2, Type3 > >( self ), the_deps );
+  return Template##Holder< Type1, Type2, Type3 >( get_smart_tmp( self ), the_deps );
 }
 }
 %enddef

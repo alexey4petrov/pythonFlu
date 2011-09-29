@@ -218,13 +218,7 @@
 
 %extend Foam::fvMatrix< Type > FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE1( Foam::fvMatrix, Type );
 
-%extend Foam::tmp< Foam::fvMatrix< Type > >
-{
-Foam::fvMatrixHolder< Type > holder( const Foam::Deps& the_deps )
-{
-  return Foam::fvMatrixHolder< Type >( *self, the_deps );
-}
-}
+%extend Foam::tmp< Foam::fvMatrix< Type > > FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE1( Foam::fvMatrix, Type );
 
 %enddef
 
