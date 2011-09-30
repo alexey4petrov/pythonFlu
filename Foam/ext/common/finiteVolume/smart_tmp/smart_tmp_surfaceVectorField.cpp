@@ -38,11 +38,11 @@
 
 
 //---------------------------------------------------------------------------
-%template ( smart_tmp_surfaceVectorField ) Foam::smart_tmp< Foam::surfaceVectorField >;
+%template ( smart_tmp_surfaceVectorField ) Foam::smart_tmp< Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh > >;
 
-SMART_TMP_VALID_EXTEND( Foam::surfaceVectorField );
+SMART_TMP_VALID_EXTEND_TEMPLATE3( Foam::GeometricField, Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh );
 
-%extend Foam::smart_tmp< Foam::surfaceVectorField >
+%extend Foam::smart_tmp< Foam::GeometricField< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh > >
 {
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::vector );
 }

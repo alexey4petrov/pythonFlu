@@ -38,11 +38,11 @@
 
 
 //---------------------------------------------------------------------------
-%template ( smart_tmp_fvVectorMatrix ) Foam::smart_tmp< Foam::fvVectorMatrix >;
+%template ( smart_tmp_fvVectorMatrix ) Foam::smart_tmp< Foam::fvMatrix< Foam::vector > >;
 
-SMART_TMP_VALID_EXTEND( Foam::fvVectorMatrix );
+SMART_TMP_VALID_EXTEND_TEMPLATE1( Foam::fvMatrix, Foam::vector );
 
-SMART_TMP_TYPEMAP_TEPMPLATE1( Foam::fvMatrix, Foam::vector );
+SMART_TMP_TYPEMAP_TEMPLATE1( Foam::fvMatrix, Foam::vector );
 
 
 //---------------------------------------------------------------------------

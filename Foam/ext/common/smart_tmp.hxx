@@ -48,7 +48,35 @@
 
 
 //---------------------------------------------------------------------------
-%define SMART_TMP_TYPEMAP_TEPMPLATE1( Template, Type )
+%define SMART_TMP_VALID_EXTEND_TEMPLATE1( Template, Type )
+
+%extend Foam::smart_tmp< Template< Type > >
+{
+  bool valid() const
+  {
+     return ! self->empty();
+  }
+}
+
+%enddef
+
+
+//---------------------------------------------------------------------------
+%define SMART_TMP_VALID_EXTEND_TEMPLATE3( Template, Type1, Type2, Type3 )
+
+%extend Foam::smart_tmp< Template< Type1, Type2, Type3 > >
+{
+  bool valid() const
+  {
+     return ! self->empty();
+  }
+}
+
+%enddef
+
+
+//---------------------------------------------------------------------------
+%define SMART_TMP_TYPEMAP_TEMPLATE1( Template, Type )
 
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::smart_tmp< Template< Type > >& 
 {
