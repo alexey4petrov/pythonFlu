@@ -33,6 +33,7 @@
 //---------------------------------------------------------------------------
 #include "Foam/src/OpenFOAM/fields/GeometricFields/TGeometricBoundaryField.hh"
 #include "Foam/src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hh"
+#include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_typemaps_out.hh"
 
 
 //---------------------------------------------------------------------------

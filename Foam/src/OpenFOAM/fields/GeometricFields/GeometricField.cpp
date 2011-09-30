@@ -42,6 +42,8 @@
 
 %include "Foam/src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hpp"
 
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_typemaps_out.hpp"
+
 
 //---------------------------------------------------------------------------
 %import "Foam/src/compound_operator.hxx"
@@ -229,6 +231,8 @@
 
 %extend Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > COMMON_EXTENDS;
 
+%extend Foam::smart_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > COMMON_EXTENDS;
+
 %import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::GeometricField< Type, TPatchField, TMesh > OSTREAM_EXTENDS;
@@ -237,7 +241,11 @@
 
 %extend Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
 
+%extend Foam::smart_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
+
 %extend Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __COMMON_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type );
+
+%extend Foam::smart_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __COMMON_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type );
 
 %enddef
 
@@ -346,16 +354,6 @@
 
 
 //---------------------------------------------------------------------------
-%define SCALAR_SMART_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC( GeometricFieldType, TPatchField, TMesh )
-
-%extend Foam::smart_tmp< GeometricFieldType > __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Foam::scalar, TPatchField, TMesh );
-%extend Foam::smart_tmp< GeometricFieldType > __COMMON_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Foam::scalar );
-%extend Foam::smart_tmp< GeometricFieldType > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( TPatchField, TMesh );
-
-%enddef
-
-
-//---------------------------------------------------------------------------
 %define SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC( TPatchField, TMesh )
 
 GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::scalar, TPatchField, TMesh );
@@ -369,6 +367,8 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, F
 PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ );
 
 %extend Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( TPatchField, TMesh );
+
+%extend Foam::smart_tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( TPatchField, TMesh );
 
 CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ );
 
@@ -449,6 +449,8 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::vector, TPatchField, TMesh );
 %extend Foam::GeometricField< Foam::vector, TPatchField, TMesh > __VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
 
 %extend Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
+
+%extend Foam::smart_tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
 
 GEOMETRIC_FIELD_HOLDER_FUNC_EXTEND( Foam::vector, TPatchField, TMesh );
 
