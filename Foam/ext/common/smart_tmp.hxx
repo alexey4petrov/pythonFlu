@@ -46,4 +46,82 @@
 
 %enddef
 
+
+//---------------------------------------------------------------------------
+%define SMART_TMP_TYPEMAP_TEPMPLATE1( Template, Type )
+
+%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::smart_tmp< Template< Type > >& 
+{
+  void *ptr;
+  int res_smartTmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::smart_tmp< Template< Type > > * ), 0 );
+  int res_T = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Template< Type > * ), 0 );
+  int res_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Template< Type > > * ), 0 );
+  $1 = SWIG_CheckState( res_smartTmpT ) || SWIG_CheckState( res_T ) || SWIG_CheckState( res_tmpT );
+}
+
+%typemap( in ) const Foam::smart_tmp< Template< Type > >& ( void  *argp = 0, int check = 0, Foam::smart_tmp< Template< Type > > result ) 
+{
+  // First check the simplest case, complete coinsidence of the types
+  check = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::smart_tmp< Template< Type > > * ), %convertptr_flags );
+  if ( SWIG_IsOK( check ) && argp ) {
+    result = *%reinterpret_cast( argp, Foam::smart_tmp< Template< Type > > * );
+  } else {
+    check = SWIG_ConvertPtr( $input, &argp, $descriptor( Template< Type > * ), SWIG_POINTER_DISOWN | %convertptr_flags );
+    if ( SWIG_IsOK( check ) && argp ) {
+      Template< Type >* arg = %reinterpret_cast( argp, Template< Type > * );
+      result = Foam::smart_tmp< Template< Type > >( arg );
+    } else {
+       check = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Template< Type > > * ), SWIG_POINTER_DISOWN | %convertptr_flags );
+       if ( SWIG_IsOK( check ) && argp ) {
+         Foam::tmp< Template< Type > >* arg = %reinterpret_cast( argp, Foam::tmp< Template< Type > > * );
+         result = Foam::smart_tmp< Template< Type > >( *arg );
+       } else {
+         %argument_fail( check, "$type", $symname, $argnum ); 
+       }
+    }
+  }
+  $1 = &result;
+}
+
+%enddef
+
+//---------------------------------------------------------------------------
+%define SMART_TMP_TYPEMAP_TEMPLATE3( Template, Type1, Type2, Type3 )
+
+%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::smart_tmp< Template< Type1, Type2, Type3 > >& 
+{
+  void *ptr;
+  int res_smartTmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::smart_tmp< Template< Type1, Type2, Type3 > > * ), 0 );
+  int res_T = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Template< Type1, Type2, Type3 > * ), 0 );
+  int res_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Template< Type1, Type2, Type3 > > * ), 0 );
+  $1 = SWIG_CheckState( res_smartTmpT ) || SWIG_CheckState( res_T ) || SWIG_CheckState( res_tmpT );
+}
+
+%typemap( in ) const Foam::smart_tmp< Template< Type1, Type2, Type3 > >& ( void  *argp = 0, int check = 0, Foam::smart_tmp< Template< Type1, Type2, Type3 > > result ) 
+{
+  // First check the simplest case, complete coinsidence of the types
+  check = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::smart_tmp< Template< Type1, Type2, Type3 > > * ), %convertptr_flags );
+  if ( SWIG_IsOK( check ) && argp ) {
+    result = *%reinterpret_cast( argp, Foam::smart_tmp< Template< Type1, Type2, Type3 > > * );
+  } else {
+    check = SWIG_ConvertPtr( $input, &argp, $descriptor( Template< Type1, Type2, Type3 > * ), SWIG_POINTER_DISOWN | %convertptr_flags );
+    if ( SWIG_IsOK( check ) && argp ) {
+      Template< Type1, Type2, Type3 >* arg = %reinterpret_cast( argp, Template< Type1, Type2, Type3 > * );
+      result = Foam::smart_tmp< Template< Type1, Type2, Type3 > >( arg );
+    } else {
+       check = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Template< Type1, Type2, Type3 > > * ), SWIG_POINTER_DISOWN | %convertptr_flags );
+       if ( SWIG_IsOK( check ) && argp ) {
+         Foam::tmp< Template< Type1, Type2, Type3 > >* arg = %reinterpret_cast( argp, Foam::tmp< Template< Type1, Type2, Type3 > > * );
+         result = Foam::smart_tmp< Template< Type1, Type2, Type3 > >( *arg );
+       } else {
+         %argument_fail( check, "$type", $symname, $argnum ); 
+       }
+    }
+  }
+  $1 = &result;
+}
+
+%enddef
+
+//---------------------------------------------------------------------------
 #endif

@@ -42,6 +42,8 @@
 
 SMART_TMP_VALID_EXTEND( Foam::fvVectorMatrix );
 
+SMART_TMP_TYPEMAP_TEPMPLATE1( Foam::fvMatrix, Foam::vector );
+
 
 //---------------------------------------------------------------------------
 #endif

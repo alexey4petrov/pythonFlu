@@ -47,6 +47,8 @@ SMART_TMP_VALID_EXTEND( Foam::surfaceScalarField );
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::scalar );
 }
 
+SMART_TMP_TYPEMAP_TEMPLATE3( Foam::GeometricField, Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh );
+
 
 //---------------------------------------------------------------------------
 #endif
