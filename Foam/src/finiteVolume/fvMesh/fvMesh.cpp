@@ -43,6 +43,8 @@ NO_HOLDER_TYPEMAP( Foam::fvMesh );
 
 %include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolders.cpp"
 
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_typemaps_out.hpp"
+
 %include "Foam/src/finiteVolume/fvMesh/fvMesh.hpp"
 
 %ignore Foam::fvMesh::writeObjects;
