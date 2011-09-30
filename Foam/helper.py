@@ -47,7 +47,7 @@ class THelper( object ):
     def __call__( self, theExpr, theDeps ):
        result = theExpr.holder( theDeps )
 
-       theExpr.__disown__()
+       theExpr.this.disown()
        return result
 
     pass
