@@ -42,8 +42,6 @@
 
 %include "Foam/src/OpenFOAM/fields/GeometricFields/no_tmp_typemap_GeometricFields.hpp"
 
-%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_typemaps_out.hpp"
-
 
 //---------------------------------------------------------------------------
 %import "Foam/src/compound_operator.hxx"
@@ -216,7 +214,7 @@
 %define GEOMETRIC_FIELD_HOLDER_FUNC_EXTEND( Type, TPatchField, TMesh )
 %extend Foam::GeometricField< Type, TPatchField, TMesh > FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE3( Foam::GeometricField, Type, TPatchField, TMesh );
 %extend Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE3( Foam::GeometricField, Type, TPatchField, TMesh );
-
+%extend Foam::smart_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE3( Foam::GeometricField, Type, TPatchField, TMesh );
 %enddef
 
 
@@ -434,7 +432,7 @@ GEOMETRIC_FIELD_HOLDER_FUNC_EXTEND( Foam::scalar, TPatchField, TMesh );
 #if FOAM_VERSION( >, 010500 )
   Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > >__rand__( const Foam::UniformDimensionedField< Foam::vector >& theArg ) const
   {
-    return theArg & *self;
+    return theArg & get_ref( self );
   }
 #endif    
 }

@@ -43,6 +43,12 @@ namespace Foam
   {
     return smart_tmp<T>( *theArg );
   }
+  
+  template< class T >
+  smart_tmp<T> get_smart_tmp( smart_tmp< T >* theArg )
+  {
+    return  *theArg;
+  }
 }
 
 

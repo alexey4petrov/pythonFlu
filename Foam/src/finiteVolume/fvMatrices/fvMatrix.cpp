@@ -234,9 +234,13 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
 
 %extend Foam::tmp< Foam::fvMatrix< Type > > COMMON_EXTENDS;
 
+%extend Foam::smart_tmp< Foam::fvMatrix< Type > > COMMON_EXTENDS;
+
 %extend Foam::fvMatrix< Type > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type );
 
 %extend Foam::tmp< Foam::fvMatrix< Type > > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type );
+
+%extend Foam::smart_tmp< Foam::fvMatrix< Type > > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type );
 
 FVMATRIX_HOLDER_FUNC_EXTEND( Type );
 
