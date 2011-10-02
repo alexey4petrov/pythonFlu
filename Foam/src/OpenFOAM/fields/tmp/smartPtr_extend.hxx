@@ -33,7 +33,7 @@
     try:
         return _swig_getattr( self, Type, name )
     except AttributeError:
-        if self.valid() :
+        if self.valid() and name != 'holder':
             attr = None
             exec "attr = self.__call__().%s" % name
             return attr
