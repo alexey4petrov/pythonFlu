@@ -220,6 +220,8 @@
 
 %extend Foam::tmp< Foam::fvMatrix< Type > > FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE1( Foam::fvMatrix, Type );
 
+%extend Foam::smart_tmp< Foam::fvMatrix< Type > > FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE1( Foam::fvMatrix, Type );
+
 %enddef
 
 
