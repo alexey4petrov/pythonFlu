@@ -40,11 +40,14 @@
 //---------------------------------------------------------------------------
 %template ( smart_tmp_volVectorField ) Foam::smart_tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > >;
 
+%feature( "pythonappend" ) Foam::smart_tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > >::SMARTPTR_PYAPPEND_GETATTR( smart_tmp_volVectorField );
+
 SMART_TMP_VALID_EXTEND_TEMPLATE3( Foam::GeometricField, Foam::vector, Foam::fvPatchField, Foam::volMesh );
 
 %extend Foam::smart_tmp< Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh > >
 {
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::vector );
+  SMARTPTR_EXTEND_ATTR( smart_tmp_volVectorField );
 }
 
 SMART_TMP_TYPEMAP_TEMPLATE3( Foam::GeometricField, Foam::vector, Foam::fvPatchField, Foam::volMesh );

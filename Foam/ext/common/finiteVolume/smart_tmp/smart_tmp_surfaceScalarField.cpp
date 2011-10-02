@@ -40,11 +40,14 @@
 //---------------------------------------------------------------------------
 %template ( smart_tmp_surfaceScalarField ) Foam::smart_tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > >;
 
+%feature( "pythonappend" ) Foam::smart_tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > >::SMARTPTR_PYAPPEND_GETATTR( smart_tmp_surfaceScalarField );
+
 SMART_TMP_VALID_EXTEND_TEMPLATE3( Foam::GeometricField, Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh );
 
 %extend Foam::smart_tmp< Foam::GeometricField< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > >
 {
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::scalar );
+  SMARTPTR_EXTEND_ATTR( smart_tmp_surfaceScalarField );
 }
 
 SMART_TMP_TYPEMAP_TEMPLATE3( Foam::GeometricField, Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh );

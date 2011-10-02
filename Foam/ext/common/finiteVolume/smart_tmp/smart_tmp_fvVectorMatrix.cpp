@@ -40,6 +40,14 @@
 //---------------------------------------------------------------------------
 %template ( smart_tmp_fvVectorMatrix ) Foam::smart_tmp< Foam::fvMatrix< Foam::vector > >;
 
+%feature( "pythonappend" ) Foam::smart_tmp< Foam::fvMatrix< Foam::vector > >::SMARTPTR_PYAPPEND_GETATTR( smart_tmp_fvVectorMatrix );
+
+%extend Foam::smart_tmp< Foam::fvMatrix< Foam::vector > >
+{
+  SMARTPTR_EXTEND_ATTR( smart_tmp_fvVectorMatrix );
+}
+
+
 SMART_TMP_VALID_EXTEND_TEMPLATE1( Foam::fvMatrix, Foam::vector );
 
 SMART_TMP_TYPEMAP_TEMPLATE1( Foam::fvMatrix, Foam::vector );
