@@ -22,7 +22,7 @@
 
 
 #--------------------------------------------------------------------------------------
-from Foam.helper import THelper
+from Foam.helper import TManLoadHelper
 from Foam.Man import incompressible_interfaces
 from Foam.Man import compressible_interfaces
 from Foam.Man import radiation_interfaces
@@ -52,10 +52,10 @@ attr2interface={ 'Deps' : 'Foam.ext.common.managedFlu.Deps.Deps',
                  'createPhi' : 'Foam.finiteVolume.cfdTools.incompressible.createPhiHolder',
                  'compressibleCreatePhi' : 'Foam.finiteVolume.cfdTools.compressible.compressibleCreatePhiHolder',
                  'linearInterpolate' : 'Foam.ext.common.finiteVolume.managedFlu.linear.linearInterpolate',
-                 'incompressible': THelper( incompressible_interfaces.attr2interface ),
-                 'compressible': THelper( compressible_interfaces.attr2interface ),
-                 'radiation': THelper( radiation_interfaces.attr2interface ),
-                 'fvm' : THelper( fvm_interfaces.attr2interface ),
-                 'fvc' : THelper( fvc_interfaces.attr2interface ) }
+                 'incompressible': TManLoadHelper( incompressible_interfaces.attr2interface ),
+                 'compressible': TManLoadHelper( compressible_interfaces.attr2interface ),
+                 'radiation': TManLoadHelper( radiation_interfaces.attr2interface ),
+                 'fvm' : TManLoadHelper( fvm_interfaces.attr2interface ),
+                 'fvc' : TManLoadHelper( fvc_interfaces.attr2interface ) }
                  
 

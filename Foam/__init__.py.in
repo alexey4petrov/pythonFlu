@@ -83,10 +83,13 @@ def FOAM_BRANCH_VERSION( Name, Cmp, Version):
 
 
 #----------------------------------------------------------------------------
-from helper import THelper
-from Foam.Man import interfaces
+from helper import TLoadHelper, TManLoadHelper
+from Foam.Man import interfaces as man_interfaces
+from Foam.Ref import interfaces as ref_interfaces
 
-man = THelper( interfaces.attr2interface )
+man = TManLoadHelper( man_interfaces.attr2interface )
+
+ref = TLoadHelper( ref_interfaces.attr2interface )
 
 
 #----------------------------------------------------------------------------

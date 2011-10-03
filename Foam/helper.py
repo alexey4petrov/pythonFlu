@@ -22,7 +22,7 @@
 
 
 #--------------------------------------------------------------------------------------
-class THelper( object ):
+class TLoadHelper( object ):
     def __init__( self, the_dict ):
         self._dict = the_dict
         pass
@@ -43,13 +43,17 @@ class THelper( object ):
         exec "self.%s = a_result" %the_attr        
         
         return a_result
+    pass
 
+
+#--------------------------------------------------------------------------------------
+class TManLoadHelper( TLoadHelper ):
     def __call__( self, theExpr, theDeps ):
        result = theExpr.holder( theDeps )
 
        theExpr.this.disown()
        return result
-
+    pass
     pass
 
 
