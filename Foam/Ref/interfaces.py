@@ -23,7 +23,7 @@
 
 #--------------------------------------------------------------------------------------
 from Foam.helper import TLoadHelper
-from Foam.Ref import token_interfaces
+from Foam.Ref import token
 
 
 #--------------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ attr2interface={ 'argList' : 'Foam.src.OpenFOAM.global_.argList.argList',
                  'createTime' : 'Foam.OpenFOAM.include.createTime',
                  'createMesh' : 'Foam.OpenFOAM.include.createMesh',
                  'createMeshNoClear' : 'Foam.OpenFOAM.include.createMeshNoClear',
-                 'token' : token_interfaces.TTokenLoadHelper( token_interfaces.attr2interface ),
+                 'token' : token.token,
                   #meshTools                 
                  'coordinateRotation' : 'Foam.src.meshTools.coordinateSystems.coordinateRotation.coordinateRotation',
                  'IOPtrList_coordinateSystem' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_coordinateSystem.IOPtrList_coordinateSystem',
