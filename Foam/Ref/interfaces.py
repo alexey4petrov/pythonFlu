@@ -24,6 +24,7 @@
 #--------------------------------------------------------------------------------------
 from Foam.helper import TLoadHelper
 from Foam.Ref import token
+from Foam.Ref import dynamicFvMesh
 
 
 #--------------------------------------------------------------------------------------
@@ -249,8 +250,31 @@ attr2interface={ 'argList' : 'Foam.src.OpenFOAM.global_.argList.argList',
                  'compressibleCreatePhi' : 'Foam.finiteVolume.cfdTools.compressible.compressibleCreatePhi',
                  'compressibleCourantNo' : 'Foam.finiteVolume.cfdTools.compressible.compressibleCourantNo',
                  'compressibleContinuityErrs' : 'Foam.finiteVolume.cfdTools.compressible.compressibleContinuityErrs',
-                 'rhoEqn' : 'Foam.finiteVolume.cfdTools.compressible.rhoEqn'
-
+                 'rhoEqn' : 'Foam.finiteVolume.cfdTools.compressible.rhoEqn',
+                 #dynamicFvMesh
+                 'dynamicFvMesh' : dynamicFvMesh.dynamicFvMesh,
+                 'createDynamicFvMesh' : 'Foam.dynamicFvMesh.createDynamicFvMesh',
+                 'meshCourantNo' : 'Foam.dynamicFvMesh.meshCourantNo',
+                 #random
+                 'calcEk' : 'Foam.src.randomProcesses.fft.calcEk.calcEk',
+                 'Kmesh' : 'Foam.src.randomProcesses.Kmesh.Kmesh.Kmesh',
+                 'UOprocess' : 'Foam.src.randomProcesses.processes.UOprocess.UOprocess',
+                 #sampling
+                 'meshToMesh' : 'Foam.src.sampling.meshToMeshInterpolation.meshToMesh.meshToMesh',
+                 'makeGraph' : 'Foam.src.sampling.graphField.makeGraph.makeGraph',
+                 #thermophisycalModels
+                 'basicThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicThermo.basicThermo',
+                 'PtrList_basicThermo' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicThermo.PtrList_basicThermo',
+                 'basicPsiThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicPsiThermo.basicPsiThermo',
+                 'PtrList_basicPsiThermo' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicPsiThermo.PtrList_basicPsiThermo',
+                 'basicRhoThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicRhoThermo.basicRhoThermo',
+                 'PtrList_basicRhoThermo' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicRhoThermo.PtrList_basicRhoThermo',
+                 #transportModels
+                 'transportModel' : 'Foam.src.transportModels.incompressible.transportModel.transportModel',
+                 'singlePhaseTransportModel' : 'Foam.src.transportModels.incompressible.singlePhaseTransportModel.singlePhaseTransportModel',
+                 'viscosityModel' : 'Foam.src.transportModels.incompressible.viscosityModels.viscosityModel.viscosityModel',
+                 'twoPhaseMixture' : 'Foam.src.transportModels.incompressible.twoPhaseMixture.twoPhaseMixture',
+                 'interfaceProperties' : 'Foam.src.transportModels.interfaceProperties.interfaceProperties.interfaceProperties'
                  }
                  
 
