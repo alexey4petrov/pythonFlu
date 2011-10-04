@@ -29,7 +29,7 @@ class TLoadHelper( object ):
     
     def __getattr__( self, the_attr ):
         if not self._dict.has_key( the_attr ):
-            raise AttributeError( "There is no \"%s\" attribute in man" %the_attr)
+            raise AttributeError( "There is no \"%s\" attribute " %the_attr)
             pass
         
         a_result = self._dict[ the_attr ]
