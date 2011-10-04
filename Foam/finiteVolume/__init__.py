@@ -71,6 +71,8 @@ from Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_MRFZone impo
 from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_MRFZone import *
 
 from Foam.src.finiteVolume.cfdTools.general.solutionControl.simpleControl import *
+
+
 #---------------------------------------------------------------------------
 volScalarField = GeometricField_scalar_fvPatchField_volMesh
 volScalarField.DimensionedInternalField = DimensionedField_scalar_volMesh
@@ -145,7 +147,7 @@ def continuityErrs( mesh, phi, runTime, cumulativeContErr ):
 
 #---------------------------------------------------------------------------
 def setRefCell( *args ):
-    from Foam.finiteVolume import ext_setRefCell
+    from Foam.src.finiteVolume.cfdTools.general.findRefCell import ext_setRefCell
     tmp = ext_setRefCell( *args )
     return tmp.m_refCelli, tmp.m_refValue
 
