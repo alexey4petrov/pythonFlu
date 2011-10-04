@@ -25,6 +25,12 @@
 from Foam.helper import TLoadHelper
 from Foam.Ref import token
 from Foam.Ref import dynamicFvMesh
+from Foam.Ref import compressible_interfaces
+from Foam.Ref import incompressible_interfaces
+from Foam.Ref import fvc_interfaces
+from Foam.Ref import fvm_interfaces
+from Foam.Ref import fv_interfaces
+from Foam.Ref import radiation_interfaces
 
 
 #--------------------------------------------------------------------------------------
@@ -274,7 +280,13 @@ attr2interface={ 'argList' : 'Foam.src.OpenFOAM.global_.argList.argList',
                  'singlePhaseTransportModel' : 'Foam.src.transportModels.incompressible.singlePhaseTransportModel.singlePhaseTransportModel',
                  'viscosityModel' : 'Foam.src.transportModels.incompressible.viscosityModels.viscosityModel.viscosityModel',
                  'twoPhaseMixture' : 'Foam.src.transportModels.incompressible.twoPhaseMixture.twoPhaseMixture',
-                 'interfaceProperties' : 'Foam.src.transportModels.interfaceProperties.interfaceProperties.interfaceProperties'
-                 }
+                 'interfaceProperties' : 'Foam.src.transportModels.interfaceProperties.interfaceProperties.interfaceProperties',
+                 'compressible': TLoadHelper( compressible_interfaces.attr2interface ),
+                 'incompressible': TLoadHelper( incompressible_interfaces.attr2interface ),
+                 'fvc' : TLoadHelper( fvc_interfaces.attr2interface ),
+                 'fvm' : TLoadHelper( fvm_interfaces.attr2interface ),
+                 'fv' : TLoadHelper( fv_interfaces.attr2interface ),
+                 'radiation': TLoadHelper( radiation_interfaces.attr2interface ),
+                 'createRadiationModel' : 'Foam.radiation.createRadiationModel' }
                  
 
