@@ -37,6 +37,7 @@
   
   void ext_assign ( const Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& field )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
     *self = field;
   }
   
@@ -90,6 +91,7 @@
 
   void ext_assign( const Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >& field )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
     *self = field;
   }
   
@@ -114,6 +116,7 @@
 
   void ext_assign( const Foam::GeometricFieldHolder< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >& field )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
     *self = field;
   }
 
@@ -152,6 +155,7 @@
 
   void ext_assign( const Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >& field )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
     *self = field;
   }
 

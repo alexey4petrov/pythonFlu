@@ -89,21 +89,90 @@
 {
   void ext_assign( const Foam::Type& theSource )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
     *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
   }
   
   void ext_assign( const Foam::UList< Foam::Type >& theSource )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
     *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
   }
   
   void ext_assign( const Foam::Field< Foam::Type >& theSource )
+  {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
+    *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
+  }
+  
+  void __ilshift__( const Foam::Type& theSource )
+  {
+    *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
+  }
+  
+  void __ilshift__( const Foam::UList< Foam::Type >& theSource )
+  {
+    *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
+  }
+  
+  void __ilshift__( const Foam::Field< Foam::Type >& theSource )
   {
     *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
   }
 }
 %enddef
 
+
+//---------------------------------------------------------------------------
+%define FIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Type )
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __imul__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __iadd__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __isub__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __idiv__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __ilshift__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __imul__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __iadd__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __isub__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __idiv__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __ilshift__ );
+
+
+%enddef
+
+
+%define FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Type )
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __idiv__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __isub__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __iadd__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __imul__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __ilshift__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __idiv__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __isub__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __iadd__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __imul__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __ilshift__ );
+
+%enddef
 
 //---------------------------------------------------------------------------
 %define __COMMON_FIELD_TEMPLATE_OPERATOR( Type )
@@ -240,10 +309,15 @@ NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
 
 //--------------------------------------------------------------------------
 %define SCALAR_FIELD_TEMPLATE_FUNC
+
+FIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar );
+
 FIELD_TEMPLATE_FUNC( scalar );
 
 %extend Foam::Field< Foam::scalar > __SCALAR_FIELD_TEMPLATE_OPERATOR;
 %extend Foam::tmp< Foam::Field< Foam::scalar > > __SCALAR_FIELD_TEMPLATE_OPERATOR;
+
+FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar );
 
 %enddef
 
@@ -278,10 +352,14 @@ FIELD_TEMPLATE_FUNC( scalar );
 //---------------------------------------------------------------------------
 %define VECTOR_FIELD_TEMPLATE_FUNC
 
+FIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector );
+
 FIELD_TEMPLATE_FUNC( vector );
 
 %extend Foam::Field< Foam::vector > __VECTOR_FIELD_TEMPLATE_FUNC;
 %extend Foam::tmp< Foam::Field< Foam::vector > >__VECTOR_FIELD_TEMPLATE_FUNC;
+
+FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector );
 
 %enddef
 
@@ -304,9 +382,13 @@ FIELD_TEMPLATE_FUNC( vector );
 //-----------------------------------------------------------------------------
 %define TENSOR_FIELD_TEMPLATE_FUNC
 
+FIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::tensor );
+
 FIELD_TEMPLATE_FUNC( tensor );
 
 %extend Foam::Field< Foam::tensor > __TENSOR_FIELD_TEMPLATE_FUNC;
+
+FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::tensor );
 
 %enddef
 

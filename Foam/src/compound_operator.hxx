@@ -64,6 +64,23 @@
 
 
 //--------------------------------------------------------------------------
+%define PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Template1, Template2, Type, OperatorName   )
+
+%feature("pythonappend") Template1< Template2< Type > >::##OperatorName
+%{
+  return self
+%}
+
+%enddef
+
+
+%define CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Template1, Template2, Type, OperatorName )
+
+%feature("pythonappend") Template1< Template2< Type > >::##OperatorName##%{%};
+
+%enddef
+
+//--------------------------------------------------------------------------
 %define PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_2( Template, Type1, Type2, OperatorName   )
 
 %feature("pythonappend") Template< Type1, Type2 >::##OperatorName
@@ -101,7 +118,7 @@
 
 
 //--------------------------------------------------------------------------
-%define PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Template1, Template2, Type1, Type2, Type3, OperatorName   )
+%define PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Template1, Template2, Type1, Type2, Type3, OperatorName   )
 
 %feature("pythonappend") Template1< Template2< Type1, Type2, Type3 > >::##OperatorName
 %{
@@ -112,7 +129,7 @@
 //------------
 
 
-%define CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Template1, Template2, Type1, Type2, Type3, OperatorName )
+%define CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR__TEMPLATE_TEMPLATE_3( Template1, Template2, Type1, Type2, Type3, OperatorName )
 
 %feature("pythonappend") Template1< Template2< Type1, Type2, Type3 > >::##OperatorName##%{%};
 

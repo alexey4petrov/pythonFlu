@@ -64,14 +64,27 @@
 
   void ext_assign( const Foam::GeometricField< Type, TPatchField, TMesh >& theArg )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
+    get_ref( self ) = theArg;
+  }
+    
+  void __ilshift__( const Foam::dimensioned< Type >& theArg )
+  {
+    get_ref( self ) = theArg;
+  }
+
+  void __ilshift__( const Foam::GeometricField< Type, TPatchField, TMesh >& theArg )
+  {
     get_ref( self ) = theArg;
   }
     
   void ext_assign( const Foam::dimensioned< Type >& theArg )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
     get_ref( self ) = theArg;
   }
   
+
   Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > __neg__() const
   {
     return -get_ref( self );
@@ -186,6 +199,47 @@
   {
     return Foam::TGeometricBoundaryField< Type, TPatchField, TMesh >( get_ref( self ).boundaryField() );
   }
+
+  void __imul__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
+  {
+    get_ref( self ) *= theArg;
+  }    
+
+  void __idiv__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
+  {
+    get_ref( self ) /= theArg;
+  }    
+
+  void __iadd__( const Foam::GeometricField< Type, TPatchField, TMesh >& theArg )
+  {
+    get_ref( self ) += theArg;
+  }    
+
+  void __isub__( const Foam::GeometricField< Type, TPatchField, TMesh >& theArg )
+  {
+    get_ref( self ) -= theArg;
+  }    
+  
+  void __imul__( const Foam::dimensioned< Foam::scalar >& theArg )
+  {
+    get_ref( self ) *= theArg;
+  }    
+
+  void __idiv__( const Foam::dimensioned< Foam::scalar >& theArg )
+  {
+    get_ref( self ) /= theArg;
+  }    
+
+  void __iadd__( const Foam::dimensioned< Type >& theArg )
+  {
+    get_ref( self ) += theArg;
+  }    
+
+  void __isub__( const Foam::dimensioned< Type >& theArg )
+  {
+    get_ref( self ) -= theArg;
+  }    
+
   
   
 }
@@ -309,6 +363,21 @@
     get_ref( self ) *= theArg;
   }    
 
+  void __idiv__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
+  {
+    get_ref( self ) /= theArg;
+  }    
+
+  void __iadd__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
+  {
+    get_ref( self ) += theArg;
+  }    
+
+  void __isub__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
+  {
+    get_ref( self ) -= theArg;
+  }    
+
   Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __radd__( const Foam::scalar& theArg ) const
   {
     return  theArg + get_ref( self );
@@ -352,23 +421,90 @@
 
 
 //---------------------------------------------------------------------------
+%define GEOMETRICFIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Type, TPatchField, TMesh )
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Type, TPatchField, TMesh, __imul__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Type, TPatchField, TMesh, __iadd__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Type, TPatchField, TMesh, __isub__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Type, TPatchField, TMesh, __idiv__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Type, TPatchField, TMesh, __ilshift__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::tmp, Foam::GeometricField, Type, TPatchField, TMesh, __imul__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::tmp, Foam::GeometricField, Type, TPatchField, TMesh, __iadd__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::tmp, Foam::GeometricField, Type, TPatchField, TMesh, __isub__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::tmp, Foam::GeometricField, Type, TPatchField, TMesh, __idiv__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::tmp, Foam::GeometricField, Type, TPatchField, TMesh, __ilshift__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::smart_tmp, Foam::GeometricField, Type, TPatchField, TMesh, __imul__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::smart_tmp, Foam::GeometricField, Type, TPatchField, TMesh, __iadd__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::smart_tmp, Foam::GeometricField, Type, TPatchField, TMesh, __isub__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::smart_tmp, Foam::GeometricField, Type, TPatchField, TMesh, __idiv__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::smart_tmp, Foam::GeometricField, Type, TPatchField, TMesh, __ilshift__ );
+
+%enddef
+
+
+%define GEOMETRICFIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Type, TPatchField, TMesh )
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Type, TPatchField, TMesh, __idiv__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Type, TPatchField, TMesh, __isub__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Type, TPatchField, TMesh, __iadd__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Type, TPatchField, TMesh, __imul__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Type, TPatchField, TMesh, __ilshift__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::tmp, Foam::GeometricField, Type, TPatchField, TMesh, __idiv__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::tmp, Foam::GeometricField, Type, TPatchField, TMesh, __isub__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::tmp, Foam::GeometricField, Type, TPatchField, TMesh, __iadd__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::tmp, Foam::GeometricField, Type, TPatchField, TMesh, __imul__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::tmp, Foam::GeometricField, Type, TPatchField, TMesh, __ilshift__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::smart_tmp, Foam::GeometricField, Type, TPatchField, TMesh, __idiv__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::smart_tmp, Foam::GeometricField, Type, TPatchField, TMesh, __isub__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::smart_tmp, Foam::GeometricField, Type, TPatchField, TMesh, __iadd__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::smart_tmp, Foam::GeometricField, Type, TPatchField, TMesh, __imul__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_3( Foam::smart_tmp, Foam::GeometricField, Type, TPatchField, TMesh, __ilshift__ );
+
+%enddef
+
+
+//---------------------------------------------------------------------------
 %define SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC( TPatchField, TMesh )
 
-GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::scalar, TPatchField, TMesh );
-
-PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ );
+GEOMETRICFIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar, TPatchField, TMesh );
 
 %extend Foam::GeometricField< Foam::scalar, TPatchField, TMesh > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( TPatchField, TMesh );
 
-CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ );
-
-PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ );
+GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::scalar, TPatchField, TMesh );
 
 %extend Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( TPatchField, TMesh );
 
 %extend Foam::smart_tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __SCALAR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( TPatchField, TMesh );
 
-CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_4( Foam::tmp, Foam::GeometricField, Foam::scalar, TPatchField, TMesh, __imul__ );
+GEOMETRICFIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar, TPatchField, TMesh )
 
 GEOMETRIC_FIELD_HOLDER_FUNC_EXTEND( Foam::scalar, TPatchField, TMesh );
 
@@ -442,6 +578,8 @@ GEOMETRIC_FIELD_HOLDER_FUNC_EXTEND( Foam::scalar, TPatchField, TMesh );
 //---------------------------------------------------------------------------
 %define VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC( TPatchField, TMesh )
 
+GEOMETRICFIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector, TPatchField, TMesh );
+
 GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::vector, TPatchField, TMesh );
 
 %extend Foam::GeometricField< Foam::vector, TPatchField, TMesh > __VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
@@ -449,6 +587,8 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::vector, TPatchField, TMesh );
 %extend Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
 
 %extend Foam::smart_tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __VECTOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
+
+GEOMETRICFIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector, TPatchField, TMesh );
 
 GEOMETRIC_FIELD_HOLDER_FUNC_EXTEND( Foam::vector, TPatchField, TMesh );
 
@@ -493,11 +633,15 @@ GEOMETRIC_FIELD_HOLDER_FUNC_EXTEND( Foam::vector, TPatchField, TMesh );
 //---------------------------------------------------------------------------
 %define TENSOR_GEOMETRIC_FIELD_TEMPLATE_FUNC( TPatchField, TMesh )
 
+GEOMETRICFIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::tensor, TPatchField, TMesh );
+
 GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::tensor, TPatchField, TMesh );
 
 %extend Foam::GeometricField< Foam::tensor, TPatchField, TMesh > __TENSOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
 
 %extend Foam::tmp< Foam::GeometricField< Foam::tensor, TPatchField, TMesh > > __TENSOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
+
+GEOMETRICFIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::tensor, TPatchField, TMesh );
 
 %enddef
 
@@ -524,11 +668,15 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::tensor, TPatchField, TMesh );
 //---------------------------------------------------------------------------
 %define SYMMTENSOR_GEOMETRIC_FIELD_TEMPLATE_FUNC( TPatchField, TMesh )
 
+GEOMETRICFIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::symmTensor, TPatchField, TMesh );
+
 GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::symmTensor, TPatchField, TMesh );
 
 %extend Foam::GeometricField< Foam::symmTensor, TPatchField, TMesh > __SYMMTENSOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
 
 %extend Foam::tmp< Foam::GeometricField< Foam::symmTensor, TPatchField, TMesh > >__SYMMTENSOR_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
+
+GEOMETRICFIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::symmTensor, TPatchField, TMesh );
 
 %enddef
 
@@ -536,7 +684,11 @@ GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::symmTensor, TPatchField, TMesh );
 //-----------------------------------------------------------------------------
 %define SPHERICALTENSOR_GEOMETRIC_FIELD_TEMPLATE_FUNC( TPatchField, TMesh )
 
+GEOMETRICFIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::sphericalTensor, TPatchField, TMesh );
+
 GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::sphericalTensor, TPatchField, TMesh );
+
+GEOMETRICFIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::sphericalTensor, TPatchField, TMesh );
 
 %enddef
 
