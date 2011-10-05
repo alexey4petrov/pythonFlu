@@ -22,7 +22,7 @@
 
 
 #---------------------------------------------------------------------------
-from Foam.src.OpenFOAM.fields.tmp.autoPtr_dynamicFvMesh import *
+from Foam.src.dynamicFvMesh.ref_dynamicFvMesh import *
 
 
 #---------------------------------------------------------------------------
