@@ -39,6 +39,13 @@
   {
     return *self == theArg;
   }
+
+  Foam::fvMatrixHolder< Type > __add__( const Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& theArg ) const
+  {
+    return *self + theArg;
+  }
+
+
 }
 %enddef
 
@@ -55,6 +62,8 @@
   {
     return *self == theArg;
   }
+  
+  
   
 }
 %enddef
