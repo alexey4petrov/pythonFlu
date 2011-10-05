@@ -22,15 +22,8 @@
 
 
 #--------------------------------------------------------------------------------------
-from Foam.src.OpenFOAM.fields.tmp.autoPtr_dynamicFvMesh import dynamicFvMesh
+attr2interface={ 'dynamicFvMesh' : 'Foam.src.dynamicFvMesh.ref_dynamicFvMesh.dynamicFvMesh',
+                 'createDynamicFvMesh' : 'Foam.dynamicFvMesh.createDynamicFvMesh',
+                 'meshCourantNo' : 'Foam.dynamicFvMesh.meshCourantNo' }
+                 
 
-
-#---------------------------------------------------------------------------
-from Foam import FOAM_VERSION
-if FOAM_VERSION( "<", "020000" ):
-    dynamicFvMesh.defaultRegion = dynamicFvMesh.defaultRegion.fget()
-    dynamicFvMesh.meshSubDir = dynamicFvMesh.meshSubDir.fget()
-    pass
-
-    
-#---------------------------------------------------------------------------

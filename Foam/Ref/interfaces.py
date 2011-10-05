@@ -23,270 +23,52 @@
 
 #--------------------------------------------------------------------------------------
 from Foam.helper import TLoadHelper
-from Foam.Ref import token
-from Foam.Ref import dynamicFvMesh
-from Foam.Ref import compressible_interfaces
-from Foam.Ref import incompressible_interfaces
-from Foam.Ref import fvc_interfaces
-from Foam.Ref import fvm_interfaces
-from Foam.Ref import fv_interfaces
-from Foam.Ref import radiation_interfaces
+
+attr2interface={}
 
 
 #--------------------------------------------------------------------------------------
-attr2interface={ 'argList' : 'Foam.src.OpenFOAM.global_.argList.argList',
-                 'messageStream' : 'Foam.src.OpenFOAM.db.error.messageStream.messageStream',
-                 'ext_SeriousError' : 'Foam.src.OpenFOAM.db.error.messageStream.ext_SeriousError',
-                 'ext_Warning' : 'Foam.src.OpenFOAM.db.error.messageStream.ext_Warning',
-                 'ext_Info' : 'Foam.src.OpenFOAM.db.error.messageStream.ext_Info',
-                 'Ostream' : 'Foam.src.OpenFOAM.db.IOstreams.IOstreams.Ostream.Ostream',
-                 'nl' : 'Foam.src.OpenFOAM.db.IOstreams.IOstreams.Ostream.nl',
-                 'tab' : 'Foam.src.OpenFOAM.db.IOstreams.IOstreams.Ostream.tab',
-                 'endl' : 'Foam.src.OpenFOAM.db.IOstreams.IOstreams.Ostream.endl',
-                 'Time': 'Foam.src.OpenFOAM.db.Time.Time.TimeHolder',
-                 'IOobject' : 'Foam.src.OpenFOAM.db.IOobject.IOobject',
-                 'IOobjectList' : 'Foam.src.OpenFOAM.db.IOobjectList.IOobjectList',
-                 'fileName' : 'Foam.src.OpenFOAM.primitives.strings.fileName.fileName',
-                 'IOdictionary' : 'Foam.src.OpenFOAM.db.IOdictionary.IOdictionary',
-                 'autoPtr_IOdictionary' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_IOdictionary.autoPtr_IOdictionary',
-                 'dictionary' : 'Foam.src.OpenFOAM.db.dictionary.dictionary.dictionary',
-                 'word' : 'Foam.src.OpenFOAM.primitives.strings.word.word',
-                 'keyType' : 'Foam.src.OpenFOAM.primitives.strings.keyType.keyType',
-                 'Switch' : 'Foam.src.OpenFOAM.db.Switch.Switch',
-                 'dimensionedScalar' : 'Foam.src.OpenFOAM.dimensionedTypes.dimensionedScalar.dimensionedScalar',
-                 'dimensionedVector' : 'Foam.src.OpenFOAM.dimensionedTypes.dimensionedVector.dimensionedVector',
-                 'dimensionedSymmTensor' : 'Foam.src.OpenFOAM.dimensionedTypes.dimensionedSymmTensor.dimensionedSymmTensor',
-                 'dimensionedTensor' : 'Foam.src.OpenFOAM.dimensionedTypes.dimensionedTensor.dimensionedTensor',
-                 'dimensionSet' : 'Foam.src.OpenFOAM.dimensionSet.dimensionSet',
-                 'dimless' : ' Foam.src.OpenFOAM.dimensionSets.dimless',
-                 'dimMass' : ' Foam.src.OpenFOAM.dimensionSets.dimMass',
-                 'dimLength' : ' Foam.src.OpenFOAM.dimensionSets.dimLength',
-                 'dimTime' : ' Foam.src.OpenFOAM.dimensionSets.dimTime',
-                 'dimTemperature' : ' Foam.src.OpenFOAM.dimensionSets.dimTemperature',
-                 'dimMoles' : ' Foam.src.OpenFOAM.dimensionSets.dimMoles',
-                 'dimCurrent' : ' Foam.src.OpenFOAM.dimensionSets.dimCurrent',
-                 'dimLuminousIntensity' : ' Foam.src.OpenFOAM.dimensionSets.dimLuminousIntensity',
-                 'dimArea' : ' Foam.src.OpenFOAM.dimensionSets.dimArea',
-                 'dimVolume' : ' Foam.src.OpenFOAM.dimensionSets.dimVolume',
-                 'dimVol' : ' Foam.src.OpenFOAM.dimensionSets.dimVol',
-                 'dimDensity' : ' Foam.src.OpenFOAM.dimensionSets.dimDensity',
-                 'dimForce' : ' Foam.src.OpenFOAM.dimensionSets.dimForce',
-                 'dimEnergy' : ' Foam.src.OpenFOAM.dimensionSets.dimEnergy',
-                 'dimPower' : ' Foam.src.OpenFOAM.dimensionSets.dimPower',
-                 'dimVelocity' : ' Foam.src.OpenFOAM.dimensionSets.dimVelocity',
-                 'dimAcceleration' : ' Foam.src.OpenFOAM.dimensionSets.dimAcceleration',
-                 'dimPressure' : ' Foam.src.OpenFOAM.dimensionSets.dimPressure',
-                 'dimGasConstant' : ' Foam.src.OpenFOAM.dimensionSets.dimGasConstant',
-                 'dimSpecificHeatCapacity' : ' Foam.src.OpenFOAM.dimensionSets.dimSpecificHeatCapacity',
-                 'scalar' : float,
-                 'string' : str,
-                 'GREAT' : 'Foam.src.OpenFOAM.primitives.scalar.GREAT',
-                 'SMALL' : 'Foam.src.OpenFOAM.primitives.scalar.SMALL',
-                 'readScalar' : 'Foam.src.OpenFOAM.primitives.scalar.readScalar',
-                 'readLabel' : 'Foam.src.OpenFOAM.primitives.label.readLabel',
-                 'readInt' : 'Foam.src.OpenFOAM.primitives.int_',
-                 'vector' : 'Foam.src.OpenFOAM.primitives.vector.vector',
-                 'symmTensor' : 'Foam.src.OpenFOAM.primitives.symmTensor.symmTensor',
-                 'tensor' : 'Foam.src.OpenFOAM.primitives.tensor.tensor',
-                 'readBool' : 'Foam.src.OpenFOAM.primitives.bool.readBool',
-                 'one' : 'Foam.src.OpenFOAM.primitives.one.one',
-                 'complex' : 'Foam.src.OpenFOAM.primitives.complex.complex',
-                 'complexVector' : 'Foam.src.OpenFOAM.primitives.complexVector.complexVector',
-                 'Random' : 'Foam.src.OpenFOAM.primitives.Random.Random',
-                 'IFstream' : 'Foam.src.OpenFOAM.db.IOstreams.Fstreams.IFstream.IFstream',
-                 'OFstream' : 'Foam.src.OpenFOAM.db.IOstreams.Fstreams.OFstream.OFstream',
-                 'Pstream' : 'Foam.src.OpenFOAM.db.IOstreams.Pstreams.Pstream.Pstream',
-                 'solution' : 'Foam.src.OpenFOAM.matrices.solution.solution',
-                 'solution_upgradeSolverDict' : 'Foam.src.OpenFOAM.matrices.solution.solution_upgradeSolverDict',
-                 'ext_solution' : 'Foam.src.OpenFOAM.matrices.ext_solution.ext_solution',
-                 'PtrList_entry' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_entry.PtrList_entry',
-                 'PtrList_TypeHolder' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericType.PtrList_TypeHolder',
-                 'PtrList_TypeBase' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericType.PtrList_TypeBase',
-                 'PtrList_INewBase' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericINew.PtrList_INewBase',
-                 'PtrList_INewHolder' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_GenericINew.PtrList_INewHolder',
-                 'PtrList_Generic' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_Generic.PtrList_Generic',
-                 'uniformDimensionedVectorField' : 'Foam.src.OpenFOAM.fields.UniformDimensionedFields.UniformDimensionedVectorField.uniformDimensionedVectorField',
-                 'PtrList_uniformDimensionedVectorField' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_UniformDimensionedVectorField.PtrList_uniformDimensionedVectorField',
-                 'HashPtrTable_IOobject_word_string_hash' : 'Foam.src.OpenFOAM.containers.HashTables.HashPtrTable.HashPtrTable_IOobject_word_string_hash.HashPtrTable_IOobject_word_string_hash',
-                 'HashTable_int_word_string_hash' : 'Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable_int_word_string_hash.HashTable_int_word_string_hash',
-                 'autoPtr_polyPatch' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_polyPatch.autoPtr_polyPatch',
-                 'scalarField' : 'Foam.src.OpenFOAM.fields.Fields.primitiveFields.scalarField',
-                 'vectorField' : 'Foam.src.OpenFOAM.fields.Fields.primitiveFields.vectorField',
-                 'sphericalTensorField' : 'Foam.src.OpenFOAM.fields.Fields.primitiveFields.sphericalTensorField',
-                 'symmTensorField' : 'Foam.src.OpenFOAM.fields.Fields.primitiveFields.symmTensorField',
-                 'tensorField' : 'Foam.src.OpenFOAM.fields.Fields.primitiveFields.tensorField',
-                 'tmp_scalarField' : 'Foam.src.OpenFOAM.fields.Fields.primitiveFields.tmp_scalarField',
-                 'tmp_vectorField' : 'Foam.src.OpenFOAM.fields.Fields.primitiveFields.tmp_vectorField',
-                 'tmp_sphericalTensorField' : 'Foam.src.OpenFOAM.fields.Fields.primitiveFields.tmp_sphericalTensorField',
-                 'tmp_symmTensorField' : 'Foam.src.OpenFOAM.fields.Fields.primitiveFields.tmp_symmTensorField',
-                 'tmp_tensorField' : 'Foam.src.OpenFOAM.fields.Fields.primitiveFields.tmp_tensorField',
-                 'IStringStream' : 'Foam.src.OpenFOAM.db.IOstreams.StringStreams.IStringStream.IStringStream',
-                 'mapDistribute' : 'Foam.src.OpenFOAM.meshes.polyMesh.mapPolyMesh.mapDistribute.mapDistribute.mapDistribute',
-                 'boolList' : 'Foam.src.OpenFOAM.containers.Lists.List.List_bool.List_bool',
-                 'labelList' : 'Foam.src.OpenFOAM.containers.Lists.List.List_label.List_label',
-                 'scalarList' : 'Foam.src.OpenFOAM.containers.Lists.List.List_scalar.List_scalar',
-                 'tensorList' : 'Foam.src.OpenFOAM.containers.Lists.List.List_tensor.List_tensor',
-                 'tokenList' : 'Foam.src.OpenFOAM.containers.Lists.List.List_token.List_token',
-                 'vectorList' : 'Foam.src.OpenFOAM.containers.Lists.List.List_vector.List_vector',
-                 'wordList' : 'Foam.src.OpenFOAM.containers.Lists.List.List_word.List_word',
-                 'complexList' : 'Foam.src.OpenFOAM.containers.Lists.List.List_complex.List_complex',
-                 'cellList' : 'Foam.src.OpenFOAM.containers.Lists.List.List_cell.List_cell',
-                 'faceList' : 'Foam.src.OpenFOAM.containers.Lists.List.List_face.List_face',
-                 'polyPatchListPtr' : 'Foam.src.OpenFOAM.containers.Lists.List.List_polyPatchPtr.List_polyPatchPtr',
-                 'wordHashTable' : 'Foam.src.OpenFOAM.containers.HashTables.HashTable.HashTable_word_word_string_hash.HashTable_word_word_string_hash',
-                 'I' : 'Foam.src.OpenFOAM.primitives.sphericalTensor.I',
-                 'mag' : abs,
-                 'oneField' : 'Foam.src.OpenFOAM.fields.Fields.oneField.oneField',
-                 'oneFieldField' : 'Foam.src.OpenFOAM.fields.FieldFields.oneFieldField.oneFieldField',
-                 'geometricOneField' : 'Foam.src.OpenFOAM.fields.GeometricFields.geometricOneField.geometricOneField',
-                 'complexField' : 'Foam.src.OpenFOAM.fields.Fields.complexFields.complexField',
-                 'complexVectorField' : 'Foam.src.OpenFOAM.fields.Fields.complexFields.complexVectorField',
-                 'tmp_complexField' : 'Foam.src.OpenFOAM.fields.tmp.tmp_complexField.tmp_complexField',
-                 'tmp_complexVectorField' : 'Foam.src.OpenFOAM.fields.tmp.tmp_complexVectorField.tmp_complexVectorField',
-                 'coordinateSystem' : 'Foam.src.meshTools.coordinateSystems.coordinateSystem.coordinateSystem',
-                 'coordinateSystems' : 'Foam.src.meshTools.coordinateSystems.coordinateSystems.coordinateSystems',
-                 'setRootCase' : 'Foam.OpenFOAM.include.setRootCase', 
-                 'createTime' : 'Foam.OpenFOAM.include.createTime',
-                 'createMesh' : 'Foam.OpenFOAM.include.createMesh',
-                 'createMeshNoClear' : 'Foam.OpenFOAM.include.createMeshNoClear',
-                 'token' : token.token,
-                  #meshTools                 
-                 'coordinateRotation' : 'Foam.src.meshTools.coordinateSystems.coordinateRotation.coordinateRotation',
-                 'IOPtrList_coordinateSystem' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_coordinateSystem.IOPtrList_coordinateSystem',
-                 'PtrList_coordinateSystem' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_coordinateSystem.PtrList_coordinateSystem',
-                 'directMappedPatchBase' : 'Foam.src.meshTools.directMapped.directMappedPolyPatch.directMappedPatchBase.directMappedPatchBase',
-                 #finiteVolume
-                 'fvSchemes' : 'Foam.src.finiteVolume.finiteVolume.fvSchemes.fvSchemes',
-                 'fvSolution' : 'Foam.src.finiteVolume.finiteVolume.fvSolution.fvSolution',
-                 'volScalarField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.GeometricField_scalar_fvPatchField_volMesh',
-                 'volVectorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.GeometricField_vector_fvPatchField_volMesh',
-                 'volTensorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.GeometricField_tensor_fvPatchField_volMesh',
-                 'volSymmTensorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.GeometricField_symmTensor_fvPatchField_volMesh',
-                 'surfaceScalarField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.GeometricField_scalar_fvsPatchField_surfaceMesh',
-                 'surfaceVectorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.GeometricField_vector_fvsPatchField_surfaceMesh',
-                 'tmp_volScalarField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.tmp_volScalarField',
-                 'tmp_volVectorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.tmp_volVectorField',
-                 'tmp_volTensorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.tmp_volTensorField',
-                 'tmp_volSymmTensorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.tmp_volSymmTensorField',
-                 'tmp_surfaceScalarField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.tmp_surfaceScalarField',
-                 'tmp_surfaceVectorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.tmp_surfaceVectorField',
-                 'autoPtr_volScalarField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.autoPtr_volScalarField',
-                 'autoPtr_volVectorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.autoPtr_volVectorField',
-                 'autoPtr_volTensorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.autoPtr_volTensorField',
-                 'autoPtr_volSymmTensorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.autoPtr_volSymmTensorField',
-                 'autoPtr_surfaceScalarField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.autoPtr_surfaceScalarField',
-                 'autoPtr_surfaceVectorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.autoPtr_surfaceVectorField',
-                 'PtrList_volScalarField' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_volScalarField.PtrList_volScalarField',
-                 'PtrList_volVectorField' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_volVectorField.PtrList_volVectorField',
-                 'PtrList_surfaceScalarField' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_surfaceScalarField.PtrList_surfaceScalarField',
-                 'fvMesh' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvMesh',
-                 'PtrList_fvMesh' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_fvMesh.PtrList_fvMesh',
-                 'fvPatchScalarField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvPatchField_scalar',
-                 'fvPatchVectorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvPatchField_vector',
-                 'fvPatchTensorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvPatchField_tensor',
-                 'tmp_fvPatchField_scalar' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.tmp_fvPatchField_scalar',
-                 'tmp_fvPatchField_vector' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.tmp_fvPatchField_vector',
-                 'autoPtr_fvPatchField_scalar' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.autoPtr_fvPatchField_scalar',
-                 'autoPtr_fvPatchField_vector' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.autoPtr_fvPatchField_vector',
-                 'PtrList_fvPatchField_scalar' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.PtrList_fvPatchField_scalar',
-                 'PtrList_fvPatchField_vector' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.PtrList_fvPatchField_vector',
-                 'fvsPatchField_scalar' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvsPatchField_scalar',
-                 'fvsPatchField_vector' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvsPatchField_vector',
-                 'FieldField_fvPatchField_scalar' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.FieldField_fvPatchField_scalar',
-                 'FieldField_fvPatchField_vector' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.FieldField_fvPatchField_vector',
-                 'FieldField_fvPatchField_tensor' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.FieldField_fvPatchField_tensor',
-                 'DimensionedField_scalar_volMesh' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.DimensionedField_scalar_volMesh',
-                 'tmp_DimensionedField_scalar_volMesh' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.tmp_DimensionedField_scalar_volMesh',
-                 'DimensionedField_vector_volMesh' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.DimensionedField_vector_volMesh',
-                 'tmp_DimensionedField_vector_volMesh' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.tmp_DimensionedField_vector_volMesh',
-                 'DimensionedField_tensor_volMesh' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.DimensionedField_tensor_volMesh',
-                 'DimensionedField_symmTensor_volMesh' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.DimensionedField_symmTensor_volMesh',
-                 'DimensionedField_sphericalTensor_volMesh' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.DimensionedField_sphericalTensor_volMesh',
-                 'fvPatch' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvPatch',
-                 'PtrList_fvPatch' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.PtrList_fvPatch',
-                 'fvBoundaryMesh' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvBoundaryMesh',
-                 'surfaceInterpolation' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.surfaceInterpolation',
-                 'TConstructorToTableCounter_fvPatchField_scalar' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.TConstructorToTableCounter_fvPatchField_scalar',
-                 'TConstructorToTableCounter_fvPatchField_vector' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.TConstructorToTableCounter_fvPatchField_vector',
-                 'fvScalarMatrix' : 'Foam.src.finiteVolume.fvMatrices.fvMatrices.fvScalarMatrix',
-                 'fvVectorMatrix' : 'Foam.src.finiteVolume.fvMatrices.fvMatrices.fvVectorMatrix',
-                 'tmp_fvScalarMatrix' : 'Foam.src.finiteVolume.fvMatrices.fvMatrices.tmp_fvScalarMatrix',
-                 'tmp_fvVectorMatrix' : 'Foam.src.finiteVolume.fvMatrices.fvMatrices.tmp_fvVectorMatrix',
-                 'solve' : 'Foam.src.finiteVolume.fvMatrices.fvMatrices.solve',
-                 'checkMethod' : 'Foam.src.finiteVolume.fvMatrices.fvMatrices.checkMethod',
-                 'correction' : 'Foam.src.finiteVolume.fvMatrices.fvMatrices.correction',
-                 'linearInterpolate' : 'Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.linear.linearInterpolate',
-                 'weighted_vector' : 'Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.weighted.weighted_vector.weighted_vector',
-                 'setRefCell' : 'Foam.finiteVolume.setRefCell', #!!!!
-                 'getRefCellValue' : 'Foam.src.finiteVolume.cfdTools.general.findRefCell.getRefCellValue',
-                 'adjustPhi' : 'Foam.src.finiteVolume.cfdTools.general.adjustPhi.adjustPhi',
-                 'bound' : 'Foam.src.finiteVolume.cfdTools.general.bound.bound',
-                 'mixedFvPatchScalarField' : 'Foam.src.finiteVolume.fields.fvPatchFields.basic.mixed.mixedFvPatchField_scalar.mixedFvPatchScalarField',
-                 'fixedValueFvPatchScalarField' : 'Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedValue.fixedValueFvPatchField_scalar.fixedValueFvPatchScalarField',
-                 'calculatedFvPatchField_scalar' : 'Foam.src.finiteVolume.fields.fvPatchFields.basic.calculated.calculatedFvPatchField_scalar.calculatedFvPatchField_scalar',
-                 'fixedGradientFvPatchVectorField' : 'Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedGradient.fixedGradientFvPatchField_vector.fixedGradientFvPatchVectorField',
-                 'fixedGradientFvPatchScalarField' : 'Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedGradient.fixedGradientFvPatchField_scalar.fixedGradientFvPatchScalarField',
-                 'calculatedFvsPatchField_scalar' : 'Foam.src.finiteVolume.fields.fvsPatchFields.basic.calculated.calculatedFvsPatchField_scalar.calculatedFvsPatchField_scalar',
-                 'porousZone' : 'Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZone.porousZone',
-                 'wallFvPatch' : 'Foam.src.finiteVolume.fvMesh.fvPatches.derived.wallFvPatch.wallFvPatch',
-                 'subCycle_volScalarField' : 'Foam.src.OpenFOAM.algorithms.subCycle.subCycle_volScalarField.subCycle_volScalarField',
-                 'surfaceInterpolationScheme_vector' : 'Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolationScheme.surfaceInterpolationScheme_vector.surfaceInterpolationScheme_vector',
-                 'surfaceInterpolationScheme_scalar' : 'Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolationScheme.surfaceInterpolationScheme_scalar.surfaceInterpolationScheme_scalar',
-                 'limitedSurfaceInterpolationScheme_vector' : 'Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.limitedSurfaceInterpolationScheme.limitedSurfaceInterpolationScheme_vector.limitedSurfaceInterpolationScheme_vector',
-                 'NVDTVD' : 'Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.NVDTVD.NVDTVD',
-                 'MUSCL_NVDTVD' : 'Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.MUSCL.MUSCL_NVDTVD.MUSCL_NVDTVD',
-                 'LimitedScheme_vector_MUSCLLimiter_NVDTVD_limitFuncs_magSqr' : 'Foam.src.finiteVolume.interpolation.surfaceInterpolation.limitedSchemes.LimitedScheme.LimitedScheme_vector_MUSCLLimiter_NVDTVD_limitFuncs_magSqr.LimitedScheme_vector_MUSCLLimiter_NVDTVD_limitFuncs_magSqr',
-                 'multivariateSurfaceInterpolationScheme_scalar' : 'Foam.src.finiteVolume.interpolation.surfaceInterpolation.multivariateSchemes.multivariateSurfaceInterpolationScheme.multivariateSurfaceInterpolationScheme_scalar.multivariateSurfaceInterpolationScheme_scalar',
-                 'MRFZone' : 'Foam.src.finiteVolume.cfdTools.general.MRF.MRFZone',
-                 'MRFZones' : 'Foam.src.finiteVolume.cfdTools.general.MRF.MRFZones.MRFZones',
-                 'IOPtrList_MRFZone' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_MRFZone.IOPtrList_MRFZone',
-                 'PtrList_MRFZone' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_MRFZone.PtrList_MRFZone',
-                 'initContinuityErrs' : 'Foam.finiteVolume.cfdTools.general.include.initContinuityErrs',
-                 'ContinuityErrs' : 'Foam.finiteVolume.cfdTools.general.include.ContinuityErrs',
-                 'readPISOControls' : 'Foam.finiteVolume.cfdTools.general.include.readPISOControls',
-                 'readTimeControls' : 'Foam.finiteVolume.cfdTools.general.include.readTimeControls',
-                 'setInitialDeltaT' : 'Foam.finiteVolume.cfdTools.general.include.setInitialDeltaT',
-                 'setDeltaT' : 'Foam.finiteVolume.cfdTools.general.include.setDeltaT',
-                 'readSIMPLEControls' : 'Foam.finiteVolume.cfdTools.general.include.readSIMPLEControls',
-                 'readPIMPLEControls' : 'Foam.finiteVolume.cfdTools.general.include.readPIMPLEControls',
-                 'CourantNo' : 'Foam.finiteVolume.cfdTools.general.include.CourantNo',
-                 'readEnvironmentalProperties' : 'Foam.finiteVolume.cfdTools.general.include.readEnvironmentalProperties',
-                 'readGravitationalAcceleration' : 'Foam.finiteVolume.cfdTools.general.include.readGravitationalAcceleration',
-                 'createPhi' : 'Foam.finiteVolume.cfdTools.incompressible.createPhi',
-                 'compressibleCreatePhi' : 'Foam.finiteVolume.cfdTools.compressible.compressibleCreatePhi',
-                 'compressibleCourantNo' : 'Foam.finiteVolume.cfdTools.compressible.compressibleCourantNo',
-                 'compressibleContinuityErrs' : 'Foam.finiteVolume.cfdTools.compressible.compressibleContinuityErrs',
-                 'rhoEqn' : 'Foam.finiteVolume.cfdTools.compressible.rhoEqn',
-                 #dynamicFvMesh
-                 'dynamicFvMesh' : dynamicFvMesh.dynamicFvMesh,
-                 'createDynamicFvMesh' : 'Foam.dynamicFvMesh.createDynamicFvMesh',
-                 'meshCourantNo' : 'Foam.dynamicFvMesh.meshCourantNo',
-                 #random
-                 'calcEk' : 'Foam.src.randomProcesses.fft.calcEk.calcEk',
-                 'Kmesh' : 'Foam.src.randomProcesses.Kmesh.Kmesh.Kmesh',
-                 'UOprocess' : 'Foam.src.randomProcesses.processes.UOprocess.UOprocess',
-                 #sampling
-                 'meshToMesh' : 'Foam.src.sampling.meshToMeshInterpolation.meshToMesh.meshToMesh',
-                 'makeGraph' : 'Foam.src.sampling.graphField.makeGraph.makeGraph',
-                 #thermophisycalModels
-                 'basicThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicThermo.basicThermo',
-                 'PtrList_basicThermo' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicThermo.PtrList_basicThermo',
-                 'basicPsiThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicPsiThermo.basicPsiThermo',
-                 'PtrList_basicPsiThermo' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicPsiThermo.PtrList_basicPsiThermo',
-                 'basicRhoThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicRhoThermo.basicRhoThermo',
-                 'PtrList_basicRhoThermo' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicRhoThermo.PtrList_basicRhoThermo',
-                 #transportModels
-                 'transportModel' : 'Foam.src.transportModels.incompressible.transportModel.transportModel',
-                 'singlePhaseTransportModel' : 'Foam.src.transportModels.incompressible.singlePhaseTransportModel.singlePhaseTransportModel',
-                 'viscosityModel' : 'Foam.src.transportModels.incompressible.viscosityModels.viscosityModel.viscosityModel',
-                 'twoPhaseMixture' : 'Foam.src.transportModels.incompressible.twoPhaseMixture.twoPhaseMixture',
-                 'interfaceProperties' : 'Foam.src.transportModels.interfaceProperties.interfaceProperties.interfaceProperties',
-                 'compressible': TLoadHelper( compressible_interfaces.attr2interface ),
-                 'incompressible': TLoadHelper( incompressible_interfaces.attr2interface ),
-                 'fvc' : TLoadHelper( fvc_interfaces.attr2interface ),
-                 'fvm' : TLoadHelper( fvm_interfaces.attr2interface ),
-                 'fv' : TLoadHelper( fv_interfaces.attr2interface ),
-                 'radiation': TLoadHelper( radiation_interfaces.attr2interface ),
-                 'createRadiationModel' : 'Foam.radiation.createRadiationModel' }
-                 
+from Foam.Ref import OpenFOAM_interfaces
+attr2interface.update( OpenFOAM_interfaces.attr2interface )
+
+from Foam.Ref import meshTools_interfaces
+attr2interface.update( meshTools_interfaces.attr2interface )
+
+from Foam.Ref import finiteVolume_interfaces
+attr2interface.update( finiteVolume_interfaces.attr2interface )
+
+from Foam.Ref import dynamicFvMesh_interfaces
+attr2interface.update( dynamicFvMesh_interfaces.attr2interface )
+
+from Foam.Ref import randomProcesses_interfaces
+attr2interface.update( randomProcesses_interfaces.attr2interface )
+
+from Foam.Ref import sampling_interfaces
+attr2interface.update( sampling_interfaces.attr2interface )
+
+from Foam.Ref import thermophisycalModels_interfaces
+attr2interface.update( sampling_interfaces.attr2interface )
+
+from Foam.Ref import transportModels_interfaces
+attr2interface.update( transportModels_interfaces.attr2interface )
+
+from Foam.Ref import compressible_interfaces
+attr2interface.update( { 'compressible': TLoadHelper( compressible_interfaces.attr2interface ) } )
+
+from Foam.Ref import incompressible_interfaces
+attr2interface.update( { 'compressible': TLoadHelper( incompressible_interfaces.attr2interface ) } )
+
+from Foam.Ref import fvc_interfaces
+attr2interface.update( { 'fvc' : TLoadHelper( fvc_interfaces.attr2interface ) } )
+
+from Foam.Ref import fvm_interfaces
+attr2interface.update( { 'fvm' : TLoadHelper( fvm_interfaces.attr2interface ) } )
+
+from Foam.Ref import fv_interfaces
+attr2interface.update( { 'fv' : TLoadHelper( fv_interfaces.attr2interface ) } )
+
+from Foam.Ref import radiation_interfaces
+attr2interface.update( { 'radiation': TLoadHelper( radiation_interfaces.attr2interface ) } )
+
+                
 
