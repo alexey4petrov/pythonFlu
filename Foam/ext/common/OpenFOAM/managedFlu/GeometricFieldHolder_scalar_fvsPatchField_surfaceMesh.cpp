@@ -36,6 +36,9 @@
 
 %include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder.hxx"
 
+%ignore  Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >::operator +=;
+%ignore  Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >::operator -=;
+
 %include <surfaceFields.hpp>
 
 %template ( GeometricFieldHolder_scalar_fvsPatchField_surfaceMesh ) Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >;
