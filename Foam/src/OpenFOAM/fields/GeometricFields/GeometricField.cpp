@@ -241,7 +241,7 @@
   }    
 
   
-  
+
 }
 %enddef
 
@@ -357,26 +357,6 @@
   {
     return get_ref( self ) * theArg ;
   }
-  
-  void __imul__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
-  {
-    get_ref( self ) *= theArg;
-  }    
-
-  void __idiv__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
-  {
-    get_ref( self ) /= theArg;
-  }    
-
-  void __iadd__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
-  {
-    get_ref( self ) += theArg;
-  }    
-
-  void __isub__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
-  {
-    get_ref( self ) -= theArg;
-  }    
 
   Foam::tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > > __radd__( const Foam::scalar& theArg ) const
   {
