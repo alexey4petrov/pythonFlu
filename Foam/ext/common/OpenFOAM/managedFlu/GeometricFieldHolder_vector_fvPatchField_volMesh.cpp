@@ -36,9 +36,6 @@
 
 %include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder.hxx"
 
-%ignore  Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >::operator +=;
-%ignore  Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >::operator -=;
-
 %include <volFields.hpp>
 
 %template ( GeometricFieldHolder_vector_fvPatchField_volMesh ) Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >;
