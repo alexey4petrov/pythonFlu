@@ -39,6 +39,27 @@ Foam::Type& __call__()
 }
 %enddef
 
+%define HOLDERS_CALL_SMART_TMP_EXTENSION_TEMPLATE1( Template, Type )
+Template< Type >& __call__()
+{
+  return self->operator()();
+}
+%enddef
+
+%define HOLDERS_CALL_SMART_TMP_EXTENSION_TEMPLATE2( Template, Type1, Type2 )
+Template< Type1, Type2 >& __call__()
+{
+  return self->operator()();
+}
+%enddef
+
+%define HOLDERS_CALL_SMART_TMP_EXTENSION_TEMPLATE3( Template, Type1, Type2, Type3 )
+Template< Type1, Type2, Type3 >& __call__()
+{
+  return self->operator()();
+}
+%enddef
+
 
 //--------------------------------------------------------------------------------------
 %define FUNCTION_HOLDER_EXTEND( Type )

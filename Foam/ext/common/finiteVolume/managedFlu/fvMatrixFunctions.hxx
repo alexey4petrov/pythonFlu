@@ -45,6 +45,7 @@
     return *self + theArg;
   }
 
+  HOLDERS_CALL_SMART_TMP_EXTENSION_TEMPLATE1( Foam::fvMatrix, Type );
 
 }
 %enddef
