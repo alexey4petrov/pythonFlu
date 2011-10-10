@@ -46,11 +46,16 @@ EXTEND_SURFACEVECTORFIELDHOLDER;
 //---------------------------------------------------------------------------
 %feature( "pythonappend" ) Foam::GeometricFieldHolder< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >::SMARTPTR_PYAPPEND_GETATTR( GeometricFieldHolder_vector_fvsPatchField_surfaceMesh );
 
+GEOMETRICFIELDHOLDER_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh );
+  
 %extend Foam::GeometricFieldHolder< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >
 {
   SMARTPTR_EXTEND_ATTR( GeometricFieldHolder_vector_fvsPatchField_surfaceMesh );
+  COMMON_EXTEND_GEOMETRICFIELDHOLDER( Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh );
+  
 }
 
+GEOMETRICFIELDHOLDER_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh );
 
 
 //--------------------------------------------------------------------------------------

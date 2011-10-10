@@ -26,20 +26,113 @@
 
 
 //---------------------------------------------------------------------------
-%define EXTEND_VOLSCALARFIELDHOLDER
-%extend Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh >
-{
-  Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh > __add__ ( 
-    const Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& field )
+%define GEOMETRICFIELDHOLDER_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Type, TPatchField, TMesh )
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __imul__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __iadd__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __isub__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __idiv__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __ilshift__ );
+
+%enddef
+
+%define GEOMETRICFIELDHOLDER_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Type, TPatchField, TMesh )
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __idiv__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __isub__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __iadd__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __imul__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __ilshift__ );
+
+%enddef
+
+
+//--------------------------------------------------------------------------------------
+%define COMMON_EXTEND_GEOMETRICFIELDHOLDER( Type, TPatchField, TMesh )
+
+  Foam::GeometricFieldHolder< Type, TPatchField, TMesh > __add__ ( 
+    const Foam::GeometricFieldHolder< Type, TPatchField, TMesh >& field )
   {
     return *self + field;
   }
+
+  HOLDERS_CALL_SMART_TMP_EXTENSION_TEMPLATE3( Foam::GeometricField, Type, TPatchField, TMesh );
   
-  void ext_assign ( const Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& field )
+  void __ilshift__( const Foam::dimensioned< Type >& theArg )
   {
-    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
+    get_ref( self ) = theArg;
+  }
+
+  void __ilshift__ ( const Foam::GeometricFieldHolder< Type, TPatchField, TMesh >& field )
+  {
     *self = field;
   }
+
+  void __ilshift__ ( const Foam::smart_tmp< Foam::GeometricField< Type, TPatchField, TMesh > >& field )
+  {
+    *self = field;
+  }
+  
+  void __imul__( const Foam::smart_tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > >& theArg )
+  {
+    get_ref( self ) *= theArg;
+  }    
+
+  void __idiv__( const Foam::smart_tmp< Foam::GeometricField< Foam::scalar, TPatchField, TMesh > >& theArg )
+  {
+    get_ref( self ) /= theArg;
+  }    
+
+  void __iadd__( const Foam::smart_tmp< Foam::GeometricField< Type, TPatchField, TMesh > >& theArg )
+  {
+    get_ref( self ) += theArg;
+  }    
+
+  void __isub__( const Foam::smart_tmp< Foam::GeometricField< Type, TPatchField, TMesh > >& theArg )
+  {
+    get_ref( self ) -= theArg;
+  }    
+  
+  void __imul__( const Foam::dimensioned< Foam::scalar >& theArg )
+  {
+    get_ref( self ) *= theArg;
+  }    
+
+  void __idiv__( const Foam::dimensioned< Foam::scalar >& theArg )
+  {
+    get_ref( self ) /= theArg;
+  }    
+
+  void __iadd__( const Foam::dimensioned< Type >& theArg )
+  {
+    get_ref( self ) += theArg;
+  }    
+
+  void __isub__( const Foam::dimensioned< Type >& theArg )
+  {
+    get_ref( self ) -= theArg;
+  }    
+
+%enddef
+
+
+//---------------------------------------------------------------------------
+%define EXTEND_VOLSCALARFIELDHOLDER
+
+%extend Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh >
+{
+
+  GEOMETRICFIELDHOLDER_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar, Foam::fvPatchField, Foam::volMesh );
+  COMMON_EXTEND_GEOMETRICFIELDHOLDER( Foam::scalar, Foam::fvPatchField, Foam::volMesh );  
+  GEOMETRICFIELDHOLDER_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar, Foam::fvPatchField, Foam::volMesh );
   
   Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh > mag ()
   {
@@ -77,11 +170,6 @@
 %define EXTEND_VOLVECTORFIELDHOLDER
 %extend Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >
 {
-  Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh > __add__ ( 
-    const Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >& field )
-  {
-    return *self + field;
-  }
 
   Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh > __sub__ ( 
     const Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >& field )
@@ -89,12 +177,6 @@
     return *self - field;
   }
 
-  void ext_assign( const Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >& field )
-  {
-    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
-    *self = field;
-  }
-  
   Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh > __neg__ ()
   {
     return - *self;
@@ -108,18 +190,6 @@
 %define EXTEND_SURFACEVECTORFIELDHOLDER
 %extend Foam::GeometricFieldHolder< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >
 {
-  Foam::GeometricFieldHolder< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh > __add__ ( 
-    const Foam::GeometricFieldHolder< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >& field )
-  {
-    return *self + field;
-  }
-
-  void ext_assign( const Foam::GeometricFieldHolder< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >& field )
-  {
-    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
-    *self = field;
-  }
-
 
   Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > __and__ ( 
     const Foam::GeometricFieldHolder< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >& field )
@@ -135,12 +205,10 @@
 %define EXTEND_SURFACESCALARFIELDHOLDER
 %extend Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >
 {
-  Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > __add__ ( 
-    const Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >& field )
-  {
-    return *self + field;
-  }
-
+  GEOMETRICFIELDHOLDER_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh );
+  COMMON_EXTEND_GEOMETRICFIELDHOLDER( Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh );
+  GEOMETRICFIELDHOLDER_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh );
+    
   Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > __mul__ ( 
     const Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >& field )
   {
@@ -152,13 +220,6 @@
   {
     return *self - field;
   }
-
-  void ext_assign( const Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >& field )
-  {
-    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
-    *self = field;
-  }
-
 
   Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > mag ()
   {

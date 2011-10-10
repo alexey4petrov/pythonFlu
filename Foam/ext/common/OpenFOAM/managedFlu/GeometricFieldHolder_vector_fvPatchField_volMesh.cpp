@@ -46,10 +46,16 @@ EXTEND_VOLVECTORFIELDHOLDER;
 //---------------------------------------------------------------------------
 %feature( "pythonappend" ) Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >::SMARTPTR_PYAPPEND_GETATTR( GeometricFieldHolder_vector_fvPatchField_volMesh );
 
+GEOMETRICFIELDHOLDER_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector, Foam::fvPatchField, Foam::volMesh );
+
 %extend Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >
 {
   SMARTPTR_EXTEND_ATTR( GeometricFieldHolder_vector_fvPatchField_volMesh );
+  
+  COMMON_EXTEND_GEOMETRICFIELDHOLDER( Foam::vector, Foam::fvPatchField, Foam::volMesh );
 }
+
+GEOMETRICFIELDHOLDER_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector, Foam::fvPatchField, Foam::volMesh );
 
 
 //--------------------------------------------------------------------------------------
