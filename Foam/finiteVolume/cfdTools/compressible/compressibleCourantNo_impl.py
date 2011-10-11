@@ -88,7 +88,7 @@ def compressibleCourantNo_020000( mesh, phi, rho, runTime ):
 
     if mesh.nInternalFaces() :
         from Foam import fvc
-        sumPhi = fvc.surfaceSum( phi.mag() )().internalField() / rho.internalField() 
+        sumPhi = fvc.surfaceSum( phi.mag() ).internalField() / rho.internalField() 
         
         CoNum = 0.5 * ( sumPhi / mesh.V().field() ).gMax() * runTime.deltaTValue()
         
