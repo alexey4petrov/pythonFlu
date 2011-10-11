@@ -119,7 +119,7 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
   void __isub__( const Foam::dimensioned< Type >& theArg )
   {
     get_ref( self ) -= theArg;
-  }    
+  }
 
 %enddef
 
@@ -160,6 +160,18 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
     const Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& field )
   {
     return *self - field;
+  }
+  
+  Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh > __rmul__ ( 
+    const Foam::dimensioned< Foam::scalar >& dmS )
+  {
+    return dmS * *self;
+  }
+  
+  Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh > __radd__ ( 
+    const Foam::dimensioned< Foam::scalar >& dmS )
+  {
+    return dmS + *self;
   }
 
 }
