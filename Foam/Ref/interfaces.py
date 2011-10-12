@@ -47,7 +47,7 @@ from Foam.Ref import sampling_interfaces
 attr2interface.update( sampling_interfaces.attr2interface )
 
 from Foam.Ref import thermophisycalModels_interfaces
-attr2interface.update( sampling_interfaces.attr2interface )
+attr2interface.update( thermophisycalModels_interfaces.attr2interface )
 
 from Foam.Ref import transportModels_interfaces
 attr2interface.update( transportModels_interfaces.attr2interface )
@@ -56,7 +56,7 @@ from Foam.Ref import compressible_interfaces
 attr2interface.update( { 'compressible': TLoadHelper( compressible_interfaces.attr2interface ) } )
 
 from Foam.Ref import incompressible_interfaces
-attr2interface.update( { 'compressible': TLoadHelper( incompressible_interfaces.attr2interface ) } )
+attr2interface.update( { 'incompressible': TLoadHelper( incompressible_interfaces.attr2interface ) } )
 
 from Foam.Ref import fvc_interfaces
 attr2interface.update( { 'fvc' : TLoadHelper( fvc_interfaces.attr2interface ) } )
@@ -69,6 +69,9 @@ attr2interface.update( { 'fv' : TLoadHelper( fv_interfaces.attr2interface ) } )
 
 from Foam.Ref import radiation_interfaces
 attr2interface.update( { 'radiation': TLoadHelper( radiation_interfaces.attr2interface ) } )
+
+from Foam.Ref import MULES_interfaces
+attr2interface.update( { 'MULES': TLoadHelper( MULES_interfaces.attr2interface ) } )
 
                 
 
