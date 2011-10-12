@@ -19,7 +19,17 @@
 ##
 ## Author : Alexey PETROV
 ##
+#----------------------------------------------------------------------------
+def createRadiationModel( thermo ) :
+    from Foam import ref
+    pRadiation = ref.radiation.radiationModel.New( thermo.T() )
+    
+    return pRadiation
 
 
-#---------------------------------------------------------------------------
-
+#----------------------------------------------------------------------------
+def createRadiationModelHolder( thermo ) :
+    from Foam import man
+    pRadiation = man.radiation.radiationModel.New( man.volScalarField( thermo.T(), thermo ) )
+    
+    return pRadiation
