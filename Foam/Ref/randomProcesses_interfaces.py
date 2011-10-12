@@ -24,6 +24,7 @@
 #--------------------------------------------------------------------------------------
 attr2interface={ 'calcEk' : 'Foam.src.randomProcesses.fft.calcEk.calcEk',
                  'Kmesh' : 'Foam.src.randomProcesses.Kmesh.Kmesh.Kmesh',
-                 'UOprocess' : 'Foam.src.randomProcesses.processes.UOprocess.UOprocess' }
+                 'UOprocess' : 'Foam.src.randomProcesses.processes.UOprocess.UOprocess',
+                 'fft' : 'Foam.src.randomProcesses.fft.fft.fft' }
                  
 

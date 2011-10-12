@@ -73,6 +73,12 @@ attr2interface={ 'fvSchemes' : 'Foam.src.finiteVolume.finiteVolume.fvSchemes.fvS
                  'fvBoundaryMesh' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvBoundaryMesh',
                  'surfaceInterpolation' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.surfaceInterpolation',
                  'TConstructorToTableCounter_fvPatchField_scalar' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.TConstructorToTableCounter_fvPatchField_scalar',
+                 'fvPatchFieldConstructorToTableBase_scalar_0' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvPatchFieldConstructorToTableBase_scalar_0',
+                 'fvPatchFieldConstructorToTableBase_scalar_1' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvPatchFieldConstructorToTableBase_scalar_1',
+                 'fvPatchFieldConstructorToTableBase_scalar_2' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvPatchFieldConstructorToTableBase_scalar_2',
+                 'fvPatchFieldConstructorToTableBase_vector_0' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvPatchFieldConstructorToTableBase_vector_0',
+                 'fvPatchFieldConstructorToTableBase_vector_1' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvPatchFieldConstructorToTableBase_vector_1',
+                 'fvPatchFieldConstructorToTableBase_vector_2' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.fvPatchFieldConstructorToTableBase_vector_2',
                  'TConstructorToTableCounter_fvPatchField_vector' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.TConstructorToTableCounter_fvPatchField_vector',
                  'fvScalarMatrix' : 'Foam.src.finiteVolume.fvMatrices.fvMatrices.fvScalarMatrix',
                  'fvVectorMatrix' : 'Foam.src.finiteVolume.fvMatrices.fvMatrices.fvVectorMatrix',
@@ -83,7 +89,7 @@ attr2interface={ 'fvSchemes' : 'Foam.src.finiteVolume.finiteVolume.fvSchemes.fvS
                  'correction' : 'Foam.src.finiteVolume.fvMatrices.fvMatrices.correction',
                  'linearInterpolate' : 'Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.linear.linearInterpolate',
                  'weighted_vector' : 'Foam.src.finiteVolume.interpolation.surfaceInterpolation.schemes.weighted.weighted_vector.weighted_vector',
-                 'setRefCell' : 'Foam.finiteVolume.setRefCell', #!!!!
+                 'setRefCell' : 'Foam.src.finiteVolume.cfdTools.general.ref_findRefCell.setRefCell',
                  'getRefCellValue' : 'Foam.src.finiteVolume.cfdTools.general.findRefCell.getRefCellValue',
                  'adjustPhi' : 'Foam.src.finiteVolume.cfdTools.general.adjustPhi.adjustPhi',
                  'bound' : 'Foam.src.finiteVolume.cfdTools.general.bound.bound',
@@ -93,7 +99,12 @@ attr2interface={ 'fvSchemes' : 'Foam.src.finiteVolume.finiteVolume.fvSchemes.fvS
                  'fixedGradientFvPatchVectorField' : 'Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedGradient.fixedGradientFvPatchField_vector.fixedGradientFvPatchVectorField',
                  'fixedGradientFvPatchScalarField' : 'Foam.src.finiteVolume.fields.fvPatchFields.basic.fixedGradient.fixedGradientFvPatchField_scalar.fixedGradientFvPatchScalarField',
                  'calculatedFvsPatchField_scalar' : 'Foam.src.finiteVolume.fields.fvsPatchFields.basic.calculated.calculatedFvsPatchField_scalar.calculatedFvsPatchField_scalar',
+                 'zeroGradientFvPatchScalarField' : 'Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_scalar.zeroGradientFvPatchField_scalar',
+                 'zeroGradientFvPatchField_scalar' : 'Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_scalar.zeroGradientFvPatchField_scalar',
+                 'zeroGradientFvPatchVectorField' : 'Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_scalar.zeroGradientFvPatchField_vector',
+                 'zeroGradientFvPatchTensorField' : 'Foam.src.finiteVolume.fields.fvPatchFields.zeroGradient.zeroGradientFvPatchField_scalar.zeroGradientFvPatchField_tensor',
                  'porousZone' : 'Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZone.porousZone',
+                 'porousZones' : 'Foam.src.finiteVolume.cfdTools.general.porousMedia.porousZones.porousZones',
                  'wallFvPatch' : 'Foam.src.finiteVolume.fvMesh.fvPatches.derived.wallFvPatch.wallFvPatch',
                  'subCycle_volScalarField' : 'Foam.src.OpenFOAM.algorithms.subCycle.subCycle_volScalarField.subCycle_volScalarField',
                  'surfaceInterpolationScheme_vector' : 'Foam.src.finiteVolume.interpolation.surfaceInterpolation.surfaceInterpolationScheme.surfaceInterpolationScheme_vector.surfaceInterpolationScheme_vector',
@@ -124,4 +135,5 @@ attr2interface={ 'fvSchemes' : 'Foam.src.finiteVolume.finiteVolume.fvSchemes.fvS
                  'compressibleContinuityErrs' : 'Foam.finiteVolume.cfdTools.compressible.compressibleContinuityErrs',
                  'rhoEqn' : 'Foam.finiteVolume.cfdTools.compressible.rhoEqn' }
                  
+
 

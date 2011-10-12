@@ -23,10 +23,13 @@
 
 #--------------------------------------------------------------------------------------
 attr2interface={ 'basicThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicThermo.basicThermo',
+                 'autoPtr_basicThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicThermo.autoPtr_basicThermo',
                  'PtrList_basicThermo' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicThermo.PtrList_basicThermo',
                  'basicPsiThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicPsiThermo.basicPsiThermo',
+                 'autoPtr_basicPsiThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicPsiThermo.autoPtr_basicPsiThermo',
                  'PtrList_basicPsiThermo' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicPsiThermo.PtrList_basicPsiThermo',
                  'basicRhoThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicRhoThermo.basicRhoThermo',
+                 'autoPtr_basicRhoThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicRhoThermo.autoPtr_basicRhoThermo',
                  'PtrList_basicRhoThermo' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicRhoThermo.PtrList_basicRhoThermo' }
                  
 

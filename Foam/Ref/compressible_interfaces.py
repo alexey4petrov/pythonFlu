@@ -26,6 +26,7 @@ attr2interface={ 'turbulenceModel' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_compr
                  'autoPtr_turbulenceModel' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_compressible_turbulenceModel.autoPtr_compressible_turbulenceModel',
                  'PtrList_compressible_turbulenceModel' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_compressible_turbulenceModel.PtrList_compressible_turbulenceModel',
                  'RASModel' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_compressible_RASModel.compressible_RASModel',
-                 'autoPtr_RASModel' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_compressible_RASModel.autoPtr_compressible_RASModel' }
+                 'autoPtr_RASModel' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_compressible_RASModel.autoPtr_compressible_RASModel',
+                 'regionProperties' : 'Foam.src.turbulenceModels.compressible.RAS.derivedFvPatchFields.turbulentTemperatureCoupledBaffle.regionProperties.regionProperties' }
                  
 
