@@ -22,40 +22,4 @@
 
 
 #---------------------------------------------------------------------------
-from Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_turbulenceModel import *
-
-from Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_RASModel import *
-
-from Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_LESModel import *
-
-
-#---------------------------------------------------------------------------
-from Foam import FOAM_VERSION, FOAM_BRANCH_VERSION, FOAM_REF_VERSION
-if FOAM_VERSION( "<=", "010401" ):
-   turbulenceModel = incompressible_turbulenceModel
-   autoPtr_turbulenceModel = autoPtr_incompressible_turbulenceModel
-   pass
-
-
-#---------------------------------------------------------------------------
-if FOAM_REF_VERSION( "==", "010500" ) or FOAM_BRANCH_VERSION( "dev", "==", "010500" ):
-   RASModel = incompressible_RASModel
-   autoPtr_RASModel = autoPtr_incompressible_RASModel
-
-   LESModel = incompressible_LESModel
-   autoPtr_LESModel = autoPtr_incompressible_LESModel
-   pass
-
-
-#----------------------------------------------------------------------------
-if FOAM_REF_VERSION( ">=", "010600" ) or FOAM_BRANCH_VERSION( "dev", ">=", "010600" ):
-   RASModel = incompressible_RASModel
-   autoPtr_RASModel = autoPtr_incompressible_RASModel
-
-   LESModel = incompressible_LESModel
-   autoPtr_LESModel = autoPtr_incompressible_LESModel
-   
-   turbulenceModel = incompressible_turbulenceModel
-   autoPtr_turbulenceModel = autoPtr_incompressible_turbulenceModel
-   pass
 

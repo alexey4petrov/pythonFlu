@@ -22,23 +22,4 @@
 
 
 #---------------------------------------------------------------------------
-from Foam.src.finiteVolume.finiteVolume.fvm.fvmDdt import *
-from Foam.src.finiteVolume.finiteVolume.fvm.fvmD2dt2 import *
-from Foam.src.finiteVolume.finiteVolume.fvm.fvmDiv import *
-from Foam.src.finiteVolume.finiteVolume.fvm.fvmSup import *
-from Foam.src.finiteVolume.finiteVolume.fvm.fvmLaplacian import *
 
-
-#---------------------------------------------------------------------------
-ddt = fvm_ddt
-
-d2dt2 = fvm_d2dt2
-
-div = fvm_div
-
-laplacian = fvm_laplacian
-
-Sp = fvm_Sp
-
-
-#---------------------------------------------------------------------------

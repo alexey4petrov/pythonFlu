@@ -22,16 +22,6 @@
 
 
 #---------------------------------------------------------------------------
-from Foam.src.dynamicFvMesh.ref_dynamicFvMesh import *
-
-
-#---------------------------------------------------------------------------
-dynamicFvMesh.defaultRegion = dynamicFvMesh.defaultRegion.fget()
-
-dynamicFvMesh.meshSubDir = dynamicFvMesh.meshSubDir.fget()
-
-
-#---------------------------------------------------------------------------
 def createDynamicFvMesh( runTime ):
     from Foam import get_proper_function
     fun = get_proper_function( "Foam.dynamicFvMesh.createDynamicFvMesh_impl",
@@ -54,5 +44,7 @@ def meshCourantNo( runTime, mesh, phi ):
     ext_Info() << "Mesh Courant Number mean: " << meanMeshCoNum << " max: " << meshCoNum << nl << nl
     
     return meshCoNum, meanMeshCoNum
+
+
 #----------------------------------------------------------------------------
 

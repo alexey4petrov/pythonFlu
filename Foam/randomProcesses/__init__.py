@@ -22,10 +22,4 @@
 
 
 #--------------------------------------------------------------------------
-from Foam.src.randomProcesses.fft.fft import *
-from Foam.src.randomProcesses.fft.calcEk import *
-from Foam.src.randomProcesses.Kmesh.Kmesh import *
-from Foam.src.randomProcesses.processes.UOprocess import *
 
-
-#---------------------------------------------------------------------------
