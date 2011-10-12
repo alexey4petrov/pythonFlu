@@ -24,7 +24,7 @@
 #--------------------------------------------------------------------------------------
 attr2interface={ 'fvSchemes' : 'Foam.src.finiteVolume.finiteVolume.fvSchemes.fvSchemes',
                  'fvSolution' : 'Foam.src.finiteVolume.finiteVolume.fvSolution.fvSolution',
-                 'volScalarField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.GeometricField_scalar_fvPatchField_volMesh',
+                 'volScalarField' : 'Foam.src.finiteVolume.fields.volFields.ref_volScalarField.volScalarField',
                  'volVectorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.GeometricField_vector_fvPatchField_volMesh',
                  'volTensorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.GeometricField_tensor_fvPatchField_volMesh',
                  'volSymmTensorField' : 'Foam.src.finiteVolume.fvMesh.fvMeshes.GeometricField_symmTensor_fvPatchField_volMesh',
