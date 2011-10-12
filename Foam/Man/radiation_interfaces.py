@@ -23,6 +23,6 @@
 
 #--------------------------------------------------------------------------------------
 attr2interface={ 'radiationModel' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_radiationModel.radiationModelHolder',
-                 'createRadiationModel' : 'Foam.radiation.createRadiationModelHolder' }
+                 'createRadiationModel' : 'Foam.src.thermophysicalModels.radiation.include.createRadiationModelHolder' }
                  
 
