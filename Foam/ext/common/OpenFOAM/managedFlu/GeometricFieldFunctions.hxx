@@ -120,6 +120,18 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
   {
     get_ref( self ) -= theArg;
   }
+  
+  Foam::GeometricFieldHolder< Type, TPatchField, TMesh > __div__ ( 
+    const Foam::GeometricFieldHolder< Foam::scalar, TPatchField, TMesh >& field )
+  {
+    return *self / field;
+  }
+
+  Foam::GeometricFieldHolder< Type, TPatchField, TMesh > __div__ ( 
+    const Foam::dimensionedScalar& dm )
+  {
+    return *self / dm;
+  }
 
 %enddef
 
@@ -173,7 +185,7 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
   {
     return dmS + *self;
   }
-
+  
 }
 %enddef
 
@@ -182,7 +194,6 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
 %define EXTEND_VOLVECTORFIELDHOLDER
 %extend Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >
 {
-
   Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh > __sub__ ( 
     const Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >& field )
   {
@@ -202,7 +213,6 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
 %define EXTEND_SURFACEVECTORFIELDHOLDER
 %extend Foam::GeometricFieldHolder< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >
 {
-
   Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > __and__ ( 
     const Foam::GeometricFieldHolder< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >& field )
   {
