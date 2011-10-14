@@ -59,7 +59,8 @@ sources = \
 	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcLaplacian.cxx \
 	\
 	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/fvch.cxx \
-	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/surfaceInterpolate.cxx 
+	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/surfaceInterpolate.cxx \
+	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcDDt.cxx \
 
 
 
