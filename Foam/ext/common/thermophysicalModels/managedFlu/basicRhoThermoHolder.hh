@@ -17,29 +17,23 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/common.hh"
+#ifndef basicRhoThermoHolder_hh
+#define basicRhoThermoHolder_hh
 
-#if FOAM_VERSION( <, 010600 )
-#define basicRhoThermo_hh
+
+//---------------------------------------------------------------------------
+#include <basicRhoThermoHolder.hpp>
+
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.hh"
+
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
+
+
+//--------------------------------------------------------------------------------------
 #endif
 
 
-//---------------------------------------------------------------------------
-#ifndef basicRhoThermo_hh
-#define basicRhoThermo_hh
-
-
-//---------------------------------------------------------------------------
-#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
-
-#include <basicRhoThermo.H>
-
-#include "Foam/ext/common/thermophysicalModels/managedFlu/basicRhoThermoHolder.hh"
-
-
-//---------------------------------------------------------------------------
-#endif

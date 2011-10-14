@@ -17,28 +17,22 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/common.hh"
-
-#if FOAM_VERSION( <, 010600 )
-#define basicRhoThermo_hh
-#endif
+#ifndef shared_ptr_basicRhoThermo_hpp
+#define shared_ptr_basicRhoThermo_hpp
 
 
 //---------------------------------------------------------------------------
-#ifndef basicRhoThermo_hh
-#define basicRhoThermo_hh
+%include "Foam/ext/common/shared_ptr.hxx"
 
+SHAREDPTR_TYPEMAP( Foam::basicRhoThermo );
 
-//---------------------------------------------------------------------------
-#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
+%ignore boost::shared_ptr< Foam::basicRhoThermo >::operator->;
 
-#include <basicRhoThermo.H>
-
-#include "Foam/ext/common/thermophysicalModels/managedFlu/basicRhoThermoHolder.hh"
+%template( shared_ptr_basicRhoThermo ) boost::shared_ptr< Foam::basicRhoThermo >;
 
 
 //---------------------------------------------------------------------------

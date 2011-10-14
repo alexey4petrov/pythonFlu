@@ -17,29 +17,39 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/common.hh"
-
-#if FOAM_VERSION( <, 010600 )
-#define basicRhoThermo_hh
-#endif
+#ifndef basicRhoThermoHolder_cpp
+#define basicRhoThermoHolder_cpp
 
 
 //---------------------------------------------------------------------------
-#ifndef basicRhoThermo_hh
-#define basicRhoThermo_hh
+%{
+  #include "Foam/ext/common/thermophysicalModels/managedFlu/basicRhoThermoHolder.hh"
+%}
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
+%include "Foam/ext/common/thermophysicalModels/shared_ptr/shared_ptr_basicRhoThermo.hpp"
 
-#include <basicRhoThermo.H>
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
 
-#include "Foam/ext/common/thermophysicalModels/managedFlu/basicRhoThermoHolder.hh"
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
+
+%include <basicRhoThermoHolder.hpp>
 
 
 //---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::basicRhoThermoHolder::SMARTPTR_PYAPPEND_GETATTR( basicRhoThermoHolder );
+
+%extend Foam::basicRhoThermoHolder
+{
+  SMARTPTR_EXTEND_ATTR( basicRhoThermoHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( basicRhoThermo );
+}
+
+
+//--------------------------------------------------------------------------------------
 #endif
