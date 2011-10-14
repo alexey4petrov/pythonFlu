@@ -38,9 +38,23 @@
 
 
 //---------------------------------------------------------------------------
-%rename( fvch_interpolate ) Foam::fvc::interpolate;
+%define FVCHOLDER_INTERPOLATE_TEMPLATE_FUNC( Type )
+%{
+  Foam::GeometricFieldHolder< Type, Foam::fvsPatchField, Foam::surfaceMesh > 
+  interpolate( const Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvc::interpolate( vf );
+  }
+%}
+%enddef
+
 
 %include <surfaceInterpolate.hpp>
+
+//--------------------------------------------------------------------------------------
+%inline FVCHOLDER_INTERPOLATE_TEMPLATE_FUNC( Foam::vector )
+
+%inline FVCHOLDER_INTERPOLATE_TEMPLATE_FUNC( Foam::scalar )
 
 
 //--------------------------------------------------------------------------------------
