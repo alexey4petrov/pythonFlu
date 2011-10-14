@@ -118,6 +118,8 @@ attr2interface={ 'fvSchemes' : 'Foam.src.finiteVolume.finiteVolume.fvSchemes.fvS
                  'MRFZones' : 'Foam.src.finiteVolume.cfdTools.general.MRF.MRFZones.MRFZones',
                  'IOPtrList_MRFZone' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_MRFZone.IOPtrList_MRFZone',
                  'PtrList_MRFZone' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_MRFZone.PtrList_MRFZone',
+                 'simpleControl' : 'Foam.src.finiteVolume.cfdTools.general.solutionControl.simpleControl.simpleControl',
+                 'pimpleControl' : 'Foam.src.finiteVolume.cfdTools.general.solutionControl.pimpleControl.pimpleControl',
                  'initContinuityErrs' : 'Foam.finiteVolume.cfdTools.general.include.initContinuityErrs',
                  'ContinuityErrs' : 'Foam.finiteVolume.cfdTools.general.include.ContinuityErrs',
                  'readPISOControls' : 'Foam.finiteVolume.cfdTools.general.include.readPISOControls',

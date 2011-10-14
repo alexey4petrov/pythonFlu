@@ -181,6 +181,7 @@ sources = \
 	@abs_top_builddir@/Foam/src/finiteVolume/cfdTools/general/bound.cxx \
 	@abs_top_builddir@/Foam/src/finiteVolume/cfdTools/general/solutionControl/solutionControl.cxx \
 	@abs_top_builddir@/Foam/src/finiteVolume/cfdTools/general/solutionControl/simpleControl.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/cfdTools/general/solutionControl/pimpleControl.cxx \
 	\
 	@abs_top_builddir@/Foam/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField.cxx \
 	@abs_top_builddir@/Foam/src/finiteVolume/fields/fvPatchFields/zeroGradient/zeroGradientFvPatchField_scalar.cxx \
