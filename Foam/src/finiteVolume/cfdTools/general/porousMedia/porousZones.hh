@@ -40,6 +40,10 @@
 
 #include <porousZones.H>
 
+#if FOAM_VERSION( >=, 020000)
+#include <PorousZones.H>
+#endif
+
 
 //---------------------------------------------------------------------------
 #endif

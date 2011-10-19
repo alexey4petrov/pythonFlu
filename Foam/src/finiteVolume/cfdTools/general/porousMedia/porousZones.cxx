@@ -45,6 +45,12 @@
 
 %include <porousZones.H>
 
+#if FOAM_VERSION( >=, 020000)
+%include <PorousZones.H>
+
+%template (porousZones) Foam::PorousZones< Foam::porousZone >;
+#endif
+
 
 //---------------------------------------------------------------------------
 %define POROUSZONES_EXTENDS( Type )
@@ -76,6 +82,16 @@
    POROUSZONES_EXTENDS( scalar );
 }
 #endif
+
+//---------------------------------------------------------------------------
+#if FOAM_VERSION( >=, 020000)
+%extend Foam::PorousZones< Foam::porousZone >
+{
+   POROUSZONES_EXTENDS( vector );
+   POROUSZONES_EXTENDS( scalar );
+}
+#endif
+
 
 
 //---------------------------------------------------------------------------
