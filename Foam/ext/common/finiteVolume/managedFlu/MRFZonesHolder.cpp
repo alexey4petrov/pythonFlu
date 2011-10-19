@@ -17,29 +17,41 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef MRFZones_hh
-#define MRFZones_hh
+#ifndef MRFZonesHolder_cpp
+#define MRFZonesHolder_cpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/finiteVolume/cfdTools/general/MRF/MRFZone.hh"
-
-#include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_MRFZone.hh"
-
-#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
-
-#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
-
-#include <MRFZones.H>
+%{
+  #include "Foam/ext/common/finiteVolume/managedFlu/MRFZonesHolder.hh"
+%}
 
 
 //---------------------------------------------------------------------------
-#include "Foam/ext/common/finiteVolume/managedFlu/MRFZonesHolder.hh"
+%import "Foam/ext/common/managedFlu/commonHolder.hxx"
+
+%import "Foam/ext/common/managedFlu/SimpleHolder.cxx"
+
+%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
+
+%include "Foam/ext/common/finiteVolume/shared_ptr/shared_ptr_MRFZones.hpp"
+
+%include <MRFZonesHolder.hpp>
 
 
 //---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::MRFZonesHolder::SMARTPTR_PYAPPEND_GETATTR( MRFZonesHolder );
+
+%extend Foam::MRFZonesHolder
+{
+  SMARTPTR_EXTEND_ATTR( MRFZonesHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( MRFZones );
+}
+
+
+//--------------------------------------------------------------------------------------
 #endif

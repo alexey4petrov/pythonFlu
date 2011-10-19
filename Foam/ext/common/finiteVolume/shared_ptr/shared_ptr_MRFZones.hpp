@@ -17,28 +17,22 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef MRFZones_hh
-#define MRFZones_hh
+#ifndef shared_ptr_MRFZones_hpp
+#define shared_ptr_MRFZones_hpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/finiteVolume/cfdTools/general/MRF/MRFZone.hh"
+%include "Foam/ext/common/shared_ptr.hxx"
 
-#include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_MRFZone.hh"
+SHAREDPTR_TYPEMAP( Foam::MRFZones );
 
-#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
+%ignore boost::shared_ptr< Foam::MRFZones >::operator->;
 
-#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
-
-#include <MRFZones.H>
-
-
-//---------------------------------------------------------------------------
-#include "Foam/ext/common/finiteVolume/managedFlu/MRFZonesHolder.hh"
+%template( shared_ptr_MRFZones ) boost::shared_ptr< Foam::MRFZones >;
 
 
 //---------------------------------------------------------------------------
