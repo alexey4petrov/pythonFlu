@@ -17,35 +17,29 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef porousZones_hh
-#define porousZones_hh
+#ifndef porousZonesHolder_hh
+#define porousZonesHolder_hh
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/finiteVolume/cfdTools/general/porousMedia/porousZone.hh"
+#include "Foam/src/common.hh"
 
-#include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.hh"
+#if FOAM_VERSION( >=, 020000)
+#include <PorousZonesHolder.hpp>
+#endif
 
-#include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hh"
+#include <porousZonesHolder.hpp>
 
-#include "Foam/src/OpenFOAM/fields/Fields/oneField.hh"
-
-#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
+#include "Foam/ext/common/managedFlu/SimpleHolder.hh"
 
 #include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
-#include <porousZones.H>
 
-#include "Foam/ext/common/finiteVolume/managedFlu/porousZonesHolder.hh"
-
-#if FOAM_VERSION( >=, 020000)
-#include <PorousZones.H>
+//--------------------------------------------------------------------------------------
 #endif
 
 
-//---------------------------------------------------------------------------
-#endif

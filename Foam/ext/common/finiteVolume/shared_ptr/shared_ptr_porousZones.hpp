@@ -17,34 +17,22 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef porousZones_hh
-#define porousZones_hh
+#ifndef shared_ptr_porousZones_hpp
+#define shared_ptr_porousZones_hpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/finiteVolume/cfdTools/general/porousMedia/porousZone.hh"
+%include "Foam/ext/common/shared_ptr.hxx"
 
-#include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.hh"
+SHAREDPTR_TYPEMAP( Foam::porousZones );
 
-#include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList.hh"
+%ignore boost::shared_ptr< Foam::porousZones >::operator->;
 
-#include "Foam/src/OpenFOAM/fields/Fields/oneField.hh"
-
-#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
-
-#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
-
-#include <porousZones.H>
-
-#include "Foam/ext/common/finiteVolume/managedFlu/porousZonesHolder.hh"
-
-#if FOAM_VERSION( >=, 020000)
-#include <PorousZones.H>
-#endif
+%template( shared_ptr_porousZones ) boost::shared_ptr< Foam::porousZones >;
 
 
 //---------------------------------------------------------------------------
