@@ -150,6 +150,14 @@
     return self->readIfPresent( k, val, recursive, patternMatch );
   }
 #endif
+
+#if FOAM_VERSION( >=, 020000 )
+  bool readIfPresent( const Foam::word& k, Foam::word& the_word, bool recursive = false, bool patternMatch = true ) const
+  {
+    return self->readIfPresent( k, the_word, recursive, patternMatch );
+  }
+#endif
+
 }
 
 // To use as input / output value for readIfPresent function
