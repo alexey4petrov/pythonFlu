@@ -36,8 +36,6 @@ PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, T
 
 PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __idiv__ );
 
-PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __ilshift__ );
-
 %enddef
 
 %define GEOMETRICFIELDHOLDER_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Type, TPatchField, TMesh )
@@ -49,8 +47,6 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
 CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __iadd__ );
 
 CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __imul__ );
-
-CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHolder, Type, TPatchField, TMesh, __ilshift__ );
 
 %enddef
 
@@ -66,17 +62,17 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
 
   HOLDERS_CALL_SMART_TMP_EXTENSION_TEMPLATE3( Foam::GeometricField, Type, TPatchField, TMesh );
   
-  void __ilshift__( const Foam::dimensioned< Type >& theArg )
+  void __lshift__( const Foam::dimensioned< Type >& theArg )
   {
     get_ref( self ) = theArg;
   }
 
-  void __ilshift__ ( const Foam::GeometricFieldHolder< Type, TPatchField, TMesh >& field )
+  void __lshift__ ( const Foam::GeometricFieldHolder< Type, TPatchField, TMesh >& field )
   {
     *self = field;
   }
 
-  void __ilshift__ ( const Foam::smart_tmp< Foam::GeometricField< Type, TPatchField, TMesh > >& field )
+  void __lshift__ ( const Foam::smart_tmp< Foam::GeometricField< Type, TPatchField, TMesh > >& field )
   {
     *self = field;
   }

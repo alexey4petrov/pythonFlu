@@ -89,33 +89,33 @@
 {
   void ext_assign( const Foam::Type& theSource )
   {
-    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
     *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
   }
   
   void ext_assign( const Foam::UList< Foam::Type >& theSource )
   {
-    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
     *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
   }
   
   void ext_assign( const Foam::Field< Foam::Type >& theSource )
   {
-    Foam::Warning << "The “ext_assign” method is obsolete, use “<<=” operator instead" << endl;
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
     *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
   }
   
-  void __ilshift__( const Foam::Type& theSource )
+  void __lshift__( const Foam::Type& theSource )
   {
     *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
   }
   
-  void __ilshift__( const Foam::UList< Foam::Type >& theSource )
+  void __lshift__( const Foam::UList< Foam::Type >& theSource )
   {
     *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
   }
   
-  void __ilshift__( const Foam::Field< Foam::Type >& theSource )
+  void __lshift__( const Foam::Field< Foam::Type >& theSource )
   {
     *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
   }
@@ -134,8 +134,6 @@ PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __isub__ )
 
 PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __idiv__ );
 
-PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __ilshift__ );
-
 PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __imul__ );
 
 PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __iadd__ );
@@ -143,8 +141,6 @@ PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Fie
 PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __isub__ );
 
 PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __idiv__ );
-
-PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __ilshift__ );
 
 
 %enddef
@@ -160,8 +156,6 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __ia
 
 CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __imul__ );
 
-CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __ilshift__ );
-
 CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __idiv__ );
 
 CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __isub__ );
@@ -169,8 +163,6 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foa
 CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __iadd__ );
 
 CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __imul__ );
-
-CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __ilshift__ );
 
 %enddef
 

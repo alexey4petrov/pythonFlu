@@ -51,8 +51,15 @@
 {
   void ext_assign( const Foam::fvPatchField< Foam::Type >& theSource )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
     *dynamic_cast< Foam::fvPatchField< Foam::Type >* >( self ) = theSource;
   }
+
+  void __lshift__( const Foam::fvPatchField< Foam::Type >& theSource )
+  {
+    *dynamic_cast< Foam::fvPatchField< Foam::Type >* >( self ) = theSource;
+  }
+
 }
 %enddef
 

@@ -66,8 +66,15 @@ namespace Foam
     
     void ext_assign( const FieldField< PatchField, Type >& theArg )
     {
+      Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
       engine = theArg; 
     }
+    
+    void __lshift__( const FieldField< PatchField, Type >& theArg )
+    {
+      engine = theArg; 
+    }
+
   };  
 }
 
