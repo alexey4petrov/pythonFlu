@@ -45,40 +45,40 @@ INCLUDE_FILENAME(fvmLaplacian,hpp)
 %define FVM_LAPLACIAN_TEMPLATE_2_FUNC( Type, GType )
 %{
   Foam::fvMatrixHolder< Type > fvm_laplacian( const Foam::dimensioned< GType >& gamma,
-                                                     GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf,
-                                                     const Foam::word& name )
+                                              const Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+                                              const Foam::word& name )
   {
     return Foam::fvm::laplacian( gamma, vf, name );
   }
 
   Foam::fvMatrixHolder< Type > fvm_laplacian( const Foam::dimensioned< GType >& gamma,
-                                                     GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+                                              const Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf )
   {
     return Foam::fvm::laplacian( gamma, vf );
   }
 
-  Foam::fvMatrixHolder< Type > fvm_laplacian( const GeometricFieldHolder< GType, Foam::fvPatchField, Foam::volMesh >& gamma,
-                                                     GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf,
-                                                     const Foam::word& name )
+  Foam::fvMatrixHolder< Type > fvm_laplacian( const Foam::GeometricFieldHolder< GType, Foam::fvPatchField, Foam::volMesh >& gamma,
+                                              const Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+                                              const Foam::word& name )
   {
     return Foam::fvm::laplacian( gamma, vf, name );
   }
 
-  Foam::fvMatrixHolder< Type > fvm_laplacian( const GeometricFieldHolder< GType, Foam::fvPatchField, Foam::volMesh >& gamma,
-                                                     GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  Foam::fvMatrixHolder< Type > fvm_laplacian( const Foam::GeometricFieldHolder< GType, Foam::fvPatchField, Foam::volMesh >& gamma,
+                                              const Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf )
   {
     return Foam::fvm::laplacian( gamma, vf );
   }
 
-  Foam::fvMatrixHolder< Type > fvm_laplacian( const GeometricFieldHolder< GType, Foam::fvsPatchField, Foam::surfaceMesh >& gamma,
-                                                     GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf,
-                                                     const Foam::word& name )
+  Foam::fvMatrixHolder< Type > fvm_laplacian( const Foam::GeometricFieldHolder< GType, Foam::fvsPatchField, Foam::surfaceMesh >& gamma,
+                                              const Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+                                              const Foam::word& name )
   {
     return Foam::fvm::laplacian( gamma, vf, name );
   }
 
   Foam::fvMatrixHolder< Type > fvm_laplacian( const GeometricFieldHolder< GType, Foam::fvsPatchField, Foam::surfaceMesh >& gamma,
-                                                     GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+                                              const Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf )
   {
     return Foam::fvm::laplacian( gamma, vf );
   }
