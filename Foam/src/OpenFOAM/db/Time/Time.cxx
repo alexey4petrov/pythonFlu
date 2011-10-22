@@ -59,6 +59,18 @@
   {
     self->operator++();
   }
+  // It will have been deleted on "merge with master" step and potentialFlux will have been changed
+  void functionObjects_start()
+  {
+    self->functionObjects().start();
+  }
+  
+  void functionObjects_end()
+  {
+    self->functionObjects().end();
+  }
+  //***********************************************
+
 }
 
 
