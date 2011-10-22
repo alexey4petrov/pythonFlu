@@ -17,13 +17,5 @@
 ## 
 ## See http://sourceforge.net/projects/pythonflu
 ##
-## Author : Alexey PETROV, Andrey SIMURZIN
+## Author : Alexey PETROV
 ##
-
-
-#--------------------------------------------------------------------------------------
-attr2interface={ 'ddt' : 'Foam.ext.common.finiteVolume.managedFlu.fvmh.fvmh_ddt',
-                 'div' : 'Foam.ext.common.finiteVolume.managedFlu.fvmh.fvmh_div',
-                 'laplacian' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvm.fvmLaplacian.fvm_laplacian' }
-                 
-
