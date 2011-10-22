@@ -41,8 +41,8 @@ if test "${confflu_path}x" = "x"; then
 fi
 
 managedflu_path=""
-if test "x${TEST_MM_ROOT_DIR}" != "x"; then
-   managedflu_path="-I${TEST_MM_ROOT_DIR}/admin"
+if test "x${MANAGEDFLU_ROOT_DIR}" != "x"; then
+   managedflu_path="-I${MANAGEDFLU_ROOT_DIR}/admin"
 fi
 
 if test "${managedflu_path}x" = "x"; then
