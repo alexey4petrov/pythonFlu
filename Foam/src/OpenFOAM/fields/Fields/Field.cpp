@@ -189,6 +189,12 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foa
   {
     return get_ref( self ) - theArg;
   }
+  
+  Foam::tmp< Foam::Field< Foam::Type > > __sub__( const Foam::Type& theArg )
+  {
+    return  get_ref( self ) - theArg; 
+  }
+  
   Foam::tmp< Foam::Field< Foam::Type > > __div__( const Foam::Field< Foam::scalar >& theArg)
   {
     return get_ref( self ) / theArg;
@@ -358,12 +364,6 @@ FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar );
   {
     return  get_ref( self ) & theArg; 
   }
-
-  Foam::tmp< Foam::Field< Foam::vector > > __sub__( const Foam::vector& theArg )
-  {
-    return  get_ref( self ) - theArg; 
-  }
-
 }
 %enddef
 
