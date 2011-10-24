@@ -98,6 +98,11 @@
     return  *self & theArg;
   }
   
+  Foam::Vector< Foam::scalar > __sub__( const Foam::Vector< Foam::scalar >& theArg )
+  {
+    return  *self - theArg;
+  }
+
   Foam::Vector< Foam::scalar > __div__( const Foam::scalar& theArg )
   {
     return  *self / theArg;
