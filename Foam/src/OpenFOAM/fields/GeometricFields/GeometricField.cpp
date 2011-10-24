@@ -518,6 +518,12 @@ GEOMETRIC_FIELD_HOLDER_FUNC_EXTEND( Foam::scalar, TPatchField, TMesh );
   {
     return theArg & get_ref( self );
   }
+  
+  Foam::tmp<Foam::GeometricField<Foam::scalar, TPatchField, TMesh > > __and__( const Foam::vector& theArg ) const
+  {
+    return get_ref( self ) & theArg;
+  }
+
   Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __rmul__( const Foam::dimensioned< Foam::scalar >& theArg ) const
   {
     return theArg * get_ref( self ) ;
@@ -629,6 +635,12 @@ GEOMETRICFIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::tensor, TPatc
   {
     return  get_ref( self ) + theArg;
   }
+  
+  Foam::tmp< Foam::GeometricField< Foam::vector, TPatchField, TMesh > > __rand__( const Foam::vector& theArg ) const
+  {
+    return  theArg & get_ref( self );
+  }
+  
 }
 %enddef
 
