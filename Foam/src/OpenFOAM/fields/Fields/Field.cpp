@@ -267,6 +267,22 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foa
 
 
 //---------------------------------------------------------------------------
+%define __COMMON_TMP_FIELD_TEMPLATE_FUNC__( Type )
+{
+  const Type& __getitem__( const Foam::label& theIndex ) const
+  {
+    return get_ref( self )[ theIndex ];
+  }
+
+  void __setitem__( const Foam::label& theIndex, const Type& theValue )
+  {
+    get_ref( self )[ theIndex ] = theValue;
+  }
+}
+%enddef
+
+
+//---------------------------------------------------------------------------
 %define FIELD_TEMPLATE_FUNC( Type )
 
 %import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
@@ -279,8 +295,13 @@ NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
 %extend Foam::Field< Foam::Type > __FIELD_TEMPLATE_FUNC__( Type );
 
 %extend Foam::Field< Foam::Type >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+
 %extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+%extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_TMP_FIELD_TEMPLATE_FUNC__( Type );
+
 %extend Foam::smart_tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+%extend Foam::smart_tmp< Foam::Field< Foam::Type > >__COMMON_TMP_FIELD_TEMPLATE_FUNC__( Type );
+
 
 %import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
@@ -337,6 +358,12 @@ FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar );
   {
     return  get_ref( self ) & theArg; 
   }
+
+  Foam::tmp< Foam::Field< Foam::vector > > __sub__( const Foam::vector& theArg )
+  {
+    return  get_ref( self ) - theArg; 
+  }
+
 }
 %enddef
 
