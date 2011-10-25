@@ -17,63 +17,39 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
+
+
+//---------------------------------------------------------------------------
+#ifndef incompressible_LESModelHolder_cpp
+#define incompressible_LESModelHolder_cpp
 
 
 //---------------------------------------------------------------------------
 %{
-  #include "Foam/src/turbulenceModels/incompressible/LES/LESModel.hh"
+  #include "Foam/ext/common/turbulenceModels/managedFlu/incompressible_LESModelHolder.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/common.hxx"
+%include "Foam/ext/common/turbulenceModels/shared_ptr/shared_ptr_incompressible_LESModel.hpp"
 
-#if FOAM_VERSION( <, 010500 )
-#define incompressibleLESModel_cpp
-#endif
-
-
-//-----------------------------------------------------------------------------
-#ifndef incompressibleLESModel_cpp
-#define incompressibleLESModel_cpp
-
-
-//----------------------------------------------------------------------------
 %import "Foam/src/OpenFOAM/fields/tmp/autoPtr_incompressible_turbulenceModel.cxx"
-
-// #include "LESdelta.H"
-// #include "fvm.H"
-// #include "fvc.H"
-
-%import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
 %import "Foam/src/transportModels/incompressible/transportModel.cxx"
 
-// #include "wallFvPatch.H"
-
-%import "Foam/src/finiteVolume/cfdTools/general/bound.cxx"
-
-%import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
-
-// #include "runTimeSelectionTables.H"
-
-%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
-
-
-//----------------------------------------------------------------------------
-%rename( incompressible_LESModel ) Foam::incompressible::LESModel;
-
-#if FOAM_NOT_BRANCH( __FREEFOAM__ )
-%include <incompressible/LESModel.H>
-#else
-%include <incompressibleLESModels/LESModel.H>
-#endif
+INCLUDE_FILENAME(LESModelHolder,hpp)
 
 
 //---------------------------------------------------------------------------
-%include "Foam/ext/common/turbulenceModels/managedFlu/incompressible_LESModelHolder.cpp"
+%feature( "pythonappend" ) Foam::incompressible::LESModelHolder::SMARTPTR_PYAPPEND_GETATTR( LESModelHolder );
+
+%extend Foam::incompressible::LESModelHolder
+{
+  SMARTPTR_EXTEND_ATTR( LESModelHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( incompressible::LESModel );
+}
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif

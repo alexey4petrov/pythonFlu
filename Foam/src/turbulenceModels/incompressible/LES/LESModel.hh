@@ -68,6 +68,8 @@
   #include <incompressibleLESModels/LESModel.H>
 #endif
 
+#include "Foam/ext/common/turbulenceModels/managedFlu/incompressible_LESModelHolder.hh"
+
 
 //---------------------------------------------------------------------------
 #endif

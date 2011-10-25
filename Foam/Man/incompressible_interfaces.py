@@ -23,6 +23,7 @@
 
 #--------------------------------------------------------------------------------------
 attr2interface={ 'turbulenceModel' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_turbulenceModel.turbulenceModelHolder',
-                 'RASModel' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_RASModel.RASModelHolder' }
+                 'RASModel' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_RASModel.RASModelHolder',
+                 'LESModel' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_incompressible_LESModel.LESModelHolder'  }
                  
 
