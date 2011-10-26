@@ -47,4 +47,10 @@ def meshCourantNo( runTime, mesh, phi ):
 
 
 #----------------------------------------------------------------------------
+def createDynamicFvMeshHolder( runTime ):
+    from Foam import man
+    
+    autoPtrMesh = createDynamicFvMesh( runTime )
+    
+    return man( autoPtrMesh.ptr(), man.Deps( runTime ) )
 
