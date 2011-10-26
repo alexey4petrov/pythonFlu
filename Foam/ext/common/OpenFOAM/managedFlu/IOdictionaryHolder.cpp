@@ -47,6 +47,7 @@
 %extend Foam::IOdictionaryHolder
 {
   SMARTPTR_EXTEND_ATTR( IOdictionaryHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( IOdictionary );
 }
 
 

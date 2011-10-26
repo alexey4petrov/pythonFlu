@@ -45,6 +45,7 @@
 %extend Foam::singlePhaseTransportModelHolder
 {
   SMARTPTR_EXTEND_ATTR( singlePhaseTransportModelHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( singlePhaseTransportModel );
 }
 
 

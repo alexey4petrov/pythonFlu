@@ -47,6 +47,7 @@
 %extend Foam::radiation::radiationModelHolder
 {
   SMARTPTR_EXTEND_ATTR( radiationModelHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( radiation::radiationModel );
 }
 
 

@@ -45,6 +45,7 @@
 %extend Foam::IOobjectHolder
 {
   SMARTPTR_EXTEND_ATTR( IOobjectHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( IOobject );
 }
 
 

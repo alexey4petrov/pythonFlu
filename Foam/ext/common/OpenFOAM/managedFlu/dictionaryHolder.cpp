@@ -43,6 +43,7 @@
 %extend Foam::dictionaryHolder
 {
   SMARTPTR_EXTEND_ATTR( dictionaryHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( dictionary );
 }
 
 

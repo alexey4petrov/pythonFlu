@@ -47,6 +47,7 @@
 %extend Foam::transportModelHolder
 {
   SMARTPTR_EXTEND_ATTR( transportModelHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( transportModel );
 }
 
 
