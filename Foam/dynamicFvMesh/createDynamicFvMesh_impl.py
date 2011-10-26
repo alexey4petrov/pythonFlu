@@ -51,4 +51,14 @@ def createDynamicFvMesh_010600_dev( runTime ):
     
     
 #----------------------------------------------------------------------------
+def createDynamicFvMesh_020000( runTime ):
+    from Foam import ref
+    ref.ext_Info() << "Create mesh for time = " << runTime.timeName() << ref.nl << ref.nl
+    mesh = ref.dynamicFvMesh.New( ref.IOobject( ref.dynamicFvMesh.defaultRegion.fget(),
+                                                ref.fileName( runTime.timeName() ),
+                                                runTime,
+                                                ref.IOobject.MUST_READ ) )
+
+    return mesh
+
 
