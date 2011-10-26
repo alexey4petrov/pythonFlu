@@ -17,31 +17,43 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef dynamicFvMesh_cpp
-#define dynamicFvMesh_cpp
+#ifndef dynamicFvMeshHolder_cpp
+#define dynamicFvMeshHolder_cpp
 
 
 //---------------------------------------------------------------------------
 %{
-  #include "Foam/src/dynamicFvMesh/dynamicFvMesh.hh"
+  #include "Foam/ext/common/dynamicFvMesh/managedFlu/dynamicFvMeshHolder.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%import "Foam/ext/common/managedFlu/commonHolder.hxx"
+
+%include "Foam/ext/common/dynamicFvMesh/shared_ptr/shared_ptr_dynamicFvMesh.hpp"
+
+%import "Foam/ext/common/managedFlu/DependentHolder.cxx"
 
 %import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%include <dynamicFvMesh.H>
+%include <dynamicFvMeshHolder.hpp>
 
 
 //---------------------------------------------------------------------------
-%include "Foam/ext/common/dynamicFvMesh/managedFlu/dynamicFvMeshHolder.cpp"
+%feature( "pythonappend" ) Foam::dynamicFvMeshHolder::SMARTPTR_PYAPPEND_GETATTR( dynamicFvMeshHolder );
+
+%extend Foam::dynamicFvMeshHolder
+{
+  SMARTPTR_EXTEND_ATTR( dynamicFvMeshHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( dynamicFvMesh );
+}
+
+%extend Foam::dynamicFvMesh FUNCTION_HOLDER_EXTEND( Foam::dynamicFvMesh );
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif

@@ -21,26 +21,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef dynamicFvMesh_cpp
-#define dynamicFvMesh_cpp
+#ifndef shared_ptr_dynamicFvMesh_hpp
+#define shared_ptr_dynamicFvMesh_hpp
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "Foam/src/dynamicFvMesh/dynamicFvMesh.hh"
-%}
+%include "Foam/ext/common/shared_ptr.hxx"
 
+SHAREDPTR_TYPEMAP( Foam::dynamicFvMesh );
 
-//---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
+%ignore boost::shared_ptr< Foam::dynamicFvMesh >::operator->;
 
-%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-%include <dynamicFvMesh.H>
-
-
-//---------------------------------------------------------------------------
-%include "Foam/ext/common/dynamicFvMesh/managedFlu/dynamicFvMeshHolder.cpp"
+%template( shared_ptr_dynamicFvMesh ) boost::shared_ptr< Foam::dynamicFvMesh >;
 
 
 //---------------------------------------------------------------------------

@@ -22,36 +22,9 @@
 
 
 #--------------------------------------------------------------------------------------
-pythonflu_root_dir:=@abs_top_builddir@
+pythonflu_root_dir:=../../..
 
-include @abs_top_builddir@/Foam/foam.version.makefile
-
-
-#--------------------------------------------------------------------------------------
-__CPPFLAGS__ := $(__CPPFLAGS__) \
-	@OPENFOAM_FINITEVOLUME_CPPFLAGS@ \
-	@OPENFOAM_DYNAMICFVMESH_CPPFLAGS@ \
-	@MANAGEDFLU_OPENFOAM_CPPFLAGS@ \
-	@MANAGEDFLU_FINITEVOLUME_CPPFLAGS@ \
-	@MANAGEDFLU_DYNAMICFVMESH_CPPFLAGS@ \
-
-
-#--------------------------------------------------------------------------------------
-__LDFLAGS__ := $(__LDFLAGS__) \
-	@OPENFOAM_FINITEVOLUME_LIBS@ \
-	@OPENFOAM_DYNAMICFVMESH_LIBS@ \
-	@MANAGEDFLU_OPENFOAM_LIB@ \
-	@MANAGEDFLU_FINITEVOLUME_LIB@ \
-	@MANAGEDFLU_DYNAMICFVMESH_LIB@ \
-
-
-#--------------------------------------------------------------------------------------
-sources = \
-	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_dynamicFvMesh.cxx \
-
-
-#--------------------------------------------------------------------------------------
-include @abs_top_builddir@/Foam/include.foam.makefile
+include $(pythonflu_root_dir)/src.include.makefile
 
 
 #--------------------------------------------------------------------------------------

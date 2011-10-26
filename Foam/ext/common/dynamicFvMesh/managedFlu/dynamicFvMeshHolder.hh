@@ -17,31 +17,23 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef dynamicFvMesh_cpp
-#define dynamicFvMesh_cpp
+#ifndef dynamicFvMeshHolder_hh
+#define dynamicFvMeshHolder_hh
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "Foam/src/dynamicFvMesh/dynamicFvMesh.hh"
-%}
+#include "Foam/src/common.hh"
+
+#include <dynamicFvMeshHolder.hpp>
+
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
 
-//---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
-
-%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-%include <dynamicFvMesh.H>
-
-
-//---------------------------------------------------------------------------
-%include "Foam/ext/common/dynamicFvMesh/managedFlu/dynamicFvMeshHolder.cpp"
-
-
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif
+
+

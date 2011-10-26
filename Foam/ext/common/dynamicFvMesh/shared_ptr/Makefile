@@ -22,36 +22,30 @@
 
 
 #--------------------------------------------------------------------------------------
-pythonflu_root_dir:=@abs_top_builddir@
+ifdef BOOSTDIR
+#--------------------------------------------------------------------------------------
 
-include @abs_top_builddir@/Foam/foam.version.makefile
+__CPPFLAGS__ :=\
+	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude\
+	-I$(BOOSTDIR)/include
+
+__LDFLAGS__ :=\
+	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume
+
+pythonflu_root_dir:=../../../..
+
+include $(pythonflu_root_dir)/include.makefile
+
+#--------------------------------------------------------------------------------------
+else
+#--------------------------------------------------------------------------------------
+
+$(warning Define $$(BOOSTDIR) to process this package)
+
+all:
+clean:
 
 
 #--------------------------------------------------------------------------------------
-__CPPFLAGS__ := $(__CPPFLAGS__) \
-	@OPENFOAM_FINITEVOLUME_CPPFLAGS@ \
-	@OPENFOAM_DYNAMICFVMESH_CPPFLAGS@ \
-	@MANAGEDFLU_OPENFOAM_CPPFLAGS@ \
-	@MANAGEDFLU_FINITEVOLUME_CPPFLAGS@ \
-	@MANAGEDFLU_DYNAMICFVMESH_CPPFLAGS@ \
-
-
-#--------------------------------------------------------------------------------------
-__LDFLAGS__ := $(__LDFLAGS__) \
-	@OPENFOAM_FINITEVOLUME_LIBS@ \
-	@OPENFOAM_DYNAMICFVMESH_LIBS@ \
-	@MANAGEDFLU_OPENFOAM_LIB@ \
-	@MANAGEDFLU_FINITEVOLUME_LIB@ \
-	@MANAGEDFLU_DYNAMICFVMESH_LIB@ \
-
-
-#--------------------------------------------------------------------------------------
-sources = \
-	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_dynamicFvMesh.cxx \
-
-
-#--------------------------------------------------------------------------------------
-include @abs_top_builddir@/Foam/include.foam.makefile
-
-
+endif
 #--------------------------------------------------------------------------------------

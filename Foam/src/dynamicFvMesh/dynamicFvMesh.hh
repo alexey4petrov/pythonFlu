@@ -30,6 +30,8 @@
 
 #include <dynamicFvMesh.H>
 
+#include "Foam/ext/common/dynamicFvMesh/managedFlu/dynamicFvMeshHolder.hh"
+
 
 //---------------------------------------------------------------------------
 #endif
