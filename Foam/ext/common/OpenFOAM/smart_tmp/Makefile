@@ -22,16 +22,9 @@
 
 
 #--------------------------------------------------------------------------------------
-__CPPFLAGS__ :=\
-	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude\
-	-I$(BOOSTDIR)/include
+pythonflu_root_dir:=../../../../..
 
-__LDFLAGS__ :=\
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume
-
-pythonflu_root_dir:=../../../..
-
-include $(pythonflu_root_dir)/include.makefile
+include $(pythonflu_root_dir)/Foam/include.src.makefile
 
 
 #--------------------------------------------------------------------------------------

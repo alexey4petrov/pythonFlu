@@ -22,30 +22,9 @@
 
 
 #--------------------------------------------------------------------------------------
-ifdef BOOSTDIR
-#--------------------------------------------------------------------------------------
+pythonflu_root_dir:=../../../../..
 
-__CPPFLAGS__ :=\
-	-I$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude\
-	-I$(BOOSTDIR)/include
-
-__LDFLAGS__ :=\
-	-L$(WM_PROJECT_DIR)/lib/$(WM_OPTIONS) -lfiniteVolume
-
-pythonflu_root_dir:=../../../..
-
-include $(pythonflu_root_dir)/include.makefile
-
-#--------------------------------------------------------------------------------------
-else
-#--------------------------------------------------------------------------------------
-
-$(warning Define $$(BOOSTDIR) to process this package)
-
-all:
-clean:
+include $(pythonflu_root_dir)/Foam/include.src.makefile
 
 
-#--------------------------------------------------------------------------------------
-endif
 #--------------------------------------------------------------------------------------

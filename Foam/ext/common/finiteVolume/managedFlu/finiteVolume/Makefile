@@ -22,7 +22,7 @@
 
 
 #--------------------------------------------------------------------------------------
-pythonflu_root_dir:=../../..
+pythonflu_root_dir:=../../../../../..
 
 include $(pythonflu_root_dir)/Foam/include.src.makefile
 
