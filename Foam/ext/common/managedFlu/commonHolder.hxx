@@ -66,7 +66,7 @@ Template< Type1, Type2, Type3 >& __call__()
 {
 Type##Holder holder( const Foam::Deps& the_deps )
 {
-  return Type##Holder( self, the_deps );
+  return Type##Holder( boost::shared_ptr< Type >( self ), the_deps );
 }
 }
 %enddef
