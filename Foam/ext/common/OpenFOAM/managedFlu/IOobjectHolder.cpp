@@ -32,6 +32,8 @@
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/managedFlu/commonHolder.hxx"
+
 %include "Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_IOobject.hpp"
 
 %import "Foam/ext/common/managedFlu/DependentHolder.cxx"
