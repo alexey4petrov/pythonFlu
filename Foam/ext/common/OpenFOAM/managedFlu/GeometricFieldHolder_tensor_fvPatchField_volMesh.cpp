@@ -21,27 +21,35 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeometricFieldHolders_cpp
-#define GeometricFieldHolders_cpp
+#ifndef GeometricFieldHolder_tensor_fvPatchField_volMesh_cpp
+#define GeometricFieldHolder_tensor_fvPatchField_volMesh_cpp
 
 
 //---------------------------------------------------------------------------
 %{
-  #include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolders.hh"
+  #include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder_tensor_fvPatchField_volMesh.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder_scalar_fvPatchField_volMesh.cpp"
+%include "Foam/ext/common/finiteVolume/smart_tmp/smart_tmp_volTensorField.cpp"
 
-%include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder_vector_fvPatchField_volMesh.cpp"
+%include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder.hxx"
 
-%include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder_tensor_fvPatchField_volMesh.cpp"
+%include <volFields.hpp>
 
-%include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder_scalar_fvsPatchField_surfaceMesh.cpp"
+%template ( GeometricFieldHolder_tensor_fvPatchField_volMesh ) Foam::GeometricFieldHolder< Foam::tensor, Foam::fvPatchField, Foam::volMesh >;
 
-%include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder_vector_fvsPatchField_surfaceMesh.cpp"
+EXTEND_VOLTENSORFIELDHOLDER;
 
+
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::GeometricFieldHolder< Foam::tensor, Foam::fvPatchField, Foam::volMesh >::SMARTPTR_PYAPPEND_GETATTR( GeometricFieldHolder_tensor_fvPatchField_volMesh );
+
+%extend Foam::GeometricFieldHolder< Foam::tensor, Foam::fvPatchField, Foam::volMesh >
+{
+  SMARTPTR_EXTEND_ATTR( GeometricFieldHolder_tensor_fvPatchField_volMesh );
+}
 
 
 //--------------------------------------------------------------------------------------

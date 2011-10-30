@@ -21,20 +21,16 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef GeometricFieldHolders_hh
-#define GeometricFieldHolders_hh
+#ifndef GeometricFieldHolder_tensor_fvPatchField_volMesh_hh
+#define GeometricFieldHolder_tensor_fvPatchField_volMesh_hh
 
 
 //---------------------------------------------------------------------------
-#include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder_scalar_fvPatchField_volMesh.hh"
+#include "Foam/src/common.hh"
 
-#include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder_vector_fvPatchField_volMesh.hh"
+#include "Foam/ext/common/finiteVolume/smart_tmp/smart_tmp_volTensorField.hh"
 
-#include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder_tensor_fvPatchField_volMesh.hh"
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder_scalar_fvsPatchField_surfaceMesh.hh"
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder_vector_fvsPatchField_surfaceMesh.hh"
+#include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolder.hh"
 
 
 //--------------------------------------------------------------------------------------
