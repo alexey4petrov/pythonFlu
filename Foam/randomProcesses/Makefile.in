@@ -33,6 +33,7 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	@OPENFOAM_RANDOMPROCESS_CPPFLAGS@ \
 	@MANAGEDFLU_OPENFOAM_CPPFLAGS@ \
 	@MANAGEDFLU_FINITEVOLUME_CPPFLAGS@ \
+	@MANAGEDFLU_RANDOMPROCESSES_CPPFLAGS@ \
 
 
 #--------------------------------------------------------------------------------------
@@ -41,7 +42,8 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 	@OPENFOAM_RANDOMPROCESS_LIBS@ \
 	@MANAGEDFLU_OPENFOAM_LIB@ \
 	@MANAGEDFLU_FINITEVOLUME_LIB@ \
-
+	@MANAGEDFLU_RANDOMPROCESSES_LIB@ \
+        
 
 #--------------------------------------------------------------------------------------
 sources = \
