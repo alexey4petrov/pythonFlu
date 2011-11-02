@@ -46,39 +46,48 @@
 
 
 //---------------------------------------------------------------------------
-%define NO_TMP_TYPEMAP_FIELD( Field_Type )
+%include <FieldHolder.hpp>
 
-%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::Field_Type& 
+%define NO_TMP_TYPEMAP_FIELD( Type )
+
+%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::Field< Type >& 
 {
   void *ptr;
-  int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::Field_Type * ), 0 );
-  int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::Field_Type > * ), 0 );
-  int res_smart_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::smart_tmp< Foam::Field_Type > * ), 0 );
-  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( res_smart_tmpT );
+  int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::Field< Type > * ), 0 );
+  int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::Field< Type > > * ), 0 );
+  int res_smart_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::smart_tmp< Foam::Field< Type > > * ), 0 );
+  int res_holder = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::FieldHolder< Type > * ), 0 );
+  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( res_smart_tmpT ) || SWIG_CheckState( res_holder );
 }
 
-%typemap( in ) const Foam::Field_Type& 
+%typemap( in ) const Foam::Field< Type >& 
 {
   void  *argp = 0;
   int res = 0;
   
-  res = SWIG_ConvertPtr( $input, &argp, $descriptor(  Foam::Field_Type * ), %convertptr_flags );
+  res = SWIG_ConvertPtr( $input, &argp, $descriptor(  Foam::Field< Type > * ), %convertptr_flags );
   if ( SWIG_IsOK( res )&& argp  ){
-    Foam::Field_Type * res =  %reinterpret_cast( argp, Foam::Field_Type* );
+    Foam::Field< Type > * res =  %reinterpret_cast( argp, Foam::Field< Type >* );
     $1 = res;
   } else {
-    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::Field_Type >* ), %convertptr_flags );
+    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::Field< Type > >* ), %convertptr_flags );
     if ( SWIG_IsOK( res ) && argp ) {
-      Foam::tmp<Foam::Field_Type >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::Field_Type > * );
+      Foam::tmp<Foam::Field< Type > >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::Field< Type > > * );
       $1 = tmp_res->operator->();
       } else {
-      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::smart_tmp< Foam::Field_Type >* ), %convertptr_flags );
-      if ( SWIG_IsOK( res ) && argp ) { Foam::smart_tmp< Foam::Field_Type >* tmp_res =%reinterpret_cast( argp, Foam::smart_tmp< Foam::Field_Type > * );
-      $1 = tmp_res->operator->();
+      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::smart_tmp< Foam::Field< Type > >* ), %convertptr_flags );
+      if ( SWIG_IsOK( res ) && argp ) { 
+        Foam::smart_tmp< Foam::Field< Type > >* tmp_res =%reinterpret_cast( argp, Foam::smart_tmp< Foam::Field< Type > > * );
+        $1 = tmp_res->operator->();
       } else {
-        %argument_fail( res, "$type", $symname, $argnum );
-      }
-    }
+        res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::FieldHolder< Type >* ), %convertptr_flags );
+        if ( SWIG_IsOK( res ) && argp ) {
+          Foam::FieldHolder< Type >* tmp_res =%reinterpret_cast( argp, Foam::FieldHolder< Type >* );
+          $1 = tmp_res->operator->();
+        } else {
+          %argument_fail( res, "$type", $symname, $argnum );
+        }
+    } }
  }
 }    
 %enddef
@@ -293,9 +302,9 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foa
 
 %import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-NO_TMP_TYPEMAP_FIELD( Field< Foam::scalar > );
-NO_TMP_TYPEMAP_FIELD( Field< Foam::vector > );
-NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
+NO_TMP_TYPEMAP_FIELD(  Foam::scalar );
+NO_TMP_TYPEMAP_FIELD(  Foam::vector );
+NO_TMP_TYPEMAP_FIELD(  Foam::tensor );
 
 %extend Foam::Field< Foam::Type > FIELD_VIRTUAL_EXTENDS( Type );
 %extend Foam::Field< Foam::Type > __FIELD_TEMPLATE_FUNC__( Type );
