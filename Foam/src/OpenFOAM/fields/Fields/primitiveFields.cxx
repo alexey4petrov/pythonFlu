@@ -55,6 +55,8 @@
 
 %include "Foam/src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.cpp"
 
+%include "Foam/ext/common/OpenFOAM/managedFlu/vectorFieldHolder.cpp"
+
 
 //---------------------------------------------------------------------------
 #endif

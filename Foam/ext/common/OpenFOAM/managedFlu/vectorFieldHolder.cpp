@@ -17,37 +17,39 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef primitiveFields_hh
-#define primitiveFields_hh
+#ifndef vectorFieldHolder_cpp
+#define vectorFieldHolder_cpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/fields/Fields/scalarField.hh"
-
-#include "Foam/src/OpenFOAM/fields/Fields/vectorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/Fields/tensorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/Fields/symmTensorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_scalarField.hh"
-
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_vectorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_tensorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_symmTensorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.hh"
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/vectorFieldHolder.hh"
+%{
+  #include "Foam/ext/common/OpenFOAM/managedFlu/vectorFieldHolder.hh"
+%}
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/OpenFOAM/smart_tmp/smart_tmp_vectorField.hpp"
+
+%include "Foam/ext/common/OpenFOAM/managedFlu/FieldHolder.hxx"
+
+%include <primitiveFields.hpp>
+
+%template ( vectorFieldHolder ) Foam::FieldHolder< Foam::vector >;
+
+
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::FieldHolder< Foam::vector >::SMARTPTR_PYAPPEND_GETATTR( vectorFieldHolder );
+
+%extend Foam::FieldHolder< Foam::vector >
+{
+  SMARTPTR_EXTEND_ATTR( vectorFieldHolder );
+}
+
+
+
+//--------------------------------------------------------------------------------------
 #endif

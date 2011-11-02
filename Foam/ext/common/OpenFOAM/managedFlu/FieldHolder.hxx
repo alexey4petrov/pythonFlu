@@ -17,37 +17,24 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef primitiveFields_hh
-#define primitiveFields_hh
+#ifndef FieldHolder_hxx
+#define FieldHolder_hxx
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/fields/Fields/scalarField.hh"
-
-#include "Foam/src/OpenFOAM/fields/Fields/vectorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/Fields/tensorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/Fields/symmTensorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/Fields/sphericalTensorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_scalarField.hh"
-
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_vectorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_tensorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_symmTensorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.hh"
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/vectorFieldHolder.hh"
+%{
+   #include "Foam/ext/common/OpenFOAM/managedFlu/FieldHolder.hh"
+%}
 
 
 //---------------------------------------------------------------------------
+%import "Foam/ext/common/managedFlu/SimpleHolder.cxx"
+
+%include <FieldHolder.hpp>
+
+//--------------------------------------------------------------------------------------
 #endif
