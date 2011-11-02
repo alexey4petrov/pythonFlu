@@ -17,29 +17,39 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef UOprocess_hh
-#define UOprocess_hh
+#ifndef UOprocessHolder_cpp
+#define UOprocessHolder_cpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/primitives/scalar.hh"
-
-#include "Foam/src/OpenFOAM/primitives/Random.hh"
-
-#include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
-
-#include "Foam/src/OpenFOAM/fields/Fields/complexFields.hh"
-
-#include "Foam/src/randomProcesses/Kmesh/Kmesh.hh"
-
-#include <UOprocess.H>
-
-#include "Foam/ext/common/randomProcesses/managedFlu/UOprocessHolder.hh"
+%{
+  #include "Foam/ext/common/randomProcesses/managedFlu/UOprocessHolder.hh"
+%}
 
 
 //---------------------------------------------------------------------------
+%import "Foam/ext/common/managedFlu/commonHolder.hxx"
+
+%include "Foam/ext/common/randomProcesses/shared_ptr/shared_ptr_UOprocess.hpp"
+
+%import "Foam/ext/common/managedFlu/DependentHolder.cxx"
+
+%include <UOprocessHolder.hpp>
+
+
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::UOprocessHolder::SMARTPTR_PYAPPEND_GETATTR( UOprocessHolder );
+
+%extend Foam::UOprocessHolder
+{
+  SMARTPTR_EXTEND_ATTR( UOprocessHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( UOprocess );
+}
+
+
+//--------------------------------------------------------------------------------------
 #endif

@@ -17,29 +17,23 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef UOprocess_hh
-#define UOprocess_hh
+#ifndef UOprocessHolder_hh
+#define UOprocessHolder_hh
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/primitives/scalar.hh"
+#include "Foam/src/common.hh"
 
-#include "Foam/src/OpenFOAM/primitives/Random.hh"
+#include "Foam/ext/common/managedFlu/DependentHolder.hh"
 
-#include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
-
-#include "Foam/src/OpenFOAM/fields/Fields/complexFields.hh"
-
-#include "Foam/src/randomProcesses/Kmesh/Kmesh.hh"
-
-#include <UOprocess.H>
-
-#include "Foam/ext/common/randomProcesses/managedFlu/UOprocessHolder.hh"
+#include <UOprocessHolder.hpp>
 
 
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------
 #endif
+
+
