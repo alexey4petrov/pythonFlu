@@ -39,6 +39,10 @@
 
 %include <Kmesh.H>
 
+//---------------------------------------------------------------------------
+%include "Foam/ext/common/randomProcesses/managedFlu/KmeshHolder.cpp"
+NO_HOLDER_TYPEMAP( Foam::Kmesh )
+
 
 //---------------------------------------------------------------------------
 #endif

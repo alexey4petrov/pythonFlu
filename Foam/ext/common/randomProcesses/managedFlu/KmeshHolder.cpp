@@ -17,23 +17,41 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef Kmesh_hh
-#define Kmesh_hh
+#ifndef KmeshHolder_cpp
+#define KmeshHolder_cpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
-
-#include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
-
-#include <Kmesh.H>
-
-#include "Foam/ext/common/randomProcesses/managedFlu/KmeshHolder.hh"
+%{
+  #include "Foam/ext/common/randomProcesses/managedFlu/KmeshHolder.hh"
+%}
 
 
 //---------------------------------------------------------------------------
+%import "Foam/ext/common/managedFlu/commonHolder.hxx"
+
+%include "Foam/ext/common/randomProcesses/smart_tmp/smart_tmp_Kmesh.hpp"
+
+%import "Foam/ext/common/managedFlu/DependentHolder.cxx"
+
+%import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
+
+%include <KmeshHolder.hpp>
+
+
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::KmeshHolder::SMARTPTR_PYAPPEND_GETATTR( KmeshHolder );
+
+%extend Foam::KmeshHolder
+{
+  SMARTPTR_EXTEND_ATTR( KmeshHolder );
+  HOLDERS_CALL_SMART_TMP_EXTENSION( Kmesh );
+}
+
+
+//--------------------------------------------------------------------------------------
 #endif
