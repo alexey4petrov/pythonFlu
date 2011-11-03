@@ -60,5 +60,38 @@
 
 
 //---------------------------------------------------------------------------
+%define NO_HOLDER_TYPEMAP_TEMPLATE_1( Template, Type )
+
+%typecheck( SWIG_TYPECHECK_POINTER ) Template< Type >&
+{
+  void *ptr;
+  int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Template< Type > * ), 0 );
+  int resHolder = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Template##Holder< Type > * ), 0 );
+  $1 = SWIG_CheckState( res ) || SWIG_CheckState( resHolder );
+}
+
+%typemap( in ) Template< Type >& 
+{
+  void  *argp = 0;
+  int res = 0;
+  
+  res = SWIG_ConvertPtr( $input, &argp, $descriptor( Template< Type > * ), %convertptr_flags );
+  if ( SWIG_IsOK( res )&& argp  ){
+    Template< Type > * res = %reinterpret_cast( argp, Template< Type > * );
+    $1 = res;
+  } else {
+    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Template##Holder< Type > * ), %convertptr_flags );
+    if ( SWIG_IsOK( res ) && argp ) {
+      Template##Holder< Type >* tmp_res = %reinterpret_cast( argp, Template##Holder< Type >* );
+      $1 = tmp_res->operator->();
+    } else {
+      %argument_fail( res, "$type", $symname, $argnum );
+    }
+  }
+}
+
+%enddef
+
+//---------------------------------------------------------------------------
 #endif
 
