@@ -17,32 +17,21 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef interfaceProperties_cxx
-#define interfaceProperties_cxx
+#ifndef interfacePropertiesHolder_hh
+#define interfacePropertiesHolder_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.transportModels.interfaceProperties.interfaceProperties";
-%{
-  #include "Foam/src/transportModels/interfaceProperties/interfaceProperties.hh"
-%}
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
+
+#include "Foam/src/OpenFOAM/db/IOdictionary.hh"
+
+#include <interfacePropertiesHolder.hpp>
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
-
-%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-%include <interfaceProperties.H>
-
-
-//--------------------------------------------------------------------------
-%include "Foam/ext/common/transportModels/managedFlu/interfaceProperties/interfacePropertiesHolder.cpp"
-
-
-//--------------------------------------------------------------------------
 #endif

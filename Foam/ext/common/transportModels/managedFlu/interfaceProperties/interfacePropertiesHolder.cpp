@@ -17,32 +17,41 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef interfaceProperties_cxx
-#define interfaceProperties_cxx
+#ifndef interfacePropertiesHolder_cpp
+#define interfacePropertiesHolder_cpp
 
 
 //---------------------------------------------------------------------------
-%module "Foam.src.transportModels.interfaceProperties.interfaceProperties";
 %{
-  #include "Foam/src/transportModels/interfaceProperties/interfaceProperties.hh"
+  #include "Foam/ext/common/transportModels/managedFlu/interfaceProperties/interfacePropertiesHolder.hh"
 %}
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
-
 %import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-%include <interfaceProperties.H>
+%include "Foam/ext/common/transportModels/shared_ptr/shared_ptr_interfaceProperties.hpp"
+
+%import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
+
+%include <interfacePropertiesHolder.hpp>
 
 
-//--------------------------------------------------------------------------
-%include "Foam/ext/common/transportModels/managedFlu/interfaceProperties/interfacePropertiesHolder.cpp"
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::interfacePropertiesHolder::SMARTPTR_PYAPPEND_GETATTR( interfacePropertiesHolder );
+
+%extend Foam::interfacePropertiesHolder
+{
+  SMARTPTR_EXTEND_ATTR( interfacePropertiesHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( interfaceProperties );
+}
+
+NO_HOLDER_TYPEMAP( Foam::interfaceProperties );
 
 
-//--------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 #endif

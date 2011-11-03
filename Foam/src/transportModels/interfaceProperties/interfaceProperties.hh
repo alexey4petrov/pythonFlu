@@ -32,6 +32,8 @@
 
 #include <interfaceProperties.H>
 
+#include "Foam/ext/common/transportModels/managedFlu/interfaceProperties/interfacePropertiesHolder.hh"
+
 
 //--------------------------------------------------------------------------
 #endif
