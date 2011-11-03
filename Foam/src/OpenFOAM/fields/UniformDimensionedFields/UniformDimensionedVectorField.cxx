@@ -70,4 +70,10 @@
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/OpenFOAM/managedFlu/uniformDimensionedVectorFieldHolder.cpp"
+
+NO_HOLDER_TYPEMAP_TEMPLATE_1( Foam::UniformDimensionedField, Foam::vector );
+
+
+//---------------------------------------------------------------------------
 #endif

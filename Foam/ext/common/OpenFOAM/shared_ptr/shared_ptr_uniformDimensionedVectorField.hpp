@@ -21,24 +21,18 @@
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/common.hh"
-
-#if FOAM_VERSION( <, 010600 )
-#define UniformDimensionedVectorField_hh
-#endif
+#ifndef shared_ptr_uniformDimensionedVectorField_hpp
+#define shared_ptr_uniformDimensionedVectorField_hpp
 
 
 //---------------------------------------------------------------------------
-#ifndef UniformDimensionedVectorField_hh
-#define UniformDimensionedVectorField_hh
+%include "Foam/ext/common/shared_ptr.hxx"
 
+SHAREDPTR_TYPEMAP( Foam::UniformDimensionedField< Foam::vector > );
 
-//---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.hh"
+%ignore boost::shared_ptr< Foam::UniformDimensionedField< Foam::vector > >::operator->;
 
-#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/uniformDimensionedVectorFieldHolder.hh"
+%template( shared_ptr_uniformDimensionedVectorField ) boost::shared_ptr< Foam::UniformDimensionedField< Foam::vector > >;
 
 
 //---------------------------------------------------------------------------

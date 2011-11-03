@@ -59,6 +59,13 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
   {
     return *self + field;
   }
+  
+  Foam::GeometricFieldHolder< Type, TPatchField, TMesh > __sub__ ( 
+    const Foam::GeometricFieldHolder< Type, TPatchField, TMesh >& field )
+  {
+    return *self - field;
+  }
+
 
   HOLDERS_CALL_SMART_TMP_EXTENSION_TEMPLATE3( Foam::GeometricField, Type, TPatchField, TMesh );
   
@@ -128,6 +135,37 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
   {
     return *self / dm;
   }
+  
+  Foam::GeometricFieldHolder< Type, TPatchField, TMesh > __neg__ ()
+  {
+    return - *self;
+  }
+  
+  Foam::GeometricFieldHolder< scalar, TPatchField, TMesh > mag ()
+  {
+    return Foam::mag( *self );
+  }
+
+
+
+%enddef
+
+
+//---------------------------------------------------------------------------
+%define VECTORFIELDHOLDER_EXTEND( TPatchField, TMesh )
+  
+  Foam::GeometricFieldHolder< Foam::scalar, TPatchField, TMesh > __and__ ( 
+    const Foam::GeometricFieldHolder< Foam::vector, TPatchField, TMesh >& field )
+  {
+    return *self & field;
+  }
+  
+  Foam::GeometricFieldHolder< Foam::scalar, TPatchField, TMesh  >
+    __rand__( const Foam::UniformDimensionedFieldHolder< Foam::vector >& theArg ) const
+  {
+    return theArg & get_ref( self );
+  }
+
 
 %enddef
 
@@ -142,11 +180,6 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
   COMMON_EXTEND_GEOMETRICFIELDHOLDER( Foam::scalar, Foam::fvPatchField, Foam::volMesh );  
   GEOMETRICFIELDHOLDER_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar, Foam::fvPatchField, Foam::volMesh );
   
-  Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh > mag ()
-  {
-    return Foam::mag( *self );
-  }
-
   Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh > __rdiv__ ( const Foam::scalar& value )
   {
     return value / *self;
@@ -164,12 +197,6 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
     return *self * field;
   }
 
-  Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh > __sub__ ( 
-    const Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& field )
-  {
-    return *self - field;
-  }
-  
   Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh > __rmul__ ( 
     const Foam::dimensioned< Foam::scalar >& dmS )
   {
@@ -190,17 +217,8 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
 %define EXTEND_VOLVECTORFIELDHOLDER
 %extend Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >
 {
-  Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh > __sub__ ( 
-    const Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >& field )
-  {
-    return *self - field;
-  }
-
-  Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh > __neg__ ()
-  {
-    return - *self;
-  }
-
+  VECTORFIELDHOLDER_EXTEND( Foam::fvPatchField, Foam::volMesh );
+  
 }
 %enddef
 
@@ -209,12 +227,7 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
 %define EXTEND_SURFACEVECTORFIELDHOLDER
 %extend Foam::GeometricFieldHolder< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >
 {
-  Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > __and__ ( 
-    const Foam::GeometricFieldHolder< Foam::vector, Foam::fvsPatchField, Foam::surfaceMesh >& field )
-  {
-    return *self & field;
-  }
-  
+  VECTORFIELDHOLDER_EXTEND( Foam::fvsPatchField, Foam::surfaceMesh );
 }
 %enddef
 
@@ -233,22 +246,6 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
     return *self * field;
   }
   
-  Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > __sub__ ( 
-    const Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >& field )
-  {
-    return *self - field;
-  }
-
-  Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > mag ()
-  {
-    return Foam::mag( *self );
-  }
-  
-  Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh > __neg__ ()
-  {
-    return - *self;
-  }
-
 }
 %enddef
 

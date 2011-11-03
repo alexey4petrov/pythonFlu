@@ -17,29 +17,21 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/common.hh"
+#ifndef UniformDimensionedFieldHolder_hh
+#define UniformDimensionedFieldHolder_hh
 
-#if FOAM_VERSION( <, 010600 )
-#define UniformDimensionedVectorField_hh
+
+//---------------------------------------------------------------------------
+#include <UniformDimensionedFieldHolder.hpp>
+
+#include "Foam/ext/common/managedFlu/SimpleHolder.hh"
+
+
+//--------------------------------------------------------------------------------------
 #endif
 
 
-//---------------------------------------------------------------------------
-#ifndef UniformDimensionedVectorField_hh
-#define UniformDimensionedVectorField_hh
-
-
-//---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/fields/UniformDimensionedFields/UniformDimensionedField.hh"
-
-#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
-
-#include "Foam/ext/common/OpenFOAM/managedFlu/uniformDimensionedVectorFieldHolder.hh"
-
-
-//---------------------------------------------------------------------------
-#endif
