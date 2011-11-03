@@ -42,7 +42,7 @@
 
 
 //---------------------------------------------------------------------------
-%feature( "pythonappend" ) Foam::IOobjectHolder::SMARTPTR_PYAPPEND_GETATTR( transportModelHolder );
+%feature( "pythonappend" ) Foam::transportModelHolder::SMARTPTR_PYAPPEND_GETATTR( transportModelHolder );
 
 %extend Foam::transportModelHolder
 {
