@@ -21,15 +21,15 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvch_cxx
-#define fvch_cxx
+#ifndef fvcGrad_cxx
+#define fvcGrad_cxx
 
 
 //---------------------------------------------------------------------------
 %module "Foam.ext.common.finiteVolume.managedFlu.fvch"
 
 %{
-  #include "Foam/ext/common/finiteVolume/managedFlu/fvch.hh"
+  #include "Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcGrad.hh"
 %}
 
 
@@ -38,13 +38,29 @@
 
 
 //---------------------------------------------------------------------------
-%rename( fvch_div ) Foam::fvc::div;
-%rename( fvch_surfaceSum ) Foam::fvc::surfaceSum;
-%rename( fvch_ddtPhiCorr ) Foam::fvc::ddtPhiCorr;
-%rename( fvch_snGrad ) Foam::fvc::snGrad;
-%rename( fvch_reconstruct ) Foam::fvc::reconstruct;
+%include <fvcGrad.hpp>
 
-%include <fvc.hpp>
+
+%inline
+{
+  Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >
+  fvc_grad( const Foam::GeometricFieldHolder< Foam::scalar, Foam::fvsPatchField, Foam::surfaceMesh >& vf )
+  {
+    return Foam::fvc::grad( vf );
+  }
+  
+  Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >
+  fvc_grad( const Foam::GeometricFieldHolder< Foam::scalar, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvc::grad( vf );
+  }
+  
+  Foam::GeometricFieldHolder< Foam::tensor, Foam::fvPatchField, Foam::volMesh >
+  fvc_grad( const Foam::GeometricFieldHolder< Foam::vector, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvc::grad( vf );
+  }
+}
 
 
 //--------------------------------------------------------------------------------------
