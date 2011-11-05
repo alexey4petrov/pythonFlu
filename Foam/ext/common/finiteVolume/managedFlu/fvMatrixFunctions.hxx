@@ -34,6 +34,16 @@
   {
     return *self + theArg;
   }
+  
+  Foam::fvMatrixHolder< Type > __sub__( const Foam::fvMatrixHolder< Type >& theArg ) const
+  {
+    return *self - theArg;
+  }
+
+  Foam::fvMatrixHolder< Type > __eq__( const Foam::fvMatrixHolder< Type >& theArg ) const
+  {
+    return *self == theArg;
+  }
 
   Foam::fvMatrixHolder< Type > __eq__( const Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& theArg ) const
   {
@@ -45,27 +55,13 @@
     return *self + theArg;
   }
 
-  HOLDERS_CALL_SMART_TMP_EXTENSION_TEMPLATE1( Foam::fvMatrix, Type );
-
-}
-%enddef
-
-
-//--------------------------------------------------------------------------------------
-%define __VECTOR_FVMATRIXHOLDER_TEMPLATE_FUNC__
-{
-  Foam::fvMatrixHolder< Foam::vector > __sub__( const Foam::fvMatrixHolder< Foam::vector >& theArg ) const
+  Foam::fvMatrixHolder< Type > __sub__( const Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& theArg ) const
   {
     return *self - theArg;
   }
 
-  Foam::fvMatrixHolder< Foam::vector > __eq__( const Foam::fvMatrixHolder< Foam::vector >& theArg ) const
-  {
-    return *self == theArg;
-  }
-  
-  
-  
+  HOLDERS_CALL_SMART_TMP_EXTENSION_TEMPLATE1( Foam::fvMatrix, Type );
+
 }
 %enddef
 
@@ -91,7 +87,6 @@
 //--------------------------------------------------------------------------------------
 %define VECTOR_FVMATRIXHOLDER_TEMPLATE_FUNC
 FVMATRIXHOLDER_TEMPLATE_FUNC( Foam::vector );
-%extend Foam::fvMatrixHolder< Foam::vector > __VECTOR_FVMATRIXHOLDER_TEMPLATE_FUNC__;
 %enddef
 
 
