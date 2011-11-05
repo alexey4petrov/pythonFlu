@@ -17,28 +17,39 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef twoPhaseMixture_hh
-#define twoPhaseMixture_hh
+#ifndef twoPhaseMixtureHolder_cpp
+#define twoPhaseMixtureHolder_cpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/transportModels/incompressible/transportModel.hh"
-
-#include "Foam/src/transportModels/incompressible/viscosityModels/viscosityModel.hh"
-
-#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
-
-#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
-
-#include <twoPhaseMixture.H>
-
-
-#include "Foam/ext/common/transportModels/managedFlu/incompressible/twoPhaseMixtureHolder.hh"
+%{
+  #include "Foam/ext/common/transportModels/managedFlu/incompressible/twoPhaseMixtureHolder.hh"
+%}
 
 
 //---------------------------------------------------------------------------
+%import "Foam/src/transportModels/incompressible/transportModel.cxx"
+
+%include "Foam/ext/common/transportModels/shared_ptr/shared_ptr_twoPhaseMixture.hpp"
+
+%include <twoPhaseMixtureHolder.hpp>
+
+
+//--------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::twoPhaseMixtureHolder::SMARTPTR_PYAPPEND_GETATTR( twoPhaseMixtureHolder );
+
+%extend Foam::twoPhaseMixtureHolder
+{
+  SMARTPTR_EXTEND_ATTR( twoPhaseMixtureHolder );
+  HOLDERS_CALL_SHARED_PTR_EXTENSION( twoPhaseMixture );
+}
+
+NO_HOLDER_TYPEMAP( Foam::twoPhaseMixture );
+
+
+//--------------------------------------------------------------------------
 #endif

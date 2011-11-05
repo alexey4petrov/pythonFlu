@@ -17,27 +17,22 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef twoPhaseMixture_hh
-#define twoPhaseMixture_hh
+#ifndef shared_ptr_twoPhaseMixture_hpp
+#define shared_ptr_twoPhaseMixture_hpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/transportModels/incompressible/transportModel.hh"
+%include "Foam/ext/common/shared_ptr.hxx"
 
-#include "Foam/src/transportModels/incompressible/viscosityModels/viscosityModel.hh"
+SHAREDPTR_TYPEMAP( Foam::twoPhaseMixture );
 
-#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
+%ignore boost::shared_ptr< Foam::twoPhaseMixture >::operator->;
 
-#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
-
-#include <twoPhaseMixture.H>
-
-
-#include "Foam/ext/common/transportModels/managedFlu/incompressible/twoPhaseMixtureHolder.hh"
+%template( shared_ptr_twoPhaseMixture ) boost::shared_ptr< Foam::twoPhaseMixture >;
 
 
 //---------------------------------------------------------------------------

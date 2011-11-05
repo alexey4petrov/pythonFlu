@@ -17,27 +17,18 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV
+//  Author : Alexey PETROV, Andrey SIMURZIN
 
 
 //---------------------------------------------------------------------------
-#ifndef twoPhaseMixture_hh
-#define twoPhaseMixture_hh
+#ifndef twoPhaseMixtureHolder_hh
+#define twoPhaseMixtureHolder_hh
 
 
 //---------------------------------------------------------------------------
 #include "Foam/src/transportModels/incompressible/transportModel.hh"
 
-#include "Foam/src/transportModels/incompressible/viscosityModels/viscosityModel.hh"
-
-#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
-
-#include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.hh"
-
-#include <twoPhaseMixture.H>
-
-
-#include "Foam/ext/common/transportModels/managedFlu/incompressible/twoPhaseMixtureHolder.hh"
+#include <twoPhaseMixtureHolder.hpp>
 
 
 //---------------------------------------------------------------------------
