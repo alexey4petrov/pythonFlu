@@ -77,7 +77,7 @@ INCLUDE_FILENAME(fvmLaplacian,hpp)
     return Foam::fvm::laplacian( gamma, vf, name );
   }
 
-  Foam::fvMatrixHolder< Type > fvm_laplacian( const GeometricFieldHolder< GType, Foam::fvsPatchField, Foam::surfaceMesh >& gamma,
+  Foam::fvMatrixHolder< Type > fvm_laplacian( const Foam::GeometricFieldHolder< GType, Foam::fvsPatchField, Foam::surfaceMesh >& gamma,
                                               const Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf )
   {
     return Foam::fvm::laplacian( gamma, vf );
