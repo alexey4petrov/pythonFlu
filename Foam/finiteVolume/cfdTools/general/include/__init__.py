@@ -157,3 +157,10 @@ def readGravitationalAcceleration( runTime, mesh):
                                                  IOobject.MUST_READ,
                                                  IOobject.NO_WRITE ) )
     return g
+
+
+#--------------------------------------------------------------------------------------------
+def readGravitationalAccelerationHolder( runTime, mesh ):
+    from Foam import man
+    return man( readGravitationalAcceleration( runTime, mesh ), man.Deps() )
+
