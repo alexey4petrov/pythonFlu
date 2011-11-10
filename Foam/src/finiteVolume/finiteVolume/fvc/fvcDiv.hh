@@ -26,20 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
-
-#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
 #include <fvcDiv.H>
-
-
-//---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_volVectorField.hh"
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_volTensorField.hh"
-
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceScalarField.hh"
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_surfaceVectorField.hh"
 
 
 //---------------------------------------------------------------------------

@@ -28,9 +28,7 @@
 //---------------------------------------------------------------------------
 #include "Foam/src/OpenFOAM/db/IOdictionary.hh"
 
-#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
-
-#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
 #include <transportModel.H>
 

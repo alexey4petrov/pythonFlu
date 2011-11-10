@@ -38,7 +38,7 @@
 
 // #include "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hh"
 
-#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
 #include "Foam/src/thermophysicalModels/basic/basicThermo.hh"
 
