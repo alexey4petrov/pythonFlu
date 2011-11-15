@@ -158,13 +158,56 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
     return dmS + *self;
   }
 
+  Foam::dimensioned< Type > ext_max()
+  {
+    return Foam::max( self->operator()() );
+  }
 
+  Foam::dimensioned< Type > ext_min()
+  {
+    return Foam::min( self->operator()() );
+  }
+
+  Foam::GeometricFieldHolder< Type, TPatchField, TMesh > ext_max( const Foam::GeometricFieldHolder< Type, TPatchField, TMesh >& field )
+  {
+    return Foam::max( *self, field );
+  }
+
+  Foam::GeometricFieldHolder< Type, TPatchField, TMesh > ext_min( const Foam::GeometricFieldHolder< Type, TPatchField, TMesh >& field)
+  {
+    return Foam::min( *self, field );
+  }
+
+  Foam::GeometricFieldHolder< Type, TPatchField, TMesh > ext_max( const Foam::dimensioned< Type >& dmS )
+  {
+    return Foam::max( *self, dmS );
+  }
+
+  Foam::GeometricFieldHolder< Type, TPatchField, TMesh > ext_min( const Foam::dimensioned< Type >& dmS )
+  {
+    return Foam::min( *self, dmS );
+  }
+
+  Foam::GeometricFieldHolder< Type, TPatchField, TMesh > ext_max( const Type& theValue )
+  {
+    return Foam::max( *self, theValue );
+  }
+
+  Foam::GeometricFieldHolder< Type, TPatchField, TMesh > ext_min( const Type& theValue )
+  {
+    return Foam::min( *self, theValue );
+  }
 
 %enddef
 
 
 //---------------------------------------------------------------------------
 %define SCALARFIELDHOLDER_EXTEND( TPatchField, TMesh )
+
+  Foam::GeometricFieldHolder< Foam::scalar, TPatchField, TMesh > pos()
+  {
+    return Foam::pos( *self );
+  }
 
   Foam::GeometricFieldHolder< Foam::scalar, TPatchField, TMesh > __rmul__ ( 
     const Foam::dimensioned< Foam::scalar >& dmS )
@@ -183,6 +226,11 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
     return value / *self;
   }
 
+  Foam::GeometricFieldHolder< Foam::scalar, TPatchField, TMesh > __rdiv__ ( const Foam::dimensioned< Foam::scalar >& value )
+  {
+    return value / *self;
+  }
+ 
   Foam::GeometricFieldHolder< Foam::scalar, TPatchField, TMesh > __rsub__ ( const Foam::scalar& value )
   {
     return value - *self;
