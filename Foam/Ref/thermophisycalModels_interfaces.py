@@ -30,6 +30,8 @@ attr2interface={ 'basicThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicTher
                  'PtrList_basicPsiThermo' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicPsiThermo.PtrList_basicPsiThermo',
                  'basicRhoThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicRhoThermo.basicRhoThermo',
                  'autoPtr_basicRhoThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicRhoThermo.autoPtr_basicRhoThermo',
-                 'PtrList_basicRhoThermo' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicRhoThermo.PtrList_basicRhoThermo' }
+                 'PtrList_basicRhoThermo' : 'Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_basicRhoThermo.PtrList_basicRhoThermo',
+                 'basicSolidThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicSolidThermo.basicSolidThermo',
+                 'autoPtr_basicSolidThermo' : 'Foam.src.OpenFOAM.fields.tmp.autoPtr_basicSolidThermo.autoPtr_basicSolidThermo', }
                  
 
