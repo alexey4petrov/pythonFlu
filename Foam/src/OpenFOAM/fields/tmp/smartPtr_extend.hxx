@@ -53,7 +53,7 @@
 %define SMARTPTR_EXTEND_OPERATOR_EQ( UList_Type )
   bool operator==( const Foam::UList< UList_Type >& theArg )
   {
-    const Foam::UList< UList_Type > * aSelf = static_cast< const Foam::UList< UList_Type > * >( self->ptr() );
+    const Foam::UList< UList_Type > * aSelf = static_cast< const Foam::UList< UList_Type > * >( self->operator->() );
     return *aSelf == theArg;
   }
 %enddef
