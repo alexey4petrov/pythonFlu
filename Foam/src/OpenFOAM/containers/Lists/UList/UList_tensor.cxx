@@ -43,6 +43,8 @@
 %ignore Foam::UList< Foam::tensor >::operator <=;
 %ignore Foam::UList< Foam::tensor >::operator >=;
 
+TEMPLATE_ULIST_ITERATOR( tensor );
+
 %template( UList_tensor ) Foam::UList< Foam::tensor >; 
 
 ULISTBASED_ADDONS( Foam::tensor );

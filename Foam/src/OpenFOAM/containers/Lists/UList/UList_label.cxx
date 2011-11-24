@@ -37,6 +37,8 @@
 
 %import "Foam/src/OpenFOAM/primitives/label.cxx"
 
+TEMPLATE_ULIST_ITERATOR( label );
+
 %template( UList_label ) Foam::UList< Foam::label >; 
 
 ULISTBASED_ADDONS( Foam::label );

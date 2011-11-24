@@ -47,7 +47,7 @@
 
 %template( UList_IOobject ) Foam::UList< Foam::IOobject >;
 
-%template( TContainer_word_IOobject ) Foam::TContainer_iterator< Foam::UList< Foam::IOobject > >;
+TEMPLATE_ULIST_ITERATOR( IOobject );
 
 %extend Foam::UList< Foam::IOobject > SEQUENCE_ADDONS( Foam::IOobject );
 

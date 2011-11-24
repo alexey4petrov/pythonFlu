@@ -37,6 +37,8 @@
 
 %import "Foam/src/OpenFOAM/meshes/meshShapes/face/face.cxx"
 
+TEMPLATE_ULIST_ITERATOR( face );
+
 %ignore Foam::UList< Foam::face >::writeEntry;
 
 %template( UList_face ) Foam::UList< Foam::face >; 

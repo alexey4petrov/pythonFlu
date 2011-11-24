@@ -43,6 +43,14 @@
 
 
 //---------------------------------------------------------------------------
+%define TEMPLATE_ULIST_ITERATOR( TItem )
+
+%template( TContainer_iterator_UList_##TItem ) Foam::TContainer_iterator< Foam::UList< Foam::TItem > >;
+
+%enddef
+
+
+//---------------------------------------------------------------------------
 %define SEQUENCE_ADDONS( TItem )
 {
   int __len__()

@@ -46,6 +46,8 @@
 
 #endif
 
+TEMPLATE_ULIST_ITERATOR( symmTensor );
+
 %template( UList_symmTensor ) Foam::UList< Foam::symmTensor >;
 
 ULISTBASED_ADDONS( Foam::symmTensor );
