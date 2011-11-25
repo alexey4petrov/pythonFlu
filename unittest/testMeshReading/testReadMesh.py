@@ -1,7 +1,4 @@
-from Foam.OpenFOAM.include import setRootCase
-from Foam.OpenFOAM.include import createTime
-from Foam.OpenFOAM.include import createMesh
-
+from Foam import ref, man
 import testMeshReading as me
 
 import unittest
@@ -9,9 +6,9 @@ import unittest
 class testMesh(unittest.TestCase):
     def setUp(self):
         argv=["test","-case",me.pitzDir]
-        args = setRootCase( len(argv), argv )
-        runTime=createTime(args)
-        self.mesh = createMesh( runTime )
+        args = ref.setRootCase( len(argv), argv )
+        runTime = man.createTime(args)
+        self.mesh = man.createMesh( runTime )
 
     def testMeshCellSize(self):
         self.assertEqual(self.mesh.C().size(),12225)
