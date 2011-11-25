@@ -72,7 +72,7 @@ __SWIG_FLAGS__+=-w473 # Returning a pointer or reference in a director method is
 %.cc : %.cxx
 	@SWIG@ $(__SWIG_FLAGS__) -module $(notdir $(patsubst %.cxx,%,$<)) -o $@ $<
 
-__CXXFLAGS__ := @OPENFOAM_CXXFLAGS@ $(__CPPFLAGS__)
+__CXXFLAGS__ := @OPENFOAM_CXXFLAGS@ $(__CPPFLAGS__) @BOOST_CXXFLAGS@
 
 -include $(deps) dummy
 

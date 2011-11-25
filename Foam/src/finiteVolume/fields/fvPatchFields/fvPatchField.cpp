@@ -98,6 +98,8 @@ NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::tensor > );
 
 
 //---------------------------------------------------------------------------
+%include "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
+
 %include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_ConstructorToTable.hh"
 
 %feature( "director" ) fvPatchFieldConstructorToTableBase;

@@ -36,8 +36,6 @@
 
 %import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
-// %import "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
-
 %import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
 

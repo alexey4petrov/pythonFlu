@@ -42,8 +42,6 @@
 //---------------------------------------------------------------------------
 %import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
-// %import "Foam/src/OpenFOAM/db/runTimeSelection/runTimeSelectionTables.hxx"
-
 %import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
 %import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"

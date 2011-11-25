@@ -21,34 +21,20 @@
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "Foam/src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.hh"
-%}
+#ifndef functionObject_hh
+#define functionObject_hh
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/common.hxx"
+#include "Foam/src/OpenFOAM/db/Time/Time.hh"
 
-#if FOAM_VERSION( <, 010600 )
-#define basicRhoThermo_cpp
-#endif
+#include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
 
+#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 
-//---------------------------------------------------------------------------
-#ifndef basicRhoThermo_cpp
-#define basicRhoThermo_cpp
+#include "Foam/src/OpenFOAM/db/functionObjects/functionObject_ConstructorToTable.hh"
 
-
-//---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
-
-%ignore Foam::basicRhoThermo::rho() const;
-
-%include <basicRhoThermo.H>
-
-
-//---------------------------------------------------------------------------
-%include "Foam/ext/common/thermophysicalModels/managedFlu/basicRhoThermoHolder.cpp"
+#include <functionObject.H>
 
 
 //---------------------------------------------------------------------------

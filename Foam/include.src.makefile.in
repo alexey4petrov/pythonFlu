@@ -91,7 +91,7 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 #--------------------------------------------------------------------------------------
 sources = $(filter-out emb_%.cxx,$(wildcard *.cxx))
 
-ifeq (`uname -s`,Darwin)
+ifeq ($(shell uname -s),Darwin)
   #use util from MacPorts
   FIND=gfind
 else

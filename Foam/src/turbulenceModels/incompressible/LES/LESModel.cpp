@@ -56,8 +56,6 @@
 
 %import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
-// #include "runTimeSelectionTables.H"
-
 %import "Foam/src/OpenFOAM/db/IOdictionary.cxx"
 
 

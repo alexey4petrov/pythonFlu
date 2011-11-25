@@ -21,35 +21,40 @@
 
 
 //---------------------------------------------------------------------------
-%{
-  #include "Foam/src/thermophysicalModels/basic/rhoThermo/basicRhoThermo.hh"
-%}
+#ifndef runTimeSelectionTables_hh
+#define runTimeSelectionTables_hh
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/common.hxx"
+#include "Foam/src/common.hh"
 
-#if FOAM_VERSION( <, 010600 )
-#define basicRhoThermo_cpp
+
+//---------------------------------------------------------------------------
+namespace Foam
+{
+  // A helper class which provides run-time support for the instationation 
+  // of the classes derived from this one
+  template< class TRegisteredToTable >        
+  struct TConstructorToTableCounter
+  {
+    static int counter()
+    {
+      return m_Counter;
+    }
+  protected:
+    TConstructorToTableCounter()
+    {
+      m_Counter += 1;
+    }
+  private:
+    static int m_Counter;
+  };
+    
+  template< class TRegisteredToTable > int 
+  TConstructorToTableCounter< TRegisteredToTable >::m_Counter = 0;
+}
+
+
+//---------------------------------------------------------------------------
 #endif
 
-
-//---------------------------------------------------------------------------
-#ifndef basicRhoThermo_cpp
-#define basicRhoThermo_cpp
-
-
-//---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
-
-%ignore Foam::basicRhoThermo::rho() const;
-
-%include <basicRhoThermo.H>
-
-
-//---------------------------------------------------------------------------
-%include "Foam/ext/common/thermophysicalModels/managedFlu/basicRhoThermoHolder.cpp"
-
-
-//---------------------------------------------------------------------------
-#endif
