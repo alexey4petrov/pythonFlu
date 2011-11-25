@@ -10,7 +10,6 @@ def testListCreation():
 def testListCreationFails():
     l=ref.scalarList(4,1)
 
-@raises(TypeError)
 def testListIteration():
     l=ref.scalarList(4,1.)
     for i in l:
