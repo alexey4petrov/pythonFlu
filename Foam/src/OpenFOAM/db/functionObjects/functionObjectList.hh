@@ -21,18 +21,18 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef functionObject_hh
-#define functionObject_hh
+#ifndef functionObjectList_hh
+#define functionObjectList_hh
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
+#include "Foam/src/OpenFOAM/db/functionObjects/functionObject.hh"
 
-#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 
-#include "Foam/src/OpenFOAM/db/functionObjects/functionObject_ConstructorToTable.hh"
+//---------------------------------------------------------------------------
+#include "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.hh"
 
-#include <functionObject.H>
+#include <functionObjectList.H>
 
 
 //---------------------------------------------------------------------------

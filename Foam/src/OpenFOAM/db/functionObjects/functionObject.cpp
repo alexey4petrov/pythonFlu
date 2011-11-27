@@ -21,12 +21,12 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef functionObject_cxx
-#define functionObject_cxx
+#ifndef functionObject_cpp
+#define functionObject_cpp
 
 
 //---------------------------------------------------------------------------
-%module( directors="1", allprotected="1" ) "Foam.src.OpenFOAM.db.functionObjects.functionObject";
+// this interface is being wrapped with Time.cxx
 %{
   #include "Foam/src/OpenFOAM/db/functionObjects/functionObject.hh"
 %}
@@ -35,8 +35,6 @@
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/OpenFOAM/db/Time/Time.cxx"
-
 %import "Foam/src/OpenFOAM/db/dictionary/dictionary.cxx"
 
 %import "Foam/src/OpenFOAM/primitives/strings/word.cxx"

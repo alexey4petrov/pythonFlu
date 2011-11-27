@@ -21,18 +21,36 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef functionObject_hh
-#define functionObject_hh
+#ifndef functionObjectList_cpp
+#define functionObjectList_cpp
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
+// this interface is being wrapped with Time.cxx
+%{
+  #include "Foam/src/OpenFOAM/db/functionObjects/functionObjectList.hh"
+%}
 
-#include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 
-#include "Foam/src/OpenFOAM/db/functionObjects/functionObject_ConstructorToTable.hh"
+//---------------------------------------------------------------------------
+%include "Foam/src/OpenFOAM/db/functionObjects/functionObject.cpp"
 
-#include <functionObject.H>
+
+//---------------------------------------------------------------------------
+%import "Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList.cxx"
+
+%ignore Foam::PtrList< Foam::functionObject >::PtrList;
+%ignore Foam::PtrList< Foam::functionObject >::begin;
+%ignore Foam::PtrList< Foam::functionObject >::end;
+%ignore Foam::PtrList< Foam::functionObject >::set;
+%ignore Foam::PtrList< Foam::functionObject >::xfer;
+
+
+%template( PtrList_functionObject ) Foam::PtrList< Foam::functionObject >;
+
+
+//---------------------------------------------------------------------------
+%include <functionObjectList.H>
 
 
 //---------------------------------------------------------------------------

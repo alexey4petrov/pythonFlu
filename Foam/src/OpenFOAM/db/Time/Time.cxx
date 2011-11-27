@@ -49,6 +49,14 @@
 
 %import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
 
+
+//---------------------------------------------------------------------------
+%include "Foam/src/OpenFOAM/db/functionObjects/functionObject.cpp"
+
+%include "Foam/src/OpenFOAM/db/functionObjects/functionObjectList.cpp"
+
+
+//---------------------------------------------------------------------------
 %ignore Foam::Time::writeVersion;
 
 %include <Time.H>
@@ -59,24 +67,13 @@
   {
     self->operator++();
   }
-  // It will have been deleted on "merge with master" step and potentialFlux will have been changed
-  void functionObjects_start()
-  {
-    self->functionObjects().start();
-  }
-  
-  void functionObjects_end()
-  {
-    self->functionObjects().end();
-  }
-  //***********************************************
-
 }
 
 
 //---------------------------------------------------------------------------
 %include "Foam/ext/common/OpenFOAM/managedFlu/TimeHolder.cpp"
 NO_HOLDER_TYPEMAP( Foam::Time )
+
 
 
 //---------------------------------------------------------------------------

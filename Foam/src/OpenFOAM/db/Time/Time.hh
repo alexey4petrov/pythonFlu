@@ -42,6 +42,10 @@
 
 #include "Foam/src/OpenFOAM/primitives/strings/word.hh"
 
+#include "Foam/src/OpenFOAM/db/functionObjects/functionObject.hh"
+
+#include "Foam/src/OpenFOAM/db/functionObjects/functionObjectList.hh"
+
 #include <Time.H>
 
 #include "Foam/ext/common/OpenFOAM/managedFlu/TimeHolder.hh"
