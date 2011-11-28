@@ -63,9 +63,19 @@ class functionObject_pythonFlu( functionObject ):
 
         return True
 
-    def execute( self ): 
+    def execute( self, *args ): 
+        from Foam import FOAM_VERSION
+        if FOAM_VERSION( ">=", "020000" ):
+            self._executionFrame[ "forceWrite" ] = args[ 0 ]
+            # print "forceWrite = ", self._executionFrame[ "forceWrite" ]
+            pass
+
         # print "execute = \"%s\"" % ( self._executeCode )
         exec self._executeCode in self._executionFrame
+        
+        if FOAM_VERSION( ">=", "020000" ):
+            del self._executionFrame[ "forceWrite" ]
+            pass
 
         return True
 
