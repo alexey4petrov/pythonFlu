@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.ext.common.finiteVolume.managedFlu.fvch"
+%module "Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcDDt"
 
 %{
   #include "Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcDDt.hh"
