@@ -81,7 +81,7 @@ INCLUDE_FILENAME(fvmDiv,hpp)
 //--------------------------------------------------------------------------------------
 #if FOAM_VERSION( <, 020000 )
 %inline FVMHOLDER_DIV_TEMPLATE_FUNC_010600( Foam::scalar );
-%inline FVMHOLDER_DIV_TEMPLATE_FUNC_020000( Foam::vector );
+%inline FVMHOLDER_DIV_TEMPLATE_FUNC_010600( Foam::vector );
 #endif
 
 
