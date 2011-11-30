@@ -21,18 +21,26 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef autoPtr_basicSolidThermo_cxx
-#define autoPtr_basicSolidThermo_cxx
-
-
-//---------------------------------------------------------------------------
-%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_basicSolidThermo"
 %{
   #include "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicSolidThermo.hh"
 %}
 
 
 //---------------------------------------------------------------------------
+%import "Foam/src/common.hxx"
+
+#if FOAM_VERSION( <, 020000 )   
+#define autoPtr_basicSolidThermo_cxx
+#endif
+
+//---------------------------------------------------------------------------
+#ifndef autoPtr_basicSolidThermo_cxx
+#define autoPtr_basicSolidThermo_cxx
+
+
+//---------------------------------------------------------------------------
+%module "Foam.src.OpenFOAM.fields.tmp.autoPtr_basicSolidThermo"
+
 %import "Foam/src/OpenFOAM/fields/tmp/autoPtr.cxx"
 
 %include "Foam/src/thermophysicalModels/basicSolidThermo/basicSolidThermo.cpp"
