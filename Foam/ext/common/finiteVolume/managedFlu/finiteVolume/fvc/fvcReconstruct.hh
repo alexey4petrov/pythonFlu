@@ -17,22 +17,20 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV, Andrey SIMURZIN
+//  Author : Alexey PETROV
 
 
 //---------------------------------------------------------------------------
-#ifndef fvch_hh
-#define fvch_hh
+#ifndef fvcReconstruct_hh
+#define fvcReconstruct_hh
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/common.hh"
-
-#include <fvc.hpp>
-
 #include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
+#include <fvcSurfaceIntegrate.hpp>
+#include <fvcReconstruct.hpp>
 
-//--------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
 #endif
-

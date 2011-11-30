@@ -22,13 +22,12 @@
 
 
 #--------------------------------------------------------------------------------------
-attr2interface={ 'interpolate' : 'Foam.ext.common.finiteVolume.managedFlu.fvch.fvch_interpolate',
-                 'surfaceSum' : 'Foam.ext.common.finiteVolume.managedFlu.fvch.fvch_surfaceSum',
-                 'ddtPhiCorr' : 'Foam.ext.common.finiteVolume.managedFlu.fvch.fvch_ddtPhiCorr',
-                 'div' : 'Foam.ext.common.finiteVolume.managedFlu.fvch.fvch_div',
-                 'grad' :'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcGrad.fvc_grad',
-                 'snGrad' :'Foam.ext.common.finiteVolume.managedFlu.fvch.fvch_snGrad',
-                 'reconstruct' :'Foam.ext.common.finiteVolume.managedFlu.fvch.fvch_reconstruct',
+attr2interface={ 'surfaceSum' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcSurfaceSum.fvc_surfaceSum',
+                 'ddtPhiCorr' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcDDt.fvc_ddtPhiCorr',
+                 'div' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcDiv.fvc_div',
+                 'grad' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcGrad.fvc_grad',
+                 'snGrad' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcSnGrad.fvc_snGrad',
+                 'reconstruct' :'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcReconstruct.fvc_reconstruct',
                  'interpolate' : 'Foam.ext.common.finiteVolume.managedFlu.surfaceInterpolate.interpolate',
                  'DDt' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcDDt.fvc_DDt'}
                  

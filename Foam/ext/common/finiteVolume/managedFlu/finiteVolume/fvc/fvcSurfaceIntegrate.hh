@@ -17,35 +17,19 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV, Andrey SIMURZIN
+//  Author : Alexey PETROV
 
 
 //---------------------------------------------------------------------------
-#ifndef fvch_cxx
-#define fvch_cxx
+#ifndef fvcSurfaceIntegrate_hh
+#define fvcSurfaceIntegrate_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.ext.common.finiteVolume.managedFlu.fvch"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
-%{
-  #include "Foam/ext/common/finiteVolume/managedFlu/fvch.hh"
-%}
+#include <fvcSurfaceIntegrate.hpp>
 
 
 //---------------------------------------------------------------------------
-%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-
-//---------------------------------------------------------------------------
-%rename( fvch_div ) Foam::fvc::div;
-%rename( fvch_surfaceSum ) Foam::fvc::surfaceSum;
-%rename( fvch_ddtPhiCorr ) Foam::fvc::ddtPhiCorr;
-%rename( fvch_snGrad ) Foam::fvc::snGrad;
-%rename( fvch_reconstruct ) Foam::fvc::reconstruct;
-
-%include <fvc.hpp>
-
-
-//--------------------------------------------------------------------------------------
 #endif

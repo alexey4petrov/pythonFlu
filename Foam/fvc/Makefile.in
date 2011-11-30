@@ -58,12 +58,14 @@ sources = \
 	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.cxx \
 	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcLaplacian.cxx \
 	\
-	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/fvch.cxx \
 	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/surfaceInterpolate.cxx \
 	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcDDt.cxx \
 	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcGrad.cxx \
-
-
+	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcSnGrad.cxx \
+	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcSurfaceIntegrate.cxx \
+	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcDiv.cxx \
+	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcReconstruct.cxx \
+	
 
 #--------------------------------------------------------------------------------------
 include @abs_top_builddir@/Foam/include.foam.makefile
