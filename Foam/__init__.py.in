@@ -94,7 +94,7 @@ ref = TLoadHelper( ref_interfaces.attr2interface )
 
 #----------------------------------------------------------------------------
 foam_packages = [ 'Foam', 'Foam.OpenFOAM', 'Foam.finiteVolume', 'Foam.compressible', 'Foam.dynamicFvMesh', 
-                  'Foam.incompressible', 'Foam.meshTools', 'Foam.MULES',
+                  'Foam.incompressible', 'Foam.meshTools', 'Foam.MULES', 'Foam.fv',
                   'Foam.radiation', 'Foam.randomProcesses', 'Foam.sampling', 'Foam.thermophysicalModels',
                   'Foam.transportModels' ]
 
