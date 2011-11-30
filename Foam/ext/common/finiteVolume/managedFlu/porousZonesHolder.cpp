@@ -38,9 +38,9 @@
 
 %import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
-INCLUDE_FILENAME(porousZonesHolder,hpp);
-
 %include "Foam/ext/common/finiteVolume/shared_ptr/shared_ptr_porousZones.hpp"
+
+INCLUDE_FILENAME(porousZonesHolder,hpp);
 
 #if FOAM_VERSION( >=, 020000)
 INCLUDE_FILENAME(PorousZonesHolder,hpp);
