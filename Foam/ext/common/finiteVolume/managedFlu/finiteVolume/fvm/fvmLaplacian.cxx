@@ -26,7 +26,7 @@
 
 
 //---------------------------------------------------------------------------
-%module "Foam.ext.common.finiteVolume.managedFlu.fvch"
+%module "Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvm.fvmLaplacian"
 
 %{
   #include "Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvm/fvmLaplacian.hh"
@@ -35,6 +35,8 @@
 
 //---------------------------------------------------------------------------
 %import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
+
+%import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"
 
 
 //---------------------------------------------------------------------------
