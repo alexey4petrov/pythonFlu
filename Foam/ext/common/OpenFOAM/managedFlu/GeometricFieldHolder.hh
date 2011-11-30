@@ -26,7 +26,9 @@
 
 
 //---------------------------------------------------------------------------
-#include "GeometricFieldHolder.hpp"
+#include "Foam/src/common.hh"
+
+#include FILENAME(GeometricFieldHolder,hpp)
 
 #include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldFunctions.hh"
 

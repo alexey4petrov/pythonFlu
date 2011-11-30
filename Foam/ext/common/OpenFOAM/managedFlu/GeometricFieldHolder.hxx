@@ -32,11 +32,14 @@
 
 
 //---------------------------------------------------------------------------
+%import "Foam/ext/common/managedFlu/commonHolder.hxx"
+
 %include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldFunctions.hxx"
 
 %import "Foam/ext/common/managedFlu/DependentHolder.cxx"
 
-%include <GeometricFieldHolder.hpp>
+INCLUDE_FILENAME(GeometricFieldHolder,hpp);
+
 
 //--------------------------------------------------------------------------------------
 #endif
