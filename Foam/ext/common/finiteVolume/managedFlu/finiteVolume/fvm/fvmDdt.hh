@@ -17,24 +17,21 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV, Andrey SIMURZIN
+//  Author : Alexey PETROV
 
 
 //---------------------------------------------------------------------------
-#ifndef fvmh_hh
-#define fvmh_hh
+#ifndef fvmDdt_hh
+#define fvmDdt_hh
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/common.hh"
-
-#include <fvm.hpp>
-
 #include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
 #include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
 
+#include FILENAME(fvmDdt,hpp)
 
-//--------------------------------------------------------------------------------------
+
+//---------------------------------------------------------------------------
 #endif
-

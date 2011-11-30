@@ -22,8 +22,8 @@
 
 
 #--------------------------------------------------------------------------------------
-attr2interface={ 'ddt' : 'Foam.ext.common.finiteVolume.managedFlu.fvmh.fvmh_ddt',
-                 'div' : 'Foam.ext.common.finiteVolume.managedFlu.fvmh.fvmh_div',
+attr2interface={ 'ddt' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvm.fvmDdt.fvm_ddt',
+                 'div' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvm.fvmDiv.fvm_div',
                  'laplacian' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvm.fvmLaplacian.fvm_laplacian' }
                  
 

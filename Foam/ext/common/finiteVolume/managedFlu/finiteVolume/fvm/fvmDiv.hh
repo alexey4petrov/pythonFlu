@@ -17,34 +17,21 @@
 //
 //  See http://sourceforge.net/projects/pythonflu
 //
-//  Author : Alexey PETROV, Andrey SIMURZIN
+//  Author : Alexey PETROV
 
 
 //---------------------------------------------------------------------------
-#ifndef fvmh_cxx
-#define fvmh_cxx
+#ifndef fvmDiv_hh
+#define fvmDiv_hh
 
 
 //---------------------------------------------------------------------------
-%module "Foam.ext.common.finiteVolume.managedFlu.fvmh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
-%{
-  #include "Foam/ext/common/finiteVolume/managedFlu/fvmh.hh"
-%}
+#include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
 
-
-//---------------------------------------------------------------------------
-%import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
-
-%import "Foam/src/finiteVolume/fvMatrices/fvMatrices.cxx"
+#include FILENAME(fvmDiv,hpp)
 
 
 //---------------------------------------------------------------------------
-%rename( fvmh_div ) Foam::fvm::div;
-%rename( fvmh_ddt ) Foam::fvm::ddt;
-
-%include <fvm.hpp>
-
-
-//--------------------------------------------------------------------------------------
 #endif
