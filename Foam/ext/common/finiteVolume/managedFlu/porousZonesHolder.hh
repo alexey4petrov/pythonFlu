@@ -32,7 +32,7 @@
 #include <PorousZonesHolder.hpp>
 #endif
 
-#include <porousZonesHolder.hpp>
+#include FILENAME(porousZonesHolder,hpp)
 
 #include "Foam/ext/common/managedFlu/SimpleHolder.hh"
 

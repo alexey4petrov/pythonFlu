@@ -46,8 +46,7 @@
 
 %include "Foam/ext/common/thermophysicalModels/shared_ptr/shared_ptr_basicSolidThermo.hpp"
 
-%include <basicSolidThermoHolder.hpp>
-
+INCLUDE_FILENAME(basicSolidThermoHolder,hpp);
 
 //---------------------------------------------------------------------------
 %feature( "pythonappend" ) Foam::basicSolidThermoHolder::SMARTPTR_PYAPPEND_GETATTR( basicSolidThermoHolder );

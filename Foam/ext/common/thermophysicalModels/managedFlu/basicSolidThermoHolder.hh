@@ -34,7 +34,7 @@
 
 
 //---------------------------------------------------------------------------
-#include <basicSolidThermoHolder.hpp>
+#include FILENAME(basicSolidThermoHolder,hpp)
 
 #include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
