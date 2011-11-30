@@ -44,7 +44,7 @@ INCLUDE_FILENAME(fvmLaplacian,hpp)
 
 
 //---------------------------------------------------------------------------
-%define FVM_LAPLACIAN_TEMPLATE_2_FUNC( Type, GType )
+%define FVM_LAPLACIAN_TEMPLATE_2_FUNC_020000( Type, GType )
 %{
   Foam::fvMatrixHolder< Type > fvm_laplacian( const Foam::dimensioned< GType >& gamma,
                                               const Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf,
@@ -89,9 +89,64 @@ INCLUDE_FILENAME(fvmLaplacian,hpp)
 
 
 //--------------------------------------------------------------------------------------
-%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::scalar, Foam::scalar );
+#if FOAM_VERSION( >=, 020000 )
+%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC_020000( Foam::scalar, Foam::scalar );
 
-%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC( Foam::vector, Foam::scalar );
+%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC_020000( Foam::vector, Foam::scalar );
+#endif
+
+
+//--------------------------------------------------------------------------------------
+%define FVM_LAPLACIAN_TEMPLATE_2_FUNC_010600( Type, GType )
+%{
+  Foam::fvMatrixHolder< Type > fvm_laplacian( const Foam::dimensioned< GType >& gamma,
+                                              Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+                                              const Foam::word& name )
+  {
+    return Foam::fvm::laplacian( gamma, vf, name );
+  }
+
+  Foam::fvMatrixHolder< Type > fvm_laplacian( const Foam::dimensioned< GType >& gamma,
+                                              Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvm::laplacian( gamma, vf );
+  }
+
+  Foam::fvMatrixHolder< Type > fvm_laplacian( const Foam::GeometricFieldHolder< GType, Foam::fvPatchField, Foam::volMesh >& gamma,
+                                              Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+                                              const Foam::word& name )
+  {
+    return Foam::fvm::laplacian( gamma, vf, name );
+  }
+
+  Foam::fvMatrixHolder< Type > fvm_laplacian( const Foam::GeometricFieldHolder< GType, Foam::fvPatchField, Foam::volMesh >& gamma,
+                                              Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvm::laplacian( gamma, vf );
+  }
+
+  Foam::fvMatrixHolder< Type > fvm_laplacian( const Foam::GeometricFieldHolder< GType, Foam::fvsPatchField, Foam::surfaceMesh >& gamma,
+                                              Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf,
+                                              const Foam::word& name )
+  {
+    return Foam::fvm::laplacian( gamma, vf, name );
+  }
+
+  Foam::fvMatrixHolder< Type > fvm_laplacian( const Foam::GeometricFieldHolder< GType, Foam::fvsPatchField, Foam::surfaceMesh >& gamma,
+                                              Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& vf )
+  {
+    return Foam::fvm::laplacian( gamma, vf );
+  }
+%}
+%enddef
+
+
+//--------------------------------------------------------------------------------------
+#if FOAM_VERSION( <, 020000 )
+%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC_010600( Foam::scalar, Foam::scalar );
+
+%inline FVM_LAPLACIAN_TEMPLATE_2_FUNC_010600( Foam::vector, Foam::scalar );
+#endif
 
 
 //--------------------------------------------------------------------------------------
