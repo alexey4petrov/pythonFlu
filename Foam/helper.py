@@ -34,9 +34,10 @@ class TLoadHelper( object ):
         
         a_result = self._dict[ the_attr ]
         if type( a_result ) == str:
-            an_interface =a_result.rpartition('.')[ 2 ]
+
+            an_interface =a_result.split('.')[ -1 ]
             #print an_interface
-            an_interface_path = a_result.rpartition('.')[ 0 ]
+            an_interface_path = ".".join( a_result.split( "." )[ :-1 ] )
             #print an_interface_path
             exec "from %s import %s as a_result" %( an_interface_path, an_interface )
             pass

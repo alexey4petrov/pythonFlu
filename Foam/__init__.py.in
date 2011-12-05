@@ -104,14 +104,19 @@ foam_namespaces = [ 'fv', 'fvc', 'fvm', 'compressible', 'incompressible', 'radia
 import __builtin__
 _orgimp = __builtin__.__import__
 
+import sys
+python_version=".".join( map( str, sys.version_info )[:-2] )
+
 def __import__( name, globals=None, locals=None, fromlist=None, level = -1 ):
     
     if not name in foam_packages or fromlist == None or fromlist[0] == '*' :
         # from Foam.<package1>.<package2>[.<package3>] import <something>, from Foam import <something >
         # import Foam
         # from boto import <something>
-        import_result = _orgimp( name, globals, locals, fromlist, level )
-        return import_result
+        if python_version >= "2.5.0":
+           return _orgimp( name, globals, locals, fromlist, level )
+        else:
+           return _orgimp( name, globals, locals, fromlist )
     
     if name == 'Foam':
         import Foam
@@ -136,7 +141,13 @@ def __import__( name, globals=None, locals=None, fromlist=None, level = -1 ):
                 if os.path.exists( os.path.join( a_package_path, an_interface ) ) and not an_interface in foam_namespaces:
                     # There is folder( file ) called "an_interface" in "package_path/" and isn't namespace
                     # for example: "from Foam import OpenFOAM", from Foam.OpenFOAM import include
-                    exec "result = _orgimp( name, globals, locals, fromlist, level ).%s" %an_interface
+                    if python_version >= "2.5.0":
+                        exec "result = _orgimp( name, globals, locals, fromlist, level ).%s" %an_interface
+                        pass
+                    else:
+                        exec "result = _orgimp( name, globals, locals, fromlist ).%s" %an_interface
+                        pass
+
                     a_package.__dict__[ an_interface ] = result
                     pass
                 else:
