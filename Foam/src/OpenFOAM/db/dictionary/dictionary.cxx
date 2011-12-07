@@ -66,7 +66,12 @@
   }
   void add( const Foam::word& keyword, const Foam::tokenList& value )
   {
-    self->add< tokenList >( keyword, value );
+    self->add< Foam::tokenList >( keyword, value );
+  }
+
+  void add( const Foam::word& keyword, const Foam::ITstream& value )
+  {
+    self->add< Foam::ITstream >( keyword, value );
   }
   
   ISINSTANCE_EXTEND( Foam::dictionary ) 
