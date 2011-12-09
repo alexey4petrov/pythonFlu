@@ -37,10 +37,11 @@
 
 %import "Foam/src/OpenFOAM/primitives/Lists/tokenList.cxx"
 
+/*
 %ignore Foam::ITstream::ITstream( const string& name,
                                   const tokenList& tokens,
                                   streamFormat format=ASCII,
-                                  versionNumber version=currentVersion );
+                                  versionNumber version=currentVersion );*/
 
 %rename( ext_print ) Foam::ITstream::print;
 
