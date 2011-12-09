@@ -67,6 +67,11 @@
   {
     self->operator++();
   }
+
+  bool ext_end()
+  {
+    return self->end();
+  }
 }
 
 
