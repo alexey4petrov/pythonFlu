@@ -22,13 +22,10 @@
 
 
 #--------------------------------------------------------------------------------------
-prefix:=@prefix@
-
-pythondir:=@PYTHONDIR@
-
 pythonflu_root_dir:=@abs_top_builddir@
 
-m4dir:=@datarootdir@
+pythonflu_dir=@PACKAGE_INSTALL_PYTHON_DIR@
+pythonflu_m4dir=@PACKAGE_INSTALL_M4_DIR@
 
 include $(pythonflu_root_dir)/Foam/include.src.makefile
 
@@ -37,34 +34,64 @@ SUBDIRS = Foam
 
 #--------------------------------------------------------------------------------------
 deb:
-	test "x@OS_NAME@" = "x" && echo "Current OS is not supported" && exit 1
+	if [ "x@OS_NAME@" = "x" ]; then echo "Current OS is not supported" && exit 1; fi
 	@./make-deb.sh deb
 
 launchpad:
-	test "x@OS_NAME@" = "x" && echo "Current OS is not supported" && exit 1
+	if [ "x@OS_NAME@" = "x" ]; then echo "Current OS is not supported" && exit 1; fi
 	@./make-deb.sh launchpad
 
 rpm:
-	test "x@OS_NAME@" = "x" && echo "Current OS is not supported" && exit 1
+	if [ "x@OS_NAME@" = "x" ]; then echo "Current OS is not supported" && exit 1; fi
 	@./make-rpm.sh
 
 
 #--------------------------------------------------------------------------------------
 install:
-	@ rm -rf $(pythondir)/Foam $(m4dir)/pythonFlu
-	@ install -d $(pythondir) $(m4dir)/pythonFlu/admin
-	@ cp -rf Foam $(pythondir)/
-	@ (cd $(pythondir)/Foam && find \( -name "*.d" -o -name "pyfoam" -o -name "*.cc" -o -name "*.exe" \) -delete)
-	@ (cd $(pythondir)/Foam && find \( -name "*.h" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
-	@ cp -rf @abs_top_builddir@/admin/pythonflu_check_pythonflu.m4 $(m4dir)/pythonFlu/admin/
-	@ python -c "from setuptools import setup; setup(name='Foam', version='@PACKAGE_VERSION@')" install
+	@ rm -rf $(pythonflu_dir)/Foam
+	@ install -d $(pythonflu_dir) $(pythonflu_m4dir)/admin
+	@ cp -rf Foam $(pythonflu_dir)/
+	@ (cd $(pythonflu_dir)/Foam && find \( -name "*.d" -o -name "pyfoam" -o -name "*.cc" -o -name "*.exe" \) -delete)
+	@ (cd $(pythonflu_dir)/Foam && find \( -name "*.h" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
+	@ cp -rf @abs_top_builddir@/admin/pythonflu_check_pythonflu.m4 $(pythonflu_m4dir)/admin
+	@ python -c "from setuptools import setup; setup(name='Foam', version='@PACKAGE_VERSION@')" install 
+ifneq "@FOAM_BRANCH@" "free"
+	@ touch $(pythonflu_dir)/bashrc
+	@ echo "export PYTHONFLU_ROOT_DIR=$(pythonflu_dir)" >> $(pythonflu_dir)/bashrc
+	@ echo 'echo PYTHONFLU_ROOT_DIR="$${PYTHONFLU_ROOT_DIR}"' >> $(pythonflu_dir)/bashrc
+	@ echo 'export PYTHONPATH=$${PYTHONFLU_ROOT_DIR}:$${PYTHONPATH}' >> $(pythonflu_dir)/bashrc
+	@ echo 'export PATH=$${PYTHONFLU_ROOT_DIR}:$${PATH}' >> $(pythonflu_dir)/bashrc
+	@ echo 'export LD_LIBRARY_PATH=$${PYTHONFLU_ROOT_DIR}:$${LD_LIBRARY_PATH}' >> $(pythonflu_dir)/bashrc
+	@ if [ `grep -c "source @PACKAGE_INSTALL_DIR@/bashrc" @FOAM_PACKAGE_DIR@/etc/bashrc` -eq 0 ]; then \
+	    echo "source $(pythonflu_dir)/bashrc" >> @FOAM_PACKAGE_DIR@/etc/bashrc; \
+	  fi
+endif
 
 develop:
-	@ rm -rf $(pythondir)/Foam $(m4dir)/pythonFlu
-	@ install -d $(pythondir) $(m4dir)/pythonFlu/admin
-	@ ln -s @abs_top_builddir@/Foam $(pythondir)/Foam 
-	@ ln -s @abs_top_builddir@/admin/pythonflu_check_pythonflu.m4 $(m4dir)/pythonFlu/admin/pythonflu_check_pythonflu.m4
+	@ rm -rf $(pythonflu_dir)/Foam
+	@ install -d $(pythonflu_dir) $(pythonflu_m4dir)
+	@ ln -s @abs_top_builddir@/Foam $(pythonflu_dir)/Foam 
+	@ ln -s @abs_top_builddir@/admin/pythonflu_check_pythonflu.m4 $(pythonflu_m4dir)/pythonflu_check_pythonflu.m4
 	@ python -c "from setuptools import setup; setup(name='Foam', version='@PACKAGE_VERSION@')" install
+ifneq "@FOAM_BRANCH@" "free"
+	@ touch $(pythonflu_dir)/bashrc
+	@ echo "export PYTHONFLU_ROOT_DIR=$(pythonflu_dir)" >> $(pythonflu_dir)/bashrc
+	@ echo 'echo PYTHONFLU_ROOT_DIR="$${PYTHONFLU_ROOT_DIR}"' >> $(pythonflu_dir)/bashrc
+	@ echo 'export PYTHONPATH=$${PYTHONFLU_ROOT_DIR}:$${PYTHONPATH}' >> $(pythonflu_dir)/bashrc
+	@ echo 'export PATH=$${PYTHONFLU_ROOT_DIR}:$${PATH}' >> $(pythonflu_dir)/bashrc
+	@ echo 'export LD_LIBRARY_PATH=$${PYTHONFLU_ROOT_DIR}:$${LD_LIBRARY_PATH}' >> $(pythonflu_dir)/bashrc
+	@ if [ `grep -c "source @PACKAGE_INSTALL_DIR@/bashrc" @FOAM_PACKAGE_DIR@/etc/bashrc` -eq 0 ]; then \
+	    echo "source $(pythonflu_dir)/bashrc" >> @FOAM_PACKAGE_DIR@/etc/bashrc; \
+	  fi
+endif
+
+uninstall:
+	@ rm -rf $(pythonflu_dir)/Foam $(pythonflu_m4dir)/admin 
+	@ rm -rf `( cd ../ && easy_install -m Foam | grep Using | sed -e "s/Using //" )`
+ifneq "@FOAM_BRANCH@" "free"
+	@ rm -rf $(pythonflu_dir)
+	@ sed -i "s%source $(pythonflu_dir)/bashrc%%" "@FOAM_PACKAGE_DIR@/etc/bashrc"
+endif
 
 
 #--------------------------------------------------------------------------------------
