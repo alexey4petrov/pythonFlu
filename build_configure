@@ -45,6 +45,10 @@ if test "x${MANAGEDFLU_ROOT_DIR}" != "x"; then
    managedflu_path="-I${MANAGEDFLU_ROOT_DIR}/admin"
 fi
 
+if test "x${managedflu_path}" = "x" && test -d /usr/local/share/managedFlu/admin; then
+   managedflu_path="-I/usr/local/share/managedFlu/admin"
+fi
+
 if test "${managedflu_path}x" = "x"; then
    echo "ERROR:managedflu need to be installed or sourced"
    exit 0
