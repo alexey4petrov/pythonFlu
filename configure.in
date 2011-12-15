@@ -74,6 +74,10 @@ CONFFLU_CHECK_BOOST_SHARED_PTR
 echo
 
 echo "--------------------------------------------------------------------------------------"
+CONFFLU_CHECK_INSTALL
+echo
+
+echo "--------------------------------------------------------------------------------------"
 PYTHONFLU_CHECK_CREATING_PACKAGE
 echo
 
