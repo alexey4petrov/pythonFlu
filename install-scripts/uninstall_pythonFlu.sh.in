@@ -1,0 +1,43 @@
+#!/bin/bash
+
+## confFlu - pythonFlu configuration package
+## Copyright (C) 2010- Alexey Petrov
+## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
+## 
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+## 
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+## 
+## See http://sourceforge.net/projects/pythonflu
+##
+## Author : Alexey PETROV, Andrey Simurzin
+##
+
+
+#--------------------------------------------------------------------------------------
+pythonflu_dir=@PACKAGE_INSTALL_DIR@
+
+pythonflu_m4dir=@PACKAGE_INSTALL_M4_DIR@
+
+foam_package_dir=@FOAM_PACKAGE_DIR@
+
+pythonflu_egg=`@abs_top_builddir@/install-scripts/find_dummy_package.sh`
+if [ '@FOAM_BRANCH@' = 'free' ]; then
+   pythonflu_dir=`dirname ${pythonflu_egg}`
+fi
+
+rm -rf ${pythonflu_dir}/Foam ${pythonflu_m4dir}
+rm -rf ${pythonflu_egg}
+if [ "@FOAM_BRANCH@" != "free" ]; then
+    rm -rf ${pythonflu_dir}
+    sed -i "s%source ${pythonflu_dir}/bashrc%%" "${foam_package_dir}/etc/bashrc"
+fi

@@ -1,59 +1,35 @@
+#!/usr/bin/env python
+
+#--------------------------------------------------------------------------------------
 ## pythonFlu - Python wrapping for OpenFOAM C++ API
 ## Copyright (C) 2010- Alexey Petrov
 ## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
-## 
+
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
 ## the Free Software Foundation, either version 3 of the License, or
 ## (at your option) any later version.
-##
+## 
 ## This program is distributed in the hope that it will be useful,
 ## but WITHOUT ANY WARRANTY; without even the implied warranty of
 ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ## GNU General Public License for more details.
-## 
+
 ## You should have received a copy of the GNU General Public License
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
-## 
+
 ## See http://sourceforge.net/projects/pythonflu
 ##
-## Author : Alexey PETROV
+## Author : Alexey Petrov, Andrey Simurzin
 ##
 
 
 #--------------------------------------------------------------------------------------
-pythonflu_root_dir:=@abs_top_builddir@
+from setuptools import setup
 
-include $(pythonflu_root_dir)/Foam/include.src.makefile
-
-SUBDIRS = Foam
-
-
-#--------------------------------------------------------------------------------------
-deb:
-	if [ "x@OS_NAME@" = "x" ]; then echo "Current OS is not supported" && exit 1; fi
-	@./make-deb.sh deb
-
-launchpad:
-	if [ "x@OS_NAME@" = "x" ]; then echo "Current OS is not supported" && exit 1; fi
-	@./make-deb.sh launchpad
-
-rpm:
-	if [ "x@OS_NAME@" = "x" ]; then echo "Current OS is not supported" && exit 1; fi
-	@./make-rpm.sh
-
-x1:
-	@ echo $(pythonflu_dir)
-
-#--------------------------------------------------------------------------------------
-install:
-	@ ./install-scripts/install_pythonFlu.sh
-
-develop:
-	@ ./install-scripts/install_develop_pythonFlu.sh
-
-uninstall:
-	@ ./install-scripts/uninstall_pythonFlu.sh
+setup( name = "PythonFlu",
+       version = "@PACKAGE_VERSION@-@FOAM_BRANCH@" )
 
 
 #--------------------------------------------------------------------------------------
+

@@ -131,8 +131,17 @@ AC_OUTPUT( [ bashrc \
 	     deb-template/preinst \
 	     rpm-template/rpm.spec \
 	     rpm-template/Makefile \
+	     install-scripts/find_dummy_package.sh \
+	     install-scripts/setup.py \
+	     install-scripts/install_dummy_package.sh \
+	     install-scripts/install_pythonFlu.sh \
+	     install-scripts/install_develop_pythonFlu.sh \
+	     install-scripts/update_OpenFOAM_bashrc.sh \
+	     install-scripts/uninstall_pythonFlu.sh \
 	     ChangeLog ],
-	     [ chmod 755 make-deb.sh make-rpm.sh ] )
+	     [ chmod 755 make-deb.sh make-rpm.sh install-scripts/find_dummy_package.sh install-scripts/setup.py install-scripts/install_dummy_package.sh \
+	     install-scripts/install_pythonFlu.sh install-scripts/update_OpenFOAM_bashrc.sh install-scripts/uninstall_pythonFlu.sh \
+	     install-scripts/install_develop_pythonFlu.sh ] )
 
 
 echo "------------------------------------ OK -----------------------------------------"
