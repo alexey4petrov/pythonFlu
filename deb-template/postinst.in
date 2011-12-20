@@ -5,15 +5,44 @@
 
 set -e
 
-sudo python -c "from setuptools import setup; setup(name='Foam', version='@PACKAGE_VERSION@')" install
 
-if [ "@WITH_SOLVERS@" = "yes" ]; then
-  packages_dir=/usr/local/share/pythonFlu/solvers
-  . ${packages_dir}/install_list.sh
-  install_list=`create_install_list`
-  for package in ${install_list}; do
-    ( cd ${packages_dir}/${package} && ./setup.py develop )
-  done
-fi
+# summary of how this script can be called:
+#        * <postinst> `configure' <most-recently-configured-version>
+#        * <old-postinst> `abort-upgrade' <new version>
+#        * <conflictor's-postinst> `abort-remove' `in-favour' <package>
+#          <new-version>
+#        * <postinst> `abort-remove'
+#        * <deconfigured's-postinst> `abort-deconfigure' `in-favour'
+#          <failed-install-package> <version> `removing'
+#          <conflicting-package> <version>
+# for details, see http://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
+
+
+case "$1" in
+    configure)
+        @PACKAGE_INSTALL_DIR@/install-scripts/install_dummy_package.sh @PACKAGE_INSTALL_DIR@/install-scripts
+        @PACKAGE_INSTALL_DIR@/install-scripts/update_OpenFOAM_bashrc.sh @PACKAGE_INSTALL_DIR@ @FOAM_PACKAGE_DIR@
+#        The next lines are example how we can combine solvers and pythonFlu in one package.
+#        if [ "@WITH_SOLVERS@" = "yes" ]; then
+#           packages_dir=/usr/local/share/pythonFlu/solvers
+#           . ${packages_dir}/install_list.sh
+#           install_list=`create_install_list`
+#           for package in ${install_list}; do
+#               ( cd ${packages_dir}/${package} && ./setup.py develop )
+#           done
+#        fi
+
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
 
 exit 0
