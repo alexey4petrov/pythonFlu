@@ -21,6 +21,7 @@ set -e
 case "$1" in
     remove|upgrade)
       rm -rf `@PACKAGE_INSTALL_DIR@/install-scripts/find_dummy_package.sh`
+      @PACKAGE_INSTALL_DIR@/install-scripts/remove_from_OpenFOAM_bashrc.sh
     ;;
 
     failed-upgrade|deconfigure)

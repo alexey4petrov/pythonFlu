@@ -138,10 +138,12 @@ AC_OUTPUT( [ bashrc \
 	     install-scripts/install_develop_pythonFlu.sh \
 	     install-scripts/update_OpenFOAM_bashrc.sh \
 	     install-scripts/uninstall_pythonFlu.sh \
+	     install-scripts/remove_from_OpenFOAM_bashrc.sh \
 	     ChangeLog ],
 	     [ chmod 755 make-deb.sh make-rpm.sh install-scripts/find_dummy_package.sh install-scripts/setup.py install-scripts/install_dummy_package.sh \
 	     install-scripts/install_pythonFlu.sh install-scripts/update_OpenFOAM_bashrc.sh install-scripts/uninstall_pythonFlu.sh \
-	     install-scripts/install_develop_pythonFlu.sh ] )
+	     install-scripts/install_develop_pythonFlu.sh \
+	     install-scripts/remove_from_OpenFOAM_bashrc.sh ] )
 
 
 echo "------------------------------------ OK -----------------------------------------"

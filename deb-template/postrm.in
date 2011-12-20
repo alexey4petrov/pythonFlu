@@ -19,7 +19,6 @@
 case "$1" in
     purge|remove )
       rm -rf @PACKAGE_INSTALL_DIR@
-      sed -i "s%source @PACKAGE_INSTALL_DIR@/bashrc%%" "@FOAM_PACKAGE_DIR@/etc/bashrc"
 #      The next lines are example how we can combine solvers and pythonFlu in one package.
 #      if [ "@WITH_SOLVERS@" = "yes" ]; then
 #        rm -rf /usr/local/share/pythonFlu

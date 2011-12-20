@@ -26,18 +26,7 @@
 #--------------------------------------------------------------------------------------
 pythonflu_dir=@PACKAGE_INSTALL_DIR@
 
-pythonflu_m4dir=@PACKAGE_INSTALL_M4_DIR@
-
 foam_package_dir=@FOAM_PACKAGE_DIR@
 
-pythonflu_egg=`@abs_top_builddir@/install-scripts/find_dummy_package.sh`
-if [ '@FOAM_BRANCH@' = 'free' ]; then
-   pythonflu_dir=`dirname ${pythonflu_egg}`
-fi
-
-rm -rf ${pythonflu_dir}/Foam ${pythonflu_m4dir}
-rm -rf ${pythonflu_egg}
-if [ "@FOAM_BRANCH@" != "free" ]; then
-    rm -rf ${pythonflu_dir}
-    @abs_top_builddir@/install-scripts/remove_from_OpenFOAM_bashrc.sh
-fi
+sed -i "s%source ${pythonflu_dir}/bashrc%PythonFlu@PACKAGE_VERSION@%" "${foam_package_dir}/etc/bashrc"
+sed -i "/PythonFlu@PACKAGE_VERSION@/d" "@FOAM_PACKAGE_DIR@/etc/bashrc"
