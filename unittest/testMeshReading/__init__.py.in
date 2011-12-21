@@ -1,0 +1,44 @@
+from os import environ,path
+import shutil
+
+try:
+    from subprocess import check_call,PIPE
+except ImportError:
+    from subprocess import call,PIPE
+    
+pitzDir=path.join("/tmp","pythonFluTestPitzDaily")
+
+def teardown():
+    #    print "Removing",pitzDir
+    shutil.rmtree(pitzDir,ignore_errors=True)
+
+def setup():
+    teardown()
+    #    print "Creating",pitzDir   
+    
+    try:
+        shutil.copytree(path.join(environ["FOAM_TUTORIALS"],
+                                  "incompressible",
+                                  "simpleFoam",
+                                  "pitzDaily"),
+                         pitzDir)
+        pass
+    except KeyError:
+        shutil.copytree(path.join("/usr/local/share/doc/FreeFOAM@FOAM_PACKAGE_SUFFIX@/tutorials",
+                                  "incompressible",
+                                  "simpleFoam",
+                                  "pitzDaily"),
+                         pitzDir)
+        pass
+    
+    if "@FOAM_BRANCH@" != "free":
+        cmdLine=["blockMesh -case "+pitzDir]
+        pass
+    else:
+        cmdLine=["freefoam blockMesh -case "+pitzDir]
+        pass
+
+    try:
+        check_call(cmdLine,shell=True,stdout=PIPE)
+    except NameError:
+        call(cmdLine,shell=True,stdout=PIPE)

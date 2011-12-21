@@ -8,7 +8,8 @@ import unittest
 class testFunctionObject(unittest.TestCase):
     def setUp(self):
         import os
-        argv=["test","-case",os.path.join( os.environ[ "PYTHONFLU_ROOT_DIR" ], "unittest/testFunctionObject" ) ] 
+        print os.path.abspath( os.path.curdir )
+        argv=["test","-case",os.path.join( os.environ[ "PYTHONFLU_ROOT_DIR" ], "unittest/testFunctionObject" ) ]
         args = ref.setRootCase( len(argv), argv )
         self.runTime = man.createTime( args )
 

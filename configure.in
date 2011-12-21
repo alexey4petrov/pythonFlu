@@ -101,6 +101,7 @@ AC_OUTPUT( [ bashrc \
 	     Foam/foam.version.makefile \
 	     Foam/include.src.makefile \
 	     Foam/__init__.py \
+	     unittest/testMeshReading/__init__.py \
 	     Foam/Makefile \
 	     Foam/OpenFOAM/Makefile \
 	     Foam/meshTools/Makefile \

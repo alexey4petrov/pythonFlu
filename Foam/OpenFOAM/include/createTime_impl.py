@@ -34,6 +34,19 @@ def createTime_010401_dev( args ):
                     args.caseName() )
 
     return runTime
+#---------------------------------------------------------------------------
+def createTime_010500_free( args ):
+    from Foam.OpenFOAM import ext_Info, nl
+    ext_Info() << "Create time\n" << nl
+    
+    from Foam.OpenFOAM import Time
+    from Foam.OpenFOAM import argList
+    
+    runTime = Time( Time.controlDictName.fget(),
+                    args.rootPath(),
+                    args.caseName() )
+
+    return runTime
 
 
 #---------------------------------------------------------------------------------------------
