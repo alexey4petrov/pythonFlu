@@ -45,7 +45,7 @@ if test "x${MANAGEDFLU_ROOT_DIR}" != "x"; then
    managedflu_path="-I${MANAGEDFLU_ROOT_DIR}/admin"
 fi
 
-if test "x${managedflu_path}" = "x" && test -d /usr/local/share/managedFlu/admin; then
+if test "x${managedflu_path}" = "x" && test -d /usr/local/share/managedflu/admin; then
    managedflu_path="-I/usr/local/share/managedFlu/admin"
 fi
 
