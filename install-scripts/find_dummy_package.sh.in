@@ -24,5 +24,5 @@
 
 
 #--------------------------------------------------------------------------------------
-dummy_package_egg=`python -c "import pkg_resources; import os; print pkg_resources.get_distribution(\"PythonFlu==@PACKAGE_VERSION@-@FOAM_BRANCH@\").location"`
+dummy_package_egg=`python -c "import pkg_resources; import os; print pkg_resources.get_distribution(\"pythonflu==@PACKAGE_VERSION@-@FOAM_BRANCH@\").location"`
 echo ${dummy_package_egg}
