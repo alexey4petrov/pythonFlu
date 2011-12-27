@@ -26,19 +26,13 @@
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
 #include "Foam/src/OpenFOAM/fields/Fields/primitiveFields.hh"
 
 #include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedTypes.hh"
 
 #include <fvcVolumeIntegrate.H>
-
-
-//---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_volVectorField.hh"
- 
-#include "Foam/src/OpenFOAM/fields/tmp/tmp_volScalarField.hh"
 
 
 //---------------------------------------------------------------------------

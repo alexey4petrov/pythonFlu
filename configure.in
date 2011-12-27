@@ -24,7 +24,7 @@
 #--------------------------------------------------------------------------------------
 # Process this file with autoconf to produce a configure script
 #--------------------------------------------------------------------------------------
-AC_INIT([pythonFlu Project], [8.2-hybrid], [alexey.petrov.nnov@gmail.com], [pythonflu])
+AC_INIT([pythonFlu Project], [9.0-porting], [alexey.petrov.nnov@gmail.com], [pythonflu])
 
 # AC_CONFIG_AUX_DIR defines an alternative directory where to find the auxiliary
 # scripts such as config.guess, install-sh, ...
@@ -58,7 +58,23 @@ CONFFLU_CHECK_PYTHON
 echo 
 
 echo "--------------------------------------------------------------------------------------"
+MANAGEDFLU_CHECK_MANAGEDFLU
+echo 
+
+echo "--------------------------------------------------------------------------------------"
+MANAGEDFLU_CHECK_OPENFOAM
+echo 
+
+echo "--------------------------------------------------------------------------------------"
+CONFFLU_CHECK_DIFFUSIONFOAMLIB
+echo 
+
+echo "--------------------------------------------------------------------------------------"
 CONFFLU_CHECK_BOOST_SHARED_PTR
+echo
+
+echo "--------------------------------------------------------------------------------------"
+CONFFLU_CHECK_INSTALL
 echo
 
 echo "--------------------------------------------------------------------------------------"
@@ -67,14 +83,14 @@ echo
 
 
 echo "---------------------------- mandatory products --------------------------------"
-CONFFLU_PRINT_SUMMURY( "openfoam_ok swig_ok python_ok boost_shared_ptr_ok" )
+CONFFLU_PRINT_SUMMURY( "openfoam_ok swig_ok python_ok managedflu_ok" )
 echo
 echo "---------------------------- optional products ---------------------------------"
 echo
 echo "--------------------------------- features -------------------------------------"
 echo
 echo "--------------------------------------------------------------------------------"
-CONFFLU_CHECK_MANDATORY( "openfoam_ok swig_ok python_ok boost_shared_ptr_ok" )
+CONFFLU_CHECK_MANDATORY( "openfoam_ok swig_ok python_ok managedflu_ok" )
 
 
 #--------------------------------------------------------------------------------------
@@ -85,6 +101,7 @@ AC_OUTPUT( [ bashrc \
 	     Foam/foam.version.makefile \
 	     Foam/include.src.makefile \
 	     Foam/__init__.py \
+	     unittest/testMeshReading/__init__.py \
 	     Foam/Makefile \
 	     Foam/OpenFOAM/Makefile \
 	     Foam/meshTools/Makefile \
@@ -102,6 +119,7 @@ AC_OUTPUT( [ bashrc \
 	     Foam/radiation/Makefile \
 	     Foam/incompressible/Makefile \
 	     Foam/compressible/Makefile \
+	     Foam/managedFlu/Makefile
 	     Foam/src/common.hxx \
 	     Foam/src/common.hh \
 	     make-deb.sh \
@@ -114,8 +132,19 @@ AC_OUTPUT( [ bashrc \
 	     deb-template/preinst \
 	     rpm-template/rpm.spec \
 	     rpm-template/Makefile \
+	     install-scripts/find_dummy_package.sh \
+	     install-scripts/setup.py \
+	     install-scripts/install_dummy_package.sh \
+	     install-scripts/install_pythonFlu.sh \
+	     install-scripts/install_develop_pythonFlu.sh \
+	     install-scripts/update_OpenFOAM_bashrc.sh \
+	     install-scripts/uninstall_pythonFlu.sh \
+	     install-scripts/remove_from_OpenFOAM_bashrc.sh \
 	     ChangeLog ],
-	     [ chmod 755 make-deb.sh make-rpm.sh ] )
+	     [ chmod 755 make-deb.sh make-rpm.sh install-scripts/find_dummy_package.sh install-scripts/setup.py install-scripts/install_dummy_package.sh \
+	     install-scripts/install_pythonFlu.sh install-scripts/update_OpenFOAM_bashrc.sh install-scripts/uninstall_pythonFlu.sh \
+	     install-scripts/install_develop_pythonFlu.sh \
+	     install-scripts/remove_from_OpenFOAM_bashrc.sh ] )
 
 
 echo "------------------------------------ OK -----------------------------------------"

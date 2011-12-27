@@ -56,7 +56,8 @@
   void *ptr;
   int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::fvMatrix< Type > * ), 0 );
   int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::fvMatrix< Type > > * ), 0 );
-  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 );
+  int resHolder = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::fvMatrixHolder< Type > * ), 0 );
+  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( resHolder );
 }
 
 %typemap( in ) Foam::fvMatrix< Type >& 
@@ -74,7 +75,13 @@
       Foam::tmp< Foam::fvMatrix< Type > >* tmp_res = %reinterpret_cast( argp, Foam::tmp< Foam::fvMatrix< Type > > * );
       $1 = tmp_res->operator->();
     } else {
-      %argument_fail( res, "$type", $symname, $argnum );
+      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::fvMatrixHolder< Type > * ), %convertptr_flags );
+      if ( SWIG_IsOK( res ) && argp ) {
+        Foam::fvMatrixHolder< Type >* tmp_res = %reinterpret_cast( argp, Foam::fvMatrixHolder< Type > * );
+        $1 = tmp_res->operator->();
+      } else {
+        %argument_fail( res, "$type", $symname, $argnum );
+      }
     }
   }
 }    
@@ -206,6 +213,19 @@
 
 
 //---------------------------------------------------------------------------
+%import "Foam/ext/common/managedFlu/commonHolder.hxx"
+%define FVMATRIX_HOLDER_FUNC_EXTEND( Type )
+
+%extend Foam::fvMatrix< Type > FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE1( Foam::fvMatrix, Type );
+
+%extend Foam::tmp< Foam::fvMatrix< Type > > FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE1( Foam::fvMatrix, Type );
+
+%extend Foam::smart_tmp< Foam::fvMatrix< Type > > FUNCTION_HOLDER_EXTEND_SMART_PTR_TEMPLATE1( Foam::fvMatrix, Type );
+
+%enddef
+
+
+//---------------------------------------------------------------------------
 %define FVMATRIX_TEMPLATE_FUNC( Type )
 
 %import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
@@ -216,9 +236,15 @@ NO_TMP_TYPEMAP_FVMATRIX( Type );
 
 %extend Foam::tmp< Foam::fvMatrix< Type > > COMMON_EXTENDS;
 
+%extend Foam::smart_tmp< Foam::fvMatrix< Type > > COMMON_EXTENDS;
+
 %extend Foam::fvMatrix< Type > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type );
 
 %extend Foam::tmp< Foam::fvMatrix< Type > > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type );
+
+%extend Foam::smart_tmp< Foam::fvMatrix< Type > > __COMMON_FVMATRIX_TEMPLATE_FUNC__( Type );
+
+FVMATRIX_HOLDER_FUNC_EXTEND( Type );
 
 %enddef
 

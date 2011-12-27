@@ -32,9 +32,18 @@
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/managedFlu/no_holder_typemap.hxx"
+NO_HOLDER_TYPEMAP( Foam::fvMesh );
+
+
+//---------------------------------------------------------------------------
 %include "Foam/src/finiteVolume/fields/volFields/volFields.cpp"
 
 %include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.cpp"
+
+%include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolders.cpp"
+
+%include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_typemaps_out.hpp"
 
 %include "Foam/src/finiteVolume/fvMesh/fvMesh.hpp"
 
@@ -49,6 +58,9 @@
   ISINSTANCE_EXTEND( Foam::fvMesh );
 }
 
+
+//---------------------------------------------------------------------------
+%include "Foam/ext/common/finiteVolume/managedFlu/fvMeshHolder.cpp"
 
 //---------------------------------------------------------------------------
 #endif

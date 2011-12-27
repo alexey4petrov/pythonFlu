@@ -41,4 +41,8 @@
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/transportModels/managedFlu/incompressible/transportModelHolder.cpp"
+
+
+//---------------------------------------------------------------------------
 #endif

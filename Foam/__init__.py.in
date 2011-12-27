@@ -80,3 +80,93 @@ def FOAM_REF_VERSION( Cmp, Version):
 def FOAM_BRANCH_VERSION( Name, Cmp, Version):
 
     return eval( "@FOAM_VERSION@" + Cmp + Version ) and "@FOAM_BRANCH@x" == ( Name + "x" )
+
+
+#----------------------------------------------------------------------------
+from helper import TLoadHelper, TManLoadHelper
+from Foam.Man import interfaces as man_interfaces
+from Foam.Ref import interfaces as ref_interfaces
+
+man = TManLoadHelper( man_interfaces.attr2interface )
+
+ref = TLoadHelper( ref_interfaces.attr2interface )
+
+
+#----------------------------------------------------------------------------
+foam_packages = [ 'Foam', 'Foam.OpenFOAM', 'Foam.finiteVolume', 'Foam.compressible', 'Foam.dynamicFvMesh', 
+                  'Foam.incompressible', 'Foam.meshTools', 'Foam.MULES', 'Foam.fv',
+                  'Foam.radiation', 'Foam.randomProcesses', 'Foam.sampling', 'Foam.thermophysicalModels',
+                  'Foam.transportModels' ]
+
+foam_namespaces = [ 'fv', 'fvc', 'fvm', 'compressible', 'incompressible', 'radiation', 'MULES' ]      
+
+#----------------------------------------------------------------------------
+import __builtin__
+_orgimp = __builtin__.__import__
+
+import sys
+python_version=".".join( map( str, sys.version_info )[:-2] )
+
+def __import__( name, globals=None, locals=None, fromlist=None, level = -1 ):
+    
+    if not name in foam_packages or fromlist == None or fromlist[0] == '*' :
+        # from Foam.<package1>.<package2>[.<package3>] import <something>, from Foam import <something >
+        # import Foam
+        # from boto import <something>
+        if python_version >= "2.5.0":
+           return _orgimp( name, globals, locals, fromlist, level )
+        else:
+           return _orgimp( name, globals, locals, fromlist )
+    
+    if name == 'Foam':
+        import Foam
+        a_package = Foam
+        pass
+    else:
+        # name == Foam.[package1][.[package2]....]
+        a_packages = name.split( '.' )
+        a_foam_package = a_packages[ 1 ]
+        exec "from Foam import %s as a_package" %a_foam_package
+        pass
+
+    
+    for an_interface in fromlist:
+        if not a_package.__dict__.has_key( an_interface ):
+        # The "a_package" doesn't know about "an_interface" 
+            from Foam.helper import TLoadHelper
+            if not isinstance( a_package, TLoadHelper ):
+                # for example: from Foam.OpenFoam import Time ( a_package == OpenFOAM )
+                import os
+                a_package_path = a_package.__path__[ 0 ]
+                if os.path.exists( os.path.join( a_package_path, an_interface ) ) and not an_interface in foam_namespaces:
+                    # There is folder( file ) called "an_interface" in "package_path/" and isn't namespace
+                    # for example: "from Foam import OpenFOAM", from Foam.OpenFOAM import include
+                    if python_version >= "2.5.0":
+                        exec "result = _orgimp( name, globals, locals, fromlist, level ).%s" %an_interface
+                        pass
+                    else:
+                        exec "result = _orgimp( name, globals, locals, fromlist ).%s" %an_interface
+                        pass
+
+                    a_package.__dict__[ an_interface ] = result
+                    pass
+                else:
+                    # try through "ref" feature
+                    # for example: "from Foam import compressible", "from Foam.OpenFOAM import Time"
+                    exec "a_ref_interface = ref.%s" %an_interface
+                    a_package.__dict__[ an_interface ] = a_ref_interface
+                    pass
+                pass
+            else:
+                # case from Foam.<TLoadHelper> import <something>( a_package == TLoadHelper )
+                exec "a_ref_interface = a_package.%s" %an_interface
+                globals[ an_interface ] = a_ref_interface
+                pass
+        pass    
+    return a_package
+
+   
+__builtin__.__import__ = __import__
+
+
+#----------------------------------------------------------------------------

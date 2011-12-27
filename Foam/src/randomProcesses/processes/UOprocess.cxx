@@ -41,7 +41,16 @@
 
 %import "Foam/src/OpenFOAM/fields/Fields/complexFields.cxx"
 
+%import "Foam/src/randomProcesses/Kmesh/Kmesh.cxx"
+
 %include <UOprocess.H>
+
+
+//---------------------------------------------------------------------------
+%include "Foam/ext/common/randomProcesses/managedFlu/UOprocessHolder.cpp"
+
+%include "Foam/ext/common/managedFlu/no_holder_typemap.hxx"
+NO_HOLDER_TYPEMAP(Foam::UOprocess)
 
 
 //---------------------------------------------------------------------------

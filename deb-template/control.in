@@ -8,6 +8,6 @@ Homepage: http://sourceforge.net/projects/pythonflu/
 
 Package: #PACKAGE#
 Architecture: @OS_ARCHITECTURE@
-Depends: ${shlibs:Depends}, ${misc:Depends}, @FOAM_PACKAGE_NAME@, python@PYTHON_VERSION@, python-setuptools
+Depends: ${shlibs:Depends}, ${misc:Depends}, @FOAM_PACKAGE_NAME@, python@PYTHON_VERSION@, python-setuptools, managedflu@FOAM_PACKAGE_SUFFIX@, python-pkg-resources, python-dev, automake, libtool, swig
 Description: Python wrapping for OpenFOAM (R) C++ API
 

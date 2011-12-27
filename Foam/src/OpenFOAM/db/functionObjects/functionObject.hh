@@ -26,8 +26,6 @@
 
 
 //---------------------------------------------------------------------------
-#include "Foam/src/OpenFOAM/db/Time/Time.hh"
-
 #include "Foam/src/OpenFOAM/db/dictionary/dictionary.hh"
 
 #include "Foam/src/OpenFOAM/primitives/strings/word.hh"

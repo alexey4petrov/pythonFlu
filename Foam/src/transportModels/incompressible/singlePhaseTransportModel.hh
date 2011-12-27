@@ -32,6 +32,8 @@
 
 #include <singlePhaseTransportModel.H>
 
+#include "Foam/ext/common/transportModels/managedFlu/incompressible/singlePhaseTransportModelHolder.hh"
+
 
 //---------------------------------------------------------------------------
 #endif

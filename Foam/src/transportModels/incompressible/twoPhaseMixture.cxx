@@ -45,4 +45,8 @@
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/transportModels/managedFlu/incompressible/twoPhaseMixtureHolder.cpp"
+
+
+//---------------------------------------------------------------------------
 #endif

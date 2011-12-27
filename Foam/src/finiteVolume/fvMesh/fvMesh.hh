@@ -48,8 +48,12 @@
 
 #include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
 
+#include "Foam/ext/common/OpenFOAM/managedFlu/GeometricFieldHolders.hh"
+
 #include <fvMesh.H>
 #include <volMesh.H>
+
+#include "Foam/ext/common/finiteVolume/managedFlu/fvMeshHolder.hh"
 
 
 //---------------------------------------------------------------------------

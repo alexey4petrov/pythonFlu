@@ -49,6 +49,14 @@
 
 %import "Foam/src/OpenFOAM/primitives/strings/word.cxx"
 
+
+//---------------------------------------------------------------------------
+%include "Foam/src/OpenFOAM/db/functionObjects/functionObject.cpp"
+
+%include "Foam/src/OpenFOAM/db/functionObjects/functionObjectList.cpp"
+
+
+//---------------------------------------------------------------------------
 %ignore Foam::Time::writeVersion;
 
 %include <Time.H>
@@ -59,8 +67,20 @@
   {
     self->operator++();
   }
+
+  bool ext_end()
+  {
+    return self->end();
+  }
 }
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/OpenFOAM/managedFlu/TimeHolder.cpp"
+NO_HOLDER_TYPEMAP( Foam::Time )
+
+
+
+//---------------------------------------------------------------------------
+
 #endif

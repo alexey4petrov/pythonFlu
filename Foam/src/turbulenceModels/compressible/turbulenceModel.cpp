@@ -60,4 +60,8 @@
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/turbulenceModels/managedFlu/compressible_turbulenceModelHolder.cpp"
+
+
+//---------------------------------------------------------------------------
 #endif

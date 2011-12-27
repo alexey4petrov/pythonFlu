@@ -44,6 +44,12 @@ def createTime( args ) :
                     
 
 #---------------------------------------------------------------------------
+def createTimeHolder( args ):
+    from Foam import man
+    return man( createTime( args ), man.Deps() )
+
+
+#---------------------------------------------------------------------------
 class getTime( object ):
     """
     C++ orientied mapping for the corresponding functional objects
@@ -73,8 +79,14 @@ def createMesh( runTime ):
                              runTime,
                              IOobject.MUST_READ ) )
     
-   
     return mesh
+
+
+#---------------------------------------------------------------------------
+def createMeshHolder( runTime ):
+    from Foam import man
+
+    return man( createMesh( runTime ), man.Deps( runTime ) )
 
 
 #---------------------------------------------------------------------------
@@ -93,3 +105,11 @@ def createMeshNoClear( runTime ):
                              IOobject.MUST_READ ) )
 
     return mesh
+
+    
+#---------------------------------------------------------------------------
+def createMeshNoClearHolder( runTime ):
+    from Foam import man
+
+    return man( createMeshNoClear( runTime ), man.Deps( runTime ) )
+

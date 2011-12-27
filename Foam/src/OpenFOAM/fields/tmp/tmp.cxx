@@ -39,7 +39,7 @@
 
 %import "Foam/src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
 
-%import "Foam/ext/common/ext_tmp.hxx"
+%import "Foam/ext/common/smart_tmp.hxx"
 
 %include <tmp.H>
 

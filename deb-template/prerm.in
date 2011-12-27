@@ -5,22 +5,48 @@
 
 set -e
 
-install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`
 
-if [ "@WITH_SOLVERS@" = "yes" ]; then
-  packages_dir=/usr/local/share/pythonFlu/solvers
-  . ${packages_dir}/install_list.sh
-  install_list=`create_install_list`
-  while [ "x${install_list}" != "x" ]; do
-     package=`echo ${install_list} | grep -o -e "[A-Z,a-z]*$"`
-     easy_install -m $package
-     rm -rf ${install_path}/${package}.egg*
-     rm -f /usr/local/bin/${package}
-     install_list=`echo ${install_list} | sed -e "s/${package}$//" | sed -e "s/ $//"`
-  done
-fi
+# summary of how this script can be called:
+#        * <prerm> `remove'
+#        * <old-prerm> `upgrade' <new-version>
+#        * <new-prerm> `failed-upgrade' <old-version>
+#        * <conflictor's-prerm> `remove' `in-favour' <package> <new-version>
+#        * <deconfigured's-prerm> `deconfigure' `in-favour'
+#          <package-being-installed> <version> `removing'
+#          <conflicting-package> <version>
+# for details, see http://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
 
-easy_install -m Foam
-rm -rf ${install_path}/Foam-*.egg*
+
+case "$1" in
+    remove|upgrade)
+      rm -rf `@PACKAGE_INSTALL_DIR@/install-scripts/find_dummy_package.sh`
+      @PACKAGE_INSTALL_DIR@/install-scripts/remove_from_OpenFOAM_bashrc.sh
+    ;;
+
+    failed-upgrade|deconfigure)
+    ;;
+
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+# The next lines are example how we can combine solvers and pythonFlu in one package.
+# install_path=`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`
+# if [ "@WITH_SOLVERS@" = "yes" ]; then
+#  packages_dir=/usr/local/share/pythonFlu/solvers
+#  . ${packages_dir}/install_list.sh
+#  install_list=`create_install_list`
+#  while [ "x${install_list}" != "x" ]; do
+#     package=`echo ${install_list} | grep -o -e "[A-Z,a-z]*$"`
+#     easy_install -m $package
+#     rm -rf ${install_path}/${package}.egg*
+#     rm -f /usr/local/bin/${package}
+#     install_list=`echo ${install_list} | sed -e "s/${package}$//" | sed -e "s/ $//"`
+#  done
+# fi
+
 
 exit 0

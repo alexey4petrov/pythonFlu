@@ -38,6 +38,8 @@
 
 #include <basicPsiThermo.H>
 
+#include "Foam/ext/common/thermophysicalModels/managedFlu/basicPsiThermoHolder.hh"
+
 
 //---------------------------------------------------------------------------
 #endif

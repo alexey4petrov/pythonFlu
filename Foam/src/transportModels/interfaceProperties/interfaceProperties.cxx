@@ -41,4 +41,8 @@
 
 
 //--------------------------------------------------------------------------
+%include "Foam/ext/common/transportModels/managedFlu/interfaceProperties/interfacePropertiesHolder.cpp"
+
+
+//--------------------------------------------------------------------------
 #endif

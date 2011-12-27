@@ -26,12 +26,21 @@
 
 #--------------------------------------------------------------------------------------
 from Time import *
-
+from Foam.src.OpenFOAM.primitives.strings.fileName import *
 aTime = Time( fileName(), fileName())
 aTime.setTime( 0.0, 0 )
 print aTime.value()
+aTime.setDeltaT(1.0)
+aTime.increment()
+print aTime.value()
+from Foam import man 
+timeHolder=aTime.holder( man.Deps() )
+aTime.__disown__()
+timeHolder.increment()
 
-print "OK"
+if timeHolder.value() == aTime.value():
+   print aTime.value()
+   print "OK"
 
 
 #--------------------------------------------------------------------------------------

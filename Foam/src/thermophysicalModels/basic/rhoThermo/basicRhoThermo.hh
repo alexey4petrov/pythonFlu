@@ -38,6 +38,8 @@
 
 #include <basicRhoThermo.H>
 
+#include "Foam/ext/common/thermophysicalModels/managedFlu/basicRhoThermoHolder.hh"
+
 
 //---------------------------------------------------------------------------
 #endif

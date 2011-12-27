@@ -46,6 +46,7 @@
 
 #include "Foam/src/OpenFOAM/fields/tmp/tmp_sphericalTensorField.hh"
 
+#include "Foam/ext/common/OpenFOAM/managedFlu/vectorFieldHolder.hh"
 
 
 //---------------------------------------------------------------------------

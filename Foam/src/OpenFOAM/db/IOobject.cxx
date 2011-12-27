@@ -39,6 +39,13 @@
 
 %import "Foam/src/OpenFOAM/db/typeInfo/typeInfo.hxx"
 
+
+//---------------------------------------------------------------------------
+%include "Foam/ext/common/managedFlu/no_holder_typemap.hxx"
+NO_HOLDER_TYPEMAP( Foam::objectRegistry );
+
+
+//---------------------------------------------------------------------------
 %include <IOobject.H>
 
 %extend Foam::IOobject
@@ -53,6 +60,10 @@
     self->readOpt() = opt;
   }
 }
+
+
+//---------------------------------------------------------------------------
+%include "Foam/ext/common/OpenFOAM/managedFlu/IOobjectHolder.cpp"
 
 
 //---------------------------------------------------------------------------

@@ -34,7 +34,11 @@
 
 #include "Foam/src/OpenFOAM/fields/Fields/complexFields.hh"
 
+#include "Foam/src/randomProcesses/Kmesh/Kmesh.hh"
+
 #include <UOprocess.H>
+
+#include "Foam/ext/common/randomProcesses/managedFlu/UOprocessHolder.hh"
 
 
 //---------------------------------------------------------------------------

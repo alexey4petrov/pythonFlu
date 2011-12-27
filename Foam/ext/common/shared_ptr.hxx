@@ -28,6 +28,8 @@
 //---------------------------------------------------------------------------
 %include "Foam/src/common.hxx"
 
+%import "Foam/src/OpenFOAM/fields/tmp/smartPtr_extend.hxx"
+
 %{
     #include "boost/shared_ptr.hpp"
 %}
@@ -41,6 +43,8 @@ namespace boost
         T * operator-> () const;
 
         T * get() const;
+        
+        T & operator* () const;
 
         bool unique() const;
 
@@ -57,6 +61,11 @@ namespace boost
             {
                 return self->get() != 0;
             }
+            
+            bool valid() const
+            {
+              return self->get() != 0;
+            }
         }
     };
 }
@@ -66,6 +75,15 @@ namespace boost
 %define SHAREDPTR_TYPEMAP( TYPE )
 
 %feature("novaluewrapper") boost::shared_ptr< TYPE >;
+
+%typecheck( SWIG_TYPECHECK_POINTER ) const boost::shared_ptr< TYPE > &
+{
+  void *ptr;
+  int res_sharedPtrT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( boost::shared_ptr< TYPE > * ), 0 );
+  int res_T = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( TYPE * ), 0 );
+  $1 = SWIG_CheckState( res_sharedPtrT ) || SWIG_CheckState( res_T );
+}
+
 
 %typemap(in) const boost::shared_ptr< TYPE > & ( void  *argp = 0, int res = 0, boost::shared_ptr< TYPE > tempshared ) {
     res = SWIG_ConvertPtr( $input, &argp, $descriptor( boost::shared_ptr< TYPE > * ), %convertptr_flags );

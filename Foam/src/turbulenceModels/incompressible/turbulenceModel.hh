@@ -37,15 +37,13 @@
 
 #include "Foam/src/OpenFOAM/fields/tmp/autoPtr.hh"
 
-#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
-
-#include "Foam/src/finiteVolume/fields/surfaceFields/surfaceFields.hh"
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
 #include "Foam/src/finiteVolume/fvMatrices/fvMatrices.hh"
 
 #include "Foam/src/transportModels/incompressible/transportModel.hh"
 
-#include "Foam/ext/common/finiteVolume/ext_tmp/ext_tmp_volScalarField.hh"
+#include "Foam/ext/common/finiteVolume/smart_tmp/smart_tmp_volScalarField.hh"
 
 
 //------------------------------------------------------------------------
@@ -60,6 +58,8 @@
 #else
   #include <incompressibleTurbulenceModel/turbulenceModel.H>
 #endif 
+
+#include "Foam/ext/common/turbulenceModels/managedFlu/incompressible_turbulenceModelHolder.hh"
 
 
 //---------------------------------------------------------------------------

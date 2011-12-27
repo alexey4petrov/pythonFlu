@@ -48,6 +48,8 @@
   #include <compressibleTurbulenceModel/turbulenceModel.H>
 #endif 
 
+#include "Foam/ext/common/turbulenceModels/managedFlu/compressible_turbulenceModelHolder.hh"
+
 
 //---------------------------------------------------------------------------
 #endif

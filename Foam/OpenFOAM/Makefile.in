@@ -28,6 +28,14 @@ include @abs_top_builddir@/Foam/foam.version.makefile
 
 
 #--------------------------------------------------------------------------------------
+__CPPFLAGS__ := $(__CPPFLAGS__) \
+	@MANAGEDFLU_OPENFOAM_CPPFLAGS@ \
+	
+__LDFLAGS__ := $(__LDFLAGS__) \
+	@MANAGEDFLU_OPENFOAM_LIB@ \
+
+
+#--------------------------------------------------------------------------------------
 sources = \
 	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/bool.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/primitives/int_.cxx \
@@ -192,7 +200,6 @@ sources = \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/regIOobject.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashTable/HashTable_regIOobject_word_string_hash.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/objectRegistry.cxx \
-	@abs_top_builddir@/Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_objectRegistry.cxx \
 	\
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/HashTables/HashPtrTable/HashPtrTable_IOobject_word_string_hash.cxx \
@@ -230,9 +237,6 @@ sources = \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/Time/TimePaths.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/Time/TimeState.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/db/Time/Time.cxx \
-	@abs_top_builddir@/Foam/ext/common/OpenFOAM/shared_ptr/shared_ptr_Time.cxx \
-	\
-	@abs_top_builddir@/Foam/src/OpenFOAM/db/functionObjects/functionObject.cxx \
 	\
 	@abs_top_builddir@/Foam/src/OpenFOAM/memory/Xfer_pointField.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/memory/Xfer_faceList.cxx \

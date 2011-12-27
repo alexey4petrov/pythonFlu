@@ -44,6 +44,8 @@
 %ignore Foam::UList< Foam::entry >::operator>=;
 %ignore Foam::UList< Foam::entry >::operator<=;
 
+TEMPLATE_ULIST_ITERATOR( entry );
+
 %template( UList_entry ) Foam::UList< Foam::entry >; 
 
 %extend Foam::UList< Foam::entry >

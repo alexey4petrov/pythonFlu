@@ -66,7 +66,12 @@
   }
   void add( const Foam::word& keyword, const Foam::tokenList& value )
   {
-    self->add< tokenList >( keyword, value );
+    self->add< Foam::tokenList >( keyword, value );
+  }
+
+  void add( const Foam::word& keyword, const Foam::ITstream& value )
+  {
+    self->add< Foam::ITstream >( keyword, value );
   }
   
   ISINSTANCE_EXTEND( Foam::dictionary ) 
@@ -150,10 +155,22 @@
     return self->readIfPresent( k, val, recursive, patternMatch );
   }
 #endif
+
+#if FOAM_VERSION( >=, 020000 )
+  bool readIfPresent( const Foam::word& k, Foam::word& the_word, bool recursive = false, bool patternMatch = true ) const
+  {
+    return self->readIfPresent( k, the_word, recursive, patternMatch );
+  }
+#endif
+
 }
 
 // To use as input / output value for readIfPresent function
 %clear double& val;
+
+
+//---------------------------------------------------------------------------
+%include "Foam/ext/common/OpenFOAM/managedFlu/dictionaryHolder.cpp"
 
 
 //---------------------------------------------------------------------------

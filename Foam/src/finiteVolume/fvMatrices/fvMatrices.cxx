@@ -35,6 +35,7 @@
 //---------------------------------------------------------------------------
 %include "Foam/src/finiteVolume/fvMatrices/fvScalarMatrix.cpp"
 %include "Foam/src/OpenFOAM/fields/tmp/tmp_fvScalarMatrix.cpp"
+%include "Foam/ext/common/finiteVolume/managedFlu/fvScalarMatrixHolder.cpp"
 
 FVMATRIX_TEMPLATE_GLOBAL_FUNC( Foam::scalar );
 
@@ -42,6 +43,7 @@ FVMATRIX_TEMPLATE_GLOBAL_FUNC( Foam::scalar );
 //---------------------------------------------------------------------------
 %include "Foam/src/finiteVolume/fvMatrices/fvVectorMatrix.cpp"
 %include "Foam/src/OpenFOAM/fields/tmp/tmp_fvVectorMatrix.cpp"
+%include "Foam/ext/common/finiteVolume/managedFlu/fvVectorMatrixHolder.cpp"
 
 FVMATRIX_TEMPLATE_GLOBAL_FUNC( Foam::vector );
 

@@ -90,4 +90,8 @@
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/turbulenceModels/managedFlu/incompressible_RASModelHolder.cpp"
+
+
+//---------------------------------------------------------------------------
 #endif

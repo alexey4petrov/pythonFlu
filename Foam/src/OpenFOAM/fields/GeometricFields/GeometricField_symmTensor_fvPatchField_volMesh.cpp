@@ -46,6 +46,17 @@
 
 %include "Foam/src/OpenFOAM/fields/DimensionedFields/DimensionedField_symmTensor_volMesh.cpp"
 
+%template ( TGeometricBoundaryField_symmTensor_fvPatchField_volMesh ) Foam::TGeometricBoundaryField< Foam::symmTensor, Foam::fvPatchField, Foam::volMesh >;
+
+%feature( "pythonappend" ) Foam::TGeometricBoundaryField< Foam::symmTensor, Foam::fvPatchField, Foam::volMesh >::NESTEDCLASS_PYAPPEND_GETATTR( TGeometricBoundaryField_symmTensor_fvPatchField_volMesh );
+
+%extend Foam::TGeometricBoundaryField< Foam::symmTensor, Foam::fvPatchField, Foam::volMesh >
+{
+  NESTEDCLASS_EXTEND_ATTR( TGeometricBoundaryField_symmTensor_fvPatchField_volMesh );
+  TGEOM_BOUND_FIELD_GETITEM_EXTEND( Foam::fvPatchSymmTensorField );
+  TGEOM_BOUND_FIELD_FVPATCHFIELD_EXTENDS();
+}
+
 %ignore Foam::GeometricField< Foam::symmTensor, Foam::fvPatchField, Foam::volMesh >::debug;
 %ignore Foam::GeometricField< Foam::symmTensor, Foam::fvPatchField, Foam::volMesh >::typeName;
 %ignore Foam::GeometricField< Foam::symmTensor, Foam::fvPatchField, Foam::volMesh >::boundaryField;

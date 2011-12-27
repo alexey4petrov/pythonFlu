@@ -61,18 +61,12 @@ def readTimeControls( runTime ):
     
 
 #----------------------------------------------------------------------------
-def setInitialDeltaT( runTime, adjustTimeStep, maxCo, maxDeltaT, CoNum ):
-    from Foam.OpenFOAM import SMALL 
-
-    if adjustTimeStep :
-        if runTime.timeIndex() == 0:
-            if CoNum > SMALL :
-                runTime.setDeltaT( min( maxCo * runTime.deltaT().value() / CoNum, maxDeltaT ) )
-                pass
-            pass
-	pass
+def setInitialDeltaT( *args ):
+    from Foam import get_proper_function
+    fun = get_proper_function( "Foam.finiteVolume.cfdTools.general.include.setInitialDeltaT_impl",
+                               "setInitialDeltaT" )
     
-    return runTime         
+    return fun( *args )        
 
 
 #------------------------------------------------------------------------------------
@@ -157,3 +151,10 @@ def readGravitationalAcceleration( runTime, mesh):
                                                  IOobject.MUST_READ,
                                                  IOobject.NO_WRITE ) )
     return g
+
+
+#--------------------------------------------------------------------------------------------
+def readGravitationalAccelerationHolder( runTime, mesh ):
+    from Foam import man
+    return man( readGravitationalAcceleration( runTime, mesh ), man.Deps() )
+

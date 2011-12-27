@@ -37,6 +37,8 @@
 
 %import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
+TEMPLATE_ULIST_ITERATOR( scalar );
+
 %template( UList_scalar ) Foam::UList< Foam::scalar >; 
 
 ULISTBASED_ADDONS( Foam::scalar );

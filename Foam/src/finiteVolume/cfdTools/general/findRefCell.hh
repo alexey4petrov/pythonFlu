@@ -28,7 +28,8 @@
 //-------------------------------------------------------------------------------------
 #include "Foam/src/OpenFOAM/primitives/label.hh"
 #include "Foam/src/OpenFOAM/primitives/scalar.hh"
-#include "Foam/src/finiteVolume/fields/volFields/volFields.hh"
+
+#include "Foam/src/finiteVolume/fvMesh/fvMeshes.hh"
 
 #include <findRefCell.H>
 

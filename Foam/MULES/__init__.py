@@ -22,8 +22,4 @@
 
 
 #---------------------------------------------------------------------------
-from Foam.src.finiteVolume.fvMatrices.solvers.MULES.MULES import *
 
-
-#---------------------------------------------------------------------------
-explicitSolve = MULES_explicitSolve

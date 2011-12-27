@@ -45,6 +45,13 @@ def createPhi( runTime, mesh, U ):
 
 
 #---------------------------------------------------------------------------
+def createPhiHolder( runTime, mesh, U ):
+    from Foam import man
+    
+    return man( createPhi( runTime, mesh, U ), man.Deps( runTime, mesh, U ) )
+
+
+#---------------------------------------------------------------------------
 def CourantNo( mesh, phi, runTime ):
     from Foam import get_proper_function
     fun = get_proper_function( "Foam.finiteVolume.cfdTools.general.include.CourantNo_impl",

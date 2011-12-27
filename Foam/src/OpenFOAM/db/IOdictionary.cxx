@@ -58,4 +58,8 @@ BAREPTR_TYPEMAP( Foam::IOdictionary );
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/OpenFOAM/managedFlu/IOdictionaryHolder.cpp"
+
+
+//---------------------------------------------------------------------------
 #endif

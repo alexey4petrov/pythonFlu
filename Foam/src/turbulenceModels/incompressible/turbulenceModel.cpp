@@ -63,7 +63,7 @@
     
 %extend Foam::turbulenceModel  
 {
-  Foam::ext_tmp< Foam::volScalarField > ext_nut()
+  Foam::smart_tmp< Foam::volScalarField > ext_nut()
   {
     return self->nut();
   }
@@ -77,6 +77,11 @@
     
 %ignore Foam::incompressible::turbulenceModel::nut;
 
+#if FOAM_VERSION( >=, 020000 )
+%ignore Foam::incompressible::turbulenceModel::nu;
+#endif
+
+
 #if FOAM_NOT_BRANCH( __FREEFOAM__ )
 %include <incompressible/turbulenceModel.H>
 #else
@@ -85,12 +90,23 @@
   
 %extend Foam::incompressible::turbulenceModel  
 {
-  Foam::ext_tmp< Foam::volScalarField > ext_nut()
+  Foam::smart_tmp< Foam::volScalarField > ext_nut()
   {
     return self->nut();
   }
+#if FOAM_VERSION( >=, 020000 )
+  Foam::smart_tmp< Foam::volScalarField > ext_nu()
+  {
+    return self->nu()();
+  }
+#endif
+
 }
 #endif
+
+
+//---------------------------------------------------------------------------
+%include "Foam/ext/common/turbulenceModels/managedFlu/incompressible_turbulenceModelHolder.cpp"
 
 
 //---------------------------------------------------------------------------

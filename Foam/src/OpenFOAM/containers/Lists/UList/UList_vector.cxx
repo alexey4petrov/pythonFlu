@@ -51,6 +51,8 @@ ULIST_TYPEMAP( vector );
 %ignore Foam::UList< Foam::vector >::operator ==;
 %ignore Foam::UList< Foam::vector >::operator !=;
 
+TEMPLATE_ULIST_ITERATOR( vector );
+
 %template( UList_vector ) Foam::UList< Foam::vector >; 
 
 ULISTBASED_ADDONS( Foam::vector );

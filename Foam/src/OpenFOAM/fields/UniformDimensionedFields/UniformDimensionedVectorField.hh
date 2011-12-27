@@ -38,6 +38,8 @@
 
 #include "Foam/src/OpenFOAM/dimensionedTypes/dimensionedVector.hh"
 
+#include "Foam/ext/common/OpenFOAM/managedFlu/uniformDimensionedVectorFieldHolder.hh"
+
 
 //---------------------------------------------------------------------------
 #endif

@@ -46,6 +46,8 @@
   #include <SHA1Digest.H>
 #endif
 
+#include "Foam/ext/common/OpenFOAM/managedFlu/dictionaryHolder.hh"
+
 
 //---------------------------------------------------------------------------
 #endif

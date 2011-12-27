@@ -47,6 +47,25 @@
 
 %include <graph.H>
 
+#if FOAM_REF_VERSION( >=, 020000 )
+%extend Foam::graph
+{
+  void ext_write( Foam::Ostream& os, const Foam::word& format) const
+  {
+    self->write( os, format );
+  }
+
+  void ext_write(const Foam::fileName& pName, const Foam::word& format) const
+  {
+    self->write( pName, format );
+  }
+
+  void ext_write( const Foam::fileName& path, const Foam::word& name, const Foam::word& format ) const
+  {
+    self->write( path, name, format );
+  }
+}
+#endif
 
 //---------------------------------------------------------------------------
 #endif

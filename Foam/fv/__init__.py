@@ -22,14 +22,4 @@
 
 
 #---------------------------------------------------------------------------
-from Foam.src.finiteVolume.finiteVolume.convectionSchemes.convectionScheme.convectionScheme_scalar import *
-from Foam.src.finiteVolume.finiteVolume.convectionSchemes.convectionScheme.convectionScheme_scalar import *
 
-from Foam.src.finiteVolume.finiteVolume.convectionSchemes.gaussConvectionScheme.gaussConvectionScheme_scalar import *
-from Foam.src.finiteVolume.finiteVolume.convectionSchemes.gaussConvectionScheme.gaussConvectionScheme_vector import *
-
-from Foam.src.finiteVolume.finiteVolume.convectionSchemes.multivariateGaussConvectionScheme.multivariateGaussConvectionScheme_scalar import *
-from Foam.src.finiteVolume.finiteVolume.convectionSchemes.multivariateGaussConvectionScheme.multivariateGaussConvectionScheme_vector import *
-
-
-#---------------------------------------------------------------------------

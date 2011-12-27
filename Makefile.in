@@ -22,13 +22,7 @@
 
 
 #--------------------------------------------------------------------------------------
-prefix:=@prefix@
-
-pythondir:=@PYTHONDIR@
-
 pythonflu_root_dir:=@abs_top_builddir@
-
-m4dir:=@datarootdir@
 
 include $(pythonflu_root_dir)/Foam/include.src.makefile
 
@@ -37,34 +31,29 @@ SUBDIRS = Foam
 
 #--------------------------------------------------------------------------------------
 deb:
-	test "x@OS_NAME@" = "x" && echo "Current OS is not supported" && exit 1
+	if [ "x@OS_NAME@" = "x" ]; then echo "Current OS is not supported" && exit 1; fi
 	@./make-deb.sh deb
 
 launchpad:
-	test "x@OS_NAME@" = "x" && echo "Current OS is not supported" && exit 1
+	if [ "x@OS_NAME@" = "x" ]; then echo "Current OS is not supported" && exit 1; fi
 	@./make-deb.sh launchpad
 
 rpm:
-	test "x@OS_NAME@" = "x" && echo "Current OS is not supported" && exit 1
+	if [ "x@OS_NAME@" = "x" ]; then echo "Current OS is not supported" && exit 1; fi
 	@./make-rpm.sh
 
+x1:
+	@ echo $(pythonflu_dir)
 
 #--------------------------------------------------------------------------------------
 install:
-	@ rm -rf $(pythondir)/Foam $(m4dir)/pythonFlu
-	@ install -d $(pythondir) $(m4dir)/pythonFlu/admin
-	@ cp -rf Foam $(pythondir)/
-	@ (cd $(pythondir)/Foam && find \( -name "*.d" -o -name "pyfoam" -o -name "*.cc" -o -name "*.exe" \) -delete)
-	@ (cd $(pythondir)/Foam && find \( -name "*.h" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
-	@ cp -rf @abs_top_builddir@/admin/pythonflu_check_pythonflu.m4 $(m4dir)/pythonFlu/admin/
-	@ python -c "from setuptools import setup; setup(name='Foam', version='@PACKAGE_VERSION@')" install
+	@ ./install-scripts/install_pythonFlu.sh
 
 develop:
-	@ rm -rf $(pythondir)/Foam $(m4dir)/pythonFlu
-	@ install -d $(pythondir) $(m4dir)/pythonFlu/admin
-	@ ln -s @abs_top_builddir@/Foam $(pythondir)/Foam 
-	@ ln -s @abs_top_builddir@/admin/pythonflu_check_pythonflu.m4 $(m4dir)/pythonFlu/admin/pythonflu_check_pythonflu.m4
-	@ python -c "from setuptools import setup; setup(name='Foam', version='@PACKAGE_VERSION@')" install
+	@ ./install-scripts/install_develop_pythonFlu.sh
+
+uninstall:
+	@ ./install-scripts/uninstall_pythonFlu.sh
 
 
 #--------------------------------------------------------------------------------------

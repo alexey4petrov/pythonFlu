@@ -27,8 +27,10 @@
 
 //---------------------------------------------------------------------------
 #include "Foam/src/finiteVolume/fvMatrices/fvScalarMatrix.hh"
+#include "Foam/ext/common/finiteVolume/managedFlu/fvScalarMatrixHolder.hh"
 
 #include "Foam/src/finiteVolume/fvMatrices/fvVectorMatrix.hh"
+#include "Foam/ext/common/finiteVolume/managedFlu/fvVectorMatrixHolder.hh"
 
 
 //---------------------------------------------------------------------------

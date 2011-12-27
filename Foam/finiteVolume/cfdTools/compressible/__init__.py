@@ -46,6 +46,13 @@ def compressibleCreatePhi( runTime, mesh, rho, U ):
 
 
 #---------------------------------------------------------------------------
+def compressibleCreatePhiHolder( runTime, mesh, rho, U ):
+     from Foam import man
+     
+     return man( compressibleCreatePhi( runTime, mesh, rho, U ), man.Deps( runTime, mesh, rho, U ) )
+
+
+#---------------------------------------------------------------------------
 def compressibleCourantNo( mesh, phi, rho, runTime ):
     from Foam import get_proper_function
     fun = get_proper_function( "Foam.finiteVolume.cfdTools.compressible.compressibleCourantNo_impl",

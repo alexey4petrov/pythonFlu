@@ -28,7 +28,7 @@
 //---------------------------------------------------------------------------
 %import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "Foam/ext/common/ext_tmp.hxx"
+%import "Foam/ext/common/smart_tmp.hxx"
 
 
 //---------------------------------------------------------------------------
@@ -39,8 +39,9 @@
   void *ptr;
   int res_T = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::GeometricField< Type, TPatchField, TMesh > * ), 0 );
   int res_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
-  int res_ext_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
-  $1 = SWIG_CheckState( res_T ) || SWIG_CheckState( res_tmpT ) || SWIG_CheckState( res_ext_tmpT );
+  int res_smart_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::smart_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
+  int res_Holder = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::GeometricFieldHolder< Type, TPatchField, TMesh > * ), 0 );  
+  $1 = SWIG_CheckState( res_T ) || SWIG_CheckState( res_tmpT ) || SWIG_CheckState( res_smart_tmpT )|| SWIG_CheckState( res_Holder );
 }
 
 %typemap( in ) Foam::GeometricField< Type, TPatchField, TMesh >& 
@@ -58,12 +59,18 @@
       Foam::tmp<Foam::GeometricField< Type, TPatchField, TMesh> >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
       $1 = tmp_res->operator->();
     } else {
-      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > >* ), %convertptr_flags );
+      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::smart_tmp< Foam::GeometricField< Type, TPatchField, TMesh > >* ), %convertptr_flags );
       if ( SWIG_IsOK( res ) && argp ) {
-        Foam::ext_tmp<Foam::GeometricField< Type, TPatchField, TMesh> >* tmp_res =%reinterpret_cast( argp, Foam::ext_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
+        Foam::smart_tmp<Foam::GeometricField< Type, TPatchField, TMesh> >* tmp_res =%reinterpret_cast( argp, Foam::smart_tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
         $1 = tmp_res->operator->();
       } else {
-        %argument_fail( res, "$type", $symname, $argnum );
+        res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::GeometricFieldHolder< Type, TPatchField, TMesh >* ), %convertptr_flags );
+        if ( SWIG_IsOK( res ) && argp ) {
+          Foam::GeometricFieldHolder< Type, TPatchField, TMesh>* tmp_res =%reinterpret_cast( argp, Foam::GeometricFieldHolder< Type, TPatchField, TMesh >* );
+          $1 = tmp_res->operator->();
+        } else {
+          %argument_fail( res, "$type", $symname, $argnum );
+        }
       }
     }
   }

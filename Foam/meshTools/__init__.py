@@ -22,14 +22,4 @@
 
 
 #---------------------------------------------------------------------------
-from Foam.src.meshTools.coordinateSystems.coordinateSystem import *
-from Foam.src.meshTools.coordinateSystems.coordinateSystems import *
-from Foam.src.meshTools.coordinateSystems.coordinateRotation.coordinateRotation import *
 
-from Foam.src.OpenFOAM.containers.Lists.PtrList.IOPtrList.IOPtrList_coordinateSystem import *
-from Foam.src.OpenFOAM.containers.Lists.PtrList.PtrList_coordinateSystem import *
-
-from Foam.src.meshTools.directMapped.directMappedPolyPatch.directMappedPatchBase import *
-
-
-#---------------------------------------------------------------------------

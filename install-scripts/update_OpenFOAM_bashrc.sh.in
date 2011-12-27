@@ -1,0 +1,42 @@
+#!/bin/bash
+
+## confFlu - pythonFlu configuration package
+## Copyright (C) 2010- Alexey Petrov
+## Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
+## 
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+## 
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+## 
+## See http://sourceforge.net/projects/pythonflu
+##
+## Author : Alexey PETROV, Andrey Simurzin
+##
+
+
+#--------------------------------------------------------------------------------------
+pythonflu_dir=${1}
+
+foam_package_dir=${2}
+
+if [ '@FOAM_BRANCH@' != 'free' ]; then
+    touch ${pythonflu_dir}/bashrc
+    echo "export PYTHONFLU_ROOT_DIR=${pythonflu_dir}" >> ${pythonflu_dir}/bashrc
+    echo 'echo PYTHONFLU_ROOT_DIR="${PYTHONFLU_ROOT_DIR}"' >> ${pythonflu_dir}/bashrc
+    echo 'export PYTHONPATH=${PYTHONFLU_ROOT_DIR}:${PYTHONPATH}' >> ${pythonflu_dir}/bashrc
+    echo 'export PATH=${PYTHONFLU_ROOT_DIR}:${PATH}' >> ${pythonflu_dir}/bashrc
+    echo 'export LD_LIBRARY_PATH=${PYTHONFLU_ROOT_DIR}:${LD_LIBRARY_PATH}' >> ${pythonflu_dir}/bashrc
+    if [ `grep -c "source ${pythonflu_dir}/bashrc" ${foam_package_dir}/etc/bashrc` -eq 0 ]; then
+        echo "source ${pythonflu_dir}/bashrc" >> ${foam_package_dir}/etc/bashrc
+    fi
+fi
+

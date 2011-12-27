@@ -49,8 +49,15 @@
 {
   void ext_assign( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theSource )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
     *dynamic_cast< Foam::DimensionedField< Foam::Type, Foam::TMesh >* >( self ) = theSource;
   }
+  
+  void __lshift__( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theSource )
+  {
+    *dynamic_cast< Foam::DimensionedField< Foam::Type, Foam::TMesh >* >( self ) = theSource;
+  }
+
 }
 %enddef
 
@@ -112,9 +119,15 @@
     
   void ext_assign( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theArg )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
     *self = theArg;
   }
   
+  void __lshift__( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theArg )
+  {
+    *self = theArg;
+  }
+
   Foam::dimensioned< Type > ext_sum()
   {
     return Foam::sum( *self );

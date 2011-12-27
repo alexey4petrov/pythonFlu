@@ -41,7 +41,7 @@
 
 %template( UList_word ) Foam::UList< Foam::word >; 
 
-%template( TContainer_word_iterator ) Foam::TContainer_iterator<  Foam::UList< Foam::word > >;
+TEMPLATE_ULIST_ITERATOR( word );
 
 ULISTBASED_ADDONS( Foam::word );
 

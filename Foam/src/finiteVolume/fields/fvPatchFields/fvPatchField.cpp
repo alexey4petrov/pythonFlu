@@ -51,8 +51,15 @@
 {
   void ext_assign( const Foam::fvPatchField< Foam::Type >& theSource )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
     *dynamic_cast< Foam::fvPatchField< Foam::Type >* >( self ) = theSource;
   }
+
+  void __lshift__( const Foam::fvPatchField< Foam::Type >& theSource )
+  {
+    *dynamic_cast< Foam::fvPatchField< Foam::Type >* >( self ) = theSource;
+  }
+
 }
 %enddef
 
@@ -60,7 +67,7 @@
 //--------------------------------------------------------------------------
 %define __COMMON_FVPATCHFIELD_TEMPLATE_FUNC_EXTENDS( Type )
 {
-  Foam::ext_tmp< Foam::Field< Type > > ext_snGrad()
+  Foam::smart_tmp< Foam::Field< Type > > ext_snGrad()
   {
     return self->snGrad();
   }

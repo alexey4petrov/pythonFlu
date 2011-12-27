@@ -36,6 +36,8 @@
 
 #include <IOdictionary.H>
 
+#include "Foam/ext/common/OpenFOAM/managedFlu/IOdictionaryHolder.hh"
+
 
 //---------------------------------------------------------------------------
 #endif

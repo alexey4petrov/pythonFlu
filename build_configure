@@ -40,7 +40,23 @@ if test "${confflu_path}x" = "x"; then
    exit 0
 fi
 
-${confflu_path}/build_configure 
+managedflu_path=""
+if test "x${MANAGEDFLU_ROOT_DIR}" != "x"; then
+   managedflu_path="-I${MANAGEDFLU_ROOT_DIR}/admin"
+fi
+
+if test "x${managedflu_path}" = "x" && test -d /usr/local/share/managedflu/admin; then
+   managedflu_path="-I/usr/local/share/managedflu/admin"
+fi
+
+if test "${managedflu_path}x" = "x"; then
+   echo "ERROR:managedflu need to be installed or sourced"
+   exit 0
+fi
+
+
+${confflu_path}/build_configure \
+        ${managedflu_path} \
 
 
 #--------------------------------------------------------------------------------------

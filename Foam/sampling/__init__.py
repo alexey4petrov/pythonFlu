@@ -22,9 +22,4 @@
 
 
 #---------------------------------------------------------------------------
-from Foam.src.sampling.meshToMeshInterpolation.meshToMesh import *
-from Foam.src.sampling.graphField.makeGraph import *
-
-
-#---------------------------------------------------------------------------
 

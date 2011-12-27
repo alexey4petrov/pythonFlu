@@ -37,5 +37,8 @@
 #include <twoPhaseMixture.H>
 
 
+#include "Foam/ext/common/transportModels/managedFlu/incompressible/twoPhaseMixtureHolder.hh"
+
+
 //---------------------------------------------------------------------------
 #endif

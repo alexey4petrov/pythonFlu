@@ -70,4 +70,8 @@
 
 
 //---------------------------------------------------------------------------
+%include "Foam/ext/common/turbulenceModels/managedFlu/incompressible_LESModelHolder.cpp"
+
+
+//---------------------------------------------------------------------------
 #endif

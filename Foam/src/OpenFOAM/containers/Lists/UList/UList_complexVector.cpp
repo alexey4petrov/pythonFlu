@@ -47,6 +47,8 @@ ULIST_TYPEMAP( complexVector );
 %ignore Foam::UList< Foam::complexVector >::operator >=;
 %ignore Foam::UList< Foam::complexVector >::operator <=;
 
+TEMPLATE_ULIST_ITERATOR( complexVector );
+
 %template( UList_complexVector ) Foam::UList< Foam::complexVector >; 
 
 ULISTBASED_ADDONS( Foam::complexVector );

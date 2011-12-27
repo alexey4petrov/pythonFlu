@@ -40,6 +40,12 @@
 
 #include <porousZones.H>
 
+#include "Foam/ext/common/finiteVolume/managedFlu/porousZonesHolder.hh"
+
+#if FOAM_VERSION( >=, 020000)
+#include <PorousZones.H>
+#endif
+
 
 //---------------------------------------------------------------------------
 #endif

@@ -38,7 +38,7 @@
 
 %import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-%import "Foam/ext/common/ext_tmp.hxx"
+%import "Foam/ext/common/smart_tmp.hxx"
 
 %include <Field.H>
 
@@ -46,39 +46,48 @@
 
 
 //---------------------------------------------------------------------------
-%define NO_TMP_TYPEMAP_FIELD( Field_Type )
+%include <FieldHolder.hpp>
 
-%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::Field_Type& 
+%define NO_TMP_TYPEMAP_FIELD( Type )
+
+%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::Field< Type >& 
 {
   void *ptr;
-  int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::Field_Type * ), 0 );
-  int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::Field_Type > * ), 0 );
-  int res_ext_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::ext_tmp< Foam::Field_Type > * ), 0 );
-  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( res_ext_tmpT );
+  int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::Field< Type > * ), 0 );
+  int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::Field< Type > > * ), 0 );
+  int res_smart_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::smart_tmp< Foam::Field< Type > > * ), 0 );
+  int res_holder = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::FieldHolder< Type > * ), 0 );
+  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( res_smart_tmpT ) || SWIG_CheckState( res_holder );
 }
 
-%typemap( in ) const Foam::Field_Type& 
+%typemap( in ) const Foam::Field< Type >& 
 {
   void  *argp = 0;
   int res = 0;
   
-  res = SWIG_ConvertPtr( $input, &argp, $descriptor(  Foam::Field_Type * ), %convertptr_flags );
+  res = SWIG_ConvertPtr( $input, &argp, $descriptor(  Foam::Field< Type > * ), %convertptr_flags );
   if ( SWIG_IsOK( res )&& argp  ){
-    Foam::Field_Type * res =  %reinterpret_cast( argp, Foam::Field_Type* );
+    Foam::Field< Type > * res =  %reinterpret_cast( argp, Foam::Field< Type >* );
     $1 = res;
   } else {
-    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::Field_Type >* ), %convertptr_flags );
+    res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::Field< Type > >* ), %convertptr_flags );
     if ( SWIG_IsOK( res ) && argp ) {
-      Foam::tmp<Foam::Field_Type >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::Field_Type > * );
+      Foam::tmp<Foam::Field< Type > >* tmp_res =%reinterpret_cast( argp, Foam::tmp< Foam::Field< Type > > * );
       $1 = tmp_res->operator->();
       } else {
-      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::ext_tmp< Foam::Field_Type >* ), %convertptr_flags );
-      if ( SWIG_IsOK( res ) && argp ) { Foam::ext_tmp< Foam::Field_Type >* tmp_res =%reinterpret_cast( argp, Foam::ext_tmp< Foam::Field_Type > * );
-      $1 = tmp_res->operator->();
+      res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::smart_tmp< Foam::Field< Type > >* ), %convertptr_flags );
+      if ( SWIG_IsOK( res ) && argp ) { 
+        Foam::smart_tmp< Foam::Field< Type > >* tmp_res =%reinterpret_cast( argp, Foam::smart_tmp< Foam::Field< Type > > * );
+        $1 = tmp_res->operator->();
       } else {
-        %argument_fail( res, "$type", $symname, $argnum );
-      }
-    }
+        res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::FieldHolder< Type >* ), %convertptr_flags );
+        if ( SWIG_IsOK( res ) && argp ) {
+          Foam::FieldHolder< Type >* tmp_res =%reinterpret_cast( argp, Foam::FieldHolder< Type >* );
+          $1 = tmp_res->operator->();
+        } else {
+          %argument_fail( res, "$type", $symname, $argnum );
+        }
+    } }
  }
 }    
 %enddef
@@ -89,21 +98,82 @@
 {
   void ext_assign( const Foam::Type& theSource )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
     *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
   }
   
   void ext_assign( const Foam::UList< Foam::Type >& theSource )
   {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
     *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
   }
   
   void ext_assign( const Foam::Field< Foam::Type >& theSource )
+  {
+    Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
+    *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
+  }
+  
+  void __lshift__( const Foam::Type& theSource )
+  {
+    *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
+  }
+  
+  void __lshift__( const Foam::UList< Foam::Type >& theSource )
+  {
+    *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
+  }
+  
+  void __lshift__( const Foam::Field< Foam::Type >& theSource )
   {
     *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
   }
 }
 %enddef
 
+
+//---------------------------------------------------------------------------
+%define FIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Type )
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __imul__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __iadd__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __isub__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __idiv__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __imul__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __iadd__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __isub__ );
+
+PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __idiv__ );
+
+
+%enddef
+
+
+%define FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Type )
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __idiv__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __isub__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __iadd__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1( Foam::Field, Type, __imul__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __idiv__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __isub__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __iadd__ );
+
+CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foam::Field, Type, __imul__ );
+
+%enddef
 
 //---------------------------------------------------------------------------
 %define __COMMON_FIELD_TEMPLATE_OPERATOR( Type )
@@ -128,6 +198,12 @@
   {
     return get_ref( self ) - theArg;
   }
+  
+  Foam::tmp< Foam::Field< Foam::Type > > __sub__( const Foam::Type& theArg )
+  {
+    return  get_ref( self ) - theArg; 
+  }
+  
   Foam::tmp< Foam::Field< Foam::Type > > __div__( const Foam::Field< Foam::scalar >& theArg)
   {
     return get_ref( self ) / theArg;
@@ -206,20 +282,41 @@
 
 
 //---------------------------------------------------------------------------
+%define __COMMON_TMP_FIELD_TEMPLATE_FUNC__( Type )
+{
+  const Type& __getitem__( const Foam::label& theIndex ) const
+  {
+    return get_ref( self )[ theIndex ];
+  }
+
+  void __setitem__( const Foam::label& theIndex, const Type& theValue )
+  {
+    get_ref( self )[ theIndex ] = theValue;
+  }
+}
+%enddef
+
+
+//---------------------------------------------------------------------------
 %define FIELD_TEMPLATE_FUNC( Type )
 
 %import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
-NO_TMP_TYPEMAP_FIELD( Field< Foam::scalar > );
-NO_TMP_TYPEMAP_FIELD( Field< Foam::vector > );
-NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
+NO_TMP_TYPEMAP_FIELD(  Foam::scalar );
+NO_TMP_TYPEMAP_FIELD(  Foam::vector );
+NO_TMP_TYPEMAP_FIELD(  Foam::tensor );
 
 %extend Foam::Field< Foam::Type > FIELD_VIRTUAL_EXTENDS( Type );
 %extend Foam::Field< Foam::Type > __FIELD_TEMPLATE_FUNC__( Type );
 
 %extend Foam::Field< Foam::Type >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+
 %extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
-%extend Foam::ext_tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+%extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_TMP_FIELD_TEMPLATE_FUNC__( Type );
+
+%extend Foam::smart_tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+%extend Foam::smart_tmp< Foam::Field< Foam::Type > >__COMMON_TMP_FIELD_TEMPLATE_FUNC__( Type );
+
 
 %import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
@@ -240,10 +337,15 @@ NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
 
 //--------------------------------------------------------------------------
 %define SCALAR_FIELD_TEMPLATE_FUNC
+
+FIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar );
+
 FIELD_TEMPLATE_FUNC( scalar );
 
 %extend Foam::Field< Foam::scalar > __SCALAR_FIELD_TEMPLATE_OPERATOR;
 %extend Foam::tmp< Foam::Field< Foam::scalar > > __SCALAR_FIELD_TEMPLATE_OPERATOR;
+
+FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar );
 
 %enddef
 
@@ -278,10 +380,14 @@ FIELD_TEMPLATE_FUNC( scalar );
 //---------------------------------------------------------------------------
 %define VECTOR_FIELD_TEMPLATE_FUNC
 
+FIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector );
+
 FIELD_TEMPLATE_FUNC( vector );
 
 %extend Foam::Field< Foam::vector > __VECTOR_FIELD_TEMPLATE_FUNC;
 %extend Foam::tmp< Foam::Field< Foam::vector > >__VECTOR_FIELD_TEMPLATE_FUNC;
+
+FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector );
 
 %enddef
 
@@ -304,9 +410,13 @@ FIELD_TEMPLATE_FUNC( vector );
 //-----------------------------------------------------------------------------
 %define TENSOR_FIELD_TEMPLATE_FUNC
 
+FIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::tensor );
+
 FIELD_TEMPLATE_FUNC( tensor );
 
 %extend Foam::Field< Foam::tensor > __TENSOR_FIELD_TEMPLATE_FUNC;
+
+FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::tensor );
 
 %enddef
 
