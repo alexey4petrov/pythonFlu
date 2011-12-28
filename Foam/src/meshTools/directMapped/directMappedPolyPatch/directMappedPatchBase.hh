@@ -23,7 +23,7 @@
 //---------------------------------------------------------------------------
 #include "Foam/src/common.hh"
 
-#if FOAM_VERSION( <, 010600 )
+#if FOAM_VERSION( <, 010600 ) || FOAM_VERSION( >=, 020100 )
 #define directMappedPatchBase_hh
 #endif
 

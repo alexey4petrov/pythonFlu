@@ -30,7 +30,7 @@
 //---------------------------------------------------------------------------
 %import "Foam/src/common.hxx"
 
-#if FOAM_VERSION( <, 010600 )
+#if FOAM_VERSION( <, 010600 ) || FOAM_VERSION( >=, 020100 )
 #define directMappedPatchBase_cxx
 #endif
 
