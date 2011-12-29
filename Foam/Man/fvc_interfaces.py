@@ -29,6 +29,7 @@ attr2interface={ 'surfaceSum' : 'Foam.ext.common.finiteVolume.managedFlu.finiteV
                  'snGrad' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcSnGrad.fvc_snGrad',
                  'reconstruct' :'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcReconstruct.fvc_reconstruct',
                  'interpolate' : 'Foam.ext.common.finiteVolume.managedFlu.surfaceInterpolate.interpolate',
-                 'DDt' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcDDt.fvc_DDt'}
+                 'DDt' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcDDt.fvc_DDt',
+                 'ddt' : 'Foam.ext.common.finiteVolume.managedFlu.finiteVolume.fvc.fvcDdt.fvc_ddt' }
                  
 

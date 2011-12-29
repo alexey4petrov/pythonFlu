@@ -60,6 +60,7 @@ sources = \
 	\
 	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/surfaceInterpolate.cxx \
 	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcDDt.cxx \
+	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcDdt.cxx \
 	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcGrad.cxx \
 	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcSnGrad.cxx \
 	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcSurfaceIntegrate.cxx \
