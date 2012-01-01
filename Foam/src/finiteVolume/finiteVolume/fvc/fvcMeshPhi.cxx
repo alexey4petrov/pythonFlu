@@ -41,6 +41,12 @@
 //---------------------------------------------------------------------------
 %inline
 {
+
+  Foam::smart_tmp< Foam::surfaceScalarField > fvc_meshPhi( const Foam::volVectorField& U )
+  {
+    return Foam::fvc::meshPhi( U );
+  }
+
   void 
   fvc_makeRelative( Foam::surfaceScalarField& phi,
                     const Foam::volVectorField& U )

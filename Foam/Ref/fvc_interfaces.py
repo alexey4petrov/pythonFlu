@@ -35,6 +35,7 @@ attr2interface={ 'ddt' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcDdt.fvc_ddt'
                  'surfaceIntegrate' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcSurfaceIntegrate.fvc_surfaceIntegrate',
                  'surfaceSum' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcSurfaceIntegrate.fvc_surfaceSum',
                  'laplacian' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcLaplacian.fvc_laplacian',
+                 'meshPhi' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcMeshPhi.fvc_meshPhi',
                  'makeRelative' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcMeshPhi.fvc_makeRelative',
                  'makeAbsolute' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcMeshPhi.fvc_makeAbsolute',
                  'flux' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcFlux.fvc_flux',
