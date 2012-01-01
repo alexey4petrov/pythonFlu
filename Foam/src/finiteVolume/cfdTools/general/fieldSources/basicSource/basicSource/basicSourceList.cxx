@@ -59,6 +59,17 @@
   {
     return self->operator()( fld, fieldName );
   }
+  
+  void constrain( fvMatrix< Type >& eqn )
+  {
+    self->constrain( eqn );
+  }
+
+  void constrain( fvMatrix< Type >& eqn, const word& fieldName )
+  {
+    self->constrain( eqn, fieldName );
+  }
+
 }
 %enddef
 
