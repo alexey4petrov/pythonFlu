@@ -50,6 +50,16 @@
     return *self == theArg;
   }
 
+  Foam::tmp< Foam::fvMatrix< Type > > __eq__( const Foam::fvMatrix< Type >& theArg ) const
+  {
+    return (*self)() == theArg;
+  }
+
+  Foam::tmp< Foam::fvMatrix< Type > >__eq__( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg ) const
+  {
+    return (*self)() == theArg;
+  }
+
   Foam::fvMatrixHolder< Type > __add__( const Foam::GeometricFieldHolder< Type, Foam::fvPatchField, Foam::volMesh >& theArg ) const
   {
     return *self + theArg;
