@@ -1,9 +1,30 @@
 #PACKAGE# (#VERSION#) @UBUNTU_CODENAME@; urgency=high
 
-  * To support compilation for third-party pythonFlu extensions
+  * Porting on the latest version of OpenFOAM - 2.1.0, 2.0.1,2.0.0
+  
+  * Porting on FreeFOAM up to the 0.1.0rc5
+  
+  * Porting on MacOS X
+  
+  * Support for multi-fork and multi-version OpenFOAM installations 
+  
+  * Moving installation procedure to "launchpad.net" (due to increased number of dependencies)
+  
+  * Full grown support for writing interactive applications (a special “managedFlu” intermediate 
+    C++ layer was designed to provide precise memory management over OpenFOAM objects)
+  
+  * Advancement of the internal Python related module packaging
+  
+  * Support writing pure Python custom "functionObject"s
 
  -- #USERNAME# <#EMAIL#>  #DATE#
 
+pythonflu (8.2-hybrid) maverick; urgency=high
+  
+  * To support compilation for third-party pythonFlu extensions
+  
+ -- Alexey PETROV <alexey.petrov.nnov@gmail.com> Sat, 28 May 2011 19:45:32 +0300
+ 
 pythonflu (8.1-Elvis) maverick; urgency=high
 
   * Name this release after the person who believed in this project 
