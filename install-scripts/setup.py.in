@@ -28,7 +28,7 @@
 from setuptools import setup
 
 setup( name = "pythonflu",
-       version = "@PACKAGE_VERSION@-@FOAM_BRANCH@" )
+       version = "@PACKAGE_VERSION@@FOAM_PACKAGE_SUFFIX@-@FOAM_BRANCH@" )
 
 
 #--------------------------------------------------------------------------------------

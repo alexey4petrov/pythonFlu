@@ -31,5 +31,5 @@ if [ "x${setup_script_path}" == "x" ]; then
 fi
 
 ( cd ${setup_script_path} && ./setup.py sdist )
-( cd ${setup_script_path}/dist && easy_install -m ./pythonflu-@PACKAGE_VERSION@-@FOAM_BRANCH@.tar.gz )
+( cd ${setup_script_path}/dist && easy_install -m ./pythonflu-@PACKAGE_VERSION@@FOAM_PACKAGE_SUFFIX@-@FOAM_BRANCH@.tar.gz )
 ( cd ${setup_script_path} && rm -rf dist pythonflu.egg-info )
