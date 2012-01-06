@@ -1,4 +1,4 @@
-#PACKAGE# (#VERSION#) @UBUNTU_CODENAME@; urgency=high
+#PACKAGE# (#VERSION#~@UBUNTU_CODENAME@) @UBUNTU_CODENAME@; urgency=high
 
   * Porting on the latest version of OpenFOAM - 2.1.0, 2.0.1,2.0.0
   

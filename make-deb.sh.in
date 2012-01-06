@@ -34,9 +34,10 @@ silent_dh_make()
 {
 template_folder=$1
 package_name=$2
+package_version=$3
 
 expect  <<EOD
-spawn dh_make -s -createorig -c gpl --templates ${template_folder} -p ${package_name}
+spawn dh_make -s -createorig -c gpl --templates ${template_folder} -p ${package_name}_${package_version}
 expect "Hit <enter> to confirm:"
 send "\r"
 wait 10
@@ -60,7 +61,7 @@ build_version=@BUILD_VERSION@
 package_version=${pythonflu_version}-${build_version}
 
 curr_folder=@abs_top_builddir@
-package_folder=${curr_folder}/${package_name}-${package_version}
+package_folder=${curr_folder}/${package_name}_${package_version}
 template_folder=${curr_folder}/deb-template
 
 pgp_key_id=@PGP_KEY_ID@
@@ -135,7 +136,7 @@ echo "create debian folder and all necessary files( control, changelog etc ) in 
 echo "--------------------------------------------------------------------------------"
 cp ${template_folder}/Makefile ${package_folder}
 cp ${curr_folder}/ChangeLog deb-template/changelog
-( cd ${package_folder} && silent_dh_make ${template_folder} ${package_name} )
+( cd ${package_folder} && silent_dh_make ${template_folder} ${package_name} ${package_version} )
 echo "--------------------------------------------------------------------------------"
 
 
@@ -158,12 +159,17 @@ if [ "x${pgp_key_id}" = "x" ];then
    pgp_key_option=""
 fi
 
+# special case for maverick, natty to avoid quilt version error( it seems, it is dh_make dpkg_build bug )
+if [ "x@UBUNTU_CODENAME@" != "xlucid" ];then
+  rm -f ${package_folder}/debian/source/format
+fi
+
 if [ "${build_option}" = "launchpad" ]; then 
    ( cd ${package_folder} && dpkg-buildpackage -rfakeroot -S ${pgp_key_option} )
    echo "--------------------------------------------------------------------------------"
    echo "upload to launchpad"
    echo "--------------------------------------------------------------------------------"
-   changes_file="${package_name}_${package_version}_source.changes"
+   changes_file="${package_name}_${pythonflu_version}-${build_version}~@UBUNTU_CODENAME@_source.changes"
    dput ppa:flu-team/@OS_ARCHITECTURE@ ${changes_file}
 fi
 
