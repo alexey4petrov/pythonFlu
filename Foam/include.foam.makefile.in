@@ -73,7 +73,7 @@ include $(pythonflu_root_dir)/Foam/include.base.makefile
 
 _%.so : %.o
 	@OPENFOAM_LINKLIBSO@ $< $(__LDFLAGS__) -o $@; \
-	$(CC) $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<)
+	@OPENFOAM_LINKEXE@ $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<)
 	cd $(dir $<) python $(patsubst %.o,%.py,$<) || (rm $@ && exit 1)
 
 

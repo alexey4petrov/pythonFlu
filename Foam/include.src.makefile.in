@@ -197,7 +197,7 @@ __APP_FLAGS__ = $(__LDFLAGS__)
 
 _%.so : %.o
 	@OPENFOAM_LINKLIBSO@ $< $(__LDFLAGS__) -o $@
-	$(CC) $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<)
+	@OPENFOAM_LINKEXE@ $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<)
 
 
 #--------------------------------------------------------------------------------------
