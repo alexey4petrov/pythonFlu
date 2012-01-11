@@ -191,13 +191,13 @@ include $(pythonflu_root_dir)/Foam/include.base.makefile
 
 #--------------------------------------------------------------------------------------
 %.o : %.cc
-	$(CC) @OPENFOAM_CXXFLAGS@  $(__CPPFLAGS__) "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
+	$(CC) @PYTHONFLU_CXXFLAGS@  $(__CPPFLAGS__) "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
 
 __APP_FLAGS__ = $(__LDFLAGS__)
 
 _%.so : %.o
-	@OPENFOAM_LINKLIBSO@ $< $(__LDFLAGS__) -o $@
-	@OPENFOAM_LINKEXE@ $< $(__APP_FLAGS__) -o $(patsubst %.o,%.exe,$<)
+	@OPENFOAM_LINKLIBSO@ $< $(__LDFLAGS__) @OPENFOAM_LINKLIBSO_LIBS@ -o $@
+	@OPENFOAM_LINKEXE@ $< $(__APP_FLAGS__) @OPENFOAM_LINKEXE_LIBS@ -o $(patsubst %.o,%.exe,$<)
 
 
 #--------------------------------------------------------------------------------------

@@ -22,33 +22,24 @@ dnl
 
 
 dnl --------------------------------------------------------------------------------
-AC_DEFUN([PYTHONFLU_CHECK_PYTHONFLU],
+AC_DEFUN([PYTHONFLU_CHECK_OPENFOAM],
 [
-AC_CHECKING(for pythonFlu package)
+AC_CHECKING(for OPENFOAM package)
 
 AC_REQUIRE([CONFFLU_CHECK_OPENFOAM])
-AC_REQUIRE([PYTHONFLU_CHECK_OPENFOAM])
-AC_REQUIRE([CONFFLU_CHECK_SWIG])
-AC_REQUIRE([CONFFLU_CHECK_PYTHON])
-AC_REQUIRE([MANAGEDFLU_CHECK_MANAGEDFLU])
 
-AC_SUBST(ENABLE_PYTHONFLU)
-AC_SUBST(PYTHONFLU_ROOT_DIR)
+AC_SUBST(PYTHONFLU_CXXFLAGS)
 
-pythonflu_ok=no
-PYTHONFLU_ROOT_DIR=""
+PYTHONFLU_CXXFLAGS=[`echo ${OPENFOAM_CXXFLAGS} | sed -e"s%-Wold-style-cast %%g"`]
+PYTHONFLU_CXXFLAGS=[`echo ${PYTHONFLU_CXXFLAGS} | sed -e"s%-Wall %%g"`]
+PYTHONFLU_CXXFLAGS=[`echo ${PYTHONFLU_CXXFLAGS} | sed -e"s%-Wextra %%g"`]
+dnl PYTHONFLU_CXXFLAGS=[`echo ${PYTHONFLU_CXXFLAGS} | sed -e"s%-O3 %-ggdb3 -DFULLDEBUG %g")`]
 
-dnl --------------------------------------------------------------------------------
-check_pythonflu=[`python -c "import Foam.finiteVolume; print \"ok\"" 2>/dev/null`]
-
-if test "${check_pythonflu}" == "ok"; then
-    pythonflu_ok=yes
-    PYTHONFLU_ROOT_DIR=[`python -c "import os; import Foam; print os.path.dirname( os.path.dirname( os.path.abspath( Foam.__file__ ) ) )"`]
-fi
+AC_MSG_NOTICE( @PYTHONFLU_CXXFLAGS@ == "${PYTHONFLU_CXXFLAGS}" )
+AC_SUBST(PYTHONFLU_CXXFLAGS)
 
 
-dnl --------------------------------------------------------------------------------
-ENABLE_PYTHONFLU=${pythonflu_ok}
+
 ])
 
 

@@ -30,7 +30,7 @@ __FOAM_BRANCH__ := @FOAM_BRANCH@
 #--------------------------------------------------------------------------------------
 __CPPFLAGS__:=$(__CPPFLAGS__) @OPENFOAM_CPPFLAGS@ @PYTHON_CPPFLAGS@ @PYTHON_CXXFLAGS@ @MANAGEDFLU_CPPFLAGS@ -I@abs_top_builddir@ -I/usr/include -I/usr/include/c++ 
 
-__LDFLAGS__:=$(__LDFLAGS__) @OPENFOAM_LDFLAGS@ @OPENFOAM_LIBS@ @PYTHON_LDFLAGS@ @MANAGEDFLU_LDFLAGS@ @MANAGEDFLU_LIB@ -lstdc++ 
+__LDFLAGS__:=$(__LDFLAGS__) @OPENFOAM_LDFLAGS@ @PYTHON_LDFLAGS@ @MANAGEDFLU_LDFLAGS@ @MANAGEDFLU_LIB@ -lstdc++ 
 
 
 #--------------------------------------------------------------------------------------
@@ -67,12 +67,14 @@ __SWIG_FLAGS__+=-w473 # Returning a pointer or reference in a director method is
 
 #-debug-top 4 -directors -dirprot
 
+CC := @OPENFOAM_CC@
+
 
 #--------------------------------------------------------------------------------------
 %.cc : %.cxx
 	@SWIG@ $(__SWIG_FLAGS__) -module $(notdir $(patsubst %.cxx,%,$<)) -o $@ $<
 
-__CXXFLAGS__ := @OPENFOAM_CXXFLAGS@ $(__CPPFLAGS__) @BOOST_CXXFLAGS@
+__CXXFLAGS__ := @PYTHONFLU_CXXFLAGS@ $(__CPPFLAGS__) @BOOST_CXXFLAGS@
 
 -include $(deps) dummy
 
