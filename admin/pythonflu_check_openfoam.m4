@@ -30,10 +30,17 @@ AC_REQUIRE([CONFFLU_CHECK_OPENFOAM])
 
 AC_SUBST(PYTHONFLU_CXXFLAGS)
 
-PYTHONFLU_CXXFLAGS=[`echo ${OPENFOAM_CXXFLAGS} | sed -e"s%-Wold-style-cast %%g"`]
-PYTHONFLU_CXXFLAGS=[`echo ${PYTHONFLU_CXXFLAGS} | sed -e"s%-Wall %%g"`]
-PYTHONFLU_CXXFLAGS=[`echo ${PYTHONFLU_CXXFLAGS} | sed -e"s%-Wextra %%g"`]
-dnl PYTHONFLU_CXXFLAGS=[`echo ${PYTHONFLU_CXXFLAGS} | sed -e"s%-O3 %-ggdb3 -DFULLDEBUG %g")`]
+case "x${FOAM_BRANCH}" in
+"xfree" )
+          PYTHONFLU_CXXFLAGS=${OPENFOAM_CXXFLAGS}
+     ;;
+     *  )
+          PYTHONFLU_CXXFLAGS=[`echo ${OPENFOAM_CXXFLAGS} | sed -e"s%-Wold-style-cast %%g"`]
+          PYTHONFLU_CXXFLAGS=[`echo ${PYTHONFLU_CXXFLAGS} | sed -e"s%-Wall %%g"`]
+          PYTHONFLU_CXXFLAGS=[`echo ${PYTHONFLU_CXXFLAGS} | sed -e"s%-Wextra %%g"`]
+          dnl PYTHONFLU_CXXFLAGS=[`echo ${PYTHONFLU_CXXFLAGS} | sed -e"s%-O3 %-ggdb3 -DFULLDEBUG %g")`]
+     ;;
+esac
 
 AC_MSG_NOTICE( @PYTHONFLU_CXXFLAGS@ == "${PYTHONFLU_CXXFLAGS}" )
 AC_SUBST(PYTHONFLU_CXXFLAGS)
