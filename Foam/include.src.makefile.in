@@ -191,7 +191,7 @@ include $(pythonflu_root_dir)/Foam/include.base.makefile
 
 #--------------------------------------------------------------------------------------
 %.o : %.cc
-	$(CC) @OPENFOAM_CXXFLAGS@  $(__CPPFLAGS__) "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
+	$(WM_CC) @OPENFOAM_CXXFLAGS@  $(__CPPFLAGS__) "-I." "-D DIRECTOR_INCLUDE=<$(patsubst %.cc,%.h,$<)>" -c $< -o $@
 
 __APP_FLAGS__ = $(__LDFLAGS__)
 
