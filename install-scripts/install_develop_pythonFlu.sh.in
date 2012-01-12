@@ -45,7 +45,7 @@ rm -rf ${pythonflu_m4dir}/admin
 install -d ${pythonflu_dir} ${pythonflu_m4dir}/admin
 
 ln -s ${pythonflu_root_dir}/Foam ${pythonflu_dir}/Foam
-ln -s ${pythonflu_root_dir}/admin/pythonflu_check_pythonflu.m4 ${pythonflu_m4dir}/admin/pythonflu_check_pythonflu.m4
+ln -s ${pythonflu_root_dir}/admin/pythonflu*.m4 ${pythonflu_m4dir}/admin
 
 @abs_top_builddir@/install-scripts/update_OpenFOAM_bashrc.sh ${pythonflu_dir} ${foam_package_dir}
 

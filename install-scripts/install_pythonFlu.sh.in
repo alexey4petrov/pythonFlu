@@ -47,7 +47,7 @@ cp -rf ${pythonflu_root_dir}/Foam ${pythonflu_dir}
 (cd ${pythonflu_dir}/Foam && find \( -name "*.d" -o -name "pyfoam" -o -name "*.cc" -o -name "*.exe" \) -delete)
 (cd ${pythonflu_dir}/Foam && find \( -name "*.h" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
 
-cp -rf ${pythonflu_root_dir}/admin/pythonflu_check_pythonflu.m4 ${pythonflu_m4dir}/admin
+cp -rf ${pythonflu_root_dir}/admin/pythonflu*.m4 ${pythonflu_m4dir}/admin
 
 @abs_top_builddir@/install-scripts/update_OpenFOAM_bashrc.sh ${pythonflu_dir} ${foam_package_dir}
 
