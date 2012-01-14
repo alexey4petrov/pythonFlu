@@ -1,0 +1,27 @@
+Needed software
+---------------
+
+The port to the Mac uses the following additional software (all
+installed with MacPorts:
+
+- gfind (from the findutils-package)
+- boost
+- python (recommended, but the system-python should be fine to)
+- nose (for testing. Use the one that fits your python)
+
+For swig the MacPorts-version *will not work* because it is a too high version
+
+Running
+-------
+
+Should you see this error during running
+
+terminate called after throwing an instance of 'std::bad_cast'
+  what():  std::bad_cast
+
+then the system-libstdc++ does not mix with your
+OpenFOAM-installation. Use the command
+
+export DYLD_INSERT_LIBRARIES=/opt/local/lib/gcc45/libstdc++.6.dylib
+
+to preinject the right library before using pythonFlu
