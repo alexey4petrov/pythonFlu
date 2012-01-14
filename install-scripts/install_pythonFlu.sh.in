@@ -44,8 +44,8 @@ rm -rf ${pythonflu_dir}/Foam
 install -d ${pythonflu_dir} ${pythonflu_m4dir}/admin
 
 cp -rf ${pythonflu_root_dir}/Foam ${pythonflu_dir}
-(cd ${pythonflu_dir}/Foam && find \( -name "*.d" -o -name "pyfoam" -o -name "*.cc" -o -name "*.exe" \) -delete)
-(cd ${pythonflu_dir}/Foam && find \( -name "*.h" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
+(cd ${pythonflu_dir}/Foam && @FIND@ \( -name "*.d" -o -name "pyfoam" -o -name "*.cc" -o -name "*.exe" \) -delete)
+(cd ${pythonflu_dir}/Foam && @FIND@ \( -name "*.h" -o -name "*.o" -o -name "*.in" -o -name "Makefile" -o -name "*.pyc" \) -delete)
 
 cp -rf ${pythonflu_root_dir}/admin/pythonflu*.m4 ${pythonflu_m4dir}/admin
 

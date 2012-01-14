@@ -93,14 +93,7 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 #--------------------------------------------------------------------------------------
 sources = $(filter-out emb_%.cxx,$(wildcard *.cxx))
 
-ifeq ($(shell uname -s),Darwin)
-  #use util from MacPorts
-  FIND=gfind
-else
-  FIND=find
-endif
-
-subdirs := $(shell $(FIND) -maxdepth 1 -type d)
+subdirs := $(shell @FIND@ -maxdepth 1 -type d)
 subdirs := $(subst ./,,$(subdirs))
 subdirs := $(subst CVS,,$(subdirs))
 subdirs := $(subst cvs,,$(subdirs))
