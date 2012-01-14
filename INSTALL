@@ -43,6 +43,13 @@ pre-requisites.
 
 * Make sure that SWIG is installed (tested with 1.3.36 - 1.3.40)
   Please follow instructions from http://www.swig.org/ web-site.
+  
+* Make sure that managedFlu is installed (tested with 1.0)
+  Please follow instructions from corresponding INSTALL file to setup managedFlu in your environment.
+  
+* Make sure that Boost C++ libraries is installed (tested with 1.40 - 1.48  versions). 
+  Please follow instructions from corresponding INSTALL file to setup Boost C++ libraries in your environment.
+
 
 Then follow the instructions below in order to build and install the "pythonFlu".
 
