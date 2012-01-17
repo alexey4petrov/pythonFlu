@@ -170,7 +170,7 @@ if [ "${build_option}" = "launchpad" ]; then
    echo "upload to launchpad"
    echo "--------------------------------------------------------------------------------"
    changes_file="${package_name}_${pythonflu_version}-${build_version}~@UBUNTU_CODENAME@_source.changes"
-   dput ppa:asimurzin/h@OS_ARCHITECTURE@ ${changes_file}
+   dput ppa:asimurzin/hh@OS_ARCHITECTURE@ ${changes_file}
 fi
 
 if [ "${build_option}" = "deb" ]; then 
