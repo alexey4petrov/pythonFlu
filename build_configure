@@ -31,8 +31,8 @@ if test "x${CONFFLU_ROOT_DIR}" != "x"; then
    confflu_path=${CONFFLU_ROOT_DIR}
 fi
 
-if test "x${confflu_path}" = x && test -f /usr/local/share/confFlu/build_configure; then
-   confflu_path=/usr/local/share/confFlu
+if test "x${confflu_path}" = x && test -f /usr/local/share/confflu/build_configure; then
+   confflu_path=/usr/local/share/confflu
 fi
 
 if test "${confflu_path}x" = "x"; then
