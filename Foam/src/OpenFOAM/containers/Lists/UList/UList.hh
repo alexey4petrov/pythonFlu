@@ -29,6 +29,8 @@
 #include "Foam/src/common.hh"
 #include "Foam/src/iterators.hh"
 
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
+
 #include <UList.H>
 #include <ListOps.H>
 
