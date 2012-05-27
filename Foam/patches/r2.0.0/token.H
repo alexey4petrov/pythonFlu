@@ -117,7 +117,7 @@ public:
         DIVIDE         = '/'
     };
 
-
+#if !defined( SWIG ) || SWIG_VERSION > 0x020007
     //- Abstract base class for complex tokens
     class compound
     :
@@ -206,7 +206,7 @@ public:
 
             friend Ostream& operator<<(Ostream&, const compound&);
     };
-
+#endif
 
     //- A templated class for holding compound tokens
 #ifndef SWIG 

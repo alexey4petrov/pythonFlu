@@ -99,6 +99,7 @@ public:
         //- Ostream operator
         friend Ostream& operator<<(Ostream& os, const streamFormat& sf);
 
+#if !defined( SWIG ) || SWIG_VERSION > 0x020007
         //- Version number type
         class versionNumber
         {
@@ -194,7 +195,7 @@ public:
             //- Ostream operator
             friend Ostream& operator<<(Ostream& os, const versionNumber& vn);
         };
-
+#endif
 
         //- Enumeration for the format of data in the stream
         enum compressionType

@@ -88,7 +88,7 @@ public:
         //- An empty string
         static const string null;
 
-
+#if !defined( SWIG ) || SWIG_VERSION > 0x020007
     //- Hashing function class, shared by all the derived classes
     class hash
     {
@@ -98,7 +98,7 @@ public:
 
         inline unsigned operator()(const string&, unsigned seed = 0) const;
     };
-
+#endif
 
     // Constructors
 

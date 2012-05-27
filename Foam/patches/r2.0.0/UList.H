@@ -93,7 +93,7 @@ public:
         inline static const UList<T>& null();
 
     // Public classes
-
+#if !defined( SWIG ) || SWIG_VERSION > 0x020007
         //- Less function class that can be used for sorting
         class less
         {
@@ -111,7 +111,7 @@ public:
                 return values_[a] < values_[b];
             }
         };
-
+#endif
 
     // Constructors
 
