@@ -40,6 +40,12 @@
 
 %ignore Foam::ext_tmp< Foam::Field< Foam::scalar > >::operator=;
 
+%extend Foam::ext_tmp< Foam::Field< Foam::scalar > >
+{
+  SEQUENCE_ADDONS( Foam::scalar );
+  LISTS_FUNCS( Foam::scalar );
+}
+
 %template ( ext_tmp_scalarField ) Foam::ext_tmp< Foam::Field< Foam::scalar > >;
 
 

@@ -219,7 +219,19 @@ NO_TMP_TYPEMAP_FIELD( Field< Foam::tensor > );
 
 %extend Foam::Field< Foam::Type >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
 %extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+%extend Foam::tmp< Foam::Field< Foam::Type > >
+{
+  SEQUENCE_ADDONS( Foam::Type );
+  LISTS_FUNCS( Foam::Type );
+}
+
 %extend Foam::ext_tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+%extend Foam::ext_tmp< Foam::Field< Foam::Type > >
+{
+  SEQUENCE_ADDONS( Foam::Type );
+  LISTS_FUNCS( Foam::Type );
+}
+
 
 %import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
@@ -245,8 +257,6 @@ FIELD_TEMPLATE_FUNC( scalar );
 %extend Foam::Field< Foam::scalar > __SCALAR_FIELD_TEMPLATE_OPERATOR;
 
 %extend Foam::tmp< Foam::Field< Foam::scalar > > __SCALAR_FIELD_TEMPLATE_OPERATOR;
-%extend Foam::tmp< Foam::Field< Foam::scalar > >  SEQUENCE_ADDONS( Foam::scalar );
-%extend Foam::tmp< Foam::Field< Foam::scalar > >  LISTS_FUNCS( Foam::scalar );
 
 %enddef
 
