@@ -43,7 +43,10 @@
 
 %template( TContainer_string_iterator ) Foam::TContainer_iterator<  Foam::UList< Foam::string > >;
 
-ULISTBASED_ADDONS( Foam::string )
+%extend Foam::UList< Foam::string > 
+{
+  ULISTBASED_ADDONS( Foam::string );
+}
 
 
 //---------------------------------------------------------------------------

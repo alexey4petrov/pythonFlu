@@ -37,7 +37,10 @@
 
 %template( UList_bool ) Foam::UList< bool >; 
 
-ULISTBASED_ADDONS( bool );
+%extend Foam::UList< bool > 
+{
+  ULISTBASED_ADDONS( bool );
+}
 
 
 //---------------------------------------------------------------------------

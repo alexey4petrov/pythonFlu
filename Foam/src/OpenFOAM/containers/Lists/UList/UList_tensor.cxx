@@ -45,7 +45,10 @@
 
 %template( UList_tensor ) Foam::UList< Foam::tensor >; 
 
-ULISTBASED_ADDONS( Foam::tensor );
+%extend Foam::UList< Foam::tensor > 
+{
+  ULISTBASED_ADDONS( Foam::tensor );
+}
 
 
 //---------------------------------------------------------------------------

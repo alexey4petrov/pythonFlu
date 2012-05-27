@@ -49,7 +49,10 @@
 
 %template( TContainer_word_IOobject ) Foam::TContainer_iterator< Foam::UList< Foam::IOobject > >;
 
-%extend Foam::UList< Foam::IOobject > SEQUENCE_ADDONS( Foam::IOobject );
+%extend Foam::UList< Foam::IOobject > 
+{
+  SEQUENCE_ADDONS( Foam::IOobject );
+}
 
 
 //---------------------------------------------------------------------------

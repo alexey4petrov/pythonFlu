@@ -41,7 +41,10 @@
 
 %template( UList_face ) Foam::UList< Foam::face >; 
 
-ULISTBASED_ADDONS( Foam::face );
+%extend Foam::UList< Foam::face > 
+{
+  ULISTBASED_ADDONS( Foam::face );
+}
 
 
 //---------------------------------------------------------------------------

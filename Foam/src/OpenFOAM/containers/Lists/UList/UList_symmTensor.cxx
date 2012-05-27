@@ -48,7 +48,10 @@
 
 %template( UList_symmTensor ) Foam::UList< Foam::symmTensor >;
 
-ULISTBASED_ADDONS( Foam::symmTensor );
+%extend Foam::UList< Foam::symmTensor > 
+{
+  ULISTBASED_ADDONS( Foam::symmTensor );
+}
 
 
 //---------------------------------------------------------------------------

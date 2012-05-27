@@ -39,7 +39,10 @@
 
 %template( UList_label ) Foam::UList< Foam::label >; 
 
-ULISTBASED_ADDONS( Foam::label );
+%extend Foam::UList< Foam::label > 
+{
+  ULISTBASED_ADDONS( Foam::label );
+}
 
 
 //---------------------------------------------------------------------------

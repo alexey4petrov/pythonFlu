@@ -47,7 +47,10 @@ ULIST_TYPEMAP( complex );
 
 %template( UList_complex ) Foam::UList< Foam::complex >; 
 
-ULISTBASED_ADDONS( Foam::complex );
+%extend Foam::UList< Foam::complex > 
+{
+  ULISTBASED_ADDONS( Foam::complex );
+}
 
 
 //---------------------------------------------------------------------------
