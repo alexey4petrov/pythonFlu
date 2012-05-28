@@ -49,7 +49,10 @@ TEMPLATE_ULIST_ITERATOR( complex );
 
 %template( UList_complex ) Foam::UList< Foam::complex >; 
 
-ULISTBASED_ADDONS( Foam::complex );
+%extend Foam::UList< Foam::complex >
+{
+  ULISTBASED_ADDONS( Foam::complex );
+}
 
 
 //---------------------------------------------------------------------------

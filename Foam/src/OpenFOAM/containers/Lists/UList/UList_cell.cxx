@@ -43,8 +43,10 @@ TEMPLATE_ULIST_ITERATOR( cell );
 
 %template( UList_cell ) Foam::UList< Foam::cell >; 
 
-ULISTBASED_ADDONS( Foam::cell );
-
+%extend Foam::UList< Foam::cell >
+{
+  ULISTBASED_ADDONS( Foam::cell );
+}
 
 //---------------------------------------------------------------------------
 #endif

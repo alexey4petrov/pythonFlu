@@ -53,9 +53,12 @@ ULIST_TYPEMAP( vector );
 
 TEMPLATE_ULIST_ITERATOR( vector );
 
-%template( UList_vector ) Foam::UList< Foam::vector >; 
+%template( UList_vector ) Foam::UList< Foam::vector >;
 
-ULISTBASED_ADDONS( Foam::vector );
+%extend Foam::UList< Foam::vector >
+{
+  ULISTBASED_ADDONS( Foam::vector );
+}
 
 
 //---------------------------------------------------------------------------

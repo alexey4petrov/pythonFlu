@@ -43,8 +43,10 @@
 
 TEMPLATE_ULIST_ITERATOR( word );
 
-ULISTBASED_ADDONS( Foam::word );
-
+%extend Foam::UList< Foam::word >
+{
+  ULISTBASED_ADDONS( Foam::word );
+}
 
 //---------------------------------------------------------------------------
 #endif

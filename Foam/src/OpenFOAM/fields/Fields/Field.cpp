@@ -314,9 +314,20 @@ NO_TMP_TYPEMAP_FIELD(  Foam::tensor );
 %extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
 %extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_TMP_FIELD_TEMPLATE_FUNC__( Type );
 
+%extend Foam::tmp< Foam::Field< Foam::Type > >
+{
+  SEQUENCE_ADDONS( Foam::Type );
+  LISTS_FUNCS( Foam::Type );
+}
+
 %extend Foam::smart_tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
 %extend Foam::smart_tmp< Foam::Field< Foam::Type > >__COMMON_TMP_FIELD_TEMPLATE_FUNC__( Type );
 
+%extend Foam::smart_tmp< Foam::Field< Foam::Type > >
+{
+  SEQUENCE_ADDONS( Foam::Type );
+  LISTS_FUNCS( Foam::Type );
+}
 
 %import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 

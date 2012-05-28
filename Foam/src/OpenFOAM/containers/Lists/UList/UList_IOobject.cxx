@@ -49,8 +49,10 @@
 
 TEMPLATE_ULIST_ITERATOR( IOobject );
 
-%extend Foam::UList< Foam::IOobject > SEQUENCE_ADDONS( Foam::IOobject );
-
+%extend Foam::UList< Foam::IOobject >
+{
+ SEQUENCE_ADDONS( Foam::IOobject );
+}
 
 //---------------------------------------------------------------------------
 #endif

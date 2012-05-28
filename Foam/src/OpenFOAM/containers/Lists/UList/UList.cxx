@@ -52,55 +52,50 @@
 
 //---------------------------------------------------------------------------
 %define SEQUENCE_ADDONS( TItem )
+int __len__()
 {
-  int __len__()
-  {
-    return self->size();
-  }
+  return get_ref( self ).size();
+}
   
-  TItem __getitem__( const Foam::label theIndex )
-  {
-    return self->operator[]( theIndex );
-  }
+TItem __getitem__( const Foam::label theIndex )
+{
+  return get_ref( self )[ theIndex ];
+}
 
-  void __setitem__( const Foam::label theIndex, TItem theValue )
-  {
-    self->operator[]( theIndex ) = theValue;
-  }
+void __setitem__( const Foam::label theIndex, TItem theValue )
+{
+  get_ref( self )[ theIndex ] = theValue;
+}
 
-  TContainer_iterator< UList< TItem > >* __iter__()
-  {
-    return new TContainer_iterator< UList< TItem > >( *self );
-  }
+TContainer_iterator< UList< TItem > >* __iter__()
+{
+  return new TContainer_iterator< UList< TItem > >( get_ref( self ) );
 }
 %enddef
 
 
 //---------------------------------------------------------------------------
 %define LISTS_FUNCS( TItem )
-{
 #if FOAM_VERSION( <, 010600 )
-  Foam::label ext_findIndex( TItem& t )
-  {
-    return Foam::findIndex( *self, t );
-  }
+Foam::label ext_findIndex( TItem& t )
+{
+  return Foam::findIndex( get_ref( self ), t );
+}
 #endif
 
 #if FOAM_VERSION( >=, 010600 ) 
-  Foam::label ext_findIndex( TItem& t, const label start=0 )
-  {
-    return Foam::findIndex( *self, t, start );
-  }
+Foam::label ext_findIndex( TItem& t, const label start=0 )
+{
+  return Foam::findIndex( get_ref( self ), t, start );
+}
 #endif
-}  
 %enddef
 
 
 //----------------------------------------------------------------------------
 %define ULISTBASED_ADDONS( TItem )
-  %extend Foam::UList< TItem > SEQUENCE_ADDONS( TItem )
-
-  %extend Foam::UList< TItem > LISTS_FUNCS( TItem )
+SEQUENCE_ADDONS( TItem );
+LISTS_FUNCS( TItem );
 %enddef
 
 

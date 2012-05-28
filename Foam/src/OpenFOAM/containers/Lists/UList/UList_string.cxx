@@ -43,7 +43,10 @@
 
 TEMPLATE_ULIST_ITERATOR( string );
 
-ULISTBASED_ADDONS( Foam::string )
+%extend Foam::UList< Foam::string >
+{
+  ULISTBASED_ADDONS( Foam::string )
+}
 
 
 //---------------------------------------------------------------------------

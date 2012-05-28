@@ -51,7 +51,10 @@ TEMPLATE_ULIST_ITERATOR( complexVector );
 
 %template( UList_complexVector ) Foam::UList< Foam::complexVector >; 
 
-ULISTBASED_ADDONS( Foam::complexVector );
+%extend Foam::UList< Foam::complexVector >
+{
+  ULISTBASED_ADDONS( Foam::complexVector );
+}
 
 
 //---------------------------------------------------------------------------

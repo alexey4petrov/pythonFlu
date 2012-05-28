@@ -52,7 +52,10 @@ TEMPLATE_ULIST_ITERATOR( token );
 
 %template( UList_token ) Foam::UList< Foam::token >; 
 
-ULISTBASED_ADDONS( Foam::token );
+%extend Foam::UList< Foam::token >
+{
+  ULISTBASED_ADDONS( Foam::token );
+}
 
 
 //---------------------------------------------------------------------------

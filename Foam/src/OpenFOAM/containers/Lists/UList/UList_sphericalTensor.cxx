@@ -50,7 +50,10 @@ TEMPLATE_ULIST_ITERATOR( sphericalTensor );
 
 %template( UList_sphericalTensor ) Foam::UList< Foam::sphericalTensor >;
 
-ULISTBASED_ADDONS( Foam::sphericalTensor );
+%extend Foam::UList< Foam::sphericalTensor >
+{
+  ULISTBASED_ADDONS( Foam::sphericalTensor );
+}
 
 
 //---------------------------------------------------------------------------

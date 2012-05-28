@@ -41,7 +41,10 @@
 
 %template( UList_polyPatchPtr ) Foam::UList< Foam::polyPatch* >;
 
-ULISTBASED_ADDONS( Foam::polyPatch* );
+%extend Foam::UList< Foam::polyPatch* >
+{
+  ULISTBASED_ADDONS( Foam::polyPatch* );
+}
 
 
 //---------------------------------------------------------------------------
