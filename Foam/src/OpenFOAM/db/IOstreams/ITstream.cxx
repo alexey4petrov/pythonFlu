@@ -51,7 +51,10 @@
 //---------------------------------------------------------------------------
 %import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
-%extend Foam::ITstream OSTREAM_EXTENDS;
+%extend Foam::ITstream
+{
+  OSTREAM_EXTENDS;
+}
 
 
 //---------------------------------------------------------------------------

@@ -47,10 +47,12 @@
 //---------------------------------------------------------------------------
 %define DIMENSIONEDTYPE_ADDONS( Type )
 
-%extend Foam::dimensioned< Type > COMMON_EXTENDS;
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
 %extend Foam::dimensioned< Type >
 {
+  OSTREAM_EXTENDS;
+  
   void setValue( const Type& theValue )
   {
     self->value() = theValue;
@@ -106,11 +108,6 @@
     return Foam::mag( *self );
   }
 }
-
-%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
-
-%extend Foam::dimensioned< Type > OSTREAM_EXTENDS;
-
 %enddef
 
 
