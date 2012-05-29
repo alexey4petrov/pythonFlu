@@ -50,9 +50,8 @@ TMP_TYPEMAP( Foam::complexField );
   SMARTPTR_EXTEND_ATTR( tmp_complexField );
   SEQUENCE_ADDONS( Foam::complex );
   LISTS_FUNCS( Foam::complex );
+  FIELD_VIRTUAL_EXTENDS( complex );
 }
-
-%extend Foam::tmp< Foam::Field< Foam::complex > > FIELD_VIRTUAL_EXTENDS( complex );
 
 
 //---------------------------------------------------------------------------

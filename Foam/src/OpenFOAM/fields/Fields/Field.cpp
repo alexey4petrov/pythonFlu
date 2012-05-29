@@ -95,7 +95,6 @@
 
 //---------------------------------------------------------------------------
 %define FIELD_VIRTUAL_EXTENDS( Type )
-{
   void ext_assign( const Foam::Type& theSource )
   {
     Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
@@ -128,7 +127,6 @@
   {
     *dynamic_cast< Foam::Field< Foam::Type >* >( get_ptr( self ) ) = theSource;
   }
-}
 %enddef
 
 
@@ -177,7 +175,6 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foa
 
 //---------------------------------------------------------------------------
 %define __COMMON_FIELD_TEMPLATE_OPERATOR( Type )
-{
   Foam::tmp< Foam::Field< Foam::Type > > __rmul__( const Foam::scalar& theArg)
   {
     return theArg * get_ref( self );
@@ -246,13 +243,11 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foa
   {
     return Foam::max( get_ref( self ) );
   }
-}
 %enddef
 
 
 //---------------------------------------------------------------------------
 %define __FIELD_TEMPLATE_FUNC__( Type )
-{
   Foam::Field< Foam::Type >()
   {
     return new Foam::Field< Foam::Type >();
@@ -276,14 +271,11 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foa
   {
     return new Foam::Field< Foam::Type >( theField );
   }
-
-}
 %enddef
 
 
 //---------------------------------------------------------------------------
 %define __COMMON_TMP_FIELD_TEMPLATE_FUNC__( Type )
-{
   const Type& __getitem__( const Foam::label& theIndex ) const
   {
     return get_ref( self )[ theIndex ];
@@ -293,7 +285,6 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_TEMPLATE_1( Foam::tmp, Foa
   {
     get_ref( self )[ theIndex ] = theValue;
   }
-}
 %enddef
 
 
@@ -306,43 +297,40 @@ NO_TMP_TYPEMAP_FIELD(  Foam::scalar );
 NO_TMP_TYPEMAP_FIELD(  Foam::vector );
 NO_TMP_TYPEMAP_FIELD(  Foam::tensor );
 
-%extend Foam::Field< Foam::Type > FIELD_VIRTUAL_EXTENDS( Type );
-%extend Foam::Field< Foam::Type > __FIELD_TEMPLATE_FUNC__( Type );
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
 
-%extend Foam::Field< Foam::Type >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
-
-%extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
-%extend Foam::tmp< Foam::Field< Foam::Type > >__COMMON_TMP_FIELD_TEMPLATE_FUNC__( Type );
+%extend Foam::Field< Foam::Type >
+{
+ FIELD_VIRTUAL_EXTENDS( Type );
+ __FIELD_TEMPLATE_FUNC__( Type );
+ __COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+ OSTREAM_EXTENDS;
+}
 
 %extend Foam::tmp< Foam::Field< Foam::Type > >
 {
+  __COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+  __COMMON_TMP_FIELD_TEMPLATE_FUNC__( Type );
   SEQUENCE_ADDONS( Foam::Type );
   LISTS_FUNCS( Foam::Type );
 }
-
-%extend Foam::smart_tmp< Foam::Field< Foam::Type > >__COMMON_FIELD_TEMPLATE_OPERATOR( Type );
-%extend Foam::smart_tmp< Foam::Field< Foam::Type > >__COMMON_TMP_FIELD_TEMPLATE_FUNC__( Type );
 
 %extend Foam::smart_tmp< Foam::Field< Foam::Type > >
 {
+  __COMMON_FIELD_TEMPLATE_OPERATOR( Type );
+  __COMMON_TMP_FIELD_TEMPLATE_FUNC__( Type );
   SEQUENCE_ADDONS( Foam::Type );
   LISTS_FUNCS( Foam::Type );
 }
-
-%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
-
-%extend Foam::Field< Foam::Type > OSTREAM_EXTENDS;
 
 %enddef
 
 //--------------------------------------------------------------------------
 %define __SCALAR_FIELD_TEMPLATE_OPERATOR
-{
   Foam::tmp< Foam::Field< Foam::scalar > > __add__( const Foam::scalar& theArg )
   {
     return get_ref( self ) + theArg;
   }
-}  
 %enddef
 
 
@@ -353,8 +341,15 @@ FIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar );
 
 FIELD_TEMPLATE_FUNC( scalar );
 
-%extend Foam::Field< Foam::scalar > __SCALAR_FIELD_TEMPLATE_OPERATOR;
-%extend Foam::tmp< Foam::Field< Foam::scalar > > __SCALAR_FIELD_TEMPLATE_OPERATOR;
+%extend Foam::Field< Foam::scalar >
+{
+  __SCALAR_FIELD_TEMPLATE_OPERATOR;
+}
+
+%extend Foam::tmp< Foam::Field< Foam::scalar > >
+{
+  __SCALAR_FIELD_TEMPLATE_OPERATOR;
+}
 
 FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar );
 
@@ -363,7 +358,6 @@ FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar );
 
 //---------------------------------------------------------------------------
 %define __VECTOR_FIELD_TEMPLATE_FUNC
-{
   Foam::tmp< Foam::Field< Foam::tensor > > __mul__( const Foam::Field< Foam::vector >& theArg)
   {
     return get_ref( self ) * theArg;
@@ -384,7 +378,6 @@ FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::scalar );
   {
     return  get_ref( self ) & theArg; 
   }
-}
 %enddef
 
 
@@ -395,8 +388,15 @@ FIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector );
 
 FIELD_TEMPLATE_FUNC( vector );
 
-%extend Foam::Field< Foam::vector > __VECTOR_FIELD_TEMPLATE_FUNC;
-%extend Foam::tmp< Foam::Field< Foam::vector > >__VECTOR_FIELD_TEMPLATE_FUNC;
+%extend Foam::Field< Foam::vector >
+{
+  __VECTOR_FIELD_TEMPLATE_FUNC;
+}
+
+%extend Foam::tmp< Foam::Field< Foam::vector > >
+{
+  __VECTOR_FIELD_TEMPLATE_FUNC;
+}
 
 FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector );
 
@@ -405,7 +405,6 @@ FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector );
 
 //----------------------------------------------------------------------------
 %define __TENSOR_FIELD_TEMPLATE_FUNC
-{
   Foam::tmp< Foam::Field< Foam::tensor > > ext_T()
   {
     return self->T();
@@ -414,7 +413,6 @@ FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector );
   {
     return Foam::tr( *self );
   }
-} 
 %enddef
 
 
@@ -425,7 +423,10 @@ FIELD_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::tensor );
 
 FIELD_TEMPLATE_FUNC( tensor );
 
-%extend Foam::Field< Foam::tensor > __TENSOR_FIELD_TEMPLATE_FUNC;
+%extend Foam::Field< Foam::tensor >
+{
+ __TENSOR_FIELD_TEMPLATE_FUNC;
+}
 
 FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::tensor );
 
@@ -437,9 +438,11 @@ FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::tensor );
 
 NO_TMP_TYPEMAP_FIELD( Field< Foam::ComplexType > );
 
-%extend Foam::Field< Foam::ComplexType > __FIELD_TEMPLATE_FUNC__( ComplexType );
-
-%extend Foam::Field< Foam::ComplexType > FIELD_VIRTUAL_EXTENDS( ComplexType );
+%extend Foam::Field< Foam::ComplexType >
+{
+  __FIELD_TEMPLATE_FUNC__( ComplexType );
+  FIELD_VIRTUAL_EXTENDS( ComplexType );
+}
 
 %enddef
 

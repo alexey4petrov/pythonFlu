@@ -51,9 +51,9 @@ TMP_TYPEMAP( Foam::complexVectorField );
   ULIST_COMPLEX_VECTOR_OPERATORS;
   SEQUENCE_ADDONS( Foam::complexVector );
   LISTS_FUNCS( Foam::complexVector );
+  FIELD_VIRTUAL_EXTENDS( complexVector );
 }
 
-%extend Foam::tmp< Foam::Field< Foam::complexVector > > FIELD_VIRTUAL_EXTENDS( complexVector );
 
 //---------------------------------------------------------------------------
 #endif
