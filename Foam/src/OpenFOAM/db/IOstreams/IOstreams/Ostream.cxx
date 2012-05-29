@@ -88,7 +88,7 @@
 %define OSTREAM_EXTENDS
   Foam::Ostream& __rlshift__( Foam::Ostream& theOstream )
   {
-    return theOstream << *self;
+    return theOstream << get_ref( self );
   }
 %enddef
 

@@ -34,6 +34,8 @@
 
 #include "Foam/src/OpenFOAM/db/IOstreams/token.hh"
 
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
+
 #include <Ostream.H>
 
 
