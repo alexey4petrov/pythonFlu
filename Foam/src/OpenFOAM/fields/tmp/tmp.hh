@@ -65,8 +65,25 @@ namespace Foam
     return (*theArg)();
   }
 
-}
+  //-------------------------------------------------------------------------
+  template< class T >
+  T* get_ptr( T* theArg )
+  {
+    return theArg;
+  }
 
+  template< class T >
+  T* get_ptr( tmp< T >* theArg )
+  {
+    return theArg->operator->();
+  }
+
+  template< class T >
+  T* get_ptr( smart_tmp< T >* theArg )
+  {
+    return theArg->operator->();
+  }
+}
 
 //---------------------------------------------------------------------------
 #endif

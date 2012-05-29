@@ -99,34 +99,34 @@
   void ext_assign( const Foam::Type& theSource )
   {
     Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
-    *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
+    *dynamic_cast< Foam::Field< Foam::Type >* >( get_ptr( self ) ) = theSource;
   }
   
   void ext_assign( const Foam::UList< Foam::Type >& theSource )
   {
     Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
-    *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
+    *dynamic_cast< Foam::Field< Foam::Type >* >( get_ptr( self ) ) = theSource;
   }
   
   void ext_assign( const Foam::Field< Foam::Type >& theSource )
   {
     Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
-    *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
+    *dynamic_cast< Foam::Field< Foam::Type >* >( get_ptr( self ) ) = theSource;
   }
   
   void __lshift__( const Foam::Type& theSource )
   {
-    *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
+    *dynamic_cast< Foam::Field< Foam::Type >* >( get_ptr( self ) ) = theSource;
   }
   
   void __lshift__( const Foam::UList< Foam::Type >& theSource )
   {
-    *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
+    *dynamic_cast< Foam::Field< Foam::Type >* >( get_ptr( self ) ) = theSource;
   }
   
   void __lshift__( const Foam::Field< Foam::Type >& theSource )
   {
-    *dynamic_cast< Foam::Field< Foam::Type >* >( self ) = theSource;
+    *dynamic_cast< Foam::Field< Foam::Type >* >( get_ptr( self ) ) = theSource;
   }
 }
 %enddef
