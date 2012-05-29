@@ -49,6 +49,10 @@
 %ignore Foam::Field< Foam::complex >::component;
 %ignore Foam::Field< Foam::complex >::T;
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::Field< Foam::complex >::null;
+#endif
+
 COMPLEX_FIELD_TEMPLATE_FUNC( complex );
 
 %template( complexField ) Foam::Field< Foam::complex >;
@@ -62,6 +66,10 @@ COMPLEX_FIELD_TEMPLATE_FUNC( complex );
 %ignore Foam::Field< Foam::complexVector >::Field;
 %ignore Foam::Field< Foam::complexVector >::typeName;
 %ignore Foam::Field< Foam::complexVector >::T;
+
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::Field< Foam::complexVector >::null;
+#endif
 
 COMPLEX_FIELD_TEMPLATE_FUNC( complexVector );
 
