@@ -37,7 +37,16 @@
 
 %import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
+%ignore Foam::autoPtr< Foam::Field< Foam::symmTensor > >::operator->;
+
 %template( autoPtr_symmTensorField ) Foam::autoPtr< Foam::Field< Foam::symmTensor > >;
+
+%feature( "pythonappend" ) Foam::autoPtr< Foam::Field< Foam::symmTensor > >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_symmTensorField );
+
+%extend Foam::autoPtr< Foam::Field< Foam::symmTensor > >
+{
+  SMARTPTR_EXTEND_ATTR( autoPtr_symmTensorField );
+}
 
 
 //---------------------------------------------------------------------------

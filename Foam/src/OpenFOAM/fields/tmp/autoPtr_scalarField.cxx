@@ -37,7 +37,16 @@
 
 %import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
+%ignore Foam::autoPtr< scalarField >::operator->;
+
 %template( autoPtr_scalarField ) Foam::autoPtr< scalarField >;
+
+%feature( "pythonappend" ) Foam::autoPtr< scalarField >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_scalarField );
+
+%extend Foam::autoPtr< scalarField >
+{
+  SMARTPTR_EXTEND_ATTR( autoPtr_scalarField );
+}
 
 
 //---------------------------------------------------------------------------

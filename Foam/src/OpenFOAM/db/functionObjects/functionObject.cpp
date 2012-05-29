@@ -66,11 +66,22 @@
 
 AUTOPTR_TYPEMAP( Foam::functionObject );
 
+%ignore Foam::autoPtr< Foam::functionObject >::operator->;
+
 %template( autoPtr_functionObject ) Foam::autoPtr< Foam::functionObject >;
 
 %include <functionObject.H>
 
 FUNCTIONOBJECT_CONSTRUCTORTOTABLE_TEMPLATE_FUNC();
+
+
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::autoPtr< Foam::functionObject >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_functionObject );
+
+%extend Foam::autoPtr< Foam::functionObject >
+{
+  SMARTPTR_EXTEND_ATTR( autoPtr_functionObject );
+}
 
 
 //---------------------------------------------------------------------------

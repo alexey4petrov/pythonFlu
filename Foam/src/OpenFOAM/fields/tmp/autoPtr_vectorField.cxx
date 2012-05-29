@@ -37,7 +37,16 @@
 
 %import "Foam/src/OpenFOAM/fields/Fields/primitiveFields.cxx"
 
+%ignore Foam::autoPtr< Foam::vectorField >::operator->;
+
 %template( autoPtr_vectorField ) Foam::autoPtr< Foam::vectorField >;
+
+%feature( "pythonappend" ) Foam::autoPtr< Foam::vectorField >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_vectorField );
+
+%extend Foam::autoPtr< Foam::vectorField >
+{
+  SMARTPTR_EXTEND_ATTR( autoPtr_vectorField );
+}
 
 
 //---------------------------------------------------------------------------

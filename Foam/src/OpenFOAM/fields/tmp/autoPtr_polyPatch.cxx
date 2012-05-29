@@ -37,7 +37,16 @@
 
 %include "Foam/src/OpenFOAM/meshes/polyMesh/polyPatches/polyPatch.cpp"
 
+%ignore Foam::autoPtr< Foam::polyPatch >::operator->;
+
 %template( autoPtr_polyPatch ) Foam::autoPtr< Foam::polyPatch >;
+
+%feature( "pythonappend" ) Foam::autoPtr< Foam::polyPatch >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_polyPatch );
+
+%extend Foam::autoPtr< Foam::polyPatch >
+{
+  SMARTPTR_EXTEND_ATTR( autoPtr_polyPatch );
+}
 
 
 //---------------------------------------------------------------------------

@@ -47,7 +47,16 @@
 
 AUTOPTR_TYPEMAP( Foam::uniformDimensionedVectorField )
 
+%ignore Foam::autoPtr< Foam::uniformDimensionedVectorField >::operator->;
+
 %template( autoPtr_uniformDimensionedVectorField ) Foam::autoPtr< Foam::uniformDimensionedVectorField >;
+
+%feature( "pythonappend" ) Foam::autoPtr< Foam::uniformDimensionedVectorField >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_uniformDimensionedVectorField );
+
+%extend Foam::autoPtr< Foam::uniformDimensionedVectorField >
+{
+  SMARTPTR_EXTEND_ATTR( autoPtr_uniformDimensionedVectorField );
+}
 
 
 //---------------------------------------------------------------------------
