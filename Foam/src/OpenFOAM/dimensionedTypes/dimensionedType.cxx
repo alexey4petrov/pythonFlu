@@ -68,7 +68,6 @@
     self->dimensions() = theValue;
   }
   
-  
   Foam::dimensioned< Type > __neg__()
   {
     return -*self;
