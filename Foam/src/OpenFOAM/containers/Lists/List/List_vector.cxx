@@ -37,6 +37,10 @@
 
 %import "Foam/src/OpenFOAM/containers/Lists/UList/UList_vector.cxx"
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::List< Foam::vector >::null;
+#endif
+
 %template( List_vector ) Foam::List< Foam::vector >;
 
 %extend Foam::List< Foam::vector > COMMON_EXTENDS;

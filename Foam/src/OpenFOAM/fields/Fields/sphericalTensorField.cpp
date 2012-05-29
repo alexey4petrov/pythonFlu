@@ -43,6 +43,10 @@
 %ignore Foam::Field< Foam::sphericalTensor >::Field;
 %ignore Foam::Field< Foam::sphericalTensor >::typeName;
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::Field< Foam::sphericalTensor >::null;
+#endif
+
 %template( sphericalTensorField ) Foam::Field< Foam::sphericalTensor >; 
 
 %typedef Foam::Field< Foam::sphericalTensor > sphericalTensorField;

@@ -43,6 +43,10 @@
 %ignore Foam::UList< Foam::tensor >::operator <=;
 %ignore Foam::UList< Foam::tensor >::operator >=;
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::UList< Foam::tensor >::null;
+#endif
+
 TEMPLATE_ULIST_ITERATOR( tensor );
 
 %template( UList_tensor ) Foam::UList< Foam::tensor >; 

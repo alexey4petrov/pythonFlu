@@ -42,6 +42,10 @@
 %ignore Foam::Field< Foam::scalar >::Field;
 %ignore Foam::Field< Foam::scalar >::T;
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::Field< Foam::scalar >::null;
+#endif
+
 SCALAR_FIELD_TEMPLATE_FUNC;
 
 %template( scalarField ) Foam::Field< Foam::scalar >; 

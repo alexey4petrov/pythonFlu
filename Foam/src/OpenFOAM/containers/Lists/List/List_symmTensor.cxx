@@ -37,6 +37,10 @@
 
 %import "Foam/src/OpenFOAM/containers/Lists/UList/UList_symmTensor.cxx"
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::List< Foam::symmTensor >::null;
+#endif
+
 %template( List_symmTensor ) Foam::List< Foam::symmTensor >; 
 
 %extend Foam::List< Foam::symmTensor > COMMON_EXTENDS;

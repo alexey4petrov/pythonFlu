@@ -46,6 +46,11 @@
 
 #endif
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::UList< Foam::sphericalTensor >::null;
+#endif
+
+
 TEMPLATE_ULIST_ITERATOR( sphericalTensor );
 
 %template( UList_sphericalTensor ) Foam::UList< Foam::sphericalTensor >;

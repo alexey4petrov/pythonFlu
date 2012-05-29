@@ -47,6 +47,10 @@ ULIST_TYPEMAP( complexVector );
 %ignore Foam::UList< Foam::complexVector >::operator >=;
 %ignore Foam::UList< Foam::complexVector >::operator <=;
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::UList< Foam::complexVector >::null;
+#endif
+
 TEMPLATE_ULIST_ITERATOR( complexVector );
 
 %template( UList_complexVector ) Foam::UList< Foam::complexVector >; 

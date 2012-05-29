@@ -51,6 +51,11 @@ ULIST_TYPEMAP( vector );
 %ignore Foam::UList< Foam::vector >::operator ==;
 %ignore Foam::UList< Foam::vector >::operator !=;
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::UList< Foam::vector >::null;
+#endif
+
+
 TEMPLATE_ULIST_ITERATOR( vector );
 
 %template( UList_vector ) Foam::UList< Foam::vector >;

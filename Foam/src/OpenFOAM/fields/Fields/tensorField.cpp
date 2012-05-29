@@ -48,6 +48,10 @@
 %ignore Foam::Field< Foam::tensor >::Field;
 %ignore Foam::Field< Foam::tensor >::T;
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::Field< Foam::tensor >::null;
+#endif
+
 %template( tensorField ) Foam::Field< Foam::tensor >; 
 
 %typedef Foam::Field< Foam::tensor > tensorField;

@@ -37,6 +37,10 @@
 
 %import "Foam/src/OpenFOAM/primitives/scalar.cxx"
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::UList< Foam::scalar >::null;
+#endif
+
 TEMPLATE_ULIST_ITERATOR( scalar );
 
 %template( UList_scalar ) Foam::UList< Foam::scalar >;

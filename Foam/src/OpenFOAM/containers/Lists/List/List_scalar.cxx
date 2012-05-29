@@ -37,6 +37,10 @@
 
 %import "Foam/src/OpenFOAM/containers/Lists/UList/UList_scalar.cxx"
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::List< Foam::scalar >::null;
+#endif
+
 %template( List_scalar ) Foam::List< Foam::scalar >; 
 
 %extend Foam::List< Foam::scalar > COMMON_EXTENDS;

@@ -50,6 +50,11 @@
 %ignore Foam::Field< Foam::vector >::Field;
 %ignore Foam::Field< Foam::vector >::T;
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::Field< Foam::vector >::null;
+#endif
+
+
 VECTOR_FIELD_TEMPLATE_FUNC;
 
 %template( vectorField ) Foam::Field< Foam::vector >; 

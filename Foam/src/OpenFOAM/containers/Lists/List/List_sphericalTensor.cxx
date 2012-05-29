@@ -37,6 +37,11 @@
 
 %import "Foam/src/OpenFOAM/containers/Lists/UList/UList_sphericalTensor.cxx"
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::List< Foam::sphericalTensor >::null;
+#endif
+
+
 %template( List_sphericalTensor ) Foam::List< Foam::sphericalTensor >; 
 
 %extend Foam::List< Foam::sphericalTensor > COMMON_EXTENDS;

@@ -46,6 +46,10 @@
 
 #endif
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::UList< Foam::symmTensor >::null;
+#endif
+
 TEMPLATE_ULIST_ITERATOR( symmTensor );
 
 %template( UList_symmTensor ) Foam::UList< Foam::symmTensor >;

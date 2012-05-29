@@ -37,6 +37,10 @@
 
 %include "Foam/src/OpenFOAM/containers/Lists/UList/UList_complexVector.cpp"
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::List< Foam::complexVector >::null;
+#endif
+
 %template( List_complexVector ) Foam::List< Foam::complexVector >;
 
 %extend Foam::List< Foam::complexVector > COMMON_EXTENDS;

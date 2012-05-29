@@ -45,6 +45,10 @@ ULIST_TYPEMAP( complex );
 %ignore Foam::UList< Foam::complex >::operator >=;
 %ignore Foam::UList< Foam::complex >::operator <=;
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::UList< Foam::complex >::null;
+#endif
+
 TEMPLATE_ULIST_ITERATOR( complex );
 
 %template( UList_complex ) Foam::UList< Foam::complex >; 

@@ -48,6 +48,10 @@
 %ignore Foam::Field< Foam::symmTensor >::typeName;
 %ignore Foam::sqr;
 
+#if SWIG_VERSION >= 0x020000 && SWIG_VERSION < 0x020003
+%ignore Foam::Field< Foam::symmTensor >::null;
+#endif
+
 %template( symmTensorField ) Foam::Field< Foam::symmTensor >; 
 
 %typedef Foam::Field< Foam::symmTensor > symmTensorField;
