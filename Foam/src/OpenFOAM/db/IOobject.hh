@@ -30,6 +30,8 @@
 
 #include "Foam/src/OpenFOAM/primitives/strings/fileName.hh"
 
+#include "Foam/src/OpenFOAM/fields/tmp/tmp.hh"
+
 #include <IOobject.H>
 
 #include "Foam/ext/common/OpenFOAM/managedFlu/IOobjectHolder.hh"

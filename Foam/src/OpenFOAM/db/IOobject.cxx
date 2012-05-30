@@ -46,19 +46,25 @@ NO_HOLDER_TYPEMAP( Foam::objectRegistry );
 
 
 //---------------------------------------------------------------------------
-%include <IOobject.H>
-
-%extend Foam::IOobject
-{
+%define IOOBJECT_FUNCTIONS()
   void setWriteOpt( IOobject::writeOption opt )
   {
-    self->writeOpt() = opt;
+    get_ref( self ).writeOpt() = opt;
   }
   
   void setReadOpt( IOobject::readOption opt )
   {
-    self->readOpt() = opt;
+    get_ref( self ).readOpt() = opt;
   }
+%enddef
+
+
+//---------------------------------------------------------------------------
+%include <IOobject.H>
+
+%extend Foam::IOobject
+{
+  IOOBJECT_FUNCTIONS();
 }
 
 
