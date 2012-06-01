@@ -36,12 +36,17 @@
 
 %include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_sphericalTensor_fvPatchField_volMesh.cpp"
 
-AUTOPTR_TYPEMAP( Foam::volSphericalTensorField )
+AUTOPTR_TYPEMAP( Foam::volSphericalTensorField );
+
+%ignore Foam::autoPtr< Foam::volSphericalTensorField >::operator->;
 
 %template( autoPtr_volSphericalTensorField ) Foam::autoPtr< Foam::volSphericalTensorField >;
 
+%feature( "pythonappend" ) Foam::autoPtr< Foam::volSphericalTensorField >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_volSphericalTensorField );
+
 %extend Foam::autoPtr< Foam::volSphericalTensorField >
 {
+  SMARTPTR_EXTEND_ATTR( autoPtr_volSphericalTensorField );
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::sphericalTensor );
 }
 

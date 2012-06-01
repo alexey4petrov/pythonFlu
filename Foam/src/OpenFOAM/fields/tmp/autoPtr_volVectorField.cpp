@@ -36,9 +36,18 @@
 
 %include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvPatchField_volMesh.cpp"
 
-AUTOPTR_TYPEMAP( Foam::volVectorField )
+AUTOPTR_TYPEMAP( Foam::volVectorField );
+
+%ignore Foam::autoPtr< Foam::volVectorField >::operator->;
 
 %template( autoPtr_volVectorField ) Foam::autoPtr< Foam::volVectorField >;
+
+%feature( "pythonappend" ) Foam::autoPtr< Foam::volVectorField >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_volVectorField );
+
+%extend Foam::autoPtr< Foam::volVectorField >
+{
+  SMARTPTR_EXTEND_ATTR( autoPtr_volVectorField );
+}
 
 
 //---------------------------------------------------------------------------

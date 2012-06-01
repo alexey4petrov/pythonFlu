@@ -36,6 +36,8 @@
 
 %include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"
 
+%ignore Foam::autoPtr< Foam::fvPatchField< Foam::scalar > >::operator->;
+
 %template( autoPtr_fvPatchField_scalar ) Foam::autoPtr< Foam::fvPatchField< Foam::scalar > >;
 
 

@@ -36,14 +36,19 @@
 
 %include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvsPatchField_surfaceMesh.cpp"
 
-AUTOPTR_TYPEMAP( Foam::surfaceScalarField )
+AUTOPTR_TYPEMAP( Foam::surfaceScalarField );
+
+%ignore Foam::autoPtr< Foam::surfaceScalarField >::operator->;
+
+%template( autoPtr_surfaceScalarField ) Foam::autoPtr< Foam::surfaceScalarField >;
+
+%feature( "pythonappend" ) Foam::autoPtr< Foam::surfaceScalarField >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_surfaceScalarField );
 
 %extend Foam::autoPtr< Foam::surfaceScalarField >
 {
+  SMARTPTR_EXTEND_ATTR( autoPtr_surfaceScalarField );
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::scalar );
 }
-
-%template( autoPtr_surfaceScalarField ) Foam::autoPtr< Foam::surfaceScalarField >;
 
 
 //---------------------------------------------------------------------------

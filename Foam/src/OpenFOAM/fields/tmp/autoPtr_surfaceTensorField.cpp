@@ -36,12 +36,19 @@
 
 %include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_tensor_fvsPatchField_surfaceMesh.cpp"
 
+AUTOPTR_TYPEMAP( Foam::surfaceTensorField );
+
+%ignore Foam::autoPtr< Foam::surfaceTensorField >::operator->;
+
 %template( autoPtr_surfaceTensorField ) Foam::autoPtr< Foam::surfaceTensorField >;
+
+%feature( "pythonappend" ) Foam::autoPtr< Foam::surfaceTensorField >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_surfaceTensorField );
 
 
 //---------------------------------------------------------------------------
 %extend Foam::autoPtr< Foam::surfaceTensorField > 
 {
+  SMARTPTR_EXTEND_ATTR( autoPtr_surfaceTensorField );
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::tensor );
 }
 

@@ -36,6 +36,8 @@
 
 %include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_vector.cpp"
 
+%ignore Foam::autoPtr< Foam::fvPatchField< Foam::vector > >::operator->;
+
 %template( autoPtr_fvPatchField_vector ) Foam::autoPtr< Foam::fvPatchField< Foam::vector > >;
 
 
@@ -44,7 +46,7 @@
 
 %extend Foam::autoPtr< Foam::fvPatchField< Foam::vector > >
 {
-  SMARTPTR_EXTEND_ATTR( autoPtr_fvPatchField_vector )
+  SMARTPTR_EXTEND_ATTR( autoPtr_fvPatchField_vector );
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::vector );
 }
 

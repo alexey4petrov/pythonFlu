@@ -36,7 +36,18 @@
 
 %include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_vector_fvsPatchField_surfaceMesh.cpp"
 
+AUTOPTR_TYPEMAP( Foam::surfaceVectorField );
+
+%ignore Foam::autoPtr< Foam::surfaceVectorField >::operator->;
+
 %template( autoPtr_surfaceVectorField ) Foam::autoPtr< Foam::surfaceVectorField >;
+
+%extend Foam::autoPtr< Foam::surfaceVectorField >
+{
+  SMARTPTR_EXTEND_ATTR( autoPtr_surfaceVectorField );
+  SMARTPTR_EXTEND_OPERATOR_EQ( Foam::vector );
+}
+
 
 
 //---------------------------------------------------------------------------

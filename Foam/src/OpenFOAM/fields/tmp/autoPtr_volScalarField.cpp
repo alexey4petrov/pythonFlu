@@ -36,12 +36,17 @@
 
 %include "Foam/src/OpenFOAM/fields/GeometricFields/GeometricField_scalar_fvPatchField_volMesh.cpp"
 
-AUTOPTR_TYPEMAP( Foam::volScalarField )
+AUTOPTR_TYPEMAP( Foam::volScalarField );
+
+%ignore Foam::autoPtr< Foam::volScalarField >::operator->;
 
 %template( autoPtr_volScalarField ) Foam::autoPtr< Foam::volScalarField >;
 
+%feature( "pythonappend" ) Foam::autoPtr< Foam::volScalarField >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_volScalarField );
+
 %extend Foam::autoPtr< Foam::volScalarField >
 {
+  SMARTPTR_EXTEND_ATTR( autoPtr_volScalarField );
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::scalar );
 }
 
