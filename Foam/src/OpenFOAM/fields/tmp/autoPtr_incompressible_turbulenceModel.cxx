@@ -68,6 +68,8 @@ AUTOPTR_TYPEMAP( Foam::turbulenceModel )
 #if FOAM_VERSION( >=, 010600 )
 AUTOPTR_TYPEMAP( Foam::incompressible::turbulenceModel )
 
+%ignore Foam::autoPtr< Foam::incompressible::turbulenceModel >::operator->;
+
 %template( autoPtr_incompressible_turbulenceModel ) Foam::autoPtr< Foam::incompressible::turbulenceModel >;
 
 %feature( "pythonappend" ) Foam::autoPtr< Foam::incompressible::turbulenceModel >::SMARTPTR_PYAPPEND_GETATTR( autoPtr_incompressible_turbulenceModel );
