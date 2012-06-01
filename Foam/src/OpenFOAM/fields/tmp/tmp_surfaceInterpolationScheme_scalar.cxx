@@ -46,6 +46,7 @@
 %extend Foam::tmp< Foam::surfaceInterpolationScheme< Foam::scalar > >
 {
   SMARTPTR_EXTEND_ATTR( tmp_surfaceInterpolationScheme_scalar );
+  SURFACEINTRPOLATIONSCHEME_TEMPLATE_FUNC( scalar );
 }
 
 
