@@ -339,13 +339,24 @@ CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_3( Foam::GeometricFieldHol
 
 
 //--------------------------------------------------------------------------------------
+%define TENSORFIELDHOLDER_EXTEND( TPatchField, TMesh )
+  
+  Foam::GeometricFieldHolder< Foam::vector, TPatchField, TMesh  >
+    __and__( const Foam::GeometricFieldHolder< Foam::vector, TPatchField, TMesh  >& theArg ) const
+  {
+    return *self & theArg;
+  }
+
+%enddef
+
 %define EXTEND_VOLTENSORFIELDHOLDER
 
 %extend Foam::GeometricFieldHolder< Foam::tensor, Foam::fvPatchField, Foam::volMesh >
 {
 
   GEOMETRICFIELDHOLDER_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::tensor, Foam::fvPatchField, Foam::volMesh );
-  COMMON_EXTEND_GEOMETRICFIELDHOLDER( Foam::tensor, Foam::fvPatchField, Foam::volMesh );  
+  COMMON_EXTEND_GEOMETRICFIELDHOLDER( Foam::tensor, Foam::fvPatchField, Foam::volMesh );
+  TENSORFIELDHOLDER_EXTEND( Foam::fvPatchField, Foam::volMesh )
   GEOMETRICFIELDHOLDER_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::tensor, Foam::fvPatchField, Foam::volMesh );
 }
 
