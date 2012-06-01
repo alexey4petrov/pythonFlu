@@ -37,6 +37,12 @@
 %extend Foam::smart_tmp< Foam::Kmesh >
 {
   SMARTPTR_EXTEND_ATTR( smart_tmp_Kmesh );
+  __VECTOR_FIELD_TEMPLATE_FUNC;
+  FIELD_VIRTUAL_EXTENDS( vector );
+  __COMMON_FIELD_TEMPLATE_OPERATOR( vector );
+  SEQUENCE_ADDONS( Foam::vector );
+  LISTS_FUNCS( Foam::vector );
+  OSTREAM_EXTENDS;
 }
 
 SMART_TMP_VALID_EXTEND( Foam::Kmesh );
