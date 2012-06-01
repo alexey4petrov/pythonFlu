@@ -43,7 +43,10 @@
 
 %template( surfaceInterpolationScheme_vector) Foam::surfaceInterpolationScheme< Foam::vector >;
 
-%extend Foam::surfaceInterpolationScheme< Foam::vector > SURFACEINTRPOLATIONSCHEME_TEMPLATE_FUNC( vector );
+%extend Foam::surfaceInterpolationScheme< Foam::vector >
+{
+  SURFACEINTRPOLATIONSCHEME_TEMPLATE_FUNC( vector );
+}
 
 
 //---------------------------------------------------------------------------

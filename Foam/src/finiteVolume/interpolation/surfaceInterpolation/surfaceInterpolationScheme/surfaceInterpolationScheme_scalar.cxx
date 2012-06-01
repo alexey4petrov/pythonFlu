@@ -43,7 +43,10 @@
 
 %template( surfaceInterpolationScheme_scalar) Foam::surfaceInterpolationScheme< Foam::scalar >;
 
-%extend Foam::surfaceInterpolationScheme< Foam::scalar > SURFACEINTRPOLATIONSCHEME_TEMPLATE_FUNC( scalar );
+%extend Foam::surfaceInterpolationScheme< Foam::scalar >
+{
+  SURFACEINTRPOLATIONSCHEME_TEMPLATE_FUNC( scalar );
+}
 
 
 //---------------------------------------------------------------------------

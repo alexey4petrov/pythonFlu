@@ -40,11 +40,10 @@
 
 //---------------------------------------------------------------------------
 %define SURFACEINTRPOLATIONSCHEME_TEMPLATE_FUNC( Type )
-{
   Foam::surfaceScalarField& 
   ext_weights( const Foam::GeometricField< Foam::Type, Foam::fvPatchField, Foam::volMesh >& theArg )
   {
-    return self->weights( theArg )();
+    return get_ref( self ).weights( theArg )();
   }
    
   static Foam::tmp< Foam::GeometricField< Foam::Type, Foam::fvsPatchField, Foam::surfaceMesh > >
@@ -61,7 +60,6 @@
   {
     return Foam::surfaceInterpolationScheme< Foam::Type >::interpolate( vf, tlambdas );
   }
-}
 %enddef
 
 
