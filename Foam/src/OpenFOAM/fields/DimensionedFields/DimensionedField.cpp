@@ -46,19 +46,89 @@
 %import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
 %define DIMENSIONED_FIELD_VIRTUAL_EXTENDS( Type, TMesh )
-{
   void ext_assign( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theSource )
   {
     Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
-    *dynamic_cast< Foam::DimensionedField< Foam::Type, Foam::TMesh >* >( self ) = theSource;
+    *dynamic_cast< Foam::DimensionedField< Foam::Type, Foam::TMesh >* >( get_ptr( self ) ) = theSource;
   }
   
   void __lshift__( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theSource )
   {
-    *dynamic_cast< Foam::DimensionedField< Foam::Type, Foam::TMesh >* >( self ) = theSource;
+    *dynamic_cast< Foam::DimensionedField< Foam::Type, Foam::TMesh >* >( get_ptr( self ) ) = theSource;
   }
+%enddef
 
-}
+
+//---------------------------------------------------------------------------
+%define __COMMON_DIMENSIONEDFIELD_TEMPLATE_OPERATOR( Type, TMesh )
+  Foam::tmp< Foam::DimensionedField< Foam::Type, Foam::TMesh > > __rmul__( const Foam::scalar& theArg)
+  {
+    return theArg * get_ref( self );
+  }
+  Foam::tmp< Foam::DimensionedField< Foam::Type, Foam::TMesh > > __mul__( const Foam::DimensionedField< Foam::scalar, Foam::TMesh >& theArg)
+  {
+    return get_ref( self ) * theArg;
+  }
+  Foam::tmp< Foam::DimensionedField< Foam::Type, Foam::TMesh > > __rmul__( const Foam::DimensionedField< Foam::scalar, Foam::TMesh >& theArg)
+  {
+    return theArg * get_ref( self );
+  }
+  Foam::tmp< Foam::DimensionedField< Foam::Type, Foam::TMesh > > __add__( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theArg)
+  {
+    return get_ref( self ) + theArg;
+  }
+  Foam::tmp< Foam::DimensionedField< Foam::Type, Foam::TMesh > > __sub__( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theArg)
+  {
+    return get_ref( self ) - theArg;
+  }
+  
+  Foam::tmp< Foam::DimensionedField< Foam::Type, Foam::TMesh > > __sub__( const Foam::Type& theArg )
+  {
+    return  get_ref( self ) - theArg; 
+  }
+  
+  Foam::tmp< Foam::DimensionedField< Foam::Type, Foam::TMesh > > __div__( const Foam::DimensionedField< Foam::scalar, Foam::TMesh >& theArg)
+  {
+    return get_ref( self ) / theArg;
+  }
+  Foam::tmp< Foam::DimensionedField< Foam::Type, Foam::TMesh > > __mul__( const Foam::scalar& theArg )
+  {
+    return get_ref( self ) * theArg; 
+  }
+  
+  Foam::tmp< Foam::DimensionedField< Foam::Type, Foam::TMesh > > __div__( const Foam::DimensionedField< Foam::scalar, Foam::TMesh >& theArg )
+  {
+    return  get_ref( self ) / theArg; 
+  }
+  
+  Foam::tmp< Foam::DimensionedField< Foam::scalar, Foam::TMesh > > mag()
+  {
+    return Foam::mag( get_ref( self ) );
+  }
+  Foam::tmp< Foam::DimensionedField< Foam::scalar, Foam::TMesh > > magSqr()
+  {
+    return Foam::magSqr( get_ref( self ) );
+  }
+  Foam::Type gSum()
+  {
+    return Foam::gSum( get_ref( self ) );
+  }
+  Foam::Type gMin()
+  {
+    return Foam::gMin( get_ref( self ) );
+  }
+  Foam::dimensioned< Foam::Type > gMax()
+  {
+    return Foam::gMax( get_ref( self ) );
+  }
+  Foam::Type gAverage()
+  {
+    return Foam::gAverage( get_ref( self ) );
+  }
+  Foam::dimensioned< Foam::Type > max()
+  {
+    return Foam::max( get_ref( self ) );
+  }
 %enddef
 
 
@@ -105,52 +175,87 @@
 //---------------------------------------------------------------------------
 %import "Foam/src/OpenFOAM/db/objectRegistry.cxx"
 
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+
 %define DIMENSIONED_FIELD_TEMPLATE_FUNC( Type, TMesh )
 
-%extend Foam::DimensionedField< Foam::Type, Foam::TMesh > COMMON_EXTENDS;
-
-%extend Foam::DimensionedField< Foam::Type, Foam::TMesh > FIELD_VIRTUAL_EXTENDS( Type );
-
-%extend Foam::DimensionedField< Foam::Type, Foam::TMesh > DIMENSIONED_FIELD_VIRTUAL_EXTENDS( Type, TMesh );
-
-%extend Foam::DimensionedField< Foam::Type, Foam::TMesh > 
+%extend Foam::DimensionedField< Foam::Type, Foam::TMesh >
 {
-  OBJECTREGISTRY_TEMPLATE_2_EXTENDS( DimensionedField, Foam::Type, Foam::TMesh  )
-    
+  FIELD_VIRTUAL_EXTENDS( Type );
+  DIMENSIONED_FIELD_VIRTUAL_EXTENDS( Type, TMesh );
+  OBJECTREGISTRY_TEMPLATE_2_EXTENDS( DimensionedField, Foam::Type, Foam::TMesh  );
+  OSTREAM_EXTENDS;
+  
   void ext_assign( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theArg )
   {
     Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
-    *self = theArg;
+    get_ref( self ) = theArg;
   }
   
   void __lshift__( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theArg )
   {
-    *self = theArg;
+    get_ref( self ) = theArg;
   }
 
   Foam::dimensioned< Type > ext_sum()
   {
-    return Foam::sum( *self );
+    return Foam::sum( get_ref( self ) );
   }
   
-  ISINSTANCE_TEMPLATE_2_EXTEND( DimensionedField, Foam::Type, Foam::TMesh )
+  ISINSTANCE_TEMPLATE_2_EXTEND( DimensionedField, Foam::Type, Foam::TMesh );
+  
+  __COMMON_DIMENSIONEDFIELD_TEMPLATE_OPERATOR( Type, TMesh );
 }
 
-%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%extend Foam::tmp< Foam::DimensionedField< Foam::Type, Foam::TMesh > >
+{
+  __COMMON_DIMENSIONEDFIELD_TEMPLATE_OPERATOR( Type, TMesh );    
+  
+  void __lshift__( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theArg )
+  {
+    get_ref( self ) = theArg;
+  }
 
-%extend Foam::DimensionedField< Foam::Type, Foam::TMesh > OSTREAM_EXTENDS;
+  ISINSTANCE_TEMPLATE_2_EXTEND( DimensionedField, Foam::Type, Foam::TMesh );
+  
+  SEQUENCE_ADDONS( Foam::Type );
+
+  LISTS_FUNCS( Foam::Type );
+  
+  IOOBJECT_FUNCTIONS;
+}
 
 %enddef
 
 
 //--------------------------------------------------------------------------------
 %define __VECTOR_DIMENSIONED_FIELD_OPERATORS( TMesh )
-{
   Foam::tmp< Foam::DimensionedField< Foam::vector, TMesh > > __div__( const Foam::DimensionedField< Foam::scalar, TMesh >& theArg )
   {
-    return *self / theArg;
+    return get_ref( self ) / theArg;
   }
-}
+  
+  Foam::tmp< Foam::DimensionedField< Foam::tensor, TMesh > > __mul__( const Foam::DimensionedField< Foam::vector, TMesh >& theArg)
+  {
+    return get_ref( self ) * theArg;
+  }
+  Foam::tmp< Foam::DimensionedField< Foam::scalar, TMesh > > __rand__( const Foam::vector& theArg)
+  {
+    return theArg & get_ref( self );
+  }
+  Foam::tmp< Foam::DimensionedField< Foam::vector, TMesh > > __rand__( const Foam::tensor& theArg)
+  {
+    return theArg & get_ref( self );
+  }
+  Foam::tmp< Foam::DimensionedField< Foam::scalar, TMesh > > __and__( const Foam::DimensionedField< Foam::vector, TMesh >& theArg )
+  {
+    return  get_ref( self ) & theArg; 
+  }
+  Foam::tmp< Foam::DimensionedField< Foam::vector, TMesh > > __and__( const Foam::DimensionedField< Foam::tensor, TMesh >& theArg )
+  {
+    return  get_ref( self ) & theArg; 
+  }
+
 %enddef
 
 
@@ -158,7 +263,17 @@
 %define VECTOR_DIMENSIONED_FIELD_TEMPLATE_FUNC( TMesh )
    DIMENSIONED_FIELD_TEMPLATE_FUNC( vector, TMesh );
    
-   %extend Foam::DimensionedField< Foam::vector, Foam::TMesh > __VECTOR_DIMENSIONED_FIELD_OPERATORS( TMesh );
+   %extend Foam::DimensionedField< Foam::vector, Foam::TMesh >
+   {
+     __VECTOR_DIMENSIONED_FIELD_OPERATORS( TMesh );
+   }
+   
+   %extend Foam::tmp< Foam::DimensionedField< Foam::vector, TMesh > >
+   {
+     __VECTOR_DIMENSIONED_FIELD_OPERATORS( TMesh );
+
+   }
+
 %enddef
 
 

@@ -76,6 +76,11 @@
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >::min;
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >::max;
 %ignore Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >::T;
+%ignore Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >::operator+=;
+%ignore Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >::operator/=;
+%ignore Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >::operator-=;
+%ignore Foam::GeometricField< Foam::scalar, Foam::fvPatchField, Foam::volMesh >::operator*=;
+
 
 %import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedScalar.cxx"
 

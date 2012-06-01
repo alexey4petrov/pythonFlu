@@ -52,6 +52,11 @@
 %ignore Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh >::scale;
 %ignore Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh >::min;
 %ignore Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh >::max;
+%ignore Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh >::operator+=;
+%ignore Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh >::operator/=;
+%ignore Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh >::operator-=;
+%ignore Foam::GeometricField< Foam::tensor, Foam::fvPatchField, Foam::volMesh >::operator*=;
+
 
 TENSOR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvPatchField, Foam::volMesh );
 

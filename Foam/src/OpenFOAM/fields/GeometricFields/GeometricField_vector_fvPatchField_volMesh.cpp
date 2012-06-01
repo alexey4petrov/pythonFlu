@@ -74,6 +74,10 @@
 %ignore Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >::min;
 %ignore Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >::max;
 %ignore Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >::T;
+%ignore Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >::operator+=;
+%ignore Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >::operator/=;
+%ignore Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >::operator-=;
+%ignore Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >::operator*=;
 
 %template( GeometricField_vector_fvPatchField_volMesh ) Foam::GeometricField< Foam::vector, Foam::fvPatchField, Foam::volMesh >;
 

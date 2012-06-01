@@ -309,7 +309,7 @@ public:
         );
 
         //- Constructor from components
-#if ( !defined(SWIG) || (SWIG_VERSION > 0x010340) )
+#if ( !defined(SWIG) || (SWIG_VERSION > 0x020007) )
         GeometricField
         (
             const IOobject&,

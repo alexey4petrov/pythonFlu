@@ -60,12 +60,19 @@
 %ignore Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >::scale;
 %ignore Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >::min;
 %ignore Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >::max;
+%ignore Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >::operator+=;
+%ignore Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >::operator/=;
+%ignore Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >::operator-=;
+%ignore Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >::operator*=;
+
 
 %import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedTensor.cxx"
 
 
 //---------------------------------------------------------------------------
 %template( GeometricField_tensor_fvsPatchField_surfaceMesh ) Foam::GeometricField< Foam::tensor, Foam::fvsPatchField, Foam::surfaceMesh >;
+
+TENSOR_GEOMETRIC_FIELD_TEMPLATE_FUNC( Foam::fvsPatchField, Foam::surfaceMesh );
 
 
 //---------------------------------------------------------------------------
