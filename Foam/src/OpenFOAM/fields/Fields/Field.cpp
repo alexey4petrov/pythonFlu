@@ -407,11 +407,11 @@ FIELD_CLEAR_PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR( Foam::vector );
 %define __TENSOR_FIELD_TEMPLATE_FUNC
   Foam::tmp< Foam::Field< Foam::tensor > > ext_T()
   {
-    return self->T();
+    return get_ref( self ).T();
   }
   Foam::tmp< Foam::Field< Foam::scalar > > tr()
   {
-    return Foam::tr( *self );
+    return Foam::tr( get_ref( self ) );
   }
 %enddef
 
