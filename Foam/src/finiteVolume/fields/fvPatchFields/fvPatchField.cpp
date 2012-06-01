@@ -48,34 +48,31 @@
 
 //---------------------------------------------------------------------------
 %define FVPATCHFIELD_VIRTUAL_EXTENDS( Type )
-{
   void ext_assign( const Foam::fvPatchField< Foam::Type >& theSource )
   {
     Foam::Warning << "The “ext_assign” method is obsolete, use “<<” operator instead" << endl;
-    *dynamic_cast< Foam::fvPatchField< Foam::Type >* >( self ) = theSource;
+    *dynamic_cast< Foam::fvPatchField< Foam::Type >* >( get_ptr( self ) ) = theSource;
   }
 
   void __lshift__( const Foam::fvPatchField< Foam::Type >& theSource )
   {
-    *dynamic_cast< Foam::fvPatchField< Foam::Type >* >( self ) = theSource;
+    *dynamic_cast< Foam::fvPatchField< Foam::Type >* >( get_ptr( self ) ) = theSource;
   }
-
-}
 %enddef
 
 
 //--------------------------------------------------------------------------
 %define __COMMON_FVPATCHFIELD_TEMPLATE_FUNC_EXTENDS( Type )
-{
   Foam::smart_tmp< Foam::Field< Type > > ext_snGrad()
   {
-    return self->snGrad();
+    return get_ref( self).snGrad();
   }
-}
 %enddef
 
 
 //---------------------------------------------------------------------------
+%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+
 %define FVPATCHFIELD_EXTENDS( Type )
 
 %feature( "director" ) fvPatchField_##Type;
@@ -84,15 +81,31 @@ NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::scalar > );
 NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::vector > );
 NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::tensor > );
 
-%extend Foam::fvPatchField< Foam::Type > FIELD_VIRTUAL_EXTENDS( Type );
+%extend Foam::fvPatchField< Foam::Type >
+{
+  FIELD_VIRTUAL_EXTENDS( Type );
+  
+  __COMMON_FVPATCHFIELD_TEMPLATE_FUNC_EXTENDS( Type );
 
-%extend Foam::fvPatchField< Foam::Type > __COMMON_FVPATCHFIELD_TEMPLATE_FUNC_EXTENDS( Type );
+  FVPATCHFIELD_VIRTUAL_EXTENDS( Type );
 
-%extend Foam::fvPatchField< Foam::Type > FVPATCHFIELD_VIRTUAL_EXTENDS( Type );
+  OSTREAM_EXTENDS;
+}
 
-%import "Foam/src/OpenFOAM/db/IOstreams/IOstreams/Ostream.cxx"
+%extend Foam::tmp< Foam::fvPatchField< Foam::Type > >
+{
+  FIELD_VIRTUAL_EXTENDS( Type );
+  
+  __COMMON_FVPATCHFIELD_TEMPLATE_FUNC_EXTENDS( Type );
 
-%extend Foam::fvPatchField< Foam::Type > OSTREAM_EXTENDS;
+  FVPATCHFIELD_VIRTUAL_EXTENDS( Type );
+
+  OSTREAM_EXTENDS;
+
+  SEQUENCE_ADDONS( Foam::Type );
+
+  LISTS_FUNCS( Foam::Type );
+}
 
 %enddef
 

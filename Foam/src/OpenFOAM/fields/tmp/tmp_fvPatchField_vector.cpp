@@ -56,6 +56,10 @@ TMP_DIRECTOR_TYPEMAP( Foam::fvPatchField< Foam::vector > )
   }
   
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::vector );
+  
+  __COMMON_FIELD_TEMPLATE_OPERATOR( vector );
+  
+  __VECTOR_FIELD_TEMPLATE_FUNC;
 }
 
 
