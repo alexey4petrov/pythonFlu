@@ -35,12 +35,12 @@
 //---------------------------------------------------------------------------
 %import "Foam/src/OpenFOAM/fields/tmp/tmp.cxx"
 
+TMP_TYPEMAP( Foam::Field< Foam::complexVector > );
+
 %import "Foam/src/OpenFOAM/fields/Fields/complexFields.cxx"
 
 
 //----------------------------------------------------------------------------
-TMP_TYPEMAP( Foam::complexVectorField );
-
 %template( tmp_complexVectorField ) Foam::tmp< Foam::Field< Foam::complexVector > >;
 
 %feature( "pythonappend" ) Foam::tmp< Foam::Field< Foam::complexVector > >::SMARTPTR_PYAPPEND_GETATTR( tmp_complexVectorField );

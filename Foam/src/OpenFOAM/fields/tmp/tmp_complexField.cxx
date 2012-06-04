@@ -39,7 +39,7 @@
 
 
 //----------------------------------------------------------------------------
-TMP_TYPEMAP( Foam::complexField );
+TMP_TYPEMAP( Foam::Field< Foam::complex > );
 
 %template( tmp_complexField ) Foam::tmp< Foam::Field< Foam::complex > >;
 
