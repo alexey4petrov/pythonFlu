@@ -58,6 +58,10 @@ CONFFLU_CHECK_SWIG
 echo 
 
 echo "--------------------------------------------------------------------------------------"
+PYTHONFLU_CHECK_SWIG
+echo
+
+echo "--------------------------------------------------------------------------------------"
 CONFFLU_CHECK_PYTHON
 echo 
 
@@ -84,7 +88,6 @@ echo
 echo "--------------------------------------------------------------------------------------"
 PYTHONFLU_CHECK_CREATING_PACKAGE
 echo
-
 
 echo "---------------------------- mandatory products --------------------------------"
 CONFFLU_PRINT_SUMMURY( "openfoam_ok swig_ok python_ok managedflu_ok" )
