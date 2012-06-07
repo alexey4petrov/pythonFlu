@@ -37,6 +37,10 @@
 
 %import "Foam/src/finiteVolume/fvMesh/fvMeshes.cxx"
 
+#if FOAM_VERSION( >,020100)
+%template ( subCycleField_volScalarField ) Foam::subCycleField< Foam::volScalarField >;
+#endif
+
 %template ( subCycle_volScalarField ) Foam::subCycle< Foam::volScalarField >;
 
 %template ( subCycleIterator_volScalarField ) Foam::subCycleIterator< Foam::subCycle< Foam::volScalarField > >;
