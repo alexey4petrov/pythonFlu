@@ -200,6 +200,8 @@
   }
 %enddef
 
+
+//---------------------------------------------------------------------------
 %define __COMMON_GEOMETRIC_FIELD_COMPOUND_OPERATORS__( Type, TPatchField, TMesh )
   void __imul__( const Foam::GeometricField< Foam::scalar, TPatchField, TMesh >& theArg )
   {
@@ -292,6 +294,9 @@
 {
   __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
   __COMMON_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TMesh );
+#if SWIG_VERSION < 0x020000
+  __COMMON_GEOMETRIC_FIELD_COMPOUND_OPERATORS__( Type, TPatchField, TMesh );
+#endif
   SEQUENCE_ADDONS( Type );
   LISTS_FUNCS( Type );
   IOOBJECT_FUNCTIONS();
@@ -301,6 +306,9 @@
 {
   __COMMON_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TPatchField, TMesh );
   __COMMON_TMP_GEOMETRIC_FIELD_TEMPLATE_FUNC__( Type, TMesh );
+#if SWIG_VERSION < 0x020000
+  __COMMON_GEOMETRIC_FIELD_COMPOUND_OPERATORS__( Type, TPatchField, TMesh );
+#endif
   SEQUENCE_ADDONS( Type );
   LISTS_FUNCS( Type );
   IOOBJECT_FUNCTIONS();
