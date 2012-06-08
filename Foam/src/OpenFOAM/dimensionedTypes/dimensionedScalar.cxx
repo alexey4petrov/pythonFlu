@@ -43,6 +43,10 @@
 %ignore Foam::dimensioned< Foam::scalar >::replace;
 %ignore Foam::dimensioned< Foam::scalar >::T;
 
+#if FOAM_VERSION( >=,020101 )
+%feature("valuewrapper") Foam::dimensioned< Foam::scalar >;
+#endif
+
 
 //----------------------------------------------------------------------------
 PYAPPEND_RETURN_SELF_COMPOUND_OPERATOR_TEMPLATE_1(Foam::dimensioned, Foam::scalar, operator+= )

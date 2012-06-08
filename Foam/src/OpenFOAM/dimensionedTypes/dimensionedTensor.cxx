@@ -37,6 +37,10 @@
 
 %import "Foam/src/OpenFOAM/dimensionedTypes/dimensionedSymmTensor.cxx"
 
+#if FOAM_VERSION( >=,020101 )
+%feature("valuewrapper") Foam::dimensioned< Foam::tensor >;
+#endif
+
 %include <dimensionedTensor.H>
 
 typedef Foam::dimensioned< Foam::tensor > dimensionedTensor;

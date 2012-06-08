@@ -43,6 +43,10 @@
 %ignore Foam::dimensioned< Foam::vector >::replace;
 %ignore Foam::dimensioned< Foam::vector >::T;
 
+#if FOAM_VERSION( >=,020101 )
+%feature("valuewrapper") Foam::dimensioned< Foam::vector >;
+#endif
+
 %typedef Foam::dimensioned< Foam::vector > dimensionedVector;
 
 %typemap( out ) Foam::dimensioned< Foam::vector >
