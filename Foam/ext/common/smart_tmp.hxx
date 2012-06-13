@@ -62,6 +62,20 @@
 
 
 //---------------------------------------------------------------------------
+%define SMART_TMP_VALID_EXTEND_TEMPLATE2( Template, Type1, Type2 )
+
+%extend Foam::smart_tmp< Template< Type1, Type2 > >
+{
+  bool valid() const
+  {
+     return ! self->empty();
+  }
+}
+
+%enddef
+
+
+//---------------------------------------------------------------------------
 %define SMART_TMP_VALID_EXTEND_TEMPLATE3( Template, Type1, Type2, Type3 )
 
 %extend Foam::smart_tmp< Template< Type1, Type2, Type3 > >
@@ -103,6 +117,44 @@
        if ( SWIG_IsOK( check ) && argp ) {
          Foam::tmp< Template< Type > >* arg = %reinterpret_cast( argp, Foam::tmp< Template< Type > > * );
          result = Foam::smart_tmp< Template< Type > >( *arg );
+       } else {
+         %argument_fail( check, "$type", $symname, $argnum ); 
+       }
+    }
+  }
+  $1 = &result;
+}
+
+%enddef
+
+//---------------------------------------------------------------------------
+%define SMART_TMP_TYPEMAP_TEMPLATE2( Template, Type1, Type2 )
+
+%typecheck( SWIG_TYPECHECK_POINTER ) const Foam::smart_tmp< Template< Type1, Type2 > >& 
+{
+  void *ptr;
+  int res_smartTmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::smart_tmp< Template< Type1, Type2 > > * ), 0 );
+  int res_T = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Template< Type1, Type2 > * ), 0 );
+  int res_tmpT = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Template< Type1, Type2 > > * ), 0 );
+  $1 = SWIG_CheckState( res_smartTmpT ) || SWIG_CheckState( res_T ) || SWIG_CheckState( res_tmpT );
+}
+
+%typemap( in ) const Foam::smart_tmp< Template< Type1, Type2 > >& ( void  *argp = 0, int check = 0, Foam::smart_tmp< Template< Type1, Type2 > > result ) 
+{
+  // First check the simplest case, complete coinsidence of the types
+  check = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::smart_tmp< Template< Type1, Type2 > > * ), %convertptr_flags );
+  if ( SWIG_IsOK( check ) && argp ) {
+    result = *%reinterpret_cast( argp, Foam::smart_tmp< Template< Type1, Type2 > > * );
+  } else {
+    check = SWIG_ConvertPtr( $input, &argp, $descriptor( Template< Type1, Type2 > * ), SWIG_POINTER_DISOWN | %convertptr_flags );
+    if ( SWIG_IsOK( check ) && argp ) {
+      Template< Type1, Type2 >* arg = %reinterpret_cast( argp, Template< Type1, Type2 > * );
+      result = Foam::smart_tmp< Template< Type1, Type2 > >( arg );
+    } else {
+       check = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Template< Type1, Type2 > > * ), SWIG_POINTER_DISOWN | %convertptr_flags );
+       if ( SWIG_IsOK( check ) && argp ) {
+         Foam::tmp< Template< Type1, Type2 > >* arg = %reinterpret_cast( argp, Foam::tmp< Template< Type1, Type2 > > * );
+         result = Foam::smart_tmp< Template< Type1, Type2 > >( *arg );
        } else {
          %argument_fail( check, "$type", $symname, $argnum ); 
        }

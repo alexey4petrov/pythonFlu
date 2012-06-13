@@ -50,6 +50,8 @@
 
 %include "Foam/src/OpenFOAM/fields/tmp/tmp_DimensionedField_scalar_volMesh.cpp"
 
+%include "Foam/ext/common/OpenFOAM/smart_tmp/smart_tmp_DimensionedField_scalar_volMesh.cpp"
+
 
 //---------------------------------------------------------------------------
 %include "Foam/src/finiteVolume/fields/fvPatchFields/fvPatchField_scalar.cpp"

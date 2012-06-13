@@ -140,8 +140,9 @@
   void *ptr;
   int res = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::DimensionedField< Type, TMesh > * ), 0 );
   int res1 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::DimensionedField< Type, TMesh > > * ), 0 );
-  int res2 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
-  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( res2 );
+  int res2 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::smart_tmp< Foam::DimensionedField< Type, TMesh > > * ), 0 );
+  int res3 = SWIG_ConvertPtr( $input, (void **) &ptr, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * ), 0 );
+  $1 = SWIG_CheckState( res ) || SWIG_CheckState( res1 ) || SWIG_CheckState( res2 ) || SWIG_CheckState( res3 );
 }
 
 %typemap( in ) const Foam::DimensionedField< Type, TMesh >& 
@@ -158,15 +159,21 @@
       if ( SWIG_IsOK( res ) && argp ) {
         Foam::tmp<Foam::DimensionedField< Type, TMesh > >* tmp_res = %reinterpret_cast( argp, Foam::tmp< Foam::DimensionedField< Type, TMesh > > * );
         $1 = tmp_res->operator->();
-      } else {
-          res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > >* ), %convertptr_flags );
-          if ( SWIG_IsOK( res ) && argp ) {
-            Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > >* tmp_res = %reinterpret_cast( argp, Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
-            $1 = tmp_res->operator->();
-          } else {    
-              %argument_fail( res, "$type", $symname, $argnum );
+      }else {
+         res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::smart_tmp< Foam::DimensionedField< Type, TMesh > >* ), %convertptr_flags );
+         if ( SWIG_IsOK( res ) && argp ) {
+           Foam::smart_tmp<Foam::DimensionedField< Type, TMesh > >* tmp_res = %reinterpret_cast( argp, Foam::smart_tmp< Foam::DimensionedField< Type, TMesh > > * );
+           $1 = tmp_res->operator->();
+         } else {
+             res = SWIG_ConvertPtr( $input, &argp, $descriptor( Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > >* ), %convertptr_flags );
+             if ( SWIG_IsOK( res ) && argp ) {
+               Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > >* tmp_res = %reinterpret_cast( argp, Foam::tmp< Foam::GeometricField< Type, TPatchField, TMesh > > * );
+               $1 = tmp_res->operator->();
+             } else {    
+                 %argument_fail( res, "$type", $symname, $argnum );
             }
-      }
+        }
+     }  
   }
 }    
 %enddef
@@ -208,6 +215,24 @@
 }
 
 %extend Foam::tmp< Foam::DimensionedField< Foam::Type, Foam::TMesh > >
+{
+  __COMMON_DIMENSIONEDFIELD_TEMPLATE_OPERATOR( Type, TMesh );    
+  
+  void __lshift__( const Foam::DimensionedField< Foam::Type, Foam::TMesh >& theArg )
+  {
+    get_ref( self ) = theArg;
+  }
+
+  ISINSTANCE_TEMPLATE_2_EXTEND( DimensionedField, Foam::Type, Foam::TMesh );
+  
+  SEQUENCE_ADDONS( Foam::Type );
+
+  LISTS_FUNCS( Foam::Type );
+  
+  IOOBJECT_FUNCTIONS;
+}
+
+%extend Foam::smart_tmp< Foam::DimensionedField< Foam::Type, Foam::TMesh > >
 {
   __COMMON_DIMENSIONEDFIELD_TEMPLATE_OPERATOR( Type, TMesh );    
   
