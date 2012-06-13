@@ -48,6 +48,7 @@ NO_HOLDER_TYPEMAP( Foam::fvMesh );
 %include "Foam/src/finiteVolume/fvMesh/fvMesh.hpp"
 
 %ignore Foam::fvMesh::writeObjects;
+%ignore Foam::fvMesh::Vsc;
 
 %include <fvMesh.H>
 
@@ -56,6 +57,10 @@ NO_HOLDER_TYPEMAP( Foam::fvMesh );
   TYPEINFO_EXTENDS( polyMesh, fvMesh );
   OBJECTREGISTRY_EXTENDS( fvMesh );
   ISINSTANCE_EXTEND( Foam::fvMesh );
+  Foam::smart_tmp< Foam::DimensionedField< Foam::scalar, Foam::volMesh> > ext_Vsc()
+  {
+    return self->Vsc();
+  }
 }
 
 
