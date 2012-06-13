@@ -54,8 +54,8 @@
   {
     return self->operator()( fld );
   }
-  
- Foam::tmp< Foam::fvMatrix< Type > > operator()( Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& fld, const Foam::word& fieldName )
+
+  Foam::tmp< Foam::fvMatrix< Type > > operator()( Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& fld, const Foam::word& fieldName )
   {
     return self->operator()( fld, fieldName );
   }
