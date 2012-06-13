@@ -49,10 +49,25 @@
 
 
 //---------------------------------------------------------------------------
+#if FOAM_VERSION( >=, 020101 )
+%ignore Foam::basicSolidThermo::K;
+#endif
+
 %include <basicSolidThermo.H>
 
 
 //---------------------------------------------------------------------------
+%extend Foam::basicSolidThermo
+{
+#if FOAM_VERSION( >=, 020101 )
+  Foam::smart_tmp< Foam::volScalarField > ext_K()
+  {
+    return self->K();
+  }
+#endif
+
+}
+
 %include "Foam/ext/common/thermophysicalModels/managedFlu/basicSolidThermoHolder.cpp"
 
 
