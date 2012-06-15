@@ -130,7 +130,6 @@ NO_TMP_TYPEMAP_FIELD( fvPatchField< Foam::tensor > );
   %template( TConstructorToTableCounter_fvPatchField_##Type ) Foam::TConstructorToTableCounter< Foam::fvPatchField< Foam::Type > >;
   __FVPATCHFIELD_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( Type, 0 );
   __FVPATCHFIELD_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( Type, 1 );
-  __FVPATCHFIELD_CONSTRUCTORTOTABLE_TEMPLATE_FUNC__( Type, 2 );
 %enddef
 
 
