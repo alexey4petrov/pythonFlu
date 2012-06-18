@@ -38,11 +38,18 @@
 //---------------------------------------------------------------------------
 namespace Foam
 {
+
   inline token ext_make_punctuationToken( int thePunctuationEnum, 
                                           label lineNumber = 0 )
   {
     return token( token::punctuationToken( thePunctuationEnum ), lineNumber );
   }
+#if SWIG_VERSION>=0x020000
+  inline token ext_make_punctuationToken( char the_char,label lineNumber = 0 )
+  {
+    return token( token::punctuationToken( the_char ), lineNumber );
+  }
+#endif
 }
 
 
