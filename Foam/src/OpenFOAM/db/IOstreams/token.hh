@@ -44,7 +44,7 @@ namespace Foam
   {
     return token( token::punctuationToken( thePunctuationEnum ), lineNumber );
   }
-#if SWIG_VERSION>=0x020000
+#if SWIG_VERSION>=0x020003
   inline token ext_make_punctuationToken( char the_char,label lineNumber = 0 )
   {
     return token( token::punctuationToken( the_char ), lineNumber );
