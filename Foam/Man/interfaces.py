@@ -28,6 +28,7 @@ from Foam.Man import compressible_interfaces
 from Foam.Man import radiation_interfaces
 from Foam.Man import fvm_interfaces
 from Foam.Man import fvc_interfaces
+from Foam.Man import SRF_interfaces
 
 
 #--------------------------------------------------------------------------------------
@@ -71,6 +72,7 @@ attr2interface={ 'Deps' : 'Foam.ext.common.managedFlu.Deps.Deps',
                  'compressible': TManLoadHelper( compressible_interfaces.attr2interface ),
                  'radiation': TManLoadHelper( radiation_interfaces.attr2interface ),
                  'fvm' : TManLoadHelper( fvm_interfaces.attr2interface ),
-                 'fvc' : TManLoadHelper( fvc_interfaces.attr2interface ) }
+                 'fvc' : TManLoadHelper( fvc_interfaces.attr2interface ),
+                 'SRF' : TManLoadHelper( SRF_interfaces.attr2interface ),}
                  
 

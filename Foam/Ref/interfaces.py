@@ -73,5 +73,7 @@ attr2interface.update( { 'radiation': TLoadHelper( radiation_interfaces.attr2int
 from Foam.Ref import MULES_interfaces
 attr2interface.update( { 'MULES': TLoadHelper( MULES_interfaces.attr2interface ) } )
 
+from Foam.Ref import SRF_interfaces
+attr2interface.update( { 'SRF': TLoadHelper( SRF_interfaces.attr2interface ) } )
                 
 
