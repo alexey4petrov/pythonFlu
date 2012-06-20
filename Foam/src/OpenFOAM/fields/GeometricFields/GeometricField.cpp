@@ -623,7 +623,7 @@ GEOMETRIC_FIELD_HOLDER_FUNC_EXTEND( Foam::vector, TPatchField, TMesh );
     return Foam::symm( get_ref( self ) );
   }
   
-  Foam::GeometricField< Foam::vector, TPatchField, TMesh > __and__( const Foam::tmp<GeometricField< Foam::vector, TPatchField, TMesh > >& theArg ) const
+  Foam::GeometricField< Foam::vector, TPatchField, TMesh > __and__( const GeometricField< Foam::vector, TPatchField, TMesh >& theArg ) const
   {
     return  get_ref( self ) & theArg;
   }
