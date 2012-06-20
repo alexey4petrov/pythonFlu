@@ -22,6 +22,10 @@
 
 
 #--------------------------------------------------------------------------------------
+from Foam import ref, man
+    
+    
+#--------------------------------------------------------------------------------------
 def fvPatchField( Type ):
     className = None
 
@@ -61,22 +65,20 @@ def fvsPatchField( Type ) :
 
 #--------------------------------------------------------------------------------------
 def GeometricFieldTypeName( Type, MeshType ) :
-    import Foam
 
     typeClassName = None
-    if Type == Foam.OpenFOAM.scalar :
+    if Type == ref.scalar :
         typeClassName = "Scalar"
-    elif Type == Foam.OpenFOAM.vector :
+    elif Type == ref.vector :
         typeClassName = "Vector"
     else:
         raise NotImplementedError( "GeometricField< %s, XX, YY > " % ( repr( Type ) ) )
 
 
     meshClassName = None
-    import Foam.finiteVolume
-    if MeshType == Foam.finiteVolume.volMesh :
+    if MeshType == ref.volMesh :
         meshClassName = "vol"
-    elif MeshType == Foam.finiteVolume.surfaceMesh :
+    elif MeshType == ref.surfaceMesh :
         meshClassName = "surface"
     else:
         raise NotImplementedError( "GeometricField< %s, %s, %s > " % ( repr( Type ), repr( patchFieldType ), repr( MeshType ) ) )
@@ -88,7 +90,22 @@ def GeometricFieldTypeName( Type, MeshType ) :
     
 
 #--------------------------------------------------------------------------------------
-def GeometricField( Type, patchFieldType, MeshType ) :
+def GeometricField( Type, MeshType, Holder = False):
+    className = GeometricFieldTypeName( Type, MeshType )
+    
+    prefix = "ref."
+    if Holder == True:
+        prefix = "man."
+        pass
+    
+    expression = "GFType = %s%s" %( prefix, className )
+    exec( expression )
+    
+    return GFType
+
+
+#--------------------------------------------------------------------------------------
+def GeometricFieldType( Type, patchFieldType, MeshType ) :
 
     typeClassName = None
     import Foam.OpenFOAM
