@@ -60,6 +60,8 @@ TMP_DIRECTOR_TYPEMAP( Foam::fvPatchField< Foam::scalar > )
   SMARTPTR_EXTEND_OPERATOR_EQ( Foam::scalar );
   
   __COMMON_FIELD_TEMPLATE_OPERATOR( scalar );
+  
+  __SCALAR_FIELD_TEMPLATE_OPERATOR;
 }
 
 

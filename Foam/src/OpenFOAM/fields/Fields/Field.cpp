@@ -331,6 +331,12 @@ NO_TMP_TYPEMAP_FIELD(  Foam::tensor );
   {
     return get_ref( self ) + theArg;
   }
+  
+  Foam::tmp< Foam::Field< Foam::scalar > > sqr()
+  {
+    return Foam::sqr( get_ref( self ) );
+  }
+
 %enddef
 
 
