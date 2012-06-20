@@ -22,6 +22,10 @@
 
 
 #---------------------------------------------------------------------------
+from Foam import ref, man
+
+
+#---------------------------------------------------------------------------
 def readTimeControls_010401_dev( runTime ):
     from Foam.OpenFOAM import Switch, word, readScalar, GREAT
     
@@ -56,6 +60,17 @@ def readTimeControls_010600_dev( runTime ):
     maxCo = readScalar( runTime.controlDict().lookup( word( "maxCo" ) ) )
     
     maxDeltaT = runTime.controlDict().lookupOrDefault( word( "maxDeltaT" ), GREAT, 0, 1 )
+
+    return adjustTimeStep, maxCo, maxDeltaT
+
+
+#---------------------------------------------------------------------------
+def readTimeControls_020000( runTime ):
+    adjustTimeStep = runTime.controlDict().lookupOrDefault( ref.word( "adjustTimeStep" ), False )
+
+    maxCo = runTime.controlDict().lookupOrDefault( ref.word( "maxCo" ), 1.0 )
+
+    maxDeltaT = runTime.controlDict().lookupOrDefault( ref.word( "maxDeltaT" ), ref.GREAT )
 
     return adjustTimeStep, maxCo, maxDeltaT
 
