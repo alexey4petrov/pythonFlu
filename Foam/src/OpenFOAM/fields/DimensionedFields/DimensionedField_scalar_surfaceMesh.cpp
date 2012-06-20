@@ -44,7 +44,7 @@ DIMENSIONED_FIELD_SURFACEMESH_TYPEMAP( scalar );
 %ignore Foam::DimensionedField< Foam::scalar, Foam::surfaceMesh >::debug;
 %ignore Foam::DimensionedField< Foam::scalar, Foam::surfaceMesh >::T;
 
-DIMENSIONED_FIELD_TEMPLATE_FUNC( scalar, surfaceMesh );
+SCALAR_DIMENSIONED_FIELD_TEMPLATE_FUNC( surfaceMesh );
 
 %template( DimensionedField_scalar_surfaceMesh ) Foam::DimensionedField< Foam::scalar, Foam::surfaceMesh >;
 

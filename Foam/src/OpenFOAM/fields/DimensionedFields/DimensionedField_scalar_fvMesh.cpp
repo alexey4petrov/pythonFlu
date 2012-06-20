@@ -49,7 +49,7 @@
 %ignore Foam::DimensionedField< Foam::scalar, Foam::fvMesh >::type;
 %ignore Foam::DimensionedField< Foam::scalar, Foam::fvMesh >::debug;
 
-DIMENSIONED_FIELD_TEMPLATE_FUNC( scalar, fvMesh );
+SCALAR_DIMENSIONED_FIELD_TEMPLATE_FUNC( fvMesh );
 
 %template( DimensionedField_scalar_fvMesh ) Foam::DimensionedField< Foam::scalar, Foam::fvMesh >; 
 
