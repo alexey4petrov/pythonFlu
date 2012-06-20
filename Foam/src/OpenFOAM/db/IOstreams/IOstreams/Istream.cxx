@@ -41,6 +41,15 @@
 
 
 //---------------------------------------------------------------------------
+%feature ( "pythonprepend" ) Foam::Istream::__rshift__
+%{
+  arg = args[ 0 ]
+  try:
+      return arg.__lshift__( self )
+  except :
+      pass
+%}  
+
 %extend Foam::Istream
 {
   Foam::Istream& __rshift__( token& theArg )

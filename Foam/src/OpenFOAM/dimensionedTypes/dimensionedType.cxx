@@ -106,6 +106,11 @@
   {
     return Foam::mag( *self );
   }
+  
+  Foam::Istream& __lshift__(  Istream& the_stream )
+  {
+    return the_stream >> *self;
+  }
 }
 %enddef
 
