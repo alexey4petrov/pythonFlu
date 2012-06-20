@@ -37,6 +37,23 @@
 
 %include <fvBoundaryMesh.H>
 
+%define FVBOUNDARYMESH_EXTENDS()
+  const Foam::fvPatch& __getitem__( const Foam::word& the_word ) const
+  {
+    return get_ref( self )[ the_word ];
+  }
+%enddef
+
+
+//---------------------------------------------------------------------------
+%extend Foam::fvBoundaryMesh
+{ 
+#if FOAM_VERSION(>=,020000)
+  FVBOUNDARYMESH_EXTENDS();
+#endif
+}
+
+
 
 //---------------------------------------------------------------------------
 #endif
