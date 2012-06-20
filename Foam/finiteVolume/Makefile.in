@@ -198,6 +198,7 @@ sources = \
 	\
 	@abs_top_builddir@/Foam/src/finiteVolume/fields/fvPatchFields/basic/mixed/mixedFvPatchField_scalar.cxx \
 	@abs_top_builddir@/Foam/src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_scalar.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/fields/fvPatchFields/basic/fixedValue/fixedValueFvPatchField_vector.cxx \
 	@abs_top_builddir@/Foam/src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_porousZone.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_porousZone.cxx \
