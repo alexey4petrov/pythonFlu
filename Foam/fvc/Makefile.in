@@ -57,6 +57,7 @@ sources = \
 	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcReconstruct.cxx \
 	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcMeshPhi.cxx \
 	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcLaplacian.cxx \
+	@abs_top_builddir@/Foam/src/finiteVolume/finiteVolume/fvc/fvcSmooth/fvcSmooth.cxx \
 	\
 	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/surfaceInterpolate.cxx \
 	@abs_top_builddir@/Foam/ext/common/finiteVolume/managedFlu/finiteVolume/fvc/fvcDDt.cxx \

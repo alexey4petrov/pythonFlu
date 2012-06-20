@@ -41,7 +41,10 @@ attr2interface={ 'ddt' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcDdt.fvc_ddt'
                  'flux' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcFlux.fvc_flux',
                  'Sp' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcSup.fvc_Sp',
                  'Su' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcSup.fvc_Su',
-                 'SuSp' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcSup.fvc_SuSp'
+                 'SuSp' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcSup.fvc_SuSp',
+                 'smooth' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcSmooth.fvcSmooth.smooth',
+                 'spread' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcSmooth.fvcSmooth.spread',
+                 'sweep' : 'Foam.src.finiteVolume.finiteVolume.fvc.fvcSmooth.fvcSmooth.sweep'
                  }
                  
 
