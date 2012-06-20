@@ -120,6 +120,11 @@
   {
     return theArg + get_ref( self )  ;
   }
+  
+  Foam::tmp< Foam::fvMatrix< Type > > __add__( const Foam::DimensionedField< Type, Foam::volMesh >& theArg ) const
+  {
+    return get_ref( self ) + theArg;
+  }
 
   Foam::tmp< Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh > > 
   __and__ ( const Foam::GeometricField< Type, Foam::fvPatchField, Foam::volMesh >& theArg ) const
