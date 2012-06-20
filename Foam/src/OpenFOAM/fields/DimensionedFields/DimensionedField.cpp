@@ -129,6 +129,12 @@
   {
     return Foam::max( get_ref( self ) );
   }
+
+  Foam::tmp< Foam::DimensionedField< Foam::Type, Foam::TMesh > > max( const Foam::dimensioned< Foam::Type >& the_Arg )
+  {
+    return Foam::max( get_ref( self ), the_Arg );
+  }
+
 %enddef
 
 
@@ -266,6 +272,11 @@
   {
     return Foam::sqr( get_ref( self ) );
   }
+  Foam::tmp< Foam::DimensionedField< Foam::scalar, Foam::TMesh > > __rdiv__( const Foam::scalar& theArg )
+  {
+    return theArg / get_ref( self );
+  }
+
 %enddef
 
 

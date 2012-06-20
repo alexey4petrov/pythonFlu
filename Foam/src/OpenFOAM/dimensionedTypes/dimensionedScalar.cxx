@@ -84,10 +84,17 @@ DIMENSIONEDTYPE_ADDONS( Foam::scalar )
   {
     return Foam::sqrt( *self );
   }
+  
   Foam::dimensioned< Foam::vector > __rmul__( const Foam::vector& ds )
   {
     return ds * *self;
   }
+  
+  Foam::dimensioned< Foam::scalar > __rdiv__( const Foam::scalar& ds )
+  {
+    return ds / *self;
+  }
+  
 }
 
 
