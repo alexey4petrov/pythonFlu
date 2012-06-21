@@ -40,6 +40,8 @@
 
 
 //---------------------------------------------------------------------------
+NO_HOLDER_TYPEMAP( Foam::basicThermo );
+
 %include <basicThermo.H>
 
 
