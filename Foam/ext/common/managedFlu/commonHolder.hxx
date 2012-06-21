@@ -32,6 +32,15 @@ Foam::Type& __call__()
 }
 %enddef
 
+%define HOLDERS_CALL_SHARED_PTR_EXTENSION_TEMPLATE1( Template, Type )
+Template< Type >& __call__()
+{
+  return self->operator*();
+}
+%enddef
+
+
+//---------------------------------------------------------------------------
 %define HOLDERS_CALL_SMART_TMP_EXTENSION( Type )
 Foam::Type& __call__()
 {
