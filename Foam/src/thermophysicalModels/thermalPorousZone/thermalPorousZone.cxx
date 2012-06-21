@@ -46,6 +46,8 @@
 
 %import "Foam/src/finiteVolume/cfdTools/general/porousMedia/porousZone.cxx"
 
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
+
 %include <thermalPorousZone.H>
 
 

@@ -42,6 +42,8 @@
 
 #include "Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_thermalPorousZone.hh"
 
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.hh"
+
 #include <thermalPorousZones.H>
 
 

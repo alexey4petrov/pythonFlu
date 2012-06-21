@@ -38,6 +38,8 @@
 
 #include "Foam/src/finiteVolume/cfdTools/general/porousMedia/porousZone.hh"
 
+#include "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.hh"
+
 #include <thermalPorousZone.H>
 
 

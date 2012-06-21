@@ -46,6 +46,8 @@
 
 %import "Foam/src/thermophysicalModels/thermalPorousZone/PorousZones_thermalPorousZone.cxx"
 
+%import "Foam/src/OpenFOAM/fields/tmp/autoPtr_basicThermo.cxx"
+
 %include <thermalPorousZones.H>
 
 
