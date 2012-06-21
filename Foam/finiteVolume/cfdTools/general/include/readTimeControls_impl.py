@@ -66,7 +66,7 @@ def readTimeControls_010600_dev( runTime ):
 
 #---------------------------------------------------------------------------
 def readTimeControls_020000( runTime ):
-    adjustTimeStep = runTime.controlDict().lookupOrDefault( ref.word( "adjustTimeStep" ), False )
+    adjustTimeStep = runTime.controlDict().lookupOrDefault( ref.word( "adjustTimeStep" ), ref.Switch( False ) )
 
     maxCo = runTime.controlDict().lookupOrDefault( ref.word( "maxCo" ), 1.0 )
 
