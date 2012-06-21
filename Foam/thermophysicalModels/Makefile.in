@@ -33,10 +33,13 @@ __CPPFLAGS__ := $(__CPPFLAGS__) \
 	@OPENFOAM_BASICTHERMOPHYSICALMODELS_CPPFLAGS@ \
 	@OPENFOAM_SPECIE_CPPFLAGS@ \
         @OPENFOAM_BASICSOLIDTHERMO_CPPFLAGS@ \
+        @OPENFOAM_THERMALPOROUSZONE_CPPFLAGS@ \
+        @OPENFOAM_MESHTOOLS_CPPFLAGS@ \
 	@MANAGEDFLU_OPENFOAM_CPPFLAGS@ \
 	@MANAGEDFLU_FINITEVOLUME_CPPFLAGS@ \
         @MANAGEDFLU_BASICTHERMOPHYSICALMODELS_CPPFLAGS@	\
         @MANAGEDFLU_BASICSOLIDTHERMO_CPPFLAGS@ \
+        @MANAGEDFLU_THERMALPOROUSZONE_CPPFLAGS@ \
 
 
 #--------------------------------------------------------------------------------------
@@ -45,10 +48,13 @@ __LDFLAGS__ := $(__LDFLAGS__) \
 	@OPENFOAM_BASICTHERMOPHYSICALMODELS_LIBS@ \
 	@OPENFOAM_SPECIE_LIBS@ \
         @OPENFOAM_BASICSOLIDTHERMO_LIBS@ \
+        @OPENFOAM_THERMALPOROUSZONE_LIBS@ \
+        @OPENFOAM_MESHTOOLS_LIBS@ \
 	@MANAGEDFLU_OPENFOAM_LIB@ \
 	@MANAGEDFLU_FINITEVOLUME_LIB@ \
         @MANAGEDFLU_BASICTHERMOPHYSICALMODELS_LIB@ \
         @MANAGEDFLU_BASICSOLIDTHERMO_LIB@ \
+        @MANAGEDFLU_THERMALPOROUSZONE_LIB@ \
 
 
 #--------------------------------------------------------------------------------------
@@ -62,7 +68,13 @@ sources = \
 	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_basicRhoThermo.cxx \
 	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_basicRhoThermo.cxx \
 	\
-	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_basicSolidThermo.cxx 
+	@abs_top_builddir@/Foam/src/OpenFOAM/fields/tmp/autoPtr_basicSolidThermo.cxx \
+	\
+	@abs_top_builddir@/Foam/src/thermophysicalModels/thermalPorousZone/thermalPorousZone.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/PtrList_thermalPorousZone.cxx \
+	@abs_top_builddir@/Foam/src/OpenFOAM/containers/Lists/PtrList/IOPtrList/IOPtrList_thermalPorousZone.cxx \
+	@abs_top_builddir@/Foam/src/thermophysicalModels/thermalPorousZone/PorousZones_thermalPorousZone.cxx \
+	@abs_top_builddir@/Foam/src/thermophysicalModels/thermalPorousZone/thermalPorousZones.cxx \
 
 
 #--------------------------------------------------------------------------------------
