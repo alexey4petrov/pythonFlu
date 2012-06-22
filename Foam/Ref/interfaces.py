@@ -75,5 +75,7 @@ attr2interface.update( { 'MULES': TLoadHelper( MULES_interfaces.attr2interface )
 
 from Foam.Ref import SRF_interfaces
 attr2interface.update( { 'SRF': TLoadHelper( SRF_interfaces.attr2interface ) } )
+
+attr2interface.update( { 'GeometricField' : 'Foam.template.GeometricField' } )
                 
 

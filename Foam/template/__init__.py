@@ -90,15 +90,20 @@ def GeometricFieldTypeName( Type, MeshType ) :
     
 
 #--------------------------------------------------------------------------------------
-def GeometricField( Type, MeshType, Holder = False):
+def GeometricField( Type, MeshType):
     className = GeometricFieldTypeName( Type, MeshType )
     
-    prefix = "ref."
-    if Holder == True:
-        prefix = "man."
-        pass
+    expression = "GFType = ref.%s" %className
+    exec( expression )
     
-    expression = "GFType = %s%s" %( prefix, className )
+    return GFType
+
+
+#--------------------------------------------------------------------------------------
+def GeometricFieldHolder( Type, MeshType):
+    className = GeometricFieldTypeName( Type, MeshType )
+    
+    expression = "GFType = man.%s" %className
     exec( expression )
     
     return GFType
