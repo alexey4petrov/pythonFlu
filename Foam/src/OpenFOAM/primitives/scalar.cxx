@@ -53,12 +53,28 @@
 
 %typecheck( SWIG_TYPECHECK_POINTER ) const Foam::scalar&
 {
-  $1 = PyFloat_Check( $input );
+  void* ptr=0;
+  int res = SWIG_ConvertPtr($input, &ptr, $descriptor(  Foam::dimensioned< Foam::scalar > * ), 0 |  0 );
+  if ( SWIG_IsOK( res ) && ptr )
+  {
+    $1 = 0;
+  }
+  else
+  {
+    $1 = PyFloat_Check( $input );
+  }
 }
 
 
 %typemap( in ) const Foam::scalar&
 {
+  void  *argp = 0;
+  int res = 0;
+  res = SWIG_ConvertPtr( $input, &argp, $descriptor(  Foam::dimensioned< Foam::scalar > * ), %convertptr_flags );
+  if ( SWIG_IsOK( res ) && argp )
+  {
+    %argument_fail( res, "$type", $symname, $argnum );
+  } 
   Foam::scalar aValue = PyFloat_AsDouble( $input );
   $1 = new $*1_ltype( aValue );
 }
@@ -67,6 +83,8 @@
 //----------------------------------------------
 %typemap( out ) Foam::scalar
 {
+  void  *argp = 0;
+  int res = 0;
   $result = PyFloat_FromDouble( $1 );
 }
 
