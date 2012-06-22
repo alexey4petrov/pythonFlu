@@ -38,6 +38,7 @@
 %include <fvBoundaryMesh.H>
 
 %define FVBOUNDARYMESH_EXTENDS()
+  __PTRLISTBASED_ADDONS__( Foam::fvPatch );
   const Foam::fvPatch& __getitem__( const Foam::word& the_word ) const
   {
     return get_ref( self )[ the_word ];
