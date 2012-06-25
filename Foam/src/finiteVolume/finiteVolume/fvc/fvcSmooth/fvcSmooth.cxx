@@ -21,15 +21,23 @@
 
 
 //---------------------------------------------------------------------------
-#ifndef fvcSmooth_cxx
-#define fvcSmooth_cxx
-
-
-//---------------------------------------------------------------------------
 %module "Foam.src.finiteVolume.finiteVolume.fvc.fvcSmooth.fvcSmooth";
 %{
   #include "Foam/src/finiteVolume/finiteVolume/fvc/fvcSmooth/fvcSmooth.hh"
 %}
+
+
+//---------------------------------------------------------------------------
+%import "Foam/src/common.hxx"
+
+#if FOAM_VERSION( <, 020000 )
+#define fvcSmooth_cxx
+#endif
+
+
+//---------------------------------------------------------------------------
+#ifndef fvcSmooth_cxx
+#define fvcSmooth_cxx
 
 
 //---------------------------------------------------------------------------

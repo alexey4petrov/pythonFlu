@@ -21,6 +21,14 @@
 
 
 //---------------------------------------------------------------------------
+#include "Foam/src/common.hh"
+
+#if FOAM_VERSION( <, 020000 )
+#define fvcSmooth_hh
+#endif
+
+
+//---------------------------------------------------------------------------
 #ifndef fvcSmooth_hh
 #define fvcSmooth_hh
 
