@@ -1,5 +1,32 @@
 #PACKAGE# (#VERSION#~@UBUNTU_CODENAME@) @UBUNTU_CODENAME@; urgency=high
 
+  * Porting on the new generation of SWIG wrapper - 2.X (tested with 2.0.3 - 2.0.6)
+  
+  * Porting on the latest OpenCFD version of OpenFOAM - 2.1.1
+
+  * The following new solvers were implemented in Python :
+    
+    compressible/rhoPorousMRFLTSPimpleFoam
+    
+    compressible/rhoPorousMRFSimpleFoam
+    
+    compressible/rhoSimplecFoam
+    
+    heatTransfer/buoyantBoussinesqPimpleFoam
+    
+    heatTransfer/chtMultiRegionSimpleFoam
+    
+    incompressible/adjointShapeOptimizationFoam
+    
+    incompressible/MRFSimpleFoam
+    
+    incompressible/SRFPimpleFoam
+    
+    incompressible/SRFSimpleFoam
+    
+ -- #USERNAME# <#EMAIL#>  #DATE#
+
+pythonflu (9.0-porting) maverick; urgency=high 
   * Porting on the latest version of OpenFOAM - 2.1.0, 2.0.1,2.0.0
   
   * Porting on FreeFOAM up to the 0.1.0rc5
@@ -17,7 +44,7 @@
   
   * Support writing pure Python custom "functionObject"s
 
- -- #USERNAME# <#EMAIL#>  #DATE#
+ -- Alexey PETROV <alexey.petrov.nnov@gmail.com> Tue, 05 June 2011 19:45:32 +0300
 
 pythonflu (8.2-hybrid) maverick; urgency=high
   
