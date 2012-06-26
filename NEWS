@@ -23,6 +23,63 @@ See http://sourceforge.net/projects/pythonflu
 
 
 ---------------------------------------------------------------------------
+New Features and Important Changes, 9.1-swig vs 9.0-porting
+
+Author(s) :  Alexey PETROV
+
+2012-06-20
+
+1. Porting on the new generation of SWIG wrapper - 2.X (tested with 2.0.3 - 2.0.6)
+  
+2. Porting on the latest OpenCFD version of OpenFOAM - 2.1.1
+
+3. The following new solvers were implemented in Python :
+    
+    compressible/rhoPorousMRFLTSPimpleFoam
+    
+    compressible/rhoPorousMRFSimpleFoam
+    
+    compressible/rhoSimplecFoam
+    
+    heatTransfer/buoyantBoussinesqPimpleFoam
+    
+    heatTransfer/chtMultiRegionSimpleFoam
+    
+    incompressible/adjointShapeOptimizationFoam
+    
+    incompressible/MRFSimpleFoam
+    
+    incompressible/SRFPimpleFoam
+    
+    incompressible/SRFSimpleFoam
+
+
+---------------------------------------------------------------------------
+New Features and Important Changes, 9.0-porting vs r8.2-hybrid
+
+Author(s) :  Alexey PETROV
+
+2012-01-05
+
+1. Porting on the latest version of OpenFOAM - 2.1.0, 2.0.1,2.0.0
+  
+2. Porting on FreeFOAM up to the 0.1.0rc5
+  
+3. Porting on MacOS X
+  
+4. Support for multi-fork and multi-version OpenFOAM installations 
+  
+5. Moving installation procedure to "launchpad.net" (due to increased number of dependencies)
+  
+6. Full grown support for writing interactive applications (a special “managedFlu” intermediate 
+    C++ layer was designed to provide precise memory management over OpenFOAM objects)
+  
+7. Advancement of the internal Python related module packaging
+  
+8. Support writing pure Python custom "functionObject"s
+
+
+---------------------------------------------------------------------------
 New Features and Important Changes, r8.2-hybrid vs r8.1-Elvis
 
 Author(s) :  Alexey PETROV

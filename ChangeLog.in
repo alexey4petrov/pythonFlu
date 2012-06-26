@@ -44,7 +44,7 @@ pythonflu (9.0-porting) maverick; urgency=high
   
   * Support writing pure Python custom "functionObject"s
 
- -- Alexey PETROV <alexey.petrov.nnov@gmail.com> Tue, 05 June 2011 19:45:32 +0300
+ -- Alexey PETROV <alexey.petrov.nnov@gmail.com> Thu, 05 January 2012 21:00:16 +0300
 
 pythonflu (8.2-hybrid) maverick; urgency=high
   
