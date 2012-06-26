@@ -83,8 +83,6 @@
 //----------------------------------------------
 %typemap( out ) Foam::scalar
 {
-  void  *argp = 0;
-  int res = 0;
   $result = PyFloat_FromDouble( $1 );
 }
 
