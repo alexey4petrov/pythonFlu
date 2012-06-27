@@ -160,7 +160,6 @@ def __import__( name, globals=None, locals=None, fromlist=None, level = -1 ):
             else:
                 # case from Foam.<TLoadHelper> import <something>( a_package == TLoadHelper )
                 exec "a_ref_interface = a_package.%s" %an_interface
-                globals[ an_interface ] = a_ref_interface
                 pass
         pass    
     return a_package
