@@ -49,12 +49,52 @@
 
 %import "Foam/src/OpenFOAM/db/Switch.cxx"
 
-// To use as input / output value for readIfPresent function
-%apply double& INOUT { double& val }; 
 
+//---------------------------------------------------------------------------
+%inline
+{
+  namespace Foam
+  {
+    template < class Type >
+    struct TreadIfPresent
+    {
+      bool m_resBool;
+      Type m_resType;
+      
+      TreadIfPresent()
+      {} 
+      
+      TreadIfPresent( bool the_resBool, Type the_resType )
+        : m_resBool( the_resBool )
+        , m_resType( the_resType )
+      {}
+    };
+  }
+}
+
+%template ( TreadIfPresent_bool_int )  Foam::TreadIfPresent< int >;
+
+%template ( TreadIfPresent_bool_scalar )  Foam::TreadIfPresent< Foam::scalar >;
+
+
+//---------------------------------------------------------------------------
 %include <dictionary.H>
 
 %extend Foam::dictionary COMMON_EXTENDS;
+
+
+//---------------------------------------------------------------------------
+%feature( "pythonappend" ) Foam::dictionary::readIfPresent
+{
+  try:
+      result = val.m_resBool, val.m_resType
+      pass
+  except AttributeError:
+      result = val
+      pass
+  
+  return result
+}
 
 
 //---------------------------------------------------------------------------
@@ -97,9 +137,25 @@
   {
     self->add( keyword, value, overwrite );
   }
-  bool readIfPresent( const Foam::word& k, double& val, bool recursive = false ) const
+  Foam::TreadIfPresent< int > readIfPresent( 
+    const Foam::word& k
+    , int val
+    , bool recursive = false
+    , bool patternMatch = true ) const
   {
-    return self->readIfPresent( k, val, recursive );
+    bool the_resBool =  self->readIfPresent( k, val, recursive, patternMatch );
+    
+    return Foam::TreadIfPresent< int >( the_resBool, val );
+  }
+  Foam::TreadIfPresent< Foam::scalar > readIfPresent( 
+    const Foam::word& k
+    , Foam::scalar& val
+    , bool recursive = false
+    , bool patternMatch = true ) const
+  {
+    bool the_resBool =  self->readIfPresent( k, val, recursive, patternMatch );
+    
+    return Foam::TreadIfPresent< Foam::scalar >( the_resBool, val );
   }
   Foam::scalar lookupOrDefault( const Foam::word& keyword, const Foam::scalar& deflt, bool recursive = false) const
   {
@@ -150,9 +206,25 @@
   {
     return self->lookupOrDefault( keyword, deflt, recursive, patternMatch ) ;
   }
-  bool readIfPresent( const Foam::word& k, double& val, bool recursive = false, bool patternMatch = true ) const
+  Foam::TreadIfPresent< int > readIfPresent( 
+    const Foam::word& k
+    , int val
+    , bool recursive = false
+    , bool patternMatch = true ) const
   {
-    return self->readIfPresent( k, val, recursive, patternMatch );
+    bool the_resBool =  self->readIfPresent( k, val, recursive, patternMatch );
+    
+    return Foam::TreadIfPresent< int >( the_resBool, val );
+  }
+  Foam::TreadIfPresent< Foam::scalar > readIfPresent( 
+    const Foam::word& k
+    , Foam::scalar& val
+    , bool recursive = false
+    , bool patternMatch = true ) const
+  {
+    bool the_resBool =  self->readIfPresent( k, val, recursive, patternMatch );
+    
+    return Foam::TreadIfPresent< Foam::scalar >( the_resBool, val );
   }
 #endif
 
@@ -165,9 +237,11 @@
 
 }
 
-// To use as input / output value for readIfPresent function
-%clear double& val;
 
+//---------------------------------------------------------------------------
+//clear "pythonappend" feature
+%feature( "pythonappend" ) Foam::dictionary::readIfPresent
+{}
 
 //---------------------------------------------------------------------------
 %include "Foam/ext/common/OpenFOAM/managedFlu/dictionaryHolder.cpp"
