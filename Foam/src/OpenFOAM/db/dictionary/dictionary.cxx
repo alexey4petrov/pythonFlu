@@ -149,7 +149,7 @@
   }
   Foam::TreadIfPresent< Foam::scalar > readIfPresent( 
     const Foam::word& k
-    , Foam::scalar& val
+    , Foam::scalar val
     , bool recursive = false
     , bool patternMatch = true ) const
   {
@@ -218,7 +218,7 @@
   }
   Foam::TreadIfPresent< Foam::scalar > readIfPresent( 
     const Foam::word& k
-    , Foam::scalar& val
+    , Foam::scalar val
     , bool recursive = false
     , bool patternMatch = true ) const
   {
