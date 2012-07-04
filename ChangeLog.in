@@ -2,7 +2,7 @@
 
   * Porting on the new generation of SWIG wrapper - 2.X (tested with 2.0.3 - 2.0.6)
   
-  * Porting on the latest OpenCFD version of OpenFlux - 2.1.1
+  * Porting on the latest OpenCFD version of OpenFoam - 2.1.1
 
   * The following new solvers were implemented in Python :
     
@@ -27,18 +27,18 @@
  -- #USERNAME# <#EMAIL#>  #DATE#
 
 pythonflu (9.0-porting) maverick; urgency=high 
-  * Porting on the latest version of OpenFlux - 2.1.0, 2.0.1,2.0.0
+  * Porting on the latest version of OpenFoam - 2.1.0, 2.0.1,2.0.0
   
-  * Porting on FreeFlux up to the 0.1.0rc5
+  * Porting on FreeFoam up to the 0.1.0rc5
   
   * Porting on MacOS X
   
-  * Support for multi-fork and multi-version OpenFlux installations 
+  * Support for multi-fork and multi-version OpenFoam installations 
   
   * Moving installation procedure to "launchpad.net" (due to increased number of dependencies)
   
   * Full grown support for writing interactive applications (a special “managedFlu” intermediate 
-    C++ layer was designed to provide precise memory management over OpenFlux objects)
+    C++ layer was designed to provide precise memory management over OpenFoam objects)
   
   * Advancement of the internal Python related module packaging
   
@@ -95,10 +95,10 @@ pythonflu (8.1-Elvis) maverick; urgency=high
 
 pythonflu (8.0-1) maverick; urgency=high
 
-  * Porting on the latest 1.7.1 and 1.6-ext OpenFlux versions
+  * Porting on the latest 1.7.1 and 1.6-ext OpenFoam versions
 
   * "Maturity" of the wrapping increased in 2 times and reached 41% 
-    (it is possible to reproduce 26 of 63 referenced OpenFlux solvers)
+    (it is possible to reproduce 26 of 63 referenced OpenFoam solvers)
 
   * Preparation of native Linux binary packages
     (available for Ubuntu and OpneSUSE, i386 and amd64 architectures)
@@ -109,7 +109,7 @@ pythonflu (8.0-1) maverick; urgency=high
 
 pythonflu (7.2-1) lucid; urgency=high
  
-  * Adjusting to the "common configuration system" (confFlux package)
+  * Adjusting to the "common configuration system" (confFoam package)
   
  -- Alexey PETROV <alexey.petrov.nnov@gmail.com> Thu, 04 Mar 2010 16:26:29 +0300
 
