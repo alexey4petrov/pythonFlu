@@ -2,7 +2,7 @@
 NEWS
 #--------------------------------------------------------------------------------------
 
-pythonFlu - Python wrapping for OpenFOAM C++ API
+pythonFlu - Python wrapping for OpenFlux C++ API
 Copyright (C) 2010- Alexey Petrov
 Copyright (C) 2009-2010 Pebble Bed Modular Reactor (Pty) Limited (PBMR)
 
@@ -31,27 +31,27 @@ Author(s) :  Alexey PETROV
 
 1. Porting on the new generation of SWIG wrapper - 2.X (tested with 2.0.3 - 2.0.6)
   
-2. Porting on the latest OpenCFD version of OpenFOAM - 2.1.1
+2. Porting on the latest OpenCFD version of OpenFlux - 2.1.1
 
 3. The following new solvers were implemented in Python :
     
-    compressible/rhoPorousMRFLTSPimpleFoam
+    compressible/rhoPorousMRFLTSPimpleFlux
     
-    compressible/rhoPorousMRFSimpleFoam
+    compressible/rhoPorousMRFSimpleFlux
     
-    compressible/rhoSimplecFoam
+    compressible/rhoSimplecFlux
     
-    heatTransfer/buoyantBoussinesqPimpleFoam
+    heatTransfer/buoyantBoussinesqPimpleFlux
     
-    heatTransfer/chtMultiRegionSimpleFoam
+    heatTransfer/chtMultiRegionSimpleFlux
     
-    incompressible/adjointShapeOptimizationFoam
+    incompressible/adjointShapeOptimizationFlux
     
-    incompressible/MRFSimpleFoam
+    incompressible/MRFSimpleFlux
     
-    incompressible/SRFPimpleFoam
+    incompressible/SRFPimpleFlux
     
-    incompressible/SRFSimpleFoam
+    incompressible/SRFSimpleFlux
 
 
 ---------------------------------------------------------------------------
@@ -61,18 +61,18 @@ Author(s) :  Alexey PETROV
 
 2012-01-05
 
-1. Porting on the latest version of OpenFOAM - 2.1.0, 2.0.1,2.0.0
+1. Porting on the latest version of OpenFlux - 2.1.0, 2.0.1,2.0.0
   
-2. Porting on FreeFOAM up to the 0.1.0rc5
+2. Porting on FreeFlux up to the 0.1.0rc5
   
 3. Porting on MacOS X
   
-4. Support for multi-fork and multi-version OpenFOAM installations 
+4. Support for multi-fork and multi-version OpenFlux installations 
   
 5. Moving installation procedure to "launchpad.net" (due to increased number of dependencies)
   
 6. Full grown support for writing interactive applications (a special “managedFlu” intermediate 
-    C++ layer was designed to provide precise memory management over OpenFOAM objects)
+    C++ layer was designed to provide precise memory management over OpenFlux objects)
   
 7. Advancement of the internal Python related module packaging
   
@@ -142,11 +142,11 @@ Author(s) :  Alexey PETROV
 
 2011-04-04
 
-1. Porting to the latest OpenFOAM version 
+1. Porting to the latest OpenFlux version 
    (OpenCFD 1.7.1 & Extended 1.6-ext)
 
 2. "Maturity" of the wrapping increased in 2 times and reached 41% 
-   (it is possible to reproduce 26 of 63 referenced OpenFOAM solvers)
+   (it is possible to reproduce 26 of 63 referenced OpenFlux solvers)
 
 3. Preparation of native Linux binary packages
    (for Ubuntu and SUSE Linux, i386 and amd64 architectures)
@@ -165,11 +165,11 @@ Author(s) :  Alexey PETROV
 
 1. Adjusting to the "common configuration system" (confFlu package)
 --------------------------------------------------------------------
-"confFlu" is a "common configuration package" for the realted OpenFOAM (Open
-Source CFD Toolbox, see http://sourceforge.net/projects/foam/ ) developement. 
+"confFlu" is a "common configuration package" for the realted OpenFlux (Open
+Source CFD Toolbox, see http://sourceforge.net/projects/Flux/ ) developement. 
 The neccessity for defintion of such kind of functionality appears from the
-issue that OpenFOAM referece build system does not provide corresponding
-capabilities. As result of lack of the configuration capabilties OpenFOAM
+issue that OpenFlux referece build system does not provide corresponding
+capabilities. As result of lack of the configuration capabilties OpenFlux
 users/developers strugle with compilation procidure trying to discover reasons
 for this or that failure.
 
@@ -183,14 +183,14 @@ something is wrong.
 2. Restoring the support for "singlelib" disabled compilation
 -------------------------------------------------------------
 "singlelib" mode of compilation allows dramaticaly reduce the compilation time 
-(up to 10 times, for now) by combining all the avaialble pyFoam SWIG packages 
+(up to 10 times, for now) by combining all the avaialble pyFlux SWIG packages 
 into single library. This feature is especially important when users are trying 
-to advance the pyFoam, by wrapping missed OpenFOAM functionality or extending 
-existing OpenFOAM API with features they like.
+to advance the pyFlux, by wrapping missed OpenFlux functionality or extending 
+existing OpenFlux API with features they like.
 
 At the same time this feature is disabled by default to keep modularisation 
-capabilties of the current pyFoam implementation. It means, that each package 
-should have the same dependencies as the referenced OpenFOAM once. So, users 
+capabilties of the current pyFlux implementation. It means, that each package 
+should have the same dependencies as the referenced OpenFlux once. So, users 
 will be able to load and use only functionality they need.
 
 
@@ -203,19 +203,19 @@ Author(s) :  Alexey PETROV
 
 1. Support for definition of the derived Python classes
 -------------------------------------------------------
-pyFoam users can define derived classes from corresponding C++ ones. This 
+pyFlux users can define derived classes from corresponding C++ ones. This 
 feature is extremely usefull when users are trying to define their own
-implementation of "fvPathFields". This also means, that pyFoam could be used as
-a fullgrown developement platform for the OpenFOAM developement.
+implementation of "fvPathFields". This also means, that pyFlux could be used as
+a fullgrown developement platform for the OpenFlux developement.
 
-2. Support for "constructor to table" OpenFOAM feature
+2. Support for "constructor to table" OpenFlux feature
 -------------------------------------------------------
-OpenFOAM implementation defines its own "plugin" system, also known as 
+OpenFlux implementation defines its own "plugin" system, also known as 
 "constructor to table" feture; when derived functionality can be instateated 
 and be used by its name. Now it is possible as to write your own derived classes
-in pure Python, as to register it into corresponding OpenFOAM "factory". This 
-also means, that pyFoam could be used as a fullgrown developement platform for 
-the OpenFOAM developement.
+in pure Python, as to register it into corresponding OpenFlux "factory". This 
+also means, that pyFlux could be used as a fullgrown developement platform for 
+the OpenFlux developement.
 
 
 ---------------------------------------------------------------------------
@@ -225,12 +225,12 @@ Author(s) :  Alexey PETROV
 
 2009-08-17
 
-1. Porting to the OpenFOAM-1.6
+1. Porting to the OpenFlux-1.6
 -------------------------------
-This version of OpenFOAM swigging can produce Python wrapping for every 
-official OpenFOAM version since 1.4.1. The most important thing that this 
-wrapping support the same Python API for every OpenFOAM version. So, 
-the Python user code need not to be modified to follow the pure C++ OpenFOAM
+This version of OpenFlux swigging can produce Python wrapping for every 
+official OpenFlux version since 1.4.1. The most important thing that this 
+wrapping support the same Python API for every OpenFlux version. So, 
+the Python user code need not to be modified to follow the pure C++ OpenFlux
 modifications.
 
 2. Reducing / precising binary dependecies
@@ -240,25 +240,25 @@ dependecies. As an example it is possible to check the following packages:
   - src (which used customized version of "include.makefile" -
   "src.include.makefile")
 
-  - Foam/application/utilities/postProcessing/graphics (which is responsible
-  for foam2vtk wrapping; introduces VTK dependencies)
+  - Flux/application/utilities/postProcessing/graphics (which is responsible
+  for Flux2vtk wrapping; introduces VTK dependencies)
 
-  - /Foam/applications/utilities/mesh/conversion/ (which is responsible for
-  unv2foam wrapping; introduces VTK dependencies) 
+  - /Flux/applications/utilities/mesh/conversion/ (which is responsible for
+  unv2Flux wrapping; introduces VTK dependencies) 
 
-As an implicit result, "Foam.OpenFOAM" Python module now dependes only from
-corresponding C++ OpenFOAM library, as well as "Foam.finiteVolume" Python
+As an implicit result, "Flux.OpenFlux" Python module now dependes only from
+corresponding C++ OpenFlux library, as well as "Flux.finiteVolume" Python
 module dependes from C++ finiteVolume one and so on.
 
 
-2. Wrapping of the new third-party package - unv2foam
+2. Wrapping of the new third-party package - unv2Flux
 -------------------------------
-The "unv2foam" - package is based on the existing since OpenFOAM-1.5 -
-"ideasUnvToFoam" command line utility. Been repackaged it provide the ability
-to create corresponding Foam::fvMesh in memory.
+The "unv2Flux" - package is based on the existing since OpenFlux-1.5 -
+"ideasUnvToFlux" command line utility. Been repackaged it provide the ability
+to create corresponding Flux::fvMesh in memory.
 
 The packaging for the Python related utilities was adjustied with
-corresponding OpenFOAM/application/utilities.
+corresponding OpenFlux/application/utilities.
 
 
 ---------------------------------------------------------------------------
@@ -268,32 +268,32 @@ Author(s) :  Alexey PETROV
 
 2009-08-17
 
-1. Providing OpenFOAM related packaging
+1. Providing OpenFlux related packaging
 -------------------------------
-This version generates its SWIG libraries into the same OpenFOAM does. For
-example, it provides "OpenFOAM" and "fintiteVolume" Python libraries which
+This version generates its SWIG libraries into the same OpenFlux does. For
+example, it provides "OpenFlux" and "fintiteVolume" Python libraries which
 include all related functionality. These libraries can be accessed through the
-special Python module - "Foam", which simulates the C++ "Foam" namespace. The
+special Python module - "Flux", which simulates the C++ "Flux" namespace. The
 same things are done for "fvc" and "fvm" namespaces, which are represented by
 different libraries. So, user can explicitly control what functionality he is
 going to use, minimize dependencies and clarify its Python code.
 
 
-2. Wrapping of the third-party packages (foam2vtk)
+2. Wrapping of the third-party packages (Flux2vtk)
 -------------------------------
-Since this version, pyFoam will include wrapping of C++ functionality which
-as extends the existing OpenFOAM API as introduce a completely new
+Since this version, pyFlux will include wrapping of C++ functionality which
+as extends the existing OpenFlux API as introduce a completely new
 functionality.
 
-"foam2vtk" Python package will provide the ability to map the foam field data
+"Flux2vtk" Python package will provide the ability to map the Flux field data
 to the native VTK data structures in memory (which can be easily displayed after). It is
-based on the existing OpenFOAM's vtkFoam package.
+based on the existing OpenFlux's vtkFlux package.
 
-3. Moving complex test cases to special package - IFoam
+3. Moving complex test cases to special package - IFlux
 -------------------------------
-IFoam - is defined as a separate software package which will be responsible
+IFlux - is defined as a separate software package which will be responsible
 for "hybrid scripting"; it will provide a design solution for intergration of
-different application and technologies (like SALOME, OpenFOAM and Star-CDF++)
+different application and technologies (like SALOME, OpenFlux and Star-CDF++)
 for defintion of an integrated user environment for calculation and solver developing.
 
 
@@ -305,8 +305,8 @@ Author(s) :  Alexey PETROV
 1. Introduction
 ---------------
 This document briefly explains some of the most important changes made
-since the release of pyfoam-r1.0. The goal is to provide information for
-people who want to upgrade an older pyfoam interface to the new version.
+since the release of pyFlux-r1.0. The goal is to provide information for
+people who want to upgrade an older pyFlux interface to the new version.
 
 2. 'Hybrid scripting' capabilities
 -------------------------------
