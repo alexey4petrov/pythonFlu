@@ -1,4 +1,85 @@
 ---------------------------------------------------------------------------
+    pythonFlu r9.0-porting
+---------------------------------------------------------------------------
+
+  * Name this release after porting on the latest SWIG 2.X version - "swig" 
+
+  * Porting on the new generation of SWIG wrapper - 2.X 
+    (tested with 2.0.3 - 2.0.6)
+  
+  * Porting on the latest OpenCFD version of OpenFOAM - 2.1.1
+
+  * The following new solvers were implemented in Python :
+    
+    compressible
+
+	rhoPorousMRFLTSPimpleFoam
+
+    	rhoPorousMRFSimpleFoam
+    
+	rhoSimplecFoam
+    
+    heatTransfer
+
+	buoyantBoussinesqPimpleFoam
+    
+	chtMultiRegionSimpleFoam
+    
+    incompressible
+
+	adjointShapeOptimizationFoam
+    
+	MRFSimpleFoam
+    
+	SRFPimpleFoam
+    
+	SRFSimpleFoam
+
+
+---------------------------------------------------------------------------
+    pythonFlu r9.0-porting
+---------------------------------------------------------------------------
+
+  * Name this release after the its main achivement - 
+   "porting on the OpenFOAM forks". 
+
+  * Porting on the latest versions of OpenFOAM - 2.1.0 - 2.0.0
+  
+  * Porting on FreeFOAM up to the 0.1.0rc5
+  
+  * Porting on MacOS X
+  
+  * Support for multi-fork and multi-version OpenFOAM installations 
+  
+  * Moving installation procedure to "launchpad.net" (due to increased number of dependencies)
+  
+  * Full grown support for writing interactive applications (a special “managedFlu” intermediate 
+    C++ layer was designed to provide precise memory management over OpenFOAM objects)
+  
+  * Advancement of the internal Python related module packaging
+  
+  * Support writing pure Python custom "functionObject"s
+
+
+---------------------------------------------------------------------------
+    pythonFlu r8.2-hybrid
+---------------------------------------------------------------------------
+
+  * Name this release after the reinvoked SALOME to OpenFOAM binding -
+    hybridFlu. 
+
+  * hybridFlu functionality comes in sources and was tested
+    with SALOME r5.1.3 and OpenFOAM r1.7.1
+
+  * Advancing pythonFlu make system in the way that any other third-party
+    functionality can use and extend the referenced pythonFlu wrapping 
+    defintion. 
+
+  * As an example how to achive this look in the implementation 
+    of hybridFlu related packages (foam2vtk and unv2foam)
+
+
+---------------------------------------------------------------------------
     pythonFlu r8.1-Elvis
 ---------------------------------------------------------------------------
 
