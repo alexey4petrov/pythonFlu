@@ -40,8 +40,8 @@
     pythonFlu r9.0-porting
 ---------------------------------------------------------------------------
 
-  * Name this release after the its main achivement - 
-   "porting on the OpenFOAM forks". 
+  * Name this release after the its main achivement - "porting on the latest 
+    OpenFOAM versions and forks" 
 
   * Porting on the latest versions of OpenFOAM - 2.1.0 - 2.0.0
   
@@ -66,7 +66,7 @@
 ---------------------------------------------------------------------------
 
   * Name this release after the reinvoked SALOME to OpenFOAM binding -
-    hybridFlu. 
+    "hybridFlu"
 
   * hybridFlu functionality comes in sources and was tested
     with SALOME r5.1.3 and OpenFOAM r1.7.1
