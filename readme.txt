@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------
-    pythonFlu r9.0-porting
+    pythonFlu r9.1-swig
 ---------------------------------------------------------------------------
 
   * Name this release after porting on the latest SWIG 2.X version - "swig" 
